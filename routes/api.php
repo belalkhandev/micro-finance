@@ -6,7 +6,6 @@ use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\PostOfficeController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VillageController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -60,13 +59,13 @@ Route::group([
     'middleware' => 'auth:sanctum',
     'prefix' => 'expense'
 ], function($route) {
-    $route->get('/list', [ExpenseController::class, 'index']);
-    $route->post('/create', [ExpenseController::class, 'store']);
-    $route->put('/update/{id}', [ExpenseController::class, 'udpate']);
-    $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
-
     $route->get('/category/list', [ExpenseCategoryController::class, 'index']);
     $route->post('/category/create', [ExpenseCategoryController::class, 'store']);
-    $route->put('/category/update/{id}', [ExpenseCategoryController::class, 'udpate']);
+    $route->put('/category/update/{id}', [ExpenseCategoryController::class, 'update']);
     $route->delete('/category/delete/{id}', [ExpenseCategoryController::class, 'destroy']);
+
+    $route->get('/list', [ExpenseController::class, 'index']);
+    $route->post('/create', [ExpenseController::class, 'store']);
+    $route->put('/update/{id}', [ExpenseController::class, 'update']);
+    $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
 });

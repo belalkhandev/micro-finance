@@ -13,6 +13,7 @@ class RepositoryServiceProvider extends ServiceProvider {
             'Village' => 'Village',
             'PostOffice' => 'PostOffice',
             'ExpenseCategory' => 'ExpenseCategory',
+            'Expense' => 'Expense',
         ];
 
         foreach ($models as $dir => $model) {

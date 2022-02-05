@@ -7,8 +7,6 @@ use App\Repositories\Village\VillageRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-use function PHPSTORM_META\map;
-
 class VillageController extends Controller
 {
     protected $village;

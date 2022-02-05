@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Expense\ExpenseRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ExpenseController extends Controller
 {
+    protected $expense;
+
+    public function __construct(ExpenseRepositoryInterface $expense)
+    {
+        $this->expense = $expense;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,22 @@ class ExpenseController extends Controller
      */
     public function index()
     {
-        //
+        $expenses = $this->expense->all();
+
+        if ($expenses) {
+            return response()->json([
+                'status' => true,
+                'expenses' => $expenses,
+                'message' => 'Found expenses data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'expenses' => null,
+            'message' => 'No data found'
+        ]);
+        
     }
 
     /**
@@ -35,7 +58,33 @@ class ExpenseController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'amount' => 'required',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
+        }
+        
+        $expense = $this->expense->store($request);
+
+        if ($expense) {
+            return response()->json([
+                'status' => true,
+                'expense' => $expense,
+                'message' => 'expense has been stored successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to store expense'
+        ]);
     }
 
     /**
@@ -46,7 +95,20 @@ class ExpenseController extends Controller
      */
     public function show($id)
     {
-        //
+        $expense = $this->expense->find($id);
+
+        if ($expense) {
+            return response()->json([
+                'status' => true,
+                'expense' => $expense,
+                'message' => 'Found expense data'
+            ]); 
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No data found'
+        ]);
     }
 
     /**
@@ -69,7 +131,34 @@ class ExpenseController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'amount' => 'required',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
+        }
+
+        $expense = $this->expense->update($request, $id);
+
+        if ($expense) {
+            return response()->json([
+                'status' => true,
+                'expense' => $expense,
+                'message' => 'expense has been updated successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'expense' => null,
+            'message' => 'Failed to update expense'
+        ]);
     }
 
     /**
@@ -80,6 +169,16 @@ class ExpenseController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->expense->delete($id)) {
+            return response()->json([
+                'status' => true,
+                'message' => 'expense has been deleted successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to delete expense'
+        ]);
     }
 }
