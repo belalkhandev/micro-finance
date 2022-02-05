@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\BdLocationsController;
 use App\Http\Controllers\Api\ExpenseCategoryController;
 use App\Http\Controllers\Api\ExpenseController;
+use App\Http\Controllers\Api\MemberGroupController;
 use App\Http\Controllers\Api\PostOfficeController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VillageController;
@@ -75,5 +76,15 @@ Route::group([
         $route->post('/create', [ExpenseController::class, 'store']);
         $route->put('/update/{id}', [ExpenseController::class, 'update']);
         $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
+    });
+
+    //post-office api
+    Route::group([
+        'prefix' => 'member-group'
+    ], function($route) {
+        $route->get('/list', [MemberGroupController::class, 'index']);
+        $route->post('/create', [MemberGroupController::class, 'store']);
+        $route->put('/update/{id}', [MemberGroupController::class, 'update']);
+        $route->delete('/delete/{id}', [MemberGroupController::class, 'destroy']);
     });
 });

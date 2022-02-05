@@ -20,6 +20,7 @@ class CreateNomineesTable extends Migration
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('phone')->nullable();
+            $table->string('nid')->nullable();
             $table->enum('gender', ['male', 'female'])->nullable();
             $table->string('address')->nullable();
             $table->string('photo')->nullable();
