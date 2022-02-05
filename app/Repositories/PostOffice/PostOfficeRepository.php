@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\PostOffice;
 
-use App\Models\User;
+use App\Models\PostOffice;
 
-class UserRepository implements UserRepositoryInterface {
+class PostOfficeRepository implements PostOfficeRepositoryInterface {
 
     protected $model;
 
-    public function __construct(User $model)
+    public function __construct(PostOffice $model)
     {
         $this->model = $model;
     }

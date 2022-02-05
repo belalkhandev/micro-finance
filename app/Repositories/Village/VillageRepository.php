@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\Village;
 
-use App\Models\User;
+use App\Models\Village;
 
-class UserRepository implements UserRepositoryInterface {
+class VillageRepository implements VillageRepositoryInterface {
 
     protected $model;
 
-    public function __construct(User $model)
+    public function __construct(Village $model)
     {
         $this->model = $model;
     }

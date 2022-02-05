@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Repositories\User;
+namespace App\Repositories\Expense;
 
-use App\Models\User;
+use App\Models\Expense;
 
-class UserRepository implements UserRepositoryInterface {
+class ExpenseRepository implements ExpenseRepositoryInterface {
 
     protected $model;
 
-    public function __construct(User $model)
+    public function __construct(Expense $model)
     {
         $this->model = $model;
     }

@@ -10,6 +10,9 @@ class RepositoryServiceProvider extends ServiceProvider {
     {
         $models = [
             'User' => 'User',
+            'Village' => 'Village',
+            'PostOffice' => 'PostOffice',
+            'ExpenseCategory' => 'ExpenseCategory',
         ];
 
         foreach ($models as $dir => $model) {
