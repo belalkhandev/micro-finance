@@ -4,13 +4,13 @@ namespace App\Repositories\User;
 
 use App\Models\User;
 
-class UserRepository implements UserInterface {
+class UserRepository implements UserRepositoryInterface {
 
     protected $model;
 
     public function __construct(User $user)
     {
-        $this->model = $user;   
+        $this->model = $user;
     }
 
     public function all()
@@ -38,5 +38,5 @@ class UserRepository implements UserInterface {
 
     }
 
-        
+
 }
