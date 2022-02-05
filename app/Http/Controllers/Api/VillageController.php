@@ -3,10 +3,20 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Village\VillageRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+use function PHPSTORM_META\map;
 
 class VillageController extends Controller
 {
+    protected $village;
+
+    public function __construct(VillageRepositoryInterface $village)
+    {
+        $this->village = $village;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +24,22 @@ class VillageController extends Controller
      */
     public function index()
     {
-        //
+        $villages = $this->village->all();
+
+        if ($villages) {
+            return response()->json([
+                'status' => true,
+                'villages' => $villages,
+                'message' => 'Found villages data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'villages' => null,
+            'message' => 'No data found'
+        ]);
+        
     }
 
     /**
@@ -35,7 +60,46 @@ class VillageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'bn_name' => 'required'
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
+        }
+
+        //check duplicate
+        if ($this->village->duplicate([
+            'upazilla_id' => $request->input('upazilla_id'),
+            'union_id' => $request->input('union_id'),
+            'name' => $request->input('name'),
+        ])) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Village already exists'
+            ]);
+        }
+        
+        $village = $this->village->store($request);
+
+        if ($village) {
+            return response()->json([
+                'status' => true,
+                'village' => $village,
+                'message' => 'Village has been stored successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to store village'
+        ]);
     }
 
     /**
@@ -46,7 +110,20 @@ class VillageController extends Controller
      */
     public function show($id)
     {
-        //
+        $village = $this->village->find($id);
+
+        if ($village) {
+            return response()->json([
+                'status' => true,
+                'village' => $village,
+                'message' => 'Found village data'
+            ]); 
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No data found'
+        ]);
     }
 
     /**
@@ -69,7 +146,35 @@ class VillageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'bn_name' => 'required'
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
+        }
+
+        $village = $this->village->update($request, $id);
+
+        if ($village) {
+            return response()->json([
+                'status' => true,
+                'village' => $village,
+                'message' => 'Village has been updated successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'village' => null,
+            'message' => 'Failed to update village'
+        ]);
     }
 
     /**
@@ -80,6 +185,16 @@ class VillageController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->village->delete($id)) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Village has been deleted successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to delete village'
+        ]);
     }
 }
