@@ -52,8 +52,8 @@ class VillageRepository implements VillageRepositoryInterface {
     {
         $village = Village::find($id);
 
-        if ($village->delete()) {
-            return true;
+        if ($village) {
+            return $village->delete();
         }
 
         return false;

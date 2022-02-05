@@ -3,10 +3,18 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\PostOffice\PostOfficeRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PostOfficeController extends Controller
 {
+    protected $po;
+
+    public function __construct(PostOfficeRepositoryInterface $po)
+    {
+        $this->po = $po;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +22,22 @@ class PostOfficeController extends Controller
      */
     public function index()
     {
-        //
+        $post_offices = $this->po->all();
+
+        if ($post_offices) {
+            return response()->json([
+                'status' => true,
+                'post_offices' => $post_offices,
+                'message' => 'Found post offices data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'post_offices' => null,
+            'message' => 'No data found'
+        ]);
+        
     }
 
     /**
@@ -35,7 +58,47 @@ class PostOfficeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'bn_name' => 'required',
+            'post_code' => 'required'
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
+        }
+
+        //check duplicate
+        if ($this->po->duplicate([
+            'upazilla_id' => $request->input('upazilla_id'),
+            'union_id' => $request->input('union_id'),
+            'name' => $request->input('name'),
+        ])) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Post office already exists'
+            ]);
+        }
+        
+        $po = $this->po->store($request);
+
+        if ($po) {
+            return response()->json([
+                'status' => true,
+                'po' => $po,
+                'message' => 'Post office has been stored successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to store post office'
+        ]);
     }
 
     /**
@@ -46,7 +109,20 @@ class PostOfficeController extends Controller
      */
     public function show($id)
     {
-        //
+        $po = $this->po->find($id);
+
+        if ($po) {
+            return response()->json([
+                'status' => true,
+                'po' => $po,
+                'message' => 'Found post office data'
+            ]); 
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No data found'
+        ]);
     }
 
     /**
@@ -69,7 +145,36 @@ class PostOfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'bn_name' => 'required',
+            'post_code' => 'required'
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
+        }
+
+        $po = $this->po->update($request, $id);
+
+        if ($po) {
+            return response()->json([
+                'status' => true,
+                'po' => $po,
+                'message' => 'Post office has been updated successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'po' => null,
+            'message' => 'Failed to update post office'
+        ]);
     }
 
     /**
@@ -80,6 +185,16 @@ class PostOfficeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        if ($this->po->delete($id)) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Post office has been deleted successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to delete post office'
+        ]);
     }
 }
