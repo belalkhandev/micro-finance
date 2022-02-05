@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthenticationController;
+use App\Http\Controllers\Api\BdLocationsController;
 use App\Http\Controllers\Api\ExpenseCategoryController;
 use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\PostOfficeController;
@@ -21,51 +22,58 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::group([
-    'middleware' => 'auth:sanctum',
-    'prefix' => 'user'
-], function($route) {
-    $route->get('/me', [AuthenticationController::class, 'me']);
-    $route->get('/list', [UsersController::class, 'index']);
-    $route->post('/register', [UsersController::class, 'register']);
-    $route->post('/update', [UsersController::class, 'update']);
+    'middlware' => 'auth:sanctum'
+], function () {
 
-    $route->post('/logout', [AuthenticationController::class, 'logout']);
-});
+    Route::group([
+        'prefix' => 'user'
+    ], function($route) {
+        $route->get('/me', [AuthenticationController::class, 'me']);
+        $route->get('/list', [UsersController::class, 'index']);
+        $route->post('/register', [UsersController::class, 'register']);
+        $route->post('/update', [UsersController::class, 'update']);
 
-//village api
-Route::group([
-    'middleware' => 'auth:sanctum',
-    'prefix' => 'village'
-], function($route) {
-    $route->get('/list', [VillageController::class, 'index']);
-    $route->post('/create', [VillageController::class, 'store']);
-    $route->put('/update/{id}', [VillageController::class, 'update']);
-    $route->delete('/delete/{id}', [VillageController::class, 'destroy']);
-});
+        $route->post('/logout', [AuthenticationController::class, 'logout']);
+    });
 
-//post-office api
-Route::group([
-    'middleware' => 'auth:sanctum',
-    'prefix' => 'post-office'
-], function($route) {
-    $route->get('/list', [PostOfficeController::class, 'index']);
-    $route->post('/create', [PostOfficeController::class, 'store']);
-    $route->put('/update/{id}', [PostOfficeController::class, 'update']);
-    $route->delete('/delete/{id}', [PostOfficeController::class, 'destroy']);
-});
+    //village api
+    Route::get('/division/list', [BdLocationsController::class, 'divisions']);
+    Route::get('/district/list', [BdLocationsController::class, 'districts']);
+    Route::get('/upazilla/list', [BdLocationsController::class, 'upazillas']);
+    Route::get('/union/list', [BdLocationsController::class, 'unions']);
 
-//post-office api
-Route::group([
-    'middleware' => 'auth:sanctum',
-    'prefix' => 'expense'
-], function($route) {
-    $route->get('/category/list', [ExpenseCategoryController::class, 'index']);
-    $route->post('/category/create', [ExpenseCategoryController::class, 'store']);
-    $route->put('/category/update/{id}', [ExpenseCategoryController::class, 'update']);
-    $route->delete('/category/delete/{id}', [ExpenseCategoryController::class, 'destroy']);
+    //village api
+    Route::group([
+        'prefix' => 'village'
+    ], function($route) {
+        $route->get('/list', [VillageController::class, 'index']);
+        $route->post('/create', [VillageController::class, 'store']);
+        $route->put('/update/{id}', [VillageController::class, 'update']);
+        $route->delete('/delete/{id}', [VillageController::class, 'destroy']);
+    });
 
-    $route->get('/list', [ExpenseController::class, 'index']);
-    $route->post('/create', [ExpenseController::class, 'store']);
-    $route->put('/update/{id}', [ExpenseController::class, 'update']);
-    $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
+    //post-office api
+    Route::group([
+        'prefix' => 'post-office'
+    ], function($route) {
+        $route->get('/list', [PostOfficeController::class, 'index']);
+        $route->post('/create', [PostOfficeController::class, 'store']);
+        $route->put('/update/{id}', [PostOfficeController::class, 'update']);
+        $route->delete('/delete/{id}', [PostOfficeController::class, 'destroy']);
+    });
+
+    //post-office api
+    Route::group([
+        'prefix' => 'expense'
+    ], function($route) {
+        $route->get('/category/list', [ExpenseCategoryController::class, 'index']);
+        $route->post('/category/create', [ExpenseCategoryController::class, 'store']);
+        $route->put('/category/update/{id}', [ExpenseCategoryController::class, 'update']);
+        $route->delete('/category/delete/{id}', [ExpenseCategoryController::class, 'destroy']);
+
+        $route->get('/list', [ExpenseController::class, 'index']);
+        $route->post('/create', [ExpenseController::class, 'store']);
+        $route->put('/update/{id}', [ExpenseController::class, 'update']);
+        $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
+    });
 });
