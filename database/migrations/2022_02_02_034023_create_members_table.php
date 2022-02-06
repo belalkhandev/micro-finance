@@ -41,7 +41,6 @@ class CreateMembersTable extends Migration
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();
             $table->foreign('member_group_id')->references('id')->on('member_groups')->onDelete('cascade');
-            $table->foreign('member_type_id')->references('id')->on('member_types')->onDelete('cascade');
         });
     }
 
