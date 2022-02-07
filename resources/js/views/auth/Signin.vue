@@ -9,14 +9,16 @@
                     <h1>{{ $t('auth_welcome') }}</h1>
                 </div>
                 <div class="auth-body">
-                    <form action="">
+                    <form @submit.prevent="loginSubmit">
                         <div class="form-group">
                             <label>{{ $t('email') }}*</label>
-                            <input type="email" name="email" :placeholder="$t('enter_email')" class="form-control">
+                            <input type="email" v-model="form.email" :placeholder="$t('enter_email')" class="form-control">
+                            <span class="text-danger" v-if="errors">{{ errors.email ? errors.email[0] : '' }}</span>
                         </div>
                         <div class="form-group">
                             <label>{{ $t('password') }}*</label>
-                            <input type="password" name="password" :placeholder="$t('enter_password')" class="form-control">
+                            <input type="password" v-model="form.password" :placeholder="$t('enter_password')" class="form-control">
+                            <span class="text-danger" v-if="errors">{{ errors.password ? errors.password[0] : '' }}</span>
                         </div>
                         <div class="form-group form-submit-group">
                             <button type="submit" class="btn btn-primary">{{ $t('signin') }}</button>
@@ -37,7 +39,47 @@
 </template>
 
 <script>
+    import { mapGetters, mapActions } from 'vuex'
     export default ({
+        name: 'Signin',
+        data() {
+            return {
+                form: {
+                    email: '',
+                    password: ''
+                },
+                errors: null,
+                error: null,
+            }
+        },
+        computed: {
+            ...mapGetters({
+                validation_errors: 'validation_errors',
+                error_message: 'error_message',
+                user: 'auth/user'
+            })
+        },
 
+        methods: {
+            ...mapActions({
+                signIn: 'auth/signIn'
+            }),
+
+            loginSubmit(){
+                this.signIn(this.form).then(() => {
+                    if (!this.validation_errors && !this.error_message) {
+                        this.errors = this.error = null;
+                        if (this.user) {
+                            this.$router.replace({
+                                name: 'Dashboard'
+                            })
+                        }
+                    }else {
+                        this.errors = this.validation_errors;
+                        this.error = this.error_message
+                    }
+                });
+            }
+        }
     })
 </script>

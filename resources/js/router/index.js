@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
+import store from "../store";
 
 const routes = [
 
@@ -8,7 +9,14 @@ const routes = [
         component: () => import('../views/auth/Signin.vue'),
         meta: {
             title: 'Sign in'
+        },
+        beforeEnter:(to, from, next) => {
+            if (store.getters['auth/authenticated']) {
+                return next({ name: 'Dashboard' })
+            }
+            next();
         }
+
     },
     {
         path: '/',
@@ -16,7 +24,7 @@ const routes = [
         component: () => import('../views/Dashboard.vue'),
         meta: {
             title: 'Dashboard'
-        }
+        },
     },
     {
         path: '/profile',
@@ -44,7 +52,18 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
     window.document.title = to.meta && to.meta.title ? to.meta.title : 'PDSCDCSL';
+    let exceptRoutes = ['Signin', 'NotFound'];
+    if (!exceptRoutes.find((route) => {
+        return route === to.name
+    })) {
+        if (!store.getters['auth/authenticated']) {
+            return next({
+                name: 'Signin'
+            })
+        }
+    }
     next();
 })
 
 export default router;
+

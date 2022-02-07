@@ -10,9 +10,9 @@
             <div class="user-img">
                 <img src="../assets/images/user.png" alt="">
             </div>
-            <div class="user-info">
-                <h3>Khusy Kumar Das</h3>
-                <p>Admin</p>
+            <div class="user-info" v-if="authenticated && user">
+                <h3>{{ user.name }}</h3>
+                <p>{{ user.role_name }}</p>
             </div>
         </div>
         <!-- main menus -->
@@ -146,8 +146,16 @@
 </template>
 
 <script>
+import { mapGetters, mapActions} from 'vuex'
+
 export default ({
     name: 'Navigation',
+    computed: {
+        ...mapGetters ({
+            authenticated: 'auth/authenticated',
+            user: 'auth/user'
+        })
+    },
     methods: {
         changeLang(lang) {
             localStorage.setItem('lang', lang)
