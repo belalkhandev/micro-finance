@@ -1,5 +1,6 @@
 import { createStore } from 'vuex'
 import auth from './modules/auth'
+import location from './modules/location'
 
 export default createStore({
     state: {
@@ -32,6 +33,7 @@ export default createStore({
     },
 
     modules: {
-        auth
+        auth,
+        location
     }
 })

@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::group([
-    'middlware' => 'auth:sanctum'
+    'middleware' => 'auth:sanctum'
 ], function () {
 
     Route::group([

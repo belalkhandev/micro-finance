@@ -35,6 +35,14 @@ const routes = [
         }
     },
     {
+        path: '/villages',
+        name: 'Village',
+        component: () => import('../views/village/Index.vue'),
+        meta: {
+            title: 'Village'
+        }
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         component: () => import('../views/404.vue'),

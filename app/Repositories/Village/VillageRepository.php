@@ -8,7 +8,7 @@ class VillageRepository implements VillageRepositoryInterface {
 
     public function all()
     {
-        $villages = Village::get();
+        $villages = Village::orderBy('name', 'ASC')->get();
 
         if ($villages->isNotEmpty()) {
             return $villages;

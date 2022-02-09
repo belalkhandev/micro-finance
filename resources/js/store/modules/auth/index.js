@@ -1,4 +1,3 @@
-
 import axios from "axios"
 
 export default {
@@ -31,8 +30,6 @@ export default {
         UPDATE_USER_PASSWORD (state, user) {
             state.user = user
         }
-
-
     },
 
     actions: {

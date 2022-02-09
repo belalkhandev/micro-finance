@@ -43,6 +43,10 @@ h6 {
     font-size: 14px;
 }
 
+button, [type='button'], [type='reset'], [type='submit'] {
+    color: #4f46e5;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 10px;
@@ -56,6 +60,10 @@ h6 {
 /* Handle */
 ::-webkit-scrollbar-thumb {
     background: #a5b4fc;
+}
+
+.form-control::-webkit-scrollbar {
+    width: 3px;
 }
 
 /* Handle on hover */
@@ -144,7 +152,6 @@ table {
     color: #1f2937;
     font-family: "Livvic", sans-serif;
     font-size: 16px;
-    text-align: center;
 }
 .table tbody {
     border: none !important;
@@ -339,6 +346,11 @@ table {
 }
 .navigations .navigation-item a {
     transition: 300ms;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .navigations .navigation-item a i.bx {
     font-size: 32px;
@@ -347,18 +359,36 @@ table {
 .navigations .navigation-item a span {
     display: block;
     font-weight: 500;
+    width: 100%;
 }
 .navigations .navigation-item .navigation-content {
-    position: absolute;
+    position: fixed;
     top: 0;
-    left: -100%;
-    width: 100%;
+    left: -270px;
+    width: 270px;
     height: 100%;
     background-color: #F0F9FF;
     padding: 10px;
     visibility: hidden;
     opacity: 0;
     transition: 300ms;
+    cursor: default;
+    overflow-y: auto;
+}
+.navigations .navigation-item .navigation-content::-webkit-scrollbar {
+    width: 2px;
+}
+.navigations .navigation-item .navigation-content .close-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: red;
+    font-size: 16px;
+    flex-direction: row-reverse;
+    cursor: pointer;
+}
+.navigations .navigation-item .navigation-content .close-bar i.bx {
+    font-size: 20px;
 }
 .navigations .navigation-item .navigation-content .navigation-content-header {
     margin-top: 15px;
@@ -369,8 +399,8 @@ table {
 .navigations .navigation-item .navigation-content .navigation-content-body h5 {
     margin-top: 15px;
     font-weight: 500;
-    color: #4b5563;
-    font-size: 1rem;
+    color: #58709c;
+    font-size: 17px;
     border-bottom: 1px solid #c7d2fe;
     padding: 3px 5px;
 }
@@ -381,7 +411,8 @@ table {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    font-size: 14px;
+    flex-wrap: nowrap;
+    font-size: 16px;
     padding: 5px 0px;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {
@@ -499,4 +530,28 @@ table {
 .auth-wrap .auth-content .content img {
     margin-top: 30px;
     width: 75%;
-}/*# sourceMappingURL=style.css.map */
+}
+
+button[type=submit].btn {
+    position: relative;
+}
+
+button[type=submit].btn.submitted span{
+    visibility: hidden;
+}
+
+button[type=submit].btn .spinner-border {
+    position: absolute;
+    top: calc(50% - 0.6rem);
+    left: calc(50% - 0.6rem);
+    width: 1.2rem;
+    height: 1.2rem;
+    visibility: hidden;
+}
+
+button[type=submit].btn.submitted .spinner-border {
+    visibility: visible;
+}
+
+
+/*# sourceMappingURL=style.css.map */

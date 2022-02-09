@@ -11,25 +11,22 @@
                 <img src="../assets/images/user.png" alt="">
             </div>
             <div class="user-info" v-if="authenticated && user">
-                <h3>{{ user.name }}</h3>
+                <h3 class="text-white">{{ user.name }}</h3>
                 <p>{{ user.role_name }}</p>
             </div>
         </div>
         <!-- main menus -->
         <div class="navigations">
-            <div class="navigation-item has-multimenu">
-                <router-link :to="{name: 'Dashboard'}" class="menu-link">
+            <div class="navigation-item">
+                <router-link :to="{name: 'Dashboard'}" class="menu-link" @click="openMultimenus">
                     <i class="bx bxs-tachometer text-blue-600" ></i>
-                    <span>Dashboard</span>
+                    <span>{{ $t('dashboard') }}</span>
                 </router-link>
-                <div class="navigation-content">
-                    Some content here
-                </div>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Profile'}">
                     <i class="bx bxs-user-rectangle text-red-600" ></i>
-                    <span>Profile</span>
+                    <span>{{ $t('profile') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item">
@@ -63,11 +60,15 @@
                 </a>
             </div>
             <div class="navigation-item has-multimenu">
-                <a href="" class="menu-link">
+                <a href="#" class="menu-link" @click="openMultimenus">
                     <i class='bx bxs-report' ></i>
                     <span>Reports</span>
                 </a>
                 <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
                     <div class="navigation-content-header">
                         <h3>Reports</h3>
                     </div>
@@ -76,52 +77,7 @@
                         <ul>
                             <li>
                                 <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <h5>Daily Reports</h5>
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
+                                    <i class='bx bx-chevron-right'></i>
                                     <span>Daily Collection Report</span>
                                 </a>
                             </li>
@@ -129,11 +85,61 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation-item">
-                <a href="">
+            <div class="navigation-item has-multimenu">
+                <a href="#" @click="openMultimenus">
                     <i class='bx bxs-cog' ></i>
-                    <span>Settings</span>
+                    <span>{{  $t('settings') }}</span>
                 </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>{{  $t('settings') }}</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5>Basic Setup</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'Village'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Villages</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Post-Offices</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Unions</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Upazillas</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Districts</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Divisions</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Signin'}">
@@ -147,6 +153,7 @@
 
 <script>
 import { mapGetters, mapActions} from 'vuex'
+import $ from 'jquery'
 
 export default ({
     name: 'Navigation',
@@ -157,10 +164,15 @@ export default ({
         })
     },
     methods: {
-        changeLang(lang) {
-            localStorage.setItem('lang', lang)
-            this.$i18n.locale = lang
-        }
+        openMultimenus(event) {
+            const _self = event.currentTarget;
+            $(_self).closest('.has-multimenu').addClass('open');
+        },
+
+        closeMultimenus(event) {
+            const _self = event.currentTarget;
+            $(_self).closest('.has-multimenu').removeClass('open');
+        },
     }
 })
 </script>
