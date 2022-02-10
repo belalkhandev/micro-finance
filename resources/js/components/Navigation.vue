@@ -37,18 +37,6 @@
             </div>
             <div class="navigation-item">
                 <a href="">
-                    <i class="bx bxs-user-rectangle text-red-600" ></i>
-                    <span>Profile</span>
-                </a>
-            </div>
-            <div class="navigation-item">
-                <a href="">
-                    <i class='bx bxs-user-account text-indigo-600' ></i>
-                    <span>Members</span>
-                </a>
-            </div>
-            <div class="navigation-item">
-                <a href="">
                     <i class='bx bxs-file-doc text-green-600' ></i>
                     <span>Applications</span>
                 </a>

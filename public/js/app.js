@@ -26069,46 +26069,46 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-account text-indigo-600\"></i><span>Members</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-rectangle text-red-600\"></i><span>Profile</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-account text-indigo-600\"></i><span>Members</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-file-doc text-green-600\"></i><span>Applications</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-badge\"></i><span>Admins</span></a></div>", 5);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-account text-indigo-600\"></i><span>Members</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-file-doc text-green-600\"></i><span>Applications</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-badge\"></i><span>Admins</span></a></div>", 3);
 
-var _hoisted_17 = {
+var _hoisted_15 = {
   "class": "navigation-item has-multimenu"
 };
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-report"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
 /* HOISTED */
 );
 
-var _hoisted_20 = [_hoisted_18, _hoisted_19];
-var _hoisted_21 = {
+var _hoisted_18 = [_hoisted_16, _hoisted_17];
+var _hoisted_19 = {
   "class": "navigation-content"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-x"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
 /* HOISTED */
 );
 
-var _hoisted_24 = [_hoisted_22, _hoisted_23];
+var _hoisted_22 = [_hoisted_20, _hoisted_21];
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "navigation-content-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Reports")], -1
 /* HOISTED */
 );
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "navigation-content-body"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Daily Reports"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: ""
@@ -26118,39 +26118,49 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_27 = {
+var _hoisted_25 = {
   "class": "navigation-item has-multimenu"
 };
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-cog"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_29 = {
+var _hoisted_27 = {
   "class": "navigation-content"
 };
 
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-x"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
 /* HOISTED */
 );
 
-var _hoisted_32 = [_hoisted_30, _hoisted_31];
-var _hoisted_33 = {
+var _hoisted_30 = [_hoisted_28, _hoisted_29];
+var _hoisted_31 = {
   "class": "navigation-content-header"
 };
-var _hoisted_34 = {
+var _hoisted_32 = {
   "class": "navigation-content-body"
 };
 
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Basic Setup", -1
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Basic Setup", -1
+/* HOISTED */
+);
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-chevron-right"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Villages", -1
 /* HOISTED */
 );
 
@@ -26160,31 +26170,21 @@ var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Villages", -1
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
 /* HOISTED */
 );
 
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-chevron-right"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
-/* HOISTED */
-);
-
-var _hoisted_40 = {
+var _hoisted_38 = {
   "class": "navigation-item"
 };
 
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-log-out"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
 /* HOISTED */
 );
 
@@ -26225,38 +26225,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, _hoisted_20), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_18), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_24), _hoisted_25, _hoisted_26])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, _hoisted_22), _hoisted_23, _hoisted_24])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     onClick: _cache[2] || (_cache[2] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
+  }, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[3] || (_cache[3] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
+  }, _hoisted_30), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Village'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_36, _hoisted_37];
+      return [_hoisted_34, _hoisted_35];
     }),
     _: 1
     /* STABLE */
@@ -26267,18 +26267,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_38, _hoisted_39];
+      return [_hoisted_36, _hoisted_37];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Unions</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Upazillas</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Districts</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Divisions</span>\n                                </a>\n                            </li> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Unions</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Upazillas</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Districts</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Divisions</span>\n                                </a>\n                            </li> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Signin'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_41, _hoisted_42];
+      return [_hoisted_39, _hoisted_40];
     }),
     _: 1
     /* STABLE */
@@ -26479,7 +26479,16 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_postoffice_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/postoffice/Index.vue */ "./resources/js/views/postoffice/Index.vue"));
   },
   meta: {
-    title: 'Postoffice'
+    title: 'Post office'
+  }
+}, {
+  path: '/admins',
+  name: 'Admin',
+  component: function component() {
+    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../views/admin/index.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+  },
+  meta: {
+    title: 'Admin list'
   }
 }, {
   path: '/:catchAll(.*)',

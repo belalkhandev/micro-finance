@@ -47,7 +47,15 @@ const routes = [
         name: 'Postoffice',
         component: () => import('../views/postoffice/Index.vue'),
         meta: {
-            title: 'Postoffice'
+            title: 'Post office'
+        }
+    },
+    {
+        path: '/admins',
+        name: 'Admin',
+        component: () => import('../views/admin/index.vue'),
+        meta: {
+            title: 'Admin list'
         }
     },
     {

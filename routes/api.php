@@ -31,11 +31,14 @@ Route::group([
     ], function($route) {
         $route->get('/me', [AuthenticationController::class, 'me']);
         $route->get('/list', [UsersController::class, 'index']);
-        $route->post('/register', [UsersController::class, 'register']);
-        $route->post('/update', [UsersController::class, 'update']);
+        $route->post('/create', [UsersController::class, 'create']);
+        $route->post('/update/{id}', [UsersController::class, 'update']);
+        $route->delete('/delete/{id}', [UsersController::class, 'destroy']);
 
         $route->post('/logout', [AuthenticationController::class, 'logout']);
     });
+
+    Route::get('/role/list', [UsersController::class, 'roles']);
 
     //village api
     Route::get('/division/list', [BdLocationsController::class, 'divisions']);

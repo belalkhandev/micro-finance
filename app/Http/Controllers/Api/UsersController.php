@@ -7,17 +7,25 @@ use App\Models\FileUpload;
 use App\Models\Role;
 use App\Models\User;
 use App\Models\UserProfile;
+use App\Repositories\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class UsersController extends Controller
 {
+    protected $user;
+
+    public function __construct(UserRepositoryInterface $user)
+    {
+        $this->user = $user;
+    }
     public function index()
     {
-        $users = User::whereNotIn('id',[ Auth::guard('sanctum')->user()->id])->get();
+        $except_ids = Auth::guard('sanctum')->user()->id;
+        $users = $this->user->all([$except_ids]);
 
-        if ($users->isNotEmpty()) {
+        if ($users) {
             return response()->json([
                 'status' => true,
                 'users' => $users
@@ -31,11 +39,12 @@ class UsersController extends Controller
         ]);
     }
 
-    public function register(Request $request)
+    public function create(Request $request)
     {
         $rules = [
             'name' => 'required',
             'email' => 'required|string|unique:users,email',
+            'phone' => 'nullable|unique:users,phone',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
             'role_id' => 'required'
@@ -47,54 +56,85 @@ class UsersController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
-        }
-
-        try {
-            $user = new User();
-            $user->name = $request->get('name');
-            $user->phone = $request->get('phone');
-            $user->email = $request->get('email');
-            $user->password = app('hash')->make($request->input('password'));
-            $user->created_by = app()->user()->id;
-
-            if($user->save()) {
-                //attach role with user
-                $user->attachRole(Role::find($request->input('role_id'))->first());
-
-                //upload profile
-                $profile = new UserProfile();
-                $profile->user_id = $user->id;
-                // $profile->gender = $request->input('gender');
-                // $profile->birthdate = $request->input('birthdate');
-                // $profile->address = $request->input('address');
-                if ($request->hasFile('photo')) {
-                    $path = FileUpload::upload($request, 'photo', 'admins');
-                    $profile->photo = $path;
-                }
-
-                $profile->save();
-
-                return response()->json([
-                    'status' => true,
-                    'user' => $user,
-                    'message' => 'Congratulations! User registered successfully',
-                ]);
-
-            }
-
-            return response()->json([
-                'status' => false,
-                'user' => null,
-                'message' => 'Failed to register user',
-            ]);
-
-        }catch(\Exception $e) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Something went wrong, '. $e->getMessage(),
             ]);
         }
+
+        //store user
+        $user = $this->user->store($request);
+
+        if ($user->save()) {
+            $profile = $this->user->storeProfile($request, $user->id);
+
+            return response()->json([
+                'status' => true,
+                'user' => $user,
+                'profile' => $profile,
+                'message' => 'Congratulations! Admin user saved successfully',
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to store user'
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|string|unique:users,email,'.$id,
+            'phone' => 'nullable|unique:users,phone,'.$id,
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required',
+            'role_id' => 'required'
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ]);
+        }
+
+        //store user
+        $user = $this->user->update($request, $id);
+
+        if ($user->save()) {
+            $profile = $this->user->updateProfile($request, $user->profile->id);
+
+            return response()->json([
+                'status' => true,
+                'user' => $user,
+                'profile' => $profile,
+                'message' => 'Congratulations! Admin user updated successfully',
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to update user'
+        ]);
+    }
+
+    public function roles()
+    {
+        $roles = Role::with('permissions')->orderBy('name', 'ASC')->get();
+
+        if ($roles->isNotEmpty()) {
+            return response()->json([
+                'status' => true,
+                'roles' => $roles
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'roles' => $roles,
+            'message' => "No roles list found"
+        ]);
     }
 
 }
