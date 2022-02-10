@@ -26069,46 +26069,60 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-account text-indigo-600\"></i><span>Members</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-file-doc text-green-600\"></i><span>Applications</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-badge\"></i><span>Admins</span></a></div>", 3);
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-user-account text-indigo-600\"></i><span>Members</span></a></div><div class=\"navigation-item\"><a href=\"\"><i class=\"bx bxs-file-doc text-green-600\"></i><span>Applications</span></a></div>", 2);
 
-var _hoisted_15 = {
+var _hoisted_14 = {
+  "class": "navigation-item"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-user-badge"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Admins", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = {
   "class": "navigation-item has-multimenu"
 };
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-report"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = [_hoisted_16, _hoisted_17];
-var _hoisted_19 = {
+var _hoisted_20 = [_hoisted_18, _hoisted_19];
+var _hoisted_21 = {
   "class": "navigation-content"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-x"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
 /* HOISTED */
 );
 
-var _hoisted_22 = [_hoisted_20, _hoisted_21];
+var _hoisted_24 = [_hoisted_22, _hoisted_23];
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "navigation-content-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Reports")], -1
 /* HOISTED */
 );
 
-var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "navigation-content-body"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Daily Reports"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
   href: ""
@@ -26118,49 +26132,39 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_25 = {
+var _hoisted_27 = {
   "class": "navigation-item has-multimenu"
 };
 
-var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-cog"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_27 = {
+var _hoisted_29 = {
   "class": "navigation-content"
 };
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-x"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
 /* HOISTED */
 );
 
-var _hoisted_30 = [_hoisted_28, _hoisted_29];
-var _hoisted_31 = {
+var _hoisted_32 = [_hoisted_30, _hoisted_31];
+var _hoisted_33 = {
   "class": "navigation-content-header"
 };
-var _hoisted_32 = {
+var _hoisted_34 = {
   "class": "navigation-content-body"
 };
 
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Basic Setup", -1
-/* HOISTED */
-);
-
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-chevron-right"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Villages", -1
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Basic Setup", -1
 /* HOISTED */
 );
 
@@ -26170,21 +26174,31 @@ var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Villages", -1
 /* HOISTED */
 );
 
-var _hoisted_38 = {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-chevron-right"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
+/* HOISTED */
+);
+
+var _hoisted_40 = {
   "class": "navigation-item"
 };
 
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-log-out"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
 /* HOISTED */
 );
 
@@ -26225,38 +26239,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'Admin'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_15, _hoisted_16];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, _hoisted_18), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_20), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_22), _hoisted_23, _hoisted_24])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  }, _hoisted_24), _hoisted_25, _hoisted_26])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     onClick: _cache[2] || (_cache[2] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, [_hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
+  }, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_29, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[3] || (_cache[3] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_30), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
+  }, _hoisted_32), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [_hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [_hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Village'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_34, _hoisted_35];
+      return [_hoisted_36, _hoisted_37];
     }),
     _: 1
     /* STABLE */
@@ -26267,18 +26292,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_36, _hoisted_37];
+      return [_hoisted_38, _hoisted_39];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Unions</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Upazillas</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Districts</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Divisions</span>\n                                </a>\n                            </li> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Unions</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Upazillas</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Districts</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Divisions</span>\n                                </a>\n                            </li> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Signin'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_39, _hoisted_40];
+      return [_hoisted_41, _hoisted_42];
     }),
     _: 1
     /* STABLE */
@@ -26485,10 +26510,19 @@ var routes = [{
   path: '/admins',
   name: 'Admin',
   component: function component() {
-    return Promise.resolve().then(function webpackMissingModule() { var e = new Error("Cannot find module '../views/admin/index.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; });
+    return __webpack_require__.e(/*! import() */ "resources_js_views_admin_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/Index.vue */ "./resources/js/views/admin/Index.vue"));
   },
   meta: {
     title: 'Admin list'
+  }
+}, {
+  path: '/admins/:admin_id',
+  name: 'ShowAdmin',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_admin_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/Profile.vue */ "./resources/js/views/admin/Profile.vue"));
+  },
+  meta: {
+    title: 'Admin show'
   }
 }, {
   path: '/:catchAll(.*)',
@@ -26536,13 +26570,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth/index.js");
 /* harmony import */ var _modules_location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/location */ "./resources/js/store/modules/location/index.js");
+/* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user/index.js");
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_2__.createStore)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_3__.createStore)({
   state: {
     validation_errors: null,
     error_message: null
@@ -26567,6 +26603,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   modules: {
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_0__["default"],
+    user: _modules_user__WEBPACK_IMPORTED_MODULE_2__["default"],
     location: _modules_location__WEBPACK_IMPORTED_MODULE_1__["default"]
   }
 }));
@@ -27318,6 +27355,263 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee12);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/user/index.js":
+/*!**************************************************!*\
+  !*** ./resources/js/store/modules/user/index.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: {
+    users: null,
+    roles: null
+  },
+  getters: {
+    users: function users(state) {
+      return state.users;
+    },
+    roles: function roles(state) {
+      return state.roles;
+    }
+  },
+  mutations: {
+    SET_USERS: function SET_USERS(state, users) {
+      state.users = users;
+    },
+    SET_USER: function SET_USER(state, user) {
+      console.log(user);
+
+      if (state.users) {
+        state.users.unshift(user);
+      }
+    },
+    UPDATE_USER: function UPDATE_USER(state, update_user) {
+      var user = state.users.find(function (user) {
+        return user.id == update_user.id;
+      });
+      Object.assign(user, update_user);
+    },
+    DELETE_USER: function DELETE_USER(state, user_id) {
+      var user = state.users.find(function (user) {
+        return user.id == user_id;
+      });
+
+      if (user) {
+        state.users.splice(state.users.indexOf(user), 1);
+      }
+    },
+    SET_ROLES: function SET_ROLES(state, roles) {
+      state.roles = roles;
+    }
+  },
+  actions: {
+    //get user list
+    getUsers: function getUsers(_ref) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/user/list');
+
+              case 3:
+                res = _context.sent;
+
+                if (res.data.status) {
+                  commit('SET_USERS', res.data.users);
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    createUser: function createUser(_ref2, formData) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/user/create', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
+
+              case 3:
+                res = _context2.sent;
+
+                if (res.data.status) {
+                  commit('SET_USER', res.data.user);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    editUser: function editUser(_ref3, formData) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/user/edit', formData, {
+                  headers: {
+                    'Content-Type': 'multipart/form-data'
+                  }
+                });
+
+              case 3:
+                res = _context3.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_USER', res.data.user);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    deleteUser: function deleteUser(_ref4, user_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/user/delete/' + user_id);
+
+              case 3:
+                res = _context4.sent;
+
+                if (res.data.status) {
+                  commit('DELETE_USER', user_id);
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    //get role list
+    getRoles: function getRoles(_ref5) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('/role/list');
+
+              case 3:
+                res = _context5.sent;
+
+                if (res.data.status) {
+                  commit('SET_ROLES', res.data.roles);
+                }
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     }
   }
@@ -32500,7 +32794,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/*\n! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/\n\n*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}\n\n::before,\n::after {\n  --tw-content: '';\n}\n\n/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/\n\nhtml {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}\n\n/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/\n\nbody {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}\n\n/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/\n\nhr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}\n\n/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/\n\nabbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}\n\n/*\nRemove the default font size and weight for headings.\n*/\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\n/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/\n\na {\n  color: inherit;\n  text-decoration: inherit;\n}\n\n/*\nAdd the correct font weight in Edge and Safari.\n*/\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/\n\ncode,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/*\nAdd the correct font size in all browsers.\n*/\n\nsmall {\n  font-size: 80%;\n}\n\n/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/\n\ntable {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}\n\n/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}\n\n/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/\n\nbutton,\nselect {\n  text-transform: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/\n\nbutton,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}\n\n/*\nUse the modern Firefox focus style for all focusable elements.\n*/\n\n:-moz-focusring {\n  outline: auto;\n}\n\n/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/\n\n:-moz-ui-invalid {\n  box-shadow: none;\n}\n\n/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/\n\nprogress {\n  vertical-align: baseline;\n}\n\n/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/\n\n::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/\n\n[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/\n\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/*\nAdd the correct display in Chrome and Safari.\n*/\n\nsummary {\n  display: list-item;\n}\n\n/*\nRemoves the default spacing and border for appropriate elements.\n*/\n\nblockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}\n\nfieldset {\n  margin: 0;\n  padding: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\nol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/*\nPrevent resizing textareas horizontally by default.\n*/\n\ntextarea {\n  resize: vertical;\n}\n\n/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/\n\ninput::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput:-ms-input-placeholder, textarea:-ms-input-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\n/*\nSet the default cursor for buttons.\n*/\n\nbutton,\n[role=\"button\"] {\n  cursor: pointer;\n}\n\n/*\nMake sure disabled buttons don't get the pointer cursor.\n*/\n:disabled {\n  cursor: default;\n}\n\n/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/\n\nimg,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}\n\n/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/\n\nimg,\nvideo {\n  max-width: 100%;\n  height: auto;\n}\n\n/*\nEnsure the default browser behavior of the `hidden` attribute.\n*/\n\n[hidden] {\n  display: none;\n}\n\n*, ::before, ::after {\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}\n.fixed {\n  position: fixed;\n}\n.relative {\n  position: relative;\n}\n.top-0 {\n  top: 0px;\n}\n.right-0 {\n  right: 0px;\n}\n.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}\n.ml-1 {\n  margin-left: 0.25rem;\n}\n.mt-2 {\n  margin-top: 0.5rem;\n}\n.mr-2 {\n  margin-right: 0.5rem;\n}\n.ml-2 {\n  margin-left: 0.5rem;\n}\n.mt-4 {\n  margin-top: 1rem;\n}\n.ml-4 {\n  margin-left: 1rem;\n}\n.mt-8 {\n  margin-top: 2rem;\n}\n.ml-12 {\n  margin-left: 3rem;\n}\n.-mt-px {\n  margin-top: -1px;\n}\n.flex {\n  display: flex;\n}\n.table {\n  display: table;\n}\n.grid {\n  display: grid;\n}\n.hidden {\n  display: none;\n}\n.h-5 {\n  height: 1.25rem;\n}\n.h-8 {\n  height: 2rem;\n}\n.h-16 {\n  height: 4rem;\n}\n.min-h-screen {\n  min-height: 100vh;\n}\n.w-5 {\n  width: 1.25rem;\n}\n.w-8 {\n  width: 2rem;\n}\n.w-auto {\n  width: auto;\n}\n.max-w-6xl {\n  max-width: 72rem;\n}\n.grid-cols-1 {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}\n.items-center {\n  align-items: center;\n}\n.justify-center {\n  justify-content: center;\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.border-t {\n  border-top-width: 1px;\n}\n.border-gray-200 {\n  --tw-border-opacity: 1;\n  border-color: rgb(229 231 235 / var(--tw-border-opacity));\n}\n.bg-white {\n  --tw-bg-opacity: 1;\n  background-color: rgb(255 255 255 / var(--tw-bg-opacity));\n}\n.bg-gray-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(243 244 246 / var(--tw-bg-opacity));\n}\n.p-6 {\n  padding: 1.5rem;\n}\n.py-4 {\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n.px-6 {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.py-0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.px-0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.pt-8 {\n  padding-top: 2rem;\n}\n.text-left {\n  text-align: left;\n}\n.text-center {\n  text-align: center;\n}\n.text-right {\n  text-align: right;\n}\n.text-sm {\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n}\n.text-lg {\n  font-size: 1.125rem;\n  line-height: 1.75rem;\n}\n.font-semibold {\n  font-weight: 600;\n}\n.leading-7 {\n  line-height: 1.75rem;\n}\n.text-gray-200 {\n  --tw-text-opacity: 1;\n  color: rgb(229 231 235 / var(--tw-text-opacity));\n}\n.text-gray-300 {\n  --tw-text-opacity: 1;\n  color: rgb(209 213 219 / var(--tw-text-opacity));\n}\n.text-gray-400 {\n  --tw-text-opacity: 1;\n  color: rgb(156 163 175 / var(--tw-text-opacity));\n}\n.text-gray-500 {\n  --tw-text-opacity: 1;\n  color: rgb(107 114 128 / var(--tw-text-opacity));\n}\n.text-gray-600 {\n  --tw-text-opacity: 1;\n  color: rgb(75 85 99 / var(--tw-text-opacity));\n}\n.text-gray-700 {\n  --tw-text-opacity: 1;\n  color: rgb(55 65 81 / var(--tw-text-opacity));\n}\n.text-gray-900 {\n  --tw-text-opacity: 1;\n  color: rgb(17 24 39 / var(--tw-text-opacity));\n}\n.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}\n.text-blue-600 {\n  --tw-text-opacity: 1;\n  color: rgb(37 99 235 / var(--tw-text-opacity));\n}\n.text-red-600 {\n  --tw-text-opacity: 1;\n  color: rgb(220 38 38 / var(--tw-text-opacity));\n}\n.text-indigo-600 {\n  --tw-text-opacity: 1;\n  color: rgb(79 70 229 / var(--tw-text-opacity));\n}\n.text-green-600 {\n  --tw-text-opacity: 1;\n  color: rgb(22 163 74 / var(--tw-text-opacity));\n}\n.text-red-500 {\n  --tw-text-opacity: 1;\n  color: rgb(239 68 68 / var(--tw-text-opacity));\n}\n.text-orange-400 {\n  --tw-text-opacity: 1;\n  color: rgb(251 146 60 / var(--tw-text-opacity));\n}\n.text-red-400 {\n  --tw-text-opacity: 1;\n  color: rgb(248 113 113 / var(--tw-text-opacity));\n}\n.underline {\n  -webkit-text-decoration-line: underline;\n          text-decoration-line: underline;\n}\n.antialiased {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.shadow {\n  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);\n  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n.filter {\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}\n.focus\\:shadow-none:focus {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n@media (prefers-color-scheme: dark) {\n\n  .dark\\:border-gray-700 {\n    --tw-border-opacity: 1;\n    border-color: rgb(55 65 81 / var(--tw-border-opacity));\n  }\n\n  .dark\\:bg-gray-900 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(17 24 39 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:bg-gray-800 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(31 41 55 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:text-gray-500 {\n    --tw-text-opacity: 1;\n    color: rgb(107 114 128 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-white {\n    --tw-text-opacity: 1;\n    color: rgb(255 255 255 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-gray-400 {\n    --tw-text-opacity: 1;\n    color: rgb(156 163 175 / var(--tw-text-opacity));\n  }\n}\n@media (min-width: 640px) {\n\n  .sm\\:ml-0 {\n    margin-left: 0px;\n  }\n\n  .sm\\:block {\n    display: block;\n  }\n\n  .sm\\:h-20 {\n    height: 5rem;\n  }\n\n  .sm\\:items-center {\n    align-items: center;\n  }\n\n  .sm\\:justify-start {\n    justify-content: flex-start;\n  }\n\n  .sm\\:justify-between {\n    justify-content: space-between;\n  }\n\n  .sm\\:rounded-lg {\n    border-radius: 0.5rem;\n  }\n\n  .sm\\:px-6 {\n    padding-left: 1.5rem;\n    padding-right: 1.5rem;\n  }\n\n  .sm\\:pt-0 {\n    padding-top: 0px;\n  }\n\n  .sm\\:text-left {\n    text-align: left;\n  }\n\n  .sm\\:text-right {\n    text-align: right;\n  }\n}\n@media (min-width: 768px) {\n\n  .md\\:grid-cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n\n  .md\\:border-t-0 {\n    border-top-width: 0px;\n  }\n\n  .md\\:border-l {\n    border-left-width: 1px;\n  }\n}\n@media (min-width: 1024px) {\n\n  .lg\\:px-8 {\n    padding-left: 2rem;\n    padding-right: 2rem;\n  }\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/*\n! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/\n\n*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}\n\n::before,\n::after {\n  --tw-content: '';\n}\n\n/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/\n\nhtml {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}\n\n/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/\n\nbody {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}\n\n/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/\n\nhr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}\n\n/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/\n\nabbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}\n\n/*\nRemove the default font size and weight for headings.\n*/\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\n/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/\n\na {\n  color: inherit;\n  text-decoration: inherit;\n}\n\n/*\nAdd the correct font weight in Edge and Safari.\n*/\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/\n\ncode,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/*\nAdd the correct font size in all browsers.\n*/\n\nsmall {\n  font-size: 80%;\n}\n\n/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/\n\ntable {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}\n\n/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}\n\n/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/\n\nbutton,\nselect {\n  text-transform: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/\n\nbutton,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}\n\n/*\nUse the modern Firefox focus style for all focusable elements.\n*/\n\n:-moz-focusring {\n  outline: auto;\n}\n\n/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/\n\n:-moz-ui-invalid {\n  box-shadow: none;\n}\n\n/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/\n\nprogress {\n  vertical-align: baseline;\n}\n\n/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/\n\n::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/\n\n[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/\n\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/*\nAdd the correct display in Chrome and Safari.\n*/\n\nsummary {\n  display: list-item;\n}\n\n/*\nRemoves the default spacing and border for appropriate elements.\n*/\n\nblockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}\n\nfieldset {\n  margin: 0;\n  padding: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\nol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/*\nPrevent resizing textareas horizontally by default.\n*/\n\ntextarea {\n  resize: vertical;\n}\n\n/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/\n\ninput::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput:-ms-input-placeholder, textarea:-ms-input-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\n/*\nSet the default cursor for buttons.\n*/\n\nbutton,\n[role=\"button\"] {\n  cursor: pointer;\n}\n\n/*\nMake sure disabled buttons don't get the pointer cursor.\n*/\n:disabled {\n  cursor: default;\n}\n\n/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/\n\nimg,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}\n\n/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/\n\nimg,\nvideo {\n  max-width: 100%;\n  height: auto;\n}\n\n/*\nEnsure the default browser behavior of the `hidden` attribute.\n*/\n\n[hidden] {\n  display: none;\n}\n\n*, ::before, ::after {\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}\n.fixed {\n  position: fixed;\n}\n.relative {\n  position: relative;\n}\n.top-0 {\n  top: 0px;\n}\n.right-0 {\n  right: 0px;\n}\n.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}\n.ml-1 {\n  margin-left: 0.25rem;\n}\n.mt-2 {\n  margin-top: 0.5rem;\n}\n.mr-2 {\n  margin-right: 0.5rem;\n}\n.ml-2 {\n  margin-left: 0.5rem;\n}\n.mt-4 {\n  margin-top: 1rem;\n}\n.ml-4 {\n  margin-left: 1rem;\n}\n.mt-8 {\n  margin-top: 2rem;\n}\n.ml-12 {\n  margin-left: 3rem;\n}\n.-mt-px {\n  margin-top: -1px;\n}\n.mb-3 {\n  margin-bottom: 0.75rem;\n}\n.mt-3 {\n  margin-top: 0.75rem;\n}\n.flex {\n  display: flex;\n}\n.table {\n  display: table;\n}\n.grid {\n  display: grid;\n}\n.hidden {\n  display: none;\n}\n.h-5 {\n  height: 1.25rem;\n}\n.h-8 {\n  height: 2rem;\n}\n.h-16 {\n  height: 4rem;\n}\n.h-2 {\n  height: 0.5rem;\n}\n.min-h-screen {\n  min-height: 100vh;\n}\n.w-5 {\n  width: 1.25rem;\n}\n.w-8 {\n  width: 2rem;\n}\n.w-auto {\n  width: auto;\n}\n.w-full {\n  width: 100%;\n}\n.w-2 {\n  width: 0.5rem;\n}\n.max-w-6xl {\n  max-width: 72rem;\n}\n.table-auto {\n  table-layout: auto;\n}\n.grid-cols-1 {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}\n.items-center {\n  align-items: center;\n}\n.justify-center {\n  justify-content: center;\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.border-t {\n  border-top-width: 1px;\n}\n.border-gray-200 {\n  --tw-border-opacity: 1;\n  border-color: rgb(229 231 235 / var(--tw-border-opacity));\n}\n.border-r-amber-50 {\n  --tw-border-opacity: 1;\n  border-right-color: rgb(255 251 235 / var(--tw-border-opacity));\n}\n.bg-white {\n  --tw-bg-opacity: 1;\n  background-color: rgb(255 255 255 / var(--tw-bg-opacity));\n}\n.bg-gray-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(243 244 246 / var(--tw-bg-opacity));\n}\n.bg-green-600 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(22 163 74 / var(--tw-bg-opacity));\n}\n.bg-indigo-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(224 231 255 / var(--tw-bg-opacity));\n}\n.bg-orange-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(255 237 213 / var(--tw-bg-opacity));\n}\n.bg-yellow-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(254 249 195 / var(--tw-bg-opacity));\n}\n.bg-indigo-400 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(129 140 248 / var(--tw-bg-opacity));\n}\n.bg-indigo-500 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(99 102 241 / var(--tw-bg-opacity));\n}\n.bg-green-500 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(34 197 94 / var(--tw-bg-opacity));\n}\n.bg-green-300 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(134 239 172 / var(--tw-bg-opacity));\n}\n.bg-zinc-500 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(113 113 122 / var(--tw-bg-opacity));\n}\n.bg-zinc-400 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(161 161 170 / var(--tw-bg-opacity));\n}\n.bg-indigo-300 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(165 180 252 / var(--tw-bg-opacity));\n}\n.p-6 {\n  padding: 1.5rem;\n}\n.py-4 {\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n.px-6 {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.py-0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.px-0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.py-2 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.pt-8 {\n  padding-top: 2rem;\n}\n.text-left {\n  text-align: left;\n}\n.text-center {\n  text-align: center;\n}\n.text-right {\n  text-align: right;\n}\n.text-sm {\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n}\n.text-lg {\n  font-size: 1.125rem;\n  line-height: 1.75rem;\n}\n.font-semibold {\n  font-weight: 600;\n}\n.leading-7 {\n  line-height: 1.75rem;\n}\n.text-gray-200 {\n  --tw-text-opacity: 1;\n  color: rgb(229 231 235 / var(--tw-text-opacity));\n}\n.text-gray-300 {\n  --tw-text-opacity: 1;\n  color: rgb(209 213 219 / var(--tw-text-opacity));\n}\n.text-gray-400 {\n  --tw-text-opacity: 1;\n  color: rgb(156 163 175 / var(--tw-text-opacity));\n}\n.text-gray-500 {\n  --tw-text-opacity: 1;\n  color: rgb(107 114 128 / var(--tw-text-opacity));\n}\n.text-gray-600 {\n  --tw-text-opacity: 1;\n  color: rgb(75 85 99 / var(--tw-text-opacity));\n}\n.text-gray-700 {\n  --tw-text-opacity: 1;\n  color: rgb(55 65 81 / var(--tw-text-opacity));\n}\n.text-gray-900 {\n  --tw-text-opacity: 1;\n  color: rgb(17 24 39 / var(--tw-text-opacity));\n}\n.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}\n.text-blue-600 {\n  --tw-text-opacity: 1;\n  color: rgb(37 99 235 / var(--tw-text-opacity));\n}\n.text-red-600 {\n  --tw-text-opacity: 1;\n  color: rgb(220 38 38 / var(--tw-text-opacity));\n}\n.text-indigo-600 {\n  --tw-text-opacity: 1;\n  color: rgb(79 70 229 / var(--tw-text-opacity));\n}\n.text-green-600 {\n  --tw-text-opacity: 1;\n  color: rgb(22 163 74 / var(--tw-text-opacity));\n}\n.text-red-500 {\n  --tw-text-opacity: 1;\n  color: rgb(239 68 68 / var(--tw-text-opacity));\n}\n.text-orange-400 {\n  --tw-text-opacity: 1;\n  color: rgb(251 146 60 / var(--tw-text-opacity));\n}\n.text-red-400 {\n  --tw-text-opacity: 1;\n  color: rgb(248 113 113 / var(--tw-text-opacity));\n}\n.text-slate-800 {\n  --tw-text-opacity: 1;\n  color: rgb(30 41 59 / var(--tw-text-opacity));\n}\n.underline {\n  -webkit-text-decoration-line: underline;\n          text-decoration-line: underline;\n}\n.antialiased {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.shadow {\n  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);\n  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n.filter {\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}\n.focus\\:shadow-none:focus {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n@media (prefers-color-scheme: dark) {\n\n  .dark\\:border-gray-700 {\n    --tw-border-opacity: 1;\n    border-color: rgb(55 65 81 / var(--tw-border-opacity));\n  }\n\n  .dark\\:bg-gray-900 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(17 24 39 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:bg-gray-800 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(31 41 55 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:text-gray-500 {\n    --tw-text-opacity: 1;\n    color: rgb(107 114 128 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-white {\n    --tw-text-opacity: 1;\n    color: rgb(255 255 255 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-gray-400 {\n    --tw-text-opacity: 1;\n    color: rgb(156 163 175 / var(--tw-text-opacity));\n  }\n}\n@media (min-width: 640px) {\n\n  .sm\\:ml-0 {\n    margin-left: 0px;\n  }\n\n  .sm\\:block {\n    display: block;\n  }\n\n  .sm\\:h-20 {\n    height: 5rem;\n  }\n\n  .sm\\:items-center {\n    align-items: center;\n  }\n\n  .sm\\:justify-start {\n    justify-content: flex-start;\n  }\n\n  .sm\\:justify-between {\n    justify-content: space-between;\n  }\n\n  .sm\\:rounded-lg {\n    border-radius: 0.5rem;\n  }\n\n  .sm\\:px-6 {\n    padding-left: 1.5rem;\n    padding-right: 1.5rem;\n  }\n\n  .sm\\:pt-0 {\n    padding-top: 0px;\n  }\n\n  .sm\\:text-left {\n    text-align: left;\n  }\n\n  .sm\\:text-right {\n    text-align: right;\n  }\n}\n@media (min-width: 768px) {\n\n  .md\\:grid-cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n\n  .md\\:border-t-0 {\n    border-top-width: 0px;\n  }\n\n  .md\\:border-l {\n    border-left-width: 1px;\n  }\n}\n@media (min-width: 1024px) {\n\n  .lg\\:px-8 {\n    padding-left: 2rem;\n    padding-right: 2rem;\n  }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -32526,7 +32820,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n  height: 100%;\n}\n\nbody {\n  font-family: \"Nunito\", sans-serif;\n  background-color: #EAEDF5;\n  font-size: 1rem;\n}\n\nimg {\n  max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: \"Livvic\", sans-serif;\n  color: #1e293b;\n}\n\nh1 {\n  font-size: 32px;\n}\n\nh2 {\n  font-size: 24px;\n}\n\nh3 {\n  font-size: 20px;\n}\n\nh4 {\n  font-size: 18px;\n}\n\nh5 {\n  font-size: 16px;\n}\n\nh6 {\n  font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n  background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n  background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n  background: #4f46e5;\n}\n\nh1 {\n  font-size: 30px;\n  font-weight: 700;\n}\n\nh2 {\n  font-size: 24px;\n  font-weight: 700;\n}\n\nh3 {\n  font-size: 18px;\n  font-weight: 600;\n}\n\nh4 {\n  font-size: 16px;\n  font-weight: 600;\n}\n\nh5 {\n  font-size: 14px;\n  font-weight: 600;\n}\n\nh6 {\n  font-size: 12px;\n  font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n  background-color: #4f46e5 !important;\n  color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n  background-color: #3730a3 !important;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n  background-color: #16a34a !important;\n  color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n  background-color: #166534 !important;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n  background-color: #dc2626 !important;\n  color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n  background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n  background-color: #ca8a04 !important;\n  color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n  background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n  position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n  position: absolute;\n  top: calc(50% - 0.6rem);\n  left: calc(50% - 0.6rem);\n  width: 1.2rem;\n  height: 1.2rem;\n  visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n  visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n  visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n  visibility: hidden;\n}\n\n.box {\n  background-color: #ffffff;\n  border-radius: 5px;\n  margin-bottom: 30px;\n  border: 1px solid #e2e8f0;\n  box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n  padding: 10px 15px;\n  min-height: 45px;\n  border-bottom: 1px solid #f1f5f9;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.box .box-body {\n  padding: 10px 15px 15px;\n  overflow-y: auto;\n}\n.box .box-footer {\n  border-top: 1px solid #e2e8f0;\n  padding: 10px 15px 15px;\n}\n\ntable {\n  width: 100%;\n}\n\n.table {\n  width: 100%;\n  overflow: hidden;\n}\n.table thead {\n  border: none !important;\n}\n.table thead tr {\n  background-color: #f1f5f9;\n  border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n  font-weight: 500;\n  color: #1f2937;\n  font-family: \"Livvic\", sans-serif;\n  font-size: 16px;\n  text-align: center;\n}\n.table tbody {\n  border: none !important;\n  font-family: \"Nunito\", sans-serif;\n  font-weight: 500;\n}\n.table tbody tr {\n  position: relative;\n  border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n  position: absolute;\n  top: 0;\n  left: -2px;\n  width: 2px;\n  background-color: #6366f1;\n  height: 100%;\n  content: \"\";\n}\n.table tbody tr td {\n  font-size: 14px;\n  vertical-align: middle;\n  padding: 10px;\n}\n.table tbody tr td .action {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  grid-gap: 5px;\n  font-size: 16px;\n}\n.table tbody tr td .action a {\n  padding: 3px 3px;\n  line-height: 0px;\n  border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n  background-color: #4f46e5;\n  color: #ffffff;\n}\n.table tbody tr:hover {\n  background-color: #eef2ff;\n  cursor: pointer;\n}\n.table tbody tr:hover::after {\n  left: 0;\n  content: \"\";\n  transition: 300ms;\n}\n\n.form-group {\n  margin-bottom: 15px;\n}\n.form-group label {\n  font-weight: 500;\n  font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n  box-shadow: none;\n  border-color: #a5b4fc;\n}\n\n.form-select:focus {\n  box-shadow: none;\n  border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n  width: 3px;\n}\n\n.wrapper {\n  display: flex;\n  justify-content: flex-start;\n}\n.wrapper .sidebar {\n  background-color: #F0F9FF;\n  width: 269px;\n  height: 100vh;\n  overflow-y: auto;\n  border-right: 1px solid #e0e7ff;\n}\n.wrapper .main-content {\n  background-color: #EAEDF5;\n  width: calc(100% - 270px);\n  height: 100vh;\n  overflow-y: auto;\n}\n@media screen and (max-width: 576px) {\n  .wrapper {\n    display: block;\n  }\n  .wrapper .sidebar {\n    width: 100%;\n    position: absolute;\n    top: 0;\n    left: 0;\n    height: 100%;\n    visibility: visible;\n    opacity: 1;\n    transition: 300ms;\n  }\n  .wrapper.rs-open-sidebar .sidebar {\n    left: 0;\n  }\n  .wrapper .main-content {\n    width: 100%;\n  }\n}\n\n.main-content .main-header {\n  background-color: #ffffff;\n  min-height: 50px;\n  display: flex;\n  justify-content: space-between;\n  padding: 0px 15px;\n  align-items: center;\n}\n.main-content .content {\n  padding: 15px;\n}\n\n.full-screen .wrapper .sidebar {\n  display: none;\n}\n.full-screen .wrapper .main-content {\n  width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n  display: none;\n}\n.full-screen .wrapper .main-content .content {\n  padding: 0;\n}\n\n.sidebar {\n  padding: 15px 10px;\n  position: relative;\n  /* width */\n}\n.sidebar .logo {\n  text-align: center;\n  margin-bottom: 15px;\n}\n.sidebar .logo img {\n  width: 85px;\n  margin: 0 auto;\n}\n.sidebar .logo h2 {\n  margin-top: 10px;\n  font-size: 18px;\n  color: #475569;\n  font-weight: 700;\n}\n.sidebar .user {\n  margin-bottom: 15px;\n  background-color: #6366f1;\n  color: #ffffff;\n  padding: 15px 10px;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n  width: 40px;\n}\n.sidebar .user .user-info h3 {\n  font-size: 18px;\n  font-weight: 500;\n}\n.sidebar .user .user-info p {\n  font-size: 14px;\n  font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n  width: 0px;\n}\n\n.navigations {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 20px 15px;\n}\n.navigations .navigation-item {\n  text-align: center;\n  min-height: 90px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #ffffff;\n  border-radius: 5px;\n  border: 1px solid #e0e7ff;\n  box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n  transition: 300ms;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n  font-size: 32px;\n  margin-bottom: 5px;\n}\n.navigations .navigation-item a span {\n  display: block;\n  font-weight: 500;\n  width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n  position: fixed;\n  top: 0;\n  left: -270px;\n  width: 270px;\n  height: 100%;\n  background-color: #F0F9FF;\n  padding: 10px;\n  visibility: hidden;\n  opacity: 0;\n  transition: 300ms;\n  cursor: default;\n  overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n  width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  color: red;\n  font-size: 16px;\n  flex-direction: row-reverse;\n  cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n  font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n  margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n  text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n  margin-top: 15px;\n  font-weight: 500;\n  color: #4b5563;\n  font-size: 18px;\n  border-bottom: 1px solid #c7d2fe;\n  padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n  margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li {\n  margin-bottom: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  flex-wrap: nowrap;\n  font-size: 15px;\n  padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n  margin: 0px;\n  margin-right: 5px;\n  font-size: 20px;\n  color: #94a3b8;\n  transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n  background-color: #6366f1;\n  border-radius: 5px;\n  color: #ffffff;\n  cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n  color: #ffffff;\n  margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n  background-color: #4f46e5;\n  cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n  color: #ffffff;\n  transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n  color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n  background-color: #6366f1;\n  border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n  color: #ffffff;\n  margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n  left: 0;\n  visibility: visible;\n  opacity: 1;\n  z-index: 999;\n  transition: 500ms;\n}\n\n.auth-wrap {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n.auth-wrap .auth {\n  width: 50%;\n  height: 100%;\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.auth-wrap .auth .auth-box {\n  width: 350px;\n  margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n  text-align: center;\n  margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n  margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n  width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n  font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n  margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n  height: 45px;\n  border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n  margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n  width: 100%;\n  padding: 5px 15px;\n  border-radius: 8px;\n  font-size: 18px;\n  font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n  background-color: #4f46e5;\n  border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n  background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n  justify-content: flex-start;\n  width: 50%;\n  background-color: #060B4D;\n  height: 100%;\n}\n.auth-wrap .auth-content .content {\n  margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n  color: #e2e8f0;\n  font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n  margin-top: 15px;\n  color: #e0e7ff;\n  font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n  margin-top: 30px;\n  width: 75%;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n    height: 100%;\n}\n\nbody {\n    font-family: \"Nunito\", sans-serif;\n    background-color: #EAEDF5;\n    font-size: 1rem;\n}\n\nimg {\n    max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n    font-family: \"Livvic\", sans-serif;\n    color: #1e293b;\n}\n\nh1 {\n    font-size: 32px;\n}\n\nh2 {\n    font-size: 24px;\n}\n\nh3 {\n    font-size: 20px;\n}\n\nh4 {\n    font-size: 18px;\n}\n\nh5 {\n    font-size: 16px;\n}\n\nh6 {\n    font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n    width: 10px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n    background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n    background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n    background: #4f46e5;\n}\n\nh1 {\n    font-size: 30px;\n    font-weight: 700;\n}\n\nh2 {\n    font-size: 24px;\n    font-weight: 700;\n}\n\nh3 {\n    font-size: 18px;\n    font-weight: 600;\n}\n\nh4 {\n    font-size: 16px;\n    font-weight: 600;\n}\n\nh5 {\n    font-size: 14px;\n    font-weight: 600;\n}\n\nh6 {\n    font-size: 12px;\n    font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n    color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n    background-color: #3730a3 !important;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n    background-color: #166534 !important;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n    background-color: #dc2626 !important;\n    color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n    background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n    background-color: #ca8a04 !important;\n    color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n    background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n    position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n    position: absolute;\n    top: calc(50% - 0.6rem);\n    left: calc(50% - 0.6rem);\n    width: 1.2rem;\n    height: 1.2rem;\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n    visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\n\n.box {\n    background-color: #ffffff;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    border: 1px solid #e2e8f0;\n    box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n    padding: 10px 15px;\n    min-height: 45px;\n    border-bottom: 1px solid #f1f5f9;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.box .box-body {\n    padding: 10px 15px 15px;\n    overflow-y: auto;\n}\n.box .box-footer {\n    border-top: 1px solid #e2e8f0;\n    padding: 10px 15px 15px;\n}\n\ntable {\n    width: 100%;\n}\n\n.table {\n    width: 100%;\n    overflow: hidden;\n}\n.table thead {\n    border: none !important;\n}\n.table thead tr {\n    background-color: #f1f5f9;\n    border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n    font-weight: 500;\n    color: #1f2937;\n    font-family: \"Livvic\", sans-serif;\n    font-size: 16px;\n}\n.table tbody {\n    border: none !important;\n    font-family: \"Nunito\", sans-serif;\n    font-weight: 500;\n}\n.table tbody tr {\n    position: relative;\n    border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n    position: absolute;\n    top: 0;\n    left: -2px;\n    width: 2px;\n    background-color: #6366f1;\n    height: 100%;\n    content: \"\";\n}\n.table tbody tr td {\n    font-size: 14px;\n    vertical-align: middle;\n    padding: 10px;\n}\n.table tbody tr td .action {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n    font-size: 16px;\n}\n.table tbody tr td .action a {\n    padding: 3px 3px;\n    line-height: 0px;\n    border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n    background-color: #4f46e5;\n    color: #ffffff;\n}\n.table tbody tr:hover {\n    background-color: #eef2ff;\n    cursor: pointer;\n}\n.table tbody tr:hover::after {\n    left: 0;\n    content: \"\";\n    transition: 300ms;\n}\n\n.form-group {\n    margin-bottom: 15px;\n}\n.form-group label {\n    font-weight: 500;\n    font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-select:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n    width: 3px;\n}\n\n.wrapper {\n    display: flex;\n    justify-content: flex-start;\n}\n.wrapper .sidebar {\n    background-color: #F0F9FF;\n    width: 269px;\n    height: 100vh;\n    overflow-y: auto;\n    border-right: 1px solid #e0e7ff;\n}\n.wrapper .main-content {\n    background-color: #EAEDF5;\n    width: calc(100% - 270px);\n    height: 100vh;\n    overflow-y: auto;\n}\n@media screen and (max-width: 576px) {\n    .wrapper {\n        display: block;\n    }\n    .wrapper .sidebar {\n        width: 100%;\n        position: absolute;\n        top: 0;\n        left: 0;\n        height: 100%;\n        visibility: visible;\n        opacity: 1;\n        transition: 300ms;\n    }\n    .wrapper.rs-open-sidebar .sidebar {\n        left: 0;\n    }\n    .wrapper .main-content {\n        width: 100%;\n    }\n}\n\n.main-content .main-header {\n    background-color: #ffffff;\n    min-height: 50px;\n    display: flex;\n    justify-content: space-between;\n    padding: 0px 15px;\n    align-items: center;\n}\n.main-content .content {\n    padding: 15px;\n}\n\n.full-screen .wrapper .sidebar {\n    display: none;\n}\n.full-screen .wrapper .main-content {\n    width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n    display: none;\n}\n.full-screen .wrapper .main-content .content {\n    padding: 0;\n}\n\n.sidebar {\n    padding: 15px 10px;\n    position: relative;\n    /* width */\n}\n.sidebar .logo {\n    text-align: center;\n    margin-bottom: 15px;\n}\n.sidebar .logo img {\n    width: 85px;\n    margin: 0 auto;\n}\n.sidebar .logo h2 {\n    margin-top: 10px;\n    font-size: 18px;\n    color: #475569;\n    font-weight: 700;\n}\n.sidebar .user {\n    margin-bottom: 15px;\n    background-color: #6366f1;\n    color: #ffffff;\n    padding: 15px 10px;\n    border-radius: 5px;\n    display: flex;\n    align-items: center;\n    grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n    width: 40px;\n}\n.sidebar .user .user-info h3 {\n    font-size: 18px;\n    font-weight: 500;\n}\n.sidebar .user .user-info p {\n    font-size: 14px;\n    font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n    width: 0px;\n}\n\n.navigations {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    grid-gap: 20px 15px;\n}\n.navigations .navigation-item {\n    text-align: center;\n    min-height: 90px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #ffffff;\n    border-radius: 5px;\n    border: 1px solid #e0e7ff;\n    box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n    transition: 300ms;\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n    font-size: 32px;\n    margin-bottom: 5px;\n}\n.navigations .navigation-item a span {\n    display: block;\n    font-weight: 500;\n    width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n    position: fixed;\n    top: 0;\n    left: -270px;\n    width: 270px;\n    height: 100%;\n    background-color: #F0F9FF;\n    padding: 10px;\n    visibility: hidden;\n    opacity: 0;\n    transition: 300ms;\n    cursor: default;\n    overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n    width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    color: red;\n    font-size: 16px;\n    flex-direction: row-reverse;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n    font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n    margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n    text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n    margin-top: 15px;\n    font-weight: 500;\n    color: #4b5563;\n    font-size: 18px;\n    border-bottom: 1px solid #c7d2fe;\n    padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n    margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li {\n    margin-bottom: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n    font-size: 15px;\n    padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n    margin: 0px;\n    margin-right: 5px;\n    font-size: 20px;\n    color: #94a3b8;\n    transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n    background-color: #6366f1;\n    border-radius: 5px;\n    color: #ffffff;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n    background-color: #4f46e5;\n    cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n    color: #ffffff;\n    transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n    color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n    background-color: #6366f1;\n    border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n    left: 0;\n    visibility: visible;\n    opacity: 1;\n    z-index: 999;\n    transition: 500ms;\n}\n\n.auth-wrap {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}\n.auth-wrap .auth {\n    width: 50%;\n    height: 100%;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n.auth-wrap .auth .auth-box {\n    width: 350px;\n    margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n    text-align: center;\n    margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n    margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n    width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n    margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n    height: 45px;\n    border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n    margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n    width: 100%;\n    padding: 5px 15px;\n    border-radius: 8px;\n    font-size: 18px;\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n    background-color: #4f46e5;\n    border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n    background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n    justify-content: flex-start;\n    width: 50%;\n    background-color: #060B4D;\n    height: 100%;\n}\n.auth-wrap .auth-content .content {\n    margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n    color: #e2e8f0;\n    font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n    margin-top: 15px;\n    color: #e0e7ff;\n    font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n    margin-top: 30px;\n    width: 75%;\n}\n\n.profile {\n    display: flex;\n    justify-content: flex-start;\n    grid-gap: 15px;\n}\n.profile .user-box {\n    width: 35%;\n    text-align: center;\n    background-color: #eef2ff;\n    padding: 15px;\n}\n\n.profile .user-info {\n    width: calc(65% - 30px);\n}\n\n.profile .user-box img {\n    width: 75px;\n    margin: 10px auto;\n}\n.profile .user-box .btn {\n    width: 100%;\n    margin: 5px 0px;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -53031,7 +53325,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

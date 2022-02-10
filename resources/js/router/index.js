@@ -53,9 +53,17 @@ const routes = [
     {
         path: '/admins',
         name: 'Admin',
-        component: () => import('../views/admin/index.vue'),
+        component: () => import('../views/admin/Index.vue'),
         meta: {
             title: 'Admin list'
+        }
+    },
+    {
+        path: '/admins/:admin_id',
+        name: 'ShowAdmin',
+        component: () => import('../views/admin/Profile.vue'),
+        meta: {
+            title: 'Admin show'
         }
     },
     {

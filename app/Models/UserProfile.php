@@ -13,4 +13,13 @@ class UserProfile extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    public function getPhotoAttribute($value)
+    {
+        if($value) {
+            return $value;
+        }
+
+        return null;
+    }
 }

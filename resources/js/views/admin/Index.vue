@@ -7,17 +7,16 @@
                         <h4>Admin list</h4>
                     </div>
                     <div class="box-action">
-                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createAdminModal">Add new</button>
+                        <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createUserModal">Add new</button>
                     </div>
                 </div>
                 <div class="box-body">
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>SL</th>
+                            <th>#</th>
                             <th class="text-left">Name</th>
                             <th class="text-left">Photo</th>
-                            <th class="text-left">Email</th>
                             <th class="text-left">Phone</th>
                             <th class="text-left">Role</th>
                             <th class="text-left">Status</th>
@@ -27,8 +26,19 @@
                         <tbody>
                         <tr v-for="(admin, i) in filterAdmins" :key="admin.id">
                             <td>{{ ++i }}</td>
+                            <td>{{ admin.name }}</td>
+                            <td>
+                                <img v-if="admin.profile && admin.profile.photo" :src="admin.profile.photo" alt="" class="w-8">
+                                <spa v-else>No photo</spa>
+                            </td>
+                            <td>{{ admin.phone }}</td>
+                            <td>{{ admin.role_name }}</td>
+                            <td>{{ admin.is_active ? 'Active' : 'Inactive' }}</td>
                             <td>
                                 <div class="action">
+                                    <router-link :to="{ name:'ShowAdmin', params: { admin_id: admin.id }}" class="text-green-600">
+                                        <i class="bx bx-show"></i>
+                                    </router-link>
                                     <a href="#" class="text-orange-400" @click.prevent="showEditModal(admin)"><i class="bx bx-edit"></i></a>
                                     <a href="#" class="text-red-400" @click.prevent="deleteConfirm(admin.id)"><i class="bx bx-trash"></i></a>
                                 </div>
@@ -71,27 +81,27 @@ export default ({
 
     computed: {
         ...mapGetters({
-            villages: 'location/villages',
+            admins: 'user/users',
         }),
 
         filterAdmins() {
-            return this.villages
+            return this.admins
         }
     },
 
     methods: {
         ...mapActions({
-            getVillages: 'location/getVillages',
-            deleteVillage: 'location/deleteVillage',
+            getUsers: 'user/getUsers',
+            deleteUser: 'user/deleteUser'
         }),
 
         showEditModal(data) {
             this.edit_admin = data
-            var editModal = new bootstrap.Modal(document.getElementById('editVillageModal'));
+            var editModal = new bootstrap.Modal(document.getElementById('editUserModal'));
             editModal.show();
         },
 
-        deleteConfirm(item_id) {
+        deleteConfirm(user_id) {
             this.$swal({
                 title:"Really want to delete!",
                 text: "Are you sure? You won't be able to revert this!",
@@ -102,12 +112,12 @@ export default ({
                 cancelButtonColor: '#c82333',
             }).then((res) => {
                 if (res.isConfirmed) {
-                    this.deleteVillage(item_id).then(() => {
+                    this.deleteUser(user_id).then(() => {
                         if (!this.error_message) {
                             this.$swal({
                                 icon: 'success',
                                 title: 'Congratulation!',
-                                text: 'Village has been deleted successfully'
+                                text: 'User has been deleted successfully'
                             })
                         }else {
                             this.error = this.error_message
@@ -119,7 +129,7 @@ export default ({
     },
 
     mounted() {
-        this.getVillages();
+        this.getUsers();
     }
 
 

@@ -12,7 +12,7 @@ class UserRepository implements UserRepositoryInterface {
 
     public function all($excepts_ids)
     {
-        $users = User::whereNotIn('id', $excepts_ids)->get();
+        $users = User::with('profile')->whereNotIn('id', $excepts_ids)->get();
         if ($users->isNotEmpty()) {
             return $users;
         }
@@ -61,6 +61,12 @@ class UserRepository implements UserRepositoryInterface {
     {
         $user = User::find($id);
 
+        if ($user->profile) {
+            if ($user->profile->photo) {
+                unlink($user->profile->photo);
+            }
+        }
+
         if ($user->delete()) {
             return true;
         }
@@ -79,7 +85,7 @@ class UserRepository implements UserRepositoryInterface {
         return false;
     }
 
-    public function storeProfile($user_id, $request)
+    public function storeProfile($request, $user_id)
     {
         $profile = new UserProfile();
         $profile->user_id = $user_id;
@@ -97,7 +103,7 @@ class UserRepository implements UserRepositoryInterface {
         return false;
     }
 
-    public function updateProfile($profile_id, $request)
+    public function updateProfile($request, $profile_id)
     {
         $profile = UserProfile::find($profile_id);
 
@@ -106,6 +112,11 @@ class UserRepository implements UserRepositoryInterface {
         $profile->birthdate = $request->input('birthdate');
         //store user photo
         if ($request->hasFile('photo')) {
+            //delete previous profile photo
+            if ($profile->photo) {
+                unlink($profile->photo);
+            }
+
             $path = FileUpload::upload($request, 'photo', 'users');
             $profile->photo = $path;
         }

@@ -47,7 +47,8 @@ class UsersController extends Controller
             'phone' => 'nullable|unique:users,phone',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
-            'role_id' => 'required'
+            'role_id' => 'required',
+            'photo' => 'nullable|mimes:jpg,png,jpeg,gif|max:350'
         ];
 
         $validation = Validator::make($request->all(), $rules);
@@ -63,12 +64,12 @@ class UsersController extends Controller
         $user = $this->user->store($request);
 
         if ($user->save()) {
-            $profile = $this->user->storeProfile($request, $user->id);
+            $this->user->storeProfile($request, $user->id);
+            $profile = $user->profile;
 
             return response()->json([
                 'status' => true,
                 'user' => $user,
-                'profile' => $profile,
                 'message' => 'Congratulations! Admin user saved successfully',
             ]);
         }
@@ -87,7 +88,8 @@ class UsersController extends Controller
             'phone' => 'nullable|unique:users,phone,'.$id,
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
-            'role_id' => 'required'
+            'role_id' => 'required',
+            'photo' => 'nullable|mimes:jpg,png,jpeg,gif|max:350'
         ];
 
         $validation = Validator::make($request->all(), $rules);
@@ -103,12 +105,12 @@ class UsersController extends Controller
         $user = $this->user->update($request, $id);
 
         if ($user->save()) {
-            $profile = $this->user->updateProfile($request, $user->profile->id);
+            $this->user->updateProfile($request, $user->profile->id);
+            $profile = $user->profile;
 
             return response()->json([
                 'status' => true,
                 'user' => $user,
-                'profile' => $profile,
                 'message' => 'Congratulations! Admin user updated successfully',
             ]);
         }
@@ -116,6 +118,21 @@ class UsersController extends Controller
         return response()->json([
             'status' => false,
             'message' => 'Failed to update user'
+        ]);
+    }
+
+    public function destroy($id)
+    {
+        if ($this->user->delete($id)) {
+            return response()->json([
+                'status' => true,
+                'message' => 'Deleted successfully'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Failed to delete user'
         ]);
     }
 

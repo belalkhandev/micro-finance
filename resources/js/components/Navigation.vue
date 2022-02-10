@@ -42,10 +42,10 @@
                 </a>
             </div>
             <div class="navigation-item">
-                <a href="">
+                <router-link :to="{name: 'Admin'}">
                     <i class='bx bxs-user-badge' ></i>
                     <span>Admins</span>
-                </a>
+                </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">

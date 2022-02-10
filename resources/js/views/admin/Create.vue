@@ -1,83 +1,101 @@
 <template>
-    <div class="modal fade" id="createVillageModal" tabindex="-1">
+    <div class="modal fade" id="createUserModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add village</h5>
+                    <h5 class="modal-title">Add Admin</h5>
                     <button type="button" class="btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="bx bx-x"></i></button>
                 </div>
-                <form @submit.prevent="storeVillage">
+                <form @submit.prevent="storeUser">
                     <div class="modal-body">
-                        <span class="text-danger" v-if="error">{{ error }}</span>
+                        <p v-if="error" class="text-center"><span class="text-danger" >{{ error }}</span></p>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">District</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Name *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="district_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(district, i) in fetchDistricts" :value="district.id">{{ district.name }}</option>
-                                    </select>
+                                <div class="col-md-7">
+                                    <input type="text" v-model="form.name" placeholder="Name" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.name ? errors.name[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Upazilla</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Email *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="form.upazilla_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id">{{ upazilla.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.upazilla_id ? errors.upazilla_id[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="email" v-model="form.email" placeholder="john@gmail.com" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.email ? errors.email[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Union</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Phone</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="form.union_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(union, i) in fetchUnions" :value="union.id">{{ union.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.union_id ? errors.union_id[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="text" v-model="form.phone" placeholder="Phone" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.phone ? errors.phone[0] : '' }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Password *</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="password" v-model="form.password" placeholder="Passwrod" class="form-control">
+                                </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.password ? errors.password[0] : '' }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Confirm Password *</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="password" v-model="form.password_confirmation" placeholder="Confirm Password" class="form-control">
+                                </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.password_confirmation ? errors.password_confirmation[0] : '' }}</span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Name</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Role *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" v-model="form.name" placeholder="Name" class="form-control">
-                                    <span class="text-danger" v-if="errors">{{ errors.name ? errors.name[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <select class="form-control" v-model="form.role_id">
+                                        <option value="">Select</option>
+                                        <option v-for="(role, i) in filterRoles" :value="role.id">{{ role.name }}</option>
+                                    </select>
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.role_id ? 'Role is required' : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Bangla name</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Photo</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" v-model="form.bn_name" placeholder="Name in bangla" class="form-control">
-                                    <span class="text-danger" v-if="errors">{{ errors.bn_name ? errors.bn_name[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="file" ref="photo" id="photo" @change="handlePhoto()" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.photo ? errors.photo[0] : '' }}</span>
                             </div>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <div class="text-right">
                             <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">{{ $t('close') }}</button>
-                            <button type="submit" class="ml-2 btn btn-primary" id="storeVillage">
+                            <button type="submit" class="ml-2 btn btn-primary" id="storeUser">
                                 <span>{{ $t('save') }}</span>
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
@@ -101,12 +119,14 @@ export default ({
     data() {
         return {
             form: {
-                upazilla_id: "",
-                union_id: "",
                 name: "",
-                bn_name: ""
+                email: "",
+                phone: "",
+                password: "",
+                password_confirmation: "",
+                role_id: "",
+                photo: null
             },
-            district_id: "",
             errors: null,
             error: null,
         }
@@ -114,50 +134,28 @@ export default ({
 
     computed: {
         ...mapGetters({
-            districts: 'location/districts',
-            upazillas: 'location/upazillas',
-            unions: 'location/unions',
+            roles: 'user/roles',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
 
-        fetchDistricts(){
-            if (this.districts) {
-                this.district_id = 12
-            }
-
-            return this.districts
-        },
-
-        fetchUpazillas(){
-            if (this.district_id && this.upazillas) {
-                return this.upazillas.filter(upazilla => upazilla.district_id === this.district_id)
-            }
-
-            return this.upazillas
-        },
-
-        fetchUnions(){
-            if (this.form.upazilla_id && this.unions) {
-                return this.unions.filter(union => union.upazilla_id === this.form.upazilla_id)
-            } else if (this.district_id && this.unions) {
-                return this.unions.filter(union => union.upazilla.district_id === this.district_id)
-            }
-
-            return this.unions
+        filterRoles(){
+            return this.roles
         },
     },
 
     methods: {
         ...mapActions({
-            getDistricts: 'location/getDistricts',
-            getUpazillas: 'location/getUpazillas',
-            getUnions: 'location/getUnions',
-            createVillage: 'location/createVillage',
+            getRoles: 'user/getRoles',
+            createUser: 'user/createUser',
         }),
 
-        storeVillage() {
-            $('#storeVillage').prop('disabled', true).addClass('submitted')
+        handlePhoto(){
+            this.form.photo = this.$refs.photo.files[0];
+        },
+
+        storeUser() {
+            $('#storeUser').prop('disabled', true).addClass('submitted')
 
             let formData = new FormData();
             let inputData = this.form
@@ -166,7 +164,7 @@ export default ({
                 formData.append(fieldName, inputData[fieldName]);
             })
 
-            this.createVillage(formData).then(() => {
+            this.createUser(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
                     Object.assign(this.$data, this.$options.data.apply(this))
@@ -174,7 +172,7 @@ export default ({
                     this.$swal({
                         icon: "success",
                         title: "Success!",
-                        text: "Village has been stored successfully",
+                        text: "Admin has been stored successfully",
                         timer: 3000
                     })
                 } else {
@@ -182,27 +180,15 @@ export default ({
                     this.error = this.error_message
                 }
 
-                $('#storeVillage').prop('disabled', false).removeClass('submitted')
+                $('#storeUser').prop('disabled', false).removeClass('submitted')
             })
 
         }
     },
 
     mounted() {
-        this.getDistricts();
-        this.getUpazillas();
-        this.getUnions();
+        this.getRoles();
     },
-
-    watch: {
-        district_id () {
-            this.form.upazilla_id = "";
-            this.form.union_id = "";
-        },
-        upazilla_id () {
-            this.form.union_id = "";
-        }
-    }
 })
 </script>
 

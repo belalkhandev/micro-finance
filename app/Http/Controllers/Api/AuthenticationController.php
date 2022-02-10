@@ -19,7 +19,7 @@ class AuthenticationController extends Controller
         ];
 
         $validation = Validator::make($request->all(), $rules);
-        
+
         if ($validation->fails()) {
             return response()->json([
                 'status' => false,
@@ -49,6 +49,7 @@ class AuthenticationController extends Controller
     public function me(Request $request)
     {
         $user = Auth::guard('sanctum')->user();
+        $user->profile;
 
         if ($user) {
             return response()->json([
@@ -56,7 +57,7 @@ class AuthenticationController extends Controller
                 'user' => $user,
                 'role' => $user->role,
                 'permissions' => $user->role->permissions
-            ]); 
+            ]);
         }
 
         return response()->json([
@@ -72,6 +73,6 @@ class AuthenticationController extends Controller
         return response()->json([
             'status' => true,
             'message' => 'Logout successfully'
-        ]); 
+        ]);
     }
 }
