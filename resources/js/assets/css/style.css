@@ -294,6 +294,7 @@ table {
 .wrapper {
     display: flex;
     justify-content: flex-start;
+    flex-wrap: nowrap;
 }
 .wrapper .sidebar {
     background-color: #F0F9FF;
@@ -310,11 +311,11 @@ table {
 }
 @media screen and (max-width: 576px) {
     .wrapper {
-        display: block;
+        flex-direction: row;
+        flex-wrap: wrap;
     }
     .wrapper .sidebar {
         width: 100%;
-        position: absolute;
         top: 0;
         left: 0;
         height: 100%;
@@ -621,23 +622,30 @@ table {
     margin-top: 30px;
     width: 75%;
 }
-
-.profile {
-    display: flex;
-    justify-content: flex-start;
-    grid-gap: 15px;
+@media screen and (max-width: 768px) {
+    .auth-wrap {
+        flex-wrap: wrap;
+    }
+    .auth-wrap .auth {
+        width: 100%;
+    }
+    .auth-wrap .auth .auth-box {
+        width: 80%;
+        margin: 0 auto;
+    }
+    .auth-wrap .auth .auth-box .auth-header h1 {
+        font-size: 1.5rem;
+    }
+    .auth-wrap .auth-content {
+        display: none;
+    }
 }
+
 .profile .user-box {
-    width: 35%;
     text-align: center;
     background-color: #eef2ff;
     padding: 15px;
 }
-
-.profile .user-info {
-    width: calc(65% - 30px);
-}
-
 .profile .user-box img {
     width: 75px;
     margin: 10px auto;
