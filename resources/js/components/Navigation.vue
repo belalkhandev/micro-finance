@@ -113,7 +113,7 @@
                                     <span>Postoffice</span>
                                 </router-link>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a href="#">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Unions</span>
@@ -136,7 +136,7 @@
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Divisions</span>
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>
