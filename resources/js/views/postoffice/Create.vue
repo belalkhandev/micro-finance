@@ -1,12 +1,12 @@
 <template>
-    <div class="modal fade" id="createVillageModal" tabindex="-1">
+    <div class="modal fade" id="createPostOfficeModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Add village</h5>
+                    <h5 class="modal-title">Create Post Office</h5>
                     <button type="button" class="btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="bx bx-x"></i></button>
                 </div>
-                <form @submit.prevent="storeVillage">
+                <form @submit.prevent="storePostOffice">
                     <div class="modal-body">
                         <span class="text-danger" v-if="error">{{ error }}</span>
                         <div class="form-group">
@@ -36,17 +36,15 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label">Union</label>
+                                    <label class="col-form-label">Code</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="form-control" v-model="form.union_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(union, i) in fetchUnions" :value="union.id">{{ union.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.union_id ? errors.union_id[0] : '' }}</span>
+                                    <input type="number" v-model="form.post_code" placeholder="Post code" class="form-control">
+                                    <span class="text-danger" v-if="errors">{{ errors.post_code ? errors.post_code[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -76,8 +74,9 @@
                     </div>
                     <div class="modal-footer">
                         <div class="text-right">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">{{ $t('close') }}</button>
-                            <button type="submit" class="ml-2 btn btn-primary" id="storeVillage">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
+                                {{ $t('close') }}</button>
+                            <button type="submit" class="ml-2 btn btn-primary" id="storePostOffice">
                                 <span>{{ $t('save') }}</span>
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
@@ -102,7 +101,7 @@ export default ({
         return {
             form: {
                 upazilla_id: "",
-                union_id: "",
+                post_code: "",
                 name: "",
                 bn_name: ""
             },
@@ -116,7 +115,6 @@ export default ({
         ...mapGetters({
             districts: 'location/districts',
             upazillas: 'location/upazillas',
-            unions: 'location/unions',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
@@ -137,27 +135,17 @@ export default ({
             return this.upazillas
         },
 
-        fetchUnions(){
-            if (this.form.upazilla_id && this.unions) {
-                return this.unions.filter(union => union.upazilla_id === this.form.upazilla_id)
-            } else if (this.district_id && this.unions) {
-                return this.unions.filter(union => union.upazilla.district_id === this.district_id)
-            }
-
-            return this.unions
-        },
     },
 
     methods: {
         ...mapActions({
             getDistricts: 'location/getDistricts',
             getUpazillas: 'location/getUpazillas',
-            getUnions: 'location/getUnions',
-            createVillage: 'location/createVillage',
+            createPostOffice: 'location/createPostOffice',
         }),
 
-        storeVillage() {
-            $('#storeVillage').prop('disabled', true).addClass('submitted')
+        storePostOffice() {
+            $('#storePostOffice').prop('disabled', true).addClass('submitted')
 
             let formData = new FormData();
             let inputData = this.form
@@ -166,7 +154,7 @@ export default ({
                 formData.append(fieldName, inputData[fieldName]);
             })
 
-            this.createVillage(formData).then(() => {
+            this.createPostOffice(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
                     Object.assign(this.$data, this.$options.data.apply(this))
@@ -174,7 +162,7 @@ export default ({
                     this.$swal({
                         icon: "success",
                         title: "Success!",
-                        text: "Village has been stored successfully",
+                        text: "Post office has been stored successfully",
                         timer: 3000
                     })
                 } else {
@@ -182,7 +170,7 @@ export default ({
                     this.error = this.error_message
                 }
 
-                $('#storeVillage').prop('disabled', false).removeClass('submitted')
+                $('#storePostOffice').prop('disabled', false).removeClass('submitted')
             })
 
         }
@@ -191,16 +179,11 @@ export default ({
     mounted() {
         this.getDistricts();
         this.getUpazillas();
-        this.getUnions();
     },
 
     watch: {
         district_id () {
             this.form.upazilla_id = "";
-            this.form.union_id = "";
-        },
-        upazilla_id () {
-            this.form.union_id = "";
         }
     }
 })

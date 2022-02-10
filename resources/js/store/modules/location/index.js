@@ -56,10 +56,6 @@ export default {
             state.unions = unions
         },
 
-        SET_POST_OFFICES(state, post_offices) {
-            state.post_offices = post_offices
-        },
-
         //village mutations
         SET_VILLAGES(state, villages) {
             state.villages = villages
@@ -80,6 +76,29 @@ export default {
             const village  = state.villages.find(item => item.id == item_id)
             if (village) {
                 state.villages.splice(state.villages.indexOf(village), 1)
+            }
+        },
+
+        //set post office
+        SET_POST_OFFICES(state, post_offices) {
+            state.post_offices = post_offices
+        },
+
+        SET_POST_OFFICE(state, post_office) {
+            if (state.post_offices) {
+                state.post_offices.unshift(post_office)
+            }
+        },
+
+        UPDATE_POST_OFFICE(state, post_office) {
+            const item = state.post_offices.find(item => item.id === post_office.id)
+            Object.assign(item, post_office)
+        },
+
+        DELETE_POST_OFFICE(state, item_id) {
+            const post_office  = state.post_offices.find(item => item.id == item_id)
+            if (post_office) {
+                state.post_offices.splice(state.post_offices.indexOf(post_office), 1)
             }
         }
     },
@@ -125,6 +144,7 @@ export default {
             }
         },
 
+        //village actions
         async getVillages({ commit }) {
             const res = await axios.get('/village/list')
 
@@ -171,6 +191,55 @@ export default {
             const res = await axios.delete('/village/delete/'+item_id)
             if (res.data.status) {
                 commit('DELETE_VILLAGE', item_id)
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
+        //post office actions
+        async createPostOffice({ commit }, formdata) {
+            const res = await axios.post('/post-office/create', formdata)
+
+            if (res.data.status) {
+                commit('SET_POST_OFFICE', res.data.post_office)
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
+        async editPostOffice({ commit }, formdata) {
+            const res = await axios.put('/post-office/update/'+formdata.post_office_id, formdata)
+
+            if (res.data.status) {
+                commit('UPDATE_POST_OFFICE', res.data.post_office)
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
+        async deletePostOffice({ commit }, item_id) {
+            const res = await axios.delete('/post-office/delete/'+item_id)
+            if (res.data.status) {
+                commit('DELETE_POST_OFFICE', item_id)
                 commit('SET_ERROR_MESSAGE', null,  { root:true })
             } else {
                 if (!res.data.status) {

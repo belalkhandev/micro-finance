@@ -26164,19 +26164,29 @@ var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Post-Offices</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Unions</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Upazillas</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Districts</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Divisions</span></a></li>", 5);
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-chevron-right"
+}, null, -1
+/* HOISTED */
+);
 
-var _hoisted_43 = {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
+/* HOISTED */
+);
+
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Unions</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Upazillas</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Districts</span></a></li><li><a href=\"#\"><i class=\"bx bx-chevron-right\"></i><span>Divisions</span></a></li>", 4);
+
+var _hoisted_44 = {
   "class": "navigation-item"
 };
 
-var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-log-out"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
 /* HOISTED */
 );
 
@@ -26253,13 +26263,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), _hoisted_38])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'Postoffice'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_38, _hoisted_39];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), _hoisted_40])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Signin'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_44, _hoisted_45];
+      return [_hoisted_45, _hoisted_46];
     }),
     _: 1
     /* STABLE */
@@ -26452,6 +26473,15 @@ var routes = [{
   },
   meta: {
     title: 'Village'
+  }
+}, {
+  path: '/postoffice',
+  name: 'Postoffice',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_postoffice_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/postoffice/Index.vue */ "./resources/js/views/postoffice/Index.vue"));
+  },
+  meta: {
+    title: 'Postoffice'
   }
 }, {
   path: '/:catchAll(.*)',
@@ -26829,9 +26859,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     SET_UNIONS: function SET_UNIONS(state, unions) {
       state.unions = unions;
     },
-    SET_POST_OFFICES: function SET_POST_OFFICES(state, post_offices) {
-      state.post_offices = post_offices;
-    },
     //village mutations
     SET_VILLAGES: function SET_VILLAGES(state, villages) {
       state.villages = villages;
@@ -26854,6 +26881,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (village) {
         state.villages.splice(state.villages.indexOf(village), 1);
+      }
+    },
+    //set post office
+    SET_POST_OFFICES: function SET_POST_OFFICES(state, post_offices) {
+      state.post_offices = post_offices;
+    },
+    SET_POST_OFFICE: function SET_POST_OFFICE(state, post_office) {
+      if (state.post_offices) {
+        state.post_offices.unshift(post_office);
+      }
+    },
+    UPDATE_POST_OFFICE: function UPDATE_POST_OFFICE(state, post_office) {
+      var item = state.post_offices.find(function (item) {
+        return item.id === post_office.id;
+      });
+      Object.assign(item, post_office);
+    },
+    DELETE_POST_OFFICE: function DELETE_POST_OFFICE(state, item_id) {
+      var post_office = state.post_offices.find(function (item) {
+        return item.id == item_id;
+      });
+
+      if (post_office) {
+        state.post_offices.splice(state.post_offices.indexOf(post_office), 1);
       }
     }
   },
@@ -26988,6 +27039,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
+    //village actions
     getVillages: function getVillages(_ref6) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
         var commit, res;
@@ -27135,6 +27187,130 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee9);
+      }))();
+    },
+    //post office actions
+    createPostOffice: function createPostOffice(_ref10, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
+          while (1) {
+            switch (_context10.prev = _context10.next) {
+              case 0:
+                commit = _ref10.commit;
+                _context10.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/post-office/create', formdata);
+
+              case 3:
+                res = _context10.sent;
+
+                if (res.data.status) {
+                  commit('SET_POST_OFFICE', res.data.post_office);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10);
+      }))();
+    },
+    editPostOffice: function editPostOffice(_ref11, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
+          while (1) {
+            switch (_context11.prev = _context11.next) {
+              case 0:
+                commit = _ref11.commit;
+                _context11.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('/post-office/update/' + formdata.post_office_id, formdata);
+
+              case 3:
+                res = _context11.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_POST_OFFICE', res.data.post_office);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11);
+      }))();
+    },
+    deletePostOffice: function deletePostOffice(_ref12, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                commit = _ref12.commit;
+                _context12.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/post-office/delete/' + item_id);
+
+              case 3:
+                res = _context12.sent;
+
+                if (res.data.status) {
+                  commit('DELETE_POST_OFFICE', item_id);
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee12);
       }))();
     }
   }
@@ -52729,7 +52905,7 @@ module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"P
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"test":"আমি কিছু পরীক্ষা করছি","auth_welcome":"আপনাকে স্বাগতম! প্রবেশ করুন","signin":"সাইন ইন","email":"ইমেইল","enter_email":"ইমেইল প্রদান করুন","password":"পাসওয়ার্ড","enter_password":"পাসওয়ার্ড প্রদান করুন","pdscdcsl":"দরিদ্র উন্নয়ন সঞ্চয় ও ঋন দান সমবায় সমিতি লিঃ","slogan":"বিন্দু বিন্দু সঞ্চয় আগামী দিনের ভবিষ্যৎ","dashboard":"ড্যাশবোর্ড","profile":"প্রোফাইল","settings":"সেটিংস"}');
+module.exports = JSON.parse('{"test":"আমি কিছু পরীক্ষা করছি","auth_welcome":"আপনাকে স্বাগতম! প্রবেশ করুন","signin":"সাইন ইন","email":"ইমেইল","enter_email":"ইমেইল প্রদান করুন","password":"পাসওয়ার্ড","enter_password":"পাসওয়ার্ড প্রদান করুন","pdscdcsl":"দরিদ্র উন্নয়ন সঞ্চয় ও ঋন দান সমবায় সমিতি লিঃ","slogan":"বিন্দু বিন্দু সঞ্চয় আগামী দিনের ভবিষ্যৎ","dashboard":"ড্যাশবোর্ড","profile":"প্রোফাইল","settings":"সেটিংস","save":"সেভ করুন","update":"হালনাগাদ করুন","save_change":"পরিবর্তনগুলোর সংরক্ষন করুন","close":"বন্ধ করুন"}');
 
 /***/ }),
 
@@ -52740,7 +52916,7 @@ module.exports = JSON.parse('{"test":"আমি কিছু পরীক্ষ�
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"Welcome Back! Sign in","signin":"Sign in","email":"Email","enter_email":"Email/Username","password":"Password","enter_password":"Enter Password","pdscdcsl":"Poor Development Savings and Loan Donation Cooperative Society Ltd.","slogan":"Point to point savings are the future of tomorrow","dashboard":"Dashboard","profile":"Profile","settings":"Settings","":""}');
+module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"Welcome Back! Sign in","signin":"Sign in","email":"Email","enter_email":"Email/Username","password":"Password","enter_password":"Enter Password","pdscdcsl":"Poor Development Savings and Loan Donation Cooperative Society Ltd.","slogan":"Point to point savings are the future of tomorrow","dashboard":"Dashboard","profile":"Profile","settings":"Settings","save":"Save","update":"Update","save_change":"Save Changes","close":"Close","":""}');
 
 /***/ })
 
@@ -52848,7 +53024,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -43,6 +43,14 @@ const routes = [
         }
     },
     {
+        path: '/postoffice',
+        name: 'Postoffice',
+        component: () => import('../views/postoffice/Index.vue'),
+        meta: {
+            title: 'Postoffice'
+        }
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         component: () => import('../views/404.vue'),

@@ -108,10 +108,10 @@
                                 </router-link>
                             </li>
                             <li>
-                                <a href="#">
+                                <router-link :to="{name: 'Postoffice'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Post-Offices</span>
-                                </a>
+                                    <span>Postoffice</span>
+                                </router-link>
                             </li>
                             <li>
                                 <a href="#">

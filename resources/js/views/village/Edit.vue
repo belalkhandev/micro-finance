@@ -76,9 +76,10 @@
                     </div>
                     <div class="modal-footer">
                         <div class="text-right">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
+                                {{ $t('close') }}</button>
                             <button type="submit" class="ml-2 btn btn-primary" id="updateVillage">
-                                <span>Save changes</span>
+                                <span>{{ $t('save_change') }}</span>
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
@@ -167,7 +168,6 @@ export default ({
             this.editVillage(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
-                    Object.assign(this.$data, this.$options.data.apply(this))
 
                     this.$swal({
                         icon: "success",
