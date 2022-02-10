@@ -25904,7 +25904,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     authenticated: 'auth/authenticated',
     user: 'auth/user'
   })),
-  methods: {
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)({
+    signOut: 'auth/signOut'
+  })), {}, {
     openMultimenus: function openMultimenus(event) {
       var _self = event.currentTarget;
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(_self).closest('.has-multimenu').addClass('open');
@@ -25912,8 +25914,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     closeMultimenus: function closeMultimenus(event) {
       var _self = event.currentTarget;
       jquery__WEBPACK_IMPORTED_MODULE_0___default()(_self).closest('.has-multimenu').removeClass('open');
+    },
+    logout: function logout() {
+      var _this = this;
+
+      this.signOut().then(function () {
+        _this.$router.replace({
+          name: 'Signin'
+        });
+      });
     }
-  }
+  })
 });
 
 /***/ }),
@@ -26202,6 +26213,7 @@ var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
+var _hoisted_43 = [_hoisted_41, _hoisted_42];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -26297,18 +26309,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Unions</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Upazillas</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Districts</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Divisions</span>\n                                </a>\n                            </li> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: {
-      name: 'Signin'
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_41, _hoisted_42];
-    }),
-    _: 1
-    /* STABLE */
-
-  })])])]);
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Unions</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Upazillas</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Districts</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"#\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Divisions</span>\n                                </a>\n                            </li> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: "#",
+    onClick: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.logout && $options.logout.apply($options, arguments);
+    }, ["prevent"]))
+  }, _hoisted_43)])])]);
 }
 
 /***/ }),
@@ -26689,18 +26695,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 commit('SET_TOKEN', null);
                 commit('SET_USER', null);
 
-                if (res.data.errors) {
-                  commit('SET_VALIDATION_ERRORS', res.data.errors, {
+                if (!res.data.status) {
+                  commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
                     root: true
                   });
-                  commit('SET_ERROR_MESSAGE', null, {
-                    root: true
-                  });
-                } else if (res.data.message) {
-                  commit('SET_ERROR_MESSAGE', res.data.message, {
-                    root: true
-                  });
-                  commit('SET_VALIDATION_ERRORS', null, {
+                  commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
                     root: true
                   });
                 } else {
@@ -26910,6 +26909,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     SET_VILLAGE: function SET_VILLAGE(state, village) {
       if (state.villages) {
         state.villages.unshift(village);
+      } else {
+        state.villages = [village];
       }
     },
     UPDATE_VILLAGE: function UPDATE_VILLAGE(state, village) {
@@ -26934,6 +26935,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     SET_POST_OFFICE: function SET_POST_OFFICE(state, post_office) {
       if (state.post_offices) {
         state.post_offices.unshift(post_office);
+      } else {
+        state.post_offices = [post_office];
       }
     },
     UPDATE_POST_OFFICE: function UPDATE_POST_OFFICE(state, post_office) {
@@ -27243,7 +27246,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref10.commit;
                 _context10.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/post-office/create', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('post-office/create', formdata);
 
               case 3:
                 res = _context10.sent;
@@ -27286,7 +27289,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref11.commit;
                 _context11.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('/post-office/update/' + formdata.post_office_id, formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('post-office/update/' + formdata.post_office_id, formdata);
 
               case 3:
                 res = _context11.sent;
@@ -27329,7 +27332,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref12.commit;
                 _context12.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/post-office/delete/' + item_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('post-office/delete/' + item_id);
 
               case 3:
                 res = _context12.sent;
@@ -27465,7 +27468,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/user/create', formData, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('user/create', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
@@ -27512,7 +27515,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref3.commit;
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('/user/edit', formData, {
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('user/update', formData, {
                   headers: {
                     'Content-Type': 'multipart/form-data'
                   }
@@ -27559,7 +27562,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref4.commit;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('/user/delete/' + user_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('user/delete/' + user_id);
 
               case 3:
                 res = _context4.sent;

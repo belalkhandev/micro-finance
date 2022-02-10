@@ -58,7 +58,7 @@ export default {
         },
 
         async createUser({commit}, formData) {
-            const res = await axios.post('/user/create', formData, {
+            const res = await axios.post('user/create', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -79,7 +79,7 @@ export default {
         },
 
         async editUser({commit}, formData) {
-            const res = await axios.post('/user/edit', formData, {
+            const res = await axios.post('user/update', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data'
                 }
@@ -100,7 +100,7 @@ export default {
         },
 
         async deleteUser({commit}, user_id) {
-            const res = await axios.delete('/user/delete/'+user_id)
+            const res = await axios.delete('user/delete/'+user_id)
 
             if (res.data.status) {
                 commit('DELETE_USER', user_id)

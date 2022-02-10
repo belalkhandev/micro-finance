@@ -130,10 +130,10 @@
                 </div>
             </div>
             <div class="navigation-item">
-                <router-link :to="{name: 'Signin'}">
+                <a href="#" @click.prevent="logout">
                     <i class='bx bxs-log-out' ></i>
                     <span>Logout</span>
-                </router-link>
+                </a>
             </div>
         </div>
     </div>
@@ -152,6 +152,9 @@ export default ({
         })
     },
     methods: {
+        ...mapActions({
+            signOut: 'auth/signOut'
+        }),
         openMultimenus(event) {
             const _self = event.currentTarget;
             $(_self).closest('.has-multimenu').addClass('open');
@@ -161,6 +164,14 @@ export default ({
             const _self = event.currentTarget;
             $(_self).closest('.has-multimenu').removeClass('open');
         },
+
+        logout() {
+            this.signOut().then(() => {
+                this.$router.replace({
+                    name: 'Signin'
+                })
+            })
+        }
     }
 })
 </script>

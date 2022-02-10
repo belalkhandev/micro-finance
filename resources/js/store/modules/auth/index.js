@@ -44,13 +44,10 @@ export default {
                 commit('SET_TOKEN', null)
                 commit('SET_USER', null)
 
-                if (res.data.errors) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors, { root:true })
-                    commit('SET_ERROR_MESSAGE', null, { root:true })
-                } else if (res.data.message) {
-                    commit('SET_ERROR_MESSAGE', res.data.message, { root:true })
-                    commit('SET_VALIDATION_ERRORS', null, { root:true })
-                } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
                     console.log('Something went wrong');
                 }
             }

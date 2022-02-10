@@ -11,7 +11,7 @@
                     <div class="profile" v-if="user">
                         <div class="user-box">
                             <img v-if="user.profile && user.profile.photo" :src="user.profile.photo" alt="User photo">
-                            <img src="../../assets/images/user.png" alt="">
+                            <img v-else src="../../assets/images/user.png" alt="">
                             <div class="mb-3 mt-3">
                                 <h3>{{ user.name }}</h3>
                                 <h5 class="text-indigo-600">{{user.role_name }}</h5>

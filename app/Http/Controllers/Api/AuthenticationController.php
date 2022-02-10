@@ -24,7 +24,7 @@ class AuthenticationController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ],);
         }
 
         // login credentials
@@ -34,7 +34,7 @@ class AuthenticationController extends Controller
             return response()->json([
                 'status' => false,
                 'message' => 'Invalid Email or Password'
-            ], 400);
+            ]);
         }
 
         $token = $request->user()->createToken($request->email);

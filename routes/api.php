@@ -32,7 +32,7 @@ Route::group([
         $route->get('/me', [AuthenticationController::class, 'me']);
         $route->get('/list', [UsersController::class, 'index']);
         $route->post('/create', [UsersController::class, 'create']);
-        $route->post('/update/{id}', [UsersController::class, 'update']);
+        $route->post('/update', [UsersController::class, 'update']);
         $route->delete('/delete/{id}', [UsersController::class, 'destroy']);
 
         $route->post('/logout', [AuthenticationController::class, 'logout']);

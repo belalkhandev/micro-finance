@@ -31,7 +31,7 @@
                                 <img v-if="admin.profile && admin.profile.photo" :src="admin.profile.photo" alt="" class="w-8">
                                 <spa v-else>No photo</spa>
                             </td>
-                            <td>{{ admin.phone }}</td>
+                            <td>{{ admin.phone && admin.phone != 'null' ? admin.phone : '' }}</td>
                             <td>{{ admin.role_name }}</td>
                             <td>{{ admin.is_active ? 'Active' : 'Inactive' }}</td>
                             <td>

@@ -14,5 +14,7 @@ interface UserRepositoryInterface
 
     public function find($id);
 
-    public function storeProfile($request, $user_id);
+    public function createProfile($request, $user_id);
+
+    public function updateProfile($request, $profile_id);
 }

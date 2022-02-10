@@ -59,6 +59,7 @@ class PostOfficeController extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'upazilla_id' => 'required',
             'name' => 'required',
             'bn_name' => 'required',
             'post_code' => 'required'
@@ -146,6 +147,7 @@ class PostOfficeController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
+            'upazilla_id' => 'required',
             'name' => 'required',
             'bn_name' => 'required',
             'post_code' => 'required'

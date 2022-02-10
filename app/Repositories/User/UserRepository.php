@@ -85,7 +85,7 @@ class UserRepository implements UserRepositoryInterface {
         return false;
     }
 
-    public function storeProfile($request, $user_id)
+    public function createProfile($request, $user_id)
     {
         $profile = new UserProfile();
         $profile->user_id = $user_id;

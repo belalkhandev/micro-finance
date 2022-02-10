@@ -3,83 +3,78 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Update village</h5>
+                    <h5 class="modal-title">Update Admin</h5>
                     <button type="button" class="btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="bx bx-x"></i></button>
                 </div>
-                <form @submit.prevent="updateVillage">
+                <form @submit.prevent="updateUser">
                     <div class="modal-body">
-                        <span class="text-danger" v-if="error">{{ error }}</span>
+                        <p v-if="error" class="text-center"><span class="text-danger" >{{ error }}</span></p>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">District</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Name *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="district_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(district, i) in fetchDistricts" :value="district.id">{{ district.name }}</option>
-                                    </select>
+                                <div class="col-md-7">
+                                    <input type="text" v-model="form.name" placeholder="Name" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.name ? errors.name[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Upazilla</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Email *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="form.upazilla_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id">{{ upazilla.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.upazilla_id ? errors.upazilla_id[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="email" v-model="form.email" placeholder="john@gmail.com" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.email ? errors.email[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Union</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Phone</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="form.union_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(union, i) in fetchUnions" :value="union.id">{{ union.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.union_id ? errors.union_id[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="text" v-model="form.phone" placeholder="Phone" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.phone ? errors.phone[0] : '' }}</span>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Name</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Role *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" v-model="form.name" placeholder="Name" class="form-control">
-                                    <span class="text-danger" v-if="errors">{{ errors.name ? errors.name[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <select class="form-control" v-model="form.role_id">
+                                        <option value="">Select</option>
+                                        <option v-for="(role, i) in filterRoles" :value="role.id">{{ role.name }}</option>
+                                    </select>
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.role_id ? 'Role is required' : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Bangla name</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Photo</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" v-model="form.bn_name" placeholder="Name in bangla" class="form-control">
-                                    <span class="text-danger" v-if="errors">{{ errors.bn_name ? errors.bn_name[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="file" ref="photo" id="edit_photo" @change="handlePhoto()" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.photo ? errors.photo[0] : '' }}</span>
                             </div>
                         </div>
+
                     </div>
                     <div class="modal-footer">
                         <div class="text-right">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
-                                {{ $t('close') }}</button>
-                            <button type="submit" class="ml-2 btn btn-primary" id="updateVillage">
-                                <span>{{ $t('save_change') }}</span>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">{{ $t('close') }}</button>
+                            <button type="submit" class="ml-2 btn btn-primary" id="updateUser">
+                                <span>{{ $t('save') }}</span>
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
@@ -99,16 +94,17 @@ import $ from 'jquery'
 export default ({
     name: "Edit",
     props: {
-        village: Object
+        admin: Object
     },
     data() {
         return {
             form: {
-                village_id: null,
-                upazilla_id: "",
-                union_id: "",
+                user_id: null,
                 name: "",
-                bn_name: ""
+                email: "",
+                phone: "",
+                role_id: "",
+                photo: null
             },
             district_id: "",
             errors: null,
@@ -118,61 +114,45 @@ export default ({
 
     computed: {
         ...mapGetters({
-            districts: 'location/districts',
-            upazillas: 'location/upazillas',
-            unions: 'location/unions',
+            roles: 'user/roles',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
 
-        fetchDistricts(){
-            if (this.districts) {
-                this.district_id = 12
-            }
-
-            return this.districts
-        },
-
-        fetchUpazillas(){
-            if (this.district_id && this.upazillas) {
-                return this.upazillas.filter(upazilla => upazilla.district_id === this.district_id)
-            }
-
-            return this.upazillas
-        },
-
-        fetchUnions(){
-            if (this.form.upazilla_id && this.unions) {
-                return this.unions.filter(union => union.upazilla_id === this.form.upazilla_id)
-            } else if (this.district_id && this.unions) {
-                return this.unions.filter(union => union.upazilla.district_id === this.district_id)
-            }
-
-            return this.unions
+        filterRoles(){
+            return this.roles
         },
     },
 
     methods: {
         ...mapActions({
-            getDistricts: 'location/getDistricts',
-            getUpazillas: 'location/getUpazillas',
-            getUnions: 'location/getUnions',
-            editVillage: 'location/editVillage',
+            getRoles: 'user/getRoles',
+            editUser: 'user/editUser',
         }),
 
-        updateVillage() {
-            $('#updateVillage').prop('disabled', true).addClass('submitted')
+        handlePhoto(){
+            this.form.photo = this.$refs.photo.files[0];
+        },
 
-            let formData = this.form;
+        updateUser() {
+            $('#updateUser').prop('disabled', true).addClass('submitted')
 
-            this.editVillage(formData).then(() => {
+            let formData = new FormData();
+            let inputData = this.form
+
+            Object.keys(inputData).forEach(fieldName => {
+                formData.append(fieldName, inputData[fieldName]);
+            })
+
+            this.editUser(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
+                    Object.assign(this.$data, this.$options.data.apply(this))
 
                     this.$swal({
                         icon: "success",
-                        title: "Updated!",
-                        text: "Village has been updated successfully",
+                        title: "Success!",
+                        text: "Admin has been updated successfully",
                         timer: 3000
                     })
                 } else {
@@ -180,38 +160,28 @@ export default ({
                     this.error = this.error_message
                 }
 
-                $('#updateVillage').prop('disabled', false).removeClass('submitted')
+                $('#updateUser').prop('disabled', false).removeClass('submitted')
             })
 
         }
     },
 
     mounted() {
-        this.getDistricts();
-        this.getUpazillas();
-        this.getUnions();
+        this.getRoles();
     },
 
     watch: {
-        village() {
-            if (this.village) {
-                this.form.village_id = this.village.id;
-                this.district_id = this.village.union.upazilla.district_id;
-                this.form.upazilla_id = this.village.upazilla_id;
-                this.form.union_id = this.village.union_id;
-                this.form.name = this.village.name;
-                this.form.bn_name = this.village.bn_name;
+        admin() {
+            if (this.admin) {
+                this.form.user_id = this.admin.id
+                this.form.name = this.admin.name
+                this.form.email = this.admin.email
+                this.form.phone = this.admin.phone && this.admin.phone != 'null' ? this.admin.phone : ''
+                const role = this.roles.find(item => item.name == this.admin.role_name)
+                this.form.role_id = role.id
+                this.form.photo = null
             }
         },
-
-        district_id () {
-            this.form.upazilla_id = "";
-            this.form.union_id = "";
-        },
-
-        upazilla_id () {
-            this.form.union_id = "";
-        }
     }
 })
 </script>

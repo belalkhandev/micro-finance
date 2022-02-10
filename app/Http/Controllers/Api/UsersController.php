@@ -64,7 +64,7 @@ class UsersController extends Controller
         $user = $this->user->store($request);
 
         if ($user->save()) {
-            $this->user->storeProfile($request, $user->id);
+            $this->user->createProfile($request, $user->id);
             $profile = $user->profile;
 
             return response()->json([
@@ -80,17 +80,20 @@ class UsersController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        $id = $request->input('user_id');
         $rules = [
+            'user_id' => 'required',
             'name' => 'required',
             'email' => 'required|string|unique:users,email,'.$id,
             'phone' => 'nullable|unique:users,phone,'.$id,
-            'password' => 'required|confirmed|min:6',
-            'password_confirmation' => 'required',
             'role_id' => 'required',
-            'photo' => 'nullable|mimes:jpg,png,jpeg,gif|max:350'
         ];
+
+        if ($request->input('photo') && $request->input('photo') != 'null') {
+            $rules['photo'] = 'nullable|mimes:jpg,jpeg,png,gif';
+        }
 
         $validation = Validator::make($request->all(), $rules);
 
@@ -105,7 +108,11 @@ class UsersController extends Controller
         $user = $this->user->update($request, $id);
 
         if ($user->save()) {
-            $this->user->updateProfile($request, $user->profile->id);
+            if ($user->profile) {
+                $this->user->updateProfile($request, $user->profile->id);
+            } else {
+                $this->user->createProfile($request, $id);
+            }
             $profile = $user->profile;
 
             return response()->json([

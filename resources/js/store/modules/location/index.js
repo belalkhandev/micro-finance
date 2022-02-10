@@ -64,6 +64,8 @@ export default {
         SET_VILLAGE(state, village) {
             if (state.villages) {
                 state.villages.unshift(village)
+            }else {
+                state.villages = [village]
             }
         },
 
@@ -87,6 +89,8 @@ export default {
         SET_POST_OFFICE(state, post_office) {
             if (state.post_offices) {
                 state.post_offices.unshift(post_office)
+            }else {
+                state.post_offices = [post_office]
             }
         },
 
@@ -203,7 +207,7 @@ export default {
 
         //post office actions
         async createPostOffice({ commit }, formdata) {
-            const res = await axios.post('/post-office/create', formdata)
+            const res = await axios.post('post-office/create', formdata)
 
             if (res.data.status) {
                 commit('SET_POST_OFFICE', res.data.post_office)
@@ -220,7 +224,7 @@ export default {
         },
 
         async editPostOffice({ commit }, formdata) {
-            const res = await axios.put('/post-office/update/'+formdata.post_office_id, formdata)
+            const res = await axios.put('post-office/update/'+formdata.post_office_id, formdata)
 
             if (res.data.status) {
                 commit('UPDATE_POST_OFFICE', res.data.post_office)
@@ -237,7 +241,7 @@ export default {
         },
 
         async deletePostOffice({ commit }, item_id) {
-            const res = await axios.delete('/post-office/delete/'+item_id)
+            const res = await axios.delete('post-office/delete/'+item_id)
             if (res.data.status) {
                 commit('DELETE_POST_OFFICE', item_id)
                 commit('SET_ERROR_MESSAGE', null,  { root:true })
