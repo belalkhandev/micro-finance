@@ -18,7 +18,7 @@ class MemberGroupController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class MemberGroupController extends Controller
             'groups' => null,
             'message' => 'No data found'
         ]);
-        
+
     }
 
     /**
@@ -68,9 +68,9 @@ class MemberGroupController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
-        
+
         $group = $this->group->store($request);
 
         if ($group) {
@@ -91,7 +91,7 @@ class MemberGroupController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -102,7 +102,7 @@ class MemberGroupController extends Controller
                 'status' => true,
                 'group' => $group,
                 'message' => 'Found group data'
-            ]); 
+            ]);
         }
 
         return response()->json([
@@ -127,7 +127,7 @@ class MemberGroupController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -141,7 +141,7 @@ class MemberGroupController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
         $group = $this->group->update($request, $id);

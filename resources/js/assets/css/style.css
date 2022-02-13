@@ -291,6 +291,107 @@ table {
     width: 3px;
 }
 
+.widget {
+    background-color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0px 2px 3px #00000010;
+    border: 1px solid #e0e7ff;
+    min-height: 110px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    cursor: pointer;
+    grid-gap: 15px;
+}
+.widget .widget-header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+}
+.widget .widget-header .title {
+    color: #4b5563;
+    padding-top: 5px;
+    font-weight: 400;
+}
+.widget .widget-header span {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 18px;
+    background-color: #f3f4f6;
+    line-height: normal;
+    color: #4b5563;
+    padding: 2px 5px;
+    border-radius: 30px;
+}
+.widget .widget-body {
+    width: 100%;
+    text-align: center;
+}
+.widget .widget-body h3 {
+    color: #4b5563;
+    font-size: 20px;
+    font-weight: 600;
+}
+.widget .widget-body p {
+    font-size: 12px;
+    color: #9ca3af;
+}
+.widget.widget-primary .widget-header .title {
+    color: #4f46e5;
+}
+.widget.widget-primary .widget-header span {
+    background-color: #e0e7ff;
+    color: #4f46e5;
+}
+.widget.widget-primary .widget-body h3 {
+    color: #4f46e5;
+}
+.widget.widget-primary .widget-body p {
+    color: #818cf8;
+}
+.widget.widget-success .widget-header .title {
+    color: #16a34a;
+}
+.widget.widget-success .widget-header span {
+    background-color: #dcfce7;
+    color: #16a34a;
+}
+.widget.widget-success .widget-body h3 {
+    color: #16a34a;
+}
+.widget.widget-success .widget-body p {
+    color: #4ade80;
+}
+.widget.widget-danger .widget-header .title {
+    color: #dc2626;
+}
+.widget.widget-danger .widget-header span {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+.widget.widget-danger .widget-body h3 {
+    color: #dc2626;
+}
+.widget.widget-danger .widget-body p {
+    color: #f87171;
+}
+.widget.widget-warning .widget-header .title {
+    color: #ca8a04;
+}
+.widget.widget-warning .widget-header span {
+    background-color: #fef9c3;
+    color: #ca8a04;
+}
+.widget.widget-warning .widget-body h3 {
+    color: #ca8a04;
+}
+.widget.widget-warning .widget-body p {
+    color: #facc15;
+}
+
 .wrapper {
     display: flex;
     justify-content: flex-start;
