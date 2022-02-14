@@ -4,17 +4,17 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h4>Member list</h4>
+                        <h4>Add new member</h4>
                     </div>
                     <div class="box-action">
-                        <button class="btn btn-sm btn-primary">New member</button>
+                        <router-link :to="{name: 'CreateMember'}" class="btn btn-sm btn-primary">Member list</router-link>
                     </div>
                 </div>
                 <div class="box-body">
 
                 </div>
-                <div class="box-footer text-right">
-                    <p>Pagination here</p>
+                <div class="box-footer">
+
                 </div>
             </div>
         </div>

@@ -1,14 +1,17 @@
 <template>
-    <div class="row">
-        <div class="box">
-            <div class="box-header">
-                <div class="box-title">
-                    <h5>Create member</h5>
-                </div>
+    <div class="box">
+        <div class="box-header">
+            <div class="box-title">
+                <h4>Member list</h4>
             </div>
-            <div class="box-body"></div>
-            <div class="box-footer"></div>
+            <div class="box-action">
+                <router-link :to="{name: 'Members'}" class="btn btn-sm btn-primary">New member</router-link>
+            </div>
         </div>
+        <div class="box-body">
+
+        </div>
+        <div class="box-footer"></div>
     </div>
 </template>
 

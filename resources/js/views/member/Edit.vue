@@ -1,14 +1,17 @@
 <template>
-    <div class="row">
-        <div class="box">
-            <div class="box-header">
-                <div class="box-title">
-                    <h5>Edit member</h5>
-                </div>
+    <div class="box">
+        <div class="box-header">
+            <div class="box-title">
+                <h4>Member list</h4>
             </div>
-            <div class="box-body"></div>
-            <div class="box-footer"></div>
+            <div class="box-action">
+                <router-link :to="{name: 'Members'}" class="btn btn-sm btn-primary">New member</router-link>
+            </div>
         </div>
+        <div class="box-body">
+
+        </div>
+        <div class="box-footer"></div>
     </div>
 </template>
 
@@ -17,7 +20,7 @@ import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery'
 
 export default ({
-    name: "Edit",
+    name: "Create",
 
     data() {
         return {
@@ -92,3 +95,4 @@ export default ({
     },
 })
 </script>
+
