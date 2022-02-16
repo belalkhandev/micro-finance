@@ -18,7 +18,7 @@ class PostOfficeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class PostOfficeController extends Controller
             'post_offices' => null,
             'message' => 'No data found'
         ]);
-        
+
     }
 
     /**
@@ -54,11 +54,12 @@ class PostOfficeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
         $rules = [
+            'upazilla_id' => 'required',
             'name' => 'required',
             'bn_name' => 'required',
             'post_code' => 'required'
@@ -70,7 +71,7 @@ class PostOfficeController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
         //check duplicate
@@ -84,13 +85,13 @@ class PostOfficeController extends Controller
                 'message' => 'Post office already exists'
             ]);
         }
-        
+
         $po = $this->po->store($request);
 
         if ($po) {
             return response()->json([
                 'status' => true,
-                'po' => $po,
+                'post_office' => $po,
                 'message' => 'Post office has been stored successfully'
             ]);
         }
@@ -105,7 +106,7 @@ class PostOfficeController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -114,9 +115,9 @@ class PostOfficeController extends Controller
         if ($po) {
             return response()->json([
                 'status' => true,
-                'po' => $po,
+                'post_office' => $po,
                 'message' => 'Found post office data'
-            ]); 
+            ]);
         }
 
         return response()->json([
@@ -141,11 +142,12 @@ class PostOfficeController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
         $rules = [
+            'upazilla_id' => 'required',
             'name' => 'required',
             'bn_name' => 'required',
             'post_code' => 'required'
@@ -165,14 +167,14 @@ class PostOfficeController extends Controller
         if ($po) {
             return response()->json([
                 'status' => true,
-                'po' => $po,
+                'post_office' => $po,
                 'message' => 'Post office has been updated successfully'
             ]);
         }
 
         return response()->json([
             'status' => false,
-            'po' => null,
+            'post_office' => null,
             'message' => 'Failed to update post office'
         ]);
     }
@@ -181,7 +183,7 @@ class PostOfficeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {

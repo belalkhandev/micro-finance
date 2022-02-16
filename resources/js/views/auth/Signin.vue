@@ -10,6 +10,7 @@
                 </div>
                 <div class="auth-body">
                     <form @submit.prevent="loginSubmit">
+                        <span class="text-danger" v-if="error">{{ error }}</span>
                         <div class="form-group">
                             <label>{{ $t('email') }}*</label>
                             <input type="email" v-model="form.email" :placeholder="$t('enter_email')" class="form-control">
@@ -21,7 +22,12 @@
                             <span class="text-danger" v-if="errors">{{ errors.password ? errors.password[0] : '' }}</span>
                         </div>
                         <div class="form-group form-submit-group">
-                            <button type="submit" class="btn btn-primary">{{ $t('signin') }}</button>
+                            <button type="submit" class="btn btn-primary" id="loginSubmit">
+                                {{ $t('signin') }}
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -40,13 +46,14 @@
 
 <script>
     import { mapGetters, mapActions } from 'vuex'
+    import $ from "jquery";
     export default ({
         name: 'Signin',
         data() {
             return {
                 form: {
-                    email: '',
-                    password: ''
+                    email: 'superadmin@becodezen.com',
+                    password: 'password'
                 },
                 errors: null,
                 error: null,
@@ -66,6 +73,8 @@
             }),
 
             loginSubmit(){
+                $('#loginSubmit').prop('disabled', true).addClass('submitted')
+
                 this.signIn(this.form).then(() => {
                     if (!this.validation_errors && !this.error_message) {
                         this.errors = this.error = null;
@@ -78,6 +87,8 @@
                         this.errors = this.validation_errors;
                         this.error = this.error_message
                     }
+
+                    $('#loginSubmit').prop('disabled', false).removeClass('submitted')
                 });
             }
         }

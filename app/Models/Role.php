@@ -9,9 +9,7 @@ class Role extends Model
 {
     use HasFactory;
 
-    protected $hidden = [
-        'permissions'
-    ];
+    protected $hidden = [];
 
     public function users()
     {
@@ -20,7 +18,7 @@ class Role extends Model
 
     /**
      * Many to many relation between roles and permissions
-     * 
+     *
      * @return object - permissions that belongs to current role
      */
     public function permissions()
@@ -30,7 +28,7 @@ class Role extends Model
 
     /**
      * Check if current role has specific permissions
-     * 
+     *
      * @param string|object|array $permission
      * @return bool
      */
@@ -71,7 +69,7 @@ class Role extends Model
                 return false;
             }
         }
-        
+
         return $requireAll;
     }
 
@@ -124,7 +122,7 @@ class Role extends Model
             if(!isset($permission['id'])) {
                 return $this->detachPermissions($permission);
             }
-            
+
             $permission = $permission['id'];
         }
         $this->permissions()->detach($permission);

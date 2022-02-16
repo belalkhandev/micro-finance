@@ -37,7 +37,7 @@ class VillageController extends Controller
             'villages' => null,
             'message' => 'No data found'
         ]);
-        
+
     }
 
     /**
@@ -59,17 +59,19 @@ class VillageController extends Controller
     public function store(Request $request)
     {
         $rules = [
+            'upazilla_id' => 'required',
+            'union_id' => 'required',
             'name' => 'required',
             'bn_name' => 'required'
         ];
 
-        $validation = Validator::make($request->all(), $rules);
+        $validation = Validator::make($request->all(), $rules, ['upazilla_id.required' => 'Upazilla filed is required', 'union_id.required' => 'Union field is required']);
 
         if ($validation->fails()) {
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
         //check duplicate
@@ -83,7 +85,7 @@ class VillageController extends Controller
                 'message' => 'Village already exists'
             ]);
         }
-        
+
         $village = $this->village->store($request);
 
         if ($village) {
@@ -115,7 +117,7 @@ class VillageController extends Controller
                 'status' => true,
                 'village' => $village,
                 'message' => 'Found village data'
-            ]); 
+            ]);
         }
 
         return response()->json([
@@ -145,6 +147,8 @@ class VillageController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
+            'upazilla_id' => 'required',
+            'union_id' => 'required',
             'name' => 'required',
             'bn_name' => 'required'
         ];
@@ -155,7 +159,7 @@ class VillageController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
         $village = $this->village->update($request, $id);

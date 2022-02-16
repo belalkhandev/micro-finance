@@ -38,7 +38,6 @@ class PostOfficeRepository implements PostOfficeRepositoryInterface {
     {
         $po = PostOffice::find($id);
         $po->upazilla_id = $request->input('upazilla_id');
-        $po->union_id = $request->input('union_id');
         $po->name = $request->input('name');
         $po->bn_name = $request->input('bn_name');
         $po->code = $request->input('post_code');
@@ -54,8 +53,8 @@ class PostOfficeRepository implements PostOfficeRepositoryInterface {
     {
         $po = PostOffice::find($id);
 
-        if ($po) {
-            $po->delete();
+        if ($po->delete()) {
+            return true;
         }
 
         return false;

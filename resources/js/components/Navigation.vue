@@ -3,7 +3,7 @@
         <!-- brand-logo -->
         <div class="logo">
             <img src="../assets/images/logo.png" alt="">
-            <h2>PDSCDSL</h2>
+            <h2>pdscdcsl</h2>
         </div>
         <!-- user -->
         <div class="user">
@@ -11,7 +11,7 @@
                 <img src="../assets/images/user.png" alt="">
             </div>
             <div class="user-info" v-if="authenticated && user">
-                <h3>{{ user.name }}</h3>
+                <h3 class="text-white">{{ user.name }}</h3>
                 <p>{{ user.role_name }}</p>
             </div>
         </div>
@@ -22,57 +22,88 @@
         </div>
         <!-- main menus -->
         <div class="navigations">
-            <div class="navigation-item has-multimenu">
-                <router-link :to="{name: 'Dashboard'}" class="menu-link">
+            <div class="navigation-item">
+                <router-link :to="{name: 'Dashboard'}" class="menu-link" @click="openMultimenus">
                     <i class="bx bxs-tachometer text-blue-600" ></i>
-                    <span>Dashboard</span>
+                    <span>{{ $t('dashboard') }}</span>
                 </router-link>
-                <div class="navigation-content">
-                    Some content here
-                </div>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Profile'}">
-                    <i class="bx bxs-user-rectangle text-red-600" ></i>
-                    <span>Profile</span>
+                    <i class="bx bxs-user-rectangle text-violet-600" ></i>
+                    <span>{{ $t('profile') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item">
-                <a href="">
+                <router-link :to="{name: 'Members'}">
                     <i class='bx bxs-user-account text-indigo-600' ></i>
                     <span>Members</span>
-                </a>
+                </router-link>
             </div>
-            <div class="navigation-item">
-                <a href="">
-                    <i class="bx bxs-user-rectangle text-red-600" ></i>
-                    <span>Profile</span>
-                </a>
-            </div>
-            <div class="navigation-item">
-                <a href="">
-                    <i class='bx bxs-user-account text-indigo-600' ></i>
-                    <span>Members</span>
-                </a>
-            </div>
-            <div class="navigation-item">
-                <a href="">
+            <div class="navigation-item has-multimenu">
+                <a href="#" class="menu-link" @click="openMultimenus">
                     <i class='bx bxs-file-doc text-green-600' ></i>
                     <span>Applications</span>
                 </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Applications</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5><abbr title="Deposit Pension Scheme">DPS</abbr> Applications</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All DPS Applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New DPS Application</span>
+                                </router-link>
+                            </li>
+                        </ul>
+
+                        <h5>Loan Applications</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Loan Applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New Loan Application</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="navigation-item">
-                <a href="">
-                    <i class='bx bxs-user-badge' ></i>
+                <router-link :to="{name: 'Admin'}">
+                    <i class='bx bxs-user-badge text-red-600'></i>
                     <span>Admins</span>
-                </a>
+                </router-link>
             </div>
             <div class="navigation-item has-multimenu">
-                <a href="" class="menu-link">
-                    <i class='bx bxs-report' ></i>
+                <a href="#" class="menu-link" @click="openMultimenus">
+                    <i class='bx bxs-report text-orange-600' ></i>
                     <span>Reports</span>
                 </a>
                 <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
                     <div class="navigation-content-header">
                         <h3>Reports</h3>
                     </div>
@@ -81,52 +112,7 @@
                         <ul>
                             <li>
                                 <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                        </ul>
-                        <h5>Daily Reports</h5>
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-right-arrow-alt'></i>
+                                    <i class='bx bx-chevron-right'></i>
                                     <span>Daily Collection Report</span>
                                 </a>
                             </li>
@@ -134,17 +120,49 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation-item">
-                <a href="">
-                    <i class='bx bxs-cog' ></i>
-                    <span>Settings</span>
+            <div class="navigation-item has-multimenu">
+                <a href="#" @click="openMultimenus">
+                    <i class='bx bxs-cog text-blue-600'></i>
+                    <span>{{  $t('settings') }}</span>
                 </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>{{  $t('settings') }}</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5>Basic Setup</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'Village'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Villages</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'Postoffice'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Postoffice</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'MemberGroup'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Member groups</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="navigation-item">
-                <router-link :to="{name: 'Signin'}">
-                    <i class='bx bxs-log-out' ></i>
+                <a href="#" @click.prevent="logout">
+                    <i class='bx bxs-log-out text-cyan-500' ></i>
                     <span>Logout</span>
-                </router-link>
+                </a>
             </div>
         </div>
     </div>
@@ -152,6 +170,7 @@
 
 <script>
 import { mapGetters, mapActions} from 'vuex'
+import $ from 'jquery'
 
 export default ({
     name: 'Navigation',
@@ -162,9 +181,25 @@ export default ({
         })
     },
     methods: {
-        changeLang(lang) {
-            localStorage.setItem('lang', lang)
-            this.$i18n.locale = lang
+        ...mapActions({
+            signOut: 'auth/signOut'
+        }),
+        openMultimenus(event) {
+            const _self = event.currentTarget;
+            $(_self).closest('.has-multimenu').addClass('open');
+        },
+
+        closeMultimenus(event) {
+            const _self = event.currentTarget;
+            $(_self).closest('.has-multimenu').removeClass('open');
+        },
+
+        logout() {
+            this.signOut().then(() => {
+                this.$router.replace({
+                    name: 'Signin'
+                })
+            })
         }
     }
 })

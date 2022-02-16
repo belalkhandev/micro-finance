@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\BdLocationsController;
 use App\Http\Controllers\Api\ExpenseCategoryController;
 use App\Http\Controllers\Api\ExpenseController;
+use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\MemberGroupController;
 use App\Http\Controllers\Api\PostOfficeController;
 use App\Http\Controllers\Api\UsersController;
@@ -23,7 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthenticationController::class, 'login']);
 
 Route::group([
-    'middlware' => 'auth:sanctum'
+    'middleware' => 'auth:sanctum'
 ], function () {
 
     Route::group([
@@ -31,11 +32,14 @@ Route::group([
     ], function($route) {
         $route->get('/me', [AuthenticationController::class, 'me']);
         $route->get('/list', [UsersController::class, 'index']);
-        $route->post('/register', [UsersController::class, 'register']);
+        $route->post('/create', [UsersController::class, 'create']);
         $route->post('/update', [UsersController::class, 'update']);
+        $route->delete('/delete/{id}', [UsersController::class, 'destroy']);
 
         $route->post('/logout', [AuthenticationController::class, 'logout']);
     });
+
+    Route::get('/role/list', [UsersController::class, 'roles']);
 
     //village api
     Route::get('/division/list', [BdLocationsController::class, 'divisions']);
@@ -78,7 +82,7 @@ Route::group([
         $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
     });
 
-    //post-office api
+    //member group
     Route::group([
         'prefix' => 'member-group'
     ], function($route) {
@@ -86,5 +90,14 @@ Route::group([
         $route->post('/create', [MemberGroupController::class, 'store']);
         $route->put('/update/{id}', [MemberGroupController::class, 'update']);
         $route->delete('/delete/{id}', [MemberGroupController::class, 'destroy']);
+    });
+
+    Route::group([
+        'prefix' => 'member'
+    ], function($route) {
+        $route->get('/list', [MemberController::class, 'index']);
+        $route->post('/create', [MemberController::class, 'store']);
+        $route->put('/update/{id}', [MemberController::class, 'update']);
+        $route->delete('/delete/{id}', [MemberController::class, 'destroy']);
     });
 });

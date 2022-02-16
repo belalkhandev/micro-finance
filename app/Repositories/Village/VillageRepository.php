@@ -8,7 +8,7 @@ class VillageRepository implements VillageRepositoryInterface {
 
     public function all()
     {
-        $villages = Village::get();
+        $villages = Village::orderBy('name', 'ASC')->get();
 
         if ($villages->isNotEmpty()) {
             return $villages;
@@ -52,8 +52,8 @@ class VillageRepository implements VillageRepositoryInterface {
     {
         $village = Village::find($id);
 
-        if ($village) {
-            return $village->delete();
+        if ($village->delete()) {
+            return true;
         }
 
         return false;
