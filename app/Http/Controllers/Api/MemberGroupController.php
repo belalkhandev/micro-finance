@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\MemberGroup\MemberRepositoryInterface;
+use App\Repositories\MemberGroup\MemberGroupRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,7 +11,7 @@ class MemberGroupController extends Controller
 {
     protected $group;
 
-    public function __construct(MemberRepositoryInterface $group)
+    public function __construct(MemberGroupRepositoryInterface $group)
     {
         $this->group = $group;
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\URL;
 
 class UserProfile extends Model
 {
@@ -17,7 +18,7 @@ class UserProfile extends Model
     public function getPhotoAttribute($value)
     {
         if($value) {
-            return $value;
+            return URL::to('/').'/'.$value;
         }
 
         return null;

@@ -4,7 +4,7 @@
             <div class="box">
                 <div class="box-header bg-indigo-400">
                     <div class="box-title">
-                        <h5 class="text-white">Profile</h5>
+                        <h5 class="text-white">Admin Profile</h5>
                     </div>
                 </div>
                 <div class="box-body">

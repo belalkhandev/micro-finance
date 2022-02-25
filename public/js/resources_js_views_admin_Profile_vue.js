@@ -81,7 +81,7 @@ var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
   "class": "box-title"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
   "class": "text-white"
-}, "Profile")])], -1
+}, "Admin Profile")])], -1
 /* HOISTED */
 );
 
