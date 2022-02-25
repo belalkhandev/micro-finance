@@ -48,7 +48,7 @@ class UsersController extends Controller
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
             'role_id' => 'required',
-            'photo' => 'nullable|mimes:jpg,png,jpeg,gif|max:350'
+            'photo' => 'nullable|mimes:jpg,png,jpeg,gif'
         ];
 
         $validation = Validator::make($request->all(), $rules);

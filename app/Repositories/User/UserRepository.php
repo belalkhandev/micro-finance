@@ -92,7 +92,7 @@ class UserRepository implements UserRepositoryInterface {
 
         //store user photo
         if ($request->hasFile('photo')) {
-            $path = FileUpload::upload($request, 'photo', 'users');
+            $path = FileUpload::uploadWithResize($request, 'photo', 'users', 200, 200);
             $profile->photo = $path;
         }
 
@@ -117,7 +117,7 @@ class UserRepository implements UserRepositoryInterface {
                 unlink($profile->photo);
             }
 
-            $path = FileUpload::upload($request, 'photo', 'users');
+            $path = FileUpload::uploadWithResize($request, 'photo', 'users', 200, 200);
             $profile->photo = $path;
         }
 

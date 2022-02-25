@@ -176,7 +176,10 @@ return [
         App\Providers\RouteServiceProvider::class,
 
         //register RepositoryService Provider
-        App\Repositories\RepositoryServiceProvider::class, 
+        App\Repositories\RepositoryServiceProvider::class,
+
+        //intervention image
+        Intervention\Image\ImageServiceProvider::class
     ],
 
     /*
@@ -231,6 +234,7 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Intervention\Image\Facades\Image::class
 
     ],
 

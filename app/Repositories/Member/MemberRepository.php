@@ -45,7 +45,7 @@ class MemberRepository implements MemberRepositoryInterface {
 
         //upload photo
         if ($request->hasFile('photo')) {
-            $path = FileUpload::upload($request, 'photo', 'members');
+            $path = FileUpload::uploadWithResize($request, 'photo', 'members', 200, 200);
             $member->photo = $path;
         }
 
@@ -88,7 +88,7 @@ class MemberRepository implements MemberRepositoryInterface {
                 unlink($member->photo);
             }
 
-            $path = FileUpload::upload($request, 'photo', 'members');
+            $path = FileUpload::uploadWithResize($request, 'photo', 'members', 200, 200);
             $member->photo = $path;
         }
 
@@ -143,7 +143,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $nominee->relation = $request->input('nominee_relation');
 
         if ($request->hasFile('nominee_photo')) {
-            $path = FileUpload::upload($request, 'nominee_photo', 'nominees');
+            $path = FileUpload::uploadWithResize($request, 'nominee_photo', 'nominees', 200, 200);
             $nominee->photo = $path;
         }
         if ($nominee->save()) {
@@ -171,7 +171,7 @@ class MemberRepository implements MemberRepositoryInterface {
                 unlink($nominee->photo);
             }
 
-            $path = FileUpload::upload($request, 'nominee_photo', 'nominees');
+            $path = FileUpload::uploadWithResize($request, 'nominee_photo', 'nominees', 200, 200);
             $nominee->photo = $path;
         }
         if ($nominee->save()) {

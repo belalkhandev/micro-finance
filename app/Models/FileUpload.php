@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Intervention\Image\Facades\Image;
+
 class FileUpload 
 {
     /**
@@ -23,6 +25,31 @@ class FileUpload
 
                 return false;
             }
+
+            return $path;
+        } 
+    }
+
+    public static function uploadWithResize($request, $file_name, $upload_dir, $w=150, $h=150)
+    {
+        if ($request->hasFile($file_name)) {
+            $file = $request->$file_name;
+            $filename = time().'.'.$file->getClientOriginalExtension();
+            $up_path = "uploads/".date('Y-m')."/$upload_dir/";
+            $path = $file->move($up_path, $filename);
+            if ($file->getError()) {
+                $request->session()->flash('warning', $file->getErrorMessage());
+
+                return false;
+            }
+
+            $resizeImage = $path;
+
+            $img = Image::make($resizeImage)->resize($w, $h, function($ratio) {
+                $ratio->aspectRatio();
+            });
+
+            $img->save($resizeImage);
 
             return $path;
         } 
