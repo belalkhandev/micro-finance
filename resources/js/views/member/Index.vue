@@ -1,30 +1,47 @@
 <template>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="box">
-                <div class="box-header">
-                    <div class="box-title">
-                        <h4>Add new member</h4>
-                    </div>
-                    <div class="box-action">
-                        <router-link :to="{name: 'CreateMember'}" class="btn btn-sm btn-primary">Member list</router-link>
-                    </div>
-                </div>
-                <div class="box-body">
-
-                </div>
-                <div class="box-footer">
-
-                </div>
+    <div class="box">
+        <div class="box-header">
+            <div class="box-title">
+                <h4>Member list</h4>
+            </div>
+            <div class="box-action">
+                <router-link :to="{name: 'CreateMember'}" class="btn btn-sm btn-primary">New member</router-link>
             </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="box-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Name</th>
+                        <th>Account No</th>
+                        <th>Member Type</th>
+                        <th>Father Name</th>
+                        <th>Village</th>
+                        <th>Address</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(member, i) in fetchMembers" :key="i">
+                        <td>{{ i+1 }}</td>
+                        <td>{{ member.name }}</td>
+                        <td>{{ member.account_no }}</td>
+                        <td>{{ member.member_type }}</td>
+                        <td>{{ member.father_name }}</td>
+                        <td>{{ member.village_id }}</td>
+                        <td>{{ member.address }}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="box-footer"></div>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import bootstrap from 'bootstrap/dist/js/bootstrap'
 
 export default ({
     name: "Index",
@@ -38,13 +55,17 @@ export default ({
 
     computed: {
         ...mapGetters({
-
+            members: 'member/members'
         }),
+
+        fetchMembers() {
+            return this.members
+        }
     },
 
     methods: {
         ...mapActions({
-
+            getMembers: 'member/getMembers'
         }),
 
         showEditModal(data) {
@@ -79,7 +100,7 @@ export default ({
     },
 
     mounted() {
-
+        this.getMembers()
     }
 
 

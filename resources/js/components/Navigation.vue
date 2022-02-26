@@ -15,11 +15,6 @@
                 <p>{{ user.role_name }}</p>
             </div>
         </div>
-
-        <div>
-            <button type="button" @click="changeLang('en')">Eng</button>
-            <button type="button" @click="changeLang('bn')">Ban</button>
-        </div>
         <!-- main menus -->
         <div class="navigations">
             <div class="navigation-item">

@@ -39,17 +39,17 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->district_id = $request->input('district_id');
         $member->division_id = $request->input('division_id');
         $member->joining_date = $request->input('joining_date');
-        $member->member_type = $request->input('member_type');
+        $member->member_type = 'deposit_weekly'; //$request->input('member_type');
         $member->member_group_id = $request->input('member_group_id');
         $member->day = $request->input('day');
 
         //upload photo
-        if ($request->hasFile('photo')) {
-            $path = FileUpload::uploadWithResize($request, 'photo', 'members', 200, 200);
+        if ($request->hasFile('member_photo')) {
+            $path = FileUpload::uploadWithResize($request, 'member_photo', 'members', 200, 200);
             $member->photo = $path;
         }
 
-        $member->created_by = Auth::group('sanctum')->user()->id;
+        $member->created_by = Auth::guard('sanctum')->user()->id;
 
         if ($member->save()) {
             return $member;
@@ -92,7 +92,7 @@ class MemberRepository implements MemberRepositoryInterface {
             $member->photo = $path;
         }
 
-        $member->updated_by = Auth::group('sanctum')->user()->id;
+        $member->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($member->save()) {
             return $member;
@@ -131,7 +131,7 @@ class MemberRepository implements MemberRepositoryInterface {
 
     public function storeNominee($request, $member_id)
     {
-        $nominee = new Member();
+        $nominee = new Nominee();
         $nominee->member_id = $member_id;
         $nominee->name = $request->input('nominee_name');
         $nominee->father_name = $request->input('nominee_father_name');
@@ -155,7 +155,7 @@ class MemberRepository implements MemberRepositoryInterface {
 
     public function updateNominee($request, $id)
     {
-        $nominee = Member::find($id);
+        $nominee = Nominee::find($id);
         $nominee->name = $request->input('nominee_name');
         $nominee->father_name = $request->input('nominee_father_name');
         $nominee->mother_name = $request->input('nominee_mother_name');

@@ -94,7 +94,7 @@ const routes = [
         name: 'CreateMember',
         component: () => import('../views/member/Create.vue'),
         meta: {
-            title: 'Create new member'
+            title: 'Add new member'
         }
     },
     {

@@ -26334,17 +26334,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.role_name), 1
   /* TEXT */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    onClick: _cache[0] || (_cache[0] = function ($event) {
-      return _ctx.changeLang('en');
-    })
-  }, "Eng"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "button",
-    onClick: _cache[1] || (_cache[1] = function ($event) {
-      return _ctx.changeLang('bn');
-    })
-  }, "Ban")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" main menus "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" main menus "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Dashboard'
     },
@@ -26388,12 +26378,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
-    onClick: _cache[2] || (_cache[2] = function () {
+    onClick: _cache[0] || (_cache[0] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
   }, _hoisted_18), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
-    onClick: _cache[3] || (_cache[3] = function () {
+    onClick: _cache[1] || (_cache[1] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
   }, _hoisted_22), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
@@ -26454,24 +26444,24 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
-    onClick: _cache[4] || (_cache[4] = function () {
+    onClick: _cache[2] || (_cache[2] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
   }, _hoisted_41), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
-    onClick: _cache[5] || (_cache[5] = function () {
+    onClick: _cache[3] || (_cache[3] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
   }, _hoisted_45), _hoisted_46, _hoisted_47])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
-    onClick: _cache[6] || (_cache[6] = function () {
+    onClick: _cache[4] || (_cache[4] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
   }, [_hoisted_49, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
   )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
-    onClick: _cache[7] || (_cache[7] = function () {
+    onClick: _cache[5] || (_cache[5] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
   }, _hoisted_53), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
@@ -26511,7 +26501,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
-    onClick: _cache[8] || (_cache[8] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onClick: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.logout && $options.logout.apply($options, arguments);
     }, ["prevent"]))
   }, _hoisted_66)])])]);
@@ -26764,7 +26754,7 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/Create.vue */ "./resources/js/views/member/Create.vue"));
   },
   meta: {
-    title: 'Create new member'
+    title: 'Add new member'
   }
 }, {
   path: '/members/edit/:member_id',
@@ -26857,17 +26847,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth/index.js");
 /* harmony import */ var _modules_location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/location */ "./resources/js/store/modules/location/index.js");
 /* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user/index.js");
 /* harmony import */ var _modules_group__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/group */ "./resources/js/store/modules/group/index.js");
+/* harmony import */ var _modules_member__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/member */ "./resources/js/store/modules/member/index.js");
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_4__.createStore)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
   state: {
     validation_errors: null,
     error_message: null
@@ -26894,7 +26886,8 @@ __webpack_require__.r(__webpack_exports__);
     auth: _modules_auth__WEBPACK_IMPORTED_MODULE_0__["default"],
     user: _modules_user__WEBPACK_IMPORTED_MODULE_2__["default"],
     location: _modules_location__WEBPACK_IMPORTED_MODULE_1__["default"],
-    group: _modules_group__WEBPACK_IMPORTED_MODULE_3__["default"]
+    group: _modules_group__WEBPACK_IMPORTED_MODULE_3__["default"],
+    member: _modules_member__WEBPACK_IMPORTED_MODULE_4__["default"]
   }
 }));
 
@@ -27148,33 +27141,79 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   state: {
     groups: null,
     days: [{
-      'code': 'Saturday',
-      'name': 'Saturday',
-      'bn_name': 'শনিবার'
+      code: 'Saturday',
+      name: 'Saturday',
+      bn_name: 'শনিবার'
     }, {
-      'code': 'Sunday',
-      'name': 'Sunday',
-      'bn_name': 'রবিবার'
+      code: 'Sunday',
+      name: 'Sunday',
+      bn_name: 'রবিবার'
     }, {
-      'code': 'Monday',
-      'name': 'Monday',
-      'bn_name': 'সোমবার'
+      code: 'Monday',
+      name: 'Monday',
+      bn_name: 'সোমবার'
     }, {
-      'code': 'Tuesday',
-      'name': 'Tuesday',
-      'bn_name': 'মঙ্গলবার'
+      code: 'Tuesday',
+      name: 'Tuesday',
+      bn_name: 'মঙ্গলবার'
     }, {
-      'code': 'Wednesday',
-      'name': 'Wednesday',
-      'bn_name': 'বুধবার'
+      code: 'Wednesday',
+      name: 'Wednesday',
+      bn_name: 'বুধবার'
     }, {
-      'code': 'Thursday',
-      'name': 'Thursday',
-      'bn_name': 'বৃহস্পতিবার'
+      code: 'Thursday',
+      name: 'Thursday',
+      bn_name: 'বৃহস্পতিবার'
     }, {
-      'code': 'Friday',
-      'name': 'Friday',
-      'bn_name': 'শুক্রবার'
+      code: 'Friday',
+      name: 'Friday',
+      bn_name: 'শুক্রবার'
+    }],
+    member_types: [{
+      code: 'deposit_weekly',
+      name: 'Weekly',
+      bn_name: 'Weekly'
+    }, {
+      code: 'deposit_monthly',
+      name: 'Monthly',
+      bn_name: 'Monthly'
+    }, {
+      code: 'loan',
+      name: 'Loan',
+      bn_name: 'Loan'
+    }],
+    relations: [{
+      code: 'father',
+      name: 'Father',
+      bn_name: 'Father'
+    }, {
+      code: 'mother',
+      name: 'Mother',
+      bn_name: 'Mother'
+    }, {
+      code: 'son',
+      name: 'Son',
+      bn_name: 'Son'
+    }, {
+      code: 'daughter',
+      name: 'Daughter',
+      bn_name: 'Daughter'
+    }, {
+      code: 'brother',
+      name: 'Brother',
+      bn_name: 'Brother'
+    }, {
+      code: 'sister',
+      name: 'Sister',
+      bn_name: 'Sister'
+    }, {
+      code: 'wife',
+      name: 'Wife',
+      bn_name: 'Wife'
+    }, {
+      code: 'uncle',
+      name: 'Uncle',
+      bn_name: 'Uncle'
     }]
   },
   getters: {
@@ -27183,6 +27222,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     days: function days(state) {
       return state.days;
+    },
+    member_types: function member_types(state) {
+      return state.member_types;
+    },
+    relations: function relations(state) {
+      return state.relations;
     }
   },
   mutations: {
@@ -27591,7 +27636,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    getPostOffice: function getPostOffice(_ref5) {
+    getPostOffices: function getPostOffices(_ref5) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -27889,6 +27934,221 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee12);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/member/index.js":
+/*!****************************************************!*\
+  !*** ./resources/js/store/modules/member/index.js ***!
+  \****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: {
+    members: null
+  },
+  getters: {
+    members: function members(state) {
+      return state.members;
+    }
+  },
+  mutations: {
+    SET_MEMBERS: function SET_MEMBERS(state, members) {
+      state.members = members;
+    },
+    SET_MEMBER: function SET_MEMBER(state, member) {
+      if (state.members) {
+        state.members.unshift(member);
+      } else {
+        state.members = [member];
+      }
+    },
+    UPDATE_MEMBER: function UPDATE_MEMBER(state, member) {
+      var item = state.members.find(function (item) {
+        return item.id === member.id;
+      });
+      Object.assign(item, member);
+    },
+    DELETE_MEMBER: function DELETE_MEMBER(state, item_id) {
+      var member = state.members.find(function (item) {
+        return item.id == item_id;
+      });
+
+      if (member) {
+        state.members.splice(state.members.indexOf(member), 1);
+      }
+    }
+  },
+  actions: {
+    //member actions
+    getMembers: function getMembers(_ref) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/list');
+
+              case 3:
+                res = _context.sent;
+
+                if (res.data.status) {
+                  commit('SET_MEMBERS', res.data.members);
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    createMember: function createMember(_ref2, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/create', formdata);
+
+              case 3:
+                res = _context2.sent;
+
+                if (res.data.status) {
+                  commit('SET_MEMBER', res.data.member);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    editMember: function editMember(_ref3, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('member/update/' + formdata.member_id, formdata);
+
+              case 3:
+                res = _context3.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_MEMBER', res.data.member);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    deleteMember: function deleteMember(_ref4, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('member/delete/' + item_id);
+
+              case 3:
+                res = _context4.sent;
+
+                if (res.data.status) {
+                  commit('DELETE_MEMBER', item_id);
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   }
@@ -33354,7 +33614,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n  height: 100%;\n}\n\nbody {\n  font-family: \"Nunito\", sans-serif;\n  background-color: #EAEDF5;\n  font-size: 1rem;\n}\n\nimg {\n  max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: \"Livvic\", sans-serif;\n  color: #1e293b;\n}\n\nh1 {\n  font-size: 32px;\n}\n\nh2 {\n  font-size: 24px;\n}\n\nh3 {\n  font-size: 20px;\n}\n\nh4 {\n  font-size: 18px;\n}\n\nh5 {\n  font-size: 16px;\n}\n\nh6 {\n  font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n  background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n  background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n  background: #4f46e5;\n}\n\nh1 {\n  font-size: 30px;\n  font-weight: 700;\n}\n\nh2 {\n  font-size: 24px;\n  font-weight: 700;\n}\n\nh3 {\n  font-size: 18px;\n  font-weight: 600;\n}\n\nh4 {\n  font-size: 16px;\n  font-weight: 600;\n}\n\nh5 {\n  font-size: 14px;\n  font-weight: 600;\n}\n\nh6 {\n  font-size: 12px;\n  font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n  background-color: #4f46e5 !important;\n  color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n  background-color: #3730a3 !important;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n  background-color: #16a34a !important;\n  color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n  background-color: #166534 !important;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n  background-color: #dc2626 !important;\n  color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n  background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n  background-color: #ca8a04 !important;\n  color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n  background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n  position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n  position: absolute;\n  top: calc(50% - 0.6rem);\n  left: calc(50% - 0.6rem);\n  width: 1.2rem;\n  height: 1.2rem;\n  visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n  visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n  visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n  visibility: hidden;\n}\n\n.box {\n  background-color: #ffffff;\n  border-radius: 5px;\n  margin-bottom: 30px;\n  border: 1px solid #e2e8f0;\n  box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n  padding: 10px 15px;\n  min-height: 45px;\n  border-bottom: 1px solid #f1f5f9;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.box .box-body {\n  padding: 10px 15px 15px;\n  overflow-y: auto;\n}\n.box .box-footer {\n  border-top: 1px solid #e2e8f0;\n  padding: 10px 15px 15px;\n}\n\ntable {\n  width: 100%;\n}\n\n.table {\n  width: 100%;\n  overflow: hidden;\n}\n.table thead {\n  border: none !important;\n}\n.table thead tr {\n  background-color: #f1f5f9;\n  border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n  font-weight: 500;\n  color: #1f2937;\n  font-family: \"Livvic\", sans-serif;\n  font-size: 16px;\n}\n.table tbody {\n  border: none !important;\n  font-family: \"Nunito\", sans-serif;\n  font-weight: 500;\n}\n.table tbody tr {\n  position: relative;\n  border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n  position: absolute;\n  top: 0;\n  left: -2px;\n  width: 2px;\n  background-color: #6366f1;\n  height: 100%;\n  content: \"\";\n}\n.table tbody tr td {\n  font-size: 14px;\n  vertical-align: middle;\n  padding: 10px;\n}\n.table tbody tr td .action {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  grid-gap: 5px;\n  font-size: 16px;\n}\n.table tbody tr td .action a {\n  padding: 3px 3px;\n  line-height: 0px;\n  border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n  background-color: #4f46e5;\n  color: #ffffff;\n}\n.table tbody tr:hover {\n  background-color: #eef2ff;\n  cursor: pointer;\n}\n.table tbody tr:hover::after {\n  left: 0;\n  content: \"\";\n  transition: 300ms;\n}\n\n.form-group {\n  margin-bottom: 15px;\n}\n.form-group label {\n  font-weight: 500;\n  font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n  box-shadow: none;\n  border-color: #a5b4fc;\n}\n\n.form-select:focus {\n  box-shadow: none;\n  border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n  width: 3px;\n}\n\n.widget {\n  background-color: #ffffff;\n  padding: 10px;\n  border-radius: 10px;\n  box-shadow: 0px 2px 3px #00000010;\n  border: 1px solid #e0e7ff;\n  min-height: 110px;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  cursor: pointer;\n  grid-gap: 15px;\n}\n.widget .widget-header {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  position: relative;\n}\n.widget .widget-header .title {\n  color: #4b5563;\n  padding-top: 5px;\n  font-weight: 400;\n}\n.widget .widget-header span {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  font-size: 18px;\n  background-color: #f3f4f6;\n  line-height: normal;\n  color: #4b5563;\n  padding: 2px 5px;\n  border-radius: 30px;\n}\n.widget .widget-body {\n  width: 100%;\n  text-align: center;\n}\n.widget .widget-body h3 {\n  color: #4b5563;\n  font-size: 20px;\n  font-weight: 600;\n}\n.widget .widget-body p {\n  font-size: 12px;\n  color: #9ca3af;\n}\n.widget.widget-primary .widget-header .title {\n  color: #4f46e5;\n}\n.widget.widget-primary .widget-header span {\n  background-color: #e0e7ff;\n  color: #4f46e5;\n}\n.widget.widget-primary .widget-body h3 {\n  color: #4f46e5;\n}\n.widget.widget-primary .widget-body p {\n  color: #818cf8;\n}\n.widget.widget-success .widget-header .title {\n  color: #16a34a;\n}\n.widget.widget-success .widget-header span {\n  background-color: #dcfce7;\n  color: #16a34a;\n}\n.widget.widget-success .widget-body h3 {\n  color: #16a34a;\n}\n.widget.widget-success .widget-body p {\n  color: #4ade80;\n}\n.widget.widget-danger .widget-header .title {\n  color: #dc2626;\n}\n.widget.widget-danger .widget-header span {\n  background-color: #fee2e2;\n  color: #dc2626;\n}\n.widget.widget-danger .widget-body h3 {\n  color: #dc2626;\n}\n.widget.widget-danger .widget-body p {\n  color: #f87171;\n}\n.widget.widget-warning .widget-header .title {\n  color: #ca8a04;\n}\n.widget.widget-warning .widget-header span {\n  background-color: #fef9c3;\n  color: #ca8a04;\n}\n.widget.widget-warning .widget-body h3 {\n  color: #ca8a04;\n}\n.widget.widget-warning .widget-body p {\n  color: #facc15;\n}\n\n.wrapper {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: nowrap;\n}\n.wrapper .sidebar {\n  background-color: #F0F9FF;\n  width: 269px;\n  height: 100vh;\n  overflow-y: auto;\n  border-right: 1px solid #e0e7ff;\n}\n.wrapper .main-content {\n  background-color: #EAEDF5;\n  width: calc(100% - 270px);\n  height: 100vh;\n  overflow-y: auto;\n}\n@media screen and (max-width: 576px) {\n  .wrapper {\n    flex-direction: row;\n    flex-wrap: wrap;\n  }\n  .wrapper .sidebar {\n    width: 100%;\n    top: 0;\n    left: 0;\n    height: 100%;\n    visibility: visible;\n    opacity: 1;\n    transition: 300ms;\n  }\n  .wrapper.rs-open-sidebar .sidebar {\n    left: 0;\n  }\n  .wrapper .main-content {\n    width: 100%;\n  }\n}\n\n.main-content .main-header {\n  background-color: #ffffff;\n  min-height: 50px;\n  display: flex;\n  justify-content: space-between;\n  padding: 0px 15px;\n  align-items: center;\n}\n.main-content .content {\n  padding: 15px;\n}\n\n.full-screen .wrapper .sidebar {\n  display: none;\n}\n.full-screen .wrapper .main-content {\n  width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n  display: none;\n}\n.full-screen .wrapper .main-content .content {\n  padding: 0;\n}\n\n.sidebar {\n  padding: 15px 10px;\n  position: relative;\n  /* width */\n}\n.sidebar .logo {\n  text-align: center;\n  margin-bottom: 15px;\n}\n.sidebar .logo img {\n  width: 85px;\n  margin: 0 auto;\n}\n.sidebar .logo h2 {\n  margin-top: 10px;\n  font-size: 18px;\n  color: #475569;\n  font-weight: 700;\n}\n.sidebar .user {\n  margin-bottom: 15px;\n  background-color: #6366f1;\n  color: #ffffff;\n  padding: 15px 10px;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n  width: 40px;\n}\n.sidebar .user .user-info h3 {\n  font-size: 18px;\n  font-weight: 500;\n}\n.sidebar .user .user-info p {\n  font-size: 14px;\n  font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n  width: 0px;\n}\n\n.navigations {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 20px 15px;\n}\n.navigations .navigation-item {\n  text-align: center;\n  min-height: 90px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #ffffff;\n  border-radius: 5px;\n  border: 1px solid #e0e7ff;\n  box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n  transition: 300ms;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n  font-size: 32px;\n  margin-bottom: 5px;\n}\n.navigations .navigation-item a span {\n  display: block;\n  font-weight: 500;\n  width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n  position: fixed;\n  top: 0;\n  left: -270px;\n  width: 270px;\n  height: 100%;\n  background-color: #F0F9FF;\n  padding: 10px;\n  visibility: hidden;\n  opacity: 0;\n  transition: 300ms;\n  cursor: default;\n  overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n  width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  color: red;\n  font-size: 16px;\n  flex-direction: row-reverse;\n  cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n  font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .close-bar:active i.bx {\n  background-color: red;\n  color: #ffffff;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n  margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n  text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n  margin-top: 15px;\n  font-weight: 500;\n  color: #4b5563;\n  font-size: 18px;\n  border-bottom: 1px solid #c7d2fe;\n  padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n  margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li {\n  margin-bottom: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  flex-wrap: nowrap;\n  font-size: 15px;\n  padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n  margin: 0px;\n  margin-right: 5px;\n  font-size: 20px;\n  color: #94a3b8;\n  transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n  background-color: #6366f1;\n  border-radius: 5px;\n  color: #ffffff;\n  cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n  color: #ffffff;\n  margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n  background-color: #4f46e5;\n  cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n  color: #ffffff;\n  transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n  color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n  background-color: #6366f1;\n  border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n  color: #ffffff;\n  margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n  left: 0;\n  visibility: visible;\n  opacity: 1;\n  z-index: 999;\n  transition: 500ms;\n}\n\n.auth-wrap {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n.auth-wrap .auth {\n  width: 50%;\n  height: 100%;\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.auth-wrap .auth .auth-box {\n  width: 350px;\n  margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n  text-align: center;\n  margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n  margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n  width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n  font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n  margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n  height: 45px;\n  border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n  margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n  width: 100%;\n  padding: 5px 15px;\n  border-radius: 8px;\n  font-size: 18px;\n  font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n  background-color: #4f46e5;\n  border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n  background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n  justify-content: flex-start;\n  width: 50%;\n  background-color: #060B4D;\n  height: 100%;\n}\n.auth-wrap .auth-content .content {\n  margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n  color: #e2e8f0;\n  font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n  margin-top: 15px;\n  color: #e0e7ff;\n  font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n  margin-top: 30px;\n  width: 75%;\n}\n@media screen and (max-width: 768px) {\n  .auth-wrap {\n    flex-wrap: wrap;\n  }\n  .auth-wrap .auth {\n    width: 100%;\n  }\n  .auth-wrap .auth .auth-box {\n    width: 80%;\n    margin: 0 auto;\n  }\n  .auth-wrap .auth .auth-box .auth-header h1 {\n    font-size: 1.5rem;\n  }\n  .auth-wrap .auth-content {\n    display: none;\n  }\n}\n\n.profile .user-box {\n  text-align: center;\n  background-color: #eef2ff;\n  padding: 15px;\n}\n.profile .user-box img {\n  width: 75px;\n  margin: 10px auto;\n}\n.profile .user-box .btn {\n  width: 100%;\n  margin: 5px 0px;\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n  height: 100%;\n}\n\nbody {\n  font-family: \"Nunito\", sans-serif;\n  background-color: #EAEDF5;\n  font-size: 1rem;\n}\n\nimg {\n  max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n  font-family: \"Livvic\", sans-serif;\n  color: #1e293b;\n}\n\nh1 {\n  font-size: 32px;\n}\n\nh2 {\n  font-size: 24px;\n}\n\nh3 {\n  font-size: 20px;\n}\n\nh4 {\n  font-size: 18px;\n}\n\nh5 {\n  font-size: 16px;\n}\n\nh6 {\n  font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n  width: 10px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n  background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n  background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n  background: #4f46e5;\n}\n\nh1 {\n  font-size: 30px;\n  font-weight: 700;\n}\n\nh2 {\n  font-size: 24px;\n  font-weight: 700;\n}\n\nh3 {\n  font-size: 18px;\n  font-weight: 600;\n}\n\nh4 {\n  font-size: 16px;\n  font-weight: 600;\n}\n\nh5 {\n  font-size: 14px;\n  font-weight: 600;\n}\n\nh6 {\n  font-size: 12px;\n  font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n  color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n  background-color: #4f46e5 !important;\n  color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n  background-color: #3730a3 !important;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n  background-color: #16a34a !important;\n  color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n  background-color: #166534 !important;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n  background-color: #dc2626 !important;\n  color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n  background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n  background-color: #ca8a04 !important;\n  color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n  background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n  position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n  position: absolute;\n  top: calc(50% - 0.6rem);\n  left: calc(50% - 0.6rem);\n  width: 1.2rem;\n  height: 1.2rem;\n  visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n  visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n  visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n  visibility: hidden;\n}\n\n.box {\n  background-color: #ffffff;\n  border-radius: 5px;\n  margin-bottom: 30px;\n  border: 1px solid #e2e8f0;\n  box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n  padding: 10px 15px;\n  min-height: 45px;\n  border-bottom: 1px solid #f1f5f9;\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n}\n.box .box-body {\n  padding: 10px 15px 15px;\n  overflow-y: auto;\n}\n.box .box-footer {\n  border-top: 1px solid #e2e8f0;\n  padding: 10px 15px 15px;\n}\n\ntable {\n  width: 100%;\n}\n\n.table {\n  width: 100%;\n  overflow: hidden;\n}\n.table thead {\n  border: none !important;\n}\n.table thead tr {\n  background-color: #f1f5f9;\n  border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n  font-weight: 500;\n  color: #1f2937;\n  font-family: \"Livvic\", sans-serif;\n  font-size: 16px;\n}\n.table tbody {\n  border: none !important;\n  font-family: \"Nunito\", sans-serif;\n  font-weight: 500;\n}\n.table tbody tr {\n  position: relative;\n  border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n  position: absolute;\n  top: 0;\n  left: -2px;\n  width: 2px;\n  background-color: #6366f1;\n  height: 100%;\n  content: \"\";\n}\n.table tbody tr td {\n  font-size: 14px;\n  vertical-align: middle;\n  padding: 10px;\n}\n.table tbody tr td .action {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  grid-gap: 5px;\n  font-size: 16px;\n}\n.table tbody tr td .action a {\n  padding: 3px 3px;\n  line-height: 0px;\n  border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n  background-color: #4f46e5;\n  color: #ffffff;\n}\n.table tbody tr:hover {\n  background-color: #eef2ff;\n  cursor: pointer;\n}\n.table tbody tr:hover::after {\n  left: 0;\n  content: \"\";\n  transition: 300ms;\n}\n\n.form-group {\n  margin-bottom: 15px;\n}\n.form-group label {\n  font-weight: 500;\n  font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n  box-shadow: none;\n  border-color: #a5b4fc;\n}\n\n.form-select:focus {\n  box-shadow: none;\n  border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n  width: 3px;\n}\n\n.form-section {\n  padding: 10px;\n  margin-bottom: 30px;\n  background-color: #ffffff;\n  border: 1px solid #f3f4f6;\n}\n.form-section h5 {\n  margin-bottom: 10px;\n  padding-bottom: 5px;\n  border-bottom: 1px solid #e5e7eb;\n  font-size: 18px;\n  font-weight: 500;\n}\n.form-section.form-section-primary {\n  background-color: #eef2ff;\n  border: 1px solid #e0e7ff;\n}\n.form-section.form-section-primary h5 {\n  border-bottom: 1px solid #c7d2fe;\n}\n.form-section.form-section-secondary {\n  background-color: #f8fafc;\n  border: 1px solid #f1f5f9;\n}\n.form-section.form-section-secondary h5 {\n  border-bottom: 1px solid #e2e8f0;\n}\n.form-section.form-section-success {\n  background-color: #f0fdf4;\n  border: 1px solid #dcfce7;\n}\n.form-section.form-section-success h5 {\n  border-bottom: 1px solid #bbf7d0;\n}\n.form-section.form-section-warning {\n  background-color: #fefce8;\n  border: 1px solid #fef9c3;\n}\n.form-section.form-section-warning h5 {\n  border-bottom: 1px solid #fef08a;\n}\n.form-section.form-section-danger {\n  background-color: #fef2f2;\n  border: 1px solid #fee2e2;\n}\n.form-section.form-section-danger h5 {\n  border-bottom: 1px solid #fecaca;\n}\n\n.widget {\n  background-color: #ffffff;\n  padding: 10px;\n  border-radius: 10px;\n  box-shadow: 0px 2px 3px #00000010;\n  border: 1px solid #e0e7ff;\n  min-height: 110px;\n  display: flex;\n  flex-direction: row;\n  flex-wrap: wrap;\n  cursor: pointer;\n  grid-gap: 15px;\n}\n.widget .widget-header {\n  width: 100%;\n  display: flex;\n  justify-content: space-between;\n  position: relative;\n}\n.widget .widget-header .title {\n  color: #4b5563;\n  padding-top: 5px;\n  font-weight: 400;\n}\n.widget .widget-header span {\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  font-size: 18px;\n  background-color: #f3f4f6;\n  line-height: normal;\n  color: #4b5563;\n  padding: 2px 5px;\n  border-radius: 30px;\n}\n.widget .widget-body {\n  width: 100%;\n  text-align: center;\n}\n.widget .widget-body h3 {\n  color: #4b5563;\n  font-size: 20px;\n  font-weight: 600;\n}\n.widget .widget-body p {\n  font-size: 12px;\n  color: #9ca3af;\n}\n.widget.widget-primary .widget-header .title {\n  color: #4f46e5;\n}\n.widget.widget-primary .widget-header span {\n  background-color: #e0e7ff;\n  color: #4f46e5;\n}\n.widget.widget-primary .widget-body h3 {\n  color: #4f46e5;\n}\n.widget.widget-primary .widget-body p {\n  color: #818cf8;\n}\n.widget.widget-success .widget-header .title {\n  color: #16a34a;\n}\n.widget.widget-success .widget-header span {\n  background-color: #dcfce7;\n  color: #16a34a;\n}\n.widget.widget-success .widget-body h3 {\n  color: #16a34a;\n}\n.widget.widget-success .widget-body p {\n  color: #4ade80;\n}\n.widget.widget-danger .widget-header .title {\n  color: #dc2626;\n}\n.widget.widget-danger .widget-header span {\n  background-color: #fee2e2;\n  color: #dc2626;\n}\n.widget.widget-danger .widget-body h3 {\n  color: #dc2626;\n}\n.widget.widget-danger .widget-body p {\n  color: #f87171;\n}\n.widget.widget-warning .widget-header .title {\n  color: #ca8a04;\n}\n.widget.widget-warning .widget-header span {\n  background-color: #fef9c3;\n  color: #ca8a04;\n}\n.widget.widget-warning .widget-body h3 {\n  color: #ca8a04;\n}\n.widget.widget-warning .widget-body p {\n  color: #facc15;\n}\n\n.wrapper {\n  display: flex;\n  justify-content: flex-start;\n  flex-wrap: nowrap;\n}\n.wrapper .sidebar {\n  background-color: #F0F9FF;\n  width: 269px;\n  height: 100vh;\n  overflow-y: auto;\n  border-right: 1px solid #e0e7ff;\n}\n.wrapper .main-content {\n  background-color: #EAEDF5;\n  width: calc(100% - 270px);\n  height: 100vh;\n  overflow-y: auto;\n}\n@media screen and (max-width: 576px) {\n  .wrapper {\n    flex-direction: row;\n    flex-wrap: wrap;\n  }\n  .wrapper .sidebar {\n    width: 100%;\n    top: 0;\n    left: 0;\n    height: 100%;\n    visibility: visible;\n    opacity: 1;\n    transition: 300ms;\n  }\n  .wrapper.rs-open-sidebar .sidebar {\n    left: 0;\n  }\n  .wrapper .main-content {\n    width: 100%;\n  }\n}\n\n.main-content .main-header {\n  background-color: #ffffff;\n  min-height: 50px;\n  display: flex;\n  justify-content: space-between;\n  padding: 0px 15px;\n  align-items: center;\n}\n.main-content .content {\n  padding: 15px;\n}\n\n.full-screen .wrapper .sidebar {\n  display: none;\n}\n.full-screen .wrapper .main-content {\n  width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n  display: none;\n}\n.full-screen .wrapper .main-content .content {\n  padding: 0;\n}\n\n.sidebar {\n  padding: 15px 10px;\n  position: relative;\n  /* width */\n}\n.sidebar .logo {\n  text-align: center;\n  margin-bottom: 15px;\n}\n.sidebar .logo img {\n  width: 85px;\n  margin: 0 auto;\n}\n.sidebar .logo h2 {\n  margin-top: 10px;\n  font-size: 18px;\n  color: #475569;\n  font-weight: 700;\n}\n.sidebar .user {\n  margin-bottom: 15px;\n  background-color: #6366f1;\n  color: #ffffff;\n  padding: 15px 10px;\n  border-radius: 5px;\n  display: flex;\n  align-items: center;\n  grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n  width: 40px;\n}\n.sidebar .user .user-info h3 {\n  font-size: 18px;\n  font-weight: 500;\n}\n.sidebar .user .user-info p {\n  font-size: 14px;\n  font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n  width: 0px;\n}\n\n.navigations {\n  display: grid;\n  grid-template-columns: repeat(2, 1fr);\n  grid-gap: 20px 15px;\n}\n.navigations .navigation-item {\n  text-align: center;\n  min-height: 90px;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  background-color: #ffffff;\n  border-radius: 5px;\n  border: 1px solid #e0e7ff;\n  box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n  transition: 300ms;\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n  font-size: 32px;\n  margin-bottom: 5px;\n}\n.navigations .navigation-item a span {\n  display: block;\n  font-weight: 500;\n  width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n  position: fixed;\n  top: 0;\n  left: -270px;\n  width: 270px;\n  height: 100%;\n  background-color: #F0F9FF;\n  padding: 10px;\n  visibility: hidden;\n  opacity: 0;\n  transition: 300ms;\n  cursor: default;\n  overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n  width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n  display: flex;\n  justify-content: space-between;\n  align-items: center;\n  color: red;\n  font-size: 16px;\n  flex-direction: row-reverse;\n  cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n  font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .close-bar:active i.bx {\n  background-color: red;\n  color: #ffffff;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n  margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n  text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n  margin-top: 15px;\n  font-weight: 500;\n  color: #4b5563;\n  font-size: 18px;\n  border-bottom: 1px solid #c7d2fe;\n  padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n  margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li {\n  margin-bottom: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n  display: flex;\n  align-items: center;\n  justify-content: flex-start;\n  flex-wrap: nowrap;\n  font-size: 15px;\n  padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n  margin: 0px;\n  margin-right: 5px;\n  font-size: 20px;\n  color: #94a3b8;\n  transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n  background-color: #6366f1;\n  border-radius: 5px;\n  color: #ffffff;\n  cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n  color: #ffffff;\n  margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n  background-color: #4f46e5;\n  cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n  color: #ffffff;\n  transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n  color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n  background-color: #6366f1;\n  border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n  color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n  color: #ffffff;\n  margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n  left: 0;\n  visibility: visible;\n  opacity: 1;\n  z-index: 999;\n  transition: 500ms;\n}\n\n.auth-wrap {\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  height: 100vh;\n}\n.auth-wrap .auth {\n  width: 50%;\n  height: 100%;\n  display: flex;\n  justify-content: flex-end;\n  align-items: center;\n}\n.auth-wrap .auth .auth-box {\n  width: 350px;\n  margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n  text-align: center;\n  margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n  margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n  width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n  font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n  margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n  height: 45px;\n  border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n  margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n  width: 100%;\n  padding: 5px 15px;\n  border-radius: 8px;\n  font-size: 18px;\n  font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n  background-color: #4f46e5;\n  border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n  background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n  justify-content: flex-start;\n  width: 50%;\n  background-color: #060B4D;\n  height: 100%;\n}\n.auth-wrap .auth-content .content {\n  margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n  color: #e2e8f0;\n  font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n  margin-top: 15px;\n  color: #e0e7ff;\n  font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n  margin-top: 30px;\n  width: 75%;\n}\n@media screen and (max-width: 768px) {\n  .auth-wrap {\n    flex-wrap: wrap;\n  }\n  .auth-wrap .auth {\n    width: 100%;\n  }\n  .auth-wrap .auth .auth-box {\n    width: 80%;\n    margin: 0 auto;\n  }\n  .auth-wrap .auth .auth-box .auth-header h1 {\n    font-size: 1.5rem;\n  }\n  .auth-wrap .auth-content {\n    display: none;\n  }\n}\n\n.profile .user-box {\n  text-align: center;\n  background-color: #eef2ff;\n  padding: 15px;\n}\n.profile .user-box img {\n  width: 75px;\n  margin: 10px auto;\n}\n.profile .user-box .btn {\n  width: 100%;\n  margin: 5px 0px;\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

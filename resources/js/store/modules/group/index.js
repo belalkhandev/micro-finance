@@ -5,15 +5,33 @@ export default {
 
     state: {
         groups: null,
+
         days: [
-            {'code': 'Saturday', 'name': 'Saturday', 'bn_name': 'শনিবার'},
-            {'code': 'Sunday', 'name': 'Sunday', 'bn_name': 'রবিবার'},
-            {'code': 'Monday', 'name': 'Monday', 'bn_name': 'সোমবার'},
-            {'code': 'Tuesday', 'name': 'Tuesday', 'bn_name': 'মঙ্গলবার'},
-            {'code': 'Wednesday', 'name': 'Wednesday', 'bn_name': 'বুধবার'},
-            {'code': 'Thursday', 'name': 'Thursday', 'bn_name': 'বৃহস্পতিবার'},
-            {'code': 'Friday', 'name': 'Friday', 'bn_name': 'শুক্রবার'},
-        ]
+            {code: 'Saturday', name: 'Saturday', bn_name: 'শনিবার'},
+            {code: 'Sunday', name: 'Sunday', bn_name: 'রবিবার'},
+            {code: 'Monday', name: 'Monday', bn_name: 'সোমবার'},
+            {code: 'Tuesday', name: 'Tuesday', bn_name: 'মঙ্গলবার'},
+            {code: 'Wednesday', name: 'Wednesday', bn_name: 'বুধবার'},
+            {code: 'Thursday', name: 'Thursday', bn_name: 'বৃহস্পতিবার'},
+            {code: 'Friday', name: 'Friday', bn_name: 'শুক্রবার'},
+        ],
+
+        member_types: [
+            {code: 'deposit_weekly', name: 'Weekly', bn_name: 'Weekly'},
+            {code: 'deposit_monthly', name: 'Monthly', bn_name: 'Monthly'},
+            {code: 'loan', name: 'Loan', bn_name: 'Loan'},
+        ],
+
+        relations: [
+            {code: 'father', name: 'Father', bn_name: 'Father'},
+            {code: 'mother', name: 'Mother', bn_name: 'Mother'},
+            {code: 'son', name: 'Son', bn_name: 'Son'},
+            {code: 'daughter', name: 'Daughter', bn_name: 'Daughter'},
+            {code: 'brother', name: 'Brother', bn_name: 'Brother'},
+            {code: 'sister', name: 'Sister', bn_name: 'Sister'},
+            {code: 'wife', name: 'Wife', bn_name: 'Wife'},
+            {code: 'uncle', name: 'Uncle', bn_name: 'Uncle'},
+        ],
     },
 
     getters: {
@@ -23,6 +41,14 @@ export default {
 
         days(state) {
             return state.days
+        },
+
+        member_types(state) {
+            return state.member_types
+        },
+
+        relations(state) {
+            return state.relations
         }
     },
 

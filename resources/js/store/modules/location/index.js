@@ -140,7 +140,7 @@ export default {
             }
         },
 
-        async getPostOffice({ commit }) {
+        async getPostOffices({ commit }) {
             const res = await axios.get('/post-office/list')
 
             if (res.data.status) {

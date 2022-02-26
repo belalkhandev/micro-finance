@@ -23,7 +23,7 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(post_office, i) in fetchPostOffices">
+                        <tr v-for="(post_office, i) in fetchPostOffices" :key="i">
                             <td>{{ ++i }}</td>
                             <td>{{ post_office.name }}</td>
                             <td>{{ post_office.bn_name }}</td>
@@ -83,7 +83,7 @@ export default ({
 
     methods: {
         ...mapActions({
-            getPostOffices: 'location/getPostOffice',
+            getPostOffices: 'location/getPostOffices',
             deletePostOffice: 'location/deletePostOffice',
         }),
 

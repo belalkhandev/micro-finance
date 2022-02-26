@@ -17,7 +17,7 @@
                                 <div class="col-md-8">
                                     <select class="form-control" v-model="district_id">
                                         <option value="">Select</option>
-                                        <option v-for="(district, i) in fetchDistricts" :value="district.id">{{ district.name }}</option>
+                                        <option v-for="(district, i) in fetchDistricts" :value="district.id" :key="i">{{ district.name }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -30,7 +30,7 @@
                                 <div class="col-md-8">
                                     <select class="form-control" v-model="form.upazilla_id">
                                         <option value="">Select</option>
-                                        <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id">{{ upazilla.name }}</option>
+                                        <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id" :key="i">{{ upazilla.name }}</option>
                                     </select>
                                     <span class="text-danger" v-if="errors">{{ errors.upazilla_id ? errors.upazilla_id[0] : '' }}</span>
                                 </div>
@@ -44,7 +44,7 @@
                                 <div class="col-md-8">
                                     <select class="form-control" v-model="form.union_id">
                                         <option value="">Select</option>
-                                        <option v-for="(union, i) in fetchUnions" :value="union.id">{{ union.name }}</option>
+                                        <option v-for="(union, i) in fetchUnions" :value="union.id" :key="i">{{ union.name }}</option>
                                     </select>
                                     <span class="text-danger" v-if="errors">{{ errors.union_id ? errors.union_id[0] : '' }}</span>
                                 </div>

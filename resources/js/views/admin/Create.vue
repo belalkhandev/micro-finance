@@ -73,7 +73,7 @@
                                 <div class="col-md-7">
                                     <select class="form-control" v-model="form.role_id">
                                         <option value="">Select</option>
-                                        <option v-for="(role, i) in filterRoles" :value="role.id">{{ role.name }}</option>
+                                        <option v-for="(role, i) in filterRoles" :value="role.id" :key="i">{{ role.name }}</option>
                                     </select>
                                 </div>
                                 <span class="text-danger text-sm text-right" v-if="errors">{{ errors.role_id ? 'Role is required' : '' }}</span>
