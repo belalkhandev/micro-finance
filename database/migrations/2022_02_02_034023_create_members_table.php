@@ -28,7 +28,7 @@ class CreateMembersTable extends Migration
             $table->unsignedBigInteger('village_id')->nullable();
             $table->unsignedBigInteger('post_office_id')->nullable();
             $table->unsignedBigInteger('union_id')->nullable();
-            $table->unsignedBigInteger('upazilla_id')->nullable();
+            $table->unsigMenedBigInteger('upazilla_id')->nullable();
             $table->unsignedBigInteger('district_id')->nullable();
             $table->unsignedBigInteger('division_id')->nullable();
             $table->string('photo')->nullable();

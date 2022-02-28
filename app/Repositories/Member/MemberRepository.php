@@ -39,7 +39,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->district_id = $request->input('district_id');
         $member->division_id = $request->input('division_id');
         $member->joining_date = $request->input('joining_date');
-        $member->member_type = 'deposit_weekly'; //$request->input('member_type');
+        $member->member_type = $request->input('member_type');
         $member->member_group_id = $request->input('member_group_id');
         $member->day = $request->input('day');
 
@@ -140,7 +140,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $nominee->nid = $request->input('nominee_nid');
         $nominee->gender = $request->input('nominee_gender');
         $nominee->address = $request->input('nominee_address');
-        $nominee->relation = $request->input('nominee_relation');
+        $nominee->relation = $request->input('relation');
 
         if ($request->hasFile('nominee_photo')) {
             $path = FileUpload::uploadWithResize($request, 'nominee_photo', 'nominees', 200, 200);
@@ -163,7 +163,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $nominee->nid = $request->input('nominee_nid');
         $nominee->gender = $request->input('nominee_gender');
         $nominee->address = $request->input('nominee_address');
-        $nominee->relation = $request->input('nominee_relation');
+        $nominee->relation = $request->input('relation');
 
         if ($request->hasFile('nominee_photo')) {
             //delete previous profile photo
