@@ -1,79 +1,196 @@
 <template>
-    <div class="row">
-        <div class="col-md-8">
+    <div class="row" v-if="member">
+        <div class="col-md-3">
             <div class="box">
-                <div class="box-header bg-indigo-400">
+                <div class="box-body">
+                    <div class="member member-show">
+                        <div class="member-img mt-2 mb-2">
+                            <img v-if="member.photo" :src="member.photo" alt="" class="w-24">
+                            <img v-else src="../../assets/images/user.png" alt="" class="w-24">
+                        </div>
+                        <div class="member-info text-center mb-4">
+                            <h3>{{ member.name }}</h3>
+                            <a href="tel:01798673163">{{ member.phone }}</a>
+                        </div>
+                        <div class="member-nav mb-4">
+                            <ul>
+                                <li>
+                                    <router-link :to="{ name:'MemberShow', params: { member_id: member.id }}">
+                                        <span>Profile</span>
+                                        <i class='bx bx-chevrons-right'></i>
+                                    </router-link>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>New transaction</span>
+                                        <i class='bx bx-chevrons-right'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>Transction history</span>
+                                        <i class='bx bx-chevrons-right'></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="">
+                                        <span>Account Details</span>
+                                        <i class='bx bx-chevrons-right'></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="member-account mb-2">
+                            <h5>Account Overview</h5>
+                            <table class="w-100">
+                                <tr>
+                                    <td>Account no</td>
+                                    <td class="text-right">{{ member.account_no }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Member Type</td>
+                                    <td class="text-right" v-if="member.member_type === 'deposit_weekly'">DPS(Weekly)</td>
+                                    <td class="text-right" v-else-if="member.member_type === 'deposit_monthly'">DPS(Monthly)</td>
+                                    <td class="text-right" v-else="member.member_type === 'loan'">Loan</td>
+                                </tr>
+                                <tr>
+                                    <td>Address</td>
+                                    <td class="text-right">{{ member.address }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Status</td>
+                                    <td class="text-success text-right" v-if="member.is_active">Active</td>
+                                    <td class="text-danger text-right" v-else>Inactive</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="member-download">
+                            <h5 class="member-section-ttile">Download</h5>
+                            <a href="" class="btn btn-outline-primary w-100">
+                                <i class="bx bx-download"></i>
+                                Member Profile
+                            </a>
+                            <a href="" class="btn btn-outline-success w-100 mt-2">                                            <i class="bx bx-download"></i>
+                                Transaction History
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="box">
+                <div class="box-header">
                     <div class="box-title">
-                        <h5 class="text-white">Profile</h5>
+                        <h5>Member Profile</h5>
+                    </div>
+                    <div class="action">
+                        <a href="" class="btn btn-outline-secondary btn-sm">
+                            <i class="bx bx-edit"></i>
+                            Edit Profile
+                        </a>
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="profile" v-if="user">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="user-box">
-                                    <img v-if="user.profile && user.profile.photo" :src="user.profile.photo" alt="User photo">
-                                    <img v-else src="../../assets/images/user.png" alt="">
-                                    <div class="mb-3 mt-3">
-                                        <h3>{{ user.name }}</h3>
-                                        <h5 class="text-indigo-600">{{user.role_name }}</h5>
-                                    </div>
-                                    <button type="button" class="btn btn-sm btn-warning">Edit Profile</button>
-                                    <button type="button" class="btn btn-sm btn-danger">Deactive Account</button>
+                    <div class="member-details">
+                        <div class="member-detail">
+                            <h3>Personal Information</h3>
+                            <div class="member-infos">
+                                <div class="member-info">
+                                    <p>Name</p>
+                                    <h5>{{ member.name }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Father/Spouse name</p>
+                                    <h5>{{ member.father_name }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Mother  name</p>
+                                    <h5>{{ member.mother_name }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Phone</p>
+                                    <h5>{{ member.phone}}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Gender</p>
+                                    <h5>{{ member.gender }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>NID</p>
+                                    <h5>{{ member.nid }}</h5>
                                 </div>
                             </div>
-                            <div class="col-md-7">
-                                <div class="user-info">
-                                    <table class="table table-borderless">
-                                        <tbody>
-
-                                        <tr>
-                                            <th>Name</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Email</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.email }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Phone</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.phone }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Gender</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.profile ? user.profile.gender : '-' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Address</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.profile ? user.profile.address : '-' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Birthdate</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.profile ? user.profile.birthdate : '-' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Account Status</th>
-                                            <td class="py-2">:</td>
-                                            <td>
-                                                <strong v-if="user.is_active" class="text-green-600">
-                                                    Active
-                                                </strong>
-                                                <strong v-else="user.is_active" class="text-red-600">Deactivate</strong>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
+                        </div>
+                        <div class="member-detail">
+                            <h3>Nominee information</h3>
+                            <div class="member-infos">
+                                <div class="member-info">
+                                    <p>Name</p>
+                                    <h5>{{ member.nominee.name }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Father/Spouse name</p>
+                                    <h5>{{ member.nominee.father_name }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Mother  name</p>
+                                    <h5>{{ member.nominee.mother_name }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Gender</p>
+                                    <h5>{{ member.nominee.gender }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Phone</p>
+                                    <h5>{{ member.nominee.phone }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Gender</p>
+                                    <h5>{{ member.nominee.gender }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>NID</p>
+                                    <h5>{{ member.nominee.nid }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Relation</p>
+                                    <h5>{{ member.nominee.relation }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Address</p>
+                                    <h5>{{ member.nominee.address }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-detail">
+                            <h3>Account information</h3>
+                            <div class="member-infos">
+                                <div class="member-info">
+                                    <p>Account No</p>
+                                    <h5>{{ member.account_no }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Joining Date</p>
+                                    <h5>{{ member.joining_date }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Member Type</p>
+                                    <h5>{{ member.member_type }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Group</p>
+                                    <h5>{{ 'No group' }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Day</p>
+                                    <h5>{{ member.day }}</h5>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <div class="box-footer"></div>
             </div>
         </div>
     </div>
@@ -86,31 +203,31 @@ export default({
     name: 'AdminProfile',
     data() {
         return {
-            user_id: this.$route.params.admin_id
+            member_id: this.$route.params.member_id
         }
     },
 
     computed: {
         ...mapGetters ({
-            users: 'user/users'
+            members: 'member/members'
         }),
 
-        user() {
-            if (this.users && this.user_id) {
-                return this.users.find(user => user.id == this.user_id)
+        member() {
+            if (this.members && this.member_id) {
+                return this.members.find(member => member.id == this.member_id)
             }
         }
     },
 
     methods: {
         ...mapActions({
-            getUsers: 'user/getUsers'
+            getMembers: 'member/getMembers'
         })
     },
 
     mounted() {
-        if (!this.users) {
-            this.getUsers();
+        if (!this.members) {
+            this.getMembers();
         }
     }
 

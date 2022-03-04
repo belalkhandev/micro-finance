@@ -13,25 +13,35 @@
                 <thead>
                     <tr>
                         <th>#</th>
+                        <th>Account no</th>
                         <th>Name</th>
-                        <th>Account No</th>
+                        <th>Father/Spouse Name</th>
+                        <th>Mother Name</th>
                         <th>Member Type</th>
-                        <th>Father Name</th>
-                        <th>Village</th>
-                        <th>Address</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr v-for="(member, i) in fetchMembers" :key="i">
                         <td>{{ i+1 }}</td>
-                        <td>{{ member.name }}</td>
                         <td>{{ member.account_no }}</td>
-                        <td>{{ member.member_type }}</td>
+                        <td>{{ member.name }}</td>
                         <td>{{ member.father_name }}</td>
-                        <td>{{ member.village_id }}</td>
-                        <td>{{ member.address }}</td>
-                        <td></td>
+                        <td>{{ member.mother_name }}</td>
+                        <td v-if="member.member_type === 'deposit_weekly'" class="text-indigo-600">Weekly</td>
+                        <td v-else-if="member.member_type === 'deposit_monthly'" class="text-green-600">Monthly</td>
+                        <td v-else="member.member_type === 'loan'" class="text-indigo-600">Loan</td>
+                        <td v-if="member.is_active" class="text-success">Active</td>
+                        <td v-else class="text-danger">Inactive</td>
+                        <td>
+                            <div class="action">
+                                <a href="#" class="btn btn-outline-primary btn-sm mr-1"><i class='bx bx-transfer-alt'></i></a>
+                                <router-link :to="{ name:'MemberShow', params: { member_id: member.id }}" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></router-link>
+                                <router-link :to="{ name: 'EditMember', params:{member_id: member.id}}" class="btn btn-outline-danger btn-sm"><i class="bx bx-edit"></i></router-link>
+                                <a href="#" class="btn btn-outline-warning btn-sm" @click.prevent="deleteConfirm(member.id)"><i class="bx bx-trash"></i></a>
+                            </div>
+                        </td>
                     </tr>
                 </tbody>
             </table>

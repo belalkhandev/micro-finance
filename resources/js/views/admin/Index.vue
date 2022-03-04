@@ -36,11 +36,11 @@
                             <td>{{ admin.is_active ? 'Active' : 'Inactive' }}</td>
                             <td>
                                 <div class="action">
-                                    <router-link :to="{ name:'ShowAdmin', params: { admin_id: admin.id }}" class="text-green-600">
+                                    <router-link :to="{ name:'ShowAdmin', params: { admin_id: admin.id }}" class="btn btn-outline-success btn-sm">
                                         <i class="bx bx-show"></i>
                                     </router-link>
-                                    <a href="#" class="text-orange-400" @click.prevent="showEditModal(admin)"><i class="bx bx-edit"></i></a>
-                                    <a href="#" class="text-red-400" @click.prevent="deleteConfirm(admin.id)"><i class="bx bx-trash"></i></a>
+                                    <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="showEditModal(admin)"><i class="bx bx-edit"></i></a>
+                                    <a href="#" class="btn btn-outline-warning btn-sm" @click.prevent="deleteConfirm(admin.id)"><i class="bx bx-trash"></i></a>
                                 </div>
                             </td>
                         </tr>

@@ -86,7 +86,7 @@ const routes = [
         name: 'MemberShow',
         component: () => import('../views/member/Show.vue'),
         meta: {
-            title: 'Members list'
+            title: 'Member Details'
         },
     },
     {

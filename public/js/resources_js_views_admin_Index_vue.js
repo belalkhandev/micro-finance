@@ -1055,7 +1055,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
           admin_id: admin.id
         }
       },
-      "class": "text-green-600"
+      "class": "btn btn-outline-success btn-sm"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
         return [_hoisted_11];
@@ -1067,7 +1067,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS, DYNAMIC_SLOTS */
     , ["to"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "#",
-      "class": "text-orange-400",
+      "class": "btn btn-outline-danger btn-sm",
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $options.showEditModal(admin);
       }, ["prevent"])
@@ -1075,7 +1075,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* PROPS */
     , _hoisted_12), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
       href: "#",
-      "class": "text-red-400",
+      "class": "btn btn-outline-warning btn-sm",
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $options.deleteConfirm(admin.id);
       }, ["prevent"])
