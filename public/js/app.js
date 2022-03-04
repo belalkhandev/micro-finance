@@ -26766,6 +26766,24 @@ var routes = [{
     title: 'Update member'
   }
 }, {
+  path: '/members/transaction/new/:member_id',
+  name: 'MemberNewTransaction',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_member_NewTransaction_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/NewTransaction.vue */ "./resources/js/views/member/NewTransaction.vue"));
+  },
+  meta: {
+    title: 'Member new transaction'
+  }
+}, {
+  path: '/members/transaction/all/:member_id',
+  name: 'MemberAllTransaction',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_member_AllTransaction_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/AllTransaction.vue */ "./resources/js/views/member/AllTransaction.vue"));
+  },
+  meta: {
+    title: 'Member transaction history'
+  }
+}, {
   path: '/application/dps',
   name: 'ApplicationDPS',
   component: function component() {
@@ -54119,7 +54137,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_NewTransaction_vue":1,"resources_js_views_member_AllTransaction_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

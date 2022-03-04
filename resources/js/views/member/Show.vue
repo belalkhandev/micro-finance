@@ -21,22 +21,16 @@
                                     </router-link>
                                 </li>
                                 <li>
-                                    <a href="">
+                                    <router-link :to="{ name:'MemberNewTransaction', params: { member_id: member.id }}">
                                         <span>New transaction</span>
                                         <i class='bx bx-chevrons-right'></i>
-                                    </a>
+                                    </router-link>
                                 </li>
                                 <li>
-                                    <a href="">
-                                        <span>Transction history</span>
+                                    <router-link :to="{ name:'MemberAllTransaction', params: { member_id: member.id }}">
+                                        <span>Transaction history</span>
                                         <i class='bx bx-chevrons-right'></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="">
-                                        <span>Account Details</span>
-                                        <i class='bx bx-chevrons-right'></i>
-                                    </a>
+                                    </router-link>
                                 </li>
                             </ul>
                         </div>

@@ -106,6 +106,22 @@ const routes = [
         }
     },
     {
+        path: '/members/transaction/new/:member_id',
+        name: 'MemberNewTransaction',
+        component: () => import('../views/member/NewTransaction.vue'),
+        meta: {
+            title: 'Member new transaction'
+        }
+    },
+    {
+        path: '/members/transaction/all/:member_id',
+        name: 'MemberAllTransaction',
+        component: () => import('../views/member/AllTransaction.vue'),
+        meta: {
+            title: 'Member transaction history'
+        }
+    },
+    {
         path: '/application/dps',
         name: 'ApplicationDPS',
         component: () => import('../views/application/dps/Index.vue'),
