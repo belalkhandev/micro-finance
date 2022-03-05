@@ -7,7 +7,7 @@
                         <h4>DPS application list</h4>
                     </div>
                     <div class="box-action">
-                        <button class="btn btn-sm btn-primary">New member</button>
+                        <router-link :to="{ name:'CreateDPS' }" class="btn btn-sm btn-primary">New DPS Application</router-link>
                     </div>
                 </div>
                 <div class="box-body">
@@ -26,7 +26,12 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                            <tr v-if="filterApplications">
+                                <td></td>
+                            </tr>
+                            <tr v-else>
+                                <td colspan="9">No application found</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -54,13 +59,17 @@ export default ({
 
     computed: {
         ...mapGetters({
-
+            applications: 'dps/applications'
         }),
+
+        filterApplications() {
+            return this.applications;
+        }
     },
 
     methods: {
         ...mapActions({
-
+            getApplications: 'dps/getApplications'
         }),
 
         showEditModal(data) {
@@ -73,7 +82,7 @@ export default ({
                 text: "Are you sure? You won't be able to revert this!",
                 icon: "warning",
                 showCancelButton: true,
-                confirmButtonColor: "#3085d6",
+                confirmButtonColor: "#5430d6",
                 confirmButtonText: "Yes, Delete it!",
                 cancelButtonColor: '#c82333',
             }).then((res) => {
@@ -95,7 +104,7 @@ export default ({
     },
 
     mounted() {
-
+        this.getApplications();
     }
 
 

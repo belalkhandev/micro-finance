@@ -4,14 +4,147 @@
             <div class="box-title">
                 <h5>Create DPS Application</h5>
             </div>
+            <div class="box-action">
+                <router-link :to="{name: 'ApplicationDPS'}" class="btn btn-primary btn-sm">DPS application list</router-link>
+            </div>
         </div>
-        <div class="box-body"></div>
+        <div class="box-body">
+            <form @submit.prevent="storeDpsApplication">
+                <div class="row">
+                    <div class="col-md-8 offset-md-2">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Member</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="member-select" :class="{open: isOpen}">
+                                        <div class="member-input" @click.prevent="showMemberList">
+                                            <input type="text" v-model="member_input_text" class="form-control" placeholder="Choose Member" readonly>
+                                            <span class="select-icon">
+                                                <i class="bx bx-chevron-down"></i>
+                                            </span>
+                                        </div>
+                                        <div class="member-list">
+                                            <div class="member-search">
+                                                <input type="text" v-model="search_key" placeholder="Search by account no, name, phone" class="form-control">
+                                                <span class="list-close" @click="closeMemberList">
+                                                    <i class="bx bx-x"></i>
+                                                </span>
+                                            </div>
+                                            <div class="members">
+                                                <div class="member" v-for="(member, i) in filterMembers" :key="member.id" @click.prevent="chooseMember(member)">
+                                                    <p>{{ member.account_no }} - {{ member.name }} - {{ member.phone }} ({{ member.member_type == 'deposit_weekly' ? 'Weekly' : 'Monthly' }})</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Deposit Amount</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.dps_amount" placeholder="Enter deposit amount" class="form-control" @keyup="dpsCalculation">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Year</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.year" placeholder="0" class="form-control" @keyup="dpsCalculation">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Total Deposit</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.total_dps" placeholder="0" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Total Receive/Getting</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.receiving" placeholder="0" class="form-control" @keyup="dpsCalculation">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Profit</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.profit" placeholder="0" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Application Type</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="mt-2">
+                                        <label class="mr-4">
+                                            <input type="radio" name="application_type" value="weekly" v-model="form.dps_type">
+                                            <span class="ml-1">Weekly</span>
+                                        </label>
+
+                                        <label>
+                                            <input type="radio" name="application_type" value="monthly" v-model="form.dps_type">
+                                            <span class="ml-1">Monthly</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Start From</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <select v-model="form.w_day" class="form-control" id="w_day">
+                                                <option value="">Select Day</option>
+                                                <option v-for="(day, i) in days" :value="day.code">{{ day.name }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="date" v-model="form.m_date" id="m_date" class="form-control" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8 text-right">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
         <div class="box-footer"></div>
     </div>
 </template>
 
 <script>
-import {mapGetters, mapActions} from "vuex";
+import {mapActions, mapGetters} from "vuex";
 import $ from 'jquery'
 
 export default ({
@@ -20,16 +153,21 @@ export default ({
     data() {
         return {
             form: {
-                name: "",
-                email: "",
-                phone: "",
-                password: "",
-                password_confirmation: "",
-                role_id: "",
-                photo: null
+                member_id: null,
+                dps_amount: "",
+                total_dps: "",
+                year: 3,
+                receiving: "",
+                profit: "",
+                dps_type: "weekly",
+                w_day: "",
+                m_date: ""
             },
+            member_input_text: "",
+            search_key: "",
             errors: null,
             error: null,
+            isOpen: false
         }
     },
 
@@ -37,20 +175,83 @@ export default ({
         ...mapGetters({
             validation_errors: 'validation_errors',
             error_message: 'error_message',
+            members: 'member/members',
+            application_types: 'group/application_types',
+            days: 'group/days'
         }),
 
         filterRoles(){
             return this.roles
         },
+
+        filterMembers()
+        {
+            if (this.members && this.members.length)
+            {
+                if (this.search_key.length > 1) {
+                    return this.members.filter((member) => {
+                        return member.member_type !== 'loan'
+                            && (member.account_no.toLowerCase().includes(this.search_key.toLowerCase())
+                            || member.name.toLowerCase().includes(this.search_key.toLowerCase())
+                            || member.phone.toLowerCase().includes(this.search_key.toLowerCase()))
+                    });
+                }
+                return this.members.filter((member) => {
+                    return member.member_type !== 'loan'
+                });
+            }
+
+            return this.members;
+        }
+
     },
 
     methods: {
         ...mapActions({
-
+            getMembers: 'member/getMembers'
         }),
 
-        handlePhoto(){
-            this.form.photo = this.$refs.photo.files[0];
+        showMemberList() {
+            this.isOpen = !this.isOpen
+            $('.member-input .form-control').focus();
+        },
+
+        closeMemberList() {
+            this.isOpen = !this.isOpen
+        },
+
+        chooseMember(member) {
+            this.form.member_id = member.id;
+            this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone+ ' ('+ (member.member_type === 'deposit_weekly' ? 'Weekly' : 'Monthly') +')' ;
+
+            if (member.member_type === 'deposit_weekly') {
+                this.form.w_day = member.day;
+                this.form.dps_type = "weekly";
+                $('#m_date').prop("disabled", true);
+                $('#w_day').prop("disabled", false);
+                this.form.m_date = "";
+            } else if (member.member_type === 'deposit_monthly') {
+                $('#w_day').prop("disabled", true);
+                $('#m_date').prop("disabled", false);
+                this.form.dps_type = "monthly";
+                this.form.w_day = "";
+            }
+
+            this.search_key = "";
+            this.isOpen = !this.isOpen;
+            this.dpsCalculation();
+        },
+
+        dpsCalculation() {
+            let dps_installment = 0;
+            if (this.form.dps_type === 'weekly') {
+                dps_installment = this.form.year*54;
+            } else {
+                dps_installment = this.form.year*12;
+            }
+
+            this.form.total_dps = dps_installment*this.form.dps_amount
+            this.form.profit = this.form.receiving - this.form.total_dps;
         },
 
         storeUser() {
@@ -86,7 +287,9 @@ export default ({
     },
 
     mounted() {
-
+        if (!this.members) {
+            this.getMembers();
+        }
     },
 })
 </script>

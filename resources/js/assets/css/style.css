@@ -918,4 +918,72 @@ table {
     color: #1e293b;
     font-weight: 400;
     font-size: 16px;
+}
+
+.member-select {
+    position: relative;
+}
+.member-select .member-input {
+    position: relative;
+}
+.member-select .member-input .form-control {
+    cursor: pointer;
+}
+.member-select .member-input .select-icon {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    color: #64748b;
+}
+.member-select .member-list {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    display: none;
+}
+.member-select .member-list .member-search {
+    position: relative;
+}
+.member-select .member-list .member-search .form-control {
+    border: none;
+    border-bottom: 1px solid #e2e8f0;
+    border-radius: 0px;
+}
+.member-select .member-list .member-search .list-close {
+    position: absolute;
+    top: 7px;
+    right: 10px;
+    font-size: 20px;
+    color: #ef4444;
+    line-height: 0;
+    cursor: pointer;
+}
+.member-select .member-list .member-search .list-close:active {
+    background-color: #ef4444;
+    color: #ffffff;
+}
+.member-select .member-list .members {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 5px 0px;
+}
+.member-select .member-list .members .member {
+    font-size: 14px;
+    cursor: pointer;
+    padding: 7px 5px;
+    border-bottom: 1px dashed #e2e8f0;
+}
+.member-select .member-list .members .member:hover {
+    background-color: #e0e7ff;
+    transition: 200ms;
+}
+.member-select .member-list .members::-webkit-scrollbar {
+    width: 5px;
+}
+.member-select.open .member-list {
+    display: block;
 }/*# sourceMappingURL=style.css.map */
