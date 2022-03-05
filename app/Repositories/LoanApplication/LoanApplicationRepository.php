@@ -2,18 +2,18 @@
 
 namespace App\Repositories\LoanApplication;
 
-use App\Models\Expense;
-use Carbon\Carbon;
+use App\Models\LoanApplication;
+use App\Models\LoanInstallment;
 use Illuminate\Support\Facades\Auth;
 
 class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function all()
     {
-        $expenses = Expense::get();
+        $applications = LoanApplication::latest()->get();
 
-        if ($expenses->isNotEmpty()) {
-            return $expenses;
+        if ($applications->isNotEmpty()) {
+            return $applications;
         }
 
         return false;
@@ -21,15 +21,25 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function store($request)
     {
-        $expense = new Expense();
-        $expense->expense_category_id = $request->input('expense_category_id');
-        $expense->description = $request->input('description');
-        $expense->amount = $request->input('amount');
-        $expense->expense_date = $request->input('expense_date') ? Carbon::parse($request->input('expense_date'))->format('Y-m-d') : Carbon::now()->format('Y-m-d');
-        $expense->created_by = Auth::guard('sanctum')->user()->id;
+        $loan = new LoanApplication();
+        $loan->member_id = $request->input('member_id');
+        $loan->dps_amount = $request->input('dps_amount');
+        $loan->year = $request->input('year');
+        $loan->receiving = $request->input('receiving');
+        $loan->profit = $request->input('profit');
+        $loan->balance = $request->input('balance');
+        $loan->dps_type = $request->input('dps_type');
 
-        if ($expense->save()) {
-            return $expense;
+        if ($request->input('dps_type') === 'weekly') {
+            $loan->w_day = $request->input('w_day');
+        }else {
+            $loan->w_date = databaseFormattedDate($request->input('w_date'));
+        }
+
+        $loan->created_by = Auth::guard('sanctum')->user()->id;
+
+        if ($loan->save()) {
+            return $loan;
         }
 
         return false;
@@ -38,15 +48,25 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function update($request, $id)
     {
-        $expense = Expense::find($id);
-        $expense->expense_category_id = $request->input('expense_category_id');
-        $expense->description = $request->input('description');
-        $expense->amount = $request->input('amount');
-        $expense->expense_date = $request->input('expense_date') ? Carbon::parse($request->input('expense_date'))->format('Y-m-d') : Carbon::now()->format('Y-m-d');
-        $expense->updated_by = Auth::guard('sanctum')->user()->id;
+        $loan = LoanApplication::find($id);
+        $loan->member_id = $request->input('member_id');
+        $loan->dps_amount = $request->input('dps_amount');
+        $loan->year = $request->input('year');
+        $loan->receiving = $request->input('receiving');
+        $loan->profit = $request->input('profit');
+        $loan->balance = $request->input('balance');
+        $loan->dps_type = $request->input('dps_type');
 
-        if ($expense->save()) {
-            return $expense;
+        if ($request->input('dps_type') === 'weekly') {
+            $loan->w_day = $request->input('w_day');
+        }else {
+            $loan->w_date = databaseFormattedDate($request->input('w_date'));
+        }
+
+        $loan->updated_by = Auth::guard('sanctum')->user()->id;
+
+        if ($loan->save()) {
+            return $loan;
         }
 
         return false;
@@ -54,10 +74,10 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function delete($id)
     {
-        $expense = Expense::find($id);
+        $loan = LoanApplication::find($id);
 
-        if ($expense) {
-            return $expense->delete();
+        if ($loan) {
+            return $loan->delete();
         }
 
         return false;
@@ -65,13 +85,66 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function find($id)
     {
-        $expense = Expense::find($id);
+        $loan = LoanApplication::with('transactions')->find($id);
 
-        if ($expense) {
-            return $expense;
+        if ($loan) {
+            return $loan;
         }
 
         return false;
+    }
+
+    public function loanTransactions($loan_id)
+    {
+        $transactions = LoanApplication::where('loan_application_id', $loan_id)->get();
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function memberLoans($member_id)
+    {
+        $dps = LoanApplication::with('transactions')->where('member_id', $member_id)->get();
+
+        if ($dps) {
+            return $dps;
+        }
+
+        return false;
+    }
+
+    public function memberLoanTransactions($member_id)
+    {
+        $transactions = LoanInstallment::where('member_id', $member_id)->get();
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function transactionStore($request, $loan_id)
+    {
+        // TODO: Implement transactionStore() method.
+    }
+
+    public function transactionUpdate($request, $trans_id)
+    {
+        // TODO: Implement transactionUpdate() method.
+    }
+
+    public function transactionFind($trans_id)
+    {
+        // TODO: Implement transactionFind() method.
+    }
+
+    public function transactionDelete($trans_id)
+    {
+        // TODO: Implement transactionDelete() method.
     }
 
 

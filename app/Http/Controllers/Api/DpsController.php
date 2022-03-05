@@ -3,17 +3,17 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Member\MemberRepositoryInterface;
+use App\Repositories\DpsApplication\DpsApplicationRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class MemberController extends Controller
+class DpsController extends Controller
 {
-    protected $member;
+    protected $dps;
 
-    public function __construct(MemberRepositoryInterface $member)
+    public function __construct(DpsApplicationRepositoryInterface $dps)
     {
-        $this->member = $member;
+        $this->dps = $dps;
     }
 
     /**
@@ -23,22 +23,21 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = $this->member->all();
+        $applications = $this->dps->all();
 
-        if ($members) {
+        if ($applications) {
             return response()->json([
                 'status' => true,
-                'members' => $members,
-                'message' => 'Found members data'
+                'applications' => $applications,
+                'message' => 'Dps applications found'
             ]);
         }
 
         return response()->json([
             'status' => false,
-            'members' => null,
+            'applications' => null,
             'message' => 'No data found'
         ]);
-
     }
 
     /**
@@ -60,32 +59,17 @@ class MemberController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'name' => 'required',
-            'father_name' => 'required',
-            'mother_name' => 'required',
-            'gender' => 'required',
-            'phone' => 'required',
-            'village_id' => 'required',
-            'post_office_id' => 'required',
-            'address' => 'required',
-            'joining_date' => 'required',
-            'account_no' => 'required',
-            'member_type' => 'required',
-            'day' => 'required',
-            'nominee_name' => 'required',
-            'nominee_father_name' => 'required',
-            'nominee_mother_name' => 'required',
-            'nominee_gender' => 'required',
-            'nominee_phone' => 'required',
-            'member_photo' => 'nullable|mimes:jpg,png,jpeg',
-            'nominee_photo' => 'nullable|mimes:jpg,png,jpeg',
+            'member_id' => 'required',
+            'dps_amount' => 'required',
+            'year' => 'required',
+            'receiving' => 'required',
+            'dps_type' => 'required',
         ];
 
         $messages = [
-            'father_name.required' => "Father or spouse name is required",
-            'nominee_father_name.required' => "Father or spouse name is required",
-            'village_id.required' => "Village is required",
-            'post_office_id.required' => "Post office is required",
+            'member_id.required' => 'Member is required',
+            'dps_amount.required' => 'DPS amount is required',
+            'receiving.required' => 'Getting/Receiving Amount is Required'
         ];
 
         $validation = Validator::make($request->all(), $rules, $messages);
@@ -97,21 +81,19 @@ class MemberController extends Controller
             ]);
         }
 
-        $member = $this->member->store($request);
+        $dps = $this->dps->store($request);
 
-        if ($member) {
-            //store nominee
-            $this->member->storeNominee($request, $member->id);
+        if ($dps) {
             return response()->json([
                 'status' => true,
-                'member' => $member,
-                'message' => 'Member has been stored successfully'
+                'dps' => $dps,
+                'message' => 'DPS application has been saved'
             ]);
         }
 
         return response()->json([
             'status' => false,
-            'message' => 'Failed to store member'
+            'message' => 'Failed to store Dps Application'
         ]);
     }
 
@@ -123,13 +105,13 @@ class MemberController extends Controller
      */
     public function show($id)
     {
-        $member = $this->member->find($id);
+        $dps = $this->dps->find($id);
 
-        if ($member) {
+        if ($dps) {
             return response()->json([
                 'status' => true,
-                'member' => $member,
-                'message' => 'Found member data'
+                'member' => $dps,
+                'message' => 'Found DPS application data'
             ]);
         }
 
@@ -151,19 +133,28 @@ class MemberController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
         $rules = [
-            'member_name' => 'required'
+            'member_id' => 'required',
+            'dps_amount' => 'required',
+            'year' => 'required',
+            'receiving' => 'required',
+            'dps_type' => 'required',
         ];
 
-        $validation = Validator::make($request->all(), $rules);
+        $messages = [
+            'member_id.required' => 'Member is required',
+            'dps_amount.required' => 'DPS amount is required',
+            'receiving.required' => 'Getting/Receiving Amount is Required'
+        ];
+
+        $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
             return response()->json([
@@ -172,22 +163,19 @@ class MemberController extends Controller
             ]);
         }
 
-        $member = $this->member->update($request, $id);
+        $dps = $this->dps->update($request, $id);
 
-        if ($member) {
-            //store none
-            $this->member->updateNominee($request, $member->nominee->id);
+        if ($dps) {
             return response()->json([
                 'status' => true,
-                'member' => $member,
-                'message' => 'Member has been updated successfully'
+                'dps' => $dps,
+                'message' => 'DPS application has been updated'
             ]);
         }
 
         return response()->json([
             'status' => false,
-            'member' => null,
-            'message' => 'Failed to update member'
+            'message' => 'Failed to update Dps Application'
         ]);
     }
 
@@ -199,16 +187,17 @@ class MemberController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->member->delete($id)) {
+        if ($this->dps->delete($id)) {
             return response()->json([
                 'status' => true,
-                'message' => 'member has been deleted successfully'
+                'message' => 'Dps application has been deleted successfully'
             ]);
         }
 
         return response()->json([
             'status' => false,
-            'message' => 'Failed to delete member'
+            'message' => 'Failed to delete Dps application'
         ]);
     }
+
 }
