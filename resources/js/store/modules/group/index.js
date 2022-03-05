@@ -32,6 +32,11 @@ export default {
             {code: 'wife', name: 'Wife', bn_name: 'Wife'},
             {code: 'uncle', name: 'Uncle', bn_name: 'Uncle'},
         ],
+
+        application_types: [
+            {code: 'weekly', name: 'Weekly', bn_name: 'Weekly'},
+            {code: 'monthly', name: 'Monthly', bn_name: 'Monthly'},
+        ]
     },
 
     getters: {
@@ -49,6 +54,10 @@ export default {
 
         relations(state) {
             return state.relations
+        },
+
+        application_types (state) {
+            return state.application_types
         }
     },
 

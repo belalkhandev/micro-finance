@@ -4,6 +4,7 @@ import location from './modules/location'
 import user from './modules/user'
 import group from './modules/group'
 import member from './modules/member'
+import dps from './modules/dps'
 
 export default createStore({
     state: {
@@ -38,6 +39,7 @@ export default createStore({
     modules: {
         auth, user,
         location,
-        group, member
+        group, member,
+        dps,
     }
 })

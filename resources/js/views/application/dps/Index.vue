@@ -11,7 +11,24 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Member</th>
+                            <th>Acc. No</th>
+                            <th>Deposit</th>
+                            <th>Year</th>
+                            <th>Total Deposit</th>
+                            <th>Total Receive</th>
+                            <th>Profit</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
+                        </tbody>
+                    </table>
                 </div>
                 <div class="box-footer text-right">
                     <p>Pagination here</p>

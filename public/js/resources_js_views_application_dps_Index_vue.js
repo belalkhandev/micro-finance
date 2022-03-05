@@ -77,7 +77,7 @@ var _hoisted_1 = {
   "class": "row"
 };
 
-var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-12\"><div class=\"box\"><div class=\"box-header\"><div class=\"box-title\"><h4>DPS application list</h4></div><div class=\"box-action\"><button class=\"btn btn-sm btn-primary\">New member</button></div></div><div class=\"box-body\"></div><div class=\"box-footer text-right\"><p>Pagination here</p></div></div></div><div class=\"col-md-4\"></div>", 2);
+var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"col-md-12\"><div class=\"box\"><div class=\"box-header\"><div class=\"box-title\"><h4>DPS application list</h4></div><div class=\"box-action\"><button class=\"btn btn-sm btn-primary\">New member</button></div></div><div class=\"box-body\"><table class=\"table\"><thead><tr><th>#</th><th>Member</th><th>Acc. No</th><th>Deposit</th><th>Year</th><th>Total Deposit</th><th>Total Receive</th><th>Profit</th><th></th></tr></thead><tbody></tbody></table></div><div class=\"box-footer text-right\"><p>Pagination here</p></div></div></div><div class=\"col-md-4\"></div>", 2);
 
 var _hoisted_4 = [_hoisted_2];
 function render(_ctx, _cache, $props, $setup, $data, $options) {

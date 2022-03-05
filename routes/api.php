@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\BdLocationsController;
+use App\Http\Controllers\Api\DpsController;
 use App\Http\Controllers\Api\ExpenseCategoryController;
 use App\Http\Controllers\Api\ExpenseController;
+use App\Http\Controllers\Api\LoanController;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\MemberGroupController;
 use App\Http\Controllers\Api\PostOfficeController;
@@ -99,5 +101,23 @@ Route::group([
         $route->post('/create', [MemberController::class, 'store']);
         $route->put('/update/{id}', [MemberController::class, 'update']);
         $route->delete('/delete/{id}', [MemberController::class, 'destroy']);
+    });
+
+    Route::group([
+        'prefix' => 'application/dps'
+    ], function($route) {
+        $route->get('/list', [DpsController::class, 'index']);
+        $route->post('/create', [DpsController::class, 'store']);
+        $route->put('/update/{id}', [DpsController::class, 'update']);
+        $route->delete('/delete/{id}', [DpsController::class, 'destroy']);
+    });
+
+    Route::group([
+        'prefix' => 'application/loan'
+    ], function($route) {
+        $route->get('/list', [LoanController::class, 'index']);
+        $route->post('/create', [LoanController::class, 'store']);
+        $route->put('/update/{id}', [LoanController::class, 'update']);
+        $route->delete('/delete/{id}', [LoanController::class, 'destroy']);
     });
 });

@@ -26865,19 +26865,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth/index.js");
 /* harmony import */ var _modules_location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/location */ "./resources/js/store/modules/location/index.js");
 /* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user/index.js");
 /* harmony import */ var _modules_group__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/group */ "./resources/js/store/modules/group/index.js");
 /* harmony import */ var _modules_member__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/member */ "./resources/js/store/modules/member/index.js");
+/* harmony import */ var _modules_dps__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/dps */ "./resources/js/store/modules/dps/index.js");
 
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_5__.createStore)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_6__.createStore)({
   state: {
     validation_errors: null,
     error_message: null
@@ -26905,7 +26907,8 @@ __webpack_require__.r(__webpack_exports__);
     user: _modules_user__WEBPACK_IMPORTED_MODULE_2__["default"],
     location: _modules_location__WEBPACK_IMPORTED_MODULE_1__["default"],
     group: _modules_group__WEBPACK_IMPORTED_MODULE_3__["default"],
-    member: _modules_member__WEBPACK_IMPORTED_MODULE_4__["default"]
+    member: _modules_member__WEBPACK_IMPORTED_MODULE_4__["default"],
+    dps: _modules_dps__WEBPACK_IMPORTED_MODULE_5__["default"]
   }
 }));
 
@@ -27132,6 +27135,221 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /***/ }),
 
+/***/ "./resources/js/store/modules/dps/index.js":
+/*!*************************************************!*\
+  !*** ./resources/js/store/modules/dps/index.js ***!
+  \*************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: {
+    applications: null
+  },
+  getters: {
+    applications: function applications(state) {
+      return state.applications;
+    }
+  },
+  mutations: {
+    SET_APPLICATIONS: function SET_APPLICATIONS(state, applications) {
+      state.applications = applications;
+    },
+    SET_APPLICATION: function SET_APPLICATION(state, application) {
+      if (state.applications) {
+        state.applications.unshift(application);
+      } else {
+        state.applications = [application];
+      }
+    },
+    UPDATE_APPLICATION: function UPDATE_APPLICATION(state, application) {
+      var item = state.applications.find(function (item) {
+        return item.id === application.id;
+      });
+      Object.assign(item, application);
+    },
+    DELETE_APPLICATION: function DELETE_APPLICATION(state, item_id) {
+      var application = state.applications.find(function (item) {
+        return item.id == item_id;
+      });
+
+      if (application) {
+        state.applications.splice(state.applications.indexOf(application), 1);
+      }
+    }
+  },
+  actions: {
+    //application actions
+    getApplications: function getApplications(_ref) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/dps/list');
+
+              case 3:
+                res = _context.sent;
+
+                if (res.data.status) {
+                  commit('SET_APPLICATIONS', res.data.applications);
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    createApplication: function createApplication(_ref2, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('application/dps/create', formdata);
+
+              case 3:
+                res = _context2.sent;
+
+                if (res.data.status) {
+                  commit('SET_APPLICATION', res.data.application);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    editApplication: function editApplication(_ref3, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('application/dps/update/' + formdata.application_id, formdata);
+
+              case 3:
+                res = _context3.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_APPLICATION', res.data.application);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    deleteApplication: function deleteApplication(_ref4, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('application/dps/delete/' + item_id);
+
+              case 3:
+                res = _context4.sent;
+
+                if (res.data.status) {
+                  commit('DELETE_APPLICATION', item_id);
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/store/modules/group/index.js":
 /*!***************************************************!*\
   !*** ./resources/js/store/modules/group/index.js ***!
@@ -27232,6 +27450,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       code: 'uncle',
       name: 'Uncle',
       bn_name: 'Uncle'
+    }],
+    application_types: [{
+      code: 'weekly',
+      name: 'Weekly',
+      bn_name: 'Weekly'
+    }, {
+      code: 'monthly',
+      name: 'Monthly',
+      bn_name: 'Monthly'
     }]
   },
   getters: {
@@ -27246,6 +27473,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     relations: function relations(state) {
       return state.relations;
+    },
+    application_types: function application_types(state) {
+      return state.application_types;
     }
   },
   mutations: {

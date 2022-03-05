@@ -86,7 +86,7 @@ class DpsController extends Controller
         if ($dps) {
             return response()->json([
                 'status' => true,
-                'dps' => $dps,
+                'application' => $dps,
                 'message' => 'DPS application has been saved'
             ]);
         }
@@ -168,7 +168,7 @@ class DpsController extends Controller
         if ($dps) {
             return response()->json([
                 'status' => true,
-                'dps' => $dps,
+                'application' => $dps,
                 'message' => 'DPS application has been updated'
             ]);
         }
