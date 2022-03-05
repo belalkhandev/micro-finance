@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Repositories\Expense;
+namespace App\Repositories\DpsApplication;
 
 use App\Models\Expense;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class ExpenseRepository implements ExpenseRepositoryInterface {
+class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function all()
     {

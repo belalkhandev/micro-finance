@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Expense\ExpenseRepositoryInterface;
+use App\Repositories\Expense\DpsApplicationRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,7 +11,7 @@ class ExpenseController extends Controller
 {
     protected $expense;
 
-    public function __construct(ExpenseRepositoryInterface $expense)
+    public function __construct(DpsApplicationRepositoryInterface $expense)
     {
         $this->expense = $expense;
     }
@@ -37,7 +37,7 @@ class ExpenseController extends Controller
             'expenses' => null,
             'message' => 'No data found'
         ]);
-        
+
     }
 
     /**
@@ -70,7 +70,7 @@ class ExpenseController extends Controller
                 'errors' => $validation->errors()
             ], 422);
         }
-        
+
         $expense = $this->expense->store($request);
 
         if ($expense) {
@@ -102,7 +102,7 @@ class ExpenseController extends Controller
                 'status' => true,
                 'expense' => $expense,
                 'message' => 'Found expense data'
-            ]); 
+            ]);
         }
 
         return response()->json([
