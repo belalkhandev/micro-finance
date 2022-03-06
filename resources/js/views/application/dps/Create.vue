@@ -34,7 +34,7 @@
                                             </div>
                                             <div class="members">
                                                 <div class="member" v-for="(member, i) in filterMembers" :key="member.id" @click.prevent="chooseMember(member)">
-                                                    <p>{{ member.account_no }} - {{ member.name }} - {{ member.phone }} ({{ member.member_type == 'deposit_weekly' ? 'Weekly' : 'Monthly' }})</p>
+                                                    <p>{{ member.account_no }} - {{ member.name }} - {{ member.phone }} ({{ member.member_type }})</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -202,15 +202,14 @@ export default ({
             {
                 if (this.search_key.length > 1) {
                     return this.members.filter((member) => {
-                        return member.member_type !== 'loan'
-                            && (member.account_no.toLowerCase().includes(this.search_key.toLowerCase())
+                        return member.account_no.toLowerCase().includes(this.search_key.toLowerCase())
                             || member.name.toLowerCase().includes(this.search_key.toLowerCase())
-                            || member.phone.toLowerCase().includes(this.search_key.toLowerCase()))
+                            || member.phone.toLowerCase().includes(this.search_key.toLowerCase())
                     });
                 }
-                return this.members.filter((member) => {
-                    return member.member_type !== 'loan'
-                });
+                // return this.members.filter((member) => {
+                //     return member.member_type !== 'loan'
+                // });
             }
 
             return this.members;
@@ -235,9 +234,9 @@ export default ({
 
         chooseMember(member) {
             this.form.member_id = member.id;
-            this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone+ ' ('+ (member.member_type === 'deposit_weekly' ? 'Weekly' : 'Monthly') +')' ;
+            this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone+ ' ('+ member.member_type +')' ;
 
-            if (member.member_type === 'deposit_weekly') {
+            if (member.member_type === 'deposit_weekly' || member.member_type === 'loan') {
                 this.form.w_day = member.day;
                 this.form.dps_type = "weekly";
                 $('#m_date').prop("disabled", true);

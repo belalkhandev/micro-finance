@@ -23,11 +23,13 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $loan = new LoanApplication();
         $loan->member_id = $request->input('member_id');
-        $loan->dps_amount = $request->input('dps_amount');
-        $loan->year = $request->input('year');
-        $loan->receiving = $request->input('receiving');
-        $loan->profit = $request->input('profit');
-        $loan->balance = $request->input('balance');
+        $loan->loan_amount = $request->input('loan_amount');
+        $loan->service = $request->input('service');
+        $loan->service_amount = $request->input('service_amount');
+        $loan->total_amount = $request->input('total_loan');
+        $loan->installment = $request->input('total_installment');
+        $loan->installment_amount = $request->input('installment_amount');
+        $loan->balance = $request->input('total_loan');
         $loan->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {
@@ -50,11 +52,13 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $loan = LoanApplication::find($id);
         $loan->member_id = $request->input('member_id');
-        $loan->dps_amount = $request->input('dps_amount');
-        $loan->year = $request->input('year');
-        $loan->receiving = $request->input('receiving');
-        $loan->profit = $request->input('profit');
-        $loan->balance = $request->input('balance');
+        $loan->loan_amount = $request->input('dps_amount');
+        $loan->service = $request->input('service');
+        $loan->service_amount = $request->input('service_amount');
+        $loan->total_amount = $request->input('total_loan');
+        $loan->installment = $request->input('installment');
+        $loan->installment_amount = $request->input('installment_amount');
+        $loan->balance = $request->input('total_loan');
         $loan->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {
@@ -63,7 +67,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
             $loan->w_date = databaseFormattedDate($request->input('w_date'));
         }
 
-        $loan->updated_by = Auth::guard('sanctum')->user()->id;
+        $loan->created_by = Auth::guard('sanctum')->user()->id;
 
         if ($loan->save()) {
             return $loan;

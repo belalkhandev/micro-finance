@@ -18,6 +18,7 @@ class CreateDpsApplicationsTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->double('dps_amount',8, 2)->default(0);
             $table->integer('year')->default(3);
+            $table->double('total_amount',8, 2)->default(0);
             $table->double('receiving',8, 2)->default(0);
             $table->double('profit',8, 2)->default(0);
             $table->double('balance',8, 2)->default(0);

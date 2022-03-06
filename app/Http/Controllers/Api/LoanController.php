@@ -62,14 +62,23 @@ class LoanController extends Controller
             'member_id' => 'required',
             'loan_amount' => 'required',
             'service' => 'required',
-            'installment' => 'required',
-            'loan_type' => 'required',
+            'total_installment' => 'required',
+            'dps_type' => 'required',
         ];
 
         $messages = [
             'member_id.required' => 'Member is required',
             'loan_amount.required' => 'Loan amount is required',
+            'total_installment.required' => 'Installment amount is required',
         ];
+
+        if ($request->input('dps_type') === 'weekly') {
+            $rules['w_day'] = 'required';
+            $messages['w_day.required'] = "Select a weekly date";
+        }else if ($request->input('dps_type') === 'monthly') {
+            $rules['m_date'] = 'required';
+            $messages['m_date.required'] = "Select a date for start installment";
+        }
 
         $validation = Validator::make($request->all(), $rules, $messages);
 
@@ -85,7 +94,7 @@ class LoanController extends Controller
         if ($loan) {
             return response()->json([
                 'status' => true,
-                'dps' => $loan,
+                'application' => $loan,
                 'message' => 'Loan application has been saved'
             ]);
         }
@@ -143,14 +152,24 @@ class LoanController extends Controller
             'member_id' => 'required',
             'loan_amount' => 'required',
             'service' => 'required',
-            'installment' => 'required',
+            'total_installment' => 'required',
             'loan_type' => 'required',
         ];
 
         $messages = [
             'member_id.required' => 'Member is required',
             'loan_amount.required' => 'Loan amount is required',
+            'total_installment.required' => 'Installment amount is required',
         ];
+
+        if ($request->input('dps_type') === 'weekly') {
+            $rules['w_day'] = 'required';
+            $messages['w_day.required'] = "Select a weekly date";
+        }else if ($request->input('dps_type') === 'monthly') {
+            $rules['m_date'] = 'required';
+            $messages['m_date.required'] = "Select a date for start installment";
+        }
+
 
         $validation = Validator::make($request->all(), $rules, $messages);
 
@@ -166,7 +185,7 @@ class LoanController extends Controller
         if ($loan) {
             return response()->json([
                 'status' => true,
-                'dps' => $loan,
+                'application' => $loan,
                 'message' => 'Loan application has been updated'
             ]);
         }

@@ -60,13 +60,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.members && this.members.length) {
         if (this.search_key.length > 1) {
           return this.members.filter(function (member) {
-            return member.member_type !== 'loan' && (member.account_no.toLowerCase().includes(_this.search_key.toLowerCase()) || member.name.toLowerCase().includes(_this.search_key.toLowerCase()) || member.phone.toLowerCase().includes(_this.search_key.toLowerCase()));
+            return member.account_no.toLowerCase().includes(_this.search_key.toLowerCase()) || member.name.toLowerCase().includes(_this.search_key.toLowerCase()) || member.phone.toLowerCase().includes(_this.search_key.toLowerCase());
           });
-        }
+        } // return this.members.filter((member) => {
+        //     return member.member_type !== 'loan'
+        // });
 
-        return this.members.filter(function (member) {
-          return member.member_type !== 'loan';
-        });
       }
 
       return this.members;
@@ -85,9 +84,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     chooseMember: function chooseMember(member) {
       this.form.member_id = member.id;
-      this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone + ' (' + (member.member_type === 'deposit_weekly' ? 'Weekly' : 'Monthly') + ')';
+      this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone + ' (' + member.member_type + ')';
 
-      if (member.member_type === 'deposit_weekly') {
+      if (member.member_type === 'deposit_weekly' || member.member_type === 'loan') {
         this.form.w_day = member.day;
         this.form.dps_type = "weekly";
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#m_date').prop("disabled", true);
@@ -521,7 +520,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
         return $options.chooseMember(member);
       }, ["prevent"])
-    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.account_no) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.name) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.phone) + " (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.member_type == 'deposit_weekly' ? 'Weekly' : 'Monthly') + ")", 1
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.account_no) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.name) + " - " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.phone) + " (" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.member_type) + ")", 1
     /* TEXT */
     )], 8
     /* PROPS */

@@ -26,6 +26,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->member_id = $request->input('member_id');
         $dps->dps_amount = $request->input('dps_amount');
         $dps->year = $request->input('year');
+        $dps->total_amount = $request->input('total_dps');
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
         $dps->dps_type = $request->input('dps_type');
@@ -33,13 +34,13 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         if ($request->input('dps_type') === 'weekly') {
             $dps->w_day = $request->input('w_day');
         }else {
-            $dps->w_date = databaseFormattedDate($request->input('w_date'));
+            $dps->m_date = databaseFormattedDate($request->input('m_date'));
         }
 
         $dps->created_by = Auth::guard('sanctum')->user()->id;
 
         if ($dps->save()) {
-            return $dps;
+            return $dps->with('member');
         }
 
         return false;
@@ -52,6 +53,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->member_id = $request->input('member_id');
         $dps->dps_amount = $request->input('dps_amount');
         $dps->year = $request->input('year');
+        $dps->total_amount = $request->input('total_dps');
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
         $dps->balance = $request->input('balance');
@@ -60,7 +62,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         if ($request->input('dps_type') === 'weekly') {
             $dps->w_day = $request->input('w_day');
         }else {
-            $dps->w_date = databaseFormattedDate($request->input('w_date'));
+            $dps->m_date = databaseFormattedDate($request->input('m_date'));
         }
 
         $dps->updated_by = Auth::guard('sanctum')->user()->id;

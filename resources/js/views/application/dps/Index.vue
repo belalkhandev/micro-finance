@@ -18,16 +18,26 @@
                             <th>Member</th>
                             <th>Acc. No</th>
                             <th>Deposit</th>
+                            <th>DPS Type</th>
                             <th>Year</th>
                             <th>Total Deposit</th>
                             <th>Total Receive</th>
                             <th>Profit</th>
-                            <th></th>
+                            <th>Balance</th>
                         </tr>
                         </thead>
                         <tbody>
-                            <tr v-if="filterApplications">
-                                <td></td>
+                            <tr v-if="filterApplications" v-for="(application, i) in filterApplications" :key="application.id">
+                                <td>{{ i+1 }}</td>
+                                <td>{{ application.member_name }}</td>
+                                <td>{{ application.member_account_no }}</td>
+                                <td>{{ application.dps_amount }}</td>
+                                <td>{{ application.dps_type }}</td>
+                                <td>{{ application.year }}</td>
+                                <td>{{ application.total_amount }}</td>
+                                <td>{{ application.receiving }}</td>
+                                <td>{{ application.profit }}</td>
+                                <td>{{ application.balance }}</td>
                             </tr>
                             <tr v-else>
                                 <td colspan="9">No application found</td>
