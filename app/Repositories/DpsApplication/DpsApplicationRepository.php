@@ -28,7 +28,6 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->year = $request->input('year');
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
-        $dps->balance = $request->input('balance');
         $dps->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {

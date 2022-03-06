@@ -72,6 +72,15 @@ class DpsController extends Controller
             'receiving.required' => 'Getting/Receiving Amount is Required'
         ];
 
+        if ($request->input('dps_type') === 'weekly') {
+            $rules['w_day'] = 'required';
+            $messages['w_day.required'] = "Select a weekly date";
+        }else if ($request->input('dps_type') === 'monthly') {
+            $rules['m_date'] = 'required';
+            $messages['m_date.required'] = "Select a date for start installment";
+        }
+
+
         $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
@@ -153,6 +162,15 @@ class DpsController extends Controller
             'dps_amount.required' => 'DPS amount is required',
             'receiving.required' => 'Getting/Receiving Amount is Required'
         ];
+
+
+        if ($request->input('dps_type') === 'weekly') {
+            $rules['w_day'] = 'required';
+            $messages['w_day.required'] = "Select a weekly date";
+        }else if ($request->input('dps_type') === 'monthly') {
+            $rules['m_date'] = 'required';
+            $messages['m_date.required'] = "Select a date for start installment";
+        }
 
         $validation = Validator::make($request->all(), $rules, $messages);
 

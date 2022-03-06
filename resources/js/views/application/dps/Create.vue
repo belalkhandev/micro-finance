@@ -39,6 +39,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.member_id ? errors.member_id[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -49,6 +50,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" v-model="form.dps_amount" placeholder="Enter deposit amount" class="form-control" @keyup="dpsCalculation">
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.dps_amount ? errors.dps_amount[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -59,6 +61,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" v-model="form.year" placeholder="0" class="form-control" @keyup="dpsCalculation">
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.year ? errors.year[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -79,6 +82,7 @@
                                 </div>
                                 <div class="col-md-8">
                                     <input type="text" v-model="form.receiving" placeholder="0" class="form-control" @keyup="dpsCalculation">
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.receiving ? errors.receiving[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -100,15 +104,16 @@
                                 <div class="col-md-8">
                                     <div class="mt-2">
                                         <label class="mr-4">
-                                            <input type="radio" name="application_type" value="weekly" v-model="form.dps_type">
+                                            <input type="radio" name="application_type" value="weekly" v-model="form.dps_type" @change="dpsType">
                                             <span class="ml-1">Weekly</span>
                                         </label>
 
                                         <label>
-                                            <input type="radio" name="application_type" value="monthly" v-model="form.dps_type">
+                                            <input type="radio" name="application_type" value="monthly" v-model="form.dps_type" @change="dpsType">
                                             <span class="ml-1">Monthly</span>
                                         </label>
                                     </div>
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.dps_type ? errors.dps_type[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
@@ -124,16 +129,23 @@
                                                 <option value="">Select Day</option>
                                                 <option v-for="(day, i) in days" :value="day.code">{{ day.name }}</option>
                                             </select>
+                                            <span class="text-danger text-sm" v-if="errors">{{ errors.w_day ? errors.w_day[0] : '' }}</span>
                                         </div>
                                         <div class="col-md-6">
                                             <input type="date" v-model="form.m_date" id="m_date" class="form-control" disabled>
+                                            <span class="text-danger text-sm" v-if="errors">{{ errors.m_date ? errors.m_date[0] : '' }}</span>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="mt-8 text-right">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary" id="storeApplication">
+                                <span>{{ $t('save') }}</span>
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -153,7 +165,7 @@ export default ({
     data() {
         return {
             form: {
-                member_id: null,
+                member_id: "",
                 dps_amount: "",
                 total_dps: "",
                 year: 3,
@@ -208,7 +220,8 @@ export default ({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers'
+            getMembers: 'member/getMembers',
+            createApplication: 'dps/createApplication',
         }),
 
         showMemberList() {
@@ -242,6 +255,16 @@ export default ({
             this.dpsCalculation();
         },
 
+        dpsType() {
+           if (this.form.dps_type === 'weekly') {
+               $('#m_date').prop("disabled", true);
+               $('#w_day').prop("disabled", false);
+           }else {
+               $('#w_day').prop("disabled", true);
+               $('#m_date').prop("disabled", false);
+           }
+        },
+
         dpsCalculation() {
             let dps_installment = 0;
             if (this.form.dps_type === 'weekly') {
@@ -254,8 +277,8 @@ export default ({
             this.form.profit = this.form.receiving - this.form.total_dps;
         },
 
-        storeUser() {
-            $('#storeUser').prop('disabled', true).addClass('submitted')
+        storeDpsApplication() {
+            $('#storeApplication').prop('disabled', true).addClass('submitted')
 
             let formData = new FormData();
             let inputData = this.form
@@ -264,7 +287,7 @@ export default ({
                 formData.append(fieldName, inputData[fieldName]);
             })
 
-            this.createUser(formData).then(() => {
+            this.createApplication(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
                     Object.assign(this.$data, this.$options.data.apply(this))
@@ -272,7 +295,7 @@ export default ({
                     this.$swal({
                         icon: "success",
                         title: "Success!",
-                        text: "Admin has been stored successfully",
+                        text: "Dps Application has been saved successfully",
                         timer: 3000
                     })
                 } else {
@@ -280,7 +303,7 @@ export default ({
                     this.error = this.error_message
                 }
 
-                $('#storeUser').prop('disabled', false).removeClass('submitted')
+                $('#storeApplication').prop('disabled', false).removeClass('submitted')
             })
 
         }
