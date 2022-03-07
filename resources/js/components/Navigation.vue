@@ -26,7 +26,7 @@
             <div class="navigation-item">
                 <router-link :to="{name: 'Profile'}">
                     <i class="bx bxs-user-rectangle text-violet-600" ></i>
-                    <span>{{ $t('profile') }}</span>
+                    <span>Transactions</span>
                 </router-link>
             </div>
             <div class="navigation-item">
@@ -86,34 +86,14 @@
             <div class="navigation-item">
                 <router-link :to="{name: 'Admin'}">
                     <i class='bx bxs-user-badge text-red-600'></i>
-                    <span>Admins</span>
+                    <span>Expenses</span>
                 </router-link>
             </div>
-            <div class="navigation-item has-multimenu">
-                <a href="#" class="menu-link" @click="openMultimenus">
-                    <i class='bx bxs-report text-orange-600' ></i>
-                    <span>Reports</span>
-                </a>
-                <div class="navigation-content">
-                    <div class="close-bar" @click="closeMultimenus">
-                        <i class='bx bx-x'></i>
-                        <span>Close</span>
-                    </div>
-                    <div class="navigation-content-header">
-                        <h3>Reports</h3>
-                    </div>
-                    <div class="navigation-content-body">
-                        <h5>Daily Reports</h5>
-                        <ul>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Daily Collection Report</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="navigation-item">
+                <router-link :to="{name: 'Admin'}">
+                    <i class='bx bxs-user-badge text-red-600'></i>
+                    <span>Admins</span>
+                </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" @click="openMultimenus">
@@ -152,6 +132,39 @@
                         </ul>
                     </div>
                 </div>
+            </div>
+
+            <div class="navigation-item has-multimenu">
+                <a href="#" class="menu-link" @click="openMultimenus">
+                    <i class='bx bxs-report text-orange-600' ></i>
+                    <span>Reports</span>
+                </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Reports</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5>Daily Reports</h5>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Daily Collection Report</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-item">
+                <router-link :to="{name: 'Profile'}">
+                    <i class="bx bxs-user-rectangle text-violet-600" ></i>
+                    <span>{{ $t('profile') }}</span>
+                </router-link>
             </div>
             <div class="navigation-item">
                 <a href="#" @click.prevent="logout">

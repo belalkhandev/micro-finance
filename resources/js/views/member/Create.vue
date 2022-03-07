@@ -100,7 +100,7 @@
                                 </select>
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.upazilla_id ? errors.upazilla_id[0] : '' }}</span>
                             </div>
-                        </div>                        
+                        </div>
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Union</label>
@@ -113,7 +113,7 @@
                                 </select>
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.union_id ? errors.union_id[0] : '' }}</span>
                             </div>
-                        </div>   
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
@@ -157,7 +157,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Joining Date</label>
-                                <input type="text" v-model="form.joining_date" placeholder="Enter joining date" class="form-control">
+                                <Datepicker v-model="joining_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date" />
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.joining_date ? errors.joining_date[0] : '' }}</span>
                             </div>
                         </div>
@@ -179,7 +179,7 @@
                                 </select>
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.member_type ? errors.member_type[0] : '' }}</span>
                             </div>
-                        </div>                        
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
@@ -306,10 +306,23 @@
 
 <script>
 import {mapGetters, mapActions} from "vuex";
-import $ from 'jquery'
+import $ from 'jquery';
+import { ref } from 'vue';
+import Datepicker from "vue3-date-time-picker";
+import moment from 'moment'
 
 export default ({
     name: "Create",
+    setup() {
+        const date = ref(new Date());
+        return {
+            date
+        }
+    },
+
+    components: {
+        Datepicker
+    },
 
     data() {
         return {
@@ -341,8 +354,8 @@ export default ({
                 nominee_photo: '',
                 nominee_address: '',
                 relation: '',
-
             },
+            joining_date: "",
             errors: null,
             error: null,
             lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en'
@@ -416,7 +429,7 @@ export default ({
             return this.villages
         },
 
-        
+
     },
 
     methods: {
@@ -495,17 +508,45 @@ export default ({
         union_id () {
             this.form.village_id = "";
         },
+
+        joining_date: function () {
+            console.log(this.joining_date)
+            this.form.joining_date = moment(this.joining_date).format("L");
+            console.log(this.form.joining_date)
+        }
+
     }
 })
 </script>
 
-<style>
+<style lang="css">
     .form-control {
         background-color: #ffffff80;
     }
 
     .form-control:focus {
         background-color: #ffffff90;
+    }
+
+    .dp__theme_light {
+        --dp-background-color: #ffffff;
+        --dp-text-color: #212121;
+        --dp-hover-color: #f3f3f3;
+        --dp-hover-text-color: #212121;
+        --dp-hover-icon-color: #959595;
+        --dp-primary-color: #6366f1;
+        --dp-primary-text-color: #f8f5f5;
+        --dp-secondary-color: #c0c4cc;
+        --dp-border-color: #ddd;
+        --dp-menu-border-color: #ddd;
+        --dp-border-color-hover: #aaaeb7;
+        --dp-disabled-color: #f6f6f6;
+        --dp-scroll-bar-background: #f3f3f3;
+        --dp-scroll-bar-color: #959595;
+        --dp-success-color: #76d275;
+        --dp-success-color-disabled: #a3d9b1;
+        --dp-icon-color: #5430d6;
+        --dp-danger-color: #ff6f60;
     }
 </style>
 

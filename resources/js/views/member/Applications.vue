@@ -7,11 +7,11 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h5>New Transaction</h5>
+                        <h5>All Applications</h5>
                     </div>
                 </div>
                 <div class="box-body">
-                    //new transaction will be here
+                    All Applications
                 </div>
                 <div class="box-footer"></div>
             </div>
@@ -24,7 +24,7 @@ import { mapGetters, mapActions} from 'vuex'
 import MemberShowSidebar from '../../components/MemberShowSidebar'
 
 export default({
-    name: 'NewTransaction',
+    name: 'Applications',
     components: {
         MemberShowSidebar
     },

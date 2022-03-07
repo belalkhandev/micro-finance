@@ -64,8 +64,15 @@ export default {
 
             try{
                 const resuser = await axios.get('user/me')
-                commit('SET_USER', resuser.data.user)
+                if (resuser.data.status) {
+                    commit('SET_USER', resuser.data.user)
+                } else {
+                    commit('SET_TOKEN', null)
+                    commit('SET_USER', null)
+                    commit('SET_USER', null)
+                }
             }catch (e) {
+                console.log(e)
                 commit('SET_TOKEN', null)
                 commit('SET_USER', null)
             }

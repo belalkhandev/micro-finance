@@ -122,6 +122,14 @@ const routes = [
         }
     },
     {
+        path: '/members/applications/:member_id',
+        name: 'MemberApplications',
+        component: () => import('../views/member/Applications.vue'),
+        meta: {
+            title: 'Member transaction history'
+        }
+    },
+    {
         path: '/application/dps',
         name: 'ApplicationDPS',
         component: () => import('../views/application/dps/Index.vue'),

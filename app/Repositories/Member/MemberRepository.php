@@ -4,6 +4,7 @@ namespace App\Repositories\Member;
 use App\Models\FileUpload;
 use App\Models\Member;
 use App\Models\Nominee;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class MemberRepository implements MemberRepositoryInterface {
@@ -38,7 +39,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->upazilla_id = $request->input('upazilla_id');
         $member->district_id = $request->input('district_id');
         $member->division_id = $request->input('division_id');
-        $member->joining_date = $request->input('joining_date');
+        $member->joining_date = databaseFormattedDate($request->input('joining_date'));
         $member->member_type = $request->input('member_type');
         $member->member_group_id = $request->input('member_group_id');
         $member->day = $request->input('day');
@@ -77,7 +78,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->upazilla_id = $request->input('upazilla_id');
         $member->district_id = $request->input('district_id');
         $member->division_id = $request->input('division_id');
-        $member->joining_date = $request->input('joining_date');
+        $member->joining_date = Carbon::parse($request->input('joining_date'))->format('Y-m-d');
         $member->member_type = $request->input('member_type');
         $member->member_group_id = $request->input('member_group_id');
         $member->day = $request->input('day');
