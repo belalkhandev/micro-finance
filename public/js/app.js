@@ -26884,6 +26884,15 @@ var routes = [{
     title: 'Loan application Create'
   }
 }, {
+  path: '/expenses/list',
+  name: 'ExpenseList',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_application_loan_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/loan/Create.vue */ "./resources/js/views/application/loan/Create.vue"));
+  },
+  meta: {
+    title: 'Expense list'
+  }
+}, {
   path: '/:catchAll(.*)',
   name: 'NotFound',
   component: function component() {

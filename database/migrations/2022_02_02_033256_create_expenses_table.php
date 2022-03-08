@@ -16,8 +16,10 @@ class CreateExpensesTable extends Migration
         Schema::create('expenses', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('expense_category_id')->nullable();
+            $table->string('title')->nullable();
             $table->text('description')->nullable();
             $table->double('amount', 8, 2);
+            $table->enum('expense_type', ['assets', 'liabilities', 'regular'])->default('regular');
             $table->date('expense_date')->nullable();
             $table->timestamps();
             $table->string('created_by')->nullable();

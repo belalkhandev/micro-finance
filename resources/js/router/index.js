@@ -162,6 +162,14 @@ const routes = [
         },
     },
     {
+        path: '/expenses/list',
+        name: 'ExpenseList',
+        component: () => import('../views/application/loan/Create.vue'),
+        meta: {
+            title: 'Expense list'
+        },
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         component: () => import('../views/404.vue'),
