@@ -132,7 +132,7 @@
                                             <span class="text-danger text-sm" v-if="errors">{{ errors.w_day ? errors.w_day[0] : '' }}</span>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="date" v-model="form.m_date" id="m_date" class="form-control" disabled>
+                                            <Datepicker v-model="monthly_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date" id="m_date"/>
                                             <span class="text-danger text-sm" v-if="errors">{{ errors.m_date ? errors.m_date[0] : '' }}</span>
                                         </div>
                                     </div>
@@ -158,9 +158,23 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import $ from 'jquery'
+import Datepicker from "vue3-date-time-picker";
+import moment from 'moment'
+import {ref} from "vue";
 
 export default ({
-    name: "Create",
+    name: "LoanCreate",
+
+    setup() {
+        const date = ref(new Date());
+        return {
+            date
+        }
+    },
+
+    components: {
+        Datepicker
+    },
 
     data() {
         return {
@@ -176,6 +190,7 @@ export default ({
                 w_day: "",
                 m_date: ""
             },
+            monthly_date: "",
             member_input_text: "",
             search_key: "",
             errors: null,
@@ -311,5 +326,11 @@ export default ({
             this.getMembers();
         }
     },
+
+    watch: {
+        monthly_date: function () {
+            this.form.m_date = moment(this.monthly_date).format("L");
+        }
+    }
 })
 </script>

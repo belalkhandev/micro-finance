@@ -35,7 +35,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         if ($request->input('dps_type') === 'weekly') {
             $loan->w_day = $request->input('w_day');
         }else {
-            $loan->w_date = databaseFormattedDate($request->input('w_date'));
+            $loan->m_date = databaseFormattedDate($request->input('m_date'));
         }
 
         $loan->created_by = Auth::guard('sanctum')->user()->id;
@@ -64,7 +64,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         if ($request->input('dps_type') === 'weekly') {
             $loan->w_day = $request->input('w_day');
         }else {
-            $loan->w_date = databaseFormattedDate($request->input('w_date'));
+            $loan->m_date = databaseFormattedDate($request->input('m_date'));
         }
 
         $loan->created_by = Auth::guard('sanctum')->user()->id;

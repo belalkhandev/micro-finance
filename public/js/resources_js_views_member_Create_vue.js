@@ -228,9 +228,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.village_id = "";
     },
     joining_date: function joining_date() {
-      console.log(this.joining_date);
       this.form.joining_date = moment__WEBPACK_IMPORTED_MODULE_3___default()(this.joining_date).format("L");
-      console.log(this.form.joining_date);
     }
   }
 });
@@ -1324,7 +1322,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control {\n        background-color: #ffffff80;\n}\n.form-control:focus {\n        background-color: #ffffff90;\n}\n.dp__theme_light {\n        --dp-background-color: #ffffff;\n        --dp-text-color: #212121;\n        --dp-hover-color: #f3f3f3;\n        --dp-hover-text-color: #212121;\n        --dp-hover-icon-color: #959595;\n        --dp-primary-color: #6366f1;\n        --dp-primary-text-color: #f8f5f5;\n        --dp-secondary-color: #c0c4cc;\n        --dp-border-color: #ddd;\n        --dp-menu-border-color: #ddd;\n        --dp-border-color-hover: #aaaeb7;\n        --dp-disabled-color: #f6f6f6;\n        --dp-scroll-bar-background: #f3f3f3;\n        --dp-scroll-bar-color: #959595;\n        --dp-success-color: #76d275;\n        --dp-success-color-disabled: #a3d9b1;\n        --dp-icon-color: #5430d6;\n        --dp-danger-color: #ff6f60;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control {\n        background-color: #ffffff80;\n}\n.form-control:focus {\n        background-color: #ffffff90;\n}\n.dp__theme_light {\n        --dp-primary-color: #6366f1;\n        --dp-icon-color: #6366f1;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

@@ -132,7 +132,7 @@
                                             <span class="text-danger text-sm" v-if="errors">{{ errors.w_day ? errors.w_day[0] : '' }}</span>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="date" v-model="form.m_date" id="m_date" class="form-control" disabled>
+                                            <Datepicker v-model="monthly_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date" id="m_date"/>
                                             <span class="text-danger text-sm" v-if="errors">{{ errors.m_date ? errors.m_date[0] : '' }}</span>
                                         </div>
                                     </div>
@@ -157,10 +157,23 @@
 
 <script>
 import {mapActions, mapGetters} from "vuex";
-import $ from 'jquery'
+import $ from 'jquery';
+import Datepicker from "vue3-date-time-picker";
+import moment from 'moment'
+import {ref} from "vue";
 
 export default ({
     name: "Create",
+    setup() {
+        const date = ref(new Date());
+        return {
+            date
+        }
+    },
+
+    components: {
+        Datepicker
+    },
 
     data() {
         return {
@@ -175,6 +188,7 @@ export default ({
                 w_day: "",
                 m_date: ""
             },
+            monthly_date: "",
             member_input_text: "",
             search_key: "",
             errors: null,
@@ -239,12 +253,12 @@ export default ({
             if (member.member_type === 'deposit_weekly' || member.member_type === 'loan') {
                 this.form.w_day = member.day;
                 this.form.dps_type = "weekly";
-                $('#m_date').prop("disabled", true);
+                $('.dp__disabled').prop("disabled", true);
                 $('#w_day').prop("disabled", false);
                 this.form.m_date = "";
             } else if (member.member_type === 'deposit_monthly') {
                 $('#w_day').prop("disabled", true);
-                $('#m_date').prop("disabled", false);
+                $('.dp__disabled').prop("disabled", false);
                 this.form.dps_type = "monthly";
                 this.form.w_day = "";
             }
@@ -256,11 +270,11 @@ export default ({
 
         dpsType() {
            if (this.form.dps_type === 'weekly') {
-               $('#m_date').prop("disabled", true);
+               $('.dp__disabled').prop("disabled", true);
                $('#w_day').prop("disabled", false);
            }else {
                $('#w_day').prop("disabled", true);
-               $('#m_date').prop("disabled", false);
+               $('.dp__disabled').prop("disabled", false);
            }
         },
 
@@ -313,6 +327,20 @@ export default ({
             this.getMembers();
         }
     },
+
+    watch: {
+        monthly_date: function () {
+            this.form.m_date = moment(this.monthly_date).format("L");
+        }
+    }
+
 })
 </script>
+
+<style lang="css">
+    .dp__theme_light {
+        --dp-primary-color: #6366f1;
+        --dp-icon-color: #6366f1;
+    }
+</style>
 

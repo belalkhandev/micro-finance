@@ -510,9 +510,7 @@ export default ({
         },
 
         joining_date: function () {
-            console.log(this.joining_date)
             this.form.joining_date = moment(this.joining_date).format("L");
-            console.log(this.form.joining_date)
         }
 
     }
@@ -529,24 +527,8 @@ export default ({
     }
 
     .dp__theme_light {
-        --dp-background-color: #ffffff;
-        --dp-text-color: #212121;
-        --dp-hover-color: #f3f3f3;
-        --dp-hover-text-color: #212121;
-        --dp-hover-icon-color: #959595;
         --dp-primary-color: #6366f1;
-        --dp-primary-text-color: #f8f5f5;
-        --dp-secondary-color: #c0c4cc;
-        --dp-border-color: #ddd;
-        --dp-menu-border-color: #ddd;
-        --dp-border-color-hover: #aaaeb7;
-        --dp-disabled-color: #f6f6f6;
-        --dp-scroll-bar-background: #f3f3f3;
-        --dp-scroll-bar-color: #959595;
-        --dp-success-color: #76d275;
-        --dp-success-color-disabled: #a3d9b1;
-        --dp-icon-color: #5430d6;
-        --dp-danger-color: #ff6f60;
+        --dp-icon-color: #6366f1;
     }
 </style>
 
