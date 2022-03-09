@@ -21,6 +21,7 @@ class CreateExpensesTable extends Migration
             $table->double('amount', 8, 2);
             $table->enum('expense_type', ['assets', 'liabilities', 'regular'])->default('regular');
             $table->date('expense_date')->nullable();
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->string('created_by')->nullable();
             $table->string('updated_by')->nullable();

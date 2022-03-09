@@ -18,7 +18,7 @@ class ExpenseCategoryController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function index()
     {
@@ -37,7 +37,7 @@ class ExpenseCategoryController extends Controller
             'categories' => null,
             'message' => 'No data found'
         ]);
-        
+
     }
 
     /**
@@ -54,7 +54,7 @@ class ExpenseCategoryController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request)
     {
@@ -70,7 +70,7 @@ class ExpenseCategoryController extends Controller
                 'errors' => $validation->errors()
             ], 422);
         }
-        
+
         $category = $this->category->store($request);
 
         if ($category) {
@@ -91,7 +91,7 @@ class ExpenseCategoryController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function show($id)
     {
@@ -102,7 +102,7 @@ class ExpenseCategoryController extends Controller
                 'status' => true,
                 'category' => $category,
                 'message' => 'Found category data'
-            ]); 
+            ]);
         }
 
         return response()->json([
@@ -127,7 +127,7 @@ class ExpenseCategoryController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -165,7 +165,7 @@ class ExpenseCategoryController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function destroy($id)
     {

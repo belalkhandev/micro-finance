@@ -73,15 +73,16 @@ Route::group([
     Route::group([
         'prefix' => 'expense'
     ], function($route) {
+        $route->get('/list', [ExpenseController::class, 'index']);
+        $route->post('/create', [ExpenseController::class, 'store']);
+        $route->put('/update/{id}', [ExpenseController::class, 'update']);
+        $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
+        //expense categories route
         $route->get('/category/list', [ExpenseCategoryController::class, 'index']);
         $route->post('/category/create', [ExpenseCategoryController::class, 'store']);
         $route->put('/category/update/{id}', [ExpenseCategoryController::class, 'update']);
         $route->delete('/category/delete/{id}', [ExpenseCategoryController::class, 'destroy']);
 
-        $route->get('/list', [ExpenseController::class, 'index']);
-        $route->post('/create', [ExpenseController::class, 'store']);
-        $route->put('/update/{id}', [ExpenseController::class, 'update']);
-        $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
     });
 
     //member group

@@ -164,7 +164,7 @@ const routes = [
     {
         path: '/expenses/list',
         name: 'ExpenseList',
-        component: () => import('../views/application/loan/Create.vue'),
+        component: () => import('../views/expense/Index'),
         meta: {
             title: 'Expense list'
         },
