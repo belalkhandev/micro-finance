@@ -159,5 +159,6 @@ export default {
     components: {
         Navigation
     }
+
 }
 </script>
