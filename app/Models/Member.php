@@ -33,4 +33,14 @@ class Member extends Model
 
         return null;
     }
+
+    public function dpsApplications()
+    {
+        return $this->hasMany(DpsApplication::class, 'member_id', 'id');
+    }
+
+    public function loanApplications()
+    {
+        return $this->hasMany(LoanApplication::class, 'member_id', 'id');
+    }
 }

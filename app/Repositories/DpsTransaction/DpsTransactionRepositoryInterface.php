@@ -5,9 +5,9 @@ namespace App\Repositories\DpsTransaction;
 interface DpsTransactionRepositoryInterface
 {
     public function all();
-    public function generate();
-    public function store($request);
-    public function update($request, $id);
+    public function generateTransaction($request);
+    public function store($application, $date);
+    public function payment($request);
     public function delete($id);
     public function find($id);
 }

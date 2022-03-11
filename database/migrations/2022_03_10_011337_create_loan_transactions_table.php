@@ -18,10 +18,10 @@ class CreateLoanTransactionsTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('loan_application_id');
             $table->integer('transaction_no')->nullable();
+            $table->enum('transaction_type', ['deposit', 'withdraw'])->default('deposit');
             $table->date('transaction_date');
             $table->date('due_date')->nullable();
             $table->double('amount', 8, 2)->default(0);
-            $table->enum('transaction_type', ['deposit', 'withdraw'])->default('deposit');
             $table->double('balance', 8, 2)->default(0);
             $table->boolean('is_paid')->default(false);
             $table->text('comment')->nullable();

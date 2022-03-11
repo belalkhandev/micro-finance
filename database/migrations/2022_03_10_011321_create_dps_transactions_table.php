@@ -18,6 +18,7 @@ class CreateDpsTransactionsTable extends Migration
             $table->unsignedBigInteger('member_id');
             $table->unsignedBigInteger('dps_application_id');
             $table->integer('transaction_no')->nullable();
+            $table->enum('transaction_type', ['deposit', 'withdraw'])->default('deposit');
             $table->date('transaction_date');
             $table->date('due_date')->nullable();
             $table->double('amount', 8, 2)->default(0);
