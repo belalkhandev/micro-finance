@@ -23,11 +23,42 @@
                     <span>{{ $t('dashboard') }}</span>
                 </router-link>
             </div>
-            <div class="navigation-item">
-                <router-link :to="{name: 'Profile'}">
+            <div class="navigation-item has-multimenu">
+                <router-link :to="{name: 'TransactionHome'}" class="menu-link" @click="openMultimenus">
                     <i class="bx bxs-user-rectangle text-violet-600" ></i>
                     <span>Transactions</span>
                 </router-link>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Transactions</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationDPS'}" >
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Generate Transaction</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'ApplicationDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All DPS Transactions</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'ApplicationLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Loan Transactions</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Members'}">

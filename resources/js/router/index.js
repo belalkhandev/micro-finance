@@ -162,6 +162,38 @@ const routes = [
         },
     },
     {
+        path: '/transaction',
+        name: 'TransactionHome',
+        component: () => import('../views/transaction/Index'),
+        meta: {
+            title: 'Transaction'
+        },
+    },
+    {
+        path: '/transaction/generate',
+        name: 'GenerateTransaction',
+        component: () => import('../views/transaction/GenerateTransaction'),
+        meta: {
+            title: 'Generate installment'
+        },
+    },
+    {
+        path: '/transactions/dps',
+            name: 'DpsTransactionList',
+            component: () => import('../views/transaction/DpsList'),
+            meta: {
+            title: 'All DPS transaction list'
+        },
+    },
+    {
+        path: '/transactions/loan',
+        name: 'LoanTransactionList',
+        component: () => import('../views/transaction/LoanList'),
+        meta: {
+            title: 'All loan transaction list'
+        },
+    },
+    {
         path: '/expenses/list',
         name: 'ExpenseList',
         component: () => import('../views/expense/Index'),
