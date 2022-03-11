@@ -1,5 +1,8 @@
 <template>
     <div class="sidebar">
+        <div class="close" @click="closeRsSidebar">
+            <i class="bx bx-x"></i>
+        </div>
         <!-- brand-logo -->
         <div class="logo">
             <img src="../assets/images/logo.png" alt="">
@@ -305,6 +308,11 @@ export default ({
         closeMultimenus(event) {
             const _self = event.currentTarget;
             $(_self).closest('.has-multimenu').removeClass('open');
+        },
+
+        closeRsSidebar()
+        {
+            $('.wrapper').removeClass('rs-open-sidebar');
         },
 
         logout() {

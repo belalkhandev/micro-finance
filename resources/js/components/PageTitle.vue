@@ -1,6 +1,11 @@
 <template>
     <div class="main-header">
-        <h5>{{ page_title }}</h5>
+        <div class="page-control">
+            <div class="app-icon" @click="openRsSidebar">
+                <div class="bx bxs-grid"></div>
+            </div>
+            <h5>{{ page_title }}</h5>
+        </div>
         <div>
             <button class="btn mr-2 py-0 px-1 focus:shadow-none" :class="lang === 'en' ? 'btn-primary' : 'btn-outline-primary'" @click="changeLang('en')">Eng</button>
             <button class="btn py-0 px-1 focus:shadow-none" :class="lang === 'bn' ? 'btn-success' : 'btn-outline-success'" @click="changeLang('bn')">বাংলা</button>
@@ -9,6 +14,8 @@
 </template>
 
 <script>
+import $ from 'jquery';
+
 export default({
     name: 'PageTitle',
     data () {
@@ -23,6 +30,11 @@ export default({
             this.$i18n.locale = lang
             this.lang = lang
         },
+
+        openRsSidebar()
+        {
+            $('.wrapper').addClass('rs-open-sidebar');
+        }
     },
     watch: {
         '$route.name'(to, next) {
