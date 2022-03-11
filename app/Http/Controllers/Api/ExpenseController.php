@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\Expense\DpsApplicationRepositoryInterface;
+use App\Repositories\Expense\ExpenseRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -11,7 +11,7 @@ class ExpenseController extends Controller
 {
     protected $expense;
 
-    public function __construct(DpsApplicationRepositoryInterface $expense)
+    public function __construct(ExpenseRepositoryInterface $expense)
     {
         $this->expense = $expense;
     }

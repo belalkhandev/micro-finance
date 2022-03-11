@@ -6,7 +6,7 @@ use App\Models\Expense;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
+class ExpenseRepository implements ExpenseRepositoryInterface {
 
     public function all()
     {

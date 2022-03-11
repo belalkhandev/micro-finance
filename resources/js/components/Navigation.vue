@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="navigation-item">
-                <router-link :to="{name: 'Admin'}">
+                <router-link :to="{name: 'ExpenseList'}">
                     <i class='bx bxs-user-badge text-red-600'></i>
                     <span>Expenses</span>
                 </router-link>
@@ -133,7 +133,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
                     <i class='bx bxs-report text-orange-600' ></i>
@@ -148,12 +147,87 @@
                         <h3>Reports</h3>
                     </div>
                     <div class="navigation-content-body">
-                        <h5>Daily Reports</h5>
+                        <h5>Transaction Reports</h5>
                         <ul>
                             <li>
                                 <a href="">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Daily Collection Report</span>
+                                    <span>Today's Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <h5>DPS Report</h5>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Today's Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <h5>Loan Reports</h5>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Today's Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <h5>Accounts Reports</h5>
+                        <ul>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Cash Balance</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
                                 </a>
                             </li>
                         </ul>

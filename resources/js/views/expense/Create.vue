@@ -1,6 +1,6 @@
 <template>
     <div class="modal fade" id="createExpenseModal" tabindex="-1">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title">Add Expense</h5>
@@ -12,12 +12,15 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <label class="col-form-label">Expense Head/Category *</label>
+                                    <label class="col-form-label">Expense Category *</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <input list="categories" v-model="category" class="form-control" placeholder="Select or create or category">
+                                    <input list="categories" v-model="category" class="form-control" placeholder="Category">
                                     <datalist id="categories">
-                                        <option v-for="category in filterCategories" :key="category.id" :value="category.name">
+                                        <option value="Test one" />
+                                        <option value="Test two" />
+                                        <option value="Test three" />
+                                        <option v-for="category in filterCategories" :key="category.id" :value="category.name"/>
                                     </datalist>
                                 </div>
                                 <span class="text-danger text-sm text-right" v-if="errors">{{ errors.category ? 'Category is required' : '' }}</span>
@@ -55,7 +58,7 @@
                                     <label class="col-form-label">Description</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <textarea v-model="form.description" rows="3" class="form-control"></textarea>
+                                    <textarea v-model="form.description" rows="3" class="form-control" placeholder="Write description"></textarea>
                                 </div>
                                 <span class="text-danger text-sm text-right" v-if="errors">{{ errors.description ? errors.description[0] : '' }}</span>
                             </div>
@@ -187,7 +190,7 @@ export default ({
     },
 
     mounted() {
-        this.getExpenseCategories();
+        this.getCategories();
     },
 
     watch: {
