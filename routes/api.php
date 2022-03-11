@@ -9,6 +9,7 @@ use App\Http\Controllers\Api\LoanController;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\MemberGroupController;
 use App\Http\Controllers\Api\PostOfficeController;
+use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VillageController;
 use Illuminate\Support\Facades\Route;
@@ -113,6 +114,16 @@ Route::group([
         $route->delete('/delete/{id}', [DpsController::class, 'destroy']);
     });
 
+    //dps transaction
+    Route::group([
+        'prefix' => 'transaction/dps'
+    ], function($route) {
+        $route->get('/list', [TransactionController::class, 'index']);
+        $route->post('/create', [TransactionController::class, 'store']);
+        $route->put('/update/{id}', [TransactionController::class, 'update']);
+        $route->delete('/delete/{id}', [TransactionController::class, 'destroy']);
+    });
+
     Route::group([
         'prefix' => 'application/loan'
     ], function($route) {
@@ -121,4 +132,16 @@ Route::group([
         $route->put('/update/{id}', [LoanController::class, 'update']);
         $route->delete('/delete/{id}', [LoanController::class, 'destroy']);
     });
+
+    //loan transaction
+    Route::group([
+        'prefix' => 'transaction/loan'
+    ], function($route) {
+        $route->get('/list', [TransactionController::class, 'index']);
+        $route->post('/create', [TransactionController::class, 'store']);
+        $route->put('/update/{id}', [TransactionController::class, 'update']);
+        $route->delete('/delete/{id}', [TransactionController::class, 'destroy']);
+    });
+
+    Route::post('/transaction/generate', [TransactionController::class, 'generateTransaction']);
 });

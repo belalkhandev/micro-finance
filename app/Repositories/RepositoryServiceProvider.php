@@ -17,7 +17,9 @@ class RepositoryServiceProvider extends ServiceProvider {
             'MemberGroup' => 'MemberGroup',
             'Member' => 'Member',
             'DpsApplication' => 'DpsApplication',
+            'DpsTransaction' => 'DpsTransaction',
             'LoanApplication' => 'LoanApplication',
+            'LoanTransaction' => 'LoanTransaction',
         ];
 
         foreach ($models as $dir => $model) {
