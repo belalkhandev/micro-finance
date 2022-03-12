@@ -10,10 +10,10 @@
                         <h5>Member Profile</h5>
                     </div>
                     <div class="action">
-                        <a href="" class="btn btn-outline-secondary btn-sm">
+                        <router-link :to="{name: 'EditMember', params: {member_id: member.id}}" class="btn btn-outline-secondary btn-sm">
                             <i class="bx bx-edit"></i>
                             Edit Profile
-                        </a>
+                        </router-link>
                     </div>
                 </div>
                 <div class="box-body">

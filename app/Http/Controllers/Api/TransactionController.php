@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\DpsTransaction\DpsTransactionRepositoryInterface;
 use App\Repositories\LoanTransaction\LoanTransactionRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionController extends Controller
 {
@@ -20,22 +21,43 @@ class TransactionController extends Controller
 
     public function generateTransaction(Request $request)
     {
-        $type = $request->input('transaction_type');
-        switch ($type) {
-            case 'all':
-                $this->dps->generateTransaction();
-                $this->loan->generateTransaction();
-                break;
-            case 'deposit':
-                $this->dps->generateTransaction();
-                break;
-            case 'loan':
-                $this->loan->generateTransaction();
-                break;
-            default:
-                return false;
+        $rules = [
+            'transaction_type' => 'required',
+            'application_type' => 'required',
+            'from_date' => 'required',
+            'to_date' => 'required',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ], 422);
         }
 
-        return true;
+        $type = $request->input('transaction_type');
+
+        if ($type === 'deposit') {
+            if ($this->dps->generateTransaction($request)) {
+                return response()->json([
+                    'status' => true,
+                    'message' => "DPS transaction has been generated successfully"
+                ]);
+            }
+        } else {
+            if ($this->loan->generateTransaction($request)) {
+                return response()->json([
+                    'status' => true,
+                    'message' => "Loan transaction has been generated successfully"
+                ]);
+            }
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => "Failed to generate transaction"
+        ]);
     }
 }

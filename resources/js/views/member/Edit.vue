@@ -145,7 +145,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Address</label>
-                                <input type="text" v-model="form.address" class="form-control" id="">
+                                <input type="text" v-model="form.address" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.address ? errors.address[0] : '' }}</span>
                             </div>
                         </div>
@@ -435,6 +435,7 @@ export default ({
                     this.form.union_id = member.union_id;
                     this.form.post_office_id = member.post_office_id;
                     this.form.village_id = member.village_id;
+                    this.form.address = member.address;
                     this.form.joining_date = member.joining_date;
                     this.form.account_no = member.account_no;
                     this.form.member_type = member.member_type;

@@ -24,15 +24,21 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         $tr_date = $request->input('from_date');
         $tr_to = $request->input('to_date');
 
+        if ($tr_date > $tr_to) {
+            $temp_date = $tr_date;
+            $tr_date = $tr_to;
+            $tr_to = $temp_date;
+        }
+
         try {
             do{
                 $date = databaseFormattedDate($tr_date);
                 if ($request->input('application_type') == 'weekly') {
-                    $day_name = Carbon::parse($date)->dayName();
-                    $applications = DpsApplication::where('w_day', $day_name)->wherNe('is_active', 1)->get();
+                    $day_name = Carbon::parse($date)->dayName;
+                    $applications = DpsApplication::where('w_day', $day_name)->where('is_active', 1)->get();
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = DpsApplication::whereDay('m_date', $app_start_date)->wherNe('is_active', 1)->get();
+                    $applications = DpsApplication::whereDay('m_date', $app_start_date)->where('is_active', 1)->get();
                 }
 
                 foreach ($applications as $application) {
@@ -41,7 +47,10 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
                 $tr_date = Carbon::parse($date)->addDay();
             }while(databaseFormattedDate($tr_date) > databaseFormattedDate($tr_to));
+
+            return true;
         }catch (\Exception $e) {
+            dd($e->getMessage());
             return false;
         }
 

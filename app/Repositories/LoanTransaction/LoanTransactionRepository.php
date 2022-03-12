@@ -21,18 +21,24 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function generateTransaction($request)
     {
-        $tr_date = $request->input('from_date');
-        $tr_to = $request->input('to_date');
+        $tr_date = databaseFormattedDate($request->input('from_date'));
+        $tr_to = databaseFormattedDate($request->input('to_date'));
+
+        if ($tr_date > $tr_to) {
+            $temp_date = $tr_date;
+            $tr_date = $tr_to;
+            $tr_to = $temp_date;
+        }
 
         try {
             do{
                 $date = databaseFormattedDate($tr_date);
                 if ($request->input('application_type') == 'weekly') {
-                    $day_name = Carbon::parse($date)->dayName();
-                    $applications = LoanApplication::where('w_day', $day_name)->wherNe('is_active', 1)->get();
+                    $day_name = Carbon::parse($date)->dayName;
+                    $applications = LoanApplication::where('w_day', $day_name)->where('is_active', 1)->get();
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = LoanApplication::whereDay('m_date', $app_start_date)->wherNe('is_active', 1)->get();
+                    $applications = LoanApplication::whereDay('m_date', $app_start_date)->where('is_active', 1)->get();
                 }
 
                 foreach ($applications as $application) {
@@ -41,7 +47,9 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
                 $tr_date = Carbon::parse($date)->addDay();
             }while(databaseFormattedDate($tr_date) > databaseFormattedDate($tr_to));
+            return true;
         }catch (\Exception $e) {
+            dd($e->getMessage());
             return false;
         }
 
@@ -62,7 +70,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         } else {
             $tr->due_date = Carbon::parse($date)->addDay(10);
         }
-        $tr->amount = $application->dps_amount;
+        $tr->amount = $application->installment_amount;
 
         if ($tr->save()) {
             return true;

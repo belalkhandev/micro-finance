@@ -166,6 +166,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.form.union_id = member.union_id;
           this.form.post_office_id = member.post_office_id;
           this.form.village_id = member.village_id;
+          this.form.address = member.address;
           this.form.joining_date = member.joining_date;
           this.form.account_no = member.account_no;
           this.form.member_type = member.member_type;
@@ -1133,8 +1134,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
       return $data.form.address = $event;
     }),
-    "class": "form-control",
-    id: ""
+    "class": "form-control"
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.address]]), $data.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_91, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.address ? $data.errors.address[0] : ''), 1

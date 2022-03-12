@@ -3,11 +3,10 @@
 namespace App\Repositories\DpsApplication;
 
 use App\Models\DpsApplication;
-use App\Models\DpsInstallment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
-class DpsTransactionRepository implements DpsApplicationRepositoryInterface {
+class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function all()
     {

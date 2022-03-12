@@ -175,7 +175,7 @@ const routes = [
         name: 'GenerateTransaction',
         component: () => import('../views/transaction/GenerateTransaction'),
         meta: {
-            title: 'Generate installment'
+            title: 'Generate Transaction'
         },
     },
     {

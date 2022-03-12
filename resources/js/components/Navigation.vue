@@ -27,10 +27,10 @@
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
-                <router-link :to="{name: 'TransactionHome'}" class="menu-link" @click="openMultimenus">
+                <a href="javascript:void(0)" class="menu-link" @click="openMultimenus">
                     <i class="bx bxs-user-rectangle text-violet-600" ></i>
                     <span>Transactions</span>
-                </router-link>
+                </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
@@ -42,7 +42,7 @@
                     <div class="navigation-content-body">
                         <ul>
                             <li>
-                                <router-link :to="{name: 'ApplicationDPS'}" >
+                                <router-link :to="{name: 'GenerateTransaction'}" >
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Generate Transaction</span>
                                 </router-link>

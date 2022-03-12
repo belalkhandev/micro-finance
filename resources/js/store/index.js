@@ -7,7 +7,8 @@ import member from './modules/member'
 import dps from './modules/dps'
 import loan from './modules/loan'
 import expense from './modules/expense'
-import expenseCategory from "./modules/expense-category";
+import expenseCategory from "./modules/expense-category"
+import transaction from "./modules/transaction";
 
 export default createStore({
     state: {
@@ -44,6 +45,7 @@ export default createStore({
         location,
         group, member,
         dps, loan,
-        expense, expenseCategory
+        expense, expenseCategory,
+        transaction
     }
 })
