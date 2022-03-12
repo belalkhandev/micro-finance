@@ -25,7 +25,7 @@ class CreateDpsApplicationsTable extends Migration
             $table->enum('dps_type', ['weekly', 'monthly'])->default('weekly');
             $table->string('w_day')->nullable();
             $table->date('m_date')->nullable();
-            $table->boolean('is_active')->default('true');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
