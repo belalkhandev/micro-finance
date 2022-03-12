@@ -118,10 +118,9 @@ Route::group([
     Route::group([
         'prefix' => 'transaction/dps'
     ], function($route) {
-        $route->get('/list', [TransactionController::class, 'index']);
-        $route->post('/create', [TransactionController::class, 'store']);
-        $route->put('/update/{id}', [TransactionController::class, 'update']);
-        $route->delete('/delete/{id}', [TransactionController::class, 'destroy']);
+        $route->get('/list', [TransactionController::class, 'dpsTransactionList']);
+        $route->put('/update/{id}', [TransactionController::class, 'updateDpsTransaction']);
+        $route->delete('/delete/{id}', [TransactionController::class, 'destroyDpsTransaction']);
     });
 
     Route::group([
@@ -137,10 +136,9 @@ Route::group([
     Route::group([
         'prefix' => 'transaction/loan'
     ], function($route) {
-        $route->get('/list', [TransactionController::class, 'index']);
-        $route->post('/create', [TransactionController::class, 'store']);
-        $route->put('/update/{id}', [TransactionController::class, 'update']);
-        $route->delete('/delete/{id}', [TransactionController::class, 'destroy']);
+        $route->get('/list', [TransactionController::class, 'loanTransactionList']);
+        $route->put('/update/{id}', [TransactionController::class, 'updateLoanTransaction']);
+        $route->delete('/delete/{id}', [TransactionController::class, 'destroyLoanTransaction']);
     });
 
     Route::post('/transaction/generate', [TransactionController::class, 'generateTransaction']);

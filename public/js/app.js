@@ -26483,7 +26483,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'ApplicationDPS'
+      name: 'DpsTransactionList'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26494,7 +26494,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'ApplicationLoan'
+      name: 'LoanTransactionList'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -27034,7 +27034,7 @@ var routes = [{
     title: 'Generate Transaction'
   }
 }, {
-  path: '/transactions/dps',
+  path: '/transactions/dps/list',
   name: 'DpsTransactionList',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_views_transaction_DpsList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/transaction/DpsList */ "./resources/js/views/transaction/DpsList.vue"));
@@ -27043,7 +27043,7 @@ var routes = [{
     title: 'All DPS transaction list'
   }
 }, {
-  path: '/transactions/loan',
+  path: '/transactions/loan/list',
   name: 'LoanTransactionList',
   component: function component() {
     return __webpack_require__.e(/*! import() */ "resources_js_views_transaction_LoanList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/transaction/LoanList */ "./resources/js/views/transaction/LoanList.vue"));
@@ -29336,43 +29336,58 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   namespaced: true,
   state: {
-    expense_categories: null
+    dps_transactions: null,
+    loan_transactions: null
   },
   getters: {
-    expense_categories: function expense_categories(state) {
-      return state.expense_categories;
+    dps_transactions: function dps_transactions(state) {
+      return state.dps_transactions;
+    },
+    loan_transactions: function loan_transactions(state) {
+      return state.loan_transactions;
     }
   },
   mutations: {
-    SET_CATEGORIES: function SET_CATEGORIES(state, expense_categories) {
-      state.expense_categories = expense_categories;
+    SET_DPS_TRANSACTIONS: function SET_DPS_TRANSACTIONS(state, dps_transactions) {
+      state.dps_transactions = dps_transactions;
     },
-    SET_CATEGORY: function SET_CATEGORY(state, expense) {
-      if (state.expense_categories) {
-        state.expense_categories.unshift(expense);
-      } else {
-        state.expense_categories = [expense];
-      }
+    SET_LOAN_TRANSACTIONS: function SET_LOAN_TRANSACTIONS(state, loan_transactions) {
+      state.loan_transactions = loan_transactions;
     },
-    UPDATE_CATEGORY: function UPDATE_CATEGORY(state, expense) {
-      var item = state.expense_categories.find(function (item) {
-        return item.id === expense.id;
+    UPDATE_DPS_TR: function UPDATE_DPS_TR(state, dps_transaction) {
+      var item = state.dps_transactions.find(function (item) {
+        return item.id === dps_transaction.id;
       });
-      Object.assign(item, expense);
+      Object.assign(item, dps_transaction);
     },
-    DELETE_CATEGORY: function DELETE_CATEGORY(state, item_id) {
-      var expense = state.expense_categories.find(function (item) {
+    UPDATE_LOAN_TR: function UPDATE_LOAN_TR(state, loan_transaction) {
+      var item = state.loan_transactions.find(function (item) {
+        return item.id === loan_transaction.id;
+      });
+      Object.assign(item, loan_transaction);
+    },
+    DELETE_DPS_TR: function DELETE_DPS_TR(state, item_id) {
+      var dps_transaction = state.dps_transactions.find(function (item) {
         return item.id == item_id;
       });
 
-      if (expense) {
-        state.expense_categories.splice(state.expense_categories.indexOf(expense), 1);
+      if (dps_transaction) {
+        state.dps_transactions.splice(state.dps_transactions.indexOf(expense), 1);
+      }
+    },
+    DELETE_LOAN_TR: function DELETE_LOAN_TR(state, item_id) {
+      var loan_transaction = state.loan_transactions.find(function (item) {
+        return item.id == item_id;
+      });
+
+      if (loan_transaction) {
+        state.loan_transactions.splice(state.loan_transactions.indexOf(expense), 1);
       }
     }
   },
   actions: {
     //expense actions
-    getExpenseCategories: function getExpenseCategories(_ref) {
+    getDpsTransactions: function getDpsTransactions(_ref) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
@@ -29381,13 +29396,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref.commit;
                 _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('expense/categories/list');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/dps/list');
 
               case 3:
                 res = _context.sent;
 
                 if (res.data.status) {
-                  commit('SET_CATEGORIES', res.data.categories);
+                  commit('SET_DPS_TRANSACTIONS', res.data.dps_transactions);
                 }
 
               case 5:
@@ -29398,7 +29413,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    createExpenseCategory: function createExpenseCategory(_ref2, formdata) {
+    getLoanTransactions: function getLoanTransactions(_ref2) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -29407,30 +29422,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('expense/categories/create', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/list');
 
               case 3:
                 res = _context2.sent;
 
                 if (res.data.status) {
-                  commit('SET_CATEGORY', res.data.category);
-                  commit('SET_VALIDATION_ERRORS', null, {
-                    root: true
-                  });
-                  commit('SET_ERROR_MESSAGE', null, {
-                    root: true
-                  });
-                } else {
-                  if (!res.data.status) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
-                      root: true
-                    });
-                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
-                      root: true
-                    });
-                  } else {
-                    console.log('Something went wrong');
-                  }
+                  commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions);
                 }
 
               case 5:

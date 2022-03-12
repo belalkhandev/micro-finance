@@ -48,13 +48,13 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'ApplicationDPS'}">
+                                <router-link :to="{name: 'DpsTransactionList'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All DPS Transactions</span>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'ApplicationLoan'}">
+                                <router-link :to="{name: 'LoanTransactionList'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All Loan Transactions</span>
                                 </router-link>

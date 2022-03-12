@@ -19,6 +19,11 @@ class TransactionController extends Controller
         $this->loan = $loan_tr;
     }
 
+    /**
+     * generate Transactions DPS and loan
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function generateTransaction(Request $request)
     {
         $rules = [
@@ -58,6 +63,46 @@ class TransactionController extends Controller
         return response()->json([
             'status' => false,
             'message' => "Failed to generate transaction"
+        ]);
+    }
+
+    /*
+     * all dps transaction list
+     * */
+    public function dpsTransactionList()
+    {
+        $dps_trs = $this->dps->all();
+
+        if ($dps_trs) {
+            return response()->json([
+                'status' => true,
+                'dps_transactions' => $dps_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Dps transaction found'
+        ]);
+    }
+
+    /*
+     * All load transaction list
+     * */
+    public function loanTransactionList()
+    {
+        $loan_trs = $this->loan->all();
+
+        if ($loan_trs) {
+            return response()->json([
+                'status' => true,
+                'loan_transactions' => $loan_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Loan transaction found'
         ]);
     }
 }

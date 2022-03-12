@@ -4,65 +4,69 @@ export default {
     namespaced: true,
 
     state: {
-        expense_categories: null,
+        dps_transactions: null,
+        loan_transactions: null
     },
 
     getters: {
-        expense_categories(state){
-            return state.expense_categories
+        dps_transactions(state){
+            return state.dps_transactions
+        },
+
+        loan_transactions(state){
+            return state.loan_transactions
         },
     },
 
     mutations: {
-        SET_CATEGORIES(state, expense_categories) {
-            state.expense_categories = expense_categories
+        SET_DPS_TRANSACTIONS(state, dps_transactions) {
+            state.dps_transactions = dps_transactions
         },
 
-        SET_CATEGORY(state, expense) {
-            if (state.expense_categories) {
-                state.expense_categories.unshift(expense)
-            }else {
-                state.expense_categories = [expense]
+        SET_LOAN_TRANSACTIONS(state, loan_transactions) {
+            state.loan_transactions = loan_transactions
+        },
+
+        UPDATE_DPS_TR(state, dps_transaction) {
+            const item = state.dps_transactions.find(item => item.id === dps_transaction.id)
+            Object.assign(item, dps_transaction)
+        },
+
+        UPDATE_LOAN_TR(state, loan_transaction) {
+            const item = state.loan_transactions.find(item => item.id === loan_transaction.id)
+            Object.assign(item, loan_transaction)
+        },
+
+        DELETE_DPS_TR(state, item_id) {
+            const dps_transaction  = state.dps_transactions.find(item => item.id == item_id)
+            if (dps_transaction) {
+                state.dps_transactions.splice(state.dps_transactions.indexOf(expense), 1)
             }
         },
 
-        UPDATE_CATEGORY(state, expense) {
-            const item = state.expense_categories.find(item => item.id === expense.id)
-            Object.assign(item, expense)
-        },
-
-        DELETE_CATEGORY(state, item_id) {
-            const expense  = state.expense_categories.find(item => item.id == item_id)
-            if (expense) {
-                state.expense_categories.splice(state.expense_categories.indexOf(expense), 1)
+        DELETE_LOAN_TR(state, item_id) {
+            const loan_transaction  = state.loan_transactions.find(item => item.id == item_id)
+            if (loan_transaction) {
+                state.loan_transactions.splice(state.loan_transactions.indexOf(expense), 1)
             }
         },
     },
 
     actions: {
         //expense actions
-        async getExpenseCategories({ commit }) {
-            const res = await axios.get('expense/categories/list')
+        async getDpsTransactions({ commit }) {
+            const res = await axios.get('transaction/dps/list')
 
             if (res.data.status) {
-                commit('SET_CATEGORIES', res.data.categories)
+                commit('SET_DPS_TRANSACTIONS', res.data.dps_transactions)
             }
         },
 
-        async createExpenseCategory({ commit }, formdata) {
-            const res = await axios.post('expense/categories/create', formdata)
+        async getLoanTransactions({ commit }) {
+            const res = await axios.get('transaction/loan/list')
 
             if (res.data.status) {
-                commit('SET_CATEGORY', res.data.category)
-                commit('SET_VALIDATION_ERRORS', null,  { root:true })
-                commit('SET_ERROR_MESSAGE', null,  { root:true })
-            } else {
-                if (!res.data.status) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
-                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
-                }else {
-                    console.log('Something went wrong');
-                }
+                commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions)
             }
         },
 

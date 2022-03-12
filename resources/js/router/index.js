@@ -179,7 +179,7 @@ const routes = [
         },
     },
     {
-        path: '/transactions/dps',
+        path: '/transactions/dps/list',
             name: 'DpsTransactionList',
             component: () => import('../views/transaction/DpsList'),
             meta: {
@@ -187,7 +187,7 @@ const routes = [
         },
     },
     {
-        path: '/transactions/loan',
+        path: '/transactions/loan/list',
         name: 'LoanTransactionList',
         component: () => import('../views/transaction/LoanList'),
         meta: {
