@@ -15,31 +15,48 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Tr. Date</th>
-                            <th>Member</th>
-                            <th>Acc. No</th>
-                            <th>DPS Type</th>
-                            <th>Deposit Amount.</th>
+                            <th>Tr. no</th>
+                            <th>Member/Acc. no</th>
+                            <th>DPS Type/Amount</th>
                             <th>Balance.</th>
                             <th>Tr. Day</th>
                             <th>Due Date</th>
                             <th>Issue Date</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-if="filterTransactions" v-for="(transaction, i) in filterTransactions" :key="transaction.id">
                             <td>{{ i+1 }}</td>
-                            <td>{{ transaction.transaction_date }}</td>
-                            <td>{{ transaction.member_name }}</td>
-                            <td>{{ transaction.member_account_no }}</td>
-                            <td>{{ transaction.transaction_type }}</td>
-                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.transaction_no }}</td>
+                            <td>
+                                <router-link :to="{name: 'MemberShow', params: {
+                                    member_id: transaction.member_id
+                                }}" class="text-primary">
+                                    {{ transaction.member_name }} <br>
+                                    {{ transaction.member_account_no }}
+                                </router-link>
+                            </td>
+                            <td>{{ transaction.application.dps_type }} <br> {{ transaction.amount }}</td>
                             <td>{{ transaction.balance }}</td>
-                            <td>{{ transaction.balance }}</td>
-                            <td>{{ transaction.due_date }}</td>
-                            <td>{{ transaction.created_at }}</td>
-                            <td></td>
+                            <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
+                            <td>{{ userFormattedDate(transaction.due_date) }}</td>
+                            <td>{{ userFormattedDate(transaction.created_at) }}</td>
+                            <td>
+                                <span v-if="transaction.is_paid" class="text-success">Paid</span>
+                                <span v-else class="text-danger">Unpaid</span>
+                            </td>
+                            <td>
+                                <span v-if="!transaction.is_paid">
+                                    <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showDpsTransactionModal(transaction)">
+                                        Pay now
+                                    </a>
+                                </span>
+                                <span v-else class="text-danger">
+                                    <span class="btn btn-success btn-sm py-1">Paid</span>
+                                </span>
+                            </td>
                         </tr>
                         <tr v-else>
                             <td colspan="10">No Transaction found</td>
@@ -53,19 +70,26 @@
             </div>
         </div>
         <div class="col-md-4"></div>
+        <dps-transaction-payment :transaction="dps_transaction_data"></dps-transaction-payment>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import moment from "moment";
+import DpsTransactionPayment from './DpsTransactionPayment'
+import bootstrap from 'bootstrap/dist/js/bootstrap'
+import LoanTransactionPayment from "./LoanTransactionPayment";
 
 export default ({
     name: "Index",
-    components: {},
+    components: {
+        DpsTransactionPayment
+    },
 
     data () {
         return {
-
+            dps_transaction_data: null
         }
     },
 
@@ -83,6 +107,21 @@ export default ({
         ...mapActions({
             getDpsTransactions: 'transaction/getDpsTransactions'
         }),
+
+        userFormattedDate(date) {
+            return moment(date).format("LL");
+        },
+
+        dayNameFormat(date) {
+            return moment(date).format("dddd");
+        },
+
+        showDpsTransactionModal(data)
+        {
+            this.dps_transaction_data = data
+            var DpsTransactionModal = new bootstrap.Modal(document.getElementById('dpsTransactionPayment'));
+            DpsTransactionModal.show();
+        },
 
         deleteConfirm(user_id) {
             this.$swal({

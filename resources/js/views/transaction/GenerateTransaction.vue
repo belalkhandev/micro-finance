@@ -6,7 +6,7 @@
             </div>
             <div class="box-action">
                 <router-link :to="{name: 'DpsTransactionList'}" class="btn btn-primary btn-sm">DPS Transactions</router-link>
-                <router-link :to="{name: 'LoanTransactionList'}" class="btn btn-warning btn-sm ml-2">Loan Transactions</router-link>
+                <router-link :to="{name: 'LoanTransactionList'}" class="btn btn-primary btn-sm ml-2">Loan Transactions</router-link>
             </div>
         </div>
         <div class="box-body">

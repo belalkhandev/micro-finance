@@ -11,7 +11,7 @@ class LoanTransaction extends Model
 
     protected $appends = ['member_name', 'member_account_no'];
 
-    public function loanApplication()
+    public function application()
     {
         return $this->belongsTo(LoanApplication::class, 'loan_application_id', 'id');
     }

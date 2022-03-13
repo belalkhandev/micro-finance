@@ -10,7 +10,7 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function all()
     {
-        $transactions = DpsTransaction::latest()->get();
+        $transactions = DpsTransaction::with('application')->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;

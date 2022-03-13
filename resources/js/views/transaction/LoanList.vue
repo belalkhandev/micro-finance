@@ -15,31 +15,48 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Tr. Date</th>
-                            <th>Member</th>
-                            <th>Acc. No</th>
-                            <th>Loan Type</th>
-                            <th>Deposit Amount.</th>
+                            <th>Tr. no</th>
+                            <th>Member/Acc. no</th>
+                            <th>Loan Type/Amount</th>
                             <th>Balance.</th>
                             <th>Tr. Day</th>
                             <th>Due Date</th>
                             <th>Issue Date</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-if="filterTransactions" v-for="(transaction, i) in filterTransactions" :key="transaction.id">
                             <td>{{ i+1 }}</td>
-                            <td>{{ transaction.transaction_date }}</td>
-                            <td>{{ transaction.member_name }}</td>
-                            <td>{{ transaction.member_account_no }}</td>
-                            <td>{{ transaction.transaction_type }}</td>
-                            <td>{{ transaction.amount }}</td>
+                            <td>{{ transaction.transaction_no }}</td>
+                            <td>
+                                <router-link :to="{name: 'MemberShow', params: {
+                                    member_id: transaction.member_id
+                                }}" class="text-primary">
+                                    {{ transaction.member_name }} <br>
+                                    {{ transaction.member_account_no }}
+                                </router-link>
+                            </td>
+                            <td>{{ transaction.application.dps_type }} <br>{{ transaction.amount }}</td>
                             <td>{{ transaction.balance }}</td>
-                            <td>{{ transaction.due_date }}</td>
-                            <td>{{ transaction.balance }}</td>
-                            <td>{{ transaction.created_at }}</td>
-                            <td></td>
+                            <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
+                            <td>{{ userFormattedDate(transaction.due_date) }}</td>
+                            <td>{{ userFormattedDate(transaction.created_at) }}</td>
+                            <td>
+                                <span v-if="transaction.is_paid" class="text-success">Paid</span>
+                                <span v-else class="text-danger">Unpaid</span>
+                            </td>
+                            <td>
+                                <span v-if="!transaction.is_paid">
+                                    <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showLoanTransactionModal(transaction)">
+                                        Pay now
+                                    </a>
+                                </span>
+                                <span v-else class="text-danger">
+                                    <span class="btn btn-success btn-sm py-1">Paid</span>
+                                </span>
+                            </td>
                         </tr>
                         <tr v-else>
                             <td colspan="10">No Transaction found</td>
@@ -53,19 +70,25 @@
             </div>
         </div>
         <div class="col-md-4"></div>
+        <loan-transaction-payment :transaction="loan_transaction_data"></loan-transaction-payment>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import moment from "moment";
+import LoanTransactionPayment from './LoanTransactionPayment'
+import bootstrap from 'bootstrap/dist/js/bootstrap'
 
 export default ({
     name: "Index",
-    components: {},
+    components: {
+        LoanTransactionPayment
+    },
 
     data () {
         return {
-
+            loan_transaction_data: null
         }
     },
 
@@ -83,6 +106,21 @@ export default ({
         ...mapActions({
             getLoanTransactions: 'transaction/getLoanTransactions'
         }),
+
+        userFormattedDate(date) {
+            return moment(date).format("LL");
+        },
+
+        dayNameFormat(date) {
+            return moment(date).format("dddd");
+        },
+
+        showLoanTransactionModal(data)
+        {
+            this.loan_transaction_data = data
+            var LoanTransactionModal = new bootstrap.Modal(document.getElementById('loanTransactionPayment'));
+            LoanTransactionModal.show();
+        },
 
         deleteConfirm(user_id) {
             this.$swal({

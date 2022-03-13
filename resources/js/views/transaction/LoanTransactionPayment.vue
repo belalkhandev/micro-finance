@@ -1,0 +1,170 @@
+<template>
+    <div class="modal fade" id="loanTransactionPayment" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Loan Collection</h5>
+                    <button type="button" class="btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="bx bx-x"></i></button>
+                </div>
+                <form @submit.prevent="updateLoanTransaction">
+                    <div class="modal-body" v-if="transaction">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Transaction No</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.transaction_no" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Member</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.member" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Account No</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.account_no" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Amount</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.amount" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Balance</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.balance" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Transaction Date</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <input type="text" v-model="form.transaction_date" class="form-control" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="text-right">
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-dismiss="modal" aria-label="Close">{{ $t('close') }}</button>
+                            <button type="submit" class="ml-2 btn btn-primary btn-sm" id="updateLoanTransaction">
+                                <span>{{ $t('collect') }}</span>
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+import {mapGetters, mapActions} from "vuex";
+import $ from 'jquery'
+
+export default ({
+    name: "LoanTransactionPayment",
+    props: {
+        transaction: Object
+    },
+    data() {
+        return {
+            form: {
+                transaction_id: "",
+                transaction_no: "",
+                member: "",
+                account_no: "",
+                transaction_date: "",
+                transaction_status: "",
+                amount: "",
+                balance: "",
+            },
+        }
+    },
+
+    computed: {
+        ...mapGetters({
+            transactions: 'transaction/loan_transactions',
+            validation_errors: 'validation_errors',
+            error_message: 'error_message',
+        }),
+    },
+
+    methods: {
+        ...mapActions({
+
+        }),
+
+        updateLoanTransaction() {
+            $('#updateLoanTransaction').prop('disabled', true).addClass('submitted')
+
+            let formData = this.form;
+
+            this.editPostOffice(formData).then(() => {
+                if (!this.validation_errors && !this.error_message) {
+                    this.errors = this.error = null;
+
+                    this.$swal({
+                        icon: "success",
+                        title: "Updated!",
+                        text: "PostOffice has been updated successfully",
+                        timer: 3000
+                    })
+                } else {
+                    this.errors = this.validation_errors
+                    this.error = this.error_message
+                }
+
+                $('#updateLoanTransaction').prop('disabled', false).removeClass('submitted')
+            })
+
+        }
+    },
+
+    mounted() {
+
+    },
+
+    watch: {
+        transaction() {
+            if (this.transaction) {
+                this.form.transaction_id = this.transaction.id
+                this.form.transaction_no = this.transaction.transaction_no
+                this.form.member = this.transaction.member_name
+                this.form.account_no = this.transaction.member_account_no
+                this.form.transaction_date = this.transaction.transaction_date
+                this.form.amount = this.transaction.amount
+                this.form.balance = this.transaction.balance
+            }
+        },
+    }
+})
+</script>

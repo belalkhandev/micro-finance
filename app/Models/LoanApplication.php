@@ -13,7 +13,7 @@ class LoanApplication extends Model
 
     public function transactions()
     {
-        return $this->hasMany(LoanInstallment::class, 'loan_application_id', 'id');
+        return $this->hasMany(LoanTransaction::class, 'loan_application_id', 'id');
     }
 
     public function member()

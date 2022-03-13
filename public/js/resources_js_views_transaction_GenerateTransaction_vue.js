@@ -319,7 +319,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'LoanTransactionList'
     },
-    "class": "btn btn-warning btn-sm ml-2"
+    "class": "btn btn-primary btn-sm ml-2"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_6];

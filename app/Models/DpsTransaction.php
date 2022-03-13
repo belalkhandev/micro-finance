@@ -11,7 +11,7 @@ class DpsTransaction extends Model
 
     protected $appends = ['member_name', 'member_account_no'];
 
-    public function dpsApplication()
+    public function application()
     {
         return $this->belongsTo(DpsApplication::class, 'dps_application_id', 'id');
     }
