@@ -5,8 +5,8 @@
                 <h5>Generate DPS/Loan Transaction</h5>
             </div>
             <div class="box-action">
-                <router-link :to="{name: 'ApplicationDPS'}" class="btn btn-primary btn-sm">DPS Transactions</router-link>
-                <router-link :to="{name: 'ApplicationLoan'}" class="btn btn-warning btn-sm ml-2">Loan Transactions</router-link>
+                <router-link :to="{name: 'DpsTransactionList'}" class="btn btn-primary btn-sm">DPS Transactions</router-link>
+                <router-link :to="{name: 'LoanTransactionList'}" class="btn btn-warning btn-sm ml-2">Loan Transactions</router-link>
             </div>
         </div>
         <div class="box-body">
@@ -158,7 +158,6 @@ export default ({
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
                     Object.assign(this.$data, this.$options.data.apply(this))
-
                     this.$swal({
                         icon: "success",
                         title: "Success!",

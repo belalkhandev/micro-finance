@@ -36,9 +36,10 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 if ($request->input('application_type') == 'weekly') {
                     $day_name = Carbon::parse($date)->dayName;
                     $applications = DpsApplication::where('w_day', $day_name)->where('is_active', 1)->get();
+
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = DpsApplication::whereDay('m_date', $app_start_date)->where('is_active', 1)->get();
+                    $applications = DpsApplication::whereDay('m_date', $app_start_date)->where('m_date', '<=', $date)->where('is_active', 1)->get();
                 }
 
                 foreach ($applications as $application) {
@@ -46,11 +47,12 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 }
 
                 $tr_date = Carbon::parse($date)->addDay();
-            }while(databaseFormattedDate($tr_date) > databaseFormattedDate($tr_to));
+
+            }while(databaseFormattedDate($tr_date) <= databaseFormattedDate($tr_to));
 
             return true;
+
         }catch (\Exception $e) {
-            dd($e->getMessage());
             return false;
         }
 
@@ -58,26 +60,32 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function store($application, $date)
     {
-        $tr = DpsTransaction::where('dps_application_id', $application->id)->whereDate('transaction_date', $date)->first();
-        if(!$tr) {
-           $tr = new DpsTransaction();
-           $tr->transaction_no = DpsTransaction::where('dps_application_id', $application->id)->get()->count() + 1;
-        }
-        $tr->dps_application_id = $application->id;
-        $tr->member_id = $application->member_id;
-        $tr->transaction_date = $date;
-        if ($application->dps_type === 'weekly') {
-            $tr->due_date = Carbon::parse($date)->addDay(3);
-        } else {
-            $tr->due_date = Carbon::parse($date)->addDay(10);
-        }
-        $tr->amount = $application->dps_amount;
+        try{
+            $tr = DpsTransaction::where('dps_application_id', $application->id)->whereDate('transaction_date', $date)->first();
+            if(!$tr) {
+                $tr = new DpsTransaction();
+                $tr->transaction_no = DpsTransaction::where('dps_application_id', $application->id)->get()->count() + 1;
+            }
+            $tr->dps_application_id = $application->id;
+            $tr->member_id = $application->member_id;
+            $tr->transaction_date = $date;
+            if ($application->dps_type === 'weekly') {
+                $tr->due_date = Carbon::parse($date)->addDay(3);
+            } else {
+                $tr->due_date = Carbon::parse($date)->addDay(10);
+            }
+            $tr->amount = $application->dps_amount;
 
-        if ($tr->save()) {
-            return true;
-        }
+            if ($tr->save()) {
+                return $tr;
+            }
 
-        return false;
+            return false;
+        }catch (\Exception $e) {
+            dd($e->getMessage());
+
+            return false;
+        }
 
 
     }

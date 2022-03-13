@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\DpsApplication;
 use App\Repositories\DpsTransaction\DpsTransactionRepositoryInterface;
 use App\Repositories\LoanTransaction\LoanTransactionRepositoryInterface;
 use Illuminate\Http\Request;
@@ -39,12 +40,10 @@ class TransactionController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
-        $type = $request->input('transaction_type');
-
-        if ($type === 'deposit') {
+        if ($request->input('transaction_type') === 'deposit') {
             if ($this->dps->generateTransaction($request)) {
                 return response()->json([
                     'status' => true,

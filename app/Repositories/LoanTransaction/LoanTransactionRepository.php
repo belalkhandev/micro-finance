@@ -46,10 +46,10 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
                 }
 
                 $tr_date = Carbon::parse($date)->addDay();
-            }while(databaseFormattedDate($tr_date) > databaseFormattedDate($tr_to));
+            }while(databaseFormattedDate($tr_date) <= databaseFormattedDate($tr_to));
+
             return true;
         }catch (\Exception $e) {
-            dd($e->getMessage());
             return false;
         }
 
