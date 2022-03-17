@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                         <tr v-if="filterTransactions" v-for="(transaction, i) in filterTransactions" :key="transaction.id">
-                            <td>{{ i+1 }}</td>
+                            <td>{{ per_page*(page-1)+(i+1) }}</td>
                             <td>{{ transaction.transaction_no }}</td>
                             <td>
                                 <router-link :to="{name: 'MemberShow', params: {
@@ -65,7 +65,29 @@
                     </table>
                 </div>
                 <div class="box-footer text-right">
-                    <p>Pagination here</p>
+                    <!-- pagination -->
+                    <div class="pagination" v-if="transactions && transactions.length > per_page">
+                        <p class="pagination-data">
+                            Page no {{ page }} Show {{ page === pages.length ? (transactions ? transactions.length : 0) : page*(filterTransactions ? filterTransactions.length : 0) }} of {{ transactions ? transactions.length : 0 }} Data
+                        </p>
+                        <ul>
+                            <li class="page-item">
+                                <button class="page-link" @click="page = 1" data-toggle="tooltip" data-placement="bottom" title="First Page"><i class="bx bx-chevrons-left"></i></button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link" v-if="page !== 1" @click="page--" data-toggle="tooltip" data-placement="bottom" title=""><i class="bx bx-chevron-left"></i></button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+10)" :class="page===pageNumber ? 'active': ''" :key="pageNumber" @click="page = pageNumber"> {{ pageNumber}} </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" @click="page++" v-if="page < pages.length" class="page-link"> <i class="bx bx-chevron-right"></i> </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link"  @click="page = pages.length" data-toggle="tooltip" data-placement="bottom" title="Last Page"><i class="bx bx-chevrons-right"></i></button>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
@@ -90,7 +112,10 @@ export default ({
 
     data () {
         return {
-            loan_transaction_data: null
+            loan_transaction_data: null,
+            page: 1,
+            per_page: 10,
+            pages: [],
         }
     },
 
@@ -100,6 +125,10 @@ export default ({
         }),
 
         filterTransactions() {
+            if (this.transactions) {
+                return this.paginate(this.transactions);
+            }
+
             return this.transactions;
         }
     },
@@ -141,12 +170,75 @@ export default ({
                 }
             });
         },
+
+        //pagination scripts
+        // pagination set pages
+        setPages() {
+            let numberOfPages = Math.ceil(this.transactions ? this.transactions.length / this.per_page : 0);
+            for (let index = 1; index <= numberOfPages; index++) {
+                this.pages.push(index);
+            }
+        },
+
+        // pagination make
+        paginate(data) {
+            let page = this.page;
+            let perPage = this.per_page;
+            let from = (page * perPage) - perPage;
+            let to = (page * perPage);
+            return data.slice(from, to);
+        },
     },
 
     mounted() {
-        this.getLoanTransactions();
-    }
+        if (!this.transactions) {
+            this.getLoanTransactions().then(() => {
+                this.setPages();
+            })
+        }
+    },
 
 
 })
 </script>
+
+<style lang="css">
+    .pagination {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .pagination ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        grid-gap: 5px;
+    }
+
+    .pagination ul .page-item {
+        display: flex;
+        grid-gap: 5px;
+        padding: 0px;
+    }
+
+    .pagination ul .page-item .page-link{
+        border: 1px solid #4f46e5;
+        background: transparent;
+        padding: 3px 8px 1px 8px;
+        border-radius: 3px;
+    }
+
+    .pagination ul .page-item .page-link:hover {
+        background: #b2b2b2;
+    }
+
+    .pagination ul .page-item .page-link:focus {
+        box-shadow: none;
+    }
+    .pagination ul .page-item .page-link.active {
+        background: #4f46e5;
+        color: #ffffff;
+    }
+
+</style>
