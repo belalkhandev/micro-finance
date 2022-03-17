@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthenticationController;
 use App\Http\Controllers\Api\BdLocationsController;
+use App\Http\Controllers\Api\DashboardController;
 use App\Http\Controllers\Api\DpsController;
 use App\Http\Controllers\Api\ExpenseCategoryController;
 use App\Http\Controllers\Api\ExpenseController;
@@ -142,4 +143,5 @@ Route::group([
     });
 
     Route::post('/transaction/generate', [TransactionController::class, 'generateTransaction']);
+    Route::get('/dashboard/widgets/data', [DashboardController::class, 'widgetData']);
 });

@@ -4,8 +4,8 @@ import router from './router'
 import store from './store'
 import axios from 'axios'
 import i18n from './i18n'
-import VueSweetalert2 from "vue-sweetalert2";
-import Datepicker from 'vue3-date-time-picker';
+import VueSweetalert2 from "vue-sweetalert2"
+import Datepicker from 'vue3-date-time-picker'
 
 //check authentication
 require('./store/subscriber')
@@ -18,7 +18,7 @@ import 'sweetalert2/dist/sweetalert2.min.css'
 import 'vue3-date-time-picker/dist/main.css'
 // import tailwind
 import '../../public/css/app.css'
-
+import 'animate.css'
 require('./assets/css/style.css')
 
 axios.defaults.baseURL = '/api';

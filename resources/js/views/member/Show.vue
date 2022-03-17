@@ -4,7 +4,7 @@
             <member-show-sidebar :member="member"></member-show-sidebar>
         </div>
         <div class="col-md-9">
-            <div class="box">
+            <div class="box animate__animated animate__fadeIn">
                 <div class="box-header">
                     <div class="box-title">
                         <h5>Member Profile</h5>

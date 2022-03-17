@@ -381,6 +381,11 @@ table {
     cursor: pointer;
     grid-gap: 15px;
 }
+@media screen and (max-width: 768px) {
+    .widget {
+        margin-bottom: 15px;
+    }
+}
 .widget .widget-header {
     width: 100%;
     display: flex;
@@ -580,7 +585,6 @@ table {
 }
 .full-screen .wrapper .main-content .content {
     padding: 0;
-    margin-top: 0;
 }
 
 .sidebar {
@@ -969,16 +973,21 @@ table {
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 15px;
 }
+@media screen and (max-width: 768px) {
+    .member-details .member-detail .member-infos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
 .member-details .member-detail .member-infos .member-info p {
     color: #475569;
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 300;
     margin-bottom: 3px;
 }
 .member-details .member-detail .member-infos .member-info h5 {
     color: #1e293b;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 1rem;
 }
 
 .member-select {

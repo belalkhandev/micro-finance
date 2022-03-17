@@ -38,8 +38,8 @@
                                     {{ transaction.member_account_no }}
                                 </router-link>
                             </td>
-                            <td>{{ transaction.application.dps_type }} <br> {{ transaction.amount }}</td>
-                            <td>{{ transaction.balance }}</td>
+                            <td>{{ transaction.application.dps_type }} <br> {{ numberFormat(transaction.amount) }}</td>
+                            <td>{{ numberFormat(transaction.balance) }}</td>
                             <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
                             <td>{{ userFormattedDate(transaction.due_date) }}</td>
                             <td>{{ userFormattedDate(transaction.created_at) }}</td>
@@ -76,16 +76,16 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import moment from "moment";
 import DpsTransactionPayment from './DpsTransactionPayment'
 import bootstrap from 'bootstrap/dist/js/bootstrap'
-import LoanTransactionPayment from "./LoanTransactionPayment";
+import {helpers} from "../../mixin";
 
 export default ({
     name: "Index",
     components: {
         DpsTransactionPayment
     },
+    mixins: [helpers],
 
     data () {
         return {
@@ -107,14 +107,6 @@ export default ({
         ...mapActions({
             getDpsTransactions: 'transaction/getDpsTransactions'
         }),
-
-        userFormattedDate(date) {
-            return moment(date).format("LL");
-        },
-
-        dayNameFormat(date) {
-            return moment(date).format("dddd");
-        },
 
         showDpsTransactionModal(data)
         {

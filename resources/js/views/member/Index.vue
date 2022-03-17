@@ -23,7 +23,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr v-for="(member, i) in fetchMembers" :key="i">
+                    <tr v-for="(member, i) in fetchMembers" :key="i" class="animate__animated animate__fadeIn">
                         <td>{{ i+1 }}</td>
                         <td>{{ member.account_no }}</td>
                         <td>{{ member.name }}</td>

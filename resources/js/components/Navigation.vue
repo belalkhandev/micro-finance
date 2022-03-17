@@ -4,7 +4,7 @@
             <i class="bx bx-x"></i>
         </div>
         <!-- brand-logo -->
-        <div class="logo">
+        <div class="logo animate__animated animate__bounce">
             <img src="../assets/images/logo.png" alt="">
             <h2>pdscdcsl</h2>
         </div>

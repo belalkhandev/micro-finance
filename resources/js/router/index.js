@@ -1,6 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
 import store from "../store";
-import $ from "jquery";
 
 const routes = [
     {
@@ -215,7 +214,10 @@ const routes = [
 const BASE_URL = '/';
 const router = createRouter({
     history: createWebHistory(BASE_URL),
-    routes
+    routes,
+    scrollBehavior(to, from, savedPosition) {
+        return { x: 0, y: 0 };
+    }
 })
 router.beforeEach((to, from, next) => {
     window.document.title = to.meta && to.meta.title ? to.meta.title : 'PDSCDCSL';

@@ -90,7 +90,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var _hoisted_1 = {
-  "class": "box"
+  "class": "box animate__animated animate__fadeIn"
 };
 var _hoisted_2 = {
   "class": "box-body"
