@@ -4,16 +4,19 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\Expense\ExpenseRepositoryInterface;
+use App\Repositories\ExpenseCategory\ExpenseCategoryRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 class ExpenseController extends Controller
 {
     protected $expense;
+    protected $category;
 
-    public function __construct(ExpenseRepositoryInterface $expense)
+    public function __construct(ExpenseRepositoryInterface $expense, ExpenseCategoryRepositoryInterface $category)
     {
         $this->expense = $expense;
+        $this->category = $category;
     }
     /**
      * Display a listing of the resource.
@@ -60,6 +63,7 @@ class ExpenseController extends Controller
     {
         $rules = [
             'amount' => 'required',
+            'expense_category_id' => 'required',
         ];
 
         $validation = Validator::make($request->all(), $rules);
@@ -68,7 +72,7 @@ class ExpenseController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
         $expense = $this->expense->store($request);
@@ -127,12 +131,13 @@ class ExpenseController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $id)
     {
         $rules = [
             'amount' => 'required',
+            'expense_category_id' => 'required',
         ];
 
         $validation = Validator::make($request->all(), $rules);
@@ -141,7 +146,7 @@ class ExpenseController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
-            ], 422);
+            ]);
         }
 
         $expense = $this->expense->update($request, $id);

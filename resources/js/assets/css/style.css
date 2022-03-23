@@ -1057,3 +1057,41 @@ table {
 .member-select.open .member-list {
     display: block;
 }/*# sourceMappingURL=style.css.map */
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pagination ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-gap: 5px;
+}
+
+.pagination ul .page-item {
+    display: flex;
+    grid-gap: 5px;
+    padding: 0px;
+}
+
+.pagination ul .page-item .page-link{
+    border: 1px solid #4f46e5;
+    background: transparent;
+    padding: 3px 8px 1px 8px;
+    border-radius: 3px;
+}
+
+.pagination ul .page-item .page-link:hover {
+    background: #b2b2b2;
+}
+
+.pagination ul .page-item .page-link:focus {
+    box-shadow: none;
+}
+.pagination ul .page-item .page-link.active {
+    background: #4f46e5;
+    color: #ffffff;
+}

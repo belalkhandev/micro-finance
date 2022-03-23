@@ -88,6 +88,7 @@
                             </li>
                         </ul>
                     </div>
+                    <!-- end pagination -->
                 </div>
             </div>
         </div>
@@ -113,9 +114,6 @@ export default ({
     data () {
         return {
             loan_transaction_data: null,
-            page: 1,
-            per_page: 10,
-            pages: [],
         }
     },
 
@@ -171,22 +169,12 @@ export default ({
             });
         },
 
-        //pagination scripts
         // pagination set pages
         setPages() {
             let numberOfPages = Math.ceil(this.transactions ? this.transactions.length / this.per_page : 0);
             for (let index = 1; index <= numberOfPages; index++) {
                 this.pages.push(index);
             }
-        },
-
-        // pagination make
-        paginate(data) {
-            let page = this.page;
-            let perPage = this.per_page;
-            let from = (page * perPage) - perPage;
-            let to = (page * perPage);
-            return data.slice(from, to);
         },
     },
 
@@ -203,42 +191,5 @@ export default ({
 </script>
 
 <style lang="css">
-    .pagination {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .pagination ul {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        grid-gap: 5px;
-    }
-
-    .pagination ul .page-item {
-        display: flex;
-        grid-gap: 5px;
-        padding: 0px;
-    }
-
-    .pagination ul .page-item .page-link{
-        border: 1px solid #4f46e5;
-        background: transparent;
-        padding: 3px 8px 1px 8px;
-        border-radius: 3px;
-    }
-
-    .pagination ul .page-item .page-link:hover {
-        background: #b2b2b2;
-    }
-
-    .pagination ul .page-item .page-link:focus {
-        box-shadow: none;
-    }
-    .pagination ul .page-item .page-link.active {
-        background: #4f46e5;
-        color: #ffffff;
-    }
 
 </style>

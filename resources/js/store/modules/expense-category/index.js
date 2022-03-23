@@ -42,7 +42,7 @@ export default {
     actions: {
         //expense actions
         async getExpenseCategories({ commit }) {
-            const res = await axios.get('expense/categories/list')
+            const res = await axios.get('expense/category/list')
 
             if (res.data.status) {
                 commit('SET_CATEGORIES', res.data.categories)
@@ -50,7 +50,7 @@ export default {
         },
 
         async createExpenseCategory({ commit }, formdata) {
-            const res = await axios.post('expense/categories/create', formdata)
+            const res = await axios.post('expense/category/create', formdata)
 
             if (res.data.status) {
                 commit('SET_CATEGORY', res.data.category)
@@ -67,7 +67,7 @@ export default {
         },
 
         async editExpenseCategory({ commit }, formdata) {
-            const res = await axios.put('expense/categories/update/'+formdata.category_id, formdata)
+            const res = await axios.put('expense/category/update/'+formdata.category_id, formdata)
 
             if (res.data.status) {
                 commit('UPDATE_CATEGORY', res.data.expense)
@@ -84,7 +84,7 @@ export default {
         },
 
         async deleteExpenseCategory({ commit }, item_id) {
-            const res = await axios.delete('expense/categories/delete/'+item_id)
+            const res = await axios.delete('expense/category/delete/'+item_id)
             if (res.data.status) {
                 commit('DELETE_CATEGORY', item_id)
                 commit('SET_ERROR_MESSAGE', null,  { root:true })

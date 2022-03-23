@@ -15,15 +15,14 @@
                                     <label class="col-form-label">Expense Category *</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <input list="categories" v-model="category" class="form-control" placeholder="Category">
-                                    <datalist id="categories">
-                                        <option value="Test one" />
-                                        <option value="Test two" />
-                                        <option value="Test three" />
-                                        <option v-for="category in filterCategories" :key="category.id" :value="category.name"/>
-                                    </datalist>
+                                    <div class="select-wrap">
+                                        <select class="form-control" v-model="form.expense_category_id">
+                                            <option value="">Select category</option>
+                                            <option v-for="category in filterCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                                        </select>
+                                    </div>
                                 </div>
-                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.category ? 'Category is required' : '' }}</span>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_category_id ? 'Category is required' : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -47,9 +46,9 @@
                                     <label class="col-form-label">Expense title (optional)</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="text" v-model="form.custom_title" placeholder="Expense title" class="form-control">
+                                    <input type="text" v-model="form.expense_title" placeholder="Expense title" class="form-control">
                                 </div>
-                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.custom_title ? errors.custom_title[0] : '' }}</span>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_title ? errors.expense_title[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -126,8 +125,8 @@ export default ({
     data() {
         return {
             form: {
-                category: "",
-                custom_title: "",
+                expense_category_id: "",
+                expense_title: "",
                 description: "",
                 amount: "",
                 expense_date: "",

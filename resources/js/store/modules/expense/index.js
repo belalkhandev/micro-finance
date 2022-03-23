@@ -51,6 +51,7 @@ export default {
 
         async createExpense({ commit }, formdata) {
             const res = await axios.post('expense/create', formdata)
+            console.log(res)
 
             if (res.data.status) {
                 commit('SET_EXPENSE', res.data.expense)

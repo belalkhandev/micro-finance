@@ -13,4 +13,6 @@ interface ExpenseCategoryRepositoryInterface
     public function delete($id);
 
     public function find($id);
+
+    public function search($search);
 }

@@ -23,8 +23,10 @@ class ExpenseRepository implements ExpenseRepositoryInterface {
     {
         $expense = new Expense();
         $expense->expense_category_id = $request->input('expense_category_id');
+        $expense->title = $request->input('expense_title');
         $expense->description = $request->input('description');
         $expense->amount = $request->input('amount');
+        $expense->expense_type = $request->input('expense_type');
         $expense->expense_date = $request->input('expense_date') ? Carbon::parse($request->input('expense_date'))->format('Y-m-d') : Carbon::now()->format('Y-m-d');
         $expense->created_by = Auth::guard('sanctum')->user()->id;
 

@@ -265,7 +265,9 @@ __webpack_require__.r(__webpack_exports__);
 var helpers = {
   data: function data() {
     return {
-      hello: 'I am from mixin'
+      page: 1,
+      per_page: 10,
+      pages: []
     };
   },
   methods: {
@@ -287,6 +289,14 @@ var helpers = {
     },
     dayNameFormat: function dayNameFormat(date) {
       return moment__WEBPACK_IMPORTED_MODULE_0___default()(date).format("dddd");
+    },
+    // pagination make
+    paginate: function paginate(data) {
+      var page = this.page;
+      var perPage = this.per_page;
+      var from = page * perPage - perPage;
+      var to = page * perPage;
+      return data.slice(from, to);
     }
   }
 };

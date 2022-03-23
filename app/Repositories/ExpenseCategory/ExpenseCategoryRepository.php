@@ -8,7 +8,7 @@ class ExpenseCategoryRepository implements ExpenseCategoryRepositoryInterface {
 
     public function all()
     {
-        $categories = Category::get();
+        $categories = Category::orderBy('name', 'ASC')->get();
 
         if ($categories->isNotEmpty()) {
             return $categories;
@@ -58,6 +58,17 @@ class ExpenseCategoryRepository implements ExpenseCategoryRepositoryInterface {
     public function find($id)
     {
         $category = Category::find($id);
+
+        if ($category) {
+            return $category;
+        }
+
+        return false;
+    }
+
+    public function search($search_key)
+    {
+        $category = Category::where('name', $search_key)->first();
 
         if ($category) {
             return $category;

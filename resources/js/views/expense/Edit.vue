@@ -1,85 +1,95 @@
 <template>
-    <div class="modal fade" id="editVillageModal" tabindex="-1">
-        <div class="modal-dialog">
+    <div class="modal fade" id="editExpenseModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Update village</h5>
+                    <h5 class="modal-title">Update Expense</h5>
                     <button type="button" class="btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center" data-bs-dismiss="modal" aria-label="Close"><i class="bx bx-x"></i></button>
                 </div>
-                <form @submit.prevent="updateVillage">
+                <form @submit.prevent="updateExpense">
                     <div class="modal-body">
-                        <span class="text-danger" v-if="error">{{ error }}</span>
+                        <p v-if="error" class="text-center"><span class="text-danger" >{{ error }}</span></p>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">District</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Expense Category *</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="district_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(district, i) in fetchDistricts" :value="district.id">{{ district.name }}</option>
+                                <div class="col-md-7">
+                                    <div class="select-wrap">
+                                        <select class="form-control" v-model="form.expense_category_id">
+                                            <option value="">Select category</option>
+                                            <option v-for="category in filterCategories" :key="category.id" :value="category.id">{{ category.name }}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_category_id ? 'Category is required' : '' }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Expense Types</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <select class="form-control" v-model="form.expense_type">
+                                        <option value="regular">Regular</option>
+                                        <option value="assets">Assets</option>
+                                        <option value="liabilities">Liabilities</option>
                                     </select>
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_type ? 'Expense type is required' : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Upazilla</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Expense title (optional)</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="form.upazilla_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id">{{ upazilla.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.upazilla_id ? errors.upazilla_id[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="text" v-model="form.expense_title" placeholder="Expense title" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_title ? errors.expense_title[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Union</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Description</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <select class="form-control" v-model="form.union_id">
-                                        <option value="">Select</option>
-                                        <option v-for="(union, i) in fetchUnions" :value="union.id">{{ union.name }}</option>
-                                    </select>
-                                    <span class="text-danger" v-if="errors">{{ errors.union_id ? errors.union_id[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <textarea v-model="form.description" rows="3" class="form-control" placeholder="Write description"></textarea>
                                 </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Name</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <input type="text" v-model="form.name" placeholder="Name" class="form-control">
-                                    <span class="text-danger" v-if="errors">{{ errors.name ? errors.name[0] : '' }}</span>
-                                </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.description ? errors.description[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <label class="col-form-label">Bangla name</label>
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Expense Amount</label>
                                 </div>
-                                <div class="col-md-8">
-                                    <input type="text" v-model="form.bn_name" placeholder="Name in bangla" class="form-control">
-                                    <span class="text-danger" v-if="errors">{{ errors.bn_name ? errors.bn_name[0] : '' }}</span>
+                                <div class="col-md-7">
+                                    <input type="number" v-model="form.amount" placeholder="0.00" class="form-control">
                                 </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.amount ? errors.amount[0] : '' }}</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <label class="col-form-label">Expense Date</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <Datepicker v-model="expense_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date"/>
+                                </div>
+                                <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_date ? errors.expense_date[0] : '' }}</span>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <div class="text-right">
-                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">
-                                {{ $t('close') }}</button>
-                            <button type="submit" class="ml-2 btn btn-primary" id="updateVillage">
-                                <span>{{ $t('save_change') }}</span>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" aria-label="Close">{{ $t('close') }}</button>
+                            <button type="submit" class="ml-2 btn btn-primary" id="updateExpense">
+                                <span>{{ $t('save') }}</span>
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
@@ -95,84 +105,83 @@
 <script>
 import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery'
+import Datepicker from "vue3-date-time-picker";
+import moment from 'moment'
+import {ref} from "vue";
 
 export default ({
-    name: "Edit",
-    props: {
-        village: Object
+    name: "Create",
+    setup() {
+        const date = ref(new Date());
+        return {
+            date
+        }
     },
+
+    components: {
+        Datepicker
+    },
+
     data() {
         return {
             form: {
-                village_id: null,
-                upazilla_id: "",
-                union_id: "",
-                name: "",
-                bn_name: ""
+                expense_id: "",
+                expense_category_id: "",
+                expense_title: "",
+                description: "",
+                amount: "",
+                expense_date: "",
+                expense_type: "regular",
             },
-            district_id: "",
+            expense_date: "",
             errors: null,
             error: null,
         }
     },
 
+    props: {
+        expense: Object
+    },
+
     computed: {
         ...mapGetters({
-            districts: 'location/districts',
-            upazillas: 'location/upazillas',
-            unions: 'location/unions',
+            categories: 'expenseCategory/expense_categories',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
 
-        fetchDistricts(){
-            if (this.districts) {
-                this.district_id = 12
-            }
-
-            return this.districts
-        },
-
-        fetchUpazillas(){
-            if (this.district_id && this.upazillas) {
-                return this.upazillas.filter(upazilla => upazilla.district_id === this.district_id)
-            }
-
-            return this.upazillas
-        },
-
-        fetchUnions(){
-            if (this.form.upazilla_id && this.unions) {
-                return this.unions.filter(union => union.upazilla_id === this.form.upazilla_id)
-            } else if (this.district_id && this.unions) {
-                return this.unions.filter(union => union.upazilla.district_id === this.district_id)
-            }
-
-            return this.unions
+        filterCategories(){
+            return this.categories
         },
     },
 
     methods: {
         ...mapActions({
-            getDistricts: 'location/getDistricts',
-            getUpazillas: 'location/getUpazillas',
-            getUnions: 'location/getUnions',
-            editVillage: 'location/editVillage',
+            getCategories: 'expenseCategory/getExpenseCategories',
+            editExpense: 'expense/editExpense',
         }),
 
-        updateVillage() {
-            $('#updateVillage').prop('disabled', true).addClass('submitted')
+        updateExpense() {
+            $('#updateExpense').prop('disabled', true).addClass('submitted')
 
             let formData = this.form;
+            // let inputData = this.form
+            //
+            // Object.keys(inputData).forEach(fieldName => {
+            //     formData.append(fieldName, inputData[fieldName]);
+            // });
+            //
+            // console.log(formData)
 
-            this.editVillage(formData).then(() => {
+            this.editExpense(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
+                    Object.assign(this.$data, this.$options.data.apply(this))
 
                     this.$swal({
                         icon: "success",
-                        title: "Updated!",
-                        text: "Village has been updated successfully",
+                        title: "Expense Update!",
+                        text: "Expense has been updated successfully",
                         timer: 3000
                     })
                 } else {
@@ -180,38 +189,32 @@ export default ({
                     this.error = this.error_message
                 }
 
-                $('#updateVillage').prop('disabled', false).removeClass('submitted')
+                $('#updateExpense').prop('disabled', false).removeClass('submitted')
             })
 
         }
     },
 
     mounted() {
-        this.getDistricts();
-        this.getUpazillas();
-        this.getUnions();
+        this.getCategories();
     },
 
     watch: {
-        village() {
-            if (this.village) {
-                this.form.village_id = this.village.id;
-                this.district_id = this.village.union.upazilla.district_id;
-                this.form.upazilla_id = this.village.upazilla_id;
-                this.form.union_id = this.village.union_id;
-                this.form.name = this.village.name;
-                this.form.bn_name = this.village.bn_name;
+        expense_date: function () {
+            this.form.expense_date = moment(this.expense_date).format("L");
+        },
+
+        expense() {
+            if (this.expense) {
+                this.form.expense_id = this.expense.id;
+                this.form.expense_category_id = this.expense.expense_category_id;
+                this.form.expense_title = this.expense.title;
+                this.form.description = this.expense.description;
+                this.form.expense_type = this.expense.expense_type;
+                this.form.amount = this.expense.amount;
+                this.form.expense_date = moment(this.expense.expense_date).format("L");
             }
         },
-
-        district_id () {
-            this.form.upazilla_id = "";
-            this.form.union_id = "";
-        },
-
-        upazilla_id () {
-            this.form.union_id = "";
-        }
     }
 })
 </script>

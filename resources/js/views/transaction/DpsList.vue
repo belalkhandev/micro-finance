@@ -28,7 +28,7 @@
                         </thead>
                         <tbody>
                         <tr v-if="filterTransactions" v-for="(transaction, i) in filterTransactions" :key="transaction.id">
-                            <td>{{ i+1 }}</td>
+                            <td>{{ per_page*(page-1)+(i+1) }}</td>
                             <td>{{ transaction.transaction_no }}</td>
                             <td>
                                 <router-link :to="{name: 'MemberShow', params: {
@@ -65,7 +65,30 @@
                     </table>
                 </div>
                 <div class="box-footer text-right">
-                    <p>Pagination here</p>
+                    <!-- pagination -->
+                    <div class="pagination" v-if="transactions && transactions.length > per_page">
+                        <p class="pagination-data">
+                            Page no {{ page }} Show {{ page === pages.length ? (transactions ? transactions.length : 0) : page*(filterTransactions ? filterTransactions.length : 0) }} of {{ transactions ? transactions.length : 0 }} Data
+                        </p>
+                        <ul>
+                            <li class="page-item">
+                                <button class="page-link" @click="page = 1" data-toggle="tooltip" data-placement="bottom" title="First Page"><i class="bx bx-chevrons-left"></i></button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link" v-if="page !== 1" @click="page--" data-toggle="tooltip" data-placement="bottom" title=""><i class="bx bx-chevron-left"></i></button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+10)" :class="page===pageNumber ? 'active': ''" :key="pageNumber" @click="page = pageNumber"> {{ pageNumber}} </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" @click="page++" v-if="page < pages.length" class="page-link"> <i class="bx bx-chevron-right"></i> </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link"  @click="page = pages.length" data-toggle="tooltip" data-placement="bottom" title="Last Page"><i class="bx bx-chevrons-right"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end pagination -->
                 </div>
             </div>
         </div>
@@ -99,6 +122,10 @@ export default ({
         }),
 
         filterTransactions() {
+            if (this.transactions) {
+                return this.paginate(this.transactions);
+            }
+
             return this.transactions;
         }
     },
@@ -140,10 +167,22 @@ export default ({
                 }
             });
         },
+
+        // pagination set pages
+        setPages() {
+            let numberOfPages = Math.ceil(this.transactions ? this.transactions.length / this.per_page : 0);
+            for (let index = 1; index <= numberOfPages; index++) {
+                this.pages.push(index);
+            }
+        },
     },
 
     mounted() {
-        this.getDpsTransactions();
+        if (!this.transactions) {
+            this.getDpsTransactions().then(() => {
+                this.setPages();
+            })
+        }
     }
 
 

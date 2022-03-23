@@ -133,7 +133,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var dps_installment = 0;
 
       if (this.form.dps_type === 'weekly') {
-        dps_installment = this.form.year * 54;
+        dps_installment = this.form.year * 52;
       } else {
         dps_installment = this.form.year * 12;
       }
