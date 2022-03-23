@@ -38,7 +38,6 @@ class MemberController extends Controller
             'members' => null,
             'message' => 'No data found'
         ]);
-
     }
 
     /**

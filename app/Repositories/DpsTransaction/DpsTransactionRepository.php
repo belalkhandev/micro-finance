@@ -19,6 +19,17 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
+    public function memberTransactions($member_id)
+    {
+        $transactions = DpsTransaction::with('application')->where('member_id', $member_id)->orderBy('is_paid', 'ASC')->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
     public function generateTransaction($request)
     {
         $tr_date = $request->input('from_date');

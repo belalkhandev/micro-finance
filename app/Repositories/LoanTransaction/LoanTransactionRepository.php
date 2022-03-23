@@ -19,6 +19,17 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         return false;
     }
 
+    public function memberTransactions($member_id)
+    {
+        $transactions = LoanTransaction::with('application')->where('member_id', $member_id)->orderBy('is_paid', 'ASC')->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
     public function generateTransaction($request)
     {
         $tr_date = databaseFormattedDate($request->input('from_date'));

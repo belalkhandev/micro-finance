@@ -11,4 +11,5 @@ interface DpsTransactionRepositoryInterface
     public function delete($id);
     public function find($id);
     public function applicationTransactions($app_id);
+    public function memberTransactions($member_id);
 }

@@ -86,6 +86,46 @@ class TransactionController extends Controller
     }
 
     /*
+     * all dps transaction list
+     * */
+    public function memberDpsTransactions($member_id)
+    {
+        $dps_trs = $this->dps->memberTransactions($member_id);
+
+        if ($dps_trs) {
+            return response()->json([
+                'status' => true,
+                'transactions' => $dps_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Dps transaction found'
+        ]);
+    }
+
+    /*
+     * all dps transaction list
+     * */
+    public function memberLoanTransactions($member_id)
+    {
+        $loan_trs = $this->loan->memberTransactions($member_id);
+
+        if ($loan_trs) {
+            return response()->json([
+                'status' => true,
+                'transactions' => $loan_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Dps transaction found'
+        ]);
+    }
+
+    /*
      * All load transaction list
      * */
     public function loanTransactionList()

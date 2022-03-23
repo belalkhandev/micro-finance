@@ -106,19 +106,19 @@ const routes = [
         }
     },
     {
-        path: '/members/transaction/new/:member_id',
-        name: 'MemberNewTransaction',
-        component: () => import('../views/member/NewTransaction.vue'),
+        path: '/members/transactions/dps/:member_id',
+        name: 'MemberDpsTransaction',
+        component: () => import('../views/member/DpsTransaction.vue'),
         meta: {
-            title: 'Member new transaction'
+            title: 'Member dps transaction history'
         }
     },
     {
-        path: '/members/transaction/all/:member_id',
-        name: 'MemberAllTransaction',
-        component: () => import('../views/member/AllTransaction.vue'),
+        path: '/members/transactions/loan/:member_id',
+        name: 'MemberLoanTransaction',
+        component: () => import('../views/member/LoanTransaction.vue'),
         meta: {
-            title: 'Member transaction history'
+            title: 'Member loan transaction history'
         }
     },
     {

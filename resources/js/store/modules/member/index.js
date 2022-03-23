@@ -5,17 +5,35 @@ export default {
 
     state: {
         members: null,
+        dps_transactions: null,
+        loan_transactions: null,
     },
 
     getters: {
         members(state){
             return state.members
         },
+
+        dps_transactions(state){
+            return state.dps_transactions
+        },
+
+        loan_transactions(state){
+            return state.loan_transactions
+        },
     },
 
     mutations: {
         SET_MEMBERS(state, members) {
             state.members = members
+        },
+
+        SET_MEMBER_DPS_TRANSACTIONS(state, dps_transactions) {
+            state.dps_transactions = dps_transactions
+        },
+
+        SET_MEMBER_LOAN_TRANSACTIONS(state, loan_transactions) {
+            state.loan_transactions = loan_transactions
         },
 
         SET_MEMBER(state, member) {
@@ -46,6 +64,22 @@ export default {
 
             if (res.data.status) {
                 commit('SET_MEMBERS', res.data.members)
+            }
+        },
+
+        async getLoanTransactions({ commit }, member_id) {
+            const res = await axios.get('member/transactions/loan/'+member_id)
+
+            if (res.data.status) {
+                commit('SET_MEMBER_LOAN_TRANSACTIONS', res.data.transactions)
+            }
+        },
+
+        async getDpsTransactions({ commit }, member_id) {
+            const res = await axios.get('member/transactions/dps/'+member_id)
+
+            if (res.data.status) {
+                commit('SET_MEMBER_DPS_TRANSACTIONS', res.data.transactions)
             }
         },
 

@@ -104,6 +104,8 @@ Route::group([
         $route->post('/create', [MemberController::class, 'store']);
         $route->put('/update/{id}', [MemberController::class, 'update']);
         $route->delete('/delete/{id}', [MemberController::class, 'destroy']);
+        $route->get('/transactions/loan/{member_id}', [TransactionController::class, 'memberLoanTransactions']);
+        $route->get('/transactions/dps/{member_id}', [TransactionController::class, 'memberDpsTransactions']);
     });
 
     Route::group([

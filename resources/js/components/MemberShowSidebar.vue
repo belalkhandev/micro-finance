@@ -19,20 +19,20 @@
                             </router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name:'MemberNewTransaction', params: { member_id: member.id }}">
-                                <span>New transaction</span>
-                                <i class='bx bx-chevrons-right'></i>
-                            </router-link>
-                        </li>
-                        <li>
-                            <router-link :to="{ name:'MemberAllTransaction', params: { member_id: member.id }}">
-                                <span>Transaction history</span>
-                                <i class='bx bx-chevrons-right'></i>
-                            </router-link>
-                        </li>
-                        <li>
                             <router-link :to="{ name:'MemberApplications', params: { member_id: member.id }}">
                                 <span>DPS/Loan Applications</span>
+                                <i class='bx bx-chevrons-right'></i>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name:'MemberDpsTransaction', params: { member_id: member.id }}">
+                                <span>Dps transaction History</span>
+                                <i class='bx bx-chevrons-right'></i>
+                            </router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name:'MemberLoanTransaction', params: { member_id: member.id }}">
+                                <span>Loan Transaction history</span>
                                 <i class='bx bx-chevrons-right'></i>
                             </router-link>
                         </li>
@@ -49,7 +49,7 @@
                             <td>Member Type</td>
                             <td class="text-right" v-if="member.member_type === 'deposit_weekly'">DPS(Weekly)</td>
                             <td class="text-right" v-else-if="member.member_type === 'deposit_monthly'">DPS(Monthly)</td>
-                            <td class="text-right" v-else="member.member_type === 'loan'">Loan</td>
+                            <td class="text-right" v-else>Loan</td>
                         </tr>
                         <tr>
                             <td>Address</td>
