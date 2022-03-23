@@ -182,6 +182,8 @@ export default ({
             this.getDpsTransactions().then(() => {
                 this.setPages();
             })
+        }else {
+            this.setPages();
         }
     }
 

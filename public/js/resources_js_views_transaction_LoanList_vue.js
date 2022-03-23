@@ -99,6 +99,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.getLoanTransactions().then(function () {
         _this2.setPages();
       });
+    } else {
+      this.setPages();
     }
   }
 });

@@ -183,6 +183,8 @@ export default ({
             this.getLoanTransactions().then(() => {
                 this.setPages();
             })
+        }else {
+            this.setPages();
         }
     },
 

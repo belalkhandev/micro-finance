@@ -155,6 +155,8 @@ export default ({
             this.getMembers().then(() => {
                 this.setPages();
             });
+        } else {
+            this.setPages();
         }
     }
 
