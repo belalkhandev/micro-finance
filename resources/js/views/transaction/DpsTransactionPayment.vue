@@ -64,7 +64,20 @@
                                     <label class="col-form-label">Transaction Date</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.transaction_date" class="form-control" readonly>
+                                    <Datepicker v-model="transaction_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Transaction Status</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select v-model="form.payment_status" class="form-control">
+                                        <option value="paid">Paid</option>
+                                        <option value="unpaid">Unapaid</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -75,7 +88,7 @@
                             <button type="submit" class="ml-2 btn btn-primary btn-sm" id="updateDpsTransaction">
                                 <span>{{ $t('collect') }}</span>
                                 <div class="spinner-border" role="status">
-                                    <span class="visually-hidden">Loading...</span>
+                                    <span class="visuaNlly-hidden">Loading...</span>
                                 </div>
                             </button>
                         </div>
@@ -89,6 +102,7 @@
 <script>
 import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery'
+import {helpers} from "../../mixin";
 
 export default ({
     name: "DpsTransactionPayment",
@@ -106,13 +120,16 @@ export default ({
                 transaction_status: "",
                 amount: "",
                 balance: "",
+                payment_status: "paid",
             },
+            transaction_date: this.datePickerFormat(new Date())
         }
     },
 
+    mixins: [helpers],
+
     computed: {
         ...mapGetters({
-            transactions: 'transaction/dps_transactions',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
@@ -120,7 +137,7 @@ export default ({
 
     methods: {
         ...mapActions({
-
+            createDpsCollection: "transaction/collectDpsTransaction"
         }),
 
         updateDpsTransaction() {
@@ -128,14 +145,13 @@ export default ({
 
             let formData = this.form;
 
-            this.editPostOffice(formData).then(() => {
+            this.createDpsCollection(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
-
                     this.$swal({
                         icon: "success",
                         title: "Updated!",
-                        text: "PostOffice has been updated successfully",
+                        text: "Dps transaction collection has been success",
                         timer: 3000
                     })
                 } else {
@@ -149,10 +165,6 @@ export default ({
         }
     },
 
-    mounted() {
-
-    },
-
     watch: {
         transaction() {
             if (this.transaction) {
@@ -163,8 +175,13 @@ export default ({
                 this.form.transaction_date = this.transaction.transaction_date
                 this.form.amount = this.transaction.amount
                 this.form.balance = this.transaction.balance
+                this.transaction_date = this.datePickerFormat(new Date())
             }
         },
+
+        transaction_date: function () {
+            this.form.transaction_date = this.datePickerFormat(this.transaction_date)
+        }
     }
 })
 </script>

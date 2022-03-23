@@ -50,11 +50,11 @@
                             <td>
                                 <span v-if="!transaction.is_paid">
                                     <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showDpsTransactionModal(transaction)">
-                                        Pay now
+                                        Collect now
                                     </a>
                                 </span>
                                 <span v-else class="text-danger">
-                                    <span class="btn btn-success btn-sm py-1">Paid</span>
+                                    <span class="btn btn-success btn-sm py-1">Collected</span>
                                 </span>
                             </td>
                         </tr>

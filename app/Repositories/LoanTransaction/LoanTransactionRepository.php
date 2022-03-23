@@ -10,7 +10,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function all()
     {
-        $transactions = LoanTransaction::with('application')->latest()->get();
+        $transactions = LoanTransaction::with('application')->orderBy('is_paid', 'ASC')->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;

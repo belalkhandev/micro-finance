@@ -120,6 +120,7 @@ Route::group([
         'prefix' => 'transaction/dps'
     ], function($route) {
         $route->get('/list', [TransactionController::class, 'dpsTransactionList']);
+        $route->post('/collection', [TransactionController::class, 'dpsCollection']);
         $route->put('/update/{id}', [TransactionController::class, 'updateDpsTransaction']);
         $route->delete('/delete/{id}', [TransactionController::class, 'destroyDpsTransaction']);
     });

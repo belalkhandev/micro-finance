@@ -105,6 +105,23 @@ class TransactionController extends Controller
         ]);
     }
 
+    public function dpsCollection(Request $request)
+    {
+        $transaction = $this->dps->payment($request);
+
+        if ($transaction) {
+            return response()->json([
+                'status' => true,
+                'transaction' => $transaction
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Something went wrong'
+        ]);
+    }
+
     public function loanCollection(Request $request)
     {
         $transaction = $this->loan->payment($request);

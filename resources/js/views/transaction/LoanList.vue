@@ -54,7 +54,7 @@
                                     </a>
                                 </span>
                                 <span v-else class="text-danger">
-                                    <span class="btn btn-success btn-sm py-1">Complete</span>
+                                    <span class="btn btn-success btn-sm py-1">Collected</span>
                                 </span>
                             </td>
                         </tr>

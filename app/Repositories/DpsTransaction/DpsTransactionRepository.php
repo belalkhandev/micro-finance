@@ -10,7 +10,7 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function all()
     {
-        $transactions = DpsTransaction::with('application')->latest()->get();
+        $transactions = DpsTransaction::with('application')->orderBy('is_paid', 'ASC')->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -93,7 +93,27 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function payment($request)
     {
-        //payment
+        $transaction = $this->find($request->input('transaction_id'));
+
+        $last_balance = DpsTransaction::where('dps_application_id', $transaction->dps_application_id)
+            ->where('is_paid', 1)
+            ->where('id', '!=', $transaction->id)
+            ->get()
+            ->sum('amount');
+
+        if ($request->input('payment_status') === 'paid') {
+            $transaction->balance = $last_balance+$transaction->amount;
+            $transaction->is_paid = 1;
+        } else {
+            $transaction->balance = 0;
+            $transaction->is_paid = 0;
+        }
+
+        if ($transaction->save()) {
+            return $transaction;
+        }
+
+        return false;
     }
 
     public function delete($id)

@@ -86,6 +86,22 @@ export default {
             }
         },
 
+        async collectDpsTransaction({ commit }, formdata) {
+            const res = await axios.post('transaction/dps/collection', formdata)
+            if (res.data.status) {
+                commit('UPDATE_DPS_TR', res.data.transaction)
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
         async collectLoanTransaction({ commit }, formdata) {
             const res = await axios.post('transaction/loan/collection', formdata)
             if (res.data.status) {
