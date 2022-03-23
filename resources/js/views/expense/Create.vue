@@ -105,22 +105,10 @@
 <script>
 import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery'
-import Datepicker from "vue3-date-time-picker";
-import moment from 'moment'
-import {ref} from "vue";
+import {helpers} from "../../mixin";
 
 export default ({
     name: "Create",
-    setup() {
-        const date = ref(new Date());
-        return {
-            date
-        }
-    },
-
-    components: {
-        Datepicker
-    },
 
     data() {
         return {
@@ -137,6 +125,8 @@ export default ({
             error: null,
         }
     },
+
+    mixins: [helpers],
 
     computed: {
         ...mapGetters({
@@ -194,7 +184,7 @@ export default ({
 
     watch: {
         expense_date: function () {
-            this.form.expense_date = moment(this.expense_date).format("L");
+            this.form.expense_date = this.datePickerFormat(this.expense_date)
         }
     }
 })

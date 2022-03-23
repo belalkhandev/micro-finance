@@ -1,4 +1,6 @@
-import moment from "moment";
+import Datepicker from "vue3-date-time-picker";
+import moment from 'moment'
+import {ref} from "vue";
 
 export const helpers = {
     data () {
@@ -7,6 +9,17 @@ export const helpers = {
             per_page: 10,
             pages: [],
         }
+    },
+
+    setup() {
+        const date = ref(new Date());
+        return {
+            date
+        }
+    },
+
+    components: {
+        Datepicker
     },
 
     methods: {
@@ -23,6 +36,10 @@ export const helpers = {
 
         userFormattedDate (date) {
             return moment(date).format("LL");
+        },
+
+        datePickerFormat (date) {
+            return moment(date).format("L");
         },
 
         dayNameFormat(date) {

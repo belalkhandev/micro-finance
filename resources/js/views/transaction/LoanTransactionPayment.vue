@@ -11,10 +11,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label">Transaction No</label>
+                                    <label class="col-form-label">Account No</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.transaction_no" class="form-control" readonly>
+                                    <input type="text" v-model="form.account_no" class="form-control" readonly>
                                 </div>
                             </div>
                         </div>
@@ -31,10 +31,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <label class="col-form-label">Account No</label>
+                                    <label class="col-form-label">Transaction No</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.account_no" class="form-control" readonly>
+                                    <input type="text" v-model="form.transaction_no" class="form-control" readonly>
                                 </div>
                             </div>
                         </div>
@@ -64,7 +64,7 @@
                                     <label class="col-form-label">Transaction Date</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.transaction_date" class="form-control" readonly>
+                                    <Datepicker v-model="transaction_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date"/>
                                 </div>
                             </div>
                         </div>
@@ -89,12 +89,15 @@
 <script>
 import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery'
+import {helpers} from "../../mixin";
 
 export default ({
     name: "LoanTransactionPayment",
+
     props: {
         transaction: Object
     },
+
     data() {
         return {
             form: {
@@ -107,8 +110,11 @@ export default ({
                 amount: "",
                 balance: "",
             },
+            transaction_date: this.datePickerFormat(new Date())
         }
     },
+
+    mixins: [helpers],
 
     computed: {
         ...mapGetters({
@@ -163,8 +169,14 @@ export default ({
                 this.form.transaction_date = this.transaction.transaction_date
                 this.form.amount = this.transaction.amount
                 this.form.balance = this.transaction.balance
+                this.transaction_date = this.datePickerFormat(new Date())
             }
         },
+
+        transaction_date: function () {
+            this.form.transaction_date = this.datePickerFormat(this.transaction_date)
+        }
+
     }
 })
 </script>
