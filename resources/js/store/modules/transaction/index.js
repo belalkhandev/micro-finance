@@ -38,14 +38,14 @@ export default {
         },
 
         DELETE_DPS_TR(state, item_id) {
-            const dps_transaction  = state.dps_transactions.find(item => item.id == item_id)
+            const dps_transaction  = state.dps_transactions.find(item => item.id === item_id)
             if (dps_transaction) {
                 state.dps_transactions.splice(state.dps_transactions.indexOf(expense), 1)
             }
         },
 
         DELETE_LOAN_TR(state, item_id) {
-            const loan_transaction  = state.loan_transactions.find(item => item.id == item_id)
+            const loan_transaction  = state.loan_transactions.find(item => item.id === item_id)
             if (loan_transaction) {
                 state.loan_transactions.splice(state.loan_transactions.indexOf(expense), 1)
             }
@@ -74,6 +74,22 @@ export default {
             const res = await axios.post('transaction/generate', formdata)
 
             if (res.data.status) {
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
+        async collectLoanTransaction({ commit }, formdata) {
+            const res = await axios.post('transaction/loan/collection', formdata)
+            if (res.data.status) {
+                commit('UPDATE_LOAN_TR', res.data.transaction)
                 commit('SET_VALIDATION_ERRORS', null,  { root:true })
                 commit('SET_ERROR_MESSAGE', null,  { root:true })
             } else {

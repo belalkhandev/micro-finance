@@ -10,4 +10,5 @@ interface LoanTransactionRepositoryInterface
     public function payment($request);
     public function delete($id);
     public function find($id);
+    public function applicationTransactions($app_id);
 }

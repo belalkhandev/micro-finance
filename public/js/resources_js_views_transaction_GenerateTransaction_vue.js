@@ -92,7 +92,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     }
   }),
-  mounted: function mounted() {},
   watch: {
     from_date: function from_date() {
       this.form.from_date = moment__WEBPACK_IMPORTED_MODULE_2___default()(this.from_date).format("L");

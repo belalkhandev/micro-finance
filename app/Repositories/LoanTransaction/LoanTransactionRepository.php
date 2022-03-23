@@ -42,7 +42,11 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
                 }
 
                 foreach ($applications as $application) {
-                    $this->store($application, $date);
+                    $transactions_amount = $this->applicationTransactions($application->id)->sum('amount');
+                    if ($transactions_amount < $application->total_amount) {
+                        $this->store($application, $date);
+                    }
+
                 }
 
                 $tr_date = Carbon::parse($date)->addDay();
@@ -57,11 +61,14 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function store($application, $date)
     {
+
         $tr = LoanTransaction::where('loan_application_id', $application->id)->whereDate('transaction_date', $date)->first();
+
         if(!$tr) {
             $tr = new LoanTransaction();
             $tr->transaction_no = LoanTransaction::where('loan_application_id', $application->id)->get()->count() + 1;
         }
+
         $tr->loan_application_id = $application->id;
         $tr->member_id = $application->member_id;
         $tr->transaction_date = $date;
@@ -82,7 +89,27 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function payment($request)
     {
-        //payment
+        $transaction = $this->find($request->input('transaction_id'));
+
+        $last_balance = LoanTransaction::where('loan_application_id', $transaction->loan_application_id)
+            ->where('is_paid', 1)
+            ->where('id', '!=', $transaction->id)
+            ->get()
+            ->sum('amount');
+
+        if ($request->input('payment_status') === 'paid') {
+            $transaction->balance = $last_balance+$transaction->amount;
+            $transaction->is_paid = 1;
+        } else {
+            $transaction->balance = 0;
+            $transaction->is_paid = 0;
+        }
+
+        if ($transaction->save()) {
+            return $transaction;
+        }
+
+        return false;
     }
 
     public function delete($id)
@@ -102,6 +129,17 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
         if ($dps) {
             return $dps;
+        }
+
+        return false;
+    }
+
+    public function applicationTransactions($app_id)
+    {
+        $transactions = LoanTransaction::where('loan_application_id', $app_id)->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
         }
 
         return false;

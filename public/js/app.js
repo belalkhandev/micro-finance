@@ -29446,7 +29446,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     DELETE_DPS_TR: function DELETE_DPS_TR(state, item_id) {
       var dps_transaction = state.dps_transactions.find(function (item) {
-        return item.id == item_id;
+        return item.id === item_id;
       });
 
       if (dps_transaction) {
@@ -29455,7 +29455,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     DELETE_LOAN_TR: function DELETE_LOAN_TR(state, item_id) {
       var loan_transaction = state.loan_transactions.find(function (item) {
-        return item.id == item_id;
+        return item.id === item_id;
       });
 
       if (loan_transaction) {
@@ -29559,7 +29559,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    editExpenseCategory: function editExpenseCategory(_ref4, formdata) {
+    collectLoanTransaction: function collectLoanTransaction(_ref4, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -29568,13 +29568,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref4.commit;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('expense/categories/update/' + formdata.category_id, formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/loan/collection', formdata);
 
               case 3:
                 res = _context4.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_CATEGORY', res.data.expense);
+                  commit('UPDATE_LOAN_TR', res.data.transaction);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -29602,7 +29602,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    deleteExpenseCategory: function deleteExpenseCategory(_ref5, item_id) {
+    editExpenseCategory: function editExpenseCategory(_ref5, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -29611,10 +29611,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref5.commit;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('expense/categories/delete/' + item_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('expense/categories/update/' + formdata.category_id, formdata);
 
               case 3:
                 res = _context5.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_CATEGORY', res.data.expense);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    deleteExpenseCategory: function deleteExpenseCategory(_ref6, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('expense/categories/delete/' + item_id);
+
+              case 3:
+                res = _context6.sent;
 
                 if (res.data.status) {
                   commit('DELETE_CATEGORY', item_id);
@@ -29633,10 +29676,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5);
+        }, _callee6);
       }))();
     }
   }

@@ -138,6 +138,7 @@ Route::group([
         'prefix' => 'transaction/loan'
     ], function($route) {
         $route->get('/list', [TransactionController::class, 'loanTransactionList']);
+        $route->post('/collection', [TransactionController::class, 'loanCollection']);
         $route->put('/update/{id}', [TransactionController::class, 'updateLoanTransaction']);
         $route->delete('/delete/{id}', [TransactionController::class, 'destroyLoanTransaction']);
     });

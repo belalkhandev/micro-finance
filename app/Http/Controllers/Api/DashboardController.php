@@ -15,11 +15,12 @@ class DashboardController extends Controller
     public function widgetData()
     {
         $dps_trs = DpsTransaction::get();
-        $lns_trs = DpsTransaction::get();
+        $lns_trs = LoanTransaction::get();
         $members = Member::get()->count();
         $admins = User::get()->count();
         $transactions_dps = $dps_trs->where('is_paid', 1)->sum('amount');
         $transactions_loan = $lns_trs->where('is_paid', 1)->sum('amount');
+
         $total_collection = $transactions_dps+$transactions_loan;
         $total_dues = $dps_trs->where('is_paid', 0)->sum('amount')+$lns_trs->where('is_paid', 0)->sum('amount')-$total_collection;
         $full_paid = 0;

@@ -43,7 +43,10 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 }
 
                 foreach ($applications as $application) {
-                    $this->store($application, $date);
+                    $transactions_amount = $this->applicationTransactions($application->id)->sum('amount');
+                    if ($transactions_amount < $application->total_amount) {
+                        $this->store($application, $date);
+                    }
                 }
 
                 $tr_date = Carbon::parse($date)->addDay();
@@ -82,8 +85,6 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
             return false;
         }catch (\Exception $e) {
-            dd($e->getMessage());
-
             return false;
         }
 
@@ -112,6 +113,18 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
         if ($dps) {
             return $dps;
+        }
+
+        return false;
+    }
+
+
+    public function applicationTransactions($app_id)
+    {
+        $transactions = DpsTransaction::where('dps_application_id', $app_id)->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
         }
 
         return false;

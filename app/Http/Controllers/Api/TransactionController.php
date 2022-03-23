@@ -104,4 +104,21 @@ class TransactionController extends Controller
             'message' => 'No Loan transaction found'
         ]);
     }
+
+    public function loanCollection(Request $request)
+    {
+        $transaction = $this->loan->payment($request);
+
+        if ($transaction) {
+            return response()->json([
+                'status' => true,
+                'transaction' => $transaction
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'Something went wrong'
+        ]);
+    }
 }

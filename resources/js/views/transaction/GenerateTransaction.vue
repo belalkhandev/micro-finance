@@ -175,10 +175,6 @@ export default ({
         }
     },
 
-    mounted() {
-
-    },
-
     watch: {
         from_date: function () {
             this.form.from_date = moment(this.from_date).format("L");

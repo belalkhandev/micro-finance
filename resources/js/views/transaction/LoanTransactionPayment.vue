@@ -68,6 +68,19 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label class="col-form-label">Transaction Status</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select v-model="form.payment_status" class="form-control">
+                                        <option value="paid">Paid</option>
+                                        <option value="unpaid">Unapaid</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <div class="text-right">
@@ -109,6 +122,7 @@ export default ({
                 transaction_status: "",
                 amount: "",
                 balance: "",
+                payment_status: "paid",
             },
             transaction_date: this.datePickerFormat(new Date())
         }
@@ -118,7 +132,6 @@ export default ({
 
     computed: {
         ...mapGetters({
-            transactions: 'transaction/loan_transactions',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
@@ -126,7 +139,7 @@ export default ({
 
     methods: {
         ...mapActions({
-
+            createLoanCollection: "transaction/collectLoanTransaction"
         }),
 
         updateLoanTransaction() {
@@ -134,14 +147,13 @@ export default ({
 
             let formData = this.form;
 
-            this.editPostOffice(formData).then(() => {
+            this.createLoanCollection(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
-
                     this.$swal({
                         icon: "success",
                         title: "Updated!",
-                        text: "PostOffice has been updated successfully",
+                        text: "Loan Transaction has been success",
                         timer: 3000
                     })
                 } else {
@@ -153,10 +165,6 @@ export default ({
             })
 
         }
-    },
-
-    mounted() {
-
     },
 
     watch: {
