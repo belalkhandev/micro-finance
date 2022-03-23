@@ -9,6 +9,7 @@ import loan from './modules/loan'
 import expense from './modules/expense'
 import expenseCategory from "./modules/expense-category"
 import transaction from "./modules/transaction"
+import report from "./modules/report"
 import dashboard from "./modules/dashboard";
 
 export default createStore({
@@ -48,6 +49,7 @@ export default createStore({
         dps, loan,
         expense, expenseCategory,
         transaction,
-        dashboard
+        dashboard,
+        report
     }
 })

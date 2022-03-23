@@ -202,6 +202,38 @@ const routes = [
         },
     },
     {
+        path: '/report/loan',
+        name: 'LoanReport',
+        component: () => import('../views/report/LoanReport'),
+        meta: {
+            title: 'Loan Report'
+        },
+    },
+    {
+        path: '/report/dps',
+        name: 'DpsReport',
+        component: () => import('../views/report/DpsReport'),
+        meta: {
+            title: 'Dps Report'
+        },
+    },
+    {
+        path: '/report/loan/today',
+        name: 'TodayLoanReport',
+        component: () => import('../views/report/TodayLoanReport'),
+        meta: {
+            title: 'Today Loan Report'
+        },
+    },
+    {
+        path: '/report/dps/today',
+        name: 'TodayDpsReport',
+        component: () => import('../views/report/TodayDpsReport'),
+        meta: {
+            title: 'Today Dps Report'
+        },
+    },
+    {
         path: '/:catchAll(.*)',
         name: 'NotFound',
         component: () => import('../views/404.vue'),

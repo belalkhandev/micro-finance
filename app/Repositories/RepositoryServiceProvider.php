@@ -20,6 +20,7 @@ class RepositoryServiceProvider extends ServiceProvider {
             'DpsTransaction' => 'DpsTransaction',
             'LoanApplication' => 'LoanApplication',
             'LoanTransaction' => 'LoanTransaction',
+            'Report' => 'Report',
         ];
 
         foreach ($models as $dir => $model) {

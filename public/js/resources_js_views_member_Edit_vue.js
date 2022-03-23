@@ -1347,7 +1347,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control {\n    background-color: #ffffff80;\n}\n.form-control:focus {\n    background-color: #ffffff90;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.form-control {\r\n    background-color: #ffffff80;\n}\n.form-control:focus {\r\n    background-color: #ffffff90;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -1396,7 +1396,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Edit_vue_vue_type_template_id_4b9d6e60__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=4b9d6e60 */ "./resources/js/views/member/Edit.vue?vue&type=template&id=4b9d6e60");
 /* harmony import */ var _Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js */ "./resources/js/views/member/Edit.vue?vue&type=script&lang=js");
 /* harmony import */ var _Edit_vue_vue_type_style_index_0_id_4b9d6e60_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Edit.vue?vue&type=style&index=0&id=4b9d6e60&lang=css */ "./resources/js/views/member/Edit.vue?vue&type=style&index=0&id=4b9d6e60&lang=css");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -1404,7 +1404,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_4b9d6e60__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/member/Edit.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_4b9d6e60__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/member/Edit.vue"]])
 /* hot reload */
 if (false) {}
 

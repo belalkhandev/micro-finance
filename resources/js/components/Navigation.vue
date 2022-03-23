@@ -205,44 +205,44 @@
                         <h5>DPS Report</h5>
                         <ul>
                             <li>
-                                <a href="">
+                                <router-link :to="{name: 'TodayDpsReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Today's Transaction Reports</span>
-                                </a>
+                                </router-link>
                             </li>
                             <li>
+                                <router-link :to="{name: 'DpsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </router-link>
+                            </li>
+                            <!-- <li>
                                 <a href="">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All Transaction Reports</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All Transaction Reports</span>
-                                </a>
-                            </li>
+                            </li> -->
                         </ul>
                         <h5>Loan Reports</h5>
                         <ul>
                             <li>
-                                <a href="">
+                                <router-link :to="{name: 'TodayLoanReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Today's Transaction Reports</span>
-                                </a>
+                                </router-link>
                             </li>
                             <li>
+                                <router-link :to="{name: 'LoanReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Transaction Reports</span>
+                                </router-link>
+                            </li>
+                            <!-- <li>
                                 <a href="">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All Transaction Reports</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a href="">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All Transaction Reports</span>
-                                </a>
-                            </li>
+                            </li> -->
                         </ul>
                         <h5>Accounts Reports</h5>
                         <ul>

@@ -53,7 +53,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
                 }
 
                 foreach ($applications as $application) {
-                    $transactions_amount = $this->applicationTransactions($application->id)->sum('amount');
+                    $transactions_amount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
                     if ($transactions_amount < $application->total_amount) {
                         $this->store($application, $date);
                     }

@@ -1,0 +1,102 @@
+<?php
+
+namespace App\Http\Controllers\Api;
+
+use App\Http\Controllers\Controller;
+use App\Repositories\Report\ReportRepositoryInterface;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+
+class ReportController extends Controller
+{
+    protected $report;
+
+    public function __construct(ReportRepositoryInterface $report)
+    {
+        $this->report = $report;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function allDpsReport()
+    {
+        $applications = $this->report->allDps();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Dps applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+
+    public function allLoanReport()
+    {
+        $applications = $this->report->allLoan();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Loan applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    public function allCurrentDpsReport()
+    {
+        $applications = $this->report->allCurrentDps();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Dps applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+
+    public function allCurrentLoanReport()
+    {
+        $applications = $this->report->allCurrentLoan();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Loan applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+}

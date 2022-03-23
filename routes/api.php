@@ -13,6 +13,7 @@ use App\Http\Controllers\Api\PostOfficeController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VillageController;
+use App\Http\Controllers\Api\ReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -148,4 +149,14 @@ Route::group([
 
     Route::post('/transaction/generate', [TransactionController::class, 'generateTransaction']);
     Route::get('/dashboard/widgets/data', [DashboardController::class, 'widgetData']);
+
+
+    Route::group([
+        'prefix' => 'report'
+    ], function($route) {
+        $route->get('/dps', [ReportController::class, 'allDpsReport']);
+        $route->get('/loan', [ReportController::class, 'allLoanReport']);
+        $route->get('/dps/today', [ReportController::class, 'allCurrentDpsReport']);
+        $route->get('/loan/today', [ReportController::class, 'allCurrentLoanReport']);
+    });
 });
