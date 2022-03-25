@@ -79,10 +79,86 @@ class ReportController extends Controller
         ]);
     }
 
+    public function allPaidDpsReport()
+    {
+        $applications = $this->report->allPaidDps();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Dps applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    public function allDueDpsReport()
+    {
+        $applications = $this->report->allDueDps();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Dps applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
 
     public function allCurrentLoanReport()
     {
         $applications = $this->report->allCurrentLoan();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Loan applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    public function allPaidLoanReport()
+    {
+        $applications = $this->report->allPaidLoan();
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'applications' => $applications,
+                'message' => 'Loan applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    public function allDueLoanReport()
+    {
+        $applications = $this->report->allDueLoan();
 
         if ($applications) {
             return response()->json([

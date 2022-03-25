@@ -181,7 +181,7 @@
                         <h3>Reports</h3>
                     </div>
                     <div class="navigation-content-body">
-                        <h5>Transaction Reports</h5>
+                        <!-- <h5>Transaction Reports</h5>
                         <ul>
                             <li>
                                 <a href="">
@@ -201,7 +201,7 @@
                                     <span>All Transaction Reports</span>
                                 </a>
                             </li>
-                        </ul>
+                        </ul> -->
                         <h5>DPS Report</h5>
                         <ul>
                             <li>
@@ -214,6 +214,18 @@
                                 <router-link :to="{name: 'DpsReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All Transaction Reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'PaidDpsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Paid Transaction Reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'DueDpsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Due Transaction Reports</span>
                                 </router-link>
                             </li>
                             <!-- <li>
@@ -235,6 +247,18 @@
                                 <router-link :to="{name: 'LoanReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All Transaction Reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'PaidLoanReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Paid Transaction Reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'DueLoanReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Due Transaction Reports</span>
                                 </router-link>
                             </li>
                             <!-- <li>

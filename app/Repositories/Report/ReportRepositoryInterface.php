@@ -11,4 +11,12 @@ interface ReportRepositoryInterface
     public function allCurrentLoan();
 
     public function allCurrentDps();
+
+    public function allPaidDps();
+
+    public function allDueDps();
+
+    public function allPaidLoan();
+    
+    public function allDueLoan();
 }

@@ -54,4 +54,48 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
+    public function allPaidDps()
+    {
+        $transactions = DpsTransaction::with('application')->where('is_paid', true)->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+    
+    public function allDueDps()
+    {
+        $transactions = DpsTransaction::with('application')->where('is_paid', false)->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+    
+    public function allPaidLoan()
+    {
+        $transactions = DpsTransaction::with('application')->where('is_paid', true)->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+    
+    public function allDueLoan()
+    {
+        $transactions = DpsTransaction::with('application')->where('is_paid', false)->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
 }

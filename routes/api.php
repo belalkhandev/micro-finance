@@ -158,5 +158,9 @@ Route::group([
         $route->get('/loan', [ReportController::class, 'allLoanReport']);
         $route->get('/dps/today', [ReportController::class, 'allCurrentDpsReport']);
         $route->get('/loan/today', [ReportController::class, 'allCurrentLoanReport']);
+        $route->get('/dps/paid', [ReportController::class, 'allPaidDpsReport']);
+        $route->get('/dps/due', [ReportController::class, 'allDueDpsReport']);
+        $route->get('/loan/paid', [ReportController::class, 'allPaidLoanReport']);
+        $route->get('/loan/due', [ReportController::class, 'allDueLoanReport']);
     });
 });

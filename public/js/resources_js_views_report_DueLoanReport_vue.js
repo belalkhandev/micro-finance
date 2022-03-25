@@ -1,9 +1,9 @@
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_report_TodayLoanReport_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_report_DueLoanReport_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/TodayLoanReport.vue?vue&type=script&lang=js":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/TodayLoanReport.vue?vue&type=script&lang=js ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/DueLoanReport.vue?vue&type=script&lang=js":
+/*!*********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/DueLoanReport.vue?vue&type=script&lang=js ***!
+  \*********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -38,11 +38,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
-    transactions: 'report/loan_current_transactions'
+    transactions: 'report/loan_due_transactions'
   })), {}, {
-    downloadReport: function downloadReport() {
-      window.open('http://127.0.0.1:8000/download/current/loan');
-    },
     filterTransactions: function filterTransactions() {
       if (this.transactions) {
         return this.paginate(this.transactions);
@@ -52,8 +49,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)({
-    getLoanTransactions: 'report/getCurrentLoanTransactions'
+    getLoanTransactions: 'report/getDueLoanTransactions'
   })), {}, {
+    downloadReport: function downloadReport() {
+      window.open('http://127.0.0.1:8000/download/due/loan');
+    },
     showLoanTransactionModal: function showLoanTransactionModal(data) {
       this.loan_transaction_data = data;
       var LoanTransactionModal = new (bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_1___default().Modal)(document.getElementById('loanTransactionPayment'));
@@ -208,10 +208,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/TodayLoanReport.vue?vue&type=template&id=15187c29":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/TodayLoanReport.vue?vue&type=template&id=15187c29 ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/DueLoanReport.vue?vue&type=template&id=0e9d289c":
+/*!*************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/DueLoanReport.vue?vue&type=template&id=0e9d289c ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -236,7 +236,7 @@ var _hoisted_4 = {
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "box-title"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Todays Loan Transaction Report")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, "Due Loan Transaction Report")], -1
 /* HOISTED */
 );
 
@@ -27339,10 +27339,10 @@ webpackContext.id = "./node_modules/moment/locale sync recursive ^\\.\\/.*$";
 
 /***/ }),
 
-/***/ "./resources/js/views/report/TodayLoanReport.vue":
-/*!*******************************************************!*\
-  !*** ./resources/js/views/report/TodayLoanReport.vue ***!
-  \*******************************************************/
+/***/ "./resources/js/views/report/DueLoanReport.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/views/report/DueLoanReport.vue ***!
+  \*****************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -27350,15 +27350,15 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _TodayLoanReport_vue_vue_type_template_id_15187c29__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TodayLoanReport.vue?vue&type=template&id=15187c29 */ "./resources/js/views/report/TodayLoanReport.vue?vue&type=template&id=15187c29");
-/* harmony import */ var _TodayLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TodayLoanReport.vue?vue&type=script&lang=js */ "./resources/js/views/report/TodayLoanReport.vue?vue&type=script&lang=js");
+/* harmony import */ var _DueLoanReport_vue_vue_type_template_id_0e9d289c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DueLoanReport.vue?vue&type=template&id=0e9d289c */ "./resources/js/views/report/DueLoanReport.vue?vue&type=template&id=0e9d289c");
+/* harmony import */ var _DueLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DueLoanReport.vue?vue&type=script&lang=js */ "./resources/js/views/report/DueLoanReport.vue?vue&type=script&lang=js");
 /* harmony import */ var D_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,D_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_TodayLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_TodayLoanReport_vue_vue_type_template_id_15187c29__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/report/TodayLoanReport.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DueLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DueLoanReport_vue_vue_type_template_id_0e9d289c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/report/DueLoanReport.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -27395,18 +27395,18 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/views/report/TodayLoanReport.vue?vue&type=script&lang=js":
-/*!*******************************************************************************!*\
-  !*** ./resources/js/views/report/TodayLoanReport.vue?vue&type=script&lang=js ***!
-  \*******************************************************************************/
+/***/ "./resources/js/views/report/DueLoanReport.vue?vue&type=script&lang=js":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/views/report/DueLoanReport.vue?vue&type=script&lang=js ***!
+  \*****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TodayLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DueLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TodayLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TodayLoanReport.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/TodayLoanReport.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DueLoanReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DueLoanReport.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/DueLoanReport.vue?vue&type=script&lang=js");
  
 
 /***/ }),
@@ -27427,18 +27427,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/report/TodayLoanReport.vue?vue&type=template&id=15187c29":
-/*!*************************************************************************************!*\
-  !*** ./resources/js/views/report/TodayLoanReport.vue?vue&type=template&id=15187c29 ***!
-  \*************************************************************************************/
+/***/ "./resources/js/views/report/DueLoanReport.vue?vue&type=template&id=0e9d289c":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/views/report/DueLoanReport.vue?vue&type=template&id=0e9d289c ***!
+  \***********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TodayLoanReport_vue_vue_type_template_id_15187c29__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DueLoanReport_vue_vue_type_template_id_0e9d289c__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_TodayLoanReport_vue_vue_type_template_id_15187c29__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./TodayLoanReport.vue?vue&type=template&id=15187c29 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/TodayLoanReport.vue?vue&type=template&id=15187c29");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_DueLoanReport_vue_vue_type_template_id_0e9d289c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./DueLoanReport.vue?vue&type=template&id=0e9d289c */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/report/DueLoanReport.vue?vue&type=template&id=0e9d289c");
 
 
 /***/ }),

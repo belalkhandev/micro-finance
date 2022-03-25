@@ -4,7 +4,7 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h4>Loan Transaction Report</h4>
+                        <h4>Due Loan Transaction Report</h4>
                     </div>
                     <div class="box-action">
                         <button class="btn btn-sm btn-primary" @click="downloadReport()">Download</button>
@@ -104,7 +104,7 @@ import bootstrap from 'bootstrap/dist/js/bootstrap'
 import {helpers} from "../../mixin";
 
 export default ({
-    name: "LoanReport",
+    name: "TodayLoanReport",
     components: {
         LoanTransactionPayment
     },
@@ -119,7 +119,7 @@ export default ({
 
     computed: {
         ...mapGetters({
-            transactions: 'report/loan_transactions'
+            transactions: 'report/loan_due_transactions'
         }),
 
         filterTransactions() {
@@ -133,11 +133,11 @@ export default ({
 
     methods: {
         ...mapActions({
-            getLoanTransactions: 'report/getLoanTransactions'
+            getLoanTransactions: 'report/getDueLoanTransactions'
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/loan')
+            window.open('http://127.0.0.1:8000/download/due/loan')
         },
 
         showLoanTransactionModal(data)

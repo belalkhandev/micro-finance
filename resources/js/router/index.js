@@ -226,11 +226,43 @@ const routes = [
         },
     },
     {
+        path: '/report/loan/paid',
+        name: 'PaidLoanReport',
+        component: () => import('../views/report/PaidLoanReport'),
+        meta: {
+            title: 'Paid Loan Report'
+        },
+    },
+    {
+        path: '/report/loan/due',
+        name: 'DueLoanReport',
+        component: () => import('../views/report/DueLoanReport'),
+        meta: {
+            title: 'Due Loan Report'
+        },
+    },
+    {
         path: '/report/dps/today',
         name: 'TodayDpsReport',
         component: () => import('../views/report/TodayDpsReport'),
         meta: {
             title: 'Today Dps Report'
+        },
+    },
+    {
+        path: '/report/dps/paid',
+        name: 'PaidDpsReport',
+        component: () => import('../views/report/PaidDpsReport'),
+        meta: {
+            title: 'Paid Dps Report'
+        },
+    },
+    {
+        path: '/report/dps/due',
+        name: 'DueDpsReport',
+        component: () => import('../views/report/DueDpsReport'),
+        meta: {
+            title: 'Due Dps Report'
         },
     },
     {

@@ -6,6 +6,9 @@
                     <div class="box-title">
                         <h4>Todays DPS Transaction Report</h4>
                     </div>
+                    <div class="box-action">
+                        <button class="btn btn-sm btn-primary" @click="downloadReport()">Download</button>
+                    </div>
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -101,7 +104,7 @@ import bootstrap from 'bootstrap/dist/js/bootstrap'
 import {helpers} from "../../mixin";
 
 export default ({
-    name: "Index",
+    name: "TodayDpsReport",
     components: {
         DpsTransactionPayment
     },
@@ -131,6 +134,10 @@ export default ({
         ...mapActions({
             getDpsTransactions: 'report/getCurrentDpsTransactions'
         }),
+
+        downloadReport() {
+            window.open('http://127.0.0.1:8000/download/current/dps')
+        },
 
         showDpsTransactionModal(data)
         {
