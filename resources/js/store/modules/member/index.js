@@ -67,9 +67,8 @@ export default {
             }
         },
 
-        async getLoanTransactions({ commit }, member_id) {
+        async getLoanTransactions({ dispatch, commit }, member_id) {
             const res = await axios.get('member/transactions/loan/'+member_id)
-
             if (res.data.status) {
                 commit('SET_MEMBER_LOAN_TRANSACTIONS', res.data.transactions)
             }

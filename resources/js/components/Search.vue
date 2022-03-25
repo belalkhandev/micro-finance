@@ -37,6 +37,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div v-else>
+                                        <img class="m-auto py-4" src="../assets/images/search-image.jpg" alt="">
+                                    </div>
                                 </div>
                             </div>
                         </div>

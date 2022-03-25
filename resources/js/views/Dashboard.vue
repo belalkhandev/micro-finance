@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-primary animate__animated animate__pulse">
+                <div class="widget widget-success animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Members</h5>
                         <span>
@@ -32,11 +32,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-warning animate__animated animate__pulse">
+                <div class="widget widget-primary animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">DPS Transactions</h5>
                         <span>
-                        <i class="bx bx-group"></i>
+                        <i class='bx bx-dollar-circle'></i>
                     </span>
                     </div>
                     <div class="widget-body">
@@ -45,11 +45,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-danger animate__animated animate__pulse">
+                <div class="widget widget-warning animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Loan Transaction</h5>
                         <span>
-                        <i class="bx bx-group"></i>
+                        <i class='bx bx-dollar-circle'></i>
                     </span>
                     </div>
                     <div class="widget-body">
@@ -65,7 +65,7 @@
                     <div class="widget-header">
                         <h5 class="title">Total Collections</h5>
                         <span>
-                            <i class="bx bx-group"></i>
+                            <i class='bx bx-dollar-circle'></i>
                         </span>
                     </div>
                     <div class="widget-body">
@@ -74,11 +74,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-warning animate__animated animate__pulse">
+                <div class="widget widget-danger animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Total Dues</h5>
                         <span>
-                            <i class="bx bx-group"></i>
+                            <i class='bx bx-dollar-circle'></i>
                         </span>
                     </div>
                     <div class="widget-body">
@@ -87,11 +87,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-primary animate__animated animate__pulse">
+                <div class="widget widget-warning animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Expenses</h5>
                         <span>
-                            <i class="bx bx-group"></i>
+                            <i class='bx bx-dollar-circle'></i>
                         </span>
                     </div>
                     <div class="widget-body">
@@ -100,11 +100,11 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-success animate__animated animate__pulse">
+                <div class="widget widget-primary animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Fund amount</h5>
                         <span>
-                            <i class="bx bx-group"></i>
+                            <i class='bx bx-dollar-circle'></i>
                         </span>
                     </div>
                     <div class="widget-body">
@@ -145,7 +145,6 @@
 </template>
 
 <script>
-import Navigation from "../components/Navigation";
 import SearchMember from "../components/Search"
 import {mapGetters, mapActions} from "vuex";
 import {helpers} from "../mixin";
@@ -153,7 +152,7 @@ import {helpers} from "../mixin";
 export default {
     name: 'Dashboard',
     components: {
-        Navigation, SearchMember
+        SearchMember
     },
 
     mixins: [helpers],
@@ -176,3 +175,9 @@ export default {
 
 }
 </script>
+
+<style>
+.widget .widget-header span i.bx {
+    transform: translate(5%, 10%);
+}
+</style>

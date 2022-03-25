@@ -13,7 +13,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Account no</th>
+                        <th>Acc. no</th>
                         <th>Name</th>
                         <th>Photo</th>
                         <th>Father/Spouse Name</th>
@@ -29,8 +29,8 @@
                         <td>{{ member.account_no }}</td>
                         <td>{{ member.name }}</td>
                         <td>
-                            <img v-if="member.photo" :src="member.photo" alt="">
-                            <img v-else src="https://via.placeholder.com/50" alt="">
+                            <img v-if="member.photo" :src="member.photo" alt="" class="w-8 rounded">
+                            <img v-else src="https://via.placeholder.com/35" alt="" class="w-8 rounded">
                         </td>
                         <td>{{ member.father_name }}</td>
                         <td>{{ member.mother_name }}</td>

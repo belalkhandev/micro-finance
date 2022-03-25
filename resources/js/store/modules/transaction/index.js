@@ -1,4 +1,5 @@
 import axios from "axios";
+import store from "../../index";
 
 export default {
     namespaced: true,
@@ -28,13 +29,30 @@ export default {
         },
 
         UPDATE_DPS_TR(state, dps_transaction) {
-            const item = state.dps_transactions.find(item => item.id === dps_transaction.id)
-            Object.assign(item, dps_transaction)
+            if (state.dps_transactions) {
+                const item = state.dps_transactions.find(item => item.id === dps_transaction.id)
+                Object.assign(item, dps_transaction)
+            }
+
+            if (store.getters['member/dps_transactions']) {
+                const transactions = store.getters['member/dps_transactions'];
+                const m_item = transactions.find(item => item.id === dps_transaction.id)
+                Object.assign(m_item, dps_transaction)
+            }
         },
 
         UPDATE_LOAN_TR(state, loan_transaction) {
-            const item = state.loan_transactions.find(item => item.id === loan_transaction.id)
-            Object.assign(item, loan_transaction)
+            if (state.loan_transactions) {
+                const item = state.loan_transactions.find(item => item.id === loan_transaction.id)
+                Object.assign(item, loan_transaction)
+            }
+
+            if (store.getters['member/loan_transactions']) {
+                const transactions = store.getters['member/loan_transactions'];
+                const m_item = transactions.find(item => item.id === loan_transaction.id)
+                Object.assign(m_item, loan_transaction)
+            }
+
         },
 
         DELETE_DPS_TR(state, item_id) {
