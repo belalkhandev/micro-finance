@@ -13,6 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//pdf routes
+Route::group([
+    'prefix' => 'download',
+    'middleware' => ['api']
+], function ($route) {
+    $route->get('/member/profile', [\App\Http\Controllers\PdfController::class, 'memberProfile']);
+});
+
 Route::get('/{any}', function () {
     return view('app');
 })->where('any', '.*');
