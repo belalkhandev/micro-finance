@@ -4,6 +4,23 @@
             <div class="col-md-3">
                 <div class="widget widget-primary animate__animated animate__pulse">
                     <div class="widget-header">
+                        <h5 class="title">Search Members</h5>
+                        <span>
+                            <i class='bx bx-search-alt'></i>
+                        </span>
+                    </div>
+                    <div class="widget-body">
+                        <div class="search-container">
+                            <button type="button" class="btn btn-search w-100" data-bs-toggle="modal" data-bs-target="#searchModal">
+                                Click to Search
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-primary animate__animated animate__pulse">
+                    <div class="widget-header">
                         <h5 class="title">Members</h5>
                         <span>
                         <i class="bx bx-group"></i>
@@ -11,19 +28,6 @@
                     </div>
                     <div class="widget-body">
                         <h3>{{ dashboard.members }}</h3>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="widget widget-success animate__animated animate__pulse">
-                    <div class="widget-header">
-                        <h5 class="title">Admins</h5>
-                        <span>
-                        <i class="bx bx-group"></i>
-                    </span>
-                    </div>
-                    <div class="widget-body">
-                        <h3>{{ dashboard.admins }}</h3>
                     </div>
                 </div>
             </div>
@@ -111,19 +115,7 @@
         </div>
 
         <div class="row mt-4">
-            <div class="col-md-4">
-                <div class="box">
-                    <div class="box-header">
-                        <div class="box-title">
-                            <h5>Search Members & Transaction</h5>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <input type="text" name="" placeholder="Account No / Name" class="form-control">
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-8">
+            <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
                         <div class="box-title">
@@ -147,19 +139,21 @@
                 </div>
             </div>
         </div>
-
+        <SearchMember/>
     </div>
 
 </template>
 
 <script>
 import Navigation from "../components/Navigation";
+import SearchMember from "../components/Search"
 import {mapGetters, mapActions} from "vuex";
 import {helpers} from "../mixin";
+
 export default {
     name: 'Dashboard',
     components: {
-        Navigation
+        Navigation, SearchMember
     },
 
     mixins: [helpers],

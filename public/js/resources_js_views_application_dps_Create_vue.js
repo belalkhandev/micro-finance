@@ -79,10 +79,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           return this.members.filter(function (member) {
             return member.account_no.toLowerCase().includes(_this.search_key.toLowerCase()) || member.name.toLowerCase().includes(_this.search_key.toLowerCase()) || member.phone.toLowerCase().includes(_this.search_key.toLowerCase());
           });
-        } // return this.members.filter((member) => {
-        //     return member.member_type !== 'loan'
-        // });
-
+        }
       }
 
       return this.members;
