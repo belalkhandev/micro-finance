@@ -13,8 +13,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Account no</th>
+                        <th>Acc. no</th>
                         <th>Name</th>
+                        <th>Photo</th>
                         <th>Father/Spouse Name</th>
                         <th>Mother Name</th>
                         <th>Member Type</th>
@@ -27,6 +28,10 @@
                         <td>{{ per_page*(page-1)+(i+1) }}</td>
                         <td>{{ member.account_no }}</td>
                         <td>{{ member.name }}</td>
+                        <td>
+                            <img v-if="member.photo" :src="member.photo" alt="" class="w-8 rounded">
+                            <img v-else src="https://via.placeholder.com/35" alt="" class="w-8 rounded">
+                        </td>
                         <td>{{ member.father_name }}</td>
                         <td>{{ member.mother_name }}</td>
                         <td v-if="member.member_type === 'deposit_weekly'" class="text-indigo-600">Weekly</td>
@@ -36,9 +41,9 @@
                         <td v-else class="text-danger">Inactive</td>
                         <td>
                             <div class="action">
+                                <router-link :to="{ name:'MemberShow', params: { member_id: member.id }}" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></router-link>
                                 <router-link :to="{ name:'MemberDpsTransaction', params: { member_id: member.id }}"  class="btn btn-outline-primary btn-sm mr-1"><i class='bx bx-transfer-alt'></i></router-link>
                                 <router-link :to="{ name:'MemberLoanTransaction', params: { member_id: member.id }}"  class="btn btn-outline-warning btn-sm mr-1"><i class='bx bx-transfer-alt'></i></router-link>
-                                <router-link :to="{ name:'MemberShow', params: { member_id: member.id }}" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></router-link>
                                 <router-link :to="{ name: 'EditMember', params:{member_id: member.id}}" class="btn btn-outline-danger btn-sm"><i class="bx bx-edit"></i></router-link>
                                 <a href="#" class="btn btn-outline-warning btn-sm" @click.prevent="deleteConfirm(member.id)"><i class="bx bx-trash"></i></a>
                             </div>
@@ -82,13 +87,6 @@ import {helpers} from "../../mixin";
 
 export default ({
     name: "Index",
-    components: {},
-
-    data () {
-        return {
-
-        }
-    },
 
     mixins: [helpers],
 

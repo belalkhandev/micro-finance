@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\DpsTransaction;
 use App\Models\Expense;
+use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
 use App\Models\Member;
 use App\Models\User;
@@ -14,25 +15,25 @@ class DashboardController extends Controller
 {
     public function widgetData()
     {
-        $dps_trs = DpsTransaction::get();
-        $lns_trs = LoanTransaction::get();
+        $dps_trs = DpsTransaction::latest()->get();
+        $lns_trs = LoanTransaction::latest()->get();
+        $recent_dps_trs = $dps_trs->where('is_paid', 1)->take(5);
+        $recent_lns_trs = $lns_trs->where('is_paid', 1)->take(5);
+        $loan_applications = LoanApplication::where('is_active', 1)->get();
         $members = Member::get()->count();
-        $admins = User::get()->count();
         $transactions_dps = $dps_trs->where('is_paid', 1)->sum('amount');
         $transactions_loan = $lns_trs->where('is_paid', 1)->sum('amount');
-
         $total_collection = $transactions_dps+$transactions_loan;
         $total_dues = $dps_trs->where('is_paid', 0)->sum('amount')+$lns_trs->where('is_paid', 0)->sum('amount')-$total_collection;
         $full_paid = 0;
         $no_paid = 0;
         $total_expense = Expense::get()->sum('amount');
-        $fund_amount = $total_collection-$total_expense;
+        $fund_amount = $total_collection-$total_expense-$loan_applications->sum('loan_amount');
 
         return response()->json([
             'status' => true,
             'data' => [
                  'members' => $members,
-                 'admins' => $admins,
                  'transactions_dps' => $transactions_dps,
                  'transactions_loan' => $transactions_loan,
                  'total_collection' => $total_collection,
@@ -41,6 +42,7 @@ class DashboardController extends Controller
                  'no_paid' => $no_paid,
                  'fund_amount' => $fund_amount,
                  'total_expense' => $total_expense,
+                ''
             ]
         ]);
     }

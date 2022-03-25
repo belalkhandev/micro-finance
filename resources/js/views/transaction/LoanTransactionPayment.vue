@@ -106,7 +106,6 @@ import {helpers} from "../../mixin";
 
 export default ({
     name: "LoanTransactionPayment",
-
     props: {
         transaction: Object
     },

@@ -221,9 +221,6 @@ export default ({
                             || member.phone.toLowerCase().includes(this.search_key.toLowerCase())
                     });
                 }
-                // return this.members.filter((member) => {
-                //     return member.member_type !== 'loan'
-                // });
             }
 
             return this.members;

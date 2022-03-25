@@ -96,6 +96,16 @@ class MemberController extends Controller
             ]);
         }
 
+        //check duplication account number on different group
+        if ($this->member->duplicateCheck($request)) {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'account_no' => ["Account number already exist!"]
+                ]
+            ]);
+        }
+
         $member = $this->member->store($request);
 
         if ($member) {

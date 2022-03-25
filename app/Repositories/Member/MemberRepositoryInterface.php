@@ -17,4 +17,6 @@ interface MemberRepositoryInterface {
     public function updateNominee($request, $id);
 
     public function deleteNominee($id);
+
+    public function duplicateCheck($request, $id);
 }

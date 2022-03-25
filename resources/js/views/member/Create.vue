@@ -174,7 +174,7 @@
                                 <select v-model="form.member_type" class="form-control">
                                     <option value="">Select</option>
                                     <option v-for="(type, i) in memberTypes" :key="i" :value="type.code">
-                                        {{ type.name }}
+                                        {{ lang === 'bn' ? type.bn_name : type.name }}
                                     </option>
                                 </select>
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.member_type ? errors.member_type[0] : '' }}</span>
@@ -307,22 +307,10 @@
 <script>
 import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery';
-import { ref } from 'vue';
-import Datepicker from "vue3-date-time-picker";
-import moment from 'moment'
+import {helpers} from "../../mixin";
 
 export default ({
     name: "Create",
-    setup() {
-        const date = ref(new Date());
-        return {
-            date
-        }
-    },
-
-    components: {
-        Datepicker
-    },
 
     data() {
         return {
@@ -355,12 +343,13 @@ export default ({
                 nominee_address: '',
                 relation: '',
             },
-            joining_date: "",
+            joining_date: this.datePickerFormat(new Date()),
             errors: null,
             error: null,
-            lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en'
         }
     },
+
+    mixins: [helpers],
 
     computed: {
         ...mapGetters({
@@ -473,6 +462,12 @@ export default ({
                         timer: 3000
                     })
                 } else {
+                    this.$swal({
+                        icon: "warning",
+                        title: "Something went wrong",
+                        text: "Please check that the given data valid",
+                        timer: 3000
+                    }),
                     this.errors = this.validation_errors
                     this.error = this.error_message
                 }
@@ -510,7 +505,7 @@ export default ({
         },
 
         joining_date: function () {
-            this.form.joining_date = moment(this.joining_date).format("L");
+            this.form.joining_date = this.datePickerFormat(this.joining_date);
         }
 
     }

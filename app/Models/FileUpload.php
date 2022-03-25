@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Intervention\Image\Facades\Image;
 
-class FileUpload 
+class FileUpload
 {
     /**
      * Universal file upload method
-     * @param $request    The request object
-     * @param $file_name  name of the file input field
-     * @param $upload_dir upload directory
+     * @param $request,    The request object
+     * @param $file_name,  name of the file input field
+     * @param $upload_dir, upload_ directory
      * @return bool/string
-     */    
+     */
     public static function upload($request, $file_name, $upload_dir)
     {
         if ($request->hasFile($file_name)) {
@@ -27,7 +27,7 @@ class FileUpload
             }
 
             return $path;
-        } 
+        }
     }
 
     public static function uploadWithResize($request, $file_name, $upload_dir, $w=150, $h=150)
@@ -52,6 +52,6 @@ class FileUpload
             $img->save($resizeImage);
 
             return $path;
-        } 
+        }
     }
 }
