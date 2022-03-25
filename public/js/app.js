@@ -3984,6 +3984,10 @@ function getContainingBlock(element) {
 
   var currentNode = (0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element);
 
+  if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isShadowRoot)(currentNode)) {
+    currentNode = currentNode.host;
+  }
+
   while ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(currentNode) && ['html', 'body'].indexOf((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_3__["default"])(currentNode)) < 0) {
     var css = (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(currentNode); // This is non-exhaustive but covers the most common CSS properties that
     // create a containing block.
@@ -4814,7 +4818,7 @@ function mapToStyles(_ref2) {
 
     if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.top || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.left || placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.right) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_1__.end) {
       sideY = _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom;
-      var offsetY = isFixed && win.visualViewport ? win.visualViewport.height : // $FlowFixMe[prop-missing]
+      var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : // $FlowFixMe[prop-missing]
       offsetParent[heightProp];
       y -= offsetY - popperRect.height;
       y *= gpuAcceleration ? 1 : -1;
@@ -4822,7 +4826,7 @@ function mapToStyles(_ref2) {
 
     if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.left || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.top || placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_1__.end) {
       sideX = _enums_js__WEBPACK_IMPORTED_MODULE_1__.right;
-      var offsetX = isFixed && win.visualViewport ? win.visualViewport.width : // $FlowFixMe[prop-missing]
+      var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : // $FlowFixMe[prop-missing]
       offsetParent[widthProp];
       x -= offsetX - popperRect.width;
       x *= gpuAcceleration ? 1 : -1;
@@ -28177,58 +28181,70 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }],
     member_types: [{
       code: 'deposit_weekly',
-      name: 'Weekly',
-      bn_name: 'Weekly'
+      name: 'DPS Weekly',
+      bn_name: 'ডিপিএস সাপ্তাহিক'
     }, {
       code: 'deposit_monthly',
-      name: 'Monthly',
-      bn_name: 'Monthly'
+      name: 'DPS Monthly',
+      bn_name: 'ডিপিএস মাসিক'
     }, {
-      code: 'loan',
-      name: 'Loan',
-      bn_name: 'Loan'
+      code: 'loan_weekly',
+      name: 'Loan Weekly',
+      bn_name: 'লোন সাপ্তাহিক'
+    }, {
+      code: 'loan_monthly',
+      name: 'Loan Monthly',
+      bn_name: 'লোন মাসিক'
     }],
     relations: [{
       code: 'father',
       name: 'Father',
-      bn_name: 'Father'
+      bn_name: 'বাবা'
     }, {
       code: 'mother',
       name: 'Mother',
-      bn_name: 'Mother'
+      bn_name: 'মা'
     }, {
       code: 'son',
       name: 'Son',
-      bn_name: 'Son'
+      bn_name: 'পুত্র'
     }, {
       code: 'daughter',
       name: 'Daughter',
-      bn_name: 'Daughter'
+      bn_name: 'কন্যা'
     }, {
       code: 'brother',
       name: 'Brother',
-      bn_name: 'Brother'
+      bn_name: 'ভাই'
     }, {
       code: 'sister',
       name: 'Sister',
-      bn_name: 'Sister'
+      bn_name: 'বোন'
+    }, {
+      code: 'wife',
+      name: 'Husband',
+      bn_name: 'স্বামী'
     }, {
       code: 'wife',
       name: 'Wife',
-      bn_name: 'Wife'
+      bn_name: 'স্ত্রী'
     }, {
       code: 'uncle',
       name: 'Uncle',
-      bn_name: 'Uncle'
+      bn_name: 'চাচা/মামা'
+    }, {
+      code: 'aunty',
+      name: 'Aunty',
+      bn_name: 'চাচি/খালা'
     }],
     application_types: [{
       code: 'weekly',
       name: 'Weekly',
-      bn_name: 'Weekly'
+      bn_name: 'সাপ্তাহিক'
     }, {
       code: 'monthly',
       name: 'Monthly',
-      bn_name: 'Monthly'
+      bn_name: 'মাসিক'
     }]
   },
   getters: {

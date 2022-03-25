@@ -11,13 +11,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var vue3_date_time_picker__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue3-date-time-picker */ "./node_modules/vue3-date-time-picker/dist/vue3-date-time-picker.esm.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
-/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixin */ "./resources/js/mixin/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
@@ -27,19 +24,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 
 
-
-
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Create",
-  setup: function setup() {
-    var date = (0,vue__WEBPACK_IMPORTED_MODULE_1__.ref)(new Date());
-    return {
-      date: date
-    };
-  },
-  components: {
-    Datepicker: vue3_date_time_picker__WEBPACK_IMPORTED_MODULE_2__["default"]
-  },
   data: function data() {
     return {
       form: {
@@ -71,13 +57,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         nominee_address: '',
         relation: ''
       },
-      joining_date: "",
+      joining_date: this.datePickerFormat(new Date()),
       errors: null,
-      error: null,
-      lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en'
+      error: null
     };
   },
-  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapGetters)({
+  mixins: [_mixin__WEBPACK_IMPORTED_MODULE_1__.helpers],
+  computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
     districts: 'location/districts',
     upazillas: 'location/upazillas',
     unions: 'location/unions',
@@ -161,7 +147,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return this.villages;
     }
   }),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)({
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
     getDistricts: 'location/getDistricts',
     getUpazillas: 'location/getUpazillas',
     getUnions: 'location/getUnions',
@@ -197,7 +183,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             timer: 3000
           });
         } else {
-          _this5.errors = _this5.validation_errors;
+          _this5.$swal({
+            icon: "warning",
+            title: "Something went wrong",
+            text: "Please check that the given data valid",
+            timer: 3000
+          }), _this5.errors = _this5.validation_errors;
           _this5.error = _this5.error_message;
         }
 
@@ -228,7 +219,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.village_id = "";
     },
     joining_date: function joining_date() {
-      this.form.joining_date = moment__WEBPACK_IMPORTED_MODULE_3___default()(this.joining_date).format("L");
+      this.form.joining_date = this.datePickerFormat(this.joining_date);
     }
   }
 });
@@ -1001,7 +992,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: district.id,
       key: i
-    }, [$data.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(district.name), 1
+    }, [_ctx.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(district.name), 1
     /* TEXT */
     )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(district.bn_name ? district.bn_name : district.name), 1
     /* TEXT */
@@ -1023,7 +1014,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: upazilla.id,
       key: i
-    }, [$data.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(upazilla.name), 1
+    }, [_ctx.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(upazilla.name), 1
     /* TEXT */
     )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_61, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(upazilla.bn_name ? upazilla.bn_name : upazilla.name), 1
     /* TEXT */
@@ -1045,7 +1036,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: union.id,
       key: i
-    }, [$data.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(union.name), 1
+    }, [_ctx.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(union.name), 1
     /* TEXT */
     )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(union.bn_name ? union.bn_name : union.name), 1
     /* TEXT */
@@ -1067,7 +1058,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: post_office.id,
       key: i
-    }, [$data.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post_office.name), 1
+    }, [_ctx.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post_office.name), 1
     /* TEXT */
     )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_78, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(post_office.bn_name ? post_office.bn_name : post_office.name), 1
     /* TEXT */
@@ -1089,7 +1080,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       value: village.id,
       key: i
-    }, [$data.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_85, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(village.name), 1
+    }, [_ctx.lang == 'en' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_85, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(village.name), 1
     /* TEXT */
     )) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_86, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(village.bn_name ? village.bn_name : village.name), 1
     /* TEXT */
@@ -1146,7 +1137,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
       key: i,
       value: type.code
-    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(type.name), 9
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.lang === 'bn' ? type.bn_name : type.name), 9
     /* TEXT, PROPS */
     , _hoisted_107);
   }), 128
@@ -1302,6 +1293,77 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* HYDRATE_EVENTS */
   )]);
 }
+
+/***/ }),
+
+/***/ "./resources/js/mixin/index.js":
+/*!*************************************!*\
+  !*** ./resources/js/mixin/index.js ***!
+  \*************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "helpers": () => (/* binding */ helpers)
+/* harmony export */ });
+/* harmony import */ var vue3_date_time_picker__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue3-date-time-picker */ "./node_modules/vue3-date-time-picker/dist/vue3-date-time-picker.esm.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
+/* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+
+
+var helpers = {
+  data: function data() {
+    return {
+      page: 1,
+      per_page: 10,
+      pages: []
+    };
+  },
+  setup: function setup() {
+    var date = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(new Date());
+    return {
+      date: date
+    };
+  },
+  components: {
+    Datepicker: vue3_date_time_picker__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    numberFormat: function numberFormat(number, length) {
+      if (!length) {
+        length = 2;
+      }
+
+      var currency = '৳';
+
+      if (!number) {
+        return currency + ' ' + 0;
+      }
+
+      return currency + ' ' + parseFloat(number).toFixed(length);
+    },
+    userFormattedDate: function userFormattedDate(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("LL");
+    },
+    datePickerFormat: function datePickerFormat(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("L");
+    },
+    dayNameFormat: function dayNameFormat(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("dddd");
+    },
+    // pagination make
+    paginate: function paginate(data) {
+      var page = this.page;
+      var perPage = this.per_page;
+      var from = page * perPage - perPage;
+      var to = page * perPage;
+      return data.slice(from, to);
+    }
+  }
+};
 
 /***/ }),
 

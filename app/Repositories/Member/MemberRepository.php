@@ -198,4 +198,32 @@ class MemberRepository implements MemberRepositoryInterface {
 
         return false;
     }
+
+    public function duplicateCheck($request, $id=null)
+    {
+        if(!$id) {
+            if ($request->input('member_group_id')) {
+                $member = Member::where('account_no', $request->input('account_no'))->where('member_group_id', $request->input('member_group_id'))->first();
+            } else {
+                $member = Member::where('account_no', $request->input('account_no'))->where('member_group_id', null)->first();
+            }
+
+            if ($member) {
+                return true;
+            }
+        } else {
+            $member = Member::where('account_no', $request->input('account_no'))->where('id', '!=', $id);
+            if ($request->input('member_group_id')) {
+                $member = $member->where('group_id', $request->input('member_group_id'))->first();
+            } else {
+                $member = $member->first();
+            }
+
+            if ($member) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

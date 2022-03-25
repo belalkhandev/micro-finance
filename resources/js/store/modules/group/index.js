@@ -17,25 +17,28 @@ export default {
         ],
 
         member_types: [
-            {code: 'deposit_weekly', name: 'Weekly', bn_name: 'Weekly'},
-            {code: 'deposit_monthly', name: 'Monthly', bn_name: 'Monthly'},
-            {code: 'loan', name: 'Loan', bn_name: 'Loan'},
+            {code: 'deposit_weekly', name: 'DPS Weekly', bn_name: 'ডিপিএস সাপ্তাহিক'},
+            {code: 'deposit_monthly', name: 'DPS Monthly', bn_name: 'ডিপিএস মাসিক'},
+            {code: 'loan_weekly', name: 'Loan Weekly', bn_name: 'লোন সাপ্তাহিক'},
+            {code: 'loan_monthly', name: 'Loan Monthly', bn_name: 'লোন মাসিক'},
         ],
 
         relations: [
-            {code: 'father', name: 'Father', bn_name: 'Father'},
-            {code: 'mother', name: 'Mother', bn_name: 'Mother'},
-            {code: 'son', name: 'Son', bn_name: 'Son'},
-            {code: 'daughter', name: 'Daughter', bn_name: 'Daughter'},
-            {code: 'brother', name: 'Brother', bn_name: 'Brother'},
-            {code: 'sister', name: 'Sister', bn_name: 'Sister'},
-            {code: 'wife', name: 'Wife', bn_name: 'Wife'},
-            {code: 'uncle', name: 'Uncle', bn_name: 'Uncle'},
+            {code: 'father', name: 'Father', bn_name: 'বাবা'},
+            {code: 'mother', name: 'Mother', bn_name: 'মা'},
+            {code: 'son', name: 'Son', bn_name: 'পুত্র'},
+            {code: 'daughter', name: 'Daughter', bn_name: 'কন্যা'},
+            {code: 'brother', name: 'Brother', bn_name: 'ভাই'},
+            {code: 'sister', name: 'Sister', bn_name: 'বোন'},
+            {code: 'wife', name: 'Husband', bn_name: 'স্বামী'},
+            {code: 'wife', name: 'Wife', bn_name: 'স্ত্রী'},
+            {code: 'uncle', name: 'Uncle', bn_name: 'চাচা/মামা'},
+            {code: 'aunty', name: 'Aunty', bn_name: 'চাচি/খালা'},
         ],
 
         application_types: [
-            {code: 'weekly', name: 'Weekly', bn_name: 'Weekly'},
-            {code: 'monthly', name: 'Monthly', bn_name: 'Monthly'},
+            {code: 'weekly', name: 'Weekly', bn_name: 'সাপ্তাহিক'},
+            {code: 'monthly', name: 'Monthly', bn_name: 'মাসিক'},
         ]
     },
 
