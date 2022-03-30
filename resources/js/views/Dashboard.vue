@@ -119,20 +119,120 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="box-title">
-                            <h5>Recent Transaction</h5>
+                            <h5>Recent DPS Transaction</h5>
                         </div>
                     </div>
                     <div class="box-body">
                         <table class="table">
                             <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Date</th>
-                                    <th>Type</th>
-                                    <th>Member</th>
-                                    <th>Amount</th>
-                                </tr>
+                            <tr>
+                                <th>Tr. no</th>
+                                <th>Member/Acc. no</th>
+                                <th>DPS Type/Amount</th>
+                                <th>Balance.</th>
+                                <th>Tr. Day</th>
+                                <th>Due Date</th>
+                                <th>Issue Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
                             </thead>
+                            <tbody>
+                            <tr v-if="fetchLatestDpsTransactions" v-for="(transaction, i) in fetchLatestDpsTransactions" :key="transaction.id">
+                                <td>{{ transaction.transaction_no }}</td>
+                                <td>
+                                    <router-link :to="{name: 'MemberShow', params: {
+                                    member_id: transaction.member_id
+                                }}" class="text-primary">
+                                        {{ transaction.member_name }} <br>
+                                        {{ transaction.member_account_no }}
+                                    </router-link>
+                                </td>
+                                <td>{{ transaction.application.dps_type }} <br> {{ numberFormat(transaction.amount) }}</td>
+                                <td>{{ numberFormat(transaction.balance) }}</td>
+                                <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
+                                <td>{{ userFormattedDate(transaction.due_date) }}</td>
+                                <td>{{ userFormattedDate(transaction.created_at) }}</td>
+                                <td>
+                                    <span v-if="transaction.is_paid" class="text-success">Paid</span>
+                                    <span v-else class="text-danger">Unpaid</span>
+                                </td>
+                                <td>
+                                <span v-if="!transaction.is_paid">
+                                    <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showDpsTransactionModal(transaction)">
+                                        Collect now
+                                    </a>
+                                </span>
+                                    <span v-else class="text-danger">
+                                    <span class="btn btn-success btn-sm py-1">Collected</span>
+                                </span>
+                                </td>
+                            </tr>
+                            <tr v-else>
+                                <td colspan="10">No Transaction found</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="box-footer"></div>
+                </div>
+
+                <div class="box">
+                    <div class="box-header">
+                        <div class="box-title">
+                            <h5>Recent Loan Transaction</h5>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Tr. no</th>
+                                <th>Member/Acc. no</th>
+                                <th>Loan Type/Amount</th>
+                                <th>Balance.</th>
+                                <th>Tr. Day</th>
+                                <th>Due Date</th>
+                                <th>Issue Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr v-if="fetchLatestLoanTransactions" v-for="(transaction, i) in fetchLatestLoanTransactions" :key="transaction.id">
+                                <td>{{ transaction.transaction_no }}</td>
+                                <td>
+                                    <router-link :to="{name: 'MemberShow', params: {
+                                    member_id: transaction.member_id
+                                }}" class="text-primary">
+                                        {{ transaction.member_name }} <br>
+                                        {{ transaction.member_account_no }}
+                                    </router-link>
+                                </td>
+                                <td>{{ transaction.application.dps_type }} <br>{{ numberFormat(transaction.amount) }}</td>
+                                <td>{{ numberFormat(transaction.balance) }}</td>
+                                <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
+                                <td>{{ userFormattedDate(transaction.due_date) }}</td>
+                                <td>{{ userFormattedDate(transaction.created_at) }}</td>
+                                <td>
+                                    <span v-if="transaction.is_paid" class="text-success">Paid</span>
+                                    <span v-else class="text-danger">Unpaid</span>
+                                </td>
+                                <td>
+                                <span v-if="!transaction.is_paid">
+                                    <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showLoanTransactionModal(transaction)">
+                                        Collect now
+                                    </a>
+                                </span>
+                                    <span v-else class="text-danger">
+                                    <span class="btn btn-success btn-sm py-1">Collected</span>
+                                </span>
+                                </td>
+                            </tr>
+                            <tr v-else>
+                                <td colspan="10">No Transaction found</td>
+                            </tr>
+                            </tbody>
                         </table>
                     </div>
                     <div class="box-footer"></div>
@@ -159,13 +259,37 @@ export default {
 
     computed: {
         ...mapGetters({
-            dashboard: 'dashboard/dashboard_data'
+            dashboard: 'dashboard/dashboard_data',
+            loan_transactions: 'transaction/loan_transactions',
+            dps_transactions: 'transaction/dps_transactions'
         }),
+
+        fetchLatestLoanTransactions() {
+            if (!this.loan_transactions) {
+                this.getLoanTransaction().then(() => {
+                    return this.loan_transactions.slice(0, 9);
+                })
+            } else {
+                return this.loan_transactions.slice(0, 9);
+            }
+        },
+
+        fetchLatestDpsTransactions() {
+            if (!this.dps_transactions) {
+                this.getDpsTransactions().then(() => {
+                    return this.dps_transactions.slice(0, 9);
+                })
+            } else {
+                return this.dps_transactions.slice(0, 9);
+            }
+        }
     },
 
     methods: {
         ...mapActions({
-            getDashboardData: 'dashboard/getDashboardData'
+            getDashboardData: 'dashboard/getDashboardData',
+            getLoanTransaction: 'transaction/getLoanTransactions',
+            getDpsTransactions: 'transaction/getDpsTransactions'
         })
     },
 

@@ -16,8 +16,34 @@ class RolesTableSeeder extends Seeder
     public function run()
     {
         $perm_superadmin = Permission::get();
-        $perm_admin = Permission::whereNotIn('name', ['manage_admin', 'manage_settings'])->get();
-        $perm_staff = Permission::whereNotIn('name', ['manage_admin', 'manage_settings'])->get();
+        $perm_admin = Permission::whereNotIn('name', [
+            'create_admin',
+            'delete_admin',
+            'manage_settings'
+        ])->get();
+
+        $perm_staff = Permission::whereIn('name', [
+            'create_member',
+            'view_member',
+            'create_group',
+            'view_group',
+            'create_village',
+            'view_village',
+            'create_post_office',
+            'view_post_office',
+            'create_transaction',
+            'view_transaction',
+            'create_application',
+            'view_application',
+            'create_expense',
+            'view_expense',
+            'view_report',
+        ])->get();
+
+
+
+
+
 
         $super_admin = new Role();
         $super_admin->name = 'superadmin';
