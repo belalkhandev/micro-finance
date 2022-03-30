@@ -4,7 +4,7 @@ namespace App\Repositories\MemberGroup;
 
 use App\Models\MemberGroup;
 
-class MemberGroupRepository implements MemberGroupRepositoryInterface {
+class SavingsRepository implements SavingsRepositoryInterface {
 
     public function all()
     {

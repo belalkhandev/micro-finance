@@ -21,6 +21,7 @@ class RepositoryServiceProvider extends ServiceProvider {
             'LoanApplication' => 'LoanApplication',
             'LoanTransaction' => 'LoanTransaction',
             'Report' => 'Report',
+            'Savings' => 'Savings',
         ];
 
         foreach ($models as $dir => $model) {
