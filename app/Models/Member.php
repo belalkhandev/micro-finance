@@ -10,9 +10,16 @@ class Member extends Model
 {
     use HasFactory;
 
+    protected $appends = ['main_photo'];
+
     public function nominee()
     {
         return $this->hasOne(Nominee::class, 'member_id', 'id');
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(MemberGroup::class, 'member_group_id', 'id');
     }
 
     public function village()
@@ -32,6 +39,15 @@ class Member extends Model
         }
 
         return null;
+    }
+
+    public function getMainPhotoAttribute()
+    {
+        if($this->attributes['photo']) {
+            return base_path('public/'.$this->attributes['photo']);
+        }
+
+        return base_path('public/images/profile.jpg');
     }
 
     public function dpsApplications()

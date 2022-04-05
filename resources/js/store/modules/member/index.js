@@ -100,7 +100,7 @@ export default {
         },
 
         async editMember({ commit }, formdata) {
-            const res = await axios.put('member/update/'+formdata.member_id, formdata)
+            const res = await axios.post('member/update/'+formdata.get('member_id'), formdata)
 
             if (res.data.status) {
                 commit('UPDATE_MEMBER', res.data.member)

@@ -172,14 +172,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateExpense').prop('disabled', true).addClass('submitted');
-      var formData = this.form; // let inputData = this.form
-      //
-      // Object.keys(inputData).forEach(fieldName => {
-      //     formData.append(fieldName, inputData[fieldName]);
-      // });
-      //
-      // console.log(formData)
-
+      var formData = this.form;
       this.editExpense(formData).then(function () {
         if (!_this.validation_errors && !_this.error_message) {
           _this.errors = _this.error = null;

@@ -29998,7 +29998,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref5.commit;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('member/update/' + formdata.member_id, formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/update/' + formdata.get('member_id'), formdata);
 
               case 3:
                 res = _context5.sent;

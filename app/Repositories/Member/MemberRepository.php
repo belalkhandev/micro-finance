@@ -6,12 +6,13 @@ use App\Models\Member;
 use App\Models\Nominee;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\URL;
 
 class MemberRepository implements MemberRepositoryInterface {
 
     public function all()
     {
-        $members = Member::with('nominee')->get();
+        $members = Member::with('nominee', 'group')->get();
 
         if ($members->isNotEmpty()) {
             return $members;
@@ -86,7 +87,8 @@ class MemberRepository implements MemberRepositoryInterface {
         if ($request->hasFile('photo')) {
             //delete previous profile photo
             if ($member->photo) {
-                unlink($member->photo);
+                $photo = str_replace(URL::to('/')."/", "", $member->photo);
+                unlink($photo);
             }
 
             $path = FileUpload::uploadWithResize($request, 'photo', 'members', 200, 200);
@@ -107,9 +109,8 @@ class MemberRepository implements MemberRepositoryInterface {
         $member = Member::find($id);
 
         if ($member->photo) {
-            if ($member->photo) {
-                unlink($member->photo);
-            }
+            $photo = str_replace(URL::to('/')."/", "", $member->photo);
+            unlink($photo);
         }
 
         if ($member->delete()) {
@@ -169,7 +170,8 @@ class MemberRepository implements MemberRepositoryInterface {
         if ($request->hasFile('nominee_photo')) {
             //delete previous profile photo
             if ($nominee->photo) {
-                unlink($nominee->photo);
+                $photo = str_replace(URL::to('/')."/", "", $nominee->photo);
+                unlink($photo);
             }
 
             $path = FileUpload::uploadWithResize($request, 'nominee_photo', 'nominees', 200, 200);
@@ -187,9 +189,8 @@ class MemberRepository implements MemberRepositoryInterface {
         $nominee = Nominee::find($id);
 
         if ($nominee->photo) {
-            if ($nominee->photo) {
-                unlink($nominee->photo);
-            }
+            $photo = str_replace(URL::to('/')."/", "", $nominee->photo);
+            unlink($photo);
         }
 
         if ($nominee->delete()) {
@@ -199,8 +200,9 @@ class MemberRepository implements MemberRepositoryInterface {
         return false;
     }
 
-    public function duplicateCheck($request, $id=null)
+    public function duplicateCheck($request)
     {
+        $id = $request->input('member_id');
         if(!$id) {
             if ($request->input('member_group_id')) {
                 $member = Member::where('account_no', $request->input('account_no'))->where('member_group_id', $request->input('member_group_id'))->first();
@@ -213,6 +215,7 @@ class MemberRepository implements MemberRepositoryInterface {
             }
         } else {
             $member = Member::where('account_no', $request->input('account_no'))->where('id', '!=', $id);
+
             if ($request->input('member_group_id')) {
                 $member = $member->where('group_id', $request->input('member_group_id'))->first();
             } else {

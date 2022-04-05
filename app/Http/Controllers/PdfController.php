@@ -1,8 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Member;
 use App\Repositories\Report\ReportRepositoryInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class PdfController extends Controller
@@ -14,9 +16,17 @@ class PdfController extends Controller
         $this->report = $report;
     }
 
-    public function memberProfile()
+    public function memberProfile($id)
     {
-        return Pdf::loadview('pdf.test')->stream('test.pdf');
+        $member = Member::find($id);
+
+        $data = [
+            'member' => $member
+        ];
+
+        return Pdf::loadview('pdf.member-profile', $data, [], [
+            'format' => 'A4-P'
+        ])->download('member-profile.pdf');
 
     }
 

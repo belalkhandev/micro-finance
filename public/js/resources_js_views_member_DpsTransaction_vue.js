@@ -11,11 +11,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixin */ "./resources/js/mixin/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: 'MemberShowSidebar',
   props: {
     member: Object
-  }
+  },
+  mixins: [_mixin__WEBPACK_IMPORTED_MODULE_0__.helpers]
 });
 
 /***/ }),
@@ -325,40 +328,66 @@ var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_24 = {
-  key: 0,
-  "class": "text-right"
-};
-var _hoisted_25 = {
-  key: 1,
-  "class": "text-right"
-};
-var _hoisted_26 = {
-  key: 2,
   "class": "text-right"
 };
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Address", -1
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Address", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = {
+  "class": "text-right"
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Status", -1
 /* HOISTED */
 );
 
 var _hoisted_28 = {
-  "class": "text-right"
-};
-
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, "Status", -1
-/* HOISTED */
-);
-
-var _hoisted_30 = {
   key: 0,
   "class": "text-success text-right"
 };
-var _hoisted_31 = {
+var _hoisted_29 = {
   key: 1,
   "class": "text-danger text-right"
 };
+var _hoisted_30 = {
+  "class": "member-download"
+};
 
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"member-download\"><h5 class=\"member-section-ttile\">Download</h5><a href=\"\" class=\"btn btn-outline-primary w-100\"><i class=\"bx bx-download\"></i> Member Profile </a><a href=\"\" class=\"btn btn-outline-success w-100 mt-2\"><i class=\"bx bx-download\"></i> Transaction History </a></div>", 1);
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Download", -1
+/* HOISTED */
+);
+
+var _hoisted_32 = ["href"];
+
+var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-download"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Member Profile ");
+
+var _hoisted_35 = [_hoisted_33, _hoisted_34];
+
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "",
+  "class": "btn btn-outline-success w-100 mt-2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-download"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" DPS Transactions ")], -1
+/* HOISTED */
+);
+
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  href: "",
+  "class": "btn btn-outline-info w-100 mt-2"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-download"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loan Transactions ")], -1
+/* HOISTED */
+);
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
@@ -440,9 +469,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["to"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.account_no), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_23, $props.member.member_type === 'deposit_weekly' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_24, "DPS(Weekly)")) : $props.member.member_type === 'deposit_monthly' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_25, "DPS(Monthly)")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_26, "Loan"))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.address), 1
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.ucFirst($props.member.member_type)), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_29, $props.member.is_active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_30, "Active")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_31, "Inactive"))])])]), _hoisted_32])])]);
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.address), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_27, $props.member.is_active ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_28, "Active")) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("td", _hoisted_29, "Inactive"))])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [_hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/download/member/profile/' + $props.member.id,
+    "class": "btn btn-outline-primary w-100"
+  }, _hoisted_35, 8
+  /* PROPS */
+  , _hoisted_32), _hoisted_36, _hoisted_37])])])]);
 }
 
 /***/ }),

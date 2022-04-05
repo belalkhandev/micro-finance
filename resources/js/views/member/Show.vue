@@ -48,7 +48,7 @@
                             </div>
                         </div>
                         <div class="member-detail">
-                            <h3>Nominee information</h3>
+                            <h3> <span v-if="member.member_type == 'loan_weekly' || member.member_type == 'loan_monthly'">Guarantor</span> <span v-else>Nominee</span> information</h3>
                             <div class="member-infos">
                                 <div class="member-info">
                                     <p>Name</p>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Relation</p>
-                                    <h5>{{ member.nominee.relation }}</h5>
+                                    <h5>{{ ucFirst(member.nominee.relation) }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Address</p>
@@ -105,7 +105,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Group</p>
-                                    <h5>{{ 'No group' }}</h5>
+                                    <h5>{{ member.group ? member.group.group_name+' ('+member.group.group_no+')' : 'No group' }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Day</p>

@@ -10,7 +10,9 @@
                     </span>
                     </div>
                     <div class="widget-body">
-                        <h3>{{ dashboard.members }}</h3>
+                        <router-link to="/members">
+                            <h3>{{ dashboard.members }}</h3>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -23,7 +25,9 @@
                     </span>
                     </div>
                     <div class="widget-body">
-                        <h3>{{ dashboard.admins }}</h3>
+                        <router-link to="/admins">
+                            <h3>{{ dashboard.admins }}</h3>
+                        </router-link>
                     </div>
                 </div>
             </div>
@@ -91,7 +95,9 @@
                         </span>
                     </div>
                     <div class="widget-body">
-                        <h3>{{ numberFormat(dashboard.total_expense) }}</h3>
+                        <router-link to="/expenses/list">
+                            <h3>{{ numberFormat(dashboard.total_expense) }}</h3>
+                        </router-link>
                     </div>
                 </div>
             </div>

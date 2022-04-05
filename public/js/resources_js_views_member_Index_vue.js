@@ -36,10 +36,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)({
-    getMembers: 'member/getMembers'
+    getMembers: 'member/getMembers',
+    deleteMember: 'member/deleteMember'
   })), {}, {
     showEditModal: function showEditModal(data) {},
-    deleteConfirm: function deleteConfirm(user_id) {
+    deleteConfirm: function deleteConfirm(member_id) {
       var _this = this;
 
       this.$swal({
@@ -52,12 +53,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         cancelButtonColor: '#c82333'
       }).then(function (res) {
         if (res.isConfirmed) {
-          _this.deleteUser(user_id).then(function () {
+          _this.deleteMember(member_id).then(function () {
             if (!_this.error_message) {
               _this.$swal({
                 icon: 'success',
                 title: 'Congratulation!',
-                text: 'User has been deleted successfully'
+                text: 'Member has been deleted successfully'
               });
             } else {
               _this.error = _this.error_message;

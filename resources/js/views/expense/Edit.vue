@@ -165,13 +165,6 @@ export default ({
             $('#updateExpense').prop('disabled', true).addClass('submitted')
 
             let formData = this.form;
-            // let inputData = this.form
-            //
-            // Object.keys(inputData).forEach(fieldName => {
-            //     formData.append(fieldName, inputData[fieldName]);
-            // });
-            //
-            // console.log(formData)
 
             this.editExpense(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {

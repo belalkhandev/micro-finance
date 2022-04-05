@@ -47,9 +47,7 @@
                         </tr>
                         <tr>
                             <td>Member Type</td>
-                            <td class="text-right" v-if="member.member_type === 'deposit_weekly'">DPS(Weekly)</td>
-                            <td class="text-right" v-else-if="member.member_type === 'deposit_monthly'">DPS(Monthly)</td>
-                            <td class="text-right" v-else>Loan</td>
+                            <td class="text-right">{{ ucFirst(member.member_type) }}</td>
                         </tr>
                         <tr>
                             <td>Address</td>
@@ -63,14 +61,18 @@
                     </table>
                 </div>
                 <div class="member-download">
-                    <h5 class="member-section-ttile">Download</h5>
-                    <a href="" class="btn btn-outline-primary w-100">
+                    <h5>Download</h5>
+                    <a :href="'/download/member/profile/'+member.id" class="btn btn-outline-primary w-100">
                         <i class="bx bx-download"></i>
                         Member Profile
                     </a>
                     <a href="" class="btn btn-outline-success w-100 mt-2">
                         <i class="bx bx-download"></i>
-                        Transaction History
+                        DPS Transactions
+                    </a>
+                    <a href="" class="btn btn-outline-info w-100 mt-2">
+                        <i class="bx bx-download"></i>
+                        Loan Transactions
                     </a>
                 </div>
             </div>
@@ -79,11 +81,14 @@
 </template>
 
 <script>
+import {helpers} from "../mixin";
+
 export default {
     name: 'MemberShowSidebar',
     props: {
         member: Object
-    }
+    },
+    mixins: [helpers]
 
 }
 </script>

@@ -209,7 +209,7 @@
                     </div>
                 </div>
                 <div class="form-section form-section-warning">
-                    <h5>Nominee Information</h5>
+                    <h5>{{ memberType }} Information</h5>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -418,9 +418,19 @@ export default ({
             return this.villages
         },
 
+        memberType () {
+            if (this.form.member_type == 'loan_weekly' || this.form.member_type == 'loan_monthly') {
+                return 'Guarantor';
+            }
+
+            return 'Nominee';
+        },
+
         member() {
             if (this.members && this.form.member_id) {
                 const member = this.members.find(member => member.id == this.form.member_id)
+
+                console.log(member)
 
                 if (member) {
                     this.form.name = member.name;
@@ -439,7 +449,7 @@ export default ({
                     this.form.joining_date = member.joining_date;
                     this.form.account_no = member.account_no;
                     this.form.member_type = member.member_type;
-                    this.form.group = member.group_id;
+                    this.form.group = member.member_group_id;
                     this.form.day = member.day;
                     this.form.nominee_name = member.nominee.name;
                     this.form.nominee_father_name = member.nominee.father_name;
@@ -483,9 +493,10 @@ export default ({
 
             Object.keys(inputData).forEach(fieldName => {
                 formData.append(fieldName, inputData[fieldName]);
-            })
+            });
 
             this.editMember(formData).then(() => {
+
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
                     Object.assign(this.$data, this.$options.data.apply(this))

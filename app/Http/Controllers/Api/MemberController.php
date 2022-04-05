@@ -169,15 +169,53 @@ class MemberController extends Controller
     public function update(Request $request, $id)
     {
         $rules = [
-            'member_name' => 'required'
+            'name' => 'required',
+            'father_name' => 'required',
+            'mother_name' => 'required',
+            'gender' => 'required',
+            'phone' => 'required',
+            'village_id' => 'required',
+            'post_office_id' => 'required',
+            'address' => 'required',
+            'joining_date' => 'required',
+            'account_no' => 'required',
+            'member_type' => 'required',
+            'day' => 'required',
+            'nominee_name' => 'required',
+            'nominee_father_name' => 'required',
+            'nominee_mother_name' => 'required',
+            'nominee_gender' => 'required',
+            'nominee_phone' => 'required',
+            'member_photo' => 'nullable|mimes:jpg,png,jpeg',
+            'nominee_photo' => 'nullable|mimes:jpg,png,jpeg',
         ];
 
-        $validation = Validator::make($request->all(), $rules);
+        $messages = [
+            'father_name.required' => "Father or spouse name is required",
+            'nominee_father_name.required' => "Father or spouse name is required",
+            'village_id.required' => "Village is required",
+            'post_office_id.required' => "Post office is required",
+        ];
+
+        $validation = Validator::make($request->all(), $rules, $messages);
 
         if ($validation->fails()) {
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
+            ]);
+        }
+
+        //check duplication phone number
+
+
+        //check duplication account number on different group
+        if ($this->member->duplicateCheck($request)) {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'account_no' => ["Account number already exist!"]
+                ]
             ]);
         }
 

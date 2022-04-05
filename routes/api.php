@@ -103,7 +103,7 @@ Route::group([
     ], function($route) {
         $route->get('/list', [MemberController::class, 'index']);
         $route->post('/create', [MemberController::class, 'store']);
-        $route->put('/update/{id}', [MemberController::class, 'update']);
+        $route->post('/update/{id}', [MemberController::class, 'update']);
         $route->delete('/delete/{id}', [MemberController::class, 'destroy']);
         $route->get('/transactions/loan/{member_id}', [TransactionController::class, 'memberLoanTransactions']);
         $route->get('/transactions/dps/{member_id}', [TransactionController::class, 'memberDpsTransactions']);

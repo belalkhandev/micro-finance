@@ -105,14 +105,15 @@ export default ({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers'
+            getMembers: 'member/getMembers',
+            deleteMember: 'member/deleteMember'
         }),
 
         showEditModal(data) {
 
         },
 
-        deleteConfirm(user_id) {
+        deleteConfirm(member_id) {
             this.$swal({
                 title:"Really want to delete!",
                 text: "Are you sure? You won't be able to revert this!",
@@ -123,12 +124,12 @@ export default ({
                 cancelButtonColor: '#c82333',
             }).then((res) => {
                 if (res.isConfirmed) {
-                    this.deleteUser(user_id).then(() => {
+                    this.deleteMember(member_id).then(() => {
                         if (!this.error_message) {
                             this.$swal({
                                 icon: 'success',
                                 title: 'Congratulation!',
-                                text: 'User has been deleted successfully'
+                                text: 'Member has been deleted successfully'
                             })
                         }else {
                             this.error = this.error_message
