@@ -21,6 +21,7 @@ class DashboardController extends Controller
         $recent_lns_trs = $lns_trs->where('is_paid', 1)->take(5);
         $loan_applications = LoanApplication::where('is_active', 1)->get();
         $members = Member::get()->count();
+        $admims = User::get()->count();
         $transactions_dps = $dps_trs->where('is_paid', 1)->sum('amount');
         $transactions_loan = $lns_trs->where('is_paid', 1)->sum('amount');
         $total_collection = $transactions_dps+$transactions_loan;
@@ -42,7 +43,7 @@ class DashboardController extends Controller
                  'no_paid' => $no_paid,
                  'fund_amount' => $fund_amount,
                  'total_expense' => $total_expense,
-                ''
+                'admins' => $admims
             ]
         ]);
     }

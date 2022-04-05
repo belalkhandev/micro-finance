@@ -33,7 +33,7 @@ class CreateMembersTable extends Migration
             $table->unsignedBigInteger('division_id')->nullable();
             $table->string('photo')->nullable();
             $table->date('joining_date')->nullable();
-            $table->enum('member_type', ['deposit_weekly', 'deposit_monthly', 'loan'])->nullable();
+            $table->enum('member_type', ['deposit_weekly', 'deposit_monthly', 'loan_weekly', 'loan_monthly'])->nullable();
             $table->unsignedBigInteger('member_group_id')->nullable();
             $table->string('day')->nullable();
             $table->boolean('is_active')->default(true);

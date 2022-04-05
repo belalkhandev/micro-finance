@@ -63,7 +63,7 @@ class MemberController extends Controller
             'father_name' => 'required',
             'mother_name' => 'required',
             'gender' => 'required',
-            'phone' => 'required',
+            'phone' => 'required|unique:members,phone',
             'village_id' => 'required',
             'post_office_id' => 'required',
             'address' => 'required',

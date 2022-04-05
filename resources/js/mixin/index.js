@@ -8,6 +8,7 @@ export const helpers = {
             page: 1,
             per_page: 10,
             pages: [],
+            lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en'
         }
     },
 
@@ -44,6 +45,11 @@ export const helpers = {
 
         dayNameFormat(date) {
             return moment(date).format("dddd");
+        },
+
+        ucFirst(val) {
+            let str = val.replaceAll('_', ' ');
+            return str.charAt(0).toUpperCase() + str.slice(1);
         },
 
         // pagination make

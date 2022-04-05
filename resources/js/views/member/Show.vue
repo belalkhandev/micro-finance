@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Gender</p>
-                                    <h5>{{ member.gender }}</h5>
+                                    <h5>{{ ucFirst(member.gender) }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>NID</p>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Gender</p>
-                                    <h5>{{ member.nominee.gender }}</h5>
+                                    <h5>{{ ucFirst(member.nominee.gender) }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>NID</p>
@@ -97,11 +97,11 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Joining Date</p>
-                                    <h5>{{ member.joining_date }}</h5>
+                                    <h5>{{ userFormattedDate(member.joining_date) }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Member Type</p>
-                                    <h5>{{ member.member_type }}</h5>
+                                    <h5>{{ ucFirst(member.member_type) }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Group</p>
@@ -124,6 +124,7 @@
 <script>
 import { mapGetters, mapActions} from 'vuex'
 import MemberShowSidebar from '../../components/MemberShowSidebar'
+import {helpers} from "../../mixin";
 
 export default({
     name: 'MemberProfileShow',
@@ -135,6 +136,8 @@ export default({
             member_id: this.$route.params.member_id
         }
     },
+
+    mixins: [helpers],
 
     computed: {
         ...mapGetters ({

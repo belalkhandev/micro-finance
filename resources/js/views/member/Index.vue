@@ -34,9 +34,7 @@
                         </td>
                         <td>{{ member.father_name }}</td>
                         <td>{{ member.mother_name }}</td>
-                        <td v-if="member.member_type === 'deposit_weekly'" class="text-indigo-600">Weekly</td>
-                        <td v-else-if="member.member_type === 'deposit_monthly'" class="text-green-600">Monthly</td>
-                        <td v-else="member.member_type === 'loan'" class="text-indigo-600">Loan</td>
+                        <td>{{ ucFirst(member.member_type) }}</td>
                         <td v-if="member.is_active" class="text-success">Active</td>
                         <td v-else class="text-danger">Inactive</td>
                         <td>

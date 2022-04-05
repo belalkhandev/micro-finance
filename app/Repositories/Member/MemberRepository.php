@@ -41,7 +41,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->division_id = $request->input('division_id');
         $member->joining_date = databaseFormattedDate($request->input('joining_date'));
         $member->member_type = $request->input('member_type');
-        $member->member_group_id = $request->input('member_group_id');
+        $member->member_group_id = $request->input('group');
         $member->day = $request->input('day');
 
         //upload photo
@@ -80,7 +80,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->division_id = $request->input('division_id');
         $member->joining_date = Carbon::parse($request->input('joining_date'))->format('Y-m-d');
         $member->member_type = $request->input('member_type');
-        $member->member_group_id = $request->input('member_group_id');
+        $member->member_group_id = $request->input('group');
         $member->day = $request->input('day');
 
         if ($request->hasFile('photo')) {

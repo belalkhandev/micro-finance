@@ -643,8 +643,8 @@ table {
     margin-bottom: 15px;
 }
 .sidebar .logo img {
-    width: 85px;
-    margin: 0 auto;
+    width: 150px;
+    margin: 0 auto 30px auto;
 }
 .sidebar .logo h2 {
     margin-top: 10px;

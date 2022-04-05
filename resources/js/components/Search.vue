@@ -30,7 +30,7 @@
                                                     </div>
                                                     <div class="search-content">
                                                         <h5>{{ member.name }}</h5>
-                                                        <p>Account No: <strong>{{ member.account_no }}</strong>, Group: <strong>{{ member.member_group_id }}</strong>, Member type: <strong>{{ member.member_type }}</strong></p>
+                                                        <p>Account No: <strong>{{ member.account_no }}</strong>, <strong v-if="member.member_group_id">Group: {{ member.member_group_id }}, </strong> Member type: <strong>{{ ucFirst(member.member_type) }}</strong></p>
                                                         <p>Address: <strong>{{ member.address }}</strong>, Phone: {{ member.phone }}</p>
                                                     </div>
                                                 </router-link>
@@ -56,6 +56,7 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import $ from "jquery";
+import {helpers} from "../mixin";
 
 export default ({
     name: "SearchMember",
@@ -64,6 +65,9 @@ export default ({
             search_key: ""
         }
     },
+
+    mixins: [helpers],
+
     computed: {
         ...mapGetters({
             members: 'member/members'
@@ -73,12 +77,9 @@ export default ({
 
             if (this.search_key.length > 1) {
                 return this.members.filter((member) => {
-                    return member.account_no.toLowerCase().includes(this.search_key.toLowerCase())
-                        || member.name.toLowerCase().includes(this.search_key.toLowerCase())
-                        || member.phone.toLowerCase().includes(this.search_key.toLowerCase())
-                        || member.member_type.toLowerCase().match(this.search_key.toLowerCase())
-                        || member.day.toLowerCase().match(this.search_key.toLowerCase())
-                        || member.address.toLowerCase().match(this.search_key.toLowerCase())
+                    return member.account_no.toLowerCase().match(this.search_key.toLowerCase())
+                        || member.name.toLowerCase() === this.search_key.toLowerCase()
+                        || member.phone.toLowerCase() === this.search_key.toLowerCase()
                 });
             }
 

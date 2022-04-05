@@ -151,6 +151,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="form-section form-section-success">
                     <h5>Account Information</h5>
                     <div class="row">
@@ -209,7 +210,7 @@
                     </div>
                 </div>
                 <div class="form-section form-section-warning">
-                    <h5>Nominee Information</h5>
+                    <h5>{{ memberType }} Information</h5>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
@@ -418,7 +419,13 @@ export default ({
             return this.villages
         },
 
+        memberType () {
+            if (this.form.member_type == 'loan_weekly' || this.form.member_type == 'loan_monthly') {
+                return 'Guarantor';
+            }
 
+            return 'Nominee';
+        }
     },
 
     methods: {

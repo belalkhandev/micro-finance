@@ -2,23 +2,6 @@
     <div>
         <div class="row" v-if="dashboard">
             <div class="col-md-3">
-                <div class="widget widget-primary animate__animated animate__pulse">
-                    <div class="widget-header">
-                        <h5 class="title">Search Members</h5>
-                        <span>
-                            <i class='bx bx-search-alt'></i>
-                        </span>
-                    </div>
-                    <div class="widget-body">
-                        <div class="search-container">
-                            <button type="button" class="btn btn-search w-100" data-bs-toggle="modal" data-bs-target="#searchModal">
-                                Click to Search
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
                 <div class="widget widget-success animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Members</h5>
@@ -28,6 +11,19 @@
                     </div>
                     <div class="widget-body">
                         <h3>{{ dashboard.members }}</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-warning animate__animated animate__pulse">
+                    <div class="widget-header">
+                        <h5 class="title">Admins</h5>
+                        <span>
+                        <i class="bx bx-group"></i>
+                    </span>
+                    </div>
+                    <div class="widget-body">
+                        <h3>{{ dashboard.admins }}</h3>
                     </div>
                 </div>
             </div>
@@ -61,7 +57,7 @@
 
         <div class="row mt-4" v-if="dashboard">
             <div class="col-md-3">
-                <div class="widget widget-success animate__animated animate__pulse">
+                <div class="widget widget-primary animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Total Collections</h5>
                         <span>
@@ -100,7 +96,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-primary animate__animated animate__pulse">
+                <div class="widget widget-success animate__animated animate__pulse">
                     <div class="widget-header">
                         <h5 class="title">Fund amount</h5>
                         <span>
@@ -239,7 +235,6 @@
                 </div>
             </div>
         </div>
-        <SearchMember/>
     </div>
 
 </template>
@@ -251,9 +246,6 @@ import {helpers} from "../mixin";
 
 export default {
     name: 'Dashboard',
-    components: {
-        SearchMember
-    },
 
     mixins: [helpers],
 
