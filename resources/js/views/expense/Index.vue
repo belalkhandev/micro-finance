@@ -7,6 +7,7 @@
                         <h4>Expense list</h4>
                     </div>
                     <div class="box-action">
+                        <router-link :to="{name:'ExpenseCategory'}" class="btn btn-sm btn-warning">Expense Categories</router-link>
                         <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createExpenseModal">Add new</button>
                     </div>
                 </div>

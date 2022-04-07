@@ -91,7 +91,7 @@ export default ({
     watch: {
         transaction() {
             if (this.transaction) {
-                console.log(this.transaction)
+                //console.log(this.transaction)
             }
         },
     }

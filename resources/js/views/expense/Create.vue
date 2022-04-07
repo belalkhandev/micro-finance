@@ -159,7 +159,6 @@ export default ({
             this.createExpense(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
-                    Object.assign(this.$data, this.$options.data.apply(this))
 
                     this.$swal({
                         icon: "success",

@@ -162,6 +162,12 @@
                                     <span>Member groups</span>
                                 </router-link>
                             </li>
+                            <li>
+                                <router-link :to="{name: 'ExpenseCategory'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Expense Categories</span>
+                                </router-link>
+                            </li>
                         </ul>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ class ExpenseRepository implements ExpenseRepositoryInterface {
 
     public function all()
     {
-        $expenses = Expense::get();
+        $expenses = Expense::latest()->get();
 
         if ($expenses->isNotEmpty()) {
             return $expenses;

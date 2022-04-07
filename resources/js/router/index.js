@@ -210,6 +210,14 @@ const routes = [
         },
     },
     {
+        path: '/expense/categories',
+        name: 'ExpenseCategory',
+        component: () => import('../views/expense-category/Index.vue'),
+        meta: {
+            title: 'Expense Categories'
+        }
+    },
+    {
         path: '/expenses/list',
         name: 'ExpenseList',
         component: () => import('../views/expense/Index'),

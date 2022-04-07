@@ -79,7 +79,7 @@
                                     <label class="col-form-label">Expense Date</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <Datepicker v-model="expense_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date"/>
+                                    <Datepicker v-model="expense_date_take" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date"/>
                                 </div>
                                 <span class="text-danger text-sm text-right" v-if="errors">{{ errors.expense_date ? errors.expense_date[0] : '' }}</span>
                             </div>
@@ -128,7 +128,7 @@ export default ({
                 expense_date: "",
                 expense_type: "regular",
             },
-            expense_date: "",
+            expense_date_take: "",
             errors: null,
             error: null,
         }
@@ -164,8 +164,6 @@ export default ({
             this.editExpense(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
                     this.errors = this.error = null;
-                    Object.assign(this.$data, this.$options.data.apply(this))
-
                     this.$swal({
                         icon: "success",
                         title: "Expense Update!",
@@ -188,10 +186,6 @@ export default ({
     },
 
     watch: {
-        expense_date: function () {
-            this.form.expense_date = moment(this.expense_date).format("L");
-        },
-
         expense() {
             if (this.expense) {
                 this.form.expense_id = this.expense.id;
@@ -200,8 +194,13 @@ export default ({
                 this.form.description = this.expense.description;
                 this.form.expense_type = this.expense.expense_type;
                 this.form.amount = this.expense.amount;
-                this.form.expense_date = moment(this.expense.expense_date).format("L");
+                this.form.expense_date = this.datePickerFormat(this.expense.expense_date);
+                this.expense_date_take = this.datePickerFormat(this.expense.expense_date);
             }
+        },
+
+        expense_date_take: function () {
+            this.form.expense_date = this.datePickerFormat(this.expense_date_take);
         },
     }
 })

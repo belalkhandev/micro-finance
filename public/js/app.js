@@ -26445,58 +26445,58 @@ var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_72 = {
-  "class": "navigation-item has-multimenu"
-};
-
-var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-report text-orange-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
-/* HOISTED */
-);
-
-var _hoisted_75 = [_hoisted_73, _hoisted_74];
-var _hoisted_76 = {
-  "class": "navigation-content"
-};
-
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-x"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
-/* HOISTED */
-);
-
-var _hoisted_79 = [_hoisted_77, _hoisted_78];
-
-var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "navigation-content-header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Reports")], -1
-/* HOISTED */
-);
-
-var _hoisted_81 = {
-  "class": "navigation-content-body"
-};
-
-var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "DPS Report", -1
-/* HOISTED */
-);
-
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
+var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Expense Categories", -1
+/* HOISTED */
+);
+
+var _hoisted_74 = {
+  "class": "navigation-item has-multimenu"
+};
+
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-report text-orange-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
+/* HOISTED */
+);
+
+var _hoisted_77 = [_hoisted_75, _hoisted_76];
+var _hoisted_78 = {
+  "class": "navigation-content"
+};
+
+var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-x"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+/* HOISTED */
+);
+
+var _hoisted_81 = [_hoisted_79, _hoisted_80];
+
+var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "navigation-content-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Reports")], -1
+/* HOISTED */
+);
+
+var _hoisted_83 = {
+  "class": "navigation-content-body"
+};
+
+var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "DPS Report", -1
 /* HOISTED */
 );
 
@@ -26506,7 +26506,7 @@ var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
+var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26516,7 +26516,7 @@ var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
+var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26526,21 +26526,21 @@ var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
 /* HOISTED */
 );
 
-var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Loan Reports", -1
-/* HOISTED */
-);
-
-var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
+var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+/* HOISTED */
+);
+
+var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Loan Reports", -1
 /* HOISTED */
 );
 
@@ -26550,7 +26550,7 @@ var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
+var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26560,7 +26560,7 @@ var _hoisted_96 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
+var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26570,37 +26570,47 @@ var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
 /* HOISTED */
 );
 
-var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5>Accounts Reports</h5><ul><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>Cash Balance</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li></ul>", 2);
-
-var _hoisted_102 = {
-  "class": "navigation-item"
-};
-
-var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-user-rectangle text-violet-600"
+var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
+
+var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+/* HOISTED */
+);
+
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5>Accounts Reports</h5><ul><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>Cash Balance</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li></ul>", 2);
 
 var _hoisted_104 = {
   "class": "navigation-item"
 };
 
 var _hoisted_105 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-user-rectangle text-violet-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_106 = {
+  "class": "navigation-item"
+};
+
+var _hoisted_107 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-log-out text-cyan-500"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_106 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
+var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
 /* HOISTED */
 );
 
-var _hoisted_107 = [_hoisted_105, _hoisted_106];
+var _hoisted_109 = [_hoisted_107, _hoisted_108];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -26809,31 +26819,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_72, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'ExpenseCategory'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_72, _hoisted_73];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
     onClick: _cache[7] || (_cache[7] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, _hoisted_75), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_77), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[8] || (_cache[8] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_79), _hoisted_80, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_81, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h5>Transaction Reports</h5>\n                        <ul>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Today's Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                        </ul> "), _hoisted_82, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, _hoisted_81), _hoisted_82, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h5>Transaction Reports</h5>\n                        <ul>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Today's Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                        </ul> "), _hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'TodayDpsReport'
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_83, _hoisted_84];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: {
-      name: 'DpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26844,7 +26854,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'PaidDpsReport'
+      name: 'DpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26855,7 +26865,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'DueDpsReport'
+      name: 'PaidDpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26864,20 +26874,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_91, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'TodayLoanReport'
+      name: 'DueDpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_92, _hoisted_93];
+      return [_hoisted_91, _hoisted_92];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_93, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'LoanReport'
+      name: 'TodayLoanReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26888,7 +26898,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'PaidLoanReport'
+      name: 'LoanReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26899,7 +26909,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'DueLoanReport'
+      name: 'PaidLoanReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26908,25 +26918,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_100])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_102, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'DueLoanReport'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_100, _hoisted_101];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_102])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_104, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Profile'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_103, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('profile')), 1
+      return [_hoisted_105, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('profile')), 1
       /* TEXT */
       )];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_104, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     onClick: _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.logout && $options.logout.apply($options, arguments);
     }, ["prevent"]))
-  }, _hoisted_107)])])]);
+  }, _hoisted_109)])])]);
 }
 
 /***/ }),
@@ -27612,6 +27633,15 @@ var routes = [{
   },
   meta: {
     title: 'All loan transaction list'
+  }
+}, {
+  path: '/expense/categories',
+  name: 'ExpenseCategory',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_expense-category_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/expense-category/Index.vue */ "./resources/js/views/expense-category/Index.vue"));
+  },
+  meta: {
+    title: 'Expense Categories'
   }
 }, {
   path: '/expenses/list',
@@ -28363,26 +28393,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     SET_CATEGORIES: function SET_CATEGORIES(state, expense_categories) {
       state.expense_categories = expense_categories;
     },
-    SET_CATEGORY: function SET_CATEGORY(state, expense) {
+    SET_CATEGORY: function SET_CATEGORY(state, category) {
       if (state.expense_categories) {
-        state.expense_categories.unshift(expense);
+        state.expense_categories.unshift(category);
       } else {
-        state.expense_categories = [expense];
+        state.expense_categories = [category];
       }
     },
-    UPDATE_CATEGORY: function UPDATE_CATEGORY(state, expense) {
+    UPDATE_CATEGORY: function UPDATE_CATEGORY(state, category) {
       var item = state.expense_categories.find(function (item) {
-        return item.id === expense.id;
+        return item.id === category.id;
       });
-      Object.assign(item, expense);
+      Object.assign(item, category);
     },
     DELETE_CATEGORY: function DELETE_CATEGORY(state, item_id) {
-      var expense = state.expense_categories.find(function (item) {
+      var category = state.expense_categories.find(function (item) {
         return item.id == item_id;
       });
 
-      if (expense) {
-        state.expense_categories.splice(state.expense_categories.indexOf(expense), 1);
+      if (category) {
+        state.expense_categories.splice(state.expense_categories.indexOf(category), 1);
       }
     }
   },
@@ -28472,7 +28502,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context3.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_CATEGORY', res.data.expense);
+                  commit('UPDATE_CATEGORY', res.data.category);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -28642,7 +28672,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 3:
                 res = _context2.sent;
-                console.log(res);
 
                 if (res.data.status) {
                   commit('SET_EXPENSE', res.data.expense);
@@ -28665,7 +28694,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-              case 6:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -85472,7 +85501,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense-category_Index_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

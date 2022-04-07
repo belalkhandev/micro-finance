@@ -18,23 +18,23 @@ export default {
             state.expense_categories = expense_categories
         },
 
-        SET_CATEGORY(state, expense) {
+        SET_CATEGORY(state, category) {
             if (state.expense_categories) {
-                state.expense_categories.unshift(expense)
+                state.expense_categories.unshift(category)
             }else {
-                state.expense_categories = [expense]
+                state.expense_categories = [category]
             }
         },
 
-        UPDATE_CATEGORY(state, expense) {
-            const item = state.expense_categories.find(item => item.id === expense.id)
-            Object.assign(item, expense)
+        UPDATE_CATEGORY(state, category) {
+            const item = state.expense_categories.find(item => item.id === category.id)
+            Object.assign(item, category)
         },
 
         DELETE_CATEGORY(state, item_id) {
-            const expense  = state.expense_categories.find(item => item.id == item_id)
-            if (expense) {
-                state.expense_categories.splice(state.expense_categories.indexOf(expense), 1)
+            const category  = state.expense_categories.find(item => item.id == item_id)
+            if (category) {
+                state.expense_categories.splice(state.expense_categories.indexOf(category), 1)
             }
         },
     },
@@ -70,7 +70,7 @@ export default {
             const res = await axios.put('expense/category/update/'+formdata.category_id, formdata)
 
             if (res.data.status) {
-                commit('UPDATE_CATEGORY', res.data.expense)
+                commit('UPDATE_CATEGORY', res.data.category)
                 commit('SET_VALIDATION_ERRORS', null,  { root:true })
                 commit('SET_ERROR_MESSAGE', null,  { root:true })
             } else {
