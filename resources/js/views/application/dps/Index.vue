@@ -96,7 +96,6 @@ import {helpers} from "../../../mixin";
 
 export default ({
     name: "Index",
-    components: {},
 
     mixins: [helpers],
 

@@ -23,7 +23,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "Index",
-  components: {},
   mixins: [_mixin__WEBPACK_IMPORTED_MODULE_0__.helpers],
   data: function data() {
     return {};
