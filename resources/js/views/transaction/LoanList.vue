@@ -7,6 +7,19 @@
                         <h4>Loan Transaction List</h4>
                     </div>
                     <div class="box-action">
+                        <div class="search" :class="is_open_search ? 'open-search' : ''">
+                            <div class="search-form">
+                                <div class="search-group">
+                                    <input type="search" v-model="search_key" placeholder="Search keyword" class="form-control">
+                                </div>
+                                <div class="search-group">
+                                    <Datepicker v-model="search_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="Search date"/>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
+                                <i class="bx bx-search-alt"></i>
+                            </button>
+                        </div>
                         <router-link :to="{ name:'GenerateTransaction' }" class="btn btn-sm btn-primary">Generate Transaction</router-link>
                     </div>
                 </div>
@@ -14,7 +27,6 @@
                     <table class="table">
                         <thead>
                         <tr>
-                            <th>#</th>
                             <th>Tr. no</th>
                             <th>Member/Acc. no</th>
                             <th>Loan Type/Amount</th>
@@ -28,7 +40,7 @@
                         </thead>
                         <tbody>
                         <tr v-if="filterTransactions" v-for="(transaction, i) in filterTransactions" :key="transaction.id">
-                            <td>{{ per_page*(page-1)+(i+1) }}</td>
+<!--                            <td>{{ per_page*(page-1)+(i+1) }}</td>-->
                             <td>{{ transaction.transaction_no }}</td>
                             <td>
                                 <router-link :to="{name: 'MemberShow', params: {
@@ -124,10 +136,30 @@ export default ({
 
         filterTransactions() {
             if (this.transactions) {
-                return this.paginate(this.transactions);
+                if (this.search_key && !this.search_date) {
+                    return this.paginate(this.transactions.filter(
+                        transaction =>
+                            transaction.member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            transaction.member.phone.toLowerCase().includes(this.search_key.toLowerCase())
+                    ));
+                } else if (this.search_date && !this.search_key) {
+                    return this.paginate(this.transactions.filter(
+                        transaction =>
+                            this.datePickerFormat(transaction.transaction_date) === this.datePickerFormat(this.search_date)
+                    ));
+                } else if (this.search_key && this.search_date) {
+                    return this.paginate(this.transactions.filter(
+                        transaction =>
+                            this.datePickerFormat(transaction.transaction_date) === this.datePickerFormat(this.search_date) &&
+                            transaction.member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            transaction.member.phone.toLowerCase().includes(this.search_key.toLowerCase())
+                    ));
+                } else {
+                    return this.paginate(this.transactions);
+                }
             }
 
-            return this.transactions;
+            return null;
         }
     },
 

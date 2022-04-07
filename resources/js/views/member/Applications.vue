@@ -9,6 +9,18 @@
                     <div class="box-title">
                         <h5>DPS Applications</h5>
                     </div>
+                    <div class="box-action">
+                        <div class="search" :class="is_open_search ? 'open-search' : ''">
+                            <div class="search-form animate__animated animate__fadeIn animate__fast">
+                                <div class="search-group">
+                                    <Datepicker v-model="search_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="Search date"/>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
+                                <i class="bx bx-search-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -81,6 +93,18 @@
                     <div class="box-title">
                         <h5>Loan Applications</h5>
                     </div>
+                    <div class="box-action">
+                        <div class="search" :class="is_loan_open_search ? 'open-search' : ''">
+                            <div class="search-form animate__animated animate__fadeIn animate__fast">
+                                <div class="search-group">
+                                    <Datepicker v-model="search_loan_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="Search date"/>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openLoanSearch()">
+                                <i class="bx bx-search-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -92,6 +116,7 @@
                             <th>Total Amount</th>
                             <th>Installment</th>
                             <th>Paid</th>
+                            <th>Created at</th>
                             <td></td>
                         </tr>
                         </thead>
@@ -103,6 +128,7 @@
                             <td>{{ application.total_amount }}</td>
                             <td>{{ application.installment_amount }} X {{ application.installment }} <br>({{ ucFirst(application.dps_type) }})</td>
                             <td>0</td>
+                            <td>{{ userFormattedDate(application.created_at) }}</td>
                             <td>
                                 <div class="action">
                                     <router-link :to="{ name: 'EditLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>
@@ -184,7 +210,14 @@ export default({
                     return item.member_id == this.member_id
                 });
 
-                return this.paginate(member_dps_applications);
+                if (this.search_date ) {
+                    return this.paginate(member_dps_applications.filter(
+                        application =>
+                            this.datePickerFormat(application.created_at) === this.datePickerFormat(this.search_date)
+                    ));
+                } else {
+                    return this.paginate(member_dps_applications);
+                }
             }
 
             return null;
@@ -196,7 +229,14 @@ export default({
                     return item.member_id == this.member_id
                 });
 
-                return this.paginate(member_loan_applications);
+                if (this.search_loan_date ) {
+                    return this.paginate(member_loan_applications.filter(
+                        application =>
+                            this.datePickerFormat(application.created_at) === this.datePickerFormat(this.search_date)
+                    ));
+                } else {
+                    return this.paginate(member_loan_applications);
+                }
             }
 
             return null;

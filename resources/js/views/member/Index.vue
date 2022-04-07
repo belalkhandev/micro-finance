@@ -5,6 +5,22 @@
                 <h4>Member list</h4>
             </div>
             <div class="box-action">
+                <div class="search" :class="is_open_search ? 'open-search' : ''">
+                    <div class="search-form animate__animated animate__fadeIn animate__fast">
+                        <div class="search-group">
+                            <input type="search" v-model="search_key" placeholder="Search keyword" class="form-control">
+                        </div>
+                        <div class="search-group">
+                            <Datepicker v-model="search_from_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="From Date"/>
+                        </div>
+                        <div class="search-group">
+                            <Datepicker v-model="search_to_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="To Date"/>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
+                        <i class="bx bx-search-alt"></i>
+                    </button>
+                </div>
                 <router-link :to="{name: 'CreateMember'}" class="btn btn-sm btn-primary">New member</router-link>
             </div>
         </div>

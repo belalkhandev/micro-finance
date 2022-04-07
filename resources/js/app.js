@@ -23,7 +23,6 @@ require('./assets/css/style.css')
 
 axios.defaults.baseURL = '/api';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`
-
 const app = createApp(App)
 
 store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {

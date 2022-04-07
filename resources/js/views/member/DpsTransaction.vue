@@ -9,6 +9,18 @@
                     <div class="box-title">
                         <h5>Dps Transaction History</h5>
                     </div>
+                    <div class="box-action">
+                        <div class="search" :class="is_open_search ? 'open-search' : ''">
+                            <div class="search-form">
+                                <div class="search-group">
+                                    <Datepicker v-model="search_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="Search date"/>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
+                                <i class="bx bx-search-alt"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -93,6 +105,7 @@ import MemberShowSidebar from '../../components/MemberShowSidebar'
 import DpsTransactionPayment from '../transaction/DpsTransactionPayment'
 import bootstrap from 'bootstrap/dist/js/bootstrap'
 import {helpers} from "../../mixin";
+import transaction from "../../store/modules/transaction";
 
 export default({
     name: 'DpsTransactionHistory',
@@ -117,10 +130,17 @@ export default({
 
         filterTransactions () {
             if (this.transactions) {
-                return this.paginate(this.transactions);
+                if (this.search_date) {
+                    return this.paginate(this.transactions.filter(
+                        transaction =>
+                            this.datePickerFormat(transaction.transaction_date) === this.datePickerFormat(this.search_date)
+                    ));
+                } else {
+                    return this.paginate(this.transactions)
+                }
             }
 
-            return this.transactions;
+            return null;
         },
 
         member() {

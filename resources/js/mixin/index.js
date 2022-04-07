@@ -2,13 +2,20 @@ import Datepicker from "vue3-date-time-picker";
 import moment from 'moment'
 import {ref} from "vue";
 
+
 export const helpers = {
+
     data () {
         return {
             page: 1,
             per_page: 10,
             pages: [],
-            lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en'
+            lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en',
+            is_open_search: false,
+            is_loan_open_search: false,
+            search_key: "",
+            search_date: "",
+            search_loan_date: ""
         }
     },
 
@@ -45,6 +52,16 @@ export const helpers = {
 
         dayNameFormat(date) {
             return moment(date).format("dddd");
+        },
+
+        openSearch()
+        {
+            return this.is_open_search = !this.is_open_search
+        },
+
+        openLoanSearch()
+        {
+            return this.is_loan_open_search = !this.is_loan_open_search
         },
 
         ucFirst(val) {
