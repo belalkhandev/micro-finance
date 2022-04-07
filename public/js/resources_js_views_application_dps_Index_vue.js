@@ -43,7 +43,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getApplications: 'dps/getApplications',
     deleteApplication: 'dps/deleteApplication'
   })), {}, {
-    showEditModal: function showEditModal(data) {},
     deleteConfirm: function deleteConfirm(application_id) {
       var _this = this;
 

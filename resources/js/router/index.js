@@ -170,6 +170,14 @@ const routes = [
         },
     },
     {
+        path: '/application/loans/edit/:application_id',
+        name: 'EditLoanApplication',
+        component: () => import('../views/application/loan/Edit.vue'),
+        meta: {
+            title: 'Loan application Update'
+        },
+    },
+    {
         path: '/transaction',
         name: 'TransactionHome',
         component: () => import('../views/transaction/Index'),

@@ -126,10 +126,6 @@ export default ({
             deleteApplication: 'dps/deleteApplication'
         }),
 
-        showEditModal(data) {
-
-        },
-
         deleteConfirm(application_id) {
             this.$swal({
                 title:"Really want to delete!",

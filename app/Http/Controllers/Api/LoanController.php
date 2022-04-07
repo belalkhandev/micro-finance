@@ -89,6 +89,16 @@ class LoanController extends Controller
             ]);
         }
 
+        //validation monthly date
+        if ($request->input('m_date') === 'Invalid date') {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'm_date' => ["Select a date for start installment"]
+                ]
+            ]);
+        }
+
         $loan = $this->loan->store($request);
 
         if ($loan) {
@@ -153,7 +163,7 @@ class LoanController extends Controller
             'loan_amount' => 'required',
             'service' => 'required',
             'total_installment' => 'required',
-            'loan_type' => 'required',
+            'dps_type' => 'required',
         ];
 
         $messages = [
@@ -177,6 +187,16 @@ class LoanController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
+            ]);
+        }
+
+        //validation monthly date
+        if ($request->input('m_date') === 'Invalid date') {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'm_date' => ["Select a date for start installment"]
+                ]
             ]);
         }
 

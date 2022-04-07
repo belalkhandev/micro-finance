@@ -90,6 +90,16 @@ class DpsController extends Controller
             ]);
         }
 
+        //validation monthly date
+        if ($request->input('m_date') === 'Invalid date') {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'm_date' => ["Select a date for start installment"]
+                ]
+            ]);
+        }
+
         $dps = $this->dps->store($request);
 
         if ($dps) {
@@ -178,6 +188,16 @@ class DpsController extends Controller
             return response()->json([
                 'status' => false,
                 'errors' => $validation->errors()
+            ]);
+        }
+
+        //validation monthly date
+        if ($request->input('m_date') === 'Invalid date') {
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'm_date' => ["Select a date for start installment"]
+                ]
             ]);
         }
 

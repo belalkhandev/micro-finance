@@ -158,23 +158,12 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import $ from 'jquery'
-import Datepicker from "vue3-date-time-picker";
-import moment from 'moment'
-import {ref} from "vue";
+import {helpers} from "../../../mixin";
 
 export default ({
     name: "LoanCreate",
 
-    setup() {
-        const date = ref(new Date());
-        return {
-            date
-        }
-    },
-
-    components: {
-        Datepicker
-    },
+    mixins: [helpers],
 
     data() {
         return {
@@ -223,10 +212,6 @@ export default ({
                                || member.phone.toLowerCase().includes(this.search_key.toLowerCase())
                     });
                 }
-
-                // return this.members.filter((member) => {
-                //     return member.member_type !== 'loan'
-                // });
             }
 
             return this.members;
@@ -278,6 +263,8 @@ export default ({
                 $('#w_day').prop("disabled", true);
                 $('#m_date').prop("disabled", false);
             }
+
+            this.loanCalculation();
         },
 
         loanCalculation() {
@@ -329,7 +316,7 @@ export default ({
 
     watch: {
         monthly_date: function () {
-            this.form.m_date = moment(this.monthly_date).format("L");
+            this.form.m_date = this.datePickerFormat(this.monthly_date);
         }
     }
 })

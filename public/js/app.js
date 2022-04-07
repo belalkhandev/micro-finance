@@ -27558,6 +27558,15 @@ var routes = [{
     title: 'Loan application Create'
   }
 }, {
+  path: '/application/loans/edit/:application_id',
+  name: 'EditLoanApplication',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_application_loan_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/loan/Edit.vue */ "./resources/js/views/application/loan/Edit.vue"));
+  },
+  meta: {
+    title: 'Loan application Update'
+  }
+}, {
   path: '/transaction',
   name: 'TransactionHome',
   component: function component() {
@@ -85452,7 +85461,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

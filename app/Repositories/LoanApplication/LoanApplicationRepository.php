@@ -52,22 +52,24 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $loan = LoanApplication::find($id);
         $loan->member_id = $request->input('member_id');
-        $loan->loan_amount = $request->input('dps_amount');
+        $loan->loan_amount = $request->input('loan_amount');
         $loan->service = $request->input('service');
         $loan->service_amount = $request->input('service_amount');
         $loan->total_amount = $request->input('total_loan');
-        $loan->installment = $request->input('installment');
+        $loan->installment = $request->input('total_installment');
         $loan->installment_amount = $request->input('installment_amount');
         $loan->balance = $request->input('total_loan');
         $loan->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {
             $loan->w_day = $request->input('w_day');
+            $loan->m_date = null;
         }else {
             $loan->m_date = databaseFormattedDate($request->input('m_date'));
+            $loan->w_day = null;
         }
 
-        $loan->created_by = Auth::guard('sanctum')->user()->id;
+        $loan->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($loan->save()) {
             return $loan;

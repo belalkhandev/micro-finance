@@ -1,10 +1,10 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_application_loan_Create_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_views_application_loan_Edit_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Create.vue?vue&type=script&lang=js":
-/*!************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Create.vue?vue&type=script&lang=js ***!
-  \************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Edit.vue?vue&type=script&lang=js":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Edit.vue?vue&type=script&lang=js ***!
+  \**********************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -39,7 +39,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         installment_amount: 0,
         dps_type: "weekly",
         w_day: "",
-        m_date: ""
+        m_date: "",
+        application_id: this.$route.params.application_id
       },
       monthly_date: "",
       member_input_text: "",
@@ -54,6 +55,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     error_message: 'error_message',
     members: 'member/members',
     application_types: 'group/application_types',
+    applications: 'loan/applications',
     days: 'group/days'
   })), {}, {
     filterRoles: function filterRoles() {
@@ -71,11 +73,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return this.members;
+    },
+    application: function application() {
+      var _this2 = this;
+
+      if (this.applications && this.form.application_id) {
+        var application = this.applications.find(function (application) {
+          return application.id == _this2.form.application_id;
+        });
+
+        if (application) {
+          this.form.member_id = application.member_id;
+          this.form.loan_amount = application.loan_amount;
+          this.form.service = application.service;
+          this.form.service_amount = application.service_amount;
+          this.form.total_loan = application.total_amount;
+          this.form.total_installment = application.installment;
+          this.form.installment_amount = application.installment_amount;
+          this.form.dps_type = application.dps_type;
+          this.form.w_day = application.w_day ? application.w_day : "";
+          this.monthly_date = application.m_date;
+          this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone + ' (' + this.ucFirst(application.member.member_type) + ')';
+        }
+      }
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
     getMembers: 'member/getMembers',
-    createApplication: 'loan/createApplication'
+    getApplications: 'loan/getApplications',
+    updateApplication: 'loan/editApplication'
   })), {}, {
     showMemberList: function showMemberList() {
       this.isOpen = !this.isOpen;
@@ -108,9 +134,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.form.dps_type === 'weekly') {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#m_date').prop("disabled", true);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#w_day').prop("disabled", false);
+        this.form.m_date = "";
       } else {
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#w_day').prop("disabled", true);
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#m_date').prop("disabled", false);
+        this.form.w_day = "";
       }
 
       this.loanCalculation();
@@ -124,38 +152,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.total_loan = parseFloat(loan_amount) + service_amount;
       this.form.installment_amount = this.form.total_loan / total_installment;
     },
-    storeDpsApplication: function storeDpsApplication() {
-      var _this2 = this;
+    updateLoanApplication: function updateLoanApplication() {
+      var _this3 = this;
 
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#storeApplication').prop('disabled', true).addClass('submitted');
-      var formData = new FormData();
-      var inputData = this.form;
-      Object.keys(inputData).forEach(function (fieldName) {
-        formData.append(fieldName, inputData[fieldName]);
-      });
-      this.createApplication(formData).then(function () {
-        if (!_this2.validation_errors && !_this2.error_message) {
-          _this2.errors = _this2.error = null;
-          Object.assign(_this2.$data, _this2.$options.data.apply(_this2));
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateApplication').prop('disabled', true).addClass('submitted');
+      var formData = this.form;
+      this.updateApplication(formData).then(function () {
+        if (!_this3.validation_errors && !_this3.error_message) {
+          _this3.errors = _this3.error = null;
+          Object.assign(_this3.$data, _this3.$options.data.apply(_this3));
 
-          _this2.$swal({
+          _this3.$swal({
             icon: "success",
-            title: "Success!",
-            text: "Loan Application has been saved successfully",
+            title: "Updated!",
+            text: "Loan Application has been updated successfully",
             timer: 3000
           });
         } else {
-          _this2.errors = _this2.validation_errors;
-          _this2.error = _this2.error_message;
+          _this3.errors = _this3.validation_errors;
+          _this3.error = _this3.error_message;
         }
 
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#storeApplication').prop('disabled', false).removeClass('submitted');
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateApplication').prop('disabled', false).removeClass('submitted');
       });
     }
   }),
   mounted: function mounted() {
     if (!this.members) {
       this.getMembers();
+    }
+
+    if (!this.applications) {
+      this.getApplications();
     }
   },
   watch: {
@@ -167,10 +195,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Create.vue?vue&type=template&id=4bdfb12d":
-/*!****************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Create.vue?vue&type=template&id=4bdfb12d ***!
-  \****************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Edit.vue?vue&type=template&id=36c74d0a":
+/*!**************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Edit.vue?vue&type=template&id=36c74d0a ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -188,7 +216,7 @@ var _hoisted_2 = {
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "box-title"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Create Loan Application")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Update Loan Application")], -1
 /* HOISTED */
 );
 
@@ -448,7 +476,7 @@ var _hoisted_64 = {
 var _hoisted_65 = {
   type: "submit",
   "class": "btn btn-primary",
-  id: "storeApplication"
+  id: "updateApplication"
 };
 
 var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -475,7 +503,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: {
       name: 'ApplicationLoan'
     },
-    "class": "btn btn-primary btn-sm"
+    "class": "btn btn-success btn-sm"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_5];
@@ -485,9 +513,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
     onSubmit: _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return $options.storeDpsApplication && $options.storeDpsApplication.apply($options, arguments);
+      return $options.updateLoanApplication && $options.updateLoanApplication.apply($options, arguments);
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.application) + " ", 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["member-select", {
       open: $data.isOpen
     }])
@@ -658,7 +688,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["modelValue"]), $data.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.m_date ? $data.errors.m_date[0] : ''), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('save')), 1
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('update')), 1
   /* TEXT */
   ), _hoisted_66])])])])], 32
   /* HYDRATE_EVENTS */
@@ -667,25 +697,25 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
 /***/ }),
 
-/***/ "./resources/js/views/application/loan/Create.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/views/application/loan/Create.vue ***!
-  \********************************************************/
+/***/ "./resources/js/views/application/loan/Edit.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/views/application/loan/Edit.vue ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _Create_vue_vue_type_template_id_4bdfb12d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=4bdfb12d */ "./resources/js/views/application/loan/Create.vue?vue&type=template&id=4bdfb12d");
-/* harmony import */ var _Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js */ "./resources/js/views/application/loan/Create.vue?vue&type=script&lang=js");
+/* harmony import */ var _Edit_vue_vue_type_template_id_36c74d0a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Edit.vue?vue&type=template&id=36c74d0a */ "./resources/js/views/application/loan/Edit.vue?vue&type=template&id=36c74d0a");
+/* harmony import */ var _Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Edit.vue?vue&type=script&lang=js */ "./resources/js/views/application/loan/Edit.vue?vue&type=script&lang=js");
 /* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_4bdfb12d__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/application/loan/Create.vue"]])
+const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Edit_vue_vue_type_template_id_36c74d0a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/application/loan/Edit.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -694,32 +724,32 @@ if (false) {}
 
 /***/ }),
 
-/***/ "./resources/js/views/application/loan/Create.vue?vue&type=script&lang=js":
-/*!********************************************************************************!*\
-  !*** ./resources/js/views/application/loan/Create.vue?vue&type=script&lang=js ***!
-  \********************************************************************************/
+/***/ "./resources/js/views/application/loan/Edit.vue?vue&type=script&lang=js":
+/*!******************************************************************************!*\
+  !*** ./resources/js/views/application/loan/Edit.vue?vue&type=script&lang=js ***!
+  \******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__["default"])
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Create.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Create.vue?vue&type=script&lang=js");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Edit.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Edit.vue?vue&type=script&lang=js");
  
 
 /***/ }),
 
-/***/ "./resources/js/views/application/loan/Create.vue?vue&type=template&id=4bdfb12d":
-/*!**************************************************************************************!*\
-  !*** ./resources/js/views/application/loan/Create.vue?vue&type=template&id=4bdfb12d ***!
-  \**************************************************************************************/
+/***/ "./resources/js/views/application/loan/Edit.vue?vue&type=template&id=36c74d0a":
+/*!************************************************************************************!*\
+  !*** ./resources/js/views/application/loan/Edit.vue?vue&type=template&id=36c74d0a ***!
+  \************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_template_id_4bdfb12d__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_template_id_36c74d0a__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Create_vue_vue_type_template_id_4bdfb12d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Create.vue?vue&type=template&id=4bdfb12d */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Create.vue?vue&type=template&id=4bdfb12d");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Edit_vue_vue_type_template_id_36c74d0a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Edit.vue?vue&type=template&id=36c74d0a */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/views/application/loan/Edit.vue?vue&type=template&id=36c74d0a");
 
 
 /***/ })
