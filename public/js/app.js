@@ -26050,6 +26050,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     showMemberProfile: function showMemberProfile(e) {
       e.preventDefault();
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('.modal-backdrop').remove();
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#searchModal').removeClass('show').removeAttr('style, aria-modal');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').removeClass('modal-open').removeAttr('style');
     }
   }),
   mounted: function mounted() {
@@ -27115,7 +27117,7 @@ var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "modal-footer"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "button",
-  "class": "btn btn-secondary",
+  "class": "btn btn-secondary bs-modal-close",
   "data-bs-dismiss": "modal"
 }, "Close")], -1
 /* HOISTED */

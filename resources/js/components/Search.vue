@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-secondary bs-modal-close" data-bs-dismiss="modal">Close</button>
                     </div>
                 </div>
             </div>
@@ -96,6 +96,8 @@ export default ({
         showMemberProfile(e) {
             e.preventDefault();
             $('.modal-backdrop').remove();
+            $('#searchModal').removeClass('show').removeAttr('style, aria-modal');
+            $('body').removeClass('modal-open').removeAttr('style');
         }
     },
 
