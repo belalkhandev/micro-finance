@@ -159,7 +159,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var member = this.members.find(function (member) {
           return member.id == _this5.form.member_id;
         });
-        console.log(member);
 
         if (member) {
           this.form.name = member.name;

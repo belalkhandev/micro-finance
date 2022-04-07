@@ -3,8 +3,7 @@
         <div class="box-body">
             <div class="member member-show">
                 <div class="member-img mt-2 mb-2">
-                    <img v-if="member.photo" :src="member.photo" alt="" class="w-24">
-                    <img v-else src="../assets/images/user.png" alt="" class="w-24">
+                    <img v-if="member.photo" :src="member.photo" alt="" class="w-24 img-thumbnail">
                 </div>
                 <div class="member-info text-center mb-4">
                     <h3>{{ member.name }}</h3>

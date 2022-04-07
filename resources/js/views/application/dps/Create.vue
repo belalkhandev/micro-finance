@@ -158,22 +158,12 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import $ from 'jquery';
-import Datepicker from "vue3-date-time-picker";
-import moment from 'moment'
-import {ref} from "vue";
+import {helpers} from "../../../mixin";
 
 export default ({
     name: "Create",
-    setup() {
-        const date = ref(new Date());
-        return {
-            date
-        }
-    },
 
-    components: {
-        Datepicker
-    },
+    mixins: [helpers],
 
     data() {
         return {
@@ -266,13 +256,17 @@ export default ({
         },
 
         dpsType() {
-           if (this.form.dps_type === 'weekly') {
-               $('.dp__disabled').prop("disabled", true);
-               $('#w_day').prop("disabled", false);
-           }else {
-               $('#w_day').prop("disabled", true);
-               $('.dp__disabled').prop("disabled", false);
-           }
+            if (this.form.dps_type === 'weekly') {
+                $('.dp__disabled').prop("disabled", true);
+                $('#w_day').prop("disabled", false);
+                this.form.m_date = "";
+            }else {
+                $('#w_day').prop("disabled", true);
+                $('.dp__disabled').prop("disabled", false);
+                this.form.w_day = "";
+            }
+
+           this.dpsCalculation();
         },
 
         dpsCalculation() {
@@ -327,7 +321,7 @@ export default ({
 
     watch: {
         monthly_date: function () {
-            this.form.m_date = moment(this.monthly_date).format("L");
+            this.form.m_date = this.datePickerFormat(this.monthly_date);
         }
     }
 

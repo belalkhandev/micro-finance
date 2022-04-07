@@ -55,12 +55,13 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->total_amount = $request->input('total_dps');
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
-        $dps->balance = $request->input('balance');
         $dps->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {
             $dps->w_day = $request->input('w_day');
+            $dps->m_date = null;
         }else {
+            $dps->w_day = null;
             $dps->m_date = databaseFormattedDate($request->input('m_date'));
         }
 

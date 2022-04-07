@@ -38,7 +38,7 @@ class Member extends Model
             return URL::to('/').'/'.$value;
         }
 
-        return null;
+        return asset('images/profile.jpg');
     }
 
     public function getMainPhotoAttribute()

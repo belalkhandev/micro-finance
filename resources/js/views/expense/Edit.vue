@@ -106,17 +106,12 @@
 import {mapGetters, mapActions} from "vuex";
 import $ from 'jquery'
 import Datepicker from "vue3-date-time-picker";
-import moment from 'moment'
-import {ref} from "vue";
+import {helpers} from "../../mixin";
 
 export default ({
-    name: "Create",
-    setup() {
-        const date = ref(new Date());
-        return {
-            date
-        }
-    },
+    name: "Edit",
+
+    mixins: [helpers],
 
     components: {
         Datepicker

@@ -430,8 +430,6 @@ export default ({
             if (this.members && this.form.member_id) {
                 const member = this.members.find(member => member.id == this.form.member_id)
 
-                console.log(member)
-
                 if (member) {
                     this.form.name = member.name;
                     this.form.father_name = member.father_name;

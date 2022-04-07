@@ -146,6 +146,14 @@ const routes = [
         },
     },
     {
+        path: '/application/dps/edit/:application_id',
+        name: 'EditDPSApplication',
+        component: () => import('../views/application/dps/Edit.vue'),
+        meta: {
+            title: 'DPS Application Update'
+        },
+    },
+    {
         path: '/application/loans',
         name: 'ApplicationLoan',
         component: () => import('../views/application/loan/Index.vue'),

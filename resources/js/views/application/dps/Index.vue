@@ -15,29 +15,42 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Member</th>
                             <th>Acc. No</th>
+                            <th>Member</th>
+                            <th>Photo</th>
                             <th>Deposit</th>
-                            <th>DPS Type</th>
                             <th>Year</th>
                             <th>Total Deposit</th>
                             <th>Total Receive</th>
-                            <th>Profit</th>
                             <th>Balance</th>
+                            <th>Created at</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr v-if="filterApplications" v-for="(application, i) in filterApplications" :key="application.id">
                                 <td>{{ i+1 }}</td>
-                                <td>{{ application.member_name }}</td>
                                 <td>{{ application.member_account_no }}</td>
-                                <td>{{ application.dps_amount }}</td>
-                                <td>{{ application.dps_type }}</td>
+                                <td>
+                                    <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
+                                        {{ application.member_name }}
+                                    </router-link>
+                                </td>
+                                <td>
+                                    <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
+                                </td>
+                                <td>{{ application.dps_amount }} <br> ({{ ucFirst(application.dps_type) }})</td>
                                 <td>{{ application.year }}</td>
                                 <td>{{ application.total_amount }}</td>
                                 <td>{{ application.receiving }}</td>
-                                <td>{{ application.profit }}</td>
                                 <td>{{ application.balance }}</td>
+                                <td>{{ userFormattedDate(application.created_at) }}</td>
+                                <td>
+                                    <div class="action">
+                                        <router-link :to="{ name: 'EditDPSApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>
+                                        <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="deleteConfirm(application.id)"><i class="bx bx-trash"></i></a>
+                                    </div>
+                                </td>
                             </tr>
                             <tr v-else>
                                 <td colspan="9">No application found</td>
@@ -46,7 +59,30 @@
                     </table>
                 </div>
                 <div class="box-footer text-right">
-                    <p>Pagination here</p>
+                    <!-- pagination -->
+                    <div class="pagination" v-if="applications && applications.length > per_page">
+                        <p class="pagination-data">
+                            Page no {{ page }} Show {{ page === pages.length ? (applications ? applications.length : 0) : page*(filterApplications ? filterApplications.length : 0) }} of {{ applications ? applications.length : 0 }} Data
+                        </p>
+                        <ul>
+                            <li class="page-item">
+                                <button class="page-link" @click="page = 1" data-toggle="tooltip" data-placement="bottom" title="First Page"><i class="bx bx-chevrons-left"></i></button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link" v-if="page !== 1" @click="page--" data-toggle="tooltip" data-placement="bottom" title=""><i class="bx bx-chevron-left"></i></button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+10)" :class="page===pageNumber ? 'active': ''" :key="pageNumber" @click="page = pageNumber"> {{ pageNumber}} </button>
+                            </li>
+                            <li class="page-item">
+                                <button type="button" @click="page++" v-if="page < pages.length" class="page-link"> <i class="bx bx-chevron-right"></i> </button>
+                            </li>
+                            <li class="page-item">
+                                <button class="page-link"  @click="page = pages.length" data-toggle="tooltip" data-placement="bottom" title="Last Page"><i class="bx bx-chevrons-right"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- end pagination -->
                 </div>
             </div>
         </div>
@@ -56,10 +92,13 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import {helpers} from "../../../mixin";
 
 export default ({
     name: "Index",
     components: {},
+
+    mixins: [helpers],
 
     data () {
         return {
@@ -73,20 +112,25 @@ export default ({
         }),
 
         filterApplications() {
+            if (this.applications) {
+                return this.paginate(this.applications);
+            }
+
             return this.applications;
         }
     },
 
     methods: {
         ...mapActions({
-            getApplications: 'dps/getApplications'
+            getApplications: 'dps/getApplications',
+            deleteApplication: 'dps/deleteApplication'
         }),
 
         showEditModal(data) {
 
         },
 
-        deleteConfirm(user_id) {
+        deleteConfirm(application_id) {
             this.$swal({
                 title:"Really want to delete!",
                 text: "Are you sure? You won't be able to revert this!",
@@ -97,7 +141,7 @@ export default ({
                 cancelButtonColor: '#c82333',
             }).then((res) => {
                 if (res.isConfirmed) {
-                    this.deleteUser(user_id).then(() => {
+                    this.deleteApplication(application_id).then(() => {
                         if (!this.error_message) {
                             this.$swal({
                                 icon: 'success',
@@ -111,10 +155,25 @@ export default ({
                 }
             });
         },
+
+        // pagination set pages
+        setPages() {
+            let numberOfPages = Math.ceil(this.applications ? this.applications.length / this.per_page : 0);
+            for (let index = 1; index <= numberOfPages; index++) {
+                this.pages.push(index);
+            }
+        },
     },
 
     mounted() {
         this.getApplications();
+
+        if (!this.applications) {
+            this.getApplications().then(() => {
+                this.setPages();
+            });
+            this.setPages();
+        }
     }
 
 
