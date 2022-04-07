@@ -6,15 +6,12 @@
             </div>
             <div class="box-action">
                 <div class="search" :class="is_open_search ? 'open-search' : ''">
-                    <div class="search-form animate__animated animate__fadeIn animate__fast">
+                    <div class="search-form">
                         <div class="search-group">
                             <input type="search" v-model="search_key" placeholder="Search keyword" class="form-control">
                         </div>
                         <div class="search-group">
-                            <Datepicker v-model="search_from_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="From Date"/>
-                        </div>
-                        <div class="search-group">
-                            <Datepicker v-model="search_to_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="To Date"/>
+                            <Datepicker v-model="search_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="Search Date"/>
                         </div>
                     </div>
                     <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
@@ -111,7 +108,29 @@ export default ({
 
         fetchMembers() {
             if (this.members) {
-                this.paginate(this.members);
+                if (this.search_key && !this.search_date) {
+                    return this.paginate(this.members.filter(
+                        member =>
+                            member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            member.name.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            member.phone.toLowerCase().includes(this.search_key.toLowerCase())
+                    ));
+                } else if (this.search_date && !this.search_key) {
+                    return this.paginate(this.members.filter(
+                        member =>
+                            this.datePickerFormat(member.joining_date) === this.datePickerFormat(this.search_date)
+                    ));
+                } else if (this.search_key && this.search_date) {
+                    return this.paginate(this.members.filter(
+                        member =>
+                            this.datePickerFormat(member.joining_date) === this.datePickerFormat(this.search_date) &&
+                            member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            member.name.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            member.phone.toLowerCase().includes(this.search_key.toLowerCase())
+                    ));
+                } else {
+                    return this.paginate(this.members);
+                }
             }
 
             return this.members

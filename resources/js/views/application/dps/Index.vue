@@ -56,6 +56,16 @@
                         <h4>DPS application list</h4>
                     </div>
                     <div class="box-action">
+                        <div class="search" :class="is_open_search ? 'open-search' : ''">
+                            <div class="search-form">
+                                <div class="search-group">
+                                    <input type="search" v-model="search_key" placeholder="Search keyword" class="form-control">
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
+                                <i class="bx bx-search-alt"></i>
+                            </button>
+                        </div>
                         <router-link :to="{ name:'CreateDPS' }" class="btn btn-sm btn-primary">New DPS Application</router-link>
                     </div>
                 </div>
@@ -161,7 +171,15 @@ export default ({
 
         filterApplications() {
             if (this.applications) {
-                return this.paginate(this.applications);
+                if (this.search_key) {
+                    return this.paginate(this.applications.filter(
+                        appplication =>
+                            appplication.member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
+                            appplication.member.phone.toLowerCase().includes(this.search_key.toLowerCase())
+                    ));
+                } else {
+                    return this.paginate(this.applications);
+                }
             }
 
             return this.applications;
