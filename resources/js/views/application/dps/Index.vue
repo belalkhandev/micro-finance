@@ -1,6 +1,55 @@
 <template>
     <div class="row">
         <div class="col-md-12">
+            <div class="mb-4">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="widget widget-primary animate__animated animate__fadeIn">
+                            <div class="widget-header">
+                                <h5 class="title">Total DPS</h5>
+                                <span>
+                                    <i class="bx bx-group"></i>
+                                </span>
+                            </div>
+                            <div class="widget-body">
+                                <router-link to="/members">
+                                    <h3>0</h3>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="widget widget-success animate__animated animate__fadeIn">
+                            <div class="widget-header">
+                                <h5 class="title">Total Collection</h5>
+                                <span>
+                                    <i class="bx bx-group"></i>
+                                </span>
+                            </div>
+                            <div class="widget-body">
+                                <router-link to="/members">
+                                    <h3>0</h3>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="widget widget-danger animate__animated animate__fadeIn">
+                            <div class="widget-header">
+                                <h5 class="title">Due Amount</h5>
+                                <span>
+                                    <i class="bx bx-group"></i>
+                                </span>
+                            </div>
+                            <div class="widget-body">
+                                <router-link to="/members">
+                                    <h3>0</h3>
+                                </router-link>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
