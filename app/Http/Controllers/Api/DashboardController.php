@@ -8,6 +8,7 @@ use App\Models\Expense;
 use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
 use App\Models\Member;
+use App\Models\Savings;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -17,6 +18,7 @@ class DashboardController extends Controller
     {
         $dps_trs = DpsTransaction::latest()->get();
         $lns_trs = LoanTransaction::latest()->get();
+        $savings = Savings::all();
         $recent_dps_trs = $dps_trs->where('is_paid', 1)->take(5);
         $recent_lns_trs = $lns_trs->where('is_paid', 1)->take(5);
         $loan_applications = LoanApplication::where('is_active', 1)->get();
@@ -28,8 +30,11 @@ class DashboardController extends Controller
         $total_dues = $dps_trs->where('is_paid', 0)->sum('amount')+$lns_trs->where('is_paid', 0)->sum('amount')-$total_collection;
         $full_paid = 0;
         $no_paid = 0;
+        $dps_savings = $savings->where('savings_type', 'deposit')->sum('amount');
+        $wtd_savings = $savings->where('savings_type', 'withdraw')->sum('amount');
+        $balance_savings = $dps_savings - $wtd_savings;
         $total_expense = Expense::get()->sum('amount');
-        $fund_amount = $total_collection-$total_expense-$loan_applications->sum('loan_amount');
+        $fund_amount = $total_collection+$balance_savings-$total_expense-$loan_applications->sum('loan_amount');
 
         return response()->json([
             'status' => true,

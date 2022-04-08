@@ -21,13 +21,15 @@
         <div class="navigations">
             <div class="navigation-item">
                 <router-link :to="{name: 'Dashboard'}" class="menu-link" @click="openMultimenus">
-                    <i class="bx bxs-tachometer text-blue-600" ></i>
+<!--                    <i class="bx bxs-tachometer text-blue-600" ></i>-->
+                    <img src="../assets/images/nav-icons/dashboard.png" alt="">
                     <span>{{ $t('dashboard') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="javascript:void(0)" class="menu-link" @click="openMultimenus">
-                    <i class="bx bxs-user-rectangle text-violet-600" ></i>
+<!--                    <i class="bx bxs-user-rectangle text-violet-600" ></i>-->
+                    <img src="../assets/images/nav-icons/transaction.png" alt="">
                     <span>Transactions</span>
                 </a>
                 <div class="navigation-content">
@@ -64,13 +66,15 @@
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Members'}">
-                    <i class='bx bxs-user-account text-indigo-600' ></i>
+<!--                    <i class='bx bxs-user-account text-indigo-600' ></i>-->
+                    <img src="../assets/images/nav-icons/add-user.png" alt="">
                     <span>Members</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
-                    <i class='bx bxs-file-doc text-green-600' ></i>
+<!--                    <i class='bx bxs-file-doc text-green-600' ></i>-->
+                    <img src="../assets/images/nav-icons/cv.png" alt="">
                     <span>Applications</span>
                 </a>
                 <div class="navigation-content">
@@ -118,19 +122,22 @@
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'ExpenseList'}">
-                    <i class='bx bxs-user-badge text-red-600'></i>
+<!--                    <i class='bx bxs-user-badge text-red-600'></i>-->
+                    <img src="../assets/images/nav-icons/expense.png" alt="">
                     <span>Expenses</span>
                 </router-link>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Admin'}">
-                    <i class='bx bxs-user-badge text-red-600'></i>
+<!--                    <i class='bx bxs-user-badge text-red-600'></i>-->
+                    <img src="../assets/images/nav-icons/unauthorized-person.png" alt="">
                     <span>Admins</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" @click="openMultimenus">
-                    <i class='bx bxs-cog text-blue-600'></i>
+<!--                    <i class='bx bxs-cog text-blue-600'></i>-->
+                    <img src="../assets/images/nav-icons/admin.png" alt="">
                     <span>{{  $t('settings') }}</span>
                 </a>
                 <div class="navigation-content">
@@ -174,7 +181,8 @@
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
-                    <i class='bx bxs-report text-orange-600' ></i>
+<!--                    <i class='bx bxs-report text-orange-600' ></i>-->
+                    <img src="../assets/images/nav-icons/report.png" alt="">
                     <span>Reports</span>
                 </a>
                 <div class="navigation-content">
@@ -299,13 +307,15 @@
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Profile'}">
-                    <i class="bx bxs-user-rectangle text-violet-600" ></i>
+<!--                    <i class="bx bxs-user-rectangle text-violet-600" ></i>-->
+                    <img src="../assets/images/nav-icons/man.png" alt="">
                     <span>{{ $t('profile') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item">
                 <a href="#" @click.prevent="logout">
-                    <i class='bx bxs-log-out text-cyan-500' ></i>
+<!--                    <i class='bx bxs-log-out text-cyan-500' ></i>-->
+                    <img src="../assets/images/nav-icons/check-out.png" alt="">
                     <span>Logout</span>
                 </a>
             </div>

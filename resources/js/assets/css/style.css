@@ -750,6 +750,12 @@ table {
     font-size: 32px;
     margin-bottom: 5px;
 }
+
+.navigations .navigation-item a img {
+    width: 32px;
+    margin-bottom: 5px;
+}
+
 .navigations .navigation-item a span {
     display: block;
     font-weight: 500;

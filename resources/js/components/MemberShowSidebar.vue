@@ -1,5 +1,5 @@
 <template>
-    <div class="box animate__animated animate__fadeIn">
+    <div class="box">
         <div class="box-body">
             <div class="member member-show">
                 <div class="member-img mt-2 mb-2">
