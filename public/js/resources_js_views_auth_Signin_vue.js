@@ -229,20 +229,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/logo.png":
-/*!*********************************************!*\
-  !*** ./resources/js/assets/images/logo.png ***!
-  \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.png?ebf451235ba983202850f0db6246ef8f");
-
-/***/ }),
-
 /***/ "./resources/js/views/auth/Signin.vue":
 /*!********************************************!*\
   !*** ./resources/js/views/auth/Signin.vue ***!

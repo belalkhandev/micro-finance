@@ -5,14 +5,14 @@
         </div>
         <!-- brand-logo -->
         <div class="logo animate__animated animate__fadeInDown">
-            <img src="../assets/images/logo.svg" alt="">
-<!--            <h2>pdscdcsl</h2>--></div>
-        <!-- user -->
-        <div class="user">
+            <img src="../assets/images/logo.png" alt="" >
+        </div>
+        <div class="user" v-if="authenticated && user">
             <div class="user-img">
-                <img src="../assets/images/user.png" alt="">
+                <img v-if="user.profile" :src="user.profile.photo" alt="">
+                <img v-else src="../assets/images/user.png" alt="">
             </div>
-            <div class="user-info" v-if="authenticated && user">
+            <div class="user-info">
                 <h3 class="text-white">{{ user.name }}</h3>
                 <p>{{ user.role_name }}</p>
             </div>

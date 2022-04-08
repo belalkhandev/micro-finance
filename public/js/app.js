@@ -26116,7 +26116,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* binding */ render)
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
-/* harmony import */ var _assets_images_logo_svg__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/images/logo.svg */ "./resources/js/assets/images/logo.svg");
+/* harmony import */ var _assets_images_logo_png__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../assets/images/logo.png */ "./resources/js/assets/images/logo.png");
 /* harmony import */ var _assets_images_user_png__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../assets/images/user.png */ "./resources/js/assets/images/user.png");
 
 
@@ -26136,95 +26136,84 @@ var _hoisted_3 = [_hoisted_2];
 var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "logo animate__animated animate__fadeInDown"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: _assets_images_logo_svg__WEBPACK_IMPORTED_MODULE_1__["default"],
-  alt: ""
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("            <h2>pdscdcsl</h2>")], -1
-/* HOISTED */
-);
-
-var _hoisted_5 = {
-  "class": "user"
-};
-
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "user-img"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  src: _assets_images_user_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+  src: _assets_images_logo_png__WEBPACK_IMPORTED_MODULE_1__["default"],
   alt: ""
 })], -1
 /* HOISTED */
 );
 
-var _hoisted_7 = {
+var _hoisted_5 = {
   key: 0,
-  "class": "user-info"
+  "class": "user"
 };
+var _hoisted_6 = {
+  "class": "user-img"
+};
+var _hoisted_7 = ["src"];
 var _hoisted_8 = {
-  "class": "text-white"
+  key: 1,
+  src: _assets_images_user_png__WEBPACK_IMPORTED_MODULE_2__["default"],
+  alt: ""
 };
 var _hoisted_9 = {
-  "class": "navigations"
+  "class": "user-info"
 };
 var _hoisted_10 = {
+  "class": "text-white"
+};
+var _hoisted_11 = {
+  "class": "navigations"
+};
+var _hoisted_12 = {
   "class": "navigation-item"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-tachometer text-blue-600"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_12 = {
+var _hoisted_14 = {
   "class": "navigation-item has-multimenu"
 };
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-user-rectangle text-violet-600"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Transactions", -1
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Transactions", -1
 /* HOISTED */
 );
 
-var _hoisted_15 = [_hoisted_13, _hoisted_14];
-var _hoisted_16 = {
+var _hoisted_17 = [_hoisted_15, _hoisted_16];
+var _hoisted_18 = {
   "class": "navigation-content"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-x"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
 /* HOISTED */
 );
 
-var _hoisted_19 = [_hoisted_17, _hoisted_18];
+var _hoisted_21 = [_hoisted_19, _hoisted_20];
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "navigation-content-header"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Transactions")], -1
 /* HOISTED */
 );
 
-var _hoisted_21 = {
+var _hoisted_23 = {
   "class": "navigation-content-body"
 };
-
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-chevron-right"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Generate Transaction", -1
-/* HOISTED */
-);
 
 var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
@@ -26232,7 +26221,7 @@ var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All DPS Transactions", -1
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Generate Transaction", -1
 /* HOISTED */
 );
 
@@ -26242,78 +26231,78 @@ var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Loan Transactions", -1
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All DPS Transactions", -1
 /* HOISTED */
 );
 
-var _hoisted_28 = {
-  "class": "navigation-item"
-};
-
-var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-user-account text-indigo-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Members", -1
-/* HOISTED */
-);
-
-var _hoisted_31 = {
-  "class": "navigation-item has-multimenu"
-};
-
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-file-doc text-green-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Applications", -1
-/* HOISTED */
-);
-
-var _hoisted_34 = [_hoisted_32, _hoisted_33];
-var _hoisted_35 = {
-  "class": "navigation-content"
-};
-
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-x"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
-/* HOISTED */
-);
-
-var _hoisted_38 = [_hoisted_36, _hoisted_37];
-
-var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "navigation-content-header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Applications")], -1
-/* HOISTED */
-);
-
-var _hoisted_40 = {
-  "class": "navigation-content-body"
-};
-
-var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("abbr", {
-  title: "Deposit Pension Scheme"
-}, "DPS"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Applications")], -1
-/* HOISTED */
-);
-
-var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All DPS Applications", -1
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Loan Transactions", -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  "class": "navigation-item"
+};
+
+var _hoisted_31 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-user-account text-indigo-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Members", -1
+/* HOISTED */
+);
+
+var _hoisted_33 = {
+  "class": "navigation-item has-multimenu"
+};
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-file-doc text-green-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Applications", -1
+/* HOISTED */
+);
+
+var _hoisted_36 = [_hoisted_34, _hoisted_35];
+var _hoisted_37 = {
+  "class": "navigation-content"
+};
+
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-x"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+/* HOISTED */
+);
+
+var _hoisted_40 = [_hoisted_38, _hoisted_39];
+
+var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "navigation-content-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Applications")], -1
+/* HOISTED */
+);
+
+var _hoisted_42 = {
+  "class": "navigation-content-body"
+};
+
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("abbr", {
+  title: "Deposit Pension Scheme"
+}, "DPS"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Applications")], -1
 /* HOISTED */
 );
 
@@ -26323,21 +26312,21 @@ var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "New DPS Application", -1
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All DPS Applications", -1
 /* HOISTED */
 );
 
-var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Loan Applications", -1
-/* HOISTED */
-);
-
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_46 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Loan Applications", -1
+var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "New DPS Application", -1
+/* HOISTED */
+);
+
+var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Loan Applications", -1
 /* HOISTED */
 );
 
@@ -26347,81 +26336,81 @@ var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "New Loan Application", -1
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Loan Applications", -1
 /* HOISTED */
 );
 
-var _hoisted_51 = {
-  "class": "navigation-item"
-};
-
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-user-badge text-red-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Expenses", -1
-/* HOISTED */
-);
-
-var _hoisted_54 = {
-  "class": "navigation-item"
-};
-
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-user-badge text-red-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Admins", -1
-/* HOISTED */
-);
-
-var _hoisted_57 = {
-  "class": "navigation-item has-multimenu"
-};
-
-var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-cog text-blue-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_59 = {
-  "class": "navigation-content"
-};
-
-var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-x"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_61 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
-/* HOISTED */
-);
-
-var _hoisted_62 = [_hoisted_60, _hoisted_61];
-var _hoisted_63 = {
-  "class": "navigation-content-header"
-};
-var _hoisted_64 = {
-  "class": "navigation-content-body"
-};
-
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Basic Setup", -1
-/* HOISTED */
-);
-
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Villages", -1
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "New Loan Application", -1
+/* HOISTED */
+);
+
+var _hoisted_53 = {
+  "class": "navigation-item"
+};
+
+var _hoisted_54 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-user-badge text-red-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Expenses", -1
+/* HOISTED */
+);
+
+var _hoisted_56 = {
+  "class": "navigation-item"
+};
+
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-user-badge text-red-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_58 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Admins", -1
+/* HOISTED */
+);
+
+var _hoisted_59 = {
+  "class": "navigation-item has-multimenu"
+};
+
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-cog text-blue-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_61 = {
+  "class": "navigation-content"
+};
+
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-x"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+/* HOISTED */
+);
+
+var _hoisted_64 = [_hoisted_62, _hoisted_63];
+var _hoisted_65 = {
+  "class": "navigation-content-header"
+};
+var _hoisted_66 = {
+  "class": "navigation-content-body"
+};
+
+var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Basic Setup", -1
 /* HOISTED */
 );
 
@@ -26431,7 +26420,7 @@ var _hoisted_68 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
+var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Villages", -1
 /* HOISTED */
 );
 
@@ -26441,7 +26430,7 @@ var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Member groups", -1
+var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Postoffice", -1
 /* HOISTED */
 );
 
@@ -26451,62 +26440,62 @@ var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Expense Categories", -1
+var _hoisted_73 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Member groups", -1
 /* HOISTED */
 );
 
-var _hoisted_74 = {
-  "class": "navigation-item has-multimenu"
-};
-
-var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-report text-orange-600"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
-/* HOISTED */
-);
-
-var _hoisted_77 = [_hoisted_75, _hoisted_76];
-var _hoisted_78 = {
-  "class": "navigation-content"
-};
-
-var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bx-x"
-}, null, -1
-/* HOISTED */
-);
-
-var _hoisted_80 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
-/* HOISTED */
-);
-
-var _hoisted_81 = [_hoisted_79, _hoisted_80];
-
-var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "navigation-content-header"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Reports")], -1
-/* HOISTED */
-);
-
-var _hoisted_83 = {
-  "class": "navigation-content-body"
-};
-
-var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "DPS Report", -1
-/* HOISTED */
-);
-
-var _hoisted_85 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Expense Categories", -1
+/* HOISTED */
+);
+
+var _hoisted_76 = {
+  "class": "navigation-item has-multimenu"
+};
+
+var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-report text-orange-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_78 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Reports", -1
+/* HOISTED */
+);
+
+var _hoisted_79 = [_hoisted_77, _hoisted_78];
+var _hoisted_80 = {
+  "class": "navigation-content"
+};
+
+var _hoisted_81 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-x"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_82 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Close", -1
+/* HOISTED */
+);
+
+var _hoisted_83 = [_hoisted_81, _hoisted_82];
+
+var _hoisted_84 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "navigation-content-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, "Reports")], -1
+/* HOISTED */
+);
+
+var _hoisted_85 = {
+  "class": "navigation-content-body"
+};
+
+var _hoisted_86 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "DPS Report", -1
 /* HOISTED */
 );
 
@@ -26516,7 +26505,7 @@ var _hoisted_87 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
+var _hoisted_88 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26526,7 +26515,7 @@ var _hoisted_89 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
+var _hoisted_90 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26536,21 +26525,21 @@ var _hoisted_91 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+var _hoisted_92 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
 /* HOISTED */
 );
 
-var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Loan Reports", -1
-/* HOISTED */
-);
-
-var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_93 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
+var _hoisted_94 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+/* HOISTED */
+);
+
+var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", null, "Loan Reports", -1
 /* HOISTED */
 );
 
@@ -26560,7 +26549,7 @@ var _hoisted_96 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
+var _hoisted_97 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Today's Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26570,7 +26559,7 @@ var _hoisted_98 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
+var _hoisted_99 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "All Transaction Reports", -1
 /* HOISTED */
 );
 
@@ -26580,37 +26569,47 @@ var _hoisted_100 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElemen
 /* HOISTED */
 );
 
-var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+var _hoisted_101 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Paid Transaction Reports", -1
 /* HOISTED */
 );
 
-var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5>Accounts Reports</h5><ul><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>Cash Balance</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li></ul>", 2);
-
-var _hoisted_104 = {
-  "class": "navigation-item"
-};
-
-var _hoisted_105 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
-  "class": "bx bxs-user-rectangle text-violet-600"
+var _hoisted_102 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-chevron-right"
 }, null, -1
 /* HOISTED */
 );
+
+var _hoisted_103 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Due Transaction Reports", -1
+/* HOISTED */
+);
+
+var _hoisted_104 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<h5>Accounts Reports</h5><ul><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>Cash Balance</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li><li><a href=\"\"><i class=\"bx bx-chevron-right\"></i><span>All Transaction Reports</span></a></li></ul>", 2);
 
 var _hoisted_106 = {
   "class": "navigation-item"
 };
 
 var _hoisted_107 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bxs-user-rectangle text-violet-600"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_108 = {
+  "class": "navigation-item"
+};
+
+var _hoisted_109 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bxs-log-out text-cyan-500"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_108 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
+var _hoisted_110 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Logout", -1
 /* HOISTED */
 );
 
-var _hoisted_109 = [_hoisted_107, _hoisted_108];
+var _hoisted_111 = [_hoisted_109, _hoisted_110];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -26619,11 +26618,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function () {
       return $options.closeRsSidebar && $options.closeRsSidebar.apply($options, arguments);
     })
-  }, _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" brand-logo "), _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" user "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, _ctx.authenticated && _ctx.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name), 1
+  }, _hoisted_3), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" brand-logo "), _hoisted_4, _ctx.authenticated && _ctx.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_ctx.user.profile ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", {
+    key: 0,
+    src: _ctx.user.profile.photo,
+    alt: ""
+  }, null, 8
+  /* PROPS */
+  , _hoisted_7)) : ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("img", _hoisted_8))]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", _hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.name), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.user.role_name), 1
   /* TEXT */
-  )])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" main menus "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" main menus "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Dashboard'
     },
@@ -26631,7 +26636,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: $options.openMultimenus
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('dashboard')), 1
+      return [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('dashboard')), 1
       /* TEXT */
       )];
     }),
@@ -26640,31 +26645,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  , ["onClick"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "javascript:void(0)",
     "class": "menu-link",
     onClick: _cache[1] || (_cache[1] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, _hoisted_15), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_17), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[2] || (_cache[2] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_19), _hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, _hoisted_21), _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'GenerateTransaction'
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_22, _hoisted_23];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: {
-      name: 'DpsTransactionList'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26675,7 +26669,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'LoanTransactionList'
+      name: 'DpsTransactionList'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26684,35 +26678,46 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'LoanTransactionList'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_28, _hoisted_29];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Members'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_29, _hoisted_30];
+      return [_hoisted_31, _hoisted_32];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
     onClick: _cache[3] || (_cache[3] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, _hoisted_34), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_36), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[4] || (_cache[4] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_38), _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [_hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, _hoisted_40), _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [_hoisted_43, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'ApplicationDPS'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_42, _hoisted_43];
+      return [_hoisted_44, _hoisted_45];
     }),
     _: 1
     /* STABLE */
@@ -26723,18 +26728,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_44, _hoisted_45];
+      return [_hoisted_46, _hoisted_47];
     }),
     _: 1
     /* STABLE */
 
-  })])]), _hoisted_46, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])]), _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'ApplicationLoan'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_47, _hoisted_48];
+      return [_hoisted_49, _hoisted_50];
     }),
     _: 1
     /* STABLE */
@@ -26745,61 +26750,50 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_49, _hoisted_50];
+      return [_hoisted_51, _hoisted_52];
     }),
     _: 1
     /* STABLE */
 
-  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'ExpenseList'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_52, _hoisted_53];
+      return [_hoisted_54, _hoisted_55];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Admin'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_55, _hoisted_56];
+      return [_hoisted_57, _hoisted_58];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_57, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     onClick: _cache[5] || (_cache[5] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, [_hoisted_58, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
+  }, [_hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[6] || (_cache[6] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_62), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
+  }, _hoisted_64), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('settings')), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [_hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [_hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Village'
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_66, _hoisted_67];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: {
-      name: 'Postoffice'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26810,7 +26804,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'MemberGroup'
+      name: 'Postoffice'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26821,7 +26815,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'ExpenseCategory'
+      name: 'MemberGroup'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26830,31 +26824,31 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'ExpenseCategory'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_74, _hoisted_75];
+    }),
+    _: 1
+    /* STABLE */
+
+  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     "class": "menu-link",
     onClick: _cache[7] || (_cache[7] = function () {
       return $options.openMultimenus && $options.openMultimenus.apply($options, arguments);
     })
-  }, _hoisted_77), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  }, _hoisted_79), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_80, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
     "class": "close-bar",
     onClick: _cache[8] || (_cache[8] = function () {
       return $options.closeMultimenus && $options.closeMultimenus.apply($options, arguments);
     })
-  }, _hoisted_81), _hoisted_82, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_83, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h5>Transaction Reports</h5>\n                        <ul>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Today's Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                        </ul> "), _hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  }, _hoisted_83), _hoisted_84, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_85, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h5>Transaction Reports</h5>\n                        <ul>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>Today's Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                            <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li>\n                        </ul> "), _hoisted_86, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'TodayDpsReport'
-    }
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_85, _hoisted_86];
-    }),
-    _: 1
-    /* STABLE */
-
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
-    to: {
-      name: 'DpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26865,7 +26859,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'PaidDpsReport'
+      name: 'DpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26876,7 +26870,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'DueDpsReport'
+      name: 'PaidDpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26885,20 +26879,20 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_93, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'TodayLoanReport'
+      name: 'DueDpsReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_94, _hoisted_95];
+      return [_hoisted_93, _hoisted_94];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_95, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'LoanReport'
+      name: 'TodayLoanReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26909,7 +26903,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'PaidLoanReport'
+      name: 'LoanReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26920,7 +26914,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
-      name: 'DueLoanReport'
+      name: 'PaidLoanReport'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -26929,25 +26923,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_102])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_104, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+    to: {
+      name: 'DueLoanReport'
+    }
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [_hoisted_102, _hoisted_103];
+    }),
+    _: 1
+    /* STABLE */
+
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li>\n                                <a href=\"\">\n                                    <i class='bx bx-chevron-right'></i>\n                                    <span>All Transaction Reports</span>\n                                </a>\n                            </li> ")]), _hoisted_104])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Profile'
     }
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_105, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('profile')), 1
+      return [_hoisted_107, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('profile')), 1
       /* TEXT */
       )];
     }),
     _: 1
     /* STABLE */
 
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_106, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_108, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
     href: "#",
     onClick: _cache[9] || (_cache[9] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.logout && $options.logout.apply($options, arguments);
     }, ["prevent"]))
-  }, _hoisted_109)])])]);
+  }, _hoisted_111)])])]);
 }
 
 /***/ }),
@@ -36274,7 +36279,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "/*\n! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/\n\n*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}\n\n::before,\n::after {\n  --tw-content: '';\n}\n\n/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/\n\nhtml {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}\n\n/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/\n\nbody {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}\n\n/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/\n\nhr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}\n\n/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/\n\nabbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}\n\n/*\nRemove the default font size and weight for headings.\n*/\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\n/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/\n\na {\n  color: inherit;\n  text-decoration: inherit;\n}\n\n/*\nAdd the correct font weight in Edge and Safari.\n*/\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/\n\ncode,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/*\nAdd the correct font size in all browsers.\n*/\n\nsmall {\n  font-size: 80%;\n}\n\n/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/\n\ntable {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}\n\n/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}\n\n/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/\n\nbutton,\nselect {\n  text-transform: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/\n\nbutton,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}\n\n/*\nUse the modern Firefox focus style for all focusable elements.\n*/\n\n:-moz-focusring {\n  outline: auto;\n}\n\n/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/\n\n:-moz-ui-invalid {\n  box-shadow: none;\n}\n\n/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/\n\nprogress {\n  vertical-align: baseline;\n}\n\n/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/\n\n::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/\n\n[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/\n\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/*\nAdd the correct display in Chrome and Safari.\n*/\n\nsummary {\n  display: list-item;\n}\n\n/*\nRemoves the default spacing and border for appropriate elements.\n*/\n\nblockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}\n\nfieldset {\n  margin: 0;\n  padding: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\nol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/*\nPrevent resizing textareas horizontally by default.\n*/\n\ntextarea {\n  resize: vertical;\n}\n\n/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/\n\ninput::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput:-ms-input-placeholder, textarea:-ms-input-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\n/*\nSet the default cursor for buttons.\n*/\n\nbutton,\n[role=\"button\"] {\n  cursor: pointer;\n}\n\n/*\nMake sure disabled buttons don't get the pointer cursor.\n*/\n:disabled {\n  cursor: default;\n}\n\n/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/\n\nimg,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}\n\n/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/\n\nimg,\nvideo {\n  max-width: 100%;\n  height: auto;\n}\n\n/*\nEnsure the default browser behavior of the `hidden` attribute.\n*/\n\n[hidden] {\n  display: none;\n}\n\n*, ::before, ::after {\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}\n.container {\n  width: 100%;\n}\n@media (min-width: 640px) {\n\n  .container {\n    max-width: 640px;\n  }\n}\n@media (min-width: 768px) {\n\n  .container {\n    max-width: 768px;\n  }\n}\n@media (min-width: 1024px) {\n\n  .container {\n    max-width: 1024px;\n  }\n}\n@media (min-width: 1280px) {\n\n  .container {\n    max-width: 1280px;\n  }\n}\n@media (min-width: 1536px) {\n\n  .container {\n    max-width: 1536px;\n  }\n}\n.fixed {\n  position: fixed;\n}\n.relative {\n  position: relative;\n}\n.top-0 {\n  top: 0px;\n}\n.right-0 {\n  right: 0px;\n}\n.m-auto {\n  margin: auto;\n}\n.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}\n.ml-1 {\n  margin-left: 0.25rem;\n}\n.mt-2 {\n  margin-top: 0.5rem;\n}\n.mr-2 {\n  margin-right: 0.5rem;\n}\n.ml-2 {\n  margin-left: 0.5rem;\n}\n.mt-4 {\n  margin-top: 1rem;\n}\n.ml-4 {\n  margin-left: 1rem;\n}\n.mt-8 {\n  margin-top: 2rem;\n}\n.ml-12 {\n  margin-left: 3rem;\n}\n.-mt-px {\n  margin-top: -1px;\n}\n.mb-2 {\n  margin-bottom: 0.5rem;\n}\n.mb-4 {\n  margin-bottom: 1rem;\n}\n.mb-3 {\n  margin-bottom: 0.75rem;\n}\n.mt-3 {\n  margin-top: 0.75rem;\n}\n.mr-1 {\n  margin-right: 0.25rem;\n}\n.mr-4 {\n  margin-right: 1rem;\n}\n.flex {\n  display: flex;\n}\n.table {\n  display: table;\n}\n.grid {\n  display: grid;\n}\n.hidden {\n  display: none;\n}\n.h-5 {\n  height: 1.25rem;\n}\n.h-8 {\n  height: 2rem;\n}\n.h-16 {\n  height: 4rem;\n}\n.min-h-screen {\n  min-height: 100vh;\n}\n.w-5 {\n  width: 1.25rem;\n}\n.w-8 {\n  width: 2rem;\n}\n.w-auto {\n  width: auto;\n}\n.w-24 {\n  width: 6rem;\n}\n.max-w-6xl {\n  max-width: 72rem;\n}\n.border-collapse {\n  border-collapse: collapse;\n}\n.transform {\n  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n}\n.grid-cols-1 {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}\n.items-center {\n  align-items: center;\n}\n.justify-center {\n  justify-content: center;\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.rounded {\n  border-radius: 0.25rem;\n}\n.border {\n  border-width: 1px;\n}\n.border-t {\n  border-top-width: 1px;\n}\n.border-gray-200 {\n  --tw-border-opacity: 1;\n  border-color: rgb(229 231 235 / var(--tw-border-opacity));\n}\n.bg-white {\n  --tw-bg-opacity: 1;\n  background-color: rgb(255 255 255 / var(--tw-bg-opacity));\n}\n.bg-gray-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(243 244 246 / var(--tw-bg-opacity));\n}\n.bg-indigo-400 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(129 140 248 / var(--tw-bg-opacity));\n}\n.bg-zinc-400 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(161 161 170 / var(--tw-bg-opacity));\n}\n.p-6 {\n  padding: 1.5rem;\n}\n.py-4 {\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n.px-6 {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.py-0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.py-1 {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}\n.px-0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.py-2 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.pt-8 {\n  padding-top: 2rem;\n}\n.text-left {\n  text-align: left;\n}\n.text-center {\n  text-align: center;\n}\n.text-right {\n  text-align: right;\n}\n.text-sm {\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n}\n.text-lg {\n  font-size: 1.125rem;\n  line-height: 1.75rem;\n}\n.font-semibold {\n  font-weight: 600;\n}\n.leading-7 {\n  line-height: 1.75rem;\n}\n.text-gray-200 {\n  --tw-text-opacity: 1;\n  color: rgb(229 231 235 / var(--tw-text-opacity));\n}\n.text-gray-300 {\n  --tw-text-opacity: 1;\n  color: rgb(209 213 219 / var(--tw-text-opacity));\n}\n.text-gray-400 {\n  --tw-text-opacity: 1;\n  color: rgb(156 163 175 / var(--tw-text-opacity));\n}\n.text-gray-500 {\n  --tw-text-opacity: 1;\n  color: rgb(107 114 128 / var(--tw-text-opacity));\n}\n.text-gray-600 {\n  --tw-text-opacity: 1;\n  color: rgb(75 85 99 / var(--tw-text-opacity));\n}\n.text-gray-700 {\n  --tw-text-opacity: 1;\n  color: rgb(55 65 81 / var(--tw-text-opacity));\n}\n.text-gray-900 {\n  --tw-text-opacity: 1;\n  color: rgb(17 24 39 / var(--tw-text-opacity));\n}\n.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}\n.text-blue-600 {\n  --tw-text-opacity: 1;\n  color: rgb(37 99 235 / var(--tw-text-opacity));\n}\n.text-violet-600 {\n  --tw-text-opacity: 1;\n  color: rgb(124 58 237 / var(--tw-text-opacity));\n}\n.text-indigo-600 {\n  --tw-text-opacity: 1;\n  color: rgb(79 70 229 / var(--tw-text-opacity));\n}\n.text-green-600 {\n  --tw-text-opacity: 1;\n  color: rgb(22 163 74 / var(--tw-text-opacity));\n}\n.text-red-600 {\n  --tw-text-opacity: 1;\n  color: rgb(220 38 38 / var(--tw-text-opacity));\n}\n.text-orange-600 {\n  --tw-text-opacity: 1;\n  color: rgb(234 88 12 / var(--tw-text-opacity));\n}\n.text-cyan-500 {\n  --tw-text-opacity: 1;\n  color: rgb(6 182 212 / var(--tw-text-opacity));\n}\n.text-orange-400 {\n  --tw-text-opacity: 1;\n  color: rgb(251 146 60 / var(--tw-text-opacity));\n}\n.text-red-400 {\n  --tw-text-opacity: 1;\n  color: rgb(248 113 113 / var(--tw-text-opacity));\n}\n.underline {\n  -webkit-text-decoration-line: underline;\n          text-decoration-line: underline;\n}\n.antialiased {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.shadow {\n  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);\n  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n.filter {\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}\n.hover\\:text-white:hover {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}\n.focus\\:shadow-none:focus {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n@media (prefers-color-scheme: dark) {\n\n  .dark\\:border-gray-700 {\n    --tw-border-opacity: 1;\n    border-color: rgb(55 65 81 / var(--tw-border-opacity));\n  }\n\n  .dark\\:bg-gray-900 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(17 24 39 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:bg-gray-800 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(31 41 55 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:text-gray-500 {\n    --tw-text-opacity: 1;\n    color: rgb(107 114 128 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-white {\n    --tw-text-opacity: 1;\n    color: rgb(255 255 255 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-gray-400 {\n    --tw-text-opacity: 1;\n    color: rgb(156 163 175 / var(--tw-text-opacity));\n  }\n}\n@media (min-width: 640px) {\n\n  .sm\\:ml-0 {\n    margin-left: 0px;\n  }\n\n  .sm\\:block {\n    display: block;\n  }\n\n  .sm\\:h-20 {\n    height: 5rem;\n  }\n\n  .sm\\:items-center {\n    align-items: center;\n  }\n\n  .sm\\:justify-start {\n    justify-content: flex-start;\n  }\n\n  .sm\\:justify-between {\n    justify-content: space-between;\n  }\n\n  .sm\\:rounded-lg {\n    border-radius: 0.5rem;\n  }\n\n  .sm\\:px-6 {\n    padding-left: 1.5rem;\n    padding-right: 1.5rem;\n  }\n\n  .sm\\:pt-0 {\n    padding-top: 0px;\n  }\n\n  .sm\\:text-left {\n    text-align: left;\n  }\n\n  .sm\\:text-right {\n    text-align: right;\n  }\n}\n@media (min-width: 768px) {\n\n  .md\\:grid-cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n\n  .md\\:border-t-0 {\n    border-top-width: 0px;\n  }\n\n  .md\\:border-l {\n    border-left-width: 1px;\n  }\n}\n@media (min-width: 1024px) {\n\n  .lg\\:px-8 {\n    padding-left: 2rem;\n    padding-right: 2rem;\n  }\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "/*\n! tailwindcss v3.0.18 | MIT License | https://tailwindcss.com\n*//*\n1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)\n2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)\n*/\n\n*,\n::before,\n::after {\n  box-sizing: border-box; /* 1 */\n  border-width: 0; /* 2 */\n  border-style: solid; /* 2 */\n  border-color: #e5e7eb; /* 2 */\n}\n\n::before,\n::after {\n  --tw-content: '';\n}\n\n/*\n1. Use a consistent sensible line-height in all browsers.\n2. Prevent adjustments of font size after orientation changes in iOS.\n3. Use a more readable tab size.\n4. Use the user's configured `sans` font-family by default.\n*/\n\nhtml {\n  line-height: 1.5; /* 1 */\n  -webkit-text-size-adjust: 100%; /* 2 */\n  -moz-tab-size: 4; /* 3 */\n  -o-tab-size: 4;\n     tab-size: 4; /* 3 */\n  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, \"Noto Sans\", sans-serif, \"Apple Color Emoji\", \"Segoe UI Emoji\", \"Segoe UI Symbol\", \"Noto Color Emoji\"; /* 4 */\n}\n\n/*\n1. Remove the margin in all browsers.\n2. Inherit line-height from `html` so users can set them as a class directly on the `html` element.\n*/\n\nbody {\n  margin: 0; /* 1 */\n  line-height: inherit; /* 2 */\n}\n\n/*\n1. Add the correct height in Firefox.\n2. Correct the inheritance of border color in Firefox. (https://bugzilla.mozilla.org/show_bug.cgi?id=190655)\n3. Ensure horizontal rules are visible by default.\n*/\n\nhr {\n  height: 0; /* 1 */\n  color: inherit; /* 2 */\n  border-top-width: 1px; /* 3 */\n}\n\n/*\nAdd the correct text decoration in Chrome, Edge, and Safari.\n*/\n\nabbr:where([title]) {\n  -webkit-text-decoration: underline dotted;\n          text-decoration: underline dotted;\n}\n\n/*\nRemove the default font size and weight for headings.\n*/\n\nh1,\nh2,\nh3,\nh4,\nh5,\nh6 {\n  font-size: inherit;\n  font-weight: inherit;\n}\n\n/*\nReset links to optimize for opt-in styling instead of opt-out.\n*/\n\na {\n  color: inherit;\n  text-decoration: inherit;\n}\n\n/*\nAdd the correct font weight in Edge and Safari.\n*/\n\nb,\nstrong {\n  font-weight: bolder;\n}\n\n/*\n1. Use the user's configured `mono` font family by default.\n2. Correct the odd `em` font sizing in all browsers.\n*/\n\ncode,\nkbd,\nsamp,\npre {\n  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, \"Liberation Mono\", \"Courier New\", monospace; /* 1 */\n  font-size: 1em; /* 2 */\n}\n\n/*\nAdd the correct font size in all browsers.\n*/\n\nsmall {\n  font-size: 80%;\n}\n\n/*\nPrevent `sub` and `sup` elements from affecting the line height in all browsers.\n*/\n\nsub,\nsup {\n  font-size: 75%;\n  line-height: 0;\n  position: relative;\n  vertical-align: baseline;\n}\n\nsub {\n  bottom: -0.25em;\n}\n\nsup {\n  top: -0.5em;\n}\n\n/*\n1. Remove text indentation from table contents in Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=999088, https://bugs.webkit.org/show_bug.cgi?id=201297)\n2. Correct table border color inheritance in all Chrome and Safari. (https://bugs.chromium.org/p/chromium/issues/detail?id=935729, https://bugs.webkit.org/show_bug.cgi?id=195016)\n3. Remove gaps between table borders by default.\n*/\n\ntable {\n  text-indent: 0; /* 1 */\n  border-color: inherit; /* 2 */\n  border-collapse: collapse; /* 3 */\n}\n\n/*\n1. Change the font styles in all browsers.\n2. Remove the margin in Firefox and Safari.\n3. Remove default padding in all browsers.\n*/\n\nbutton,\ninput,\noptgroup,\nselect,\ntextarea {\n  font-family: inherit; /* 1 */\n  font-size: 100%; /* 1 */\n  line-height: inherit; /* 1 */\n  color: inherit; /* 1 */\n  margin: 0; /* 2 */\n  padding: 0; /* 3 */\n}\n\n/*\nRemove the inheritance of text transform in Edge and Firefox.\n*/\n\nbutton,\nselect {\n  text-transform: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Remove default button styles.\n*/\n\nbutton,\n[type='button'],\n[type='reset'],\n[type='submit'] {\n  -webkit-appearance: button; /* 1 */\n  background-color: transparent; /* 2 */\n  background-image: none; /* 2 */\n}\n\n/*\nUse the modern Firefox focus style for all focusable elements.\n*/\n\n:-moz-focusring {\n  outline: auto;\n}\n\n/*\nRemove the additional `:invalid` styles in Firefox. (https://github.com/mozilla/gecko-dev/blob/2f9eacd9d3d995c937b4251a5557d95d494c9be1/layout/style/res/forms.css#L728-L737)\n*/\n\n:-moz-ui-invalid {\n  box-shadow: none;\n}\n\n/*\nAdd the correct vertical alignment in Chrome and Firefox.\n*/\n\nprogress {\n  vertical-align: baseline;\n}\n\n/*\nCorrect the cursor style of increment and decrement buttons in Safari.\n*/\n\n::-webkit-inner-spin-button,\n::-webkit-outer-spin-button {\n  height: auto;\n}\n\n/*\n1. Correct the odd appearance in Chrome and Safari.\n2. Correct the outline style in Safari.\n*/\n\n[type='search'] {\n  -webkit-appearance: textfield; /* 1 */\n  outline-offset: -2px; /* 2 */\n}\n\n/*\nRemove the inner padding in Chrome and Safari on macOS.\n*/\n\n::-webkit-search-decoration {\n  -webkit-appearance: none;\n}\n\n/*\n1. Correct the inability to style clickable types in iOS and Safari.\n2. Change font properties to `inherit` in Safari.\n*/\n\n::-webkit-file-upload-button {\n  -webkit-appearance: button; /* 1 */\n  font: inherit; /* 2 */\n}\n\n/*\nAdd the correct display in Chrome and Safari.\n*/\n\nsummary {\n  display: list-item;\n}\n\n/*\nRemoves the default spacing and border for appropriate elements.\n*/\n\nblockquote,\ndl,\ndd,\nh1,\nh2,\nh3,\nh4,\nh5,\nh6,\nhr,\nfigure,\np,\npre {\n  margin: 0;\n}\n\nfieldset {\n  margin: 0;\n  padding: 0;\n}\n\nlegend {\n  padding: 0;\n}\n\nol,\nul,\nmenu {\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n/*\nPrevent resizing textareas horizontally by default.\n*/\n\ntextarea {\n  resize: vertical;\n}\n\n/*\n1. Reset the default placeholder opacity in Firefox. (https://github.com/tailwindlabs/tailwindcss/issues/3300)\n2. Set the default placeholder color to the user's configured gray 400 color.\n*/\n\ninput::-moz-placeholder, textarea::-moz-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput:-ms-input-placeholder, textarea:-ms-input-placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\ninput::placeholder,\ntextarea::placeholder {\n  opacity: 1; /* 1 */\n  color: #9ca3af; /* 2 */\n}\n\n/*\nSet the default cursor for buttons.\n*/\n\nbutton,\n[role=\"button\"] {\n  cursor: pointer;\n}\n\n/*\nMake sure disabled buttons don't get the pointer cursor.\n*/\n:disabled {\n  cursor: default;\n}\n\n/*\n1. Make replaced elements `display: block` by default. (https://github.com/mozdevs/cssremedy/issues/14)\n2. Add `vertical-align: middle` to align replaced elements more sensibly by default. (https://github.com/jensimmons/cssremedy/issues/14#issuecomment-634934210)\n   This can trigger a poorly considered lint error in some tools but is included by design.\n*/\n\nimg,\nsvg,\nvideo,\ncanvas,\naudio,\niframe,\nembed,\nobject {\n  display: block; /* 1 */\n  vertical-align: middle; /* 2 */\n}\n\n/*\nConstrain images and videos to the parent width and preserve their intrinsic aspect ratio. (https://github.com/mozdevs/cssremedy/issues/14)\n*/\n\nimg,\nvideo {\n  max-width: 100%;\n  height: auto;\n}\n\n/*\nEnsure the default browser behavior of the `hidden` attribute.\n*/\n\n[hidden] {\n  display: none;\n}\n\n*, ::before, ::after {\n  --tw-translate-x: 0;\n  --tw-translate-y: 0;\n  --tw-rotate: 0;\n  --tw-skew-x: 0;\n  --tw-skew-y: 0;\n  --tw-scale-x: 1;\n  --tw-scale-y: 1;\n  --tw-pan-x:  ;\n  --tw-pan-y:  ;\n  --tw-pinch-zoom:  ;\n  --tw-scroll-snap-strictness: proximity;\n  --tw-ordinal:  ;\n  --tw-slashed-zero:  ;\n  --tw-numeric-figure:  ;\n  --tw-numeric-spacing:  ;\n  --tw-numeric-fraction:  ;\n  --tw-ring-inset:  ;\n  --tw-ring-offset-width: 0px;\n  --tw-ring-offset-color: #fff;\n  --tw-ring-color: rgb(59 130 246 / 0.5);\n  --tw-ring-offset-shadow: 0 0 #0000;\n  --tw-ring-shadow: 0 0 #0000;\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  --tw-blur:  ;\n  --tw-brightness:  ;\n  --tw-contrast:  ;\n  --tw-grayscale:  ;\n  --tw-hue-rotate:  ;\n  --tw-invert:  ;\n  --tw-saturate:  ;\n  --tw-sepia:  ;\n  --tw-drop-shadow:  ;\n  --tw-backdrop-blur:  ;\n  --tw-backdrop-brightness:  ;\n  --tw-backdrop-contrast:  ;\n  --tw-backdrop-grayscale:  ;\n  --tw-backdrop-hue-rotate:  ;\n  --tw-backdrop-invert:  ;\n  --tw-backdrop-opacity:  ;\n  --tw-backdrop-saturate:  ;\n  --tw-backdrop-sepia:  ;\n}\n.container {\n  width: 100%;\n}\n@media (min-width: 640px) {\n\n  .container {\n    max-width: 640px;\n  }\n}\n@media (min-width: 768px) {\n\n  .container {\n    max-width: 768px;\n  }\n}\n@media (min-width: 1024px) {\n\n  .container {\n    max-width: 1024px;\n  }\n}\n@media (min-width: 1280px) {\n\n  .container {\n    max-width: 1280px;\n  }\n}\n@media (min-width: 1536px) {\n\n  .container {\n    max-width: 1536px;\n  }\n}\n.fixed {\n  position: fixed;\n}\n.relative {\n  position: relative;\n}\n.top-0 {\n  top: 0px;\n}\n.right-0 {\n  right: 0px;\n}\n.m-auto {\n  margin: auto;\n}\n.mx-auto {\n  margin-left: auto;\n  margin-right: auto;\n}\n.ml-1 {\n  margin-left: 0.25rem;\n}\n.mt-2 {\n  margin-top: 0.5rem;\n}\n.mr-2 {\n  margin-right: 0.5rem;\n}\n.ml-2 {\n  margin-left: 0.5rem;\n}\n.mt-4 {\n  margin-top: 1rem;\n}\n.ml-4 {\n  margin-left: 1rem;\n}\n.mt-8 {\n  margin-top: 2rem;\n}\n.ml-12 {\n  margin-left: 3rem;\n}\n.-mt-px {\n  margin-top: -1px;\n}\n.mb-2 {\n  margin-bottom: 0.5rem;\n}\n.mb-4 {\n  margin-bottom: 1rem;\n}\n.mb-3 {\n  margin-bottom: 0.75rem;\n}\n.mt-3 {\n  margin-top: 0.75rem;\n}\n.mr-1 {\n  margin-right: 0.25rem;\n}\n.mr-4 {\n  margin-right: 1rem;\n}\n.flex {\n  display: flex;\n}\n.table {\n  display: table;\n}\n.grid {\n  display: grid;\n}\n.hidden {\n  display: none;\n}\n.h-5 {\n  height: 1.25rem;\n}\n.h-8 {\n  height: 2rem;\n}\n.h-16 {\n  height: 4rem;\n}\n.min-h-screen {\n  min-height: 100vh;\n}\n.w-5 {\n  width: 1.25rem;\n}\n.w-8 {\n  width: 2rem;\n}\n.w-auto {\n  width: auto;\n}\n.w-24 {\n  width: 6rem;\n}\n.w-20 {\n  width: 5rem;\n}\n.max-w-6xl {\n  max-width: 72rem;\n}\n.border-collapse {\n  border-collapse: collapse;\n}\n.transform {\n  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));\n}\n.grid-cols-1 {\n  grid-template-columns: repeat(1, minmax(0, 1fr));\n}\n.items-center {\n  align-items: center;\n}\n.justify-center {\n  justify-content: center;\n}\n.overflow-hidden {\n  overflow: hidden;\n}\n.rounded {\n  border-radius: 0.25rem;\n}\n.border {\n  border-width: 1px;\n}\n.border-t {\n  border-top-width: 1px;\n}\n.border-gray-200 {\n  --tw-border-opacity: 1;\n  border-color: rgb(229 231 235 / var(--tw-border-opacity));\n}\n.bg-white {\n  --tw-bg-opacity: 1;\n  background-color: rgb(255 255 255 / var(--tw-bg-opacity));\n}\n.bg-gray-100 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(243 244 246 / var(--tw-bg-opacity));\n}\n.bg-indigo-400 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(129 140 248 / var(--tw-bg-opacity));\n}\n.bg-zinc-400 {\n  --tw-bg-opacity: 1;\n  background-color: rgb(161 161 170 / var(--tw-bg-opacity));\n}\n.p-6 {\n  padding: 1.5rem;\n}\n.py-4 {\n  padding-top: 1rem;\n  padding-bottom: 1rem;\n}\n.px-6 {\n  padding-left: 1.5rem;\n  padding-right: 1.5rem;\n}\n.py-0 {\n  padding-top: 0px;\n  padding-bottom: 0px;\n}\n.px-1 {\n  padding-left: 0.25rem;\n  padding-right: 0.25rem;\n}\n.py-1 {\n  padding-top: 0.25rem;\n  padding-bottom: 0.25rem;\n}\n.px-0 {\n  padding-left: 0px;\n  padding-right: 0px;\n}\n.py-2 {\n  padding-top: 0.5rem;\n  padding-bottom: 0.5rem;\n}\n.pt-8 {\n  padding-top: 2rem;\n}\n.text-left {\n  text-align: left;\n}\n.text-center {\n  text-align: center;\n}\n.text-right {\n  text-align: right;\n}\n.text-sm {\n  font-size: 0.875rem;\n  line-height: 1.25rem;\n}\n.text-lg {\n  font-size: 1.125rem;\n  line-height: 1.75rem;\n}\n.font-semibold {\n  font-weight: 600;\n}\n.leading-7 {\n  line-height: 1.75rem;\n}\n.text-gray-200 {\n  --tw-text-opacity: 1;\n  color: rgb(229 231 235 / var(--tw-text-opacity));\n}\n.text-gray-300 {\n  --tw-text-opacity: 1;\n  color: rgb(209 213 219 / var(--tw-text-opacity));\n}\n.text-gray-400 {\n  --tw-text-opacity: 1;\n  color: rgb(156 163 175 / var(--tw-text-opacity));\n}\n.text-gray-500 {\n  --tw-text-opacity: 1;\n  color: rgb(107 114 128 / var(--tw-text-opacity));\n}\n.text-gray-600 {\n  --tw-text-opacity: 1;\n  color: rgb(75 85 99 / var(--tw-text-opacity));\n}\n.text-gray-700 {\n  --tw-text-opacity: 1;\n  color: rgb(55 65 81 / var(--tw-text-opacity));\n}\n.text-gray-900 {\n  --tw-text-opacity: 1;\n  color: rgb(17 24 39 / var(--tw-text-opacity));\n}\n.text-white {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}\n.text-blue-600 {\n  --tw-text-opacity: 1;\n  color: rgb(37 99 235 / var(--tw-text-opacity));\n}\n.text-violet-600 {\n  --tw-text-opacity: 1;\n  color: rgb(124 58 237 / var(--tw-text-opacity));\n}\n.text-indigo-600 {\n  --tw-text-opacity: 1;\n  color: rgb(79 70 229 / var(--tw-text-opacity));\n}\n.text-green-600 {\n  --tw-text-opacity: 1;\n  color: rgb(22 163 74 / var(--tw-text-opacity));\n}\n.text-red-600 {\n  --tw-text-opacity: 1;\n  color: rgb(220 38 38 / var(--tw-text-opacity));\n}\n.text-orange-600 {\n  --tw-text-opacity: 1;\n  color: rgb(234 88 12 / var(--tw-text-opacity));\n}\n.text-cyan-500 {\n  --tw-text-opacity: 1;\n  color: rgb(6 182 212 / var(--tw-text-opacity));\n}\n.text-orange-400 {\n  --tw-text-opacity: 1;\n  color: rgb(251 146 60 / var(--tw-text-opacity));\n}\n.text-red-400 {\n  --tw-text-opacity: 1;\n  color: rgb(248 113 113 / var(--tw-text-opacity));\n}\n.underline {\n  -webkit-text-decoration-line: underline;\n          text-decoration-line: underline;\n}\n.antialiased {\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n.shadow {\n  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);\n  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n.filter {\n  filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);\n}\n.hover\\:text-white:hover {\n  --tw-text-opacity: 1;\n  color: rgb(255 255 255 / var(--tw-text-opacity));\n}\n.focus\\:shadow-none:focus {\n  --tw-shadow: 0 0 #0000;\n  --tw-shadow-colored: 0 0 #0000;\n  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);\n}\n@media (prefers-color-scheme: dark) {\n\n  .dark\\:border-gray-700 {\n    --tw-border-opacity: 1;\n    border-color: rgb(55 65 81 / var(--tw-border-opacity));\n  }\n\n  .dark\\:bg-gray-900 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(17 24 39 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:bg-gray-800 {\n    --tw-bg-opacity: 1;\n    background-color: rgb(31 41 55 / var(--tw-bg-opacity));\n  }\n\n  .dark\\:text-gray-500 {\n    --tw-text-opacity: 1;\n    color: rgb(107 114 128 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-white {\n    --tw-text-opacity: 1;\n    color: rgb(255 255 255 / var(--tw-text-opacity));\n  }\n\n  .dark\\:text-gray-400 {\n    --tw-text-opacity: 1;\n    color: rgb(156 163 175 / var(--tw-text-opacity));\n  }\n}\n@media (min-width: 640px) {\n\n  .sm\\:ml-0 {\n    margin-left: 0px;\n  }\n\n  .sm\\:block {\n    display: block;\n  }\n\n  .sm\\:h-20 {\n    height: 5rem;\n  }\n\n  .sm\\:items-center {\n    align-items: center;\n  }\n\n  .sm\\:justify-start {\n    justify-content: flex-start;\n  }\n\n  .sm\\:justify-between {\n    justify-content: space-between;\n  }\n\n  .sm\\:rounded-lg {\n    border-radius: 0.5rem;\n  }\n\n  .sm\\:px-6 {\n    padding-left: 1.5rem;\n    padding-right: 1.5rem;\n  }\n\n  .sm\\:pt-0 {\n    padding-top: 0px;\n  }\n\n  .sm\\:text-left {\n    text-align: left;\n  }\n\n  .sm\\:text-right {\n    text-align: right;\n  }\n}\n@media (min-width: 768px) {\n\n  .md\\:grid-cols-2 {\n    grid-template-columns: repeat(2, minmax(0, 1fr));\n  }\n\n  .md\\:border-t-0 {\n    border-top-width: 0px;\n  }\n\n  .md\\:border-l {\n    border-left-width: 1px;\n  }\n}\n@media (min-width: 1024px) {\n\n  .lg\\:px-8 {\n    padding-left: 2rem;\n    padding-right: 2rem;\n  }\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -36300,7 +36305,7 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n    height: 100%;\n}\n\nbody {\n    font-family: \"Nunito\", sans-serif;\n    background-color: #EAEDF5;\n    font-size: 1rem;\n}\n\nimg {\n    max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n    font-family: \"Livvic\", sans-serif;\n    color: #1e293b;\n}\n\nh1 {\n    font-size: 32px;\n}\n\nh2 {\n    font-size: 24px;\n}\n\nh3 {\n    font-size: 20px;\n}\n\nh4 {\n    font-size: 18px;\n}\n\nh5 {\n    font-size: 16px;\n}\n\nh6 {\n    font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n    width: 5px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n    background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n    background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n    background: #4f46e5;\n}\n\nh1 {\n    font-size: 30px;\n    font-weight: 700;\n}\n\nh2 {\n    font-size: 24px;\n    font-weight: 700;\n}\n\nh3 {\n    font-size: 18px;\n    font-weight: 600;\n}\n\nh4 {\n    font-size: 16px;\n    font-weight: 600;\n}\n\nh5 {\n    font-size: 14px;\n    font-weight: 600;\n}\n\nh6 {\n    font-size: 12px;\n    font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n    color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n    background-color: #3730a3 !important;\n}\n.btn.btn-outline-primary, button.btn-outline-primary,\n[type=button].btn-outline-primary,\n[type=reset].btn-outline-primary,\n[type=submit].btn-outline-primary {\n    border-color: #4f46e5 !important;\n    color: #4f46e5;\n}\n.btn.btn-outline-primary:hover, button.btn-outline-primary:hover,\n[type=button].btn-outline-primary:hover,\n[type=reset].btn-outline-primary:hover,\n[type=submit].btn-outline-primary:hover {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n    background-color: #166534 !important;\n}\n.btn.btn-outline-success, button.btn-outline-success,\n[type=button].btn-outline-success,\n[type=reset].btn-outline-success,\n[type=submit].btn-outline-success {\n    border-color: #16a34a !important;\n    color: #16a34a;\n}\n.btn.btn-outline-success:hover, button.btn-outline-success:hover,\n[type=button].btn-outline-success:hover,\n[type=reset].btn-outline-success:hover,\n[type=submit].btn-outline-success:hover {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n    background-color: #dc2626 !important;\n    color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n    background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n    background-color: #ca8a04 !important;\n    color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n    background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n    position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n    position: absolute;\n    top: calc(50% - 0.6rem);\n    left: calc(50% - 0.6rem);\n    width: 1.2rem;\n    height: 1.2rem;\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n    visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\n\n.box {\n    background-color: #ffffff;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    border: 1px solid #e2e8f0;\n    box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n    padding: 10px 15px;\n    min-height: 45px;\n    border-bottom: 1px solid #f1f5f9;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.box .box-header .box-action {\n    display: flex;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n    align-items: center;\n    justify-content: flex-end;\n}\n.box .box-header .box-action .search {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form {\n    display: none;\n    align-items: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form .search-group .form-control, .box .box-header .box-action .search .search-form .search-group .form-select {\n    height: 32px;\n}\n.box .box-header .box-action .search .search-form .search-group .dp__input {\n    height: 32px;\n    font-size: 14px;\n}\n.box .box-header .box-action .search .search-form .search-group input[type=search] {\n    background-color: #f8fafc;\n}\n.box .box-header .box-action .search.open-search .search-form {\n    display: flex;\n}\n.box .box-body {\n    padding: 10px 15px 15px;\n    overflow-y: auto;\n}\n.box .box-footer {\n    border-top: 1px solid #e2e8f0;\n    padding: 10px 15px 15px;\n}\n\ntable {\n    width: 100%;\n}\n\n.table {\n    width: 100%;\n    overflow: hidden;\n}\n.table thead {\n    border: none !important;\n}\n.table thead tr {\n    background-color: #f1f5f9;\n    border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n    font-weight: 500;\n    color: #1f2937;\n    font-family: \"Livvic\", sans-serif;\n    font-size: 16px;\n}\n.table tbody {\n    border: none !important;\n    font-family: \"Nunito\", sans-serif;\n    font-weight: 500;\n}\n.table tbody tr {\n    position: relative;\n    border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n    position: absolute;\n    top: 0;\n    left: -2px;\n    width: 2px;\n    background-color: #6366f1;\n    height: 100%;\n    content: \"\";\n}\n.table tbody tr td {\n    font-size: 14px;\n    vertical-align: middle;\n    padding: 10px;\n}\n.table tbody tr td .action {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n    font-size: 16px;\n}\n.table tbody tr td .action a {\n    padding: 3px 3px;\n    line-height: 0px;\n    border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n    background-color: #4f46e5;\n    color: #ffffff;\n}\n.table tbody tr:hover {\n    background-color: #eef2ff;\n    cursor: pointer;\n}\n.table tbody tr:hover::after {\n    left: 0;\n    content: \"\";\n    transition: 300ms;\n}\n\n.form-group {\n    margin-bottom: 15px;\n}\n.form-group label {\n    font-weight: 500;\n    font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-select:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n    width: 3px;\n}\n\n.form-section {\n    padding: 10px;\n    margin-bottom: 30px;\n    background-color: #ffffff;\n    border: 1px solid #f3f4f6;\n}\n.form-section h5 {\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px solid #e5e7eb;\n    font-size: 18px;\n    font-weight: 500;\n}\n.form-section.form-section-primary {\n    background-color: #eef2ff;\n    border: 1px solid #e0e7ff;\n}\n.form-section.form-section-primary h5 {\n    border-bottom: 1px solid #c7d2fe;\n}\n.form-section.form-section-secondary {\n    background-color: #f8fafc;\n    border: 1px solid #f1f5f9;\n}\n.form-section.form-section-secondary h5 {\n    border-bottom: 1px solid #e2e8f0;\n}\n.form-section.form-section-success {\n    background-color: #f0fdf4;\n    border: 1px solid #dcfce7;\n}\n.form-section.form-section-success h5 {\n    border-bottom: 1px solid #bbf7d0;\n}\n.form-section.form-section-warning {\n    background-color: #fefce8;\n    border: 1px solid #fef9c3;\n}\n.form-section.form-section-warning h5 {\n    border-bottom: 1px solid #fef08a;\n}\n.form-section.form-section-danger {\n    background-color: #fef2f2;\n    border: 1px solid #fee2e2;\n}\n.form-section.form-section-danger h5 {\n    border-bottom: 1px solid #fecaca;\n}\n\n.widget {\n    background-color: #ffffff;\n    padding: 10px;\n    border-radius: 10px;\n    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.062745098);\n    border: 1px solid #e0e7ff;\n    min-height: 100px;\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    cursor: pointer;\n    grid-gap: 15px;\n    border-bottom: 3px solid #6366f1;\n}\n@media screen and (max-width: 768px) {\n    .widget {\n        margin-bottom: 15px;\n    }\n}\n.widget .widget-header {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    position: relative;\n}\n.widget .widget-header .title {\n    color: #4b5563;\n    padding-top: 5px;\n    font-weight: 400;\n}\n.widget .widget-header span {\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    font-size: 18px;\n    background-color: #f3f4f6;\n    line-height: normal;\n    color: #4b5563;\n    padding: 2px 5px;\n    border-radius: 30px;\n}\n.widget .widget-body {\n    width: 100%;\n    text-align: center;\n}\n.widget .widget-body h3 {\n    color: #4b5563;\n    font-size: 20px;\n    font-weight: 600;\n}\n.widget .widget-body p {\n    font-size: 12px;\n    color: #9ca3af;\n}\n.widget.widget-primary {\n    border-bottom-color: #6366f1;\n}\n.widget.widget-primary .widget-header .title {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-header span {\n    background-color: #e0e7ff;\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body h3 {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body p {\n    color: #818cf8;\n}\n.widget.widget-success {\n    border-bottom-color: #22c55e;\n}\n.widget.widget-success .widget-header .title {\n    color: #16a34a;\n}\n.widget.widget-success .widget-header span {\n    background-color: #dcfce7;\n    color: #16a34a;\n}\n.widget.widget-success .widget-body h3 {\n    color: #16a34a;\n}\n.widget.widget-success .widget-body p {\n    color: #4ade80;\n}\n.widget.widget-danger {\n    border-bottom-color: #ef4444;\n}\n.widget.widget-danger .widget-header .title {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-header span {\n    background-color: #fee2e2;\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body h3 {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body p {\n    color: #f87171;\n}\n.widget.widget-warning {\n    border-bottom-color: #eab308;\n}\n.widget.widget-warning .widget-header .title {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-header span {\n    background-color: #fef9c3;\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body h3 {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body p {\n    color: #facc15;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.pagination ul {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n}\n.pagination ul .page-item {\n    display: flex;\n    grid-gap: 5px;\n    padding: 0px;\n}\n.pagination ul .page-item .page-link {\n    border: 1px solid #4f46e5;\n    background: transparent;\n    padding: 3px 8px 1px 8px;\n    border-radius: 3px;\n}\n.pagination ul .page-item .page-link:hover {\n    background: #d1d5db;\n}\n.pagination ul .page-item .page-link:focus {\n    box-shadow: none;\n}\n.pagination ul .page-item .page-link .active {\n    background: #4f46e5;\n    color: #ffffff;\n}\n\n.wrapper {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n}\n.wrapper .sidebar {\n    background-color: #F0F9FF;\n    width: 269px;\n    height: 100vh;\n    overflow-y: auto;\n    border-right: 1px solid #e0e7ff;\n}\n.wrapper .sidebar .close {\n    position: absolute;\n    top: 0;\n    right: 0;\n    padding: 5px;\n    color: red;\n    font-size: 20px;\n    display: none;\n}\n.wrapper .main-content {\n    background-color: #EAEDF5;\n    width: calc(100% - 270px);\n    height: 100vh;\n    overflow-y: auto;\n}\n@media screen and (max-width: 768px) {\n    .wrapper {\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n    .wrapper .sidebar {\n        position: fixed;\n        width: 100%;\n        top: 50%;\n        left: 0;\n        height: 100%;\n        visibility: hidden;\n        opacity: 0;\n        z-index: 999;\n    }\n    .wrapper .sidebar .close {\n        display: block;\n    }\n    .wrapper.rs-open-sidebar .sidebar {\n        top: 0;\n        opacity: 1;\n        visibility: visible;\n        transition: 300ms;\n    }\n    .wrapper .main-content {\n        width: 100%;\n    }\n}\n\n.main-content .main-header {\n    background-color: #ffffff;\n    min-height: 50px;\n    display: flex;\n    justify-content: space-between;\n    padding: 0px 15px;\n    align-items: center;\n}\n.main-content .main-header .page-control {\n    display: flex;\n    align-items: center;\n    line-height: 0;\n}\n.main-content .main-header .page-control .app-icon {\n    cursor: pointer;\n    display: none;\n}\n.main-content .main-header .page-control .app-icon .bx {\n    margin-right: 10px;\n    font-size: 24px;\n    color: #4f46e5;\n}\n.main-content .main-header .page-control h5 {\n    font-weight: 500;\n}\n.main-content .content {\n    padding: 15px;\n}\n@media screen and (max-width: 768px) {\n    .main-content .main-header {\n        position: fixed;\n        top: 0;\n        left: 0;\n        z-index: 99;\n        width: 100%;\n    }\n    .main-content .main-header .page-control .app-icon {\n        display: block;\n    }\n    .main-content .content {\n        margin-top: 50px;\n    }\n}\n\n.full-screen .wrapper .sidebar {\n    display: none;\n}\n.full-screen .wrapper .main-content {\n    width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n    display: none;\n}\n.full-screen .wrapper .main-content .content {\n    padding: 0;\n}\n\n.sidebar {\n    padding: 15px 10px;\n    position: relative;\n    /* width */\n}\n.sidebar .logo {\n    text-align: center;\n    margin-bottom: 15px;\n}\n.sidebar .logo img {\n    width: 150px;\n    margin: 0 auto 30px auto;\n}\n.sidebar .logo h2 {\n    margin-top: 10px;\n    font-size: 18px;\n    color: #475569;\n    font-weight: 700;\n}\n.sidebar .user {\n    margin-bottom: 15px;\n    background-color: #6366f1;\n    color: #ffffff;\n    padding: 15px 10px;\n    border-radius: 5px;\n    display: flex;\n    align-items: center;\n    grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n    width: 40px;\n}\n.sidebar .user .user-info h3 {\n    font-size: 18px;\n    font-weight: 500;\n}\n.sidebar .user .user-info p {\n    font-size: 14px;\n    font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n    width: 0px;\n}\n\n.navigations {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    grid-gap: 20px 15px;\n}\n@media screen and (max-width: 768px) {\n    .navigations {\n        grid-template-columns: repeat(3, 1fr);\n    }\n}\n@media screen and (max-width: 576px) {\n    .navigations {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.navigations .navigation-item {\n    text-align: center;\n    min-height: 90px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #ffffff;\n    border-radius: 5px;\n    border: 1px solid #e0e7ff;\n    box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n    transition: 300ms;\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n    font-size: 32px;\n    margin-bottom: 5px;\n}\n.navigations .navigation-item a span {\n    display: block;\n    font-weight: 500;\n    width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n    position: fixed;\n    top: 0;\n    left: -270px;\n    width: 270px;\n    height: 100%;\n    background-color: #F0F9FF;\n    padding: 10px;\n    visibility: hidden;\n    opacity: 0;\n    transition: 200ms;\n    cursor: default;\n    overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n    width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    color: red;\n    font-size: 16px;\n    flex-direction: row-reverse;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n    font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .close-bar:active i.bx {\n    background-color: red;\n    color: #ffffff;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n    margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n    text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n    margin-top: 15px;\n    font-weight: 500;\n    color: #4b5563;\n    font-size: 16px;\n    border-bottom: 1px solid #c7d2fe;\n    padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n    margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n    font-size: 14px;\n    padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n    margin: 0px;\n    margin-right: 5px;\n    font-size: 20px;\n    color: #94a3b8;\n    transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n    background-color: #6366f1;\n    border-radius: 5px;\n    color: #ffffff;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n    background-color: #4f46e5;\n    cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n    color: #ffffff;\n    transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n    color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n    background-color: #6366f1;\n    border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n    left: 0;\n    visibility: visible;\n    opacity: 1;\n    z-index: 999;\n    transition: 300ms;\n}\n@media screen and (max-width: 768px) {\n    .navigations .navigation-item.open .navigation-content {\n        width: 100%;\n    }\n}\n\n.auth-wrap {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}\n.auth-wrap .auth {\n    width: 50%;\n    height: 100%;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n.auth-wrap .auth .auth-box {\n    width: 350px;\n    margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n    text-align: center;\n    margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n    margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n    width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n    margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n    height: 45px;\n    border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n    margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n    width: 100%;\n    padding: 5px 15px;\n    border-radius: 8px;\n    font-size: 18px;\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n    background-color: #4f46e5;\n    border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n    background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n    justify-content: flex-start;\n    width: 50%;\n    background-color: #060B4D;\n    height: 100%;\n}\n.auth-wrap .auth-content .content {\n    margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n    color: #e2e8f0;\n    font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n    margin-top: 15px;\n    color: #e0e7ff;\n    font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n    margin-top: 30px;\n    width: 75%;\n}\n@media screen and (max-width: 768px) {\n    .auth-wrap {\n        flex-wrap: wrap;\n    }\n    .auth-wrap .auth {\n        width: 100%;\n    }\n    .auth-wrap .auth .auth-box {\n        width: 80%;\n        margin: 0 auto;\n    }\n    .auth-wrap .auth .auth-box .auth-header h1 {\n        font-size: 1.5rem;\n    }\n    .auth-wrap .auth-content {\n        display: none;\n    }\n}\n\n.profile .user-box {\n    text-align: center;\n    background-color: #eef2ff;\n    padding: 15px;\n}\n.profile .user-box img {\n    width: 75px;\n    margin: 10px auto;\n}\n.profile .user-box .btn {\n    width: 100%;\n    margin: 5px 0px;\n}\n\n.member.member-show .member-img img {\n    margin: 0 auto;\n}\n.member.member-show .member-info h3 {\n    color: #4f46e5;\n}\n.member.member-show .member-info a {\n    color: #475569;\n}\n.member.member-show .member-info a:hover {\n    color: #1e293b;\n}\n.member.member-show .member-nav ul li {\n    margin-bottom: 5px;\n}\n.member.member-show .member-nav ul li a {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: #f1f5f9;\n    padding: 8px 10px;\n    border-radius: 5px;\n    color: #334155;\n}\n.member.member-show .member-nav ul li a i.bx {\n    font-size: 18px;\n}\n.member.member-show .member-nav ul li a:hover, .member.member-show .member-nav ul li a.router-link-active {\n    color: #ffffff;\n    background-color: #4f46e5;\n    transition: 300ms;\n}\n.member.member-show .member-account table {\n    font-size: 14px;\n}\n.member.member-show .member-account table tr {\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member.member-show .member-account table tr td {\n    padding: 5px;\n    vertical-align: top;\n    font-weight: 500;\n    color: #475569;\n}\n.member.member-show .member-account table tr td:first-child {\n    width: 45%;\n    font-weight: 400;\n    color: #64748b;\n}\n.member.member-show h5 {\n    margin-bottom: 5px;\n    font-weight: 500;\n    color: #1e293b;\n}\n\n.member-details .member-detail {\n    margin-bottom: 30px;\n}\n.member-details .member-detail h3 {\n    color: #475569;\n    font-weight: 500;\n    font-size: 16px;\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member-details .member-detail .member-infos {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 15px;\n}\n@media screen and (max-width: 768px) {\n    .member-details .member-detail .member-infos {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.member-details .member-detail .member-infos .member-info p {\n    color: #475569;\n    font-size: 0.875rem;\n    font-weight: 300;\n    margin-bottom: 3px;\n}\n.member-details .member-detail .member-infos .member-info h5 {\n    color: #1e293b;\n    font-weight: 400;\n    font-size: 1rem;\n}\n\n.member-select {\n    position: relative;\n}\n.member-select .member-input {\n    position: relative;\n}\n.member-select .member-input .form-control {\n    cursor: pointer;\n}\n.member-select .member-input .select-icon {\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    font-size: 20px;\n    color: #64748b;\n}\n.member-select .member-list {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    background: #f8fafc;\n    border: 1px solid #e2e8f0;\n    display: none;\n}\n.member-select .member-list .member-search {\n    position: relative;\n}\n.member-select .member-list .member-search .form-control {\n    border: none;\n    border-bottom: 1px solid #e2e8f0;\n    border-radius: 0px;\n}\n.member-select .member-list .member-search .list-close {\n    position: absolute;\n    top: 7px;\n    right: 10px;\n    font-size: 20px;\n    color: #ef4444;\n    line-height: 0;\n    cursor: pointer;\n}\n.member-select .member-list .member-search .list-close:active {\n    background-color: #ef4444;\n    color: #ffffff;\n}\n.member-select .member-list .members {\n    max-height: 300px;\n    overflow-y: auto;\n    padding: 5px 0px;\n}\n.member-select .member-list .members .member {\n    font-size: 14px;\n    cursor: pointer;\n    padding: 7px 5px;\n    border-bottom: 1px dashed #e2e8f0;\n}\n.member-select .member-list .members .member:hover {\n    background-color: #e0e7ff;\n    transition: 200ms;\n}\n.member-select .member-list .members::-webkit-scrollbar {\n    width: 5px;\n}\n.member-select.open .member-list {\n    display: block;\n}\n\n.search-container {\n    cursor: default;\n}\n.search-container .btn.btn-search {\n    border: 1px solid #cbd5e1;\n    background-color: #f9fafb;\n    font-weight: 600;\n    color: #4f46e5;\n}\n.search-container .btn.btn-search:focus {\n    box-shadow: none;\n}\n.search-container .btn.btn-search:active {\n    background-color: #f3f4f6;\n}\n.search-container .search-form {\n    margin-bottom: 15px;\n}\n.search-container .search-form .form-group .input-group {\n    border-bottom: 1px solid #e2e8f0;\n}\n.search-container .search-form .form-group .input-group .input-group-text {\n    background: none;\n    border: none;\n}\n.search-container .search-form .form-group .input-group .form-control {\n    height: 50px;\n    border: none;\n    font-size: 16px;\n}\n.search-container .search-result {\n    max-height: 70vh;\n    overflow-y: auto;\n    text-align: left;\n}\n.search-container .search-result .rs-count {\n    margin-bottom: 10px;\n}\n.search-container .search-result .search-items .search-item {\n    margin-bottom: 10px;\n    padding: 5px;\n}\n.search-container .search-result .search-items .search-item a {\n    display: flex;\n    width: 100%;\n}\n.search-container .search-result .search-items .search-item a .search-img img {\n    width: 50px;\n    border-radius: 5px;\n}\n.search-container .search-result .search-items .search-item a .search-content {\n    margin-left: 10px;\n}\n.search-container .search-result .search-items .search-item a .search-content h5 {\n    color: #1E293B;\n    font-size: 16px;\n    font-weight: 500;\n}\n.search-container .search-result .search-items .search-item a .search-content p {\n    color: #475569;\n    font-size: 14px;\n}\n.search-container .search-result .search-items .search-item:hover {\n    background-color: #f9fafb;\n}\n.search-container .search-result .search-items .search-item:hover a h5 {\n    color: #4f46e5;\n}\n.search-container .search-result .search-items .search-item:hover a p {\n    color: #1E293B;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n    height: 100%;\n}\n\nbody {\n    font-family: \"Nunito\", sans-serif;\n    background-color: #EAEDF5;\n    font-size: 1rem;\n}\n\nimg {\n    max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n    font-family: \"Livvic\", sans-serif;\n    color: #1e293b;\n}\n\nh1 {\n    font-size: 32px;\n}\n\nh2 {\n    font-size: 24px;\n}\n\nh3 {\n    font-size: 20px;\n}\n\nh4 {\n    font-size: 18px;\n}\n\nh5 {\n    font-size: 16px;\n}\n\nh6 {\n    font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n    width: 5px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n    background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n    background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n    background: #4f46e5;\n}\n\nh1 {\n    font-size: 30px;\n    font-weight: 700;\n}\n\nh2 {\n    font-size: 24px;\n    font-weight: 700;\n}\n\nh3 {\n    font-size: 18px;\n    font-weight: 600;\n}\n\nh4 {\n    font-size: 16px;\n    font-weight: 600;\n}\n\nh5 {\n    font-size: 14px;\n    font-weight: 600;\n}\n\nh6 {\n    font-size: 12px;\n    font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n    color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n    background-color: #3730a3 !important;\n}\n.btn.btn-outline-primary, button.btn-outline-primary,\n[type=button].btn-outline-primary,\n[type=reset].btn-outline-primary,\n[type=submit].btn-outline-primary {\n    border-color: #4f46e5 !important;\n    color: #4f46e5;\n}\n.btn.btn-outline-primary:hover, button.btn-outline-primary:hover,\n[type=button].btn-outline-primary:hover,\n[type=reset].btn-outline-primary:hover,\n[type=submit].btn-outline-primary:hover {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n    background-color: #166534 !important;\n}\n.btn.btn-outline-success, button.btn-outline-success,\n[type=button].btn-outline-success,\n[type=reset].btn-outline-success,\n[type=submit].btn-outline-success {\n    border-color: #16a34a !important;\n    color: #16a34a;\n}\n.btn.btn-outline-success:hover, button.btn-outline-success:hover,\n[type=button].btn-outline-success:hover,\n[type=reset].btn-outline-success:hover,\n[type=submit].btn-outline-success:hover {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n    background-color: #dc2626 !important;\n    color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n    background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n    background-color: #ca8a04 !important;\n    color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n    background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n    position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n    position: absolute;\n    top: calc(50% - 0.6rem);\n    left: calc(50% - 0.6rem);\n    width: 1.2rem;\n    height: 1.2rem;\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n    visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\n\n.box {\n    background-color: #ffffff;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    border: 1px solid #e2e8f0;\n    box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n    padding: 10px 15px;\n    min-height: 45px;\n    border-bottom: 1px solid #f1f5f9;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.box .box-header .box-action {\n    display: flex;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n    align-items: center;\n    justify-content: flex-end;\n}\n.box .box-header .box-action .search {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form {\n    display: none;\n    align-items: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form .search-group .form-control, .box .box-header .box-action .search .search-form .search-group .form-select {\n    height: 32px;\n}\n.box .box-header .box-action .search .search-form .search-group .dp__input {\n    height: 32px;\n    font-size: 14px;\n}\n.box .box-header .box-action .search .search-form .search-group input[type=search] {\n    background-color: #f8fafc;\n}\n.box .box-header .box-action .search.open-search .search-form {\n    display: flex;\n}\n.box .box-body {\n    padding: 10px 15px 15px;\n    overflow-y: auto;\n}\n.box .box-footer {\n    border-top: 1px solid #e2e8f0;\n    padding: 10px 15px 15px;\n}\n\ntable {\n    width: 100%;\n}\n\n.table {\n    width: 100%;\n    overflow: hidden;\n}\n.table thead {\n    border: none !important;\n}\n.table thead tr {\n    background-color: #f1f5f9;\n    border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n    font-weight: 500;\n    color: #1f2937;\n    font-family: \"Livvic\", sans-serif;\n    font-size: 16px;\n}\n.table tbody {\n    border: none !important;\n    font-family: \"Nunito\", sans-serif;\n    font-weight: 500;\n}\n.table tbody tr {\n    position: relative;\n    border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n    position: absolute;\n    top: 0;\n    left: -2px;\n    width: 2px;\n    background-color: #6366f1;\n    height: 100%;\n    content: \"\";\n}\n.table tbody tr td {\n    font-size: 14px;\n    vertical-align: middle;\n    padding: 10px;\n}\n.table tbody tr td .action {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n    font-size: 16px;\n}\n.table tbody tr td .action a {\n    padding: 3px 3px;\n    line-height: 0px;\n    border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n    background-color: #4f46e5;\n    color: #ffffff;\n}\n.table tbody tr:hover {\n    background-color: #eef2ff;\n    cursor: pointer;\n}\n.table tbody tr:hover::after {\n    left: 0;\n    content: \"\";\n    transition: 300ms;\n}\n\n.form-group {\n    margin-bottom: 15px;\n}\n.form-group label {\n    font-weight: 500;\n    font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-select:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n    width: 3px;\n}\n\n.form-section {\n    padding: 10px;\n    margin-bottom: 30px;\n    background-color: #ffffff;\n    border: 1px solid #f3f4f6;\n}\n.form-section h5 {\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px solid #e5e7eb;\n    font-size: 18px;\n    font-weight: 500;\n}\n.form-section.form-section-primary {\n    background-color: #eef2ff;\n    border: 1px solid #e0e7ff;\n}\n.form-section.form-section-primary h5 {\n    border-bottom: 1px solid #c7d2fe;\n}\n.form-section.form-section-secondary {\n    background-color: #f8fafc;\n    border: 1px solid #f1f5f9;\n}\n.form-section.form-section-secondary h5 {\n    border-bottom: 1px solid #e2e8f0;\n}\n.form-section.form-section-success {\n    background-color: #f0fdf4;\n    border: 1px solid #dcfce7;\n}\n.form-section.form-section-success h5 {\n    border-bottom: 1px solid #bbf7d0;\n}\n.form-section.form-section-warning {\n    background-color: #fefce8;\n    border: 1px solid #fef9c3;\n}\n.form-section.form-section-warning h5 {\n    border-bottom: 1px solid #fef08a;\n}\n.form-section.form-section-danger {\n    background-color: #fef2f2;\n    border: 1px solid #fee2e2;\n}\n.form-section.form-section-danger h5 {\n    border-bottom: 1px solid #fecaca;\n}\n\n.widget {\n    background-color: #ffffff;\n    padding: 10px;\n    border-radius: 10px;\n    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.062745098);\n    border: 1px solid #e0e7ff;\n    min-height: 100px;\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    cursor: pointer;\n    grid-gap: 15px;\n    border-bottom: 3px solid #6366f1;\n}\n@media screen and (max-width: 768px) {\n    .widget {\n        margin-bottom: 15px;\n    }\n}\n.widget .widget-header {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    position: relative;\n}\n.widget .widget-header .title {\n    color: #4b5563;\n    padding-top: 5px;\n    font-weight: 400;\n}\n.widget .widget-header span {\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    font-size: 18px;\n    background-color: #f3f4f6;\n    line-height: normal;\n    color: #4b5563;\n    padding: 2px 5px;\n    border-radius: 30px;\n}\n.widget .widget-body {\n    width: 100%;\n    text-align: center;\n}\n.widget .widget-body h3 {\n    color: #4b5563;\n    font-size: 20px;\n    font-weight: 600;\n}\n.widget .widget-body p {\n    font-size: 12px;\n    color: #9ca3af;\n}\n.widget.widget-primary {\n    border-bottom-color: #6366f1;\n}\n.widget.widget-primary .widget-header .title {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-header span {\n    background-color: #e0e7ff;\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body h3 {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body p {\n    color: #818cf8;\n}\n.widget.widget-success {\n    border-bottom-color: #22c55e;\n}\n.widget.widget-success .widget-header .title {\n    color: #16a34a;\n}\n.widget.widget-success .widget-header span {\n    background-color: #dcfce7;\n    color: #16a34a;\n}\n.widget.widget-success .widget-body h3 {\n    color: #16a34a;\n}\n.widget.widget-success .widget-body p {\n    color: #4ade80;\n}\n.widget.widget-danger {\n    border-bottom-color: #ef4444;\n}\n.widget.widget-danger .widget-header .title {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-header span {\n    background-color: #fee2e2;\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body h3 {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body p {\n    color: #f87171;\n}\n.widget.widget-warning {\n    border-bottom-color: #eab308;\n}\n.widget.widget-warning .widget-header .title {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-header span {\n    background-color: #fef9c3;\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body h3 {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body p {\n    color: #facc15;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.pagination ul {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n}\n.pagination ul .page-item {\n    display: flex;\n    grid-gap: 5px;\n    padding: 0px;\n}\n.pagination ul .page-item .page-link {\n    border: 1px solid #4f46e5;\n    background: transparent;\n    padding: 3px 8px 1px 8px;\n    border-radius: 3px;\n}\n.pagination ul .page-item .page-link:hover {\n    background: #d1d5db;\n}\n.pagination ul .page-item .page-link:focus {\n    box-shadow: none;\n}\n.pagination ul .page-item .page-link .active {\n    background: #4f46e5;\n    color: #ffffff;\n}\n\n.wrapper {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n}\n.wrapper .sidebar {\n    background-color: #F0F9FF;\n    width: 269px;\n    height: 100vh;\n    overflow-y: auto;\n    border-right: 1px solid #e0e7ff;\n}\n.wrapper .sidebar .close {\n    position: absolute;\n    top: 0;\n    right: 0;\n    padding: 5px;\n    color: red;\n    font-size: 20px;\n    display: none;\n}\n.wrapper .main-content {\n    background-color: #EAEDF5;\n    width: calc(100% - 270px);\n    height: 100vh;\n    overflow-y: auto;\n}\n@media screen and (max-width: 768px) {\n    .wrapper {\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n    .wrapper .sidebar {\n        position: fixed;\n        width: 100%;\n        top: 50%;\n        left: 0;\n        height: 100%;\n        visibility: hidden;\n        opacity: 0;\n        z-index: 999;\n    }\n    .wrapper .sidebar .close {\n        display: block;\n    }\n    .wrapper.rs-open-sidebar .sidebar {\n        top: 0;\n        opacity: 1;\n        visibility: visible;\n        transition: 300ms;\n    }\n    .wrapper .main-content {\n        width: 100%;\n    }\n}\n\n.main-content .main-header {\n    background-color: #ffffff;\n    min-height: 50px;\n    display: flex;\n    justify-content: space-between;\n    padding: 0px 15px;\n    align-items: center;\n}\n.main-content .main-header .page-control {\n    display: flex;\n    align-items: center;\n    line-height: 0;\n}\n.main-content .main-header .page-control .app-icon {\n    cursor: pointer;\n    display: none;\n}\n.main-content .main-header .page-control .app-icon .bx {\n    margin-right: 10px;\n    font-size: 24px;\n    color: #4f46e5;\n}\n.main-content .main-header .page-control h5 {\n    font-weight: 500;\n}\n.main-content .content {\n    padding: 15px;\n}\n@media screen and (max-width: 768px) {\n    .main-content .main-header {\n        position: fixed;\n        top: 0;\n        left: 0;\n        z-index: 99;\n        width: 100%;\n    }\n    .main-content .main-header .page-control .app-icon {\n        display: block;\n    }\n    .main-content .content {\n        margin-top: 50px;\n    }\n}\n\n.full-screen .wrapper .sidebar {\n    display: none;\n}\n.full-screen .wrapper .main-content {\n    width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n    display: none;\n}\n.full-screen .wrapper .main-content .content {\n    padding: 0;\n}\n\n.sidebar {\n    padding: 15px 10px;\n    position: relative;\n    /* width */\n}\n.sidebar .logo {\n    text-align: center;\n    margin-bottom: 15px;\n}\n.sidebar .logo img {\n    width: 85px;\n    margin: 0 auto 20px auto;\n}\n.sidebar .logo h2 {\n    margin-top: 10px;\n    font-size: 18px;\n    color: #475569;\n    font-weight: 700;\n}\n.sidebar .user {\n    margin-bottom: 15px;\n    background-color: #6366f1;\n    color: #ffffff;\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    align-items: center;\n    grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n    width: 40px;\n    height: 40px;\n    border-radius: 50px;\n}\n.sidebar .user .user-info h3 {\n    font-size: 18px;\n    font-weight: 500;\n}\n.sidebar .user .user-info p {\n    font-size: 14px;\n    font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n    width: 0px;\n}\n\n.navigations {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    grid-gap: 20px 15px;\n}\n@media screen and (max-width: 768px) {\n    .navigations {\n        grid-template-columns: repeat(3, 1fr);\n    }\n}\n@media screen and (max-width: 576px) {\n    .navigations {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.navigations .navigation-item {\n    text-align: center;\n    min-height: 90px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #ffffff;\n    border-radius: 5px;\n    border: 1px solid #e0e7ff;\n    box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n    transition: 300ms;\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n    font-size: 32px;\n    margin-bottom: 5px;\n}\n.navigations .navigation-item a span {\n    display: block;\n    font-weight: 500;\n    width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n    position: fixed;\n    top: 0;\n    left: -270px;\n    width: 270px;\n    height: 100%;\n    background-color: #F0F9FF;\n    padding: 10px;\n    visibility: hidden;\n    opacity: 0;\n    transition: 200ms;\n    cursor: default;\n    overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n    width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    color: red;\n    font-size: 16px;\n    flex-direction: row-reverse;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n    font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .close-bar:active i.bx {\n    background-color: red;\n    color: #ffffff;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n    margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n    text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n    margin-top: 15px;\n    font-weight: 500;\n    color: #4b5563;\n    font-size: 16px;\n    border-bottom: 1px solid #c7d2fe;\n    padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n    margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n    font-size: 14px;\n    padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n    margin: 0px;\n    margin-right: 5px;\n    font-size: 20px;\n    color: #94a3b8;\n    transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n    background-color: #6366f1;\n    border-radius: 5px;\n    color: #ffffff;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n    background-color: #4f46e5;\n    cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n    color: #ffffff;\n    transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n    color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n    background-color: #6366f1;\n    border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n    left: 0;\n    visibility: visible;\n    opacity: 1;\n    z-index: 999;\n    transition: 300ms;\n}\n@media screen and (max-width: 768px) {\n    .navigations .navigation-item.open .navigation-content {\n        width: 100%;\n    }\n}\n\n.auth-wrap {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}\n.auth-wrap .auth {\n    width: 50%;\n    height: 100%;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n.auth-wrap .auth .auth-box {\n    width: 350px;\n    margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n    text-align: center;\n    margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n    margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n    width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n    margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n    height: 45px;\n    border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n    margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n    width: 100%;\n    padding: 5px 15px;\n    border-radius: 8px;\n    font-size: 18px;\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n    background-color: #4f46e5;\n    border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n    background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n    justify-content: flex-start;\n    width: 50%;\n    background-color: #060B4D;\n    height: 100%;\n}\n.auth-wrap .auth-content .content {\n    margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n    color: #e2e8f0;\n    font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n    margin-top: 15px;\n    color: #e0e7ff;\n    font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n    margin-top: 30px;\n    width: 75%;\n}\n@media screen and (max-width: 768px) {\n    .auth-wrap {\n        flex-wrap: wrap;\n    }\n    .auth-wrap .auth {\n        width: 100%;\n    }\n    .auth-wrap .auth .auth-box {\n        width: 80%;\n        margin: 0 auto;\n    }\n    .auth-wrap .auth .auth-box .auth-header h1 {\n        font-size: 1.5rem;\n    }\n    .auth-wrap .auth-content {\n        display: none;\n    }\n}\n\n.profile .user-box {\n    text-align: center;\n    background-color: #eef2ff;\n    padding: 15px;\n}\n.profile .user-box img {\n    width: 75px;\n    margin: 10px auto;\n}\n.profile .user-box .btn {\n    width: 100%;\n    margin: 5px 0px;\n}\n\n.member.member-show .member-img img {\n    margin: 0 auto;\n}\n.member.member-show .member-info h3 {\n    color: #4f46e5;\n}\n.member.member-show .member-info a {\n    color: #475569;\n}\n.member.member-show .member-info a:hover {\n    color: #1e293b;\n}\n.member.member-show .member-nav ul li {\n    margin-bottom: 5px;\n}\n.member.member-show .member-nav ul li a {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: #f1f5f9;\n    padding: 8px 10px;\n    border-radius: 5px;\n    color: #334155;\n}\n.member.member-show .member-nav ul li a i.bx {\n    font-size: 18px;\n}\n.member.member-show .member-nav ul li a:hover, .member.member-show .member-nav ul li a.router-link-active {\n    color: #ffffff;\n    background-color: #4f46e5;\n    transition: 300ms;\n}\n.member.member-show .member-account table {\n    font-size: 14px;\n}\n.member.member-show .member-account table tr {\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member.member-show .member-account table tr td {\n    padding: 5px;\n    vertical-align: top;\n    font-weight: 500;\n    color: #475569;\n}\n.member.member-show .member-account table tr td:first-child {\n    width: 45%;\n    font-weight: 400;\n    color: #64748b;\n}\n.member.member-show h5 {\n    margin-bottom: 5px;\n    font-weight: 500;\n    color: #1e293b;\n}\n\n.member-details .member-detail {\n    margin-bottom: 30px;\n}\n.member-details .member-detail h3 {\n    color: #475569;\n    font-weight: 500;\n    font-size: 16px;\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member-details .member-detail .member-infos {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 15px;\n}\n@media screen and (max-width: 768px) {\n    .member-details .member-detail .member-infos {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.member-details .member-detail .member-infos .member-info p {\n    color: #475569;\n    font-size: 0.875rem;\n    font-weight: 300;\n    margin-bottom: 3px;\n}\n.member-details .member-detail .member-infos .member-info h5 {\n    color: #1e293b;\n    font-weight: 400;\n    font-size: 1rem;\n}\n\n.member-select {\n    position: relative;\n}\n.member-select .member-input {\n    position: relative;\n}\n.member-select .member-input .form-control {\n    cursor: pointer;\n}\n.member-select .member-input .select-icon {\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    font-size: 20px;\n    color: #64748b;\n}\n.member-select .member-list {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    background: #f8fafc;\n    border: 1px solid #e2e8f0;\n    display: none;\n}\n.member-select .member-list .member-search {\n    position: relative;\n}\n.member-select .member-list .member-search .form-control {\n    border: none;\n    border-bottom: 1px solid #e2e8f0;\n    border-radius: 0px;\n}\n.member-select .member-list .member-search .list-close {\n    position: absolute;\n    top: 7px;\n    right: 10px;\n    font-size: 20px;\n    color: #ef4444;\n    line-height: 0;\n    cursor: pointer;\n}\n.member-select .member-list .member-search .list-close:active {\n    background-color: #ef4444;\n    color: #ffffff;\n}\n.member-select .member-list .members {\n    max-height: 300px;\n    overflow-y: auto;\n    padding: 5px 0px;\n}\n.member-select .member-list .members .member {\n    font-size: 14px;\n    cursor: pointer;\n    padding: 7px 5px;\n    border-bottom: 1px dashed #e2e8f0;\n}\n.member-select .member-list .members .member:hover {\n    background-color: #e0e7ff;\n    transition: 200ms;\n}\n.member-select .member-list .members::-webkit-scrollbar {\n    width: 5px;\n}\n.member-select.open .member-list {\n    display: block;\n}\n\n.search-container {\n    cursor: default;\n}\n.search-container .btn.btn-search {\n    border: 1px solid #cbd5e1;\n    background-color: #f9fafb;\n    font-weight: 600;\n    color: #4f46e5;\n}\n.search-container .btn.btn-search:focus {\n    box-shadow: none;\n}\n.search-container .btn.btn-search:active {\n    background-color: #f3f4f6;\n}\n.search-container .search-form {\n    margin-bottom: 15px;\n}\n.search-container .search-form .form-group .input-group {\n    border-bottom: 1px solid #e2e8f0;\n}\n.search-container .search-form .form-group .input-group .input-group-text {\n    background: none;\n    border: none;\n}\n.search-container .search-form .form-group .input-group .form-control {\n    height: 50px;\n    border: none;\n    font-size: 16px;\n}\n.search-container .search-result {\n    max-height: 70vh;\n    overflow-y: auto;\n    text-align: left;\n}\n.search-container .search-result .rs-count {\n    margin-bottom: 10px;\n}\n.search-container .search-result .search-items .search-item {\n    margin-bottom: 10px;\n    padding: 5px;\n}\n.search-container .search-result .search-items .search-item a {\n    display: flex;\n    width: 100%;\n}\n.search-container .search-result .search-items .search-item a .search-img img {\n    width: 50px;\n    border-radius: 5px;\n}\n.search-container .search-result .search-items .search-item a .search-content {\n    margin-left: 10px;\n}\n.search-container .search-result .search-items .search-item a .search-content h5 {\n    color: #1E293B;\n    font-size: 16px;\n    font-weight: 500;\n}\n.search-container .search-result .search-items .search-item a .search-content p {\n    color: #475569;\n    font-size: 14px;\n}\n.search-container .search-result .search-items .search-item:hover {\n    background-color: #f9fafb;\n}\n.search-container .search-result .search-items .search-item:hover a h5 {\n    color: #4f46e5;\n}\n.search-container .search-result .search-items .search-item:hover a p {\n    color: #1E293B;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -43501,9 +43506,9 @@ function toDate(argument) {
 
 /***/ }),
 
-/***/ "./resources/js/assets/images/logo.svg":
+/***/ "./resources/js/assets/images/logo.png":
 /*!*********************************************!*\
-  !*** ./resources/js/assets/images/logo.svg ***!
+  !*** ./resources/js/assets/images/logo.png ***!
   \*********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
@@ -43512,7 +43517,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.svg?e999bc5bfcc7ce8bea58175f8b410937");
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ("/images/logo.png?ebf451235ba983202850f0db6246ef8f");
 
 /***/ }),
 

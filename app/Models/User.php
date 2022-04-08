@@ -244,4 +244,13 @@ class User extends Authenticatable
     {
         return $this->role->name;
     }
+    public function getPhotoAttribute($value)
+    {
+        if($value) {
+            return URL::to('/').'/'.$value;
+        }
+
+        return asset('images/user.png');
+    }
+
 }

@@ -16,7 +16,7 @@ class CreateDpsFinesTable extends Migration
         Schema::create('dps_fines', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('dps_transaction_id');
-            $table->double('amount', 8, 2)->default(0);
+            $table->double('amount', 10, 2)->default(0);
             $table->boolean('is_paid')->default(false);
             $table->timestamps();
             $table->foreign('dps_transaction_id')->references('id')->on('dps_transactions')->onDelete('cascade');

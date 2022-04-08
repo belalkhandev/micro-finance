@@ -43,7 +43,11 @@ class UserRepository implements UserRepositoryInterface {
         $user->name = $request->input('name');
         $user->phone = $request->input('phone');
         $user->email = $request->input('email');
-        $user->password = app('hash')->make($request->input('password'));
+
+        if ($request->input('password')) {
+            $user->password = app('hash')->make($request->input('password'));
+        }
+
         $user->updated_by = Auth::guard('sanctum')->user()->id;
         if ($user->save()) {
             if ($user->roles()->first()->id != $request->input('role_id')) {

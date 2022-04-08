@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->unsignedBigInteger('expense_category_id')->nullable();
             $table->string('title')->nullable();
             $table->text('description')->nullable();
-            $table->double('amount', 8, 2);
+            $table->double('amount', 10, 2);
             $table->enum('expense_type', ['assets', 'liabilities', 'regular'])->default('regular');
             $table->date('expense_date')->nullable();
             $table->boolean('is_active')->default(true);

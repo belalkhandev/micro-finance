@@ -676,8 +676,8 @@ table {
     margin-bottom: 15px;
 }
 .sidebar .logo img {
-    width: 150px;
-    margin: 0 auto 30px auto;
+    width: 85px;
+    margin: 0 auto 20px auto;
 }
 .sidebar .logo h2 {
     margin-top: 10px;
@@ -689,7 +689,7 @@ table {
     margin-bottom: 15px;
     background-color: #6366f1;
     color: #ffffff;
-    padding: 15px 10px;
+    padding: 10px;
     border-radius: 5px;
     display: flex;
     align-items: center;
@@ -697,6 +697,8 @@ table {
 }
 .sidebar .user .user-img img {
     width: 40px;
+    height: 40px;
+    border-radius: 50px;
 }
 .sidebar .user .user-info h3 {
     font-size: 18px;

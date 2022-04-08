@@ -21,8 +21,8 @@ class CreateDpsTransactionsTable extends Migration
             $table->enum('transaction_type', ['deposit', 'withdraw'])->default('deposit');
             $table->date('transaction_date');
             $table->date('due_date')->nullable();
-            $table->double('amount', 8, 2)->default(0);
-            $table->double('balance', 8, 2)->default(0);
+            $table->double('amount', 10, 2)->default(0);
+            $table->double('balance', 10, 2)->default(0);
             $table->boolean('is_paid')->default(false);
             $table->text('comment')->nullable();
             $table->timestamps();
