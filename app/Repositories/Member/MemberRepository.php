@@ -44,6 +44,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->member_type = $request->input('member_type');
         $member->member_group_id = $request->input('group');
         $member->day = $request->input('day');
+        $member->is_active = $request->input('is_active');
 
         //upload photo
         if ($request->hasFile('member_photo')) {
@@ -83,6 +84,7 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->member_type = $request->input('member_type');
         $member->member_group_id = $request->input('group');
         $member->day = $request->input('day');
+        $member->is_active = $request->input('is_active');
 
         if ($request->hasFile('photo')) {
             //delete previous profile photo

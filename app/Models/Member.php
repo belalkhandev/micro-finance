@@ -43,7 +43,7 @@ class Member extends Model
 
     public function getMainPhotoAttribute()
     {
-        if($this->attributes['photo']) {
+        if(isset($this->attributes['photo']) && $this->attributes['photo']) {
             return base_path('public/'.$this->attributes['photo']);
         }
 

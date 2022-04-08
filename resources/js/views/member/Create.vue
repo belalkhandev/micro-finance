@@ -15,14 +15,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Name *</label>
+                                <label>Name  <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.name" placeholder="Enter name" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.name ? errors.name[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Father/Spouse name *</label>
+                                <label>Father/Spouse name  <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.father_name" placeholder="Enter father/spouse name" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.father_name ? errors.father_name[0] : '' }}</span>
                             </div>
@@ -38,8 +38,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Gender *</label>
-                                <select v-model="form.gender" class="form-control">
+                                <label>Gender  <span class="text-danger">*</span></label>
+                                <select v-model="form.gender" class="form-select">
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Phone</label>
+                                <label>Phone <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.phone" placeholder="Enter phone" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.phone ? errors.phone[0] : '' }}</span>
                             </div>
@@ -78,7 +78,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>District</label>
-                                <select class="form-control" v-model="form.district_id">
+                                <select class="form-select" v-model="form.district_id">
                                     <option value="">Select</option>
                                     <option v-for="(district, i) in fetchDistricts" :value="district.id" :key="i">
                                         <span v-if="lang == 'en'">{{ district.name }}</span>
@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Upazilla</label>
-                                <select class="form-control" v-model="form.upazilla_id">
+                                <select class="form-select" v-model="form.upazilla_id">
                                     <option value="">Select</option>
                                     <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id" :key="i">
                                         <span v-if="lang == 'en'">{{ upazilla.name }}</span>
@@ -104,7 +104,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Union</label>
-                                <select class="form-control" v-model="form.union_id">
+                                <select class="form-select" v-model="form.union_id">
                                     <option value="">Select</option>
                                     <option v-for="(union, i) in fetchUnions" :value="union.id" :key="i">
                                         <span v-if="lang == 'en'">{{ union.name }}</span>
@@ -118,8 +118,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Post-Office</label>
-                                <select class="form-control" v-model="form.post_office_id">
+                                <label>Post-Office <span class="text-danger">*</span></label>
+                                <select class="form-select" v-model="form.post_office_id">
                                     <option value="">Select</option>
                                     <option v-for="(post_office, i) in fetchPostOffices" :value="post_office.id" :key="i">
                                         <span v-if="lang == 'en'">{{ post_office.name }}</span>
@@ -131,8 +131,8 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Village</label>
-                                <select class="form-control" v-model="form.village_id">
+                                <label>Village <span class="text-danger">*</span></label>
+                                <select class="form-select" v-model="form.village_id">
                                     <option value="">Select</option>
                                     <option v-for="(village, i) in fetchVillages" :value="village.id" :key="i">
                                         <span v-if="lang == 'en'">{{ village.name }}</span>
@@ -157,22 +157,22 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Joining Date</label>
+                                <label>Joining Date <span class="text-danger">*</span></label>
                                 <Datepicker v-model="joining_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date" />
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.joining_date ? errors.joining_date[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Account No</label>
+                                <label>Account No <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.account_no" placeholder="Enter account no" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.account_no ? errors.account_no[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Member Type</label>
-                                <select v-model="form.member_type" class="form-control">
+                                <label>Member Type <span class="text-danger">*</span></label>
+                                <select v-model="form.member_type" class="form-select">
                                     <option value="">Select</option>
                                     <option v-for="(type, i) in memberTypes" :key="i" :value="type.code">
                                         {{ lang === 'bn' ? type.bn_name : type.name }}
@@ -186,7 +186,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Group</label>
-                                <select v-model="form.group" class="form-control">
+                                <select v-model="form.group" class="form-select" id="memberGroup" disabled>
                                     <option value="">Select Group</option>
                                     <option v-for="(group, i) in groups" :key="i" :value="group.id">
                                         {{ '('+group.group_no+') '+group.group_name + '-'+group.day }}
@@ -197,14 +197,23 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Day</label>
-                                <select v-model="form.day" class="form-control">
+                                <label>Day <span class="text-danger">*</span></label>
+                                <select v-model="form.day" class="form-select">
                                     <option value="">Select</option>
                                     <option v-for="(day, i) in days" :key="i" :value="day.code">
                                         {{ day.name }}
                                     </option>
                                 </select>
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.day ? errors.day[0] : '' }}</span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select v-model="form.is_active" class="form-select">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -214,14 +223,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Name *</label>
+                                <label>Name  <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.nominee_name" placeholder="Enter name" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.nominee_name ? errors.nominee_name[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Father/Spouse name *</label>
+                                <label>Father/Spouse name  <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.nominee_father_name" placeholder="Enter father/spouse name" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.nominee_father_name ? errors.nominee_father_name[0] : '' }}</span>
                             </div>
@@ -237,8 +246,8 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Gender *</label>
-                                <select v-model="form.nominee_gender" class="form-control">
+                                <label>Gender  <span class="text-danger">*</span></label>
+                                <select v-model="form.nominee_gender" class="form-select">
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
@@ -248,7 +257,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Phone</label>
+                                <label>Phone <span class="text-danger">*</span></label>
                                 <input type="text" v-model="form.nominee_phone" placeholder="Enter phone" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.nominee_phone ? errors.nominee_phone[0] : '' }}</span>
                             </div>
@@ -329,11 +338,12 @@ export default ({
                 post_office_id: '',
                 village_id: '',
                 address: '',
-                joining_date: '',
+                joining_date: this.datePickerFormat(new Date()),
                 account_no: '',
                 member_type: '',
                 group: '',
                 day:'',
+                is_active: 1,
                 nominee_name:'',
                 nominee_father_name: '',
                 nominee_mother_name: '',
@@ -421,8 +431,12 @@ export default ({
 
         memberType () {
             if (this.form.member_type == 'loan_weekly' || this.form.member_type == 'loan_monthly') {
+                $('#memberGroup').prop("disabled", false);
                 return 'Guarantor';
             }
+
+            $('#memberGroup').prop("disabled", true);
+            this.form.group = "";
 
             return 'Nominee';
         }
