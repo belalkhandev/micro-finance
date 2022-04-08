@@ -37,7 +37,9 @@ class PdfController extends Controller
             'transactions'=> $applications,
             'title'=>"All Dps Report"
         ];
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('dps.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('dps.pdf');
     }
 
     public function allLoan()
@@ -48,7 +50,9 @@ class PdfController extends Controller
             'title'=>"All Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allLoan.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('allLoan.pdf');
     }
 
     public function allCurrentDps()
@@ -59,7 +63,9 @@ class PdfController extends Controller
             'title'=>"Current Dps Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allCurrentDps.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('allCurrentDps.pdf');
     }
 
     public function allPaidDps()
@@ -70,7 +76,9 @@ class PdfController extends Controller
             'title'=>"Paid Dps Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allPaidDps.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('allPaidDps.pdf');
     }
 
     public function allDueDps()
@@ -81,7 +89,9 @@ class PdfController extends Controller
             'title'=>"Due Dps Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allDueDps.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+            'format' => 'A4-l'
+        ])->stream('allDueDps.pdf');
     }
 
     public function allCurrentLoan()
@@ -92,7 +102,9 @@ class PdfController extends Controller
             'title'=>"Current Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allCurrentLoan.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'),[], [
+            'format' => 'A4-l'
+        ])->stream('allCurrentLoan.pdf');
     }
 
     public function allPaidLoan()
@@ -103,7 +115,9 @@ class PdfController extends Controller
             'title'=>"Paid Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allPaidLoan.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'),[], [
+            'format' => 'A4-l'
+        ])->stream('allPaidLoan.pdf');
     }
 
     public function allDueLoan()
@@ -114,6 +128,8 @@ class PdfController extends Controller
             'title'=>"Due Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'))->stream('allDueLoan.pdf');
+        return Pdf::loadview('pdf.transaction', compact('data'),[], [
+            'format' => 'A4-l'
+        ])->stream('allDueLoan.pdf');
     }
 }

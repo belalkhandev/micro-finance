@@ -26,6 +26,10 @@
         width: 825px;
     }
 
+    .invoice-wrapper.landscape {
+        width: 1122px;
+    }
+
     header, .invoice-to {
         overflow: hidden;
         border-bottom: 1px solid #f3f3f3;
@@ -52,6 +56,11 @@
         text-align: center;
         margin-left: 15px;
     }
+
+    .landscape .header-content {
+        width: 900px;
+    }
+
     .header-content h2 {
         font-size: 24px;
         font-weight: bold;
