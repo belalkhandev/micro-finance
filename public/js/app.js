@@ -27540,6 +27540,15 @@ var routes = [{
     title: 'Member loan transaction history'
   }
 }, {
+  path: '/members/savings/account/:member_id',
+  name: 'MemberSavingsProfile',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_member_SavingsAccount_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/SavingsAccount.vue */ "./resources/js/views/member/SavingsAccount.vue"));
+  },
+  meta: {
+    title: 'Member savings  history'
+  }
+}, {
   path: '/members/applications/:member_id',
   name: 'MemberApplications',
   component: function component() {
@@ -27780,7 +27789,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
 /* harmony import */ var _modules_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/auth */ "./resources/js/store/modules/auth/index.js");
 /* harmony import */ var _modules_location__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/location */ "./resources/js/store/modules/location/index.js");
 /* harmony import */ var _modules_user__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/user */ "./resources/js/store/modules/user/index.js");
@@ -27793,6 +27802,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_transaction__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/transaction */ "./resources/js/store/modules/transaction/index.js");
 /* harmony import */ var _modules_report__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/report */ "./resources/js/store/modules/report/index.js");
 /* harmony import */ var _modules_dashboard__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./modules/dashboard */ "./resources/js/store/modules/dashboard/index.js");
+/* harmony import */ var _modules_savings__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modules/savings */ "./resources/js/store/modules/savings/index.js");
 
 
 
@@ -27806,7 +27816,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_12__.createStore)({
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,vuex__WEBPACK_IMPORTED_MODULE_13__.createStore)({
   state: {
     validation_errors: null,
     error_message: null
@@ -27841,7 +27852,8 @@ __webpack_require__.r(__webpack_exports__);
     expenseCategory: _modules_expense_category__WEBPACK_IMPORTED_MODULE_8__["default"],
     transaction: _modules_transaction__WEBPACK_IMPORTED_MODULE_9__["default"],
     dashboard: _modules_dashboard__WEBPACK_IMPORTED_MODULE_11__["default"],
-    report: _modules_report__WEBPACK_IMPORTED_MODULE_10__["default"]
+    report: _modules_report__WEBPACK_IMPORTED_MODULE_10__["default"],
+    savings: _modules_savings__WEBPACK_IMPORTED_MODULE_12__["default"]
   }
 }));
 
@@ -30499,6 +30511,221 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee8);
+      }))();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./resources/js/store/modules/savings/index.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/store/modules/savings/index.js ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  namespaced: true,
+  state: {
+    savings: null
+  },
+  getters: {
+    savings: function savings(state) {
+      return state.savings;
+    }
+  },
+  mutations: {
+    SET_SAVINGS: function SET_SAVINGS(state, savings) {
+      state.savings = savings;
+    },
+    SET_SAVING: function SET_SAVING(state, saving) {
+      if (state.savings) {
+        state.savings.unshift(saving);
+      } else {
+        state.savings = [saving];
+      }
+    },
+    UPDATE_SAVING: function UPDATE_SAVING(state, saving) {
+      var item = state.savings.find(function (item) {
+        return item.id === saving.id;
+      });
+      Object.assign(item, saving);
+    },
+    DELETE_SAVING: function DELETE_SAVING(state, item_id) {
+      var saving = state.savings.find(function (item) {
+        return item.id == item_id;
+      });
+
+      if (saving) {
+        state.savings.splice(state.savings.indexOf(saving), 1);
+      }
+    }
+  },
+  actions: {
+    //saving actions
+    getSavings: function getSavings(_ref, member_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                commit = _ref.commit;
+                _context.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/savings/list/' + member_id);
+
+              case 3:
+                res = _context.sent;
+
+                if (res.data.status) {
+                  commit('SET_SAVINGS', res.data.savings);
+                }
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    createSaving: function createSaving(_ref2, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                commit = _ref2.commit;
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/savings/create', formdata);
+
+              case 3:
+                res = _context2.sent;
+
+                if (res.data.status) {
+                  commit('SET_SAVING', res.data.saving);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    editSaving: function editSaving(_ref3, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                commit = _ref3.commit;
+                _context3.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('member/savings/update/' + formdata.saving_id, formdata);
+
+              case 3:
+                res = _context3.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_SAVING', res.data.saving);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
+    },
+    deleteSaving: function deleteSaving(_ref4, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                commit = _ref4.commit;
+                _context4.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('member/savings/delete/' + item_id);
+
+              case 3:
+                res = _context4.sent;
+
+                if (res.data.status) {
+                  commit('DELETE_SAVING', item_id);
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   }
@@ -85571,7 +85798,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense-category_Index_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_SavingsAccount_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense-category_Index_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

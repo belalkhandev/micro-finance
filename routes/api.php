@@ -10,6 +10,7 @@ use App\Http\Controllers\Api\LoanController;
 use App\Http\Controllers\Api\MemberController;
 use App\Http\Controllers\Api\MemberGroupController;
 use App\Http\Controllers\Api\PostOfficeController;
+use App\Http\Controllers\Api\SavingsController;
 use App\Http\Controllers\Api\TransactionController;
 use App\Http\Controllers\Api\UsersController;
 use App\Http\Controllers\Api\VillageController;
@@ -107,6 +108,17 @@ Route::group([
         $route->delete('/delete/{id}', [MemberController::class, 'destroy']);
         $route->get('/transactions/loan/{member_id}', [TransactionController::class, 'memberLoanTransactions']);
         $route->get('/transactions/dps/{member_id}', [TransactionController::class, 'memberDpsTransactions']);
+    });
+
+    //member group
+    Route::group([
+        'prefix' => 'member/savings'
+    ], function($route) {
+        $route->get('list', [SavingsController::class, 'index']);
+        $route->get('/list/{member_id}', [SavingsController::class, 'memberSavings']);
+        $route->post('/create', [SavingsController::class, 'store']);
+        $route->put('/update/{id}', [SavingsController::class, 'update']);
+        $route->delete('/delete/{id}', [SavingsController::class, 'destroy']);
     });
 
     Route::group([

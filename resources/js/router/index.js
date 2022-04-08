@@ -122,6 +122,14 @@ const routes = [
         }
     },
     {
+        path: '/members/savings/account/:member_id',
+        name: 'MemberSavingsProfile',
+        component: () => import('../views/member/SavingsAccount.vue'),
+        meta: {
+            title: 'Member savings  history'
+        }
+    },
+    {
         path: '/members/applications/:member_id',
         name: 'MemberApplications',
         component: () => import('../views/member/Applications.vue'),

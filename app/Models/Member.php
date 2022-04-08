@@ -10,7 +10,11 @@ class Member extends Model
 {
     use HasFactory;
 
-    protected $appends = ['main_photo'];
+    protected $hidden = [
+        'savings'
+    ];
+
+    protected $appends = ['main_photo', 'savings_deposit', 'savings_withdraw'];
 
     public function nominee()
     {
@@ -74,5 +78,28 @@ class Member extends Model
         }
 
         return 'Not updated';
+    }
+
+    public function savings()
+    {
+        return $this->hasMany(Savings::class, 'member_id', 'id');
+    }
+
+    public function getSavingsDepositAttribute()
+    {
+        if ($this->savings) {
+            return $this->savings->where('savings_type', 'deposit')->sum('amount');
+        }
+
+        return 0;
+    }
+
+    public function getSavingsWithdrawAttribute()
+    {
+        if ($this->savings) {
+            return $this->savings->where('savings_type', 'withdraw')->sum('amount');
+        }
+
+        return 0;
     }
 }

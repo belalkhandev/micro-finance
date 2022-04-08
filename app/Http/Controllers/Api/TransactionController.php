@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\DpsApplication;
 use App\Repositories\DpsTransaction\DpsTransactionRepositoryInterface;
 use App\Repositories\LoanTransaction\LoanTransactionRepositoryInterface;
+use App\Repositories\Savings\SavingsRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -13,11 +14,13 @@ class TransactionController extends Controller
 {
     protected $dps;
     protected $loan;
+    protected $savings;
 
-    public function __construct(DpsTransactionRepositoryInterface $dps_tr, LoanTransactionRepositoryInterface $loan_tr)
+    public function __construct(DpsTransactionRepositoryInterface $dps_tr, LoanTransactionRepositoryInterface $loan_tr, SavingsRepositoryInterface $savings)
     {
         $this->dps = $dps_tr;
         $this->loan = $loan_tr;
+        $this->savings = $savings;
     }
 
     /**
@@ -165,6 +168,10 @@ class TransactionController extends Controller
     public function loanCollection(Request $request)
     {
         $transaction = $this->loan->payment($request);
+
+        if ($request->input('savings_type') && $request->input('savings_amount')) {
+            $this->savings->storeFromLoan($request);
+        }
 
         if ($transaction) {
             return response()->json([

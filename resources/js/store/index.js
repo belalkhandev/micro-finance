@@ -11,6 +11,7 @@ import expenseCategory from "./modules/expense-category"
 import transaction from "./modules/transaction"
 import report from "./modules/report"
 import dashboard from "./modules/dashboard";
+import savings from "./modules/savings";
 
 export default createStore({
     state: {
@@ -50,6 +51,6 @@ export default createStore({
         expense, expenseCategory,
         transaction,
         dashboard,
-        report
+        report, savings
     }
 })

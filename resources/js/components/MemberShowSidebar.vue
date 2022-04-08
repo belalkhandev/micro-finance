@@ -35,6 +35,12 @@
                                 <i class='bx bx-chevrons-right'></i>
                             </router-link>
                         </li>
+                        <li>
+                            <router-link :to="{ name:'MemberSavingsProfile', params: { member_id: member.id }}">
+                                <span>Savings Account</span>
+                                <i class='bx bx-chevrons-right'></i>
+                            </router-link>
+                        </li>
                     </ul>
                 </div>
                 <div class="member-account mb-2">

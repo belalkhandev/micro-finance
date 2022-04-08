@@ -2,7 +2,9 @@
 
 namespace App\Repositories\Savings;
 
+use App\Models\LoanTransaction;
 use App\Models\Savings;
+use Carbon\Carbon;
 
 class SavingsRepository implements SavingsRepositoryInterface {
 
@@ -45,7 +47,24 @@ class SavingsRepository implements SavingsRepositoryInterface {
         }
 
         return false;
+    }
 
+    public function storeFromLoan($request)
+    {
+        $transaction = LoanTransaction::find($request->input('transaction_id'));
+
+        $savings = new Savings();
+        $savings->member_id = $transaction->member_id;
+        $savings->savings_type = $request->input('savings_type');
+        $savings->amount = $request->input('savings_amount');
+        $savings->savings_date = $request->input('savings_date') ? databaseFormattedDate($request->input('savings_date')) : databaseFormattedDate(Carbon::now());
+        $savings->loan_transaction_id = $transaction->id;
+
+        if ($savings->save()) {
+            return $savings;
+        }
+
+        return false;
     }
 
     public function update($request, $id)
@@ -81,7 +100,6 @@ class SavingsRepository implements SavingsRepositoryInterface {
     public function find($id)
     {
         $savings = Savings::find($id);
-
         if ($savings) {
             return $savings;
         }
