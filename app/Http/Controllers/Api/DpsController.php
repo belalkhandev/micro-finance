@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\DpsApplication;
 use App\Repositories\DpsApplication\DpsApplicationRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -235,6 +236,23 @@ class DpsController extends Controller
         return response()->json([
             'status' => false,
             'message' => 'Failed to delete Dps application'
+        ]);
+    }
+
+    public function dpsApplicationCalculation()
+    {
+        $accounts = $this->dps->all();
+        $total_amounts = $accounts->sum('total_amount');
+        $collections = $accounts->sum('balance');
+        $dues = $total_amounts - $collections;
+
+        return response()->json([
+            'status' => true,
+            'total' => [
+                'total_amounts' => $total_amounts,
+                'collections' => $collections,
+                'dues' => $dues,
+            ]
         ]);
     }
 

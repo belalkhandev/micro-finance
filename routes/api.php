@@ -112,6 +112,7 @@ Route::group([
     Route::group([
         'prefix' => 'application/dps'
     ], function($route) {
+        $route->get('/statistics', [DpsController::class, 'dpsApplicationCalculation']);
         $route->get('/list', [DpsController::class, 'index']);
         $route->post('/create', [DpsController::class, 'store']);
         $route->put('/update/{id}', [DpsController::class, 'update']);
@@ -131,6 +132,7 @@ Route::group([
     Route::group([
         'prefix' => 'application/loan'
     ], function($route) {
+        $route->get('/statistics', [LoanController::class, 'loanApplicationCalculation']);
         $route->get('/list', [LoanController::class, 'index']);
         $route->post('/create', [LoanController::class, 'store']);
         $route->put('/update/{id}', [LoanController::class, 'update']);

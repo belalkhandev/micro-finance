@@ -62,9 +62,9 @@
                 </div>
                 <div class="box-footer">
                     <!-- pagination -->
-                    <div class="pagination" v-if="dpsApplications && dpsApplications.length > per_page">
+                    <div class="pagination" v-if="filterDpsApplications && filterDpsApplications.length > per_page">
                         <p class="pagination-data">
-                            Page no {{ page }} Show {{ page === pages.length ? (dpsApplications ? dpsApplications.length : 0) : page*(filterDpsApplications ? filterDpsApplications.length : 0) }} of {{ dpsApplications ? dpsApplications.length : 0 }} Data
+                            Page no {{ page }} Show {{ page === pages.length ? (filterDpsApplications ? filterDpsApplications.length : 0) : page*(filterDpsApplications ? filterDpsApplications.length : 0) }} of {{ filterDpsApplications ? filterDpsApplications.length : 0 }} Data
                         </p>
                         <ul>
                             <li class="page-item">
@@ -144,9 +144,9 @@
                 </div>
                 <div class="box-footer">
                     <!-- pagination -->
-                    <div class="pagination" v-if="loanApplications && loanApplications.length > per_page">
+                    <div class="pagination" v-if="filterLoanApplications && filterLoanApplications.length > per_page">
                         <p class="pagination-data">
-                            Page no {{ page }} Show {{ page === pages.length ? (loanApplications ? loanApplications.length : 0) : page*(filterLoanApplications ? filterLoanApplications.length : 0) }} of {{ loanApplications ? loanApplications.length : 0 }} Data
+                            Page no {{ page }} Show {{ page === pages.length ? (filterLoanApplications ? filterLoanApplications.length : 0) : page*(filterLoanApplications ? filterLoanApplications.length : 0) }} of {{ filterLoanApplications ? filterLoanApplications.length : 0 }} Data
                         </p>
                         <ul>
                             <li class="page-item">

@@ -39,7 +39,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->created_by = Auth::guard('sanctum')->user()->id;
 
         if ($dps->save()) {
-            return $dps->with('member');
+            return $dps;
         }
 
         return false;

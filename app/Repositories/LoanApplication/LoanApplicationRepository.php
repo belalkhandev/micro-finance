@@ -29,7 +29,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         $loan->total_amount = $request->input('total_loan');
         $loan->installment = $request->input('total_installment');
         $loan->installment_amount = $request->input('installment_amount');
-        $loan->balance = $request->input('total_loan');
+        $loan->balance = 0;
         $loan->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {
@@ -58,7 +58,6 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         $loan->total_amount = $request->input('total_loan');
         $loan->installment = $request->input('total_installment');
         $loan->installment_amount = $request->input('installment_amount');
-        $loan->balance = $request->input('total_loan');
         $loan->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {

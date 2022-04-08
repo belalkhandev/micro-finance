@@ -124,6 +124,12 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         }
 
         if ($transaction->save()) {
+            //update dps_application balance
+            $all_transactions = $this->all()->where('is_paid', 1)->sum('amount');
+            $dps_application = DpsApplication::find($transaction->dps_application_id);
+            $dps_application->balance = $all_transactions;
+            $dps_application->save();
+
             return $transaction;
         }
 

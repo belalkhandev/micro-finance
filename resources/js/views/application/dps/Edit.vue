@@ -50,7 +50,7 @@
                                     <label class="col-form-label">Deposit Amount</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.dps_amount" placeholder="Enter deposit amount" class="form-control" @keyup="dpsCalculation">
+                                    <input type="number" v-model="form.dps_amount" placeholder="Enter deposit amount" class="form-control" @keyup="dpsCalculation">
                                     <span class="text-danger text-sm" v-if="errors">{{ errors.dps_amount ? errors.dps_amount[0] : '' }}</span>
                                 </div>
                             </div>
@@ -61,7 +61,7 @@
                                     <label class="col-form-label">Year</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.year" placeholder="0" class="form-control" @keyup="dpsCalculation">
+                                    <input type="number" v-model="form.year" placeholder="0" class="form-control" @keyup="dpsCalculation">
                                     <span class="text-danger text-sm" v-if="errors">{{ errors.year ? errors.year[0] : '' }}</span>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                     <label class="col-form-label">Total Receive/Getting</label>
                                 </div>
                                 <div class="col-md-8">
-                                    <input type="text" v-model="form.receiving" placeholder="0" class="form-control" @keyup="dpsCalculation">
+                                    <input type="number" v-model="form.receiving" placeholder="0" class="form-control" @keyup="dpsCalculation">
                                     <span class="text-danger text-sm" v-if="errors">{{ errors.receiving ? errors.receiving[0] : '' }}</span>
                                 </div>
                             </div>

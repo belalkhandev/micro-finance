@@ -236,4 +236,22 @@ class LoanController extends Controller
             'message' => 'Failed to delete Loan application'
         ]);
     }
+
+
+    public function loanApplicationCalculation()
+    {
+        $accounts = $this->loan->all();
+        $total_amounts = $accounts->sum('total_amount');
+        $collections = $accounts->sum('balance');
+        $dues = $total_amounts - $collections;
+
+        return response()->json([
+            'status' => true,
+            'total' => [
+                'total_amounts' => $total_amounts,
+                'collections' => $collections,
+                'dues' => $dues,
+            ]
+        ]);
+    }
 }

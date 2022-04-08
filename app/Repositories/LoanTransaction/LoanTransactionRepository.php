@@ -120,6 +120,14 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         }
 
         if ($transaction->save()) {
+            //update loan application balance
+
+            //update dps_application balance
+            $all_transactions = $this->all()->where('is_paid', 1)->sum('amount');
+            $loan_application = LoanApplication::find($transaction->loan_application_id);
+            $loan_application->balance = $all_transactions;
+            $loan_application->save();
+
             return $transaction;
         }
 

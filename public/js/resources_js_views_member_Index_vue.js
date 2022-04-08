@@ -99,9 +99,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.getMembers().then(function () {
         _this3.setPages();
       });
-    } else {
-      this.setPages();
     }
+
+    this.setPages();
   }
 });
 

@@ -310,9 +310,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.getExpenses().then(function () {
         _this2.setPages();
       });
-    } else {
-      this.setPages();
     }
+
+    this.setPages();
   }
 });
 

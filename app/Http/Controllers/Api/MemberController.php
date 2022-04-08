@@ -108,6 +108,7 @@ class MemberController extends Controller
         if ($member) {
             //store nominee
             $this->member->storeNominee($request, $member->id);
+            $member = $this->member->find($member->id);
             return response()->json([
                 'status' => true,
                 'member' => $member,

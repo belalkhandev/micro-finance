@@ -3,18 +3,27 @@ import axios from "axios";
 export default {
     namespaced: true,
     state: {
-        applications: null
+        applications: null,
+        statistics: null,
     },
 
     getters: {
         applications(state) {
             return state.applications
+        },
+
+        statistics(state) {
+            return state.statistics
         }
     },
 
     mutations: {
         SET_APPLICATIONS(state, applications) {
             state.applications = applications
+        },
+
+        SET_STATISTICS(state, total) {
+            state.statistics = total
         },
 
         SET_APPLICATION(state, application) {
@@ -45,6 +54,15 @@ export default {
 
             if (res.data.status) {
                 commit('SET_APPLICATIONS', res.data.applications)
+            }
+        },
+
+        //application actions
+        async getDpsStatistics({ commit }) {
+            const res = await axios.get('application/dps/statistics')
+
+            if (res.data.status) {
+                commit('SET_STATISTICS', res.data.total)
             }
         },
 

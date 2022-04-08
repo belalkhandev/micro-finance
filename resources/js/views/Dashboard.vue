@@ -154,7 +154,7 @@
                                 <td>{{ numberFormat(transaction.balance) }}</td>
                                 <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
                                 <td>{{ userFormattedDate(transaction.due_date) }}</td>
-                                <td>{{ userFormattedDate(transaction.created_at) }}</td>
+                                <td>{{ userFormattedDate(transaction.updated_at) }}</td>
                                 <td>
                                     <span v-if="transaction.is_paid" class="text-success">Paid</span>
                                     <span v-else class="text-danger">Unpaid</span>
@@ -215,7 +215,7 @@
                                 <td>{{ numberFormat(transaction.balance) }}</td>
                                 <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
                                 <td>{{ userFormattedDate(transaction.due_date) }}</td>
-                                <td>{{ userFormattedDate(transaction.created_at) }}</td>
+                                <td>{{ userFormattedDate(transaction.updated_at) }}</td>
                                 <td>
                                     <span v-if="transaction.is_paid" class="text-success">Paid</span>
                                     <span v-else class="text-danger">Unpaid</span>
@@ -265,20 +265,20 @@ export default {
         fetchLatestLoanTransactions() {
             if (!this.loan_transactions) {
                 this.getLoanTransaction().then(() => {
-                    return this.loan_transactions.slice(0, 9);
+                    return this.loan_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
                 })
             } else {
-                return this.loan_transactions.slice(0, 9);
+                return this.loan_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
             }
         },
 
         fetchLatestDpsTransactions() {
             if (!this.dps_transactions) {
                 this.getDpsTransactions().then(() => {
-                    return this.dps_transactions.slice(0, 9);
+                    return this.dps_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
                 })
             } else {
-                return this.dps_transactions.slice(0, 9);
+                return this.dps_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
             }
         }
     },

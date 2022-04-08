@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="mb-4">
-                <div class="row">
+                <div class="row" v-if="loan_total">
                     <div class="col-md-4">
                         <div class="widget widget-primary animate__animated animate__fadeIn">
                             <div class="widget-header">
@@ -13,7 +13,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>0</h3>
+                                    <h3>{{ loan_total.total_amounts }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>0</h3>
+                                    <h3>{{ loan_total.collections }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>0</h3>
+                                    <h3>{{ loan_total.dues }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -165,7 +165,8 @@ export default ({
 
     computed: {
         ...mapGetters({
-            applications: 'loan/applications'
+            applications: 'loan/applications',
+            loan_total: 'loan/statistics',
         }),
 
         filterApplications() {
@@ -189,6 +190,7 @@ export default ({
     methods: {
         ...mapActions({
             getApplications: 'loan/getApplications',
+            getLoanStatistics: 'loan/getLoanStatistics',
             deleteApplication: 'loan/deleteApplication'
         }),
 
@@ -228,14 +230,15 @@ export default ({
     },
 
     mounted() {
-        this.getApplications();
-
         if (!this.applications) {
             this.getApplications().then(() => {
                 this.setPages();
             });
-            this.setPages();
         }
+
+        this.setPages();
+
+        this.getLoanStatistics();
     }
 
 

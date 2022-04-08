@@ -166,9 +166,9 @@ export default ({
             this.getExpenses().then(() => {
                 this.setPages();
             })
-        }else {
-            this.setPages();
         }
+
+        this.setPages();
     }
 
 
