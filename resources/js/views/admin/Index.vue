@@ -17,6 +17,7 @@
                             <th>#</th>
                             <th class="text-left">Name</th>
                             <th class="text-left">Photo</th>
+                            <th class="text-left">Email</th>
                             <th class="text-left">Phone</th>
                             <th class="text-left">Role</th>
                             <th class="text-left">Status</th>
@@ -28,11 +29,12 @@
                             <td>{{ ++i }}</td>
                             <td>{{ admin.name }}</td>
                             <td>
-                                <img v-if="admin.profile && admin.profile.photo" :src="admin.profile.photo" alt="" class="w-8">
-                                <spa v-else>No photo</spa>
+                                <img v-if="admin.profile" :src="admin.profile.photo" alt="" class="w-8">
+                                <img v-else src="../../assets/images/user.png" alt="" class="w-8">
                             </td>
+                            <td>{{ admin.email }}</td>
                             <td>{{ admin.phone && admin.phone != 'null' ? admin.phone : '' }}</td>
-                            <td>{{ admin.role_name }}</td>
+                            <td>{{ ucFirst(admin.role_name) }}</td>
                             <td>{{ admin.is_active ? 'Active' : 'Inactive' }}</td>
                             <td>
                                 <div class="action">
@@ -66,6 +68,7 @@ import { mapGetters, mapActions } from "vuex";
 import Create from "./Create";
 import Edit from "./Edit";
 import bootstrap from 'bootstrap/dist/js/bootstrap'
+import {helpers} from "../../mixin";
 
 export default ({
     name: "Index",
@@ -78,6 +81,8 @@ export default ({
             edit_admin: null,
         }
     },
+
+    mixins: [helpers],
 
     computed: {
         ...mapGetters({

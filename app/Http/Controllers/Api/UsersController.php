@@ -48,8 +48,12 @@ class UsersController extends Controller
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
             'role_id' => 'required',
-            'photo' => 'nullable|mimes:jpg,png,jpeg,gif'
+            'photo' => 'nullable'
         ];
+
+        if ($request->hasFile('photo')) {
+            $rules['photo'] = "mimes:jpg,jpeg,png";
+        }
 
         $validation = Validator::make($request->all(), $rules);
 
@@ -91,7 +95,7 @@ class UsersController extends Controller
             'role_id' => 'required',
         ];
 
-        if ($request->input('photo') && $request->input('photo') != 'null') {
+        if ($request->hasFile('photo') && $request->input('photo') != 'null') {
             $rules['photo'] = 'nullable|mimes:jpg,jpeg,png,gif';
         }
 
