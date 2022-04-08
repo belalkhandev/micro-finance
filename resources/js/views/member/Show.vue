@@ -10,10 +10,14 @@
                         <h5>Member Profile</h5>
                     </div>
                     <div class="action">
-                        <router-link :to="{name: 'EditMember', params: {member_id: member.id}}" class="btn btn-outline-secondary btn-sm">
+                        <router-link :to="{name: 'EditMember', params: {member_id: member.id}}" class="btn btn-warning btn-sm mr-2">
                             <i class="bx bx-edit"></i>
                             Edit Profile
                         </router-link>
+                        <a :href="'/download/member/profile/'+member.id" class="btn btn-secondary btn-sm" target="_blank">
+                            <i class="bx bxs-file-pdf"></i>
+                            Print Profile
+                        </a>
                     </div>
                 </div>
                 <div class="box-body">
@@ -31,7 +35,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Mother  name</p>
-                                    <h5>{{ member.mother_name }}</h5>
+                                    <h5>{{ member.mother_name && member.mother_name != "null" ? member.mother_name : "No" }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Phone</p>
@@ -43,7 +47,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>NID</p>
-                                    <h5>{{ member.nid }}</h5>
+                                    <h5>{{ member.nid && member.nid != "null" ? member.nid : "No" }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -60,7 +64,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>Mother  name</p>
-                                    <h5>{{ member.nominee.mother_name }}</h5>
+                                    <h5>{{ member.nominee.mother_name && member.nominee.mother_name != "null" ? member.nominee.mother_name : "No" }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Gender</p>
@@ -76,7 +80,7 @@
                                 </div>
                                 <div class="member-info">
                                     <p>NID</p>
-                                    <h5>{{ member.nominee.nid }}</h5>
+                                    <h5>{{ member.nominee.nid && member.nominee.nid != 'null' ? member.nominee.nid : 'No' }}</h5>
                                 </div>
                                 <div class="member-info">
                                     <p>Relation</p>
@@ -110,6 +114,27 @@
                                 <div class="member-info">
                                     <p>Day</p>
                                     <h5>{{ member.day }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="member-detail">
+                            <h3>Managed By User</h3>
+                            <div class="member-infos">
+                                <div class="member-info">
+                                    <p>Created By</p>
+                                    <h5>{{ member.created_by }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Last Updated By</p>
+                                    <h5>{{ member.updated_by  }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Created at</p>
+                                    <h5>{{ userFormattedDate(member.created_at) }}</h5>
+                                </div>
+                                <div class="member-info">
+                                    <p>Updated at</p>
+                                    <h5>{{ userFormattedDate(member.updated_at) }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +179,7 @@ export default({
     methods: {
         ...mapActions({
             getMembers: 'member/getMembers'
-        })
+        }),
     },
 
     mounted() {

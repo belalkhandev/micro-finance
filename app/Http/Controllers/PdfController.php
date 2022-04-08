@@ -26,7 +26,7 @@ class PdfController extends Controller
 
         return Pdf::loadview('pdf.member-profile', $data, [], [
             'format' => 'A4-P'
-        ])->download('member-profile.pdf');
+        ])->stream('member-'.$member->account_no.'.pdf');
 
     }
 

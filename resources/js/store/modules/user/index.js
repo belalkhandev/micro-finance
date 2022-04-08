@@ -24,7 +24,6 @@ export default {
         },
 
         SET_USER(state, user) {
-            console.log(user)
             if (state.users) {
                 state.users.unshift(user)
             }

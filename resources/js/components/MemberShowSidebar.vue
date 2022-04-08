@@ -61,7 +61,7 @@
                 </div>
                 <div class="member-download">
                     <h5>Download</h5>
-                    <a :href="'/download/member/profile/'+member.id" class="btn btn-outline-primary w-100">
+                    <a :href="'/download/member/profile/'+member.id" class="btn btn-outline-primary w-100" download>
                         <i class="bx bx-download"></i>
                         Member Profile
                     </a>

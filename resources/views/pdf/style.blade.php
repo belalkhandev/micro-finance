@@ -91,6 +91,11 @@
         padding: 5px;
     }
 
+    .profile-img {
+        border: 1px solid #ddd;
+        padding: 2px;
+    }
+
     .text-center {
         text-align: center;
     }

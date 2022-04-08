@@ -26037,7 +26037,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (this.search_key.length > 1) {
         return this.members.filter(function (member) {
-          return member.account_no.toLowerCase().match(_this.search_key.toLowerCase()) || member.name.toLowerCase() === _this.search_key.toLowerCase() || member.phone.toLowerCase() === _this.search_key.toLowerCase();
+          return member.account_no.toLowerCase().match(_this.search_key.toLowerCase()) || member.name.toLowerCase().includes(_this.search_key.toLowerCase()) || member.phone.toLowerCase() === _this.search_key.toLowerCase();
         });
       }
 
@@ -26050,7 +26050,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     showMemberProfile: function showMemberProfile(e) {
       e.preventDefault();
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('.modal-backdrop').remove();
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#searchModal').removeClass('show').removeAttr('style, aria-modal');
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#searchModal').removeClass('show').removeAttr('style');
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('body').removeClass('modal-open').removeAttr('style');
     }
   }),
@@ -26982,14 +26982,12 @@ var _hoisted_4 = [_hoisted_3];
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
   type: "button",
-  "class": "mr-2 btn btn-outline-warning py-0 px-1 focus:shadow-none hover:text-white",
+  "class": "mr-2 btn btn-outline-secondary py-0 px-1 focus:shadow-none hover:text-white",
   "data-bs-toggle": "modal",
   "data-bs-target": "#searchModal"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-search-alt"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "text-warning"
-}, "Search member")], -1
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, "Search member")], -1
 /* HOISTED */
 );
 
@@ -27327,7 +27325,8 @@ var helpers = {
       is_loan_open_search: false,
       search_key: "",
       search_date: "",
-      search_loan_date: ""
+      search_loan_date: "",
+      action_by_user: null
     };
   },
   setup: function setup() {
@@ -30838,8 +30837,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.users = users;
     },
     SET_USER: function SET_USER(state, user) {
-      console.log(user);
-
       if (state.users) {
         state.users.unshift(user);
       }

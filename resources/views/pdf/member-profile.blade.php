@@ -10,7 +10,7 @@
 </head>
 <body>
 <htmlpagefooter name="page-footer">
-    Date: {{ \Carbon\Carbon::now() }}
+    Date: {{ userFormattedDatetime(\Carbon\Carbon::now()) }}
 </htmlpagefooter>
 <div class="invoice-wrapper">
     <header>
@@ -34,7 +34,7 @@
                 <td style="width: 25%">Name</td>
                 <td>{{ $member->name }}</td>
                 <td style="width: 25%;text-align: center" rowspan="6">
-                    <img width="120px" src="{{ $member->main_photo }}" alt="">
+                    <img width="120px" src="{{ $member->main_photo }}" alt="" class="profile-img">
                 </td>
             </tr>
             <tr>
@@ -51,7 +51,7 @@
             </tr>
             <tr>
                 <td style="width: 25%">Gender</td>
-                <td>{{ $member->gender }}</td>
+                <td>{{ ucfirst($member->gender) }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">NID</td>
@@ -77,7 +77,7 @@
             </tr>
             <tr>
                 <td style="width: 25%">Member Type</td>
-                <td>{{ ucfirst($member->member_type) }}</td>
+                <td>{{ ucfirst(str_replace('_', ' ', $member->member_type)) }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">Group</td>
@@ -101,7 +101,7 @@
                 <td style="width: 25%">Name</td>
                 <td>{{ $member->nominee->name }}</td>
                 <td style="width: 25%;text-align: center" rowspan="6">
-                    <img width="120px" src="{{ $member->nominee->main_photo }}" alt="">
+                    <img width="120px" src="{{ $member->nominee->main_photo }}" alt="" class="profile-img">
                 </td>
             </tr>
             <tr>
@@ -118,7 +118,7 @@
             </tr>
             <tr>
                 <td style="width: 25%">Gender</td>
-                <td>{{ $member->nominee->gender }}</td>
+                <td>{{ ucfirst($member->nominee->gender) }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">NID</td>
@@ -128,6 +128,23 @@
                 <td style="width: 25%">Address</td>
                 <td colspan="2">{{ $member->nominee->address }}</td>
             </tr>
+        </table>
+
+        <table class="table no-border" style="margin-top: 15px">
+            <tr>
+                <th class="text-left" colspan="3">Manage By User</th>
+            </tr>
+            <tr>
+                <td style="width: 25%">Created By</td>
+                <td>{{ $member->created_by }}, {{ userFormattedDate($member->created_at) }}</td>
+            </tr>
+
+            @if($member->updated_by)
+                <tr>
+                    <td style="width: 25%">Updated By</td>
+                    <td>{{ $member->updated_by }}, {{ userFormattedDate($member->updated_at) }}</td>
+                </tr>
+            @endif
         </table>
     </main>
 

@@ -78,7 +78,7 @@ export default ({
             if (this.search_key.length > 1) {
                 return this.members.filter((member) => {
                     return member.account_no.toLowerCase().match(this.search_key.toLowerCase())
-                        || member.name.toLowerCase() === this.search_key.toLowerCase()
+                        || member.name.toLowerCase().includes(this.search_key.toLowerCase())
                         || member.phone.toLowerCase() === this.search_key.toLowerCase()
                 });
             }
@@ -96,7 +96,7 @@ export default ({
         showMemberProfile(e) {
             e.preventDefault();
             $('.modal-backdrop').remove();
-            $('#searchModal').removeClass('show').removeAttr('style, aria-modal');
+            $('#searchModal').removeClass('show').removeAttr('style');
             $('body').removeClass('modal-open').removeAttr('style');
         }
     },

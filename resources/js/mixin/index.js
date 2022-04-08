@@ -15,7 +15,8 @@ export const helpers = {
             is_loan_open_search: false,
             search_key: "",
             search_date: "",
-            search_loan_date: ""
+            search_loan_date: "",
+            action_by_user: null,
         }
     },
 
@@ -77,6 +78,5 @@ export const helpers = {
             let to = (page * perPage);
             return data.slice(from, to);
         },
-
     },
 }
