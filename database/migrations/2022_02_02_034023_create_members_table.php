@@ -20,7 +20,7 @@ class CreateMembersTable extends Migration
             $table->string('father_name')->nullable();
             $table->string('mother_name')->nullable();
             $table->string('phone')->nullable();
-            $table->enum('gender', ['male', 'female'])->nullable();
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->text('biodata')->nullable();
             $table->string('nid')->nullable();
             $table->date('birthdate')->nullable();

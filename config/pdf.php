@@ -22,5 +22,6 @@ return [
             'useOTL' => 0xFF,    // required for complicated langs like Persian, Arabic and Chinese
             'useKashida' => 75,  // required for complicated langs like Persian, Arabic and Chinese
         ],
-    ]
+    ],
+    'default_font' => 'Roboto'
 ];

@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="member-detail">
+                        <div class="member-detail" v-if="member.nominee">
                             <h3> <span v-if="member.member_type == 'loan_weekly' || member.member_type == 'loan_monthly'">Guarantor</span> <span v-else>Nominee</span> information</h3>
                             <div class="member-infos">
                                 <div class="member-info">

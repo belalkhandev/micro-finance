@@ -32,7 +32,7 @@
             </tr>
             <tr>
                 <td style="width: 25%">Name</td>
-                <td>{{ $member->name }}</td>
+                <td class="bn-font">{{ $member->name }}</td>
                 <td style="width: 25%;text-align: center" rowspan="6">
                     <img width="120px" src="{{ $member->main_photo }}" alt="" class="profile-img">
                 </td>
@@ -43,11 +43,11 @@
             </tr>
             <tr>
                 <td style="width: 25%">Father's name</td>
-                <td>{{ $member->father_name }}</td>
+                <td class="bn-font">{{ $member->father_name }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">Mother's name</td>
-                <td>{{ $member->mother_name }}</td>
+                <td class="bn-font">{{ $member->mother_name }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">Gender</td>
@@ -59,7 +59,11 @@
             </tr>
             <tr>
                 <td style="width: 25%">Address</td>
-                <td colspan="2">{{ $member->village->name.'('.$member->address.'), '  .$member->village->union->name.', '.$member->village->union->upazilla->name }}</td>
+                @if($member->village)
+                <td colspan="2">{{ $member->village->name.', '  .$member->village->union->name.', '.$member->village->union->upazilla->name }}</td>
+                @else
+                    <td>No found</td>
+                @endif
             </tr>
         </table>
 
@@ -82,7 +86,7 @@
             <tr>
                 <td style="width: 25%">Group</td>
                 @if($member->group)
-                    <td>{{ $member->group->group_name }} ({{ $member->group->group_no }})</td>
+                    <td class="bn-font">{{ $member->group->group_name }} ({{ $member->group->group_no }})</td>
                 @else
                     <td>No Group</td>
                 @endif
@@ -93,13 +97,14 @@
             </tr>
         </table>
 
+        @if($member->nominee)
         <table class="table no-border" style="margin-top: 15px">
             <tr>
                 <th class="text-left" colspan="3">Nominee/Guarantor Information</th>
             </tr>
             <tr>
                 <td style="width: 25%">Name</td>
-                <td>{{ $member->nominee->name }}</td>
+                <td class="bn-font">{{ $member->nominee->name }}</td>
                 <td style="width: 25%;text-align: center" rowspan="6">
                     <img width="120px" src="{{ $member->nominee->main_photo }}" alt="" class="profile-img">
                 </td>
@@ -110,11 +115,11 @@
             </tr>
             <tr>
                 <td style="width: 25%">Father's/Spouse name</td>
-                <td>{{ $member->nominee->father_name }}</td>
+                <td class="bn-font">{{ $member->nominee->father_name }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">Mother's name</td>
-                <td>{{ $member->nominee->mother_name }}</td>
+                <td class="bn-font">{{ $member->nominee->mother_name }}</td>
             </tr>
             <tr>
                 <td style="width: 25%">Gender</td>
@@ -126,9 +131,10 @@
             </tr>
             <tr>
                 <td style="width: 25%">Address</td>
-                <td colspan="2">{{ $member->nominee->address }}</td>
+                <td colspan="2" class="bn-font">{{ $member->nominee->address }}</td>
             </tr>
         </table>
+        @endif
 
         <table class="table no-border" style="margin-top: 15px">
             <tr>

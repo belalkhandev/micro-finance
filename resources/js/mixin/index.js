@@ -8,7 +8,7 @@ export const helpers = {
     data () {
         return {
             page: 1,
-            per_page: 10,
+            per_page: 20,
             pages: [],
             lang: localStorage.getItem('lang') ? localStorage.getItem('lang') : 'en',
             is_open_search: false,

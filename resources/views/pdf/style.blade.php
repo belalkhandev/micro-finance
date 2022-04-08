@@ -19,7 +19,8 @@
     }
 
     .bn-font {
-        font-family: 'kalpurush', sans-serif ;
+        font-family: 'kalpurush', Arial, sans-serif;
+        font-weight: normal;
     }
 
     .invoice-wrapper {

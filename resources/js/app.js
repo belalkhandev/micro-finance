@@ -20,6 +20,7 @@ import 'vue3-date-time-picker/dist/main.css'
 import '../../public/css/app.css'
 import 'animate.css'
 require('./assets/css/style.css')
+require('./assets/css/custom.css')
 
 axios.defaults.baseURL = '/api';
 axios.defaults.headers.common['Authorization'] = `Bearer ${localStorage.getItem('token')}`

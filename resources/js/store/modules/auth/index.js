@@ -6,6 +6,7 @@ export default {
     state: {
         token: null,
         user:null,
+        permissions: null
     },
 
     getters: {
@@ -25,6 +26,10 @@ export default {
 
         SET_USER (state, user) {
             state.user = user
+        },
+
+        SET_PERMISSION (state, permissions) {
+            state.permissions = permissions
         },
 
         UPDATE_USER_PASSWORD (state, user) {
@@ -66,6 +71,7 @@ export default {
                 const resuser = await axios.get('user/me')
                 if (resuser.data.status) {
                     commit('SET_USER', resuser.data.user)
+                    commit('SET_PERMISSION', resuser.data.permissions)
                 } else {
                     commit('SET_TOKEN', null)
                     commit('SET_USER', null)
