@@ -69,17 +69,17 @@ class MemberController extends Controller
             'account_no' => 'required',
             'member_type' => 'required',
             'day' => 'required',
-            'nominee_name' => 'required',
-            'nominee_father_name' => 'required',
-            'nominee_gender' => 'required',
-            'nominee_phone' => 'required',
-            'member_photo' => 'nullable|mimes:jpg,png,jpeg',
-            'nominee_photo' => 'nullable|mimes:jpg,png,jpeg',
+//            'nominee_name' => 'required',
+//            'nominee_father_name' => 'required',
+//            'nominee_gender' => 'required',
+//            'nominee_phone' => 'required',
+//            'member_photo' => 'nullable|mimes:jpg,png,jpeg',
+//            'nominee_photo' => 'nullable|mimes:jpg,png,jpeg',
         ];
 
         $messages = [
             'father_name.required' => "Father or spouse name is required",
-            'nominee_father_name.required' => "Father or spouse name is required",
+//            'nominee_father_name.required' => "Father or spouse name is required",
             'village_id.required' => "Village is required",
             'post_office_id.required' => "Post office is required",
         ];
@@ -218,7 +218,11 @@ class MemberController extends Controller
 
         if ($member) {
             //store none
-            $this->member->updateNominee($request, $member->nominee->id);
+            if ($member->nominee) {
+                $this->member->updateNominee($request, $member->nominee->id);
+            } else {
+                $this->member->storeNominee($request, $member->id);
+            }
             return response()->json([
                 'status' => true,
                 'member' => $member,

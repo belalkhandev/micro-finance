@@ -135,23 +135,25 @@ class MemberRepository implements MemberRepositoryInterface {
 
     public function storeNominee($request, $member_id)
     {
-        $nominee = new Nominee();
-        $nominee->member_id = $member_id;
-        $nominee->name = $request->input('nominee_name');
-        $nominee->father_name = $request->input('nominee_father_name');
-        $nominee->mother_name = $request->input('nominee_mother_name');
-        $nominee->phone = $request->input('nominee_phone');
-        $nominee->nid = $request->input('nominee_nid');
-        $nominee->gender = $request->input('nominee_gender');
-        $nominee->address = $request->input('nominee_address');
-        $nominee->relation = $request->input('relation');
+        if ($request->input('nominee_name')) {
+            $nominee = new Nominee();
+            $nominee->member_id = $member_id;
+            $nominee->name = $request->input('nominee_name');
+            $nominee->father_name = $request->input('nominee_father_name');
+            $nominee->mother_name = $request->input('nominee_mother_name');
+            $nominee->phone = $request->input('nominee_phone');
+            $nominee->nid = $request->input('nominee_nid');
+            $nominee->gender = $request->input('nominee_gender');
+            $nominee->address = $request->input('nominee_address');
+            $nominee->relation = $request->input('relation');
 
-        if ($request->hasFile('nominee_photo')) {
-            $path = FileUpload::uploadWithResize($request, 'nominee_photo', 'nominees', 200, 200);
-            $nominee->photo = $path;
-        }
-        if ($nominee->save()) {
-            return $nominee;
+            if ($request->hasFile('nominee_photo')) {
+                $path = FileUpload::uploadWithResize($request, 'nominee_photo', 'nominees', 200, 200);
+                $nominee->photo = $path;
+            }
+            if ($nominee->save()) {
+                return $nominee;
+            }
         }
 
         return false;

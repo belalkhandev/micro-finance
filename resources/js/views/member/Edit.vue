@@ -464,14 +464,16 @@ export default ({
                     this.form.group = member.member_group_id;
                     this.form.day = member.day;
                     this.form.is_active = member.is_active;
-                    this.form.nominee_name = member.nominee.name;
-                    this.form.nominee_father_name = member.nominee.father_name;
-                    this.form.nominee_mother_name = member.nominee.mother_name;
-                    this.form.nominee_gender = member.nominee.gender;
-                    this.form.nominee_phone = member.nominee.phone;
-                    this.form.nominee_nid = member.nominee.nid;
-                    this.form.nominee_address = member.nominee.address;
-                    this.form.relation = member.nominee.relation;
+                    if (member.nominee) {
+                        this.form.nominee_name = member.nominee.name;
+                        this.form.nominee_father_name = member.nominee.father_name;
+                        this.form.nominee_mother_name = member.nominee.mother_name;
+                        this.form.nominee_gender = member.nominee.gender;
+                        this.form.nominee_phone = member.nominee.phone;
+                        this.form.nominee_nid = member.nominee.nid;
+                        this.form.nominee_address = member.nominee.address;
+                        this.form.relation = member.nominee.relation;
+                    }
                 }
             }
         }
