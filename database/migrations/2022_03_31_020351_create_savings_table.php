@@ -19,6 +19,7 @@ class CreateSavingsTable extends Migration
             $table->unsignedBigInteger('loan_transaction_id')->nullable();
             $table->enum('savings_type', ['deposit', 'withdraw'])->nullable();
             $table->double('amount', 10, 2)->nullable();
+            $table->double('balance', 10, 2)->nullable();
             $table->date('savings_date')->nullable();
             $table->timestamps();
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
