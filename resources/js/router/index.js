@@ -38,7 +38,8 @@ const routes = [
         name: 'Village',
         component: () => import('../views/village/Index.vue'),
         meta: {
-            title: 'Village'
+            title: 'Village',
+            permission: 'view_village'
         }
     },
     {
@@ -46,7 +47,8 @@ const routes = [
         name: 'Postoffice',
         component: () => import('../views/postoffice/Index.vue'),
         meta: {
-            title: 'Post office'
+            title: 'Post office',
+            permission: 'view_post_office'
         }
     },
     {
@@ -54,7 +56,8 @@ const routes = [
         name: 'Admin',
         component: () => import('../views/admin/Index.vue'),
         meta: {
-            title: 'Admin list'
+            title: 'Admin list',
+            permission: 'view_admin'
         }
     },
     {
@@ -62,7 +65,8 @@ const routes = [
         name: 'ShowAdmin',
         component: () => import('../views/admin/Profile.vue'),
         meta: {
-            title: 'Admin show'
+            title: 'Admin show',
+            permission: 'view_admin'
         }
     },
     {
@@ -70,7 +74,8 @@ const routes = [
         name: 'MemberGroup',
         component: () => import('../views/member-group/Index.vue'),
         meta: {
-            title: 'Members groups'
+            title: 'Members groups',
+            permission: 'view_group'
         }
     },
     {
@@ -78,23 +83,26 @@ const routes = [
         name: 'Members',
         component: () => import('../views/member/Index.vue'),
         meta: {
-            title: 'Members list'
-        },
+            title: 'Members list',
+            permission: 'view_member'
+        }
     },
     {
         path: '/members/show/:member_id',
         name: 'MemberShow',
         component: () => import('../views/member/Show.vue'),
         meta: {
-            title: 'Member Details'
-        },
+            title: 'Member Details',
+            permission: 'view_member'
+        }
     },
     {
         path: '/members/create',
         name: 'CreateMember',
         component: () => import('../views/member/Create.vue'),
         meta: {
-            title: 'Add new member'
+            title: 'Add new member',
+            permission: 'create_member'
         }
     },
     {
@@ -102,7 +110,8 @@ const routes = [
         name: 'EditMember',
         component: () => import('../views/member/Edit.vue'),
         meta: {
-            title: 'Update member'
+            title: 'Update member',
+            permission: 'edit_member'
         }
     },
     {
@@ -110,7 +119,8 @@ const routes = [
         name: 'MemberDpsTransaction',
         component: () => import('../views/member/DpsTransaction.vue'),
         meta: {
-            title: 'Member dps transaction history'
+            title: 'Member dps transaction history',
+            permission: 'view_transaction'
         }
     },
     {
@@ -118,7 +128,8 @@ const routes = [
         name: 'MemberLoanTransaction',
         component: () => import('../views/member/LoanTransaction.vue'),
         meta: {
-            title: 'Member loan transaction history'
+            title: 'Member loan transaction history',
+            permission: 'view_transaction'
         }
     },
     {
@@ -126,7 +137,8 @@ const routes = [
         name: 'MemberSavingsProfile',
         component: () => import('../views/member/SavingsAccount.vue'),
         meta: {
-            title: 'Member savings  history'
+            title: 'Member savings  history',
+            permission: 'view_transaction'
         }
     },
     {
@@ -134,7 +146,8 @@ const routes = [
         name: 'MemberApplications',
         component: () => import('../views/member/Applications.vue'),
         meta: {
-            title: 'Member transaction history'
+            title: 'Member transaction history',
+            permission: 'view_application'
         }
     },
     {
@@ -142,63 +155,71 @@ const routes = [
         name: 'ApplicationDPS',
         component: () => import('../views/application/dps/Index.vue'),
         meta: {
-            title: 'DPS application list'
-        },
+            title: 'DPS application list',
+            permission: 'view_application'
+        }
     },
     {
         path: '/application/dps/create',
         name: 'CreateDPS',
         component: () => import('../views/application/dps/Create.vue'),
         meta: {
-            title: 'DPS Application Create'
-        },
+            title: 'DPS Application Create',
+            permission: 'create_application'
+        }
     },
     {
         path: '/application/dps/edit/:application_id',
         name: 'EditDPSApplication',
         component: () => import('../views/application/dps/Edit.vue'),
         meta: {
-            title: 'DPS Application Update'
-        },
+            title: 'DPS Application Update',
+            permission: 'edit_application'
+        }
     },
     {
         path: '/application/loans',
         name: 'ApplicationLoan',
         component: () => import('../views/application/loan/Index.vue'),
         meta: {
-            title: 'Loan application list'
-        },
+            title: 'Loan application list',
+            permission: 'view_application'
+        }
     },
     {
         path: '/application/loans/create',
         name: 'CreateLoan',
         component: () => import('../views/application/loan/Create.vue'),
         meta: {
-            title: 'Loan application Create'
-        },
+            title: 'Loan application Create',
+            permission: 'create_application'
+        }
     },
     {
         path: '/application/loans/edit/:application_id',
         name: 'EditLoanApplication',
         component: () => import('../views/application/loan/Edit.vue'),
         meta: {
-            title: 'Loan application Update'
-        },
+            title: 'Loan application Update',
+            permission: 'edit_application'
+        }
     },
     {
         path: '/transaction',
         name: 'TransactionHome',
         component: () => import('../views/transaction/Index'),
         meta: {
-            title: 'Transaction'
-        },
+            title: 'Transaction',
+            permission: 'view_transaction'
+        }
     },
     {
         path: '/transaction/generate',
         name: 'GenerateTransaction',
         component: () => import('../views/transaction/GenerateTransaction'),
         meta: {
-            title: 'Generate Transaction'
+            title: 'Generate Transaction',
+            permission: 'generate_transaction'
         },
     },
     {
@@ -206,23 +227,26 @@ const routes = [
             name: 'DpsTransactionList',
             component: () => import('../views/transaction/DpsList'),
             meta: {
-            title: 'All DPS transaction list'
-        },
+            title: 'All DPS transaction list',
+            permission: 'view_transaction'
+        }
     },
     {
         path: '/transactions/loan/list',
         name: 'LoanTransactionList',
         component: () => import('../views/transaction/LoanList'),
         meta: {
-            title: 'All loan transaction list'
-        },
+            title: 'All loan transaction list',
+            permission: 'view_transaction'
+        }
     },
     {
         path: '/expense/categories',
         name: 'ExpenseCategory',
         component: () => import('../views/expense-category/Index.vue'),
         meta: {
-            title: 'Expense Categories'
+            title: 'Expense Categories',
+            permission: 'view_expense'
         }
     },
     {
@@ -230,77 +254,94 @@ const routes = [
         name: 'ExpenseList',
         component: () => import('../views/expense/Index'),
         meta: {
-            title: 'Expense list'
-        },
+            title: 'Expense list',
+            permission: 'view_expense'
+        }
     },
     {
         path: '/report/loan',
         name: 'LoanReport',
         component: () => import('../views/report/LoanReport'),
         meta: {
-            title: 'Loan Report'
-        },
+            title: 'Loan Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/dps',
         name: 'DpsReport',
         component: () => import('../views/report/DpsReport'),
         meta: {
-            title: 'Dps Report'
-        },
+            title: 'Dps Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/loan/today',
         name: 'TodayLoanReport',
         component: () => import('../views/report/TodayLoanReport'),
         meta: {
-            title: 'Today Loan Report'
-        },
+            title: 'Today Loan Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/loan/paid',
         name: 'PaidLoanReport',
         component: () => import('../views/report/PaidLoanReport'),
         meta: {
-            title: 'Paid Loan Report'
-        },
+            title: 'Paid Loan Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/loan/due',
         name: 'DueLoanReport',
         component: () => import('../views/report/DueLoanReport'),
         meta: {
-            title: 'Due Loan Report'
-        },
+            title: 'Due Loan Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/dps/today',
         name: 'TodayDpsReport',
         component: () => import('../views/report/TodayDpsReport'),
         meta: {
-            title: 'Today Dps Report'
-        },
+            title: 'Today Dps Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/dps/paid',
         name: 'PaidDpsReport',
         component: () => import('../views/report/PaidDpsReport'),
         meta: {
-            title: 'Paid Dps Report'
-        },
+            title: 'Paid Dps Report',
+            permission: 'view_report'
+        }
     },
     {
         path: '/report/dps/due',
         name: 'DueDpsReport',
         component: () => import('../views/report/DueDpsReport'),
         meta: {
-            title: 'Due Dps Report'
-        },
+            title: 'Due Dps Report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/access-denied',
+        name: 'AccessDenied',
+        component: () => import('../views/errors/403.vue'),
+        meta: {
+            title: '403 | Access denied'
+        }
     },
     {
         path: '/:catchAll(.*)',
         name: 'NotFound',
-        component: () => import('../views/404.vue'),
+        component: () => import('../views/errors/404.vue'),
         meta: {
             title: '404 | Page not found'
         }
@@ -321,7 +362,17 @@ router.beforeEach((to, from, next) => {
     if (!exceptRoutes.find((route) => {
         return route === to.name
     })) {
-        if (!store.getters['auth/authenticated']) {
+        if (store.getters['auth/authenticated']) {
+            //check route permission
+            const permissions = store.getters['auth/permissions']
+            if (to.meta.permission && !permissions.find(perm => {
+                return perm.name === to.meta.permission
+            })) {
+                return next({
+                    name: 'AccessDenied'
+                })
+            }
+        } else {
             return next({
                 name: 'Signin'
             })

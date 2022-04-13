@@ -27475,7 +27475,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_village_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/village/Index.vue */ "./resources/js/views/village/Index.vue"));
   },
   meta: {
-    title: 'Village'
+    title: 'Village',
+    permission: 'view_village'
   }
 }, {
   path: '/postoffice',
@@ -27484,7 +27485,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_postoffice_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/postoffice/Index.vue */ "./resources/js/views/postoffice/Index.vue"));
   },
   meta: {
-    title: 'Post office'
+    title: 'Post office',
+    permission: 'view_post_office'
   }
 }, {
   path: '/admins',
@@ -27493,7 +27495,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_admin_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/Index.vue */ "./resources/js/views/admin/Index.vue"));
   },
   meta: {
-    title: 'Admin list'
+    title: 'Admin list',
+    permission: 'view_admin'
   }
 }, {
   path: '/admins/:admin_id',
@@ -27502,7 +27505,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_admin_Profile_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/admin/Profile.vue */ "./resources/js/views/admin/Profile.vue"));
   },
   meta: {
-    title: 'Admin show'
+    title: 'Admin show',
+    permission: 'view_admin'
   }
 }, {
   path: '/members/group',
@@ -27511,7 +27515,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member-group_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member-group/Index.vue */ "./resources/js/views/member-group/Index.vue"));
   },
   meta: {
-    title: 'Members groups'
+    title: 'Members groups',
+    permission: 'view_group'
   }
 }, {
   path: '/members',
@@ -27520,7 +27525,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/Index.vue */ "./resources/js/views/member/Index.vue"));
   },
   meta: {
-    title: 'Members list'
+    title: 'Members list',
+    permission: 'view_member'
   }
 }, {
   path: '/members/show/:member_id',
@@ -27529,7 +27535,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_Show_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/Show.vue */ "./resources/js/views/member/Show.vue"));
   },
   meta: {
-    title: 'Member Details'
+    title: 'Member Details',
+    permission: 'view_member'
   }
 }, {
   path: '/members/create',
@@ -27538,7 +27545,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/Create.vue */ "./resources/js/views/member/Create.vue"));
   },
   meta: {
-    title: 'Add new member'
+    title: 'Add new member',
+    permission: 'create_member'
   }
 }, {
   path: '/members/edit/:member_id',
@@ -27547,7 +27555,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/Edit.vue */ "./resources/js/views/member/Edit.vue"));
   },
   meta: {
-    title: 'Update member'
+    title: 'Update member',
+    permission: 'edit_member'
   }
 }, {
   path: '/members/transactions/dps/:member_id',
@@ -27556,7 +27565,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_DpsTransaction_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/DpsTransaction.vue */ "./resources/js/views/member/DpsTransaction.vue"));
   },
   meta: {
-    title: 'Member dps transaction history'
+    title: 'Member dps transaction history',
+    permission: 'view_transaction'
   }
 }, {
   path: '/members/transactions/loan/:member_id',
@@ -27565,7 +27575,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_LoanTransaction_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/LoanTransaction.vue */ "./resources/js/views/member/LoanTransaction.vue"));
   },
   meta: {
-    title: 'Member loan transaction history'
+    title: 'Member loan transaction history',
+    permission: 'view_transaction'
   }
 }, {
   path: '/members/savings/account/:member_id',
@@ -27574,7 +27585,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_SavingsAccount_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/SavingsAccount.vue */ "./resources/js/views/member/SavingsAccount.vue"));
   },
   meta: {
-    title: 'Member savings  history'
+    title: 'Member savings  history',
+    permission: 'view_transaction'
   }
 }, {
   path: '/members/applications/:member_id',
@@ -27583,7 +27595,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_member_Applications_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/member/Applications.vue */ "./resources/js/views/member/Applications.vue"));
   },
   meta: {
-    title: 'Member transaction history'
+    title: 'Member transaction history',
+    permission: 'view_application'
   }
 }, {
   path: '/application/dps',
@@ -27592,7 +27605,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_application_dps_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/dps/Index.vue */ "./resources/js/views/application/dps/Index.vue"));
   },
   meta: {
-    title: 'DPS application list'
+    title: 'DPS application list',
+    permission: 'view_application'
   }
 }, {
   path: '/application/dps/create',
@@ -27601,7 +27615,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_application_dps_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/dps/Create.vue */ "./resources/js/views/application/dps/Create.vue"));
   },
   meta: {
-    title: 'DPS Application Create'
+    title: 'DPS Application Create',
+    permission: 'create_application'
   }
 }, {
   path: '/application/dps/edit/:application_id',
@@ -27610,7 +27625,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_application_dps_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/dps/Edit.vue */ "./resources/js/views/application/dps/Edit.vue"));
   },
   meta: {
-    title: 'DPS Application Update'
+    title: 'DPS Application Update',
+    permission: 'edit_application'
   }
 }, {
   path: '/application/loans',
@@ -27619,7 +27635,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_application_loan_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/loan/Index.vue */ "./resources/js/views/application/loan/Index.vue"));
   },
   meta: {
-    title: 'Loan application list'
+    title: 'Loan application list',
+    permission: 'view_application'
   }
 }, {
   path: '/application/loans/create',
@@ -27628,7 +27645,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_application_loan_Create_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/loan/Create.vue */ "./resources/js/views/application/loan/Create.vue"));
   },
   meta: {
-    title: 'Loan application Create'
+    title: 'Loan application Create',
+    permission: 'create_application'
   }
 }, {
   path: '/application/loans/edit/:application_id',
@@ -27637,7 +27655,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_application_loan_Edit_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/application/loan/Edit.vue */ "./resources/js/views/application/loan/Edit.vue"));
   },
   meta: {
-    title: 'Loan application Update'
+    title: 'Loan application Update',
+    permission: 'edit_application'
   }
 }, {
   path: '/transaction',
@@ -27646,7 +27665,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_transaction_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/transaction/Index */ "./resources/js/views/transaction/Index.vue"));
   },
   meta: {
-    title: 'Transaction'
+    title: 'Transaction',
+    permission: 'view_transaction'
   }
 }, {
   path: '/transaction/generate',
@@ -27655,7 +27675,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_transaction_GenerateTransaction_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/transaction/GenerateTransaction */ "./resources/js/views/transaction/GenerateTransaction.vue"));
   },
   meta: {
-    title: 'Generate Transaction'
+    title: 'Generate Transaction',
+    permission: 'generate_transaction'
   }
 }, {
   path: '/transactions/dps/list',
@@ -27664,7 +27685,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_transaction_DpsList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/transaction/DpsList */ "./resources/js/views/transaction/DpsList.vue"));
   },
   meta: {
-    title: 'All DPS transaction list'
+    title: 'All DPS transaction list',
+    permission: 'view_transaction'
   }
 }, {
   path: '/transactions/loan/list',
@@ -27673,7 +27695,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_transaction_LoanList_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/transaction/LoanList */ "./resources/js/views/transaction/LoanList.vue"));
   },
   meta: {
-    title: 'All loan transaction list'
+    title: 'All loan transaction list',
+    permission: 'view_transaction'
   }
 }, {
   path: '/expense/categories',
@@ -27682,7 +27705,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_expense-category_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/expense-category/Index.vue */ "./resources/js/views/expense-category/Index.vue"));
   },
   meta: {
-    title: 'Expense Categories'
+    title: 'Expense Categories',
+    permission: 'view_expense'
   }
 }, {
   path: '/expenses/list',
@@ -27691,7 +27715,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_expense_Index_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/expense/Index */ "./resources/js/views/expense/Index.vue"));
   },
   meta: {
-    title: 'Expense list'
+    title: 'Expense list',
+    permission: 'view_expense'
   }
 }, {
   path: '/report/loan',
@@ -27700,7 +27725,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_LoanReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/LoanReport */ "./resources/js/views/report/LoanReport.vue"));
   },
   meta: {
-    title: 'Loan Report'
+    title: 'Loan Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/dps',
@@ -27709,7 +27735,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_DpsReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/DpsReport */ "./resources/js/views/report/DpsReport.vue"));
   },
   meta: {
-    title: 'Dps Report'
+    title: 'Dps Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/loan/today',
@@ -27718,7 +27745,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_TodayLoanReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/TodayLoanReport */ "./resources/js/views/report/TodayLoanReport.vue"));
   },
   meta: {
-    title: 'Today Loan Report'
+    title: 'Today Loan Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/loan/paid',
@@ -27727,7 +27755,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_PaidLoanReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/PaidLoanReport */ "./resources/js/views/report/PaidLoanReport.vue"));
   },
   meta: {
-    title: 'Paid Loan Report'
+    title: 'Paid Loan Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/loan/due',
@@ -27736,7 +27765,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_DueLoanReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/DueLoanReport */ "./resources/js/views/report/DueLoanReport.vue"));
   },
   meta: {
-    title: 'Due Loan Report'
+    title: 'Due Loan Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/dps/today',
@@ -27745,7 +27775,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_TodayDpsReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/TodayDpsReport */ "./resources/js/views/report/TodayDpsReport.vue"));
   },
   meta: {
-    title: 'Today Dps Report'
+    title: 'Today Dps Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/dps/paid',
@@ -27754,7 +27785,8 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_PaidDpsReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/PaidDpsReport */ "./resources/js/views/report/PaidDpsReport.vue"));
   },
   meta: {
-    title: 'Paid Dps Report'
+    title: 'Paid Dps Report',
+    permission: 'view_report'
   }
 }, {
   path: '/report/dps/due',
@@ -27763,13 +27795,23 @@ var routes = [{
     return __webpack_require__.e(/*! import() */ "resources_js_views_report_DueDpsReport_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/report/DueDpsReport */ "./resources/js/views/report/DueDpsReport.vue"));
   },
   meta: {
-    title: 'Due Dps Report'
+    title: 'Due Dps Report',
+    permission: 'view_report'
+  }
+}, {
+  path: '/access-denied',
+  name: 'AccessDenied',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ "resources_js_views_errors_403_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/errors/403.vue */ "./resources/js/views/errors/403.vue"));
+  },
+  meta: {
+    title: '403 | Access denied'
   }
 }, {
   path: '/:catchAll(.*)',
   name: 'NotFound',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ "resources_js_views_404_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/404.vue */ "./resources/js/views/404.vue"));
+    return __webpack_require__.e(/*! import() */ "resources_js_views_errors_404_vue").then(__webpack_require__.bind(__webpack_require__, /*! ../views/errors/404.vue */ "./resources/js/views/errors/404.vue"));
   },
   meta: {
     title: '404 | Page not found'
@@ -27793,7 +27835,18 @@ router.beforeEach(function (to, from, next) {
   if (!exceptRoutes.find(function (route) {
     return route === to.name;
   })) {
-    if (!_store__WEBPACK_IMPORTED_MODULE_0__["default"].getters["auth/authenticated"]) {
+    if (_store__WEBPACK_IMPORTED_MODULE_0__["default"].getters["auth/authenticated"]) {
+      //check route permission
+      var permissions = _store__WEBPACK_IMPORTED_MODULE_0__["default"].getters["auth/permissions"];
+
+      if (to.meta.permission && !permissions.find(function (perm) {
+        return perm.name === to.meta.permission;
+      })) {
+        return next({
+          name: 'AccessDenied'
+        });
+      }
+    } else {
       return next({
         name: 'Signin'
       });
@@ -27922,6 +27975,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     user: function user(state) {
       return state.user;
+    },
+    permissions: function permissions(state) {
+      return state.permissions;
     }
   },
   mutations: {
@@ -86035,7 +86091,7 @@ module.exports = JSON.parse('{"test":"I am testing something","auth_welcome":"We
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_SavingsAccount_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense-category_Index_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_views_auth_Signin_vue":1,"resources_js_views_Dashboard_vue":1,"resources_js_views_profile_Profile_vue":1,"resources_js_views_village_Index_vue":1,"resources_js_views_postoffice_Index_vue":1,"resources_js_views_admin_Index_vue":1,"resources_js_views_admin_Profile_vue":1,"resources_js_views_member-group_Index_vue":1,"resources_js_views_member_Index_vue":1,"resources_js_views_member_Show_vue":1,"resources_js_views_member_Create_vue":1,"resources_js_views_member_Edit_vue":1,"resources_js_views_member_DpsTransaction_vue":1,"resources_js_views_member_LoanTransaction_vue":1,"resources_js_views_member_SavingsAccount_vue":1,"resources_js_views_member_Applications_vue":1,"resources_js_views_application_dps_Index_vue":1,"resources_js_views_application_dps_Create_vue":1,"resources_js_views_application_dps_Edit_vue":1,"resources_js_views_application_loan_Index_vue":1,"resources_js_views_application_loan_Create_vue":1,"resources_js_views_application_loan_Edit_vue":1,"resources_js_views_transaction_Index_vue":1,"resources_js_views_transaction_GenerateTransaction_vue":1,"resources_js_views_transaction_DpsList_vue":1,"resources_js_views_transaction_LoanList_vue":1,"resources_js_views_expense-category_Index_vue":1,"resources_js_views_expense_Index_vue":1,"resources_js_views_report_LoanReport_vue":1,"resources_js_views_report_DpsReport_vue":1,"resources_js_views_report_TodayLoanReport_vue":1,"resources_js_views_report_PaidLoanReport_vue":1,"resources_js_views_report_DueLoanReport_vue":1,"resources_js_views_report_TodayDpsReport_vue":1,"resources_js_views_report_PaidDpsReport_vue":1,"resources_js_views_report_DueDpsReport_vue":1,"resources_js_views_errors_403_vue":1,"resources_js_views_errors_404_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

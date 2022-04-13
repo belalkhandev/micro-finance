@@ -17,6 +17,10 @@ export default {
         user (state) {
             return state.user
         },
+
+        permissions (state) {
+            return state.permissions
+        }
     },
 
     mutations: {

@@ -67,7 +67,7 @@
             <!-- pagination -->
             <div class="pagination" v-if="members && members.length > per_page">
                 <p class="pagination-data">
-                    Page no {{ page }} Show {{ page === pages.length ? (members ? members.length : 0) : page*(fetchExpenses ? fetchExpenses.length : 0) }} of {{ members ? members.length : 0 }} Data
+                    Page no {{ page }} Show {{ page === pages.length ? (members ? members.length : 0) : page*(fetchMembers ? fetchMembers.length : 0) }} of {{ members ? members.length : 0 }} Data
                 </p>
                 <ul>
                     <li class="page-item">
