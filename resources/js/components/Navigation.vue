@@ -30,7 +30,7 @@
                 <a href="javascript:void(0)" class="menu-link" @click="openMultimenus">
 <!--                    <i class="bx bxs-user-rectangle text-violet-600" ></i>-->
                     <img src="../assets/images/nav-icons/transaction.png" alt="">
-                    <span>Transactions</span>
+                    <span>{{ $t('transaction') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
@@ -38,14 +38,14 @@
                         <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
-                        <h3>Transactions</h3>
+                        <h3>{{ $t('transaction') }}</h3>
                     </div>
                     <div class="navigation-content-body">
                         <ul>
                             <li>
                                 <router-link :to="{name: 'GenerateTransaction'}" >
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Generate Transaction</span>
+                                    <span>{{ $t('generate') }} {{ $t('transaction') }}</span>
                                 </router-link>
                             </li>
                             <li>
@@ -68,14 +68,14 @@
                 <router-link :to="{name: 'Members'}">
 <!--                    <i class='bx bxs-user-account text-indigo-600' ></i>-->
                     <img src="../assets/images/nav-icons/add-user.png" alt="">
-                    <span>Members</span>
+                    <span>{{ $t('members') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
 <!--                    <i class='bx bxs-file-doc text-green-600' ></i>-->
                     <img src="../assets/images/nav-icons/cv.png" alt="">
-                    <span>Applications</span>
+                    <span>{{ $t('applications') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
@@ -124,14 +124,14 @@
                 <router-link :to="{name: 'ExpenseList'}">
 <!--                    <i class='bx bxs-user-badge text-red-600'></i>-->
                     <img src="../assets/images/nav-icons/expense.png" alt="">
-                    <span>Expenses</span>
+                    <span>{{ $t('expense') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Admin'}">
 <!--                    <i class='bx bxs-user-badge text-red-600'></i>-->
                     <img src="../assets/images/nav-icons/unauthorized-person.png" alt="">
-                    <span>Admins</span>
+                    <span>{{ $t('admins') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
@@ -183,7 +183,7 @@
                 <a href="#" class="menu-link" @click="openMultimenus">
 <!--                    <i class='bx bxs-report text-orange-600' ></i>-->
                     <img src="../assets/images/nav-icons/report.png" alt="">
-                    <span>Reports</span>
+                    <span>{{ $t('reports') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
@@ -316,7 +316,7 @@
                 <a href="#" @click.prevent="logout">
 <!--                    <i class='bx bxs-log-out text-cyan-500' ></i>-->
                     <img src="../assets/images/nav-icons/check-out.png" alt="">
-                    <span>Logout</span>
+                    <span>{{ $t('logout') }}</span>
                 </a>
             </div>
         </div>

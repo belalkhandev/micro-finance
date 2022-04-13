@@ -4,7 +4,7 @@
             <div class="col-md-3">
                 <div class="widget widget-success animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Members</h5>
+                        <h5 class="title">{{ $t('members') }}</h5>
                         <span>
                         <i class="bx bx-group"></i>
                     </span>
@@ -19,7 +19,7 @@
             <div class="col-md-3">
                 <div class="widget widget-warning animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Admins</h5>
+                        <h5 class="title">{{ $t('admins') }}</h5>
                         <span>
                         <i class="bx bx-group"></i>
                     </span>
@@ -34,7 +34,7 @@
             <div class="col-md-3">
                 <div class="widget widget-primary animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">DPS Transactions</h5>
+                        <h5 class="title">{{ $t('dps_transactions') }}</h5>
                         <span>
                         <i class='bx bx-dollar-circle'></i>
                     </span>
@@ -47,7 +47,7 @@
             <div class="col-md-3">
                 <div class="widget widget-warning animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Loan Transaction</h5>
+                        <h5 class="title">{{ $t('loan_transactions') }}</h5>
                         <span>
                         <i class='bx bx-dollar-circle'></i>
                     </span>
@@ -63,7 +63,7 @@
             <div class="col-md-3">
                 <div class="widget widget-primary animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Total Collections</h5>
+                        <h5 class="title">{{ $t('total_collection') }}</h5>
                         <span>
                             <i class='bx bx-dollar-circle'></i>
                         </span>
@@ -76,7 +76,7 @@
             <div class="col-md-3">
                 <div class="widget widget-danger animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Total Dues</h5>
+                        <h5 class="title">{{ $t('total_dues') }}</h5>
                         <span>
                             <i class='bx bx-dollar-circle'></i>
                         </span>
@@ -89,7 +89,7 @@
             <div class="col-md-3">
                 <div class="widget widget-warning animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Expenses</h5>
+                        <h5 class="title">{{ $t('expenses') }}</h5>
                         <span>
                             <i class='bx bx-dollar-circle'></i>
                         </span>
@@ -104,7 +104,7 @@
             <div class="col-md-3">
                 <div class="widget widget-success animate__animated animate__pulse">
                     <div class="widget-header">
-                        <h5 class="title">Fund amount</h5>
+                        <h5 class="title">{{ $t('fund_amount') }}</h5>
                         <span>
                             <i class='bx bx-dollar-circle'></i>
                         </span>
@@ -121,22 +121,22 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="box-title">
-                            <h5>Recent DPS Transaction</h5>
+                            <h5>{{ $t('recent_dps_transactions') }}</h5>
                         </div>
                     </div>
                     <div class="box-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Tr. no</th>
-                                <th>Member/Acc. no</th>
-                                <th>DPS Type/Amount</th>
-                                <th>Balance.</th>
-                                <th>Tr. Day</th>
-                                <th>Due Date</th>
-                                <th>Issue Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>{{ $t('tr_no') }}</th>
+                                <th>{{ $t('members') }}/{{ $t('acc_no') }}</th>
+                                <th>{{ $t('dps_type') }}/{{ $t('amount') }}</th>
+                                <th>{{ $t('balance') }}</th>
+                                <th>{{ $t('tr_day') }}</th>
+                                <th>{{ $t('due_date') }}</th>
+                                <th>{{ $t('issue_date') }}</th>
+                                <th>{{ $t('status') }}</th>
+                                <th>{{ $t('action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -182,22 +182,22 @@
                 <div class="box">
                     <div class="box-header">
                         <div class="box-title">
-                            <h5>Recent Loan Transaction</h5>
+                            <h5>{{ $t('recent_loan_transactions') }}</h5>
                         </div>
                     </div>
                     <div class="box-body">
                         <table class="table">
                             <thead>
                             <tr>
-                                <th>Tr. no</th>
-                                <th>Member/Acc. no</th>
-                                <th>Loan Type/Amount</th>
-                                <th>Balance.</th>
-                                <th>Tr. Day</th>
-                                <th>Due Date</th>
-                                <th>Issue Date</th>
-                                <th>Status</th>
-                                <th>Action</th>
+                                <th>{{ $t('tr_no') }}</th>
+                                <th>{{ $t('members') }}/{{ $t('acc_no') }}</th>
+                                <th>{{ $t('loan_type') }}/{{ $t('amount') }}</th>
+                                <th>{{ $t('balance') }}</th>
+                                <th>{{ $t('tr_day') }}</th>
+                                <th>{{ $t('due_date') }}</th>
+                                <th>{{ $t('issue_date') }}</th>
+                                <th>{{ $t('status') }}</th>
+                                <th>{{ $t('action') }}</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -265,21 +265,29 @@ export default {
         fetchLatestLoanTransactions() {
             if (!this.loan_transactions) {
                 this.getLoanTransaction().then(() => {
-                    return this.loan_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
+                    if (this.loan_transactions) {
+                        return this.loan_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
+                    }
                 })
             } else {
                 return this.loan_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
             }
+
+            return null;
         },
 
         fetchLatestDpsTransactions() {
             if (!this.dps_transactions) {
                 this.getDpsTransactions().then(() => {
-                    return this.dps_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
+                    if (this.dps_transactions) {
+                        return this.dps_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
+                    }
                 })
             } else {
                 return this.dps_transactions.filter(transaction => transaction.is_paid == 1 ).slice(0, 9);
             }
+
+            return null;
         }
     },
 
