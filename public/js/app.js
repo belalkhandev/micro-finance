@@ -27397,14 +27397,14 @@ var helpers = {
       var to = page * perPage;
       return data.slice(from, to);
     },
-    hasPermission: function hasPermission(perm) {
+    hasPermission: function hasPermission(permission) {
       if (this.perms.find(function (perm) {
-        return perm.name === perm;
+        return perm.name === permission;
       })) {
         return true;
+      } else {
+        return false;
       }
-
-      return false;
     },
     message403: function message403() {
       return this.$swal({

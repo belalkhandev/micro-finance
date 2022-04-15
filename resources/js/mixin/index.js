@@ -80,13 +80,14 @@ export const helpers = {
             return data.slice(from, to);
         },
 
-        hasPermission(perm) {
+        hasPermission(permission) {
             if (this.perms.find(perm => {
-                return perm.name === perm
+                return perm.name === permission
             })) {
                 return true;
+            } else {
+                return false;
             }
-            return false;
         },
 
         message403()
