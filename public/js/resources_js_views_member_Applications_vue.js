@@ -119,56 +119,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deleteDpsConfirm: function deleteDpsConfirm(application_id) {
       var _this4 = this;
 
-      this.$swal({
-        title: "Really want to delete!",
-        text: "Are you sure? You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#5430d6",
-        confirmButtonText: "Yes, Delete it!",
-        cancelButtonColor: '#c82333'
-      }).then(function (res) {
-        if (res.isConfirmed) {
-          _this4.deleteDpsApplication(application_id).then(function () {
-            if (!_this4.error_message) {
-              _this4.$swal({
-                icon: 'success',
-                title: 'Congratulation!',
-                text: 'Dps application has been deleted successfully'
-              });
-            } else {
-              _this4.error = _this4.error_message;
-            }
-          });
-        }
-      });
+      if (this.hasPermission('delete_application')) {
+        this.$swal({
+          title: "Really want to delete!",
+          text: "Are you sure? You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#5430d6",
+          confirmButtonText: "Yes, Delete it!",
+          cancelButtonColor: '#c82333'
+        }).then(function (res) {
+          if (res.isConfirmed) {
+            _this4.deleteDpsApplication(application_id).then(function () {
+              if (!_this4.error_message) {
+                _this4.$swal({
+                  icon: 'success',
+                  title: 'Congratulation!',
+                  text: 'Dps application has been deleted successfully'
+                });
+              } else {
+                _this4.error = _this4.error_message;
+              }
+            });
+          }
+        });
+      } else {
+        this.message403();
+      }
     },
     deleteLoanConfirm: function deleteLoanConfirm(application_id) {
       var _this5 = this;
 
-      this.$swal({
-        title: "Really want to delete!",
-        text: "Are you sure? You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#5430d6",
-        confirmButtonText: "Yes, Delete it!",
-        cancelButtonColor: '#c82333'
-      }).then(function (res) {
-        if (res.isConfirmed) {
-          _this5.deleteLoanApplication(application_id).then(function () {
-            if (!_this5.error_message) {
-              _this5.$swal({
-                icon: 'success',
-                title: 'Congratulation!',
-                text: 'Loan application has been deleted successfully'
-              });
-            } else {
-              _this5.error = _this5.error_message;
-            }
-          });
-        }
-      });
+      if (this.hasPermission('delete_application')) {
+        this.$swal({
+          title: "Really want to delete!",
+          text: "Are you sure? You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#5430d6",
+          confirmButtonText: "Yes, Delete it!",
+          cancelButtonColor: '#c82333'
+        }).then(function (res) {
+          if (res.isConfirmed) {
+            _this5.deleteLoanApplication(application_id).then(function () {
+              if (!_this5.error_message) {
+                _this5.$swal({
+                  icon: 'success',
+                  title: 'Congratulation!',
+                  text: 'Loan application has been deleted successfully'
+                });
+              } else {
+                _this5.error = _this5.error_message;
+              }
+            });
+          }
+        });
+      } else {
+        this.message403();
+      }
     },
     // pagination set pages
     setDpsPages: function setDpsPages() {

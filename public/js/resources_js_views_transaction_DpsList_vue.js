@@ -75,29 +75,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deleteConfirm: function deleteConfirm(user_id) {
       var _this2 = this;
 
-      this.$swal({
-        title: "Really want to delete!",
-        text: "Are you sure? You won't be able to revert this!",
-        icon: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#5430d6",
-        confirmButtonText: "Yes, Delete it!",
-        cancelButtonColor: '#c82333'
-      }).then(function (res) {
-        if (res.isConfirmed) {
-          _this2.deleteUser(user_id).then(function () {
-            if (!_this2.error_message) {
-              _this2.$swal({
-                icon: 'success',
-                title: 'Congratulation!',
-                text: 'User has been deleted successfully'
-              });
-            } else {
-              _this2.error = _this2.error_message;
-            }
-          });
-        }
-      });
+      if (this.hasPermission('delete_transaction')) {
+        this.$swal({
+          title: "Really want to delete!",
+          text: "Are you sure? You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#5430d6",
+          confirmButtonText: "Yes, Delete it!",
+          cancelButtonColor: '#c82333'
+        }).then(function (res) {
+          if (res.isConfirmed) {
+            _this2.deleteUser(user_id).then(function () {
+              if (!_this2.error_message) {
+                _this2.$swal({
+                  icon: 'success',
+                  title: 'Congratulation!',
+                  text: 'User has been deleted successfully'
+                });
+              } else {
+                _this2.error = _this2.error_message;
+              }
+            });
+          }
+        });
+      } else {
+        this.message403();
+      }
     },
     // pagination set pages
     setPages: function setPages() {

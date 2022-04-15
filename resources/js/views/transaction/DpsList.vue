@@ -174,29 +174,33 @@ export default ({
         },
 
         deleteConfirm(user_id) {
-            this.$swal({
-                title:"Really want to delete!",
-                text: "Are you sure? You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#5430d6",
-                confirmButtonText: "Yes, Delete it!",
-                cancelButtonColor: '#c82333',
-            }).then((res) => {
-                if (res.isConfirmed) {
-                    this.deleteUser(user_id).then(() => {
-                        if (!this.error_message) {
-                            this.$swal({
-                                icon: 'success',
-                                title: 'Congratulation!',
-                                text: 'User has been deleted successfully'
-                            })
-                        }else {
-                            this.error = this.error_message
-                        }
-                    })
-                }
-            });
+            if (this.hasPermission('delete_transaction')) {
+                this.$swal({
+                    title:"Really want to delete!",
+                    text: "Are you sure? You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#5430d6",
+                    confirmButtonText: "Yes, Delete it!",
+                    cancelButtonColor: '#c82333',
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        this.deleteUser(user_id).then(() => {
+                            if (!this.error_message) {
+                                this.$swal({
+                                    icon: 'success',
+                                    title: 'Congratulation!',
+                                    text: 'User has been deleted successfully'
+                                })
+                            }else {
+                                this.error = this.error_message
+                            }
+                        })
+                    }
+                });
+            } else {
+                this.message403();
+            }
         },
 
         // pagination set pages
