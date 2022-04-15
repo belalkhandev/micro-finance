@@ -59,6 +59,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deleteConfirm: function deleteConfirm(member_id) {
       var _this2 = this;
 
+      if (!this.perms.find(function (perm) {
+        return perm.name === 'delete_member';
+      })) {
+        this.$swal({
+          icon: 'warning',
+          title: 'Access Denied',
+          text: 'Sorry you have no permission for the action'
+        });
+        return;
+      }
+
       this.$swal({
         title: "Really want to delete!",
         text: "Are you sure? You won't be able to revert this!",

@@ -13,7 +13,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>{{ dps_total.total_amounts }}</h3>
+                                    <h3>{{ numberFormat(dps_total.total_amounts, 2) }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>{{ dps_total.collections }}</h3>
+                                    <h3>{{ numberFormat(dps_total.collections, 2) }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>{{ dps_total.dues }}</h3>
+                                    <h3>{{ numberFormat(dps_total.dues, 2) }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -81,7 +81,7 @@
                             <th>Year</th>
                             <th>Total Deposit</th>
                             <th>Total Getting</th>
-                            <th>Balance</th>
+                            <th>Profit</th>
                             <th>Created at</th>
                             <th></th>
                         </tr>
@@ -98,11 +98,11 @@
                                 <td>
                                     <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
                                 </td>
-                                <td>{{ application.dps_amount }} <br> ({{ ucFirst(application.dps_type) }})</td>
+                                <td>{{ numberFormat(application.dps_amount, 2) }} <br> ({{ ucFirst(application.dps_type) }})</td>
                                 <td>{{ application.year }}</td>
-                                <td>{{ application.total_amount }}</td>
-                                <td>{{ application.receiving }}</td>
-                                <td>{{ application.balance }}</td>
+                                <td>{{ numberFormat(application.total_amount, 2) }}</td>
+                                <td>{{ numberFormat(application.receiving, 2) }}</td>
+                                <td>{{ numberFormat(application.profit, 2) }}</td>
                                 <td>{{ userFormattedDate(application.created_at) }}</td>
                                 <td>
                                     <div class="action">
@@ -195,29 +195,33 @@ export default ({
         }),
 
         deleteConfirm(application_id) {
-            this.$swal({
-                title:"Really want to delete!",
-                text: "Are you sure? You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#5430d6",
-                confirmButtonText: "Yes, Delete it!",
-                cancelButtonColor: '#c82333',
-            }).then((res) => {
-                if (res.isConfirmed) {
-                    this.deleteApplication(application_id).then(() => {
-                        if (!this.error_message) {
-                            this.$swal({
-                                icon: 'success',
-                                title: 'Congratulation!',
-                                text: 'User has been deleted successfully'
-                            })
-                        }else {
-                            this.error = this.error_message
-                        }
-                    })
-                }
-            });
+            if (this.hasPermission('delete_application')) {
+                this.$swal({
+                    title:"Really want to delete!",
+                    text: "Are you sure? You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#5430d6",
+                    confirmButtonText: "Yes, Delete it!",
+                    cancelButtonColor: '#c82333',
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        this.deleteApplication(application_id).then(() => {
+                            if (!this.error_message) {
+                                this.$swal({
+                                    icon: 'success',
+                                    title: 'Congratulation!',
+                                    text: 'User has been deleted successfully'
+                                })
+                            }else {
+                                this.error = this.error_message
+                            }
+                        })
+                    }
+                });
+            } else {
+                this.message403()
+            }
         },
 
         // pagination set pages

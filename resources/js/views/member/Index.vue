@@ -149,6 +149,17 @@ export default ({
         },
 
         deleteConfirm(member_id) {
+            if (!this.perms.find(perm => {
+                return perm.name === 'delete_member'
+            })) {
+                this.$swal({
+                    icon: 'warning',
+                    title: 'Access Denied',
+                    text: 'Sorry you have no permission for the action'
+                });
+
+                return;
+            }
             this.$swal({
                 title:"Really want to delete!",
                 text: "Are you sure? You won't be able to revert this!",

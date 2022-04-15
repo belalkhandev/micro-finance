@@ -27326,6 +27326,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+
 
 
 
@@ -27341,7 +27343,8 @@ var helpers = {
       search_key: "",
       search_date: "",
       search_loan_date: "",
-      action_by_user: null
+      action_by_user: null,
+      perms: _store__WEBPACK_IMPORTED_MODULE_3__["default"].getters["auth/permissions"]
     };
   },
   setup: function setup() {
@@ -27393,6 +27396,22 @@ var helpers = {
       var from = page * perPage - perPage;
       var to = page * perPage;
       return data.slice(from, to);
+    },
+    hasPermission: function hasPermission(perm) {
+      if (this.perms.find(function (perm) {
+        return perm.name === perm;
+      })) {
+        return true;
+      }
+
+      return false;
+    },
+    message403: function message403() {
+      return this.$swal({
+        icon: 'warning',
+        title: 'Access Denied',
+        text: 'Sorry! you have no permission for the action'
+      });
     }
   }
 };
@@ -36669,7 +36688,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".modal-backdrop {\n    z-index: 1 !important;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".modal-backdrop {\n    z-index: 1 !important;\n}\n\n.error-page {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    width: 100%;\n}\n\n.error-page img {\n    width: 50%;\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

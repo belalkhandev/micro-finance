@@ -13,7 +13,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>{{ loan_total.total_amounts }}</h3>
+                                    <h3>{{ numberFormat(loan_total.total_amounts, 2) }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>{{ loan_total.collections }}</h3>
+                                    <h3>{{ numberFormat(loan_total.collections, 2) }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -43,7 +43,7 @@
                             </div>
                             <div class="widget-body">
                                 <router-link to="/members">
-                                    <h3>{{ loan_total.dues }}</h3>
+                                    <h3>{{ numberFormat(loan_total.dues, 2) }}</h3>
                                 </router-link>
                             </div>
                         </div>
@@ -77,10 +77,11 @@
                             <th>Acc. No</th>
                             <th>Member</th>
                             <th>Photo</th>
-                            <th>Loan Amont</th>
+                            <th><abbr title="Loan Amount">L.Amount</abbr></th>
                             <th>Service</th>
-                            <th>Total Amount</th>
-                            <th>Installment</th>
+                            <th><abbr title="Total Amount">T.Amount</abbr></th>
+                            <th><abbr title="Installment Amount">I.Amount</abbr></th>
+                            <th><abbr title="Total Installment">T.Inst</abbr></th>
                             <th>Paid</th>
                             <td></td>
                         </tr>
@@ -97,10 +98,11 @@
                             <td>
                                 <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
                             </td>
-                            <td>{{ application.loan_amount }}</td>
-                            <td>{{ application.service_amount }} ({{ application.service }}%)</td>
-                            <td>{{ application.total_amount }}</td>
-                            <td>{{ application.installment_amount }} X {{ application.installment }} <br>({{ ucFirst(application.dps_type) }})</td>
+                            <td>{{ numberFormat(application.loan_amount) }}</td>
+                            <td>{{ numberFormat(application.service_amount) }} ({{ application.service }}%)</td>
+                            <td>{{ numberFormat(application.total_amount) }}</td>
+                            <td>{{ numberFormat(application.installment_amount) }}<br>({{ ucFirst(application.dps_type) }})</td>
+                            <td>{{ application.installment }}</td>
                             <td>0</td>
                             <td>
                                 <div class="action">
@@ -143,7 +145,6 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4"></div>
     </div>
 </template>
 
@@ -195,29 +196,35 @@ export default ({
         }),
 
         deleteConfirm(application_id) {
-            this.$swal({
-                title:"Really want to delete!",
-                text: "Are you sure? You won't be able to revert this!",
-                icon: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#5430d6",
-                confirmButtonText: "Yes, Delete it!",
-                cancelButtonColor: '#c82333',
-            }).then((res) => {
-                if (res.isConfirmed) {
-                    this.deleteApplication(application_id).then(() => {
-                        if (!this.error_message) {
-                            this.$swal({
-                                icon: 'success',
-                                title: 'Congratulation!',
-                                text: 'Loan application has been deleted successfully'
-                            })
-                        }else {
-                            this.error = this.error_message
-                        }
-                    })
-                }
-            });
+            if (this.hasPermission('delete_application')) {
+                this.$swal({
+                    title:"Really want to delete!",
+                    text: "Are you sure? You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#5430d6",
+                    confirmButtonText: "Yes, Delete it!",
+                    cancelButtonColor: '#c82333',
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        this.deleteApplication(application_id).then(() => {
+                            if (!this.error_message) {
+                                this.$swal({
+                                    icon: 'success',
+                                    title: 'Congratulation!',
+                                    text: 'Loan application has been deleted successfully'
+                                })
+                            }else {
+                                this.error = this.error_message
+                            }
+                        })
+                    }
+                });
+            } else {
+                this.message403()
+            }
+
+
         },
 
         // pagination set pages

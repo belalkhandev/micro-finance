@@ -1,3 +1,14 @@
 .modal-backdrop {
     z-index: 1 !important;
 }
+
+.error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.error-page img {
+    width: 50%;
+}

@@ -1,7 +1,7 @@
 import Datepicker from "vue3-date-time-picker";
 import moment from 'moment'
 import {ref} from "vue";
-
+import store from "../store";
 
 export const helpers = {
 
@@ -17,6 +17,7 @@ export const helpers = {
             search_date: "",
             search_loan_date: "",
             action_by_user: null,
+            perms: store.getters['auth/permissions']
         }
     },
 
@@ -78,5 +79,23 @@ export const helpers = {
             let to = (page * perPage);
             return data.slice(from, to);
         },
+
+        hasPermission(perm) {
+            if (this.perms.find(perm => {
+                return perm.name === perm
+            })) {
+                return true;
+            }
+            return false;
+        },
+
+        message403()
+        {
+            return this.$swal({
+                icon: 'warning',
+                title: 'Access Denied',
+                text: 'Sorry! you have no permission for the action'
+            })
+        }
     },
 }

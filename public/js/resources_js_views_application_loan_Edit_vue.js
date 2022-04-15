@@ -91,7 +91,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.form.total_installment = application.installment;
           this.form.installment_amount = application.installment_amount;
           this.form.dps_type = application.dps_type;
-          this.form.w_day = application.w_day ? application.w_day : "";
+          this.form.w_day = application.w_day ? application.w_day : application.member.day;
           this.monthly_date = application.m_date;
           this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone + ' (' + this.ucFirst(application.member.member_type) + ')';
         }
