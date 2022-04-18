@@ -35,10 +35,6 @@ export default {
         SET_PERMISSION (state, permissions) {
             state.permissions = permissions
         },
-
-        UPDATE_USER_PASSWORD (state, user) {
-            state.user = user
-        }
     },
 
     actions: {
@@ -102,7 +98,25 @@ export default {
             if (res.data.status) {
                 commit('SET_VALIDATION_ERRORS', null,  { root:true })
                 commit('SET_ERROR_MESSAGE', null,  { root:true })
-                commit('UPDATE_USER_PASSWORD', res.data.user)
+            }else {
+                if (res.data.errors) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors, { root:true })
+                    commit('SET_ERROR_MESSAGE', null, { root:true })
+                } else if (res.data.message) {
+                    commit('SET_ERROR_MESSAGE', res.data.message, { root:true })
+                    commit('SET_VALIDATION_ERRORS', null, { root:true })
+                } else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
+        //password change
+        async resetPassword({ commit }, formData) {
+            const res = await axios.post('user/reset/password', formData)
+            if (res.data.status) {
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
             }else {
                 if (res.data.errors) {
                     commit('SET_VALIDATION_ERRORS', res.data.errors, { root:true })

@@ -27990,9 +27990,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     SET_PERMISSION: function SET_PERMISSION(state, permissions) {
       state.permissions = permissions;
-    },
-    UPDATE_USER_PASSWORD: function UPDATE_USER_PASSWORD(state, user) {
-      state.user = user;
     }
   },
   actions: {
@@ -28145,7 +28142,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   commit('SET_ERROR_MESSAGE', null, {
                     root: true
                   });
-                  commit('UPDATE_USER_PASSWORD', res.data.user);
                 } else {
                   if (res.data.errors) {
                     commit('SET_VALIDATION_ERRORS', res.data.errors, {
@@ -28172,6 +28168,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee4);
+      }))();
+    },
+    //password change
+    resetPassword: function resetPassword(_ref5, formData) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('user/reset/password', formData);
+
+              case 3:
+                res = _context5.sent;
+
+                if (res.data.status) {
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (res.data.errors) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', null, {
+                      root: true
+                    });
+                  } else if (res.data.message) {
+                    commit('SET_ERROR_MESSAGE', res.data.message, {
+                      root: true
+                    });
+                    commit('SET_VALIDATION_ERRORS', null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     }
   }

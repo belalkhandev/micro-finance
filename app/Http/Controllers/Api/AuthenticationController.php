@@ -3,10 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use http\Client\Curl\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
+use Psr\Http\Message\RequestInterface;
 use function PHPSTORM_META\map;
 
 class AuthenticationController extends Controller
@@ -74,5 +77,97 @@ class AuthenticationController extends Controller
             'status' => true,
             'message' => 'Logout successfully'
         ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        $rules = [
+            'current_password' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ],);
+        }
+
+        //check current password
+        if(!Hash::check($request->get('current_password'), Auth::guard('sanctum')->user()->password)){
+            return response()->json([
+                'status' => false,
+                'errors' => [
+                    'current_password' => ["Current password does not match"]
+                ]
+            ]);
+        }
+
+        try {
+            $user = Auth::guard('sanctum')->user();
+            $user->password = Hash::make($request->input('password'));
+
+            if ($user->save()) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Password changed successfully'
+                ]);
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Failed to change password.'
+            ]);
+
+        }catch(\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'An error occurred while changed password.'
+            ]);
+        }
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $rules = [
+            'user_id' => 'required',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ],);
+        }
+
+        try {
+            $user = User::find($request->input('user_id'));
+            $user->password = Hash::make($request->input('password'));
+
+            if ($user->save()) {
+                return response()->json([
+                    'status' => true,
+                    'message' => 'Password changed successfully'
+                ]);
+            }
+
+            return response()->json([
+                'status' => false,
+                'message' => 'Failed to change password.'
+            ]);
+
+        }catch(\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'An error occurred while changed password.'
+            ]);
+        }
     }
 }

@@ -83,23 +83,33 @@
                         <h5 class="text-white">Password & Security</h5>
                     </div>
                 </div>
-                <div class="box-body">
-                    <div class="form-group">
-                        <label for="">Current Password</label>
-                        <input type="text" name="" placeholder="Old password" class="form-control">
+                <form @submit.prevent="changePassword">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Current Password</label>
+                            <input type="password" v-model="form.current_password" placeholder="Current password" class="form-control">
+                            <span class="text-danger text-sm" v-if="errors">{{ errors.current_password ? errors.current_password[0] : '' }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" v-model="form.password" placeholder="New password" class="form-control">
+                            <span class="text-danger text-sm" v-if="errors">{{ errors.password ? errors.password[0] : '' }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" v-model="form.password_confirmation" placeholder="Confirm password" class="form-control">
+                            <span class="text-danger text-sm" v-if="errors">{{ errors.password_confirmation ? errors.password_confirmation[0] : '' }}</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="">New Password</label>
-                        <input type="text" name="" placeholder="New password" class="form-control">
+                    <div class="box-footer text-right">
+                        <button type="submit" class="btn btn-sm btn-primary" id="updatePassword">
+                            <span>Update Password</span>
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
                     </div>
-                    <div class="form-group">
-                        <label for="">Confirm Password</label>
-                        <input type="text" name="" placeholder="Confirm password" class="form-control">
-                    </div>
-                </div>
-                <div class="box-footer text-right">
-                    <button type="submit" class="btn btn-sm btn-primary">Change Password</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
@@ -107,15 +117,64 @@
 
 <script>
 import { mapGetters, mapActions} from 'vuex'
+import $ from "jquery";
 
 
 export default({
     name: 'Profile',
+    data() {
+        return {
+            form: {
+                current_password: "",
+                password:"",
+                password_confirmation:"",
+            },
+            errors: null,
+            error: null,
+        }
+    },
     computed: {
         ...mapGetters ({
-            user: 'auth/user'
+            user: 'auth/user',
+            validation_errors: 'validation_errors',
+            error_message: 'error_message',
         })
     },
+
+    methods: {
+        ...mapActions({
+            updatePassword: 'auth/changePassword'
+        }),
+
+        changePassword() {
+            $('#updatePassword').prop('disabled', true).addClass('submitted')
+            let formData = new FormData();
+            let inputData = this.form
+
+            Object.keys(inputData).forEach(fieldName => {
+                formData.append(fieldName, inputData[fieldName]);
+            });
+
+            this.updatePassword(formData).then(() => {
+                if (!this.validation_errors && !this.error_message) {
+                    this.errors = this.error = null;
+                    Object.assign(this.$data, this.$options.data.apply(this))
+
+                    this.$swal({
+                        icon: "success",
+                        title: "Updated!",
+                        text: "Password has been updated successfully",
+                        timer: 3000
+                    })
+                } else {
+                    this.errors = this.validation_errors
+                    this.error = this.error_message
+                }
+
+                $('#updatePassword').prop('disabled', false).removeClass('submitted')
+            })
+        }
+    }
 
 })
 </script>

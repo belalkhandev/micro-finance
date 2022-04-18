@@ -43,6 +43,8 @@ Route::group([
         $route->delete('/delete/{id}', [UsersController::class, 'destroy']);
 
         $route->post('/logout', [AuthenticationController::class, 'logout']);
+        $route->post('/change/password', [AuthenticationController::class, 'changePassword']);
+        $route->post('/reset/password', [AuthenticationController::class, 'resetPassword']);
     });
 
     Route::get('/role/list', [UsersController::class, 'roles']);
