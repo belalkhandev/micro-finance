@@ -106,6 +106,7 @@
                                 <td>{{ userFormattedDate(application.created_at) }}</td>
                                 <td>
                                     <div class="action">
+                                        <a href="#" class="btn btn-sm btn-outline-info btn-text" @click.prevent="withdrawApplication">Withdraw</a>
                                         <router-link :to="{ name: 'EditDPSApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>
                                         <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="deleteConfirm(application.id)"><i class="bx bx-trash"></i></a>
                                     </div>
@@ -224,6 +225,15 @@ export default ({
             }
         },
 
+
+        withdrawApplication() {
+            this.$swal({
+                icon: 'warning',
+                title: 'Coming Soon!',
+                text: 'Withdrawal feature is under-construction, it will release in shortly'
+            })
+        },
+
         // pagination set pages
         setPages() {
             let numberOfPages = Math.ceil(this.applications ? this.applications.length / this.per_page : 0);
@@ -248,3 +258,8 @@ export default ({
 
 })
 </script>
+<style>
+.btn.btn-sm.btn-outline-info.btn-text {
+    line-height: 1;
+}
+</style>
