@@ -3,6 +3,7 @@
 namespace App\Repositories\DpsApplication;
 
 use App\Models\DpsApplication;
+use App\Models\DpsTransaction;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,6 +31,12 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->profit = $request->input('profit');
         $dps->dps_type = $request->input('dps_type');
 
+        if ($request->input('prev_deposit')) {
+            $dps->prev_deposit = $request->input('prev_deposit');
+            $dps->balance = $request->input('prev_deposit');
+            $dps->remarks = $request->input('remarks');
+        }
+
         if ($request->input('dps_type') === 'weekly') {
             $dps->w_day = $request->input('w_day');
         }else {
@@ -56,6 +63,12 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
         $dps->dps_type = $request->input('dps_type');
+
+        if ($request->input('prev_deposit')) {
+            $dps->prev_deposit = $request->input('prev_deposit');
+            $dps->balance = $dps->transactionsTotalAmount() + $request->input('prev_deposit');
+            $dps->remarks = $request->input('remarks');
+        }
 
         if ($request->input('dps_type') === 'weekly') {
             $dps->w_day = $request->input('w_day');
@@ -98,7 +111,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function dpsTransactions($dps_id)
     {
-        $transactions = DpsInstallment::where('dps_application_id', $dps_id)->get();
+        $transactions = DpsTransaction::where('dps_application_id', $dps_id)->get();
 
         if ($transactions) {
             return $transactions;
@@ -120,7 +133,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function memberDpsTransactions($member_id)
     {
-        $transactions = DpsInstallment::where('member_id', $member_id)->get();
+        $transactions = DpsTransaction::where('member_id', $member_id)->get();
 
         if ($transactions) {
             return $transactions;

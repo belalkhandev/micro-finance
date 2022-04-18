@@ -39,6 +39,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         dps_type: "weekly",
         w_day: "",
         m_date: "",
+        prev_deposit: "",
+        remarks: "",
         application_id: this.$route.params.application_id
       },
       monthly_date: "",
@@ -87,8 +89,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.form.total_dps = application.total_amount;
           this.form.year = application.year, this.form.receiving = application.receiving;
           this.form.profit = application.profit;
-          this.form.dps_type = application.dps_type, this.form.w_day = application.w_day ? application.w_day : application.member.day;
+          this.form.dps_type = application.dps_type, this.form.w_day = application.w_day ? application.w_day : "";
           this.monthly_date = application.m_date;
+          this.form.prev_deposit = application.prev_deposit;
+          this.form.remarks = application.remarks;
           this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone + ' (' + this.ucFirst(application.member.member_type) + ')';
         }
       }
@@ -471,15 +475,52 @@ var _hoisted_63 = {
   "class": "text-danger text-sm"
 };
 var _hoisted_64 = {
-  "class": "mt-8 text-right"
+  "class": "form-group mt-4 bg-yellow-50 p-2"
 };
 var _hoisted_65 = {
+  "class": "row"
+};
+
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-4 text-left"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label"
+}, "Previous Calculation (Only for this application)")], -1
+/* HOISTED */
+);
+
+var _hoisted_67 = {
+  "class": "col-md-8"
+};
+var _hoisted_68 = {
+  "class": "row"
+};
+var _hoisted_69 = {
+  "class": "col-md-12"
+};
+var _hoisted_70 = {
+  "class": "col-md-12 mt-2"
+};
+var _hoisted_71 = {
+  "class": "form-floating mb-3"
+};
+
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "remarks"
+}, "Comments", -1
+/* HOISTED */
+);
+
+var _hoisted_73 = {
+  "class": "mt-8 text-right"
+};
+var _hoisted_74 = {
   type: "submit",
   "class": "btn btn-primary",
   id: "updateApplication"
 };
 
-var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "spinner-border",
   role: "status"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
@@ -488,7 +529,7 @@ var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_76 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "box-footer"
 }, null, -1
 /* HOISTED */
@@ -512,7 +553,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     /* STABLE */
 
   })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[18] || (_cache[18] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+    onSubmit: _cache[20] || (_cache[20] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
       return $options.updateDpsApplication && $options.updateDpsApplication.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.application) + " ", 1
@@ -688,11 +729,29 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* PROPS */
   , ["modelValue"]), $data.errors ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors.m_date ? $data.errors.m_date[0] : ''), 1
   /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_65, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('update')), 1
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_65, [_hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "number",
+    "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+      return $data.form.prev_deposit = $event;
+    }),
+    "class": "form-control",
+    placeholder: "Previous Deposit"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.prev_deposit]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_70, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_71, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
+      return $data.form.remarks = $event;
+    }),
+    "class": "form-control",
+    id: "remarks",
+    placeholder: "Leave a comments here"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.remarks]]), _hoisted_72])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_74, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('update')), 1
   /* TEXT */
-  ), _hoisted_66])])])])], 32
+  ), _hoisted_75])])])])], 32
   /* HYDRATE_EVENTS */
-  )]), _hoisted_67]);
+  )]), _hoisted_76]);
 }
 
 /***/ }),

@@ -16,6 +16,15 @@ class DpsApplication extends Model
         return $this->hasMany(DpsInstallment::class, 'dps_application_id', 'id');
     }
 
+    public function transactionsTotalAmount()
+    {
+        if ($this->transactions->isNotEmpty()) {
+            return $this->transactions->where('is_paid', 1)->sum('amount');
+        }
+
+        return 0;
+    }
+
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');

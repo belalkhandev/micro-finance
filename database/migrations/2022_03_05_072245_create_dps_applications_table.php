@@ -26,6 +26,8 @@ class CreateDpsApplicationsTable extends Migration
             $table->string('w_day')->nullable();
             $table->date('m_date')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->double('prev_deposit', 10, 2)->nullable();
+            $table->text('remarks')->nullable();
             $table->timestamps();
             $table->integer('created_by')->nullable();
             $table->integer('updated_by')->nullable();
