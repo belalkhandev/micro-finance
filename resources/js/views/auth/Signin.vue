@@ -52,8 +52,8 @@
         data() {
             return {
                 form: {
-                    email: 'superadmin@becodezen.com',
-                    password: 'password'
+                    email: '',
+                    password: ''
                 },
                 errors: null,
                 error: null,

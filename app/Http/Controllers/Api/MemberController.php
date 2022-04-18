@@ -79,10 +79,20 @@ class MemberController extends Controller
 
         $messages = [
             'father_name.required' => "Father or spouse name is required",
-//            'nominee_father_name.required' => "Father or spouse name is required",
             'village_id.required' => "Village is required",
             'post_office_id.required' => "Post office is required",
         ];
+
+
+        if ($request->input('nominee_name')) {
+            $rules['nominee_father_name'] = 'required';
+            $rules['nominee_gender'] = 'required';
+            $rules['nominee_phone'] = 'required';
+
+            $messages['nominee_father_name.required'] = "Father/Spouse name is required";
+            $messages['nominee_gender.required'] = "Gender is required";
+            $messages['nominee_phone.required'] = "Phone is required";
+        }
 
         $validation = Validator::make($request->all(), $rules, $messages);
 
@@ -107,7 +117,9 @@ class MemberController extends Controller
 
         if ($member) {
             //store nominee
-            $this->member->storeNominee($request, $member->id);
+            if ($request->input('nominee_name')) {
+                $this->member->storeNominee($request, $member->id);
+            }
             $member = $this->member->find($member->id);
             return response()->json([
                 'status' => true,
@@ -176,21 +188,23 @@ class MemberController extends Controller
             'joining_date' => 'required',
             'account_no' => 'required',
             'member_type' => 'required',
-            'day' => 'required',
-            'nominee_name' => 'required',
-            'nominee_father_name' => 'required',
-            'nominee_gender' => 'required',
-            'nominee_phone' => 'required',
-            'member_photo' => 'nullable|mimes:jpg,png,jpeg',
-            'nominee_photo' => 'nullable|mimes:jpg,png,jpeg',
         ];
 
         $messages = [
             'father_name.required' => "Father or spouse name is required",
-            'nominee_father_name.required' => "Father or spouse name is required",
             'village_id.required' => "Village is required",
             'post_office_id.required' => "Post office is required",
         ];
+
+        if ($request->input('nominee_name')) {
+            $rules['nominee_father_name'] = 'required';
+            $rules['nominee_gender'] = 'required';
+            $rules['nominee_phone'] = 'required';
+
+            $messages['nominee_father_name.required'] = "Father/Spouse name is required";
+            $messages['nominee_gender.required'] = "Gender is required";
+            $messages['nominee_phone.required'] = "Phone is required";
+        }
 
         $validation = Validator::make($request->all(), $rules, $messages);
 
@@ -200,9 +214,6 @@ class MemberController extends Controller
                 'errors' => $validation->errors()
             ]);
         }
-
-        //check duplication phone number
-
 
         //check duplication account number on different group
         if ($this->member->duplicateCheck($request)) {
@@ -221,7 +232,9 @@ class MemberController extends Controller
             if ($member->nominee) {
                 $this->member->updateNominee($request, $member->nominee->id);
             } else {
-                $this->member->storeNominee($request, $member->id);
+                if ($request->input('nominee_name')) {
+                    $this->member->storeNominee($request, $member->id);
+                }
             }
             return response()->json([
                 'status' => true,

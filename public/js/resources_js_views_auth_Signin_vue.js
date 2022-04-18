@@ -27,8 +27,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: {
-        email: 'superadmin@becodezen.com',
-        password: 'password'
+        email: '',
+        password: ''
       },
       errors: null,
       error: null
