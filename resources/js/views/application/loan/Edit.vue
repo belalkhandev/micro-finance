@@ -140,6 +140,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mt-4 bg-yellow-50 p-2">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Previous Calculation</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="number" v-model="form.prev_deposit" class="form-control" placeholder="Previous Deposit">
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <div class="form-floating mb-3">
+                                                <textarea v-model="form.remarks" class="form-control" id="remarks" placeholder="Leave a comments here"></textarea>
+                                                <label for="remarks">Comments</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mt-8 text-right">
                             <button type="submit" class="btn btn-primary" id="updateApplication">
                                 <span>{{ $t('update') }}</span>
@@ -179,6 +199,8 @@ export default ({
                 dps_type: "weekly",
                 w_day: "",
                 m_date: "",
+                prev_deposit: "",
+                remarks: "",
                 application_id: this.$route.params.application_id
             },
             monthly_date: "",
@@ -225,6 +247,7 @@ export default ({
                 const application = this.applications.find(application => application.id == this.form.application_id)
 
                 if (application) {
+                    console.log(application)
                     this.form.member_id = application.member_id;
                     this.form.loan_amount = application.loan_amount;
                     this.form.service = application.service;
@@ -233,8 +256,10 @@ export default ({
                     this.form.total_installment = application.installment;
                     this.form.installment_amount = application.installment_amount;
                     this.form.dps_type = application.dps_type;
-                    this.form.w_day = application.w_day ? application.w_day : application.member.day;
+                    this.form.w_day = application.w_day ? application.w_day : "";
                     this.monthly_date = application.m_date;
+                    this.form.prev_deposit = application.prev_deposit;
+                    this.form.remarks = application.remarks;
                     this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone+ ' ('+ this.ucFirst(application.member.member_type) +')' ;
                 }
             }

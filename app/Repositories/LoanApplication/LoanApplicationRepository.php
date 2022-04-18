@@ -38,6 +38,12 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
             $loan->m_date = databaseFormattedDate($request->input('m_date'));
         }
 
+        if ($request->input('prev_deposit')) {
+            $loan->prev_deposit = $request->input('prev_deposit');
+            $loan->balance = $request->input('prev_deposit');
+            $loan->remarks = $request->input('remarks');
+        }
+
         $loan->created_by = Auth::guard('sanctum')->user()->id;
 
         if ($loan->save()) {
@@ -66,6 +72,13 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         }else {
             $loan->m_date = databaseFormattedDate($request->input('m_date'));
             $loan->w_day = null;
+        }
+
+
+        if ($request->input('prev_deposit')) {
+            $loan->prev_deposit = $request->input('prev_deposit');
+            $loan->balance = $loan->transactionsTotalAmount() + $request->input('prev_deposit');
+            $loan->remarks = $request->input('remarks');
         }
 
         $loan->updated_by = Auth::guard('sanctum')->user()->id;

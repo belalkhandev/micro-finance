@@ -90,7 +90,7 @@ class LoanController extends Controller
         }
 
         //validation monthly date
-        if ($request->input('m_date') === 'Invalid date') {
+        if ($request->input('dps_type') === 'monthly' && $request->input('m_date') === 'Invalid date') {
             return response()->json([
                 'status' => false,
                 'errors' => [
@@ -191,7 +191,7 @@ class LoanController extends Controller
         }
 
         //validation monthly date
-        if ($request->input('m_date') === 'Invalid date') {
+        if ($request->input('dps_type') === 'monthly' && $request->input('m_date') === 'Invalid date') {
             return response()->json([
                 'status' => false,
                 'errors' => [

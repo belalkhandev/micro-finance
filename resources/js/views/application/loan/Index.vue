@@ -102,8 +102,8 @@
                             <td>{{ numberFormat(application.service_amount) }} ({{ application.service }}%)</td>
                             <td>{{ numberFormat(application.total_amount) }}</td>
                             <td>{{ numberFormat(application.installment_amount) }}<br>({{ ucFirst(application.dps_type) }})</td>
-                            <td>{{ application.installment }}</td>
-                            <td>0</td>
+                            <td>{{ application.balance/application.installment_amount }} of {{ application.installment }}</td>
+                            <td>{{ numberFormat(application.balance) }}</td>
                             <td>
                                 <div class="action">
                                     <router-link :to="{ name: 'EditLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>

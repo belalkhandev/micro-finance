@@ -13,7 +13,7 @@ class DpsApplication extends Model
 
     public function transactions()
     {
-        return $this->hasMany(DpsInstallment::class, 'dps_application_id', 'id');
+        return $this->hasMany(DpsTransaction::class, 'dps_application_id', 'id');
     }
 
     public function transactionsTotalAmount()

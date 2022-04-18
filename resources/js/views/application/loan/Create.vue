@@ -139,6 +139,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group mt-4 bg-yellow-50 p-2">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Previous Calculation</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <input type="number" v-model="form.prev_deposit" class="form-control" placeholder="Previous Deposit">
+                                        </div>
+                                        <div class="col-md-12 mt-2">
+                                            <div class="form-floating mb-3">
+                                                <textarea v-model="form.remarks" class="form-control" id="remarks" placeholder="Leave a comments here"></textarea>
+                                                <label for="remarks">Comments</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         <div class="mt-8 text-right">
                             <button type="submit" class="btn btn-primary" id="storeApplication">
                                 <span>{{ $t('save') }}</span>
@@ -177,7 +197,9 @@ export default ({
                 installment_amount: 0,
                 dps_type: "weekly",
                 w_day: "",
-                m_date: ""
+                m_date: "",
+                prev_deposit: "",
+                remarks: ""
             },
             monthly_date: "",
             member_input_text: "",
