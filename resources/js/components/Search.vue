@@ -79,7 +79,7 @@ export default ({
                 return this.members.filter((member) => {
                     return member.account_no.toLowerCase().match(this.search_key.toLowerCase())
                         || member.name.toLowerCase().includes(this.search_key.toLowerCase())
-                        || member.phone.toLowerCase() === this.search_key.toLowerCase()
+                        || member.phone.toLowerCase().match(this.search_key.toLowerCase())
                 });
             }
 

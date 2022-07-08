@@ -165,6 +165,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         if (member) {
+          console.log(member);
           this.form.name = member.name;
           this.form.father_name = member.father_name;
           this.form.mother_name = member.mother_name;

@@ -20,6 +20,7 @@
                                 <i class="bx bx-search-alt"></i>
                             </button>
                         </div>
+                        <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#savingsCreateModal">Savings Transaction</button>
                     </div>
                 </div>
                 <div class="box-body">
@@ -33,7 +34,7 @@
                                     </span>
                                 </div>
                                 <div class="widget-body">
-                                    <router-link to="/expenses/list">
+                                    <router-link to="#">
                                         <h3>{{ numberFormat(member.savings_deposit) }}</h3>
                                     </router-link>
                                 </div>
@@ -48,7 +49,7 @@
                                     </span>
                                 </div>
                                 <div class="widget-body">
-                                    <router-link to="/expenses/list">
+                                    <router-link to="#">
                                         <h3>{{ numberFormat(member.savings_withdraw) }}</h3>
                                     </router-link>
                                 </div>
@@ -63,13 +64,14 @@
                                     </span>
                                 </div>
                                 <div class="widget-body">
-                                    <router-link to="/expenses/list">
+                                    <router-link to="#">
                                         <h3>{{ numberFormat(member.savings_deposit - member.savings_withdraw) }}</h3>
                                     </router-link>
                                 </div>
                             </div>
                         </div>
                     </div>
+
                     <table class="table">
                         <thead>
                         <tr>
@@ -127,17 +129,24 @@
             </div>
         </div>
     </div>
+    <!-- savings create modal -->
+    <create-savings :member="member" />
+
+    <!-- savings edit modal -->
 </template>
 
 <script>
-import { mapGetters, mapActions} from 'vuex'
-import MemberShowSidebar from '../../components/MemberShowSidebar'
+import { mapGetters, mapActions} from 'vuex';
+import MemberShowSidebar from '../../components/MemberShowSidebar';
+import CreateSavings from "../../components/savings/CreateSavings";
+import EditSavings from "../../components/savings/EditSavings";
 import {helpers} from "../../mixin";
 
 export default({
     name: 'Applications',
     components: {
-        MemberShowSidebar
+        MemberShowSidebar,
+        CreateSavings, EditSavings
     },
     mixins: [helpers],
 

@@ -21,6 +21,7 @@ class CreateSavingsTable extends Migration
             $table->double('amount', 10, 2)->nullable();
             $table->double('balance', 10, 2)->nullable();
             $table->date('savings_date')->nullable();
+            $table->text('remarks')->nullable();
             $table->timestamps();
             $table->foreign('member_id')->references('id')->on('members')->onDelete('cascade');
         });

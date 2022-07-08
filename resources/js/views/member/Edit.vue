@@ -445,6 +445,7 @@ export default ({
                 const member = this.members.find(member => member.id == this.form.member_id)
 
                 if (member) {
+                    console.log(member)
                     this.form.name = member.name;
                     this.form.father_name = member.father_name;
                     this.form.mother_name = member.mother_name;
