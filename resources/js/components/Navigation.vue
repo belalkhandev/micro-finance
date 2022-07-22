@@ -48,6 +48,7 @@
                                     <span>{{ $t('generate') }} {{ $t('transaction') }}</span>
                                 </router-link>
                             </li>
+                            <hr>
                             <li>
                                 <router-link :to="{name: 'DpsTransactionList'}">
                                     <i class='bx bx-chevron-right'></i>
@@ -55,9 +56,34 @@
                                 </router-link>
                             </li>
                             <li>
+                                <router-link :to="{name: 'DpsUnpaidTransactionList'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS Unpaid Transactions</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'DpsPaidTransactionList'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS Paid Transactions</span>
+                                </router-link>
+                            </li>
+                            <hr>
+                            <li>
                                 <router-link :to="{name: 'LoanTransactionList'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All Loan Transactions</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'LoanUnpaidTransactionList'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan Unpaid Transactions</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'LoanPaidTransactionList'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan Paid Transactions</span>
                                 </router-link>
                             </li>
                         </ul>

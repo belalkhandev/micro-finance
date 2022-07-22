@@ -19,8 +19,6 @@ class DashboardController extends Controller
         $dps_trs = DpsTransaction::latest()->get();
         $lns_trs = LoanTransaction::latest()->get();
         $savings = Savings::all();
-        $recent_dps_trs = $dps_trs->where('is_paid', 1)->take(5);
-        $recent_lns_trs = $lns_trs->where('is_paid', 1)->take(5);
         $loan_applications = LoanApplication::where('is_active', 1)->get();
         $members = Member::get()->count();
         $admims = User::get()->count();

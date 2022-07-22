@@ -4,7 +4,8 @@ export default {
     namespaced: true,
     state: {
         applications: null,
-        statistics: null
+        statistics: null,
+        loan: null
     },
 
     getters: {
@@ -14,6 +15,10 @@ export default {
 
         statistics(state) {
             return state.statistics
+        },
+
+        loan (state) {
+            return state.loan
         }
     },
 
@@ -24,6 +29,10 @@ export default {
 
         SET_STATISTICS(state, total) {
             state.statistics = total
+        },
+
+        SET_LOAN(state, loan) {
+            state.loan = loan
         },
 
         SET_APPLICATION(state, application) {
@@ -54,6 +63,15 @@ export default {
 
             if (res.data.status) {
                 commit('SET_APPLICATIONS', res.data.applications)
+            }
+        },
+
+        //application actions
+        async getMemberApplications({ commit }, member_id) {
+            const res = await axios.get('application/loan/member/list/'+member_id)
+
+            if (res.data.status) {
+                commit('SET_LOAN', res.data.loan)
             }
         },
 

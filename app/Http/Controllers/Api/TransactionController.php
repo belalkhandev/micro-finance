@@ -91,6 +91,46 @@ class TransactionController extends Controller
     /*
      * all dps transaction list
      * */
+    public function dpsTransactionPaidList()
+    {
+        $dps_trs = $this->dps->allPaid();
+
+        if ($dps_trs) {
+            return response()->json([
+                'status' => true,
+                'dps_transactions' => $dps_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Dps transaction found'
+        ]);
+    }
+
+    /*
+     * all dps transaction list
+     * */
+    public function dpsTransactionUnpaidList()
+    {
+        $dps_trs = $this->dps->allUnpaid();
+
+        if ($dps_trs) {
+            return response()->json([
+                'status' => true,
+                'dps_transactions' => $dps_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Dps transaction found'
+        ]);
+    }
+
+    /*
+     * all dps transaction list
+     * */
     public function memberDpsTransactions($member_id)
     {
         $dps_trs = $this->dps->memberTransactions($member_id);
@@ -134,6 +174,46 @@ class TransactionController extends Controller
     public function loanTransactionList()
     {
         $loan_trs = $this->loan->all();
+
+        if ($loan_trs) {
+            return response()->json([
+                'status' => true,
+                'loan_transactions' => $loan_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Loan transaction found'
+        ]);
+
+    }
+
+    /*
+     * All load transaction list
+     * */
+    public function loanTransactionUnpaidList()
+    {
+        $loan_trs = $this->loan->allUnpaid();
+
+        if ($loan_trs) {
+            return response()->json([
+                'status' => true,
+                'loan_transactions' => $loan_trs
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No Loan transaction found'
+        ]);
+    }
+    /*
+     * All load transaction list
+     * */
+    public function loanTransactionPaidList()
+    {
+        $loan_trs = $this->loan->allPaid();
 
         if ($loan_trs) {
             return response()->json([

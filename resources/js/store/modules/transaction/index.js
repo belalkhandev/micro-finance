@@ -6,7 +6,11 @@ export default {
 
     state: {
         dps_transactions: null,
-        loan_transactions: null
+        dps_unpaid_transactions: null,
+        dps_paid_transactions: null,
+        loan_transactions: null,
+        loan_unpaid_transactions: null,
+        loan_paid_transactions: null,
     },
 
     getters: {
@@ -17,6 +21,22 @@ export default {
         loan_transactions(state){
             return state.loan_transactions
         },
+
+        dps_unpaid_transactions(state){
+            return state.dps_unpaid_transactions
+        },
+
+        loan_unpaid_transactions(state){
+            return state.loan_unpaid_transactions
+        },
+
+        dps_paid_transactions(state){
+            return state.dps_paid_transactions
+        },
+
+        loan_paid_transactions(state){
+            return state.loan_paid_transactions
+        },
     },
 
     mutations: {
@@ -26,6 +46,22 @@ export default {
 
         SET_LOAN_TRANSACTIONS(state, loan_transactions) {
             state.loan_transactions = loan_transactions
+        },
+
+        SET_DPS_PAID_TRANSACTIONS(state, dps_transactions) {
+            state.dps_paid_transactions = dps_transactions
+        },
+
+        SET_LOAN_PAID_TRANSACTIONS(state, loan_transactions) {
+            state.loan_paid_transactions = loan_transactions
+        },
+
+        SET_DPS_UNPAID_TRANSACTIONS(state, dps_transactions) {
+            state.dps_unpaid_transactions = dps_transactions
+        },
+
+        SET_LOAN_UNPAID_TRANSACTIONS(state, loan_transactions) {
+            state.loan_unpaid_transactions = loan_transactions
         },
 
         UPDATE_DPS_TR(state, dps_transaction) {
@@ -80,11 +116,43 @@ export default {
             }
         },
 
+        async getDpsUnpaidTransactions({ commit }) {
+            const res = await axios.get('transaction/dps/unpaid/list')
+
+            if (res.data.status) {
+                commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.dps_transactions)
+            }
+        },
+
+        async getDpsPaidTransactions({ commit }) {
+            const res = await axios.get('transaction/dps/paid/list')
+
+            if (res.data.status) {
+                commit('SET_DPS_PAID_TRANSACTIONS', res.data.dps_transactions)
+            }
+        },
+
         async getLoanTransactions({ commit }) {
             const res = await axios.get('transaction/loan/list')
 
             if (res.data.status) {
                 commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions)
+            }
+        },
+
+        async getLoanUnpaidTransactions({ commit }) {
+            const res = await axios.get('transaction/loan/unpaid/list')
+
+            if (res.data.status) {
+                commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.loan_transactions)
+            }
+        },
+
+        async getLoanPaidTransactions({ commit }) {
+            const res = await axios.get('transaction/loan/paid/list')
+
+            if (res.data.status) {
+                commit('SET_LOAN_PAID_TRANSACTIONS', res.data.loan_transactions)
             }
         },
 

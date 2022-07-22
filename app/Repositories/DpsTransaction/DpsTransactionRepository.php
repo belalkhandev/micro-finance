@@ -20,6 +20,28 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
+    public function allPaid()
+    {
+        $transactions = DpsTransaction::with('application')->where('is_paid', 1)->orderBy('is_paid', 'ASC')->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function allUnpaid()
+    {
+        $transactions = DpsTransaction::with('application')->where('is_paid', 0)->orderBy('is_paid', 'ASC')->latest()->get();
+
+        if ($transactions->isNotEmpty()) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
     public function memberTransactions($member_id)
     {
         $transactions = DpsTransaction::with('application')

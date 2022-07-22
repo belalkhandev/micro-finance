@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\LoanApplication;
+use App\Models\LoanTransaction;
 use App\Repositories\LoanApplication\LoanApplicationRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -36,6 +38,40 @@ class LoanController extends Controller
         return response()->json([
             'status' => false,
             'applications' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function memberApplications($member_id)
+    {
+        $applications = LoanApplication::where('member_id', $member_id)->get();
+        $total_amount = $applications->sum('total_amount');
+        $total_paid = 0;
+
+        foreach ($applications as $application) {
+            $total_paid += $application->transactionsTotalAmount();
+        }
+
+        if ($applications->isNotEmpty()) {
+            return response()->json([
+                'status' => true,
+                'loan' => [
+                    'applications' => $applications,
+                    'total_amount' => $total_amount,
+                    'total_paid' => $total_paid
+                ],
+                'message' => 'Loan applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'loan' => null,
             'message' => 'No data found'
         ]);
     }

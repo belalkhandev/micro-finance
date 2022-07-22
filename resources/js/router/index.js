@@ -241,11 +241,47 @@ const routes = [
         }
     },
     {
+        path: '/transactions/dps/unpaid/list',
+            name: 'DpsUnpaidTransactionList',
+            component: () => import('../views/transaction/DpsUnpaidList'),
+            meta: {
+            title: 'Unpaid DPS transaction list',
+            permission: 'view_transaction'
+        }
+    },
+    {
+        path: '/transactions/dps/paid/list',
+            name: 'DpsPaidTransactionList',
+            component: () => import('../views/transaction/DpsPaidList'),
+            meta: {
+            title: 'Paid DPS transaction list',
+            permission: 'view_transaction'
+        }
+    },
+    {
         path: '/transactions/loan/list',
         name: 'LoanTransactionList',
         component: () => import('../views/transaction/LoanList'),
         meta: {
             title: 'All loan transaction list',
+            permission: 'view_transaction'
+        }
+    },
+    {
+        path: '/transactions/loan/unpaid/list',
+        name: 'LoanUnpaidTransactionList',
+        component: () => import('../views/transaction/LoanUnpaidList'),
+        meta: {
+            title: 'Unpaid loan transaction list',
+            permission: 'view_transaction'
+        }
+    },
+    {
+        path: '/transactions/loan/paid/list',
+        name: 'LoanPaidTransactionList',
+        component: () => import('../views/transaction/LoanPaidList'),
+        meta: {
+            title: 'Paid loan transaction list',
             permission: 'view_transaction'
         }
     },

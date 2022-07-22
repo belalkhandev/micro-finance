@@ -9,7 +9,7 @@ class LoanApplication extends Model
 {
     use HasFactory;
 
-    protected $appends = ['member_name', 'member_account_no'];
+    protected $appends = ['member_name', 'member_account_no', 'paid_amount'];
 
     public function transactions()
     {
@@ -39,5 +39,10 @@ class LoanApplication extends Model
     public function getMemberAccountNoAttribute()
     {
         return $this->member->account_no;
+    }
+
+    public function getPaidAmountAttribute()
+    {
+        return $this->transactionsTotalAmount();
     }
 }

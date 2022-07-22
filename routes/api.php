@@ -138,6 +138,8 @@ Route::group([
         'prefix' => 'transaction/dps'
     ], function($route) {
         $route->get('/list', [TransactionController::class, 'dpsTransactionList']);
+        $route->get('/paid/list', [TransactionController::class, 'dpsTransactionPaidList']);
+        $route->get('/unpaid/list', [TransactionController::class, 'dpsTransactionUnpaidList']);
         $route->post('/collection', [TransactionController::class, 'dpsCollection']);
         $route->put('/update/{id}', [TransactionController::class, 'updateDpsTransaction']);
         $route->delete('/delete/{id}', [TransactionController::class, 'destroyDpsTransaction']);
@@ -148,6 +150,7 @@ Route::group([
     ], function($route) {
         $route->get('/statistics', [LoanController::class, 'loanApplicationCalculation']);
         $route->get('/list', [LoanController::class, 'index']);
+        $route->get('/member/list/{member_id}', [LoanController::class, 'memberApplications']);
         $route->post('/create', [LoanController::class, 'store']);
         $route->put('/update/{id}', [LoanController::class, 'update']);
         $route->delete('/delete/{id}', [LoanController::class, 'destroy']);
@@ -158,6 +161,8 @@ Route::group([
         'prefix' => 'transaction/loan'
     ], function($route) {
         $route->get('/list', [TransactionController::class, 'loanTransactionList']);
+        $route->get('/unpaid/list', [TransactionController::class, 'loanTransactionUnpaidList']);
+        $route->get('/paid/list', [TransactionController::class, 'loanTransactionPaidList']);
         $route->post('/collection', [TransactionController::class, 'loanCollection']);
         $route->put('/update/{id}', [TransactionController::class, 'updateLoanTransaction']);
         $route->delete('/delete/{id}', [TransactionController::class, 'destroyLoanTransaction']);

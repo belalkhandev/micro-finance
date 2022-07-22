@@ -4,6 +4,54 @@
             <member-show-sidebar :member="member"></member-show-sidebar>
         </div>
         <div class="col-md-9">
+            <!-- dps transactions -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="widget widget-primary animate__animated animate__pulse mb-4">
+                        <div class="widget-header">
+                            <h5 class="title">Total DPS</h5>
+                            <span>
+                                        <i class='bx bx-dollar-circle'></i>
+                                    </span>
+                        </div>
+                        <div class="widget-body">
+                            <router-link to="#">
+                                <h3>{{ numberFormat(0) }}</h3>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget widget-success animate__animated animate__pulse mb-4">
+                        <div class="widget-header">
+                            <h5 class="title">Total Paid(DPS)</h5>
+                            <span>
+                                        <i class='bx bx-dollar-circle'></i>
+                                    </span>
+                        </div>
+                        <div class="widget-body">
+                            <router-link to="#">
+                                <h3>{{ numberFormat(0) }}</h3>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget widget-warning animate__animated animate__pulse mb-4">
+                        <div class="widget-header">
+                            <h5 class="title">Total Due(DPS)</h5>
+                            <span>
+                                        <i class='bx bx-dollar-circle'></i>
+                                    </span>
+                        </div>
+                        <div class="widget-body">
+                            <router-link to="#">
+                                <h3>{{ numberFormat(0) }}</h3>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
@@ -89,6 +137,54 @@
                 </div>
             </div>
 
+            <!-- dps transactions -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="widget widget-primary animate__animated animate__pulse mb-4">
+                        <div class="widget-header">
+                            <h5 class="title">Total Loan (with service)</h5>
+                            <span>
+                                        <i class='bx bx-dollar-circle'></i>
+                                    </span>
+                        </div>
+                        <div class="widget-body">
+                            <router-link to="#">
+                                <h3>{{ numberFormat(loan ? Math.round(loan.total_amount) : 0) }}</h3>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget widget-success animate__animated animate__pulse mb-4">
+                        <div class="widget-header">
+                            <h5 class="title">Total Paid(Loan)</h5>
+                            <span>
+                                        <i class='bx bx-dollar-circle'></i>
+                                    </span>
+                        </div>
+                        <div class="widget-body">
+                            <router-link to="#">
+                                <h3>{{ numberFormat(loan ? Math.round(loan.total_paid) : 0) }}</h3>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="widget widget-warning animate__animated animate__pulse mb-4">
+                        <div class="widget-header">
+                            <h5 class="title">Total Due(Loan)</h5>
+                            <span>
+                                        <i class='bx bx-dollar-circle'></i>
+                                    </span>
+                        </div>
+                        <div class="widget-body">
+                            <router-link to="#">
+                                <h3>{{ numberFormat(loan ? Math.round(loan.total_amount - loan.total_paid) : 0) }}</h3>
+                            </router-link>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
@@ -124,11 +220,11 @@
                         <tbody>
                         <tr v-if="filterLoanApplications" v-for="(application, i) in filterLoanApplications" :key="i">
                             <td>{{ i+1 }}</td>
-                            <td>{{ application.loan_amount }}</td>
+                            <td>{{ numberFormat(application.loan_amount) }}</td>
                             <td>{{ application.service_amount }} ({{ application.service }}%)</td>
-                            <td>{{ application.total_amount }}</td>
+                            <td>{{ Math.round(application.total_amount) }}</td>
                             <td>{{ application.installment_amount }} X {{ application.installment }} <br>({{ ucFirst(application.dps_type) }})</td>
-                            <td>0</td>
+                            <td>{{ numberFormat(Math.round(application.paid_amount)) }}</td>
                             <td>{{ userFormattedDate(application.created_at) }}</td>
                             <td>
                                 <div class="action">
@@ -196,7 +292,7 @@ export default({
         ...mapGetters ({
             members: 'member/members',
             dpsApplications: 'dps/applications',
-            loanApplications: 'loan/applications',
+            loan: 'loan/loan',
         }),
 
         member() {
@@ -225,10 +321,8 @@ export default({
         },
 
         filterLoanApplications() {
-            if (this.loanApplications) {
-                const member_loan_applications = this.loanApplications.filter((item) => {
-                    return item.member_id == this.member_id
-                });
+            if (this.loan && this.loan.applications) {
+                const member_loan_applications = this.loan.applications
 
                 if (this.search_loan_date ) {
                     return this.paginate(member_loan_applications.filter(
@@ -248,7 +342,7 @@ export default({
         ...mapActions({
             getMembers: 'member/getMembers',
             getDpsApplications: 'dps/getApplications',
-            getLoanApplications: 'loan/getApplications',
+            getMemberLoanApplications: 'loan/getMemberApplications',
             deleteDpsApplication: 'dps/deleteApplication',
             deleteLoanApplication: 'loan/deleteApplication'
         }),
@@ -352,10 +446,10 @@ export default({
             this.setDpsPages();
         }
 
-        this.getLoanApplications();
+        this.getMemberLoanApplications(this.member_id);
 
         if (!this.loanApplications) {
-            this.getLoanApplications().then(() => {
+            this.getMemberLoanApplications(this.member_id).then(() => {
                 this.setLoanPages();
             });
             this.setLoanPages();
