@@ -10,7 +10,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
 
     public function all()
     {
-        $savings = Savings::get();
+        $savings = Savings::latest()->get();
 
         if ($savings->isNotEmpty()) {
             return $savings;
@@ -21,7 +21,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
 
     public function memberSavings($member_id)
     {
-        $savings = Savings::where('member_id', $member_id)->get();
+        $savings = Savings::where('member_id', $member_id)->latest()->get();
 
         if ($savings->isNotEmpty()) {
             return $savings;
@@ -36,7 +36,8 @@ class SavingsRepository implements SavingsRepositoryInterface {
         $savings->member_id = $request->input('member_id');
         $savings->savings_type = $request->input('savings_type');
         $savings->amount = $request->input('amount');
-        $savings->savings_date = $request->input('savings_date');
+        $savings->savings_date = $request->input('savings_date') ? databaseFormattedDate($request->input('savings_date')) : databaseFormattedDate(Carbon::now());
+        $savings->remarks = $request->input('remarks') ?: null;
 
         if ($request->input('loan_transaction_id')) {
             $savings->loan_transaction_id = $request->input('loan_transaction_id');
@@ -59,6 +60,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
         $savings->amount = $request->input('savings_amount');
         $savings->savings_date = $request->input('savings_date') ? databaseFormattedDate($request->input('savings_date')) : databaseFormattedDate(Carbon::now());
         $savings->loan_transaction_id = $transaction->id;
+        $savings->remarks = $request->input('remarks') ?: null;
 
         if ($savings->save()) {
             return $savings;
@@ -73,7 +75,8 @@ class SavingsRepository implements SavingsRepositoryInterface {
         $savings->member_id = $request->input('member_id');
         $savings->savings_type = $request->input('savings_type');
         $savings->amount = $request->input('amount');
-        $savings->savings_date = $request->input('savings_date');
+        $savings->savings_date = $request->input('savings_date') ? databaseFormattedDate($request->input('savings_date')) : databaseFormattedDate(Carbon::now());
+        $savings->remarks = $request->input('remarks') ?: null;
 
         if ($request->input('loan_transaction_id')) {
             $savings->loan_transaction_id = $request->input('loan_transaction_id');

@@ -27367,7 +27367,11 @@ var helpers = {
       return currency + ' ' + parseFloat(number).toFixed(length);
     },
     userFormattedDate: function userFormattedDate(date) {
-      return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("LL");
+      if (date) {
+        return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("LL");
+      }
+
+      return '-';
     },
     datePickerFormat: function datePickerFormat(date) {
       return moment__WEBPACK_IMPORTED_MODULE_1___default()(date).format("L");
@@ -30687,7 +30691,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.savings = savings;
     },
     SET_SAVING: function SET_SAVING(state, saving) {
-      if (state.savings) {
+      if (state.savings && state.savings.length) {
         state.savings.unshift(saving);
       } else {
         state.savings = [saving];
@@ -30745,14 +30749,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 commit = _ref2.commit;
-                _context2.next = 3;
+                _context2.prev = 1;
+                _context2.next = 4;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/savings/create', formdata);
 
-              case 3:
+              case 4:
                 res = _context2.sent;
 
                 if (res.data.status) {
-                  commit('SET_SAVING', res.data.saving);
+                  commit('SET_SAVING', res.data.savings);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -30772,12 +30777,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 }
 
-              case 5:
+                _context2.next = 11;
+                break;
+
+              case 8:
+                _context2.prev = 8;
+                _context2.t0 = _context2["catch"](1);
+                commit('SET_ERROR_MESSAGE', 'Something went wrong', {
+                  root: true
+                });
+
+              case 11:
               case "end":
                 return _context2.stop();
             }
           }
-        }, _callee2);
+        }, _callee2, null, [[1, 8]]);
       }))();
     },
     editSaving: function editSaving(_ref3, formdata) {

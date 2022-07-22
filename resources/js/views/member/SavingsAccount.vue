@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="widget-body">
                                     <router-link to="#">
-                                        <h3>{{ numberFormat(member.savings_deposit) }}</h3>
+                                        <h3>{{ numberFormat(totalDeposit) }}</h3>
                                     </router-link>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="widget-body">
                                     <router-link to="#">
-                                        <h3>{{ numberFormat(member.savings_withdraw) }}</h3>
+                                        <h3>{{ numberFormat(totalWithdraw) }}</h3>
                                     </router-link>
                                 </div>
                             </div>
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="widget-body">
                                     <router-link to="#">
-                                        <h3>{{ numberFormat(member.savings_deposit - member.savings_withdraw) }}</h3>
+                                        <h3>{{ numberFormat(totalDeposit - totalWithdraw) }}</h3>
                                     </router-link>
                                 </div>
                             </div>
@@ -170,10 +170,42 @@ export default({
 
         filterSavingsAccounts() {
             if (this.savings) {
-               return this.paginate(this.savings)
+                const member = this.savings.find(item => item.member_id == this.member_id);
+
+                if (member) {
+                    return this.paginate(this.savings);
+                } else {
+                    this.getSavings(this.member_id).then(() => {
+                        return this.paginate(this.savings);
+                    });
+                }
             }
 
             return null;
+        },
+
+        totalDeposit() {
+            var total = 0;
+            if (this.filterSavingsAccounts) {
+                const savings = this.savings.filter(item => item.savings_type === 'deposit')
+                total = savings.reduce(function(res, item) {
+                    return res + item.amount
+                }, 0)
+            }
+
+            return total;
+        },
+
+        totalWithdraw() {
+            var total = 0;
+            if (this.filterSavingsAccounts) {
+                const savings = this.savings.filter(item => item.savings_type === 'withdraw')
+                total = savings.reduce(function(res, item) {
+                    return res + item.amount
+                }, 0)
+            }
+
+            return total;
         }
     },
 
@@ -220,15 +252,15 @@ export default({
     },
 
     mounted() {
+
+        this.getSavings(this.member_id).then(() => {
+            this.setPages();
+        });
+
         if (!this.members) {
             this.getMembers();
         }
 
-        if (!this.savings) {
-            this.getSavings(this.member_id).then(() => {
-                this.setPages();
-            });
-        }
 
         this.setPages();
     }

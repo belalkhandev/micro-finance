@@ -33,6 +33,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "CreateSavings",
   props: {
@@ -46,10 +57,71 @@ __webpack_require__.r(__webpack_exports__);
         savings_type: "",
         remarks: ""
       },
-      pre_balance: this.member.savings_deposit - this.member.savigns_withdraw,
-      new_balance: 0
+      pre_balance: this.member.savings_deposit - this.member.savings_withdraw,
+      new_balance: 0,
+      errors: null,
+      error: null
     };
-  }
+  },
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
+    validation_errors: 'validation_errors',
+    error_message: 'error_message'
+  })),
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapActions)({
+    createSaving: 'savings/createSaving'
+  })), {}, {
+    //calculate saving
+    savingsAmount: function savingsAmount() {
+      var _this = this;
+
+      if (this.form.savings_type && this.form.savings_type === 'deposit') {
+        this.new_balance = this.pre_balance + this.form.amount;
+      } else if (this.form.savings_type && this.form.savings_type === 'withdraw') {
+        if (this.form.amount <= this.pre_balance) {
+          this.new_balance = this.pre_balance - this.form.amount;
+        } else {
+          this.$swal({
+            icon: 'warning',
+            title: 'Withdraw amount is not correct',
+            timer: 3000
+          }).then(function () {
+            _this.form.amount = 0;
+          });
+        }
+      } else {
+        this.form.amount = 0;
+        this.new_balance = 0;
+      }
+    },
+    //submit saving form
+    submitSavingForm: function submitSavingForm(event) {
+      var _this2 = this;
+
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#storeSavings').prop('disabled', true).addClass('submitted');
+      this.createSaving(this.form).then(function () {
+        if (!_this2.validation_errors && !_this2.error_message) {
+          _this2.errors = _this2.error = null;
+
+          _this2.$swal({
+            icon: "success",
+            title: "Success!",
+            text: "Savings has been saved",
+            timer: 3000
+          }).then(function () {
+            _this2.form.savings_type = "";
+            _this2.form.amount = 0;
+            _this2.pre_balance = _this2.new_balance;
+            _this2.form.remarks = "";
+          });
+        } else {
+          _this2.errors = _this2.validation_errors;
+          _this2.error = _this2.error_message;
+        }
+
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#storeSavings').prop('disabled', false).removeClass('submitted');
+      });
+    }
+  })
 });
 
 /***/ }),
@@ -123,11 +195,51 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     filterSavingsAccounts: function filterSavingsAccounts() {
+      var _this2 = this;
+
       if (this.savings) {
-        return this.paginate(this.savings);
+        var member = this.savings.find(function (item) {
+          return item.member_id == _this2.member_id;
+        });
+
+        if (member) {
+          return this.paginate(this.savings);
+        } else {
+          this.getSavings(this.member_id).then(function () {
+            return _this2.paginate(_this2.savings);
+          });
+        }
       }
 
       return null;
+    },
+    totalDeposit: function totalDeposit() {
+      var total = 0;
+
+      if (this.filterSavingsAccounts) {
+        var savings = this.savings.filter(function (item) {
+          return item.savings_type === 'deposit';
+        });
+        total = savings.reduce(function (res, item) {
+          return res + item.amount;
+        }, 0);
+      }
+
+      return total;
+    },
+    totalWithdraw: function totalWithdraw() {
+      var total = 0;
+
+      if (this.filterSavingsAccounts) {
+        var savings = this.savings.filter(function (item) {
+          return item.savings_type === 'withdraw';
+        });
+        total = savings.reduce(function (res, item) {
+          return res + item.amount;
+        }, 0);
+      }
+
+      return total;
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_4__.mapActions)({
@@ -136,7 +248,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     deleteSavings: 'savings/deleteSaving'
   })), {}, {
     deleteConfirm: function deleteConfirm(savings_id) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.$swal({
         title: "Really want to delete!",
@@ -148,15 +260,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         cancelButtonColor: '#c82333'
       }).then(function (res) {
         if (res.isConfirmed) {
-          _this2.deleteSavings(savings_id).then(function () {
-            if (!_this2.error_message) {
-              _this2.$swal({
+          _this3.deleteSavings(savings_id).then(function () {
+            if (!_this3.error_message) {
+              _this3.$swal({
                 icon: 'success',
                 title: 'Congratulation!',
                 text: 'Savings has been deleted successfully'
               });
             } else {
-              _this2.error = _this2.error_message;
+              _this3.error = _this3.error_message;
             }
           });
         }
@@ -172,16 +284,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
+
+    this.getSavings(this.member_id).then(function () {
+      _this4.setPages();
+    });
 
     if (!this.members) {
       this.getMembers();
-    }
-
-    if (!this.savings) {
-      this.getSavings(this.member_id).then(function () {
-        _this3.setPages();
-      });
     }
 
     this.setPages();
@@ -540,13 +650,14 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+var _hoisted_11 = {
+  key: 0,
   value: "withdraw"
-}, "Withdraw", -1
-/* HOISTED */
-);
-
-var _hoisted_12 = [_hoisted_9, _hoisted_10, _hoisted_11];
+};
+var _hoisted_12 = {
+  key: 0,
+  "class": "text-danger"
+};
 var _hoisted_13 = {
   "class": "form-group row"
 };
@@ -560,34 +671,39 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_15 = {
   "class": "col-md-8"
 };
-var _hoisted_16 = {
+var _hoisted_16 = ["readonly"];
+var _hoisted_17 = {
+  key: 0,
+  "class": "text-danger"
+};
+var _hoisted_18 = {
   "class": "form-group row"
 };
 
-var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label col-md-4"
-}, "Savings Balance (Previous)", -1
+}, "Savings Balance (Current)", -1
 /* HOISTED */
 );
 
-var _hoisted_18 = {
+var _hoisted_20 = {
   "class": "col-md-8"
 };
-var _hoisted_19 = {
+var _hoisted_21 = {
   "class": "form-group row"
 };
 
-var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label col-md-4"
 }, "Savings Balance (New)", -1
 /* HOISTED */
 );
 
-var _hoisted_21 = {
+var _hoisted_23 = {
   "class": "col-md-8"
 };
 
-var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "form-group row"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label col-md-4"
@@ -602,19 +718,28 @@ var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_25 = {
   "class": "modal-footer text-right"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+};
+var _hoisted_26 = {
   type: "submit",
-  "class": "btn btn-primary"
-}, "Submit")], -1
+  "class": "ml-2 btn btn-primary",
+  id: "storeSavings"
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "spinner-border",
+  role: "status"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "visually-hidden"
+}, "Loading...")], -1
 /* HOISTED */
 );
 
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[4] || (_cache[4] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
-      return _ctx.createSavings && _ctx.createSavings.apply(_ctx, arguments);
+    onSubmit: _cache[5] || (_cache[5] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+      return $options.submitSavingForm && $options.submitSavingForm.apply($options, arguments);
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "form-select form-control",
@@ -622,39 +747,49 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       return $data.form.savings_type = $event;
     }),
     required: ""
-  }, _hoisted_12, 512
+  }, [_hoisted_9, _hoisted_10, $data.pre_balance > 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", _hoisted_11, "Withdraw")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.savings_type]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.savings_type]]), $data.errors && $data.errors['savings_type'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors['savings_type']), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
       return $data.form.amount = $event;
     }),
     "class": "form-control",
     placeholder: "0.00",
-    required: ""
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.amount]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [_hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    onKeyup: _cache[2] || (_cache[2] = function ($event) {
+      return $options.savingsAmount();
+    }),
+    required: "",
+    readonly: !$data.form.savings_type
+  }, null, 40
+  /* PROPS, HYDRATE_EVENTS */
+  , _hoisted_16), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.amount]]), $data.errors && $data.errors['amount'] ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("span", _hoisted_17, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.errors['amount']), 1
+  /* TEXT */
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     placeholder: "0.00",
-    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
       return $data.pre_balance = $event;
     }),
     "class": "form-control",
     readonly: ""
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.pre_balance]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.pre_balance]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     placeholder: "0.00",
-    "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+    "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
       return $data.new_balance = $event;
     }),
     "class": "form-control",
     readonly: ""
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.new_balance]])])]), _hoisted_22]), _hoisted_23], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.new_balance]])])]), _hoisted_24]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_26, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.$t('submit')), 1
+  /* TEXT */
+  ), _hoisted_27])])], 32
   /* HYDRATE_EVENTS */
   )])])]);
 }
@@ -933,7 +1068,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.member.savings_deposit)), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.totalDeposit)), 1
       /* TEXT */
       )];
     }),
@@ -944,7 +1079,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.member.savings_withdraw)), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.totalWithdraw)), 1
       /* TEXT */
       )];
     }),
@@ -955,7 +1090,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.member.savings_deposit - $options.member.savings_withdraw)), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.totalDeposit - $options.totalWithdraw)), 1
       /* TEXT */
       )];
     }),

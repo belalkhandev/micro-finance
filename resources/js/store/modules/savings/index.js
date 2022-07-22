@@ -19,7 +19,7 @@ export default {
         },
 
         SET_SAVING(state, saving) {
-            if (state.savings) {
+            if (state.savings && state.savings.length) {
                 state.savings.unshift(saving)
             }else {
                 state.savings = [saving]
@@ -50,19 +50,23 @@ export default {
         },
 
         async createSaving({ commit }, formdata) {
-            const res = await axios.post('member/savings/create', formdata)
+            try {
+                const res = await axios.post('member/savings/create', formdata)
 
-            if (res.data.status) {
-                commit('SET_SAVING', res.data.saving)
-                commit('SET_VALIDATION_ERRORS', null,  { root:true })
-                commit('SET_ERROR_MESSAGE', null,  { root:true })
-            } else {
-                if (!res.data.status) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
-                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
-                }else {
-                    console.log('Something went wrong');
+                if (res.data.status) {
+                    commit('SET_SAVING', res.data.savings)
+                    commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                    commit('SET_ERROR_MESSAGE', null,  { root:true })
+                } else {
+                    if (!res.data.status) {
+                        commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                        commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                    }else {
+                        console.log('Something went wrong');
+                    }
                 }
+            }catch (err) {
+                commit('SET_ERROR_MESSAGE', 'Something went wrong', { root:true })
             }
         },
 

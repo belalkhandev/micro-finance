@@ -45,7 +45,10 @@ export const helpers = {
         },
 
         userFormattedDate (date) {
-            return moment(date).format("LL");
+            if (date) {
+                return moment(date).format("LL");
+            }
+            return '-';
         },
 
         datePickerFormat (date) {
