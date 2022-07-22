@@ -811,6 +811,9 @@ table {
 .navigations .navigation-item .navigation-content .navigation-content-body ul {
     margin-top: 10px;
 }
+.navigations .navigation-item .navigation-content .navigation-content-body ul li {
+    margin: 5px 0px;
+}
 .navigations .navigation-item .navigation-content .navigation-content-body ul li a {
     display: flex;
     align-items: center;

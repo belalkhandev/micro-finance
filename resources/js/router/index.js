@@ -88,6 +88,15 @@ const routes = [
         }
     },
     {
+        path: '/members/group/:group_id',
+        name: 'MemberGrouping',
+        component: () => import('../views/member/MemberGroup.vue'),
+        meta: {
+            title: 'Members Group',
+            permission: 'view_member'
+        }
+    },
+    {
         path: '/members/show/:member_id',
         name: 'MemberShow',
         component: () => import('../views/member/Show.vue'),

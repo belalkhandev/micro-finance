@@ -64,12 +64,53 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation-item">
-                <router-link :to="{name: 'Members'}">
+
+            <!--  members-->
+            <div class="navigation-item has-multimenu">
+                <router-link :to="{name: 'Members'}"  @click="openMultimenus">
 <!--                    <i class='bx bxs-user-account text-indigo-600' ></i>-->
                     <img src="../assets/images/nav-icons/add-user.png" alt="">
                     <span>{{ $t('members') }}</span>
                 </router-link>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                        <span>Close</span>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Manage Members</h3>
+                    </div>
+
+                    <div class="navigation-content-body">
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'Members'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Member</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateMember'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New Member</span>
+                                </router-link>
+                            </li>
+                        </ul>
+
+                        <h5>Member Groups</h5>
+
+                        <ul v-if="fetchGroups">
+                            <li v-for="(group, i) in fetchGroups" :key="i">
+                                <router-link :to="{name: 'MemberGrouping', params: {
+                                    group_id: group.id
+                                }}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>{{ group.group_name }} ({{ group.total_member }})</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
@@ -332,12 +373,24 @@ export default ({
     computed: {
         ...mapGetters ({
             authenticated: 'auth/authenticated',
-            user: 'auth/user'
-        })
+            user: 'auth/user',
+            groups: 'group/groups',
+        }),
+
+        fetchGroups() {
+            if (this.groups) {
+                return this.groups;
+            } else {
+                this.getGroups().then(() => {
+                    return this.groups;
+                })
+            }
+        }
     },
     methods: {
         ...mapActions({
-            signOut: 'auth/signOut'
+            signOut: 'auth/signOut',
+            getGroups: 'group/getGroups',
         }),
         openMultimenus(event) {
             const _self = event.currentTarget;
@@ -360,6 +413,11 @@ export default ({
                     name: 'Signin'
                 })
             })
+        }
+    },
+    mounted() {
+        if (!this.groups) {
+            this.getGroups();
         }
     }
 })

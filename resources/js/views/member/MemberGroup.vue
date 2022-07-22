@@ -62,9 +62,9 @@
         </div>
         <div class="box-footer">
             <!-- pagination -->
-            <div class="pagination" v-if="members && members.length > per_page">
+            <div class="pagination" v-if="paginate_total > per_page">
                 <p class="pagination-data">
-                    Page no {{ page }} Show {{ page === pages.length ? (members ? members.length : 0) : page*(fetchMembers ? fetchMembers.length : 0) }} of {{ members ? members.length : 0 }} Data
+                    Page no {{ page }} Show {{ page === pages.length ? (fetchMembers ? fetchMembers.length : 0) : fetchMembers ? fetchMembers.length : 0 }} of {{ paginate_total ? paginate_total : 0 }} Data
                 </p>
                 <ul>
                     <li class="page-item">
@@ -94,9 +94,16 @@ import { mapGetters, mapActions } from "vuex";
 import {helpers} from "../../mixin";
 
 export default ({
-    name: "Index",
+    name: "MemberGroup",
 
     mixins: [helpers],
+
+    data() {
+        return {
+            group_id: this.$route.params.group_id,
+            paginate_total: 0,
+        }
+    },
 
     computed: {
         ...mapGetters({
@@ -105,30 +112,24 @@ export default ({
 
         fetchMembers() {
             if (this.members) {
-                if (this.search_key && !this.search_date) {
-                    return this.paginate(this.members.filter(
-                        member =>
-                            member.account_no === this.search_key
-                    ));
-                } else if (this.search_date && !this.search_key) {
-                    return this.paginate(this.members.filter(
-                        member =>
-                            this.datePickerFormat(member.joining_date) === this.datePickerFormat(this.search_date)
-                    ));
-                } else if (this.search_key && this.search_date) {
-                    return this.paginate(this.members.filter(
-                        member =>
-                            this.datePickerFormat(member.joining_date) === this.datePickerFormat(this.search_date) &&
-                            member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
-                            member.name.toLowerCase().includes(this.search_key.toLowerCase()) ||
-                            member.phone.toLowerCase().includes(this.search_key.toLowerCase())
-                    ));
-                } else {
-                    return this.paginate(this.members);
+                const members = this.members.filter(member => member.member_group_id == this.$route.params.group_id)
+                if (members) {
+                    if (this.search_key) {
+                        return this.paginate(members.filter(
+                            member =>
+                                member.account_no === this.search_key
+                        ));
+                    }
+
+                    this.paginate_total = members.length;
+                    this.setPages();
+
+                    return this.paginate(members);
                 }
+
             }
 
-            return this.members
+            return null;
 
         }
     },
@@ -182,7 +183,8 @@ export default ({
 
         // pagination set pages
         setPages() {
-            let numberOfPages = Math.ceil(this.members ? this.members.length / this.per_page : 0);
+            let numberOfPages = Math.ceil(this.paginate_total ? this.paginate_total / this.per_page : 0);
+            this.pages = [];
             for (let index = 1; index <= numberOfPages; index++) {
                 this.pages.push(index);
             }
