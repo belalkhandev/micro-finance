@@ -14,7 +14,7 @@
                                                     <div class="input-group-text">
                                                         <i class="bx bx-search-alt"></i>
                                                     </div>
-                                                    <input type="search" class="form-control" v-model="search_key" placeholder="Account no, name, phone.....">
+                                                    <input type="search" class="form-control" v-model="search_key" placeholder="Account no">
                                                 </div>
                                             </div>
                                         </form>
@@ -77,9 +77,7 @@ export default ({
 
             if (this.search_key.length > 1) {
                 return this.members.filter((member) => {
-                    return member.account_no.toLowerCase().match(this.search_key.toLowerCase())
-                        || member.name.toLowerCase().includes(this.search_key.toLowerCase())
-                        || member.phone.toLowerCase().match(this.search_key.toLowerCase())
+                    return member.account_no.toLowerCase() === this.search_key.toLowerCase()
                 });
             }
 

@@ -26033,7 +26033,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       if (this.search_key.length > 1) {
         return this.members.filter(function (member) {
-          return member.account_no.toLowerCase().match(_this.search_key.toLowerCase()) || member.name.toLowerCase().includes(_this.search_key.toLowerCase()) || member.phone.toLowerCase().match(_this.search_key.toLowerCase());
+          return member.account_no.toLowerCase() === _this.search_key.toLowerCase();
         });
       }
 
@@ -27160,7 +27160,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
       return $data.search_key = $event;
     }),
-    placeholder: "Account no, name, phone....."
+    placeholder: "Account no"
   }, null, 512
   /* NEED_PATCH */
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.search_key]])])])])]), $options.fetchMembers ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.fetchMembers.length) + " Result Found:", 1

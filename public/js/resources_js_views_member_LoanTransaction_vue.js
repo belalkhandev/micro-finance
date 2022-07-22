@@ -231,7 +231,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.form.member = this.transaction.member_name;
         this.form.account_no = this.transaction.member_account_no;
         this.form.transaction_date = this.transaction.transaction_date;
-        this.form.amount = this.transaction.amount;
+        this.form.amount = Math.round(this.transaction.amount);
         this.form.balance = this.transaction.balance;
         this.transaction_date = this.datePickerFormat(new Date());
       }
