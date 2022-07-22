@@ -5,6 +5,8 @@ namespace App\Repositories\LoanTransaction;
 use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\returnArgument;
 
 class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
@@ -93,6 +95,8 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         }
         $tr->amount = $application->installment_amount;
 
+        $tr->created_by = Auth::guard('sanctum')->user()->id;
+
         if ($tr->save()) {
             return true;
         }
@@ -103,6 +107,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function payment($request)
     {
+
         $transaction = $this->find($request->input('transaction_id'));
 
         $last_balance = LoanTransaction::where('loan_application_id', $transaction->loan_application_id)
@@ -118,6 +123,9 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
             $transaction->balance = 0;
             $transaction->is_paid = 0;
         }
+
+        $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
+        $transaction->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($transaction->save()) {
             //update dps_application balance

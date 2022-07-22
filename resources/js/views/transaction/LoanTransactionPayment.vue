@@ -53,7 +53,7 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-4">
-                                            <label class="col-form-label">Transaction Date</label>
+                                            <label class="col-form-label">Payment Date</label>
                                         </div>
                                         <div class="col-md-8">
                                             <Datepicker v-model="transaction_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select Date"/>

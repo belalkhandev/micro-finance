@@ -5,6 +5,7 @@ namespace App\Repositories\DpsTransaction;
 use App\Models\DpsApplication;
 use App\Models\DpsTransaction;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
@@ -92,6 +93,7 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 $tr->due_date = Carbon::parse($date)->addDay(10);
             }
             $tr->amount = $application->dps_amount;
+            $tr->created_by = Auth::guard('sanctum')->user()->id;
 
             if ($tr->save()) {
                 return $tr;
@@ -123,6 +125,8 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
             $transaction->is_paid = 0;
         }
 
+        $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
+        $transaction->updated_by = Auth::guard('sanctum')->user()->id;
         if ($transaction->save()) {
             //update dps_application balance
             $dps_application = DpsApplication::find($transaction->dps_application_id);
