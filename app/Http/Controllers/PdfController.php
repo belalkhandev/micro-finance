@@ -33,24 +33,58 @@ class PdfController extends Controller
     public function allDps()
     {
         $applications = $this->report->allDps();
+
         $data =[
             'transactions'=> $applications,
-            'title'=>"All Dps Report"
+            'title'=> "DPS transaction report (all member)",
+            'sub_title' => "Transactions report"
         ];
-        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+        return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('dps.pdf');
+    }
+
+    public function memberDpsTransactions($member_id)
+    {
+        $applications = $this->report->memberDps($member_id);
+        $member = Member::find($member_id);
+
+        $data =[
+            'transactions'=> $applications,
+            'title'=> "DPS transactions report ($member->name)",
+            'sub_title' => "Transactions report"
+        ];
+        return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('dps-transactions-'.$member->account_no.'.pdf');
+    }
+
+    public function memberLoanTransactions($member_id)
+    {
+        $applications = $this->report->memberLoan($member_id);
+        $member = Member::find($member_id);
+
+        $data =[
+            'transactions'=> $applications,
+            'title'=> "Loan transactions report ($member->name)",
+            'sub_title' => "Transactions report"
+        ];
+        return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('loan-transactions-'.$member->account_no.'.pdf');
     }
 
     public function allLoan()
     {
         $applications = $this->report->allLoan();
+
         $data =[
             'transactions'=> $applications,
-            'title'=>"All Loan Report"
+            'title'=> "Loan transaction report (all member)",
+            'sub_title' => "Transactions report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+        return Pdf::loadview('pdf.loan-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('allLoan.pdf');
     }
@@ -60,7 +94,8 @@ class PdfController extends Controller
         $applications = $this->report->allCurrentDps();
         $data =[
             'transactions'=> $applications,
-            'title'=>"Current Dps Report"
+            'title'=>"Current Dps Report",
+            'sub_title'=>"Transactions Report"
         ];
 
         return Pdf::loadview('pdf.transaction', compact('data'), [], [
@@ -132,4 +167,22 @@ class PdfController extends Controller
             'format' => 'A4-l'
         ])->stream('allDueLoan.pdf');
     }
+
+
+    public function savingAccountTransactions($member_id)
+    {
+        $transactions = $this->report->savingsAccountTransactions($member_id);
+        $member = Member::find($member_id);
+
+        $data =[
+            'transactions'=> $transactions,
+            'member' => $member,
+            'title'=> "Savings Accounts Transactions ($member->name)",
+            'sub_title' => "Transactions report"
+        ];
+        return Pdf::loadview('pdf.savings-transaction', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream('savings-transactions-'.$member->account_no.'.pdf');
+    }
+
 }

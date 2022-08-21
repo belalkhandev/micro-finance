@@ -40,23 +40,23 @@
                     <th>Tr. Day</th>
                 </tr>
                 @if($data['transactions'])
-                    @foreach($data['transactions'] as $key =>$transaction)
-                        <tr>
-                            <td>{{ $key+1 }}</td>
-                            <td>
+                @foreach($data['transactions'] as $key =>$transaction)
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td>
                                 <span class="bn-font">{{ $transaction->member_name }}</span> <br>
                                 {{ 'Acc No: '. $transaction->member_account_no }}
-                            </td>
-                            <td>
-                                {{ ucfirst($transaction->application->dps_type) }}
-                            </td>
-                            <td>{{ $transaction->transaction_no }}</td>
-                            <td>{{ number_format(round($transaction->amount), 2) }}</td>
-                            <td>{{ number_format(round($transaction->balance), 2) }}</td>
-                            <td>{{ userFormattedDate($transaction->created_at) }}</td>
-                            <td>{{ userFormattedDate($transaction->transaction_date) }}</td>
-                        </tr>
-                    @endforeach
+                        </td>
+                        <td>
+                            {{ ucfirst($transaction->application->dps_type) }}
+                        </td>
+                        <td>{{ $transaction->transaction_no }}</td>
+                        <td>{{ number_format(round($transaction->amount), 2) }}</td>
+                        <td>{{ number_format(round($transaction->balance), 2) }}</td>
+                        <td>{{ userFormattedDate($transaction->created_at) }}</td>
+                        <td>{{ userFormattedDate($transaction->transaction_date) }}</td>
+                    </tr>
+                @endforeach
                     <tr>
                         <th colspan="4" class="text-left">Total</th>
                         <th colspan="4" class="text-left">{{ number_format(round($data['transactions']->sum('amount')), 2) }}</th>

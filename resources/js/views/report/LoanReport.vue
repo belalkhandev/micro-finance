@@ -23,7 +23,6 @@
                             <th>Due Date</th>
                             <th>Issue Date</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -46,16 +45,6 @@
                             <td>
                                 <span v-if="transaction.is_paid" class="text-success">Paid</span>
                                 <span v-else class="text-danger">Unpaid</span>
-                            </td>
-                            <td>
-                                <span v-if="!transaction.is_paid">
-                                    <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showLoanTransactionModal(transaction)">
-                                        Collect now
-                                    </a>
-                                </span>
-                                <span v-else class="text-danger">
-                                    <span class="btn btn-success btn-sm py-1">Collected</span>
-                                </span>
                             </td>
                         </tr>
                         <tr v-else>

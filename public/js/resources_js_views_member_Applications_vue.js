@@ -381,25 +381,28 @@ var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Member Profile ");
 
 var _hoisted_36 = [_hoisted_34, _hoisted_35];
+var _hoisted_37 = ["href"];
 
-var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "",
-  "class": "btn btn-outline-success w-100 mt-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-download"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" DPS Transactions ")], -1
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-  href: "",
-  "class": "btn btn-outline-info w-100 mt-2"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" DPS Transactions ");
+
+var _hoisted_40 = [_hoisted_38, _hoisted_39];
+var _hoisted_41 = ["href"];
+
+var _hoisted_42 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-download"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loan Transactions ")], -1
+}, null, -1
 /* HOISTED */
 );
 
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loan Transactions ");
+
+var _hoisted_44 = [_hoisted_42, _hoisted_43];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_router_link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-link");
 
@@ -506,7 +509,19 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     download: ""
   }, _hoisted_36, 8
   /* PROPS */
-  , _hoisted_33), _hoisted_37, _hoisted_38])])])]);
+  , _hoisted_33), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/download/dps/' + $props.member.id + '/transactions',
+    "class": "btn btn-outline-success w-100 mt-2",
+    download: ""
+  }, _hoisted_40, 8
+  /* PROPS */
+  , _hoisted_37), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/download/loan/' + $props.member.id + '/transactions',
+    "class": "btn btn-outline-info w-100 mt-2",
+    download: ""
+  }, _hoisted_44, 8
+  /* PROPS */
+  , _hoisted_41)])])])]);
 }
 
 /***/ }),

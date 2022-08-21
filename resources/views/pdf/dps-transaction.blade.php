@@ -20,12 +20,12 @@
             </div>
             <div class="header-content">
                 <h2>Poor Development Savings & Credit Donation Co-Operative Society Ltd.</h2>
-                <h3 style="margin-top: 15px">{{ $data['title'] }}</h3>
+                <h3 class="bn-font" style="margin-top: 15px">{{ $data['title'] }}</h3>
             </div>
         </div>
     </header>
 
-    <h2 class="text-center title-line">{{ $data['sub_title'] }}</h2>
+    <h2 class="text-center title-line bn-font">{{ $data['sub_title'] }}</h2>
     <div class="invoice-body">
         <div>
             <table class="table">

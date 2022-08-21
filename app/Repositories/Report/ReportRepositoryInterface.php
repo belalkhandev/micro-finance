@@ -6,7 +6,11 @@ interface ReportRepositoryInterface
 {
     public function allLoan();
 
+    public function memberLoan($memberId);
+
     public function allDps();
+
+    public function memberDps($memberId);
 
     public function allCurrentLoan();
 
@@ -17,6 +21,8 @@ interface ReportRepositoryInterface
     public function allDueDps();
 
     public function allPaidLoan();
-    
+
     public function allDueLoan();
+
+    public function savingsAccountTransactions($memberId);
 }

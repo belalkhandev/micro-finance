@@ -20,6 +20,12 @@
                                 <i class="bx bx-search-alt"></i>
                             </button>
                         </div>
+
+                        <a :href="'/download/savings/'+member.id+'/transactions'" class="btn btn-info btn-sm" target="_blank">
+                            <i class="bx bx-download"></i>
+                            <span class="ml-2">Download Statement</span>
+                        </a>
+
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#savingsCreateModal">Savings Transaction</button>
                     </div>
                 </div>

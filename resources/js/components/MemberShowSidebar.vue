@@ -71,11 +71,11 @@
                         <i class="bx bx-download"></i>
                         Member Profile
                     </a>
-                    <a href="" class="btn btn-outline-success w-100 mt-2">
+                    <a :href="'/download/dps/'+member.id+'/transactions'" class="btn btn-outline-success w-100 mt-2" download>
                         <i class="bx bx-download"></i>
                         DPS Transactions
                     </a>
-                    <a href="" class="btn btn-outline-info w-100 mt-2">
+                    <a :href="'/download/loan/'+member.id+'/transactions'" class="btn btn-outline-info w-100 mt-2" download>
                         <i class="bx bx-download"></i>
                         Loan Transactions
                     </a>

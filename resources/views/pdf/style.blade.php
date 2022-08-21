@@ -19,7 +19,7 @@
     }
 
     .bn-font {
-        font-family: 'kalpurush', Arial, sans-serif;
+        font-family: 'kalpurush', 'Roboto', sans-serif;
         font-weight: normal;
     }
 
@@ -80,6 +80,11 @@
         float: right;
         width: 50%;
         text-align: right;
+    }
+
+    .title-line {
+        margin-bottom: 10px;
+        font-weight: normal;
     }
 
     .table {
