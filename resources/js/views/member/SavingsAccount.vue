@@ -102,9 +102,9 @@
                 </div>
                 <div class="box-footer">
                     <!-- pagination -->
-                    <div class="pagination" v-if="filterSavingsAccounts && filterSavingsAccounts.length > per_page">
+                    <div class="pagination" v-if="filterSavingsAccounts && savings.length >= per_page">
                         <p class="pagination-data">
-                            Page no {{ page }} Show {{ page === pages.length ? (filterSavingsAccounts ? filterSavingsAccounts.length : 0) : page*(filterSavingsAccounts ? filterSavingsAccounts.length : 0) }} of {{ filterSavingsAccounts ? filterSavingsAccounts.length : 0 }} Data
+                            Page no {{ page }} Show {{ page === pages.length ? (filterSavingsAccounts ? filterSavingsAccounts.length : 0) : page*(filterSavingsAccounts ? filterSavingsAccounts.length : 0) }} of {{ savings ? savings.length : 0 }} Data
                         </p>
                         <ul>
                             <li class="page-item">
