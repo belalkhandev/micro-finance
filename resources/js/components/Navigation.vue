@@ -135,6 +135,18 @@
                                 </router-link>
                             </li>
                         </ul>
+
+                        <h5>Member Types</h5>
+                        <ul v-if="fetchMemberTypes">
+                            <li v-for="(member_type, i) in fetchMemberTypes" :key="i">
+                                <router-link :to="{name: 'MemberType', params: {
+                                    member_type: member_type.code
+                                }}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>{{ member_type.name }} </span>
+                                </router-link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -401,6 +413,7 @@ export default ({
             authenticated: 'auth/authenticated',
             user: 'auth/user',
             groups: 'group/groups',
+            memberTypes: 'group/member_types'
         }),
 
         fetchGroups() {
@@ -411,12 +424,17 @@ export default ({
                     return this.groups;
                 })
             }
+        },
+
+        fetchMemberTypes()
+        {
+            return this.memberTypes
         }
     },
     methods: {
         ...mapActions({
             signOut: 'auth/signOut',
-            getGroups: 'group/getGroups',
+            getGroups: 'group/getGroups'
         }),
         openMultimenus(event) {
             const _self = event.currentTarget;

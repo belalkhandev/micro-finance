@@ -97,6 +97,15 @@ const routes = [
         }
     },
     {
+        path: '/members/:member_type',
+        name: 'MemberType',
+        component: () => import('../views/member/MemberType.vue'),
+        meta: {
+            title: 'Members Type',
+            permission: 'view_member'
+        }
+    },
+    {
         path: '/members/show/:member_id',
         name: 'MemberShow',
         component: () => import('../views/member/Show.vue'),
