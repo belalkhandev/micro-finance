@@ -71,24 +71,32 @@
                         <i class="bx bx-download"></i>
                         Member Profile
                     </a>
-                    <a :href="'/download/dps/'+member.id+'/transactions'" class="btn btn-outline-success w-100 mt-2" download>
+                    <button type="button" class="btn btn-outline-success w-100 mt-2" data-bs-target="#downloadDpsTransactions" data-bs-toggle="modal">
                         <i class="bx bx-download"></i>
                         DPS Transactions
-                    </a>
-                    <a :href="'/download/loan/'+member.id+'/transactions'" class="btn btn-outline-info w-100 mt-2" download>
+                    </button>
+                    <button type="button" class="btn btn-outline-info w-100 mt-2"  data-bs-target="#downloadLoanTransactions" data-bs-toggle="modal">
                         <i class="bx bx-download"></i>
                         Loan Transactions
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
     </div>
+    <MemberDpsTransaction :member_id="member.id"/>
+    <MemberLoanTransaction :member_id="member.id"/>
 </template>
 
 <script>
 import {helpers} from "../mixin";
+import MemberDpsTransaction from "./downloads/MemberDpsTransaction";
+import MemberLoanTransaction from "./downloads/MemberLoanTransaction";
 
 export default {
+    components: {
+        MemberDpsTransaction,
+        MemberLoanTransaction
+    },
     name: 'MemberShowSidebar',
     props: {
         member: Object

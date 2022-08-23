@@ -21,10 +21,10 @@
                             </button>
                         </div>
 
-                        <a :href="'/download/savings/'+member.id+'/transactions'" class="btn btn-info btn-sm" target="_blank">
+                        <button type="modal" :href="'/download/savings/'+member.id+'/transactions'" class="btn btn-info btn-sm" target="_blank" data-bs-target="#downloadSavingsTransactions" data-bs-toggle="modal">
                             <i class="bx bx-download"></i>
                             <span class="ml-2">Download Statement</span>
-                        </a>
+                        </button>
 
                         <button type="button" class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#savingsCreateModal">Savings Transaction</button>
                     </div>
@@ -137,6 +137,7 @@
     </div>
     <!-- savings create modal -->
     <create-savings :member="member" />
+    <MemberSavingsTransaction :member_id="member.id"/>
 
     <!-- savings edit modal -->
 </template>
@@ -147,12 +148,14 @@ import MemberShowSidebar from '../../components/MemberShowSidebar';
 import CreateSavings from "../../components/savings/CreateSavings";
 import EditSavings from "../../components/savings/EditSavings";
 import {helpers} from "../../mixin";
+import MemberSavingsTransaction from "../../components/downloads/MemberSavingsTransaction";
 
 export default({
     name: 'Applications',
     components: {
         MemberShowSidebar,
-        CreateSavings, EditSavings
+        CreateSavings, EditSavings,
+        MemberSavingsTransaction
     },
     mixins: [helpers],
 

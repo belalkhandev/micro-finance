@@ -20,7 +20,7 @@
             </div>
             <div class="header-content">
                 <h2>Poor Development Savings & Credit Donation Co-Operative Society Ltd.</h2>
-                <h3 style="margin-top: 15px">{{ $data['member']->name }}</h3>
+                <h3 class="bn-font" style="margin-top: 15px">{{ $data['member']->name }}</h3>
                 <h4>Account no: {{ $data['member']->account_no }}</h4>
 
             </div>
