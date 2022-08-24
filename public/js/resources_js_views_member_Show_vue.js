@@ -41,19 +41,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixin */ "./resources/js/mixin/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "MemberDpsTransaction",
   props: {
     member_id: Number
   },
+  mixins: [_mixin__WEBPACK_IMPORTED_MODULE_0__.helpers],
   data: function data() {
     return {
       form: {
         member_id: this.member_id,
         from_date: '',
         to_date: ''
-      }
+      },
+      from_date: "",
+      to_date: ""
     };
+  },
+  watch: {
+    from_date: function from_date() {
+      this.form.from_date = this.datePickerFormat(this.from_date);
+    },
+    to_date: function to_date() {
+      this.form.to_date = this.datePickerFormat(this.to_date);
+    }
   }
 });
 
@@ -69,19 +82,32 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../mixin */ "./resources/js/mixin/index.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "MemberLoanTransaction",
   props: {
     member_id: Number
   },
+  mixins: [_mixin__WEBPACK_IMPORTED_MODULE_0__.helpers],
   data: function data() {
     return {
       form: {
         member_id: this.member_id,
         from_date: '',
         to_date: ''
-      }
+      },
+      from_date: "",
+      to_date: ""
     };
+  },
+  watch: {
+    from_date: function from_date() {
+      this.form.from_date = this.datePickerFormat(this.from_date);
+    },
+    to_date: function to_date() {
+      this.form.to_date = this.datePickerFormat(this.to_date);
+    }
   }
 });
 
@@ -468,30 +494,106 @@ var _hoisted_3 = {
   "class": "modal-content"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal-header\"><h5 class=\"modal-title\">Download DPS Transactions</h5><button type=\"button\" class=\"btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center\" data-bs-dismiss=\"modal\" aria-label=\"Close\"><i class=\"bx bx-x\"></i></button></div><div class=\"modal-body\"></div>", 2);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "modal-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+  "class": "modal-title"
+}, "Download DPS Transactions"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center",
+  "data-bs-dismiss": "modal",
+  "aria-label": "Close"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-x"
+})])], -1
+/* HOISTED */
+);
 
+var _hoisted_5 = {
+  "class": "modal-body"
+};
 var _hoisted_6 = {
+  "class": "form-group"
+};
+var _hoisted_7 = {
+  "class": "row"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-4 text-left"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label"
+}, "From Date")], -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "col-md-8"
+};
+var _hoisted_10 = {
+  "class": "form-group"
+};
+var _hoisted_11 = {
+  "class": "row"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-4 text-left"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label"
+}, "To Date")], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "col-md-8"
+};
+var _hoisted_14 = {
   "class": "modal-footer text-right"
 };
-var _hoisted_7 = ["href"];
+var _hoisted_15 = ["href"];
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-download"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" DPS Transactions ");
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Download ");
 
-var _hoisted_10 = [_hoisted_8, _hoisted_9];
+var _hoisted_18 = [_hoisted_16, _hoisted_17];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: '/download/dps/' + $props.member_id + '/transactions',
-    "class": "btn btn-outline-success",
-    target: "_blank"
-  }, _hoisted_10, 8
+  var _component_Datepicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Datepicker");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+    modelValue: $data.from_date,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.from_date = $event;
+    }),
+    format: "dd-MM-yyyy",
+    enableTimePicker: false,
+    autoApply: "",
+    placeholder: "Select From Date"
+  }, null, 8
   /* PROPS */
-  , _hoisted_7)])])])]);
+  , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+    modelValue: $data.to_date,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.to_date = $event;
+    }),
+    format: "dd-MM-yyyy",
+    enableTimePicker: false,
+    autoApply: "",
+    placeholder: "Select To Date"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/download/dps/' + $props.member_id + '/transactions?from_date=' + $data.form.from_date + '&to_date=' + $data.form.to_date,
+    "class": "btn btn-success",
+    target: "_blank"
+  }, _hoisted_18, 8
+  /* PROPS */
+  , _hoisted_15)])])])]);
 }
 
 /***/ }),
@@ -519,30 +621,106 @@ var _hoisted_3 = {
   "class": "modal-content"
 };
 
-var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"modal-header\"><h5 class=\"modal-title\">Download Loan Transactions</h5><button type=\"button\" class=\"btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center\" data-bs-dismiss=\"modal\" aria-label=\"Close\"><i class=\"bx bx-x\"></i></button></div><div class=\"modal-body\"></div>", 2);
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "modal-header"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
+  "class": "modal-title"
+}, "Download Loan Transactions"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "button",
+  "class": "btn btn-outline-danger btn-sm text-lg px-0 py-0 flex align-items-center",
+  "data-bs-dismiss": "modal",
+  "aria-label": "Close"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+  "class": "bx bx-x"
+})])], -1
+/* HOISTED */
+);
 
+var _hoisted_5 = {
+  "class": "modal-body"
+};
 var _hoisted_6 = {
+  "class": "form-group"
+};
+var _hoisted_7 = {
+  "class": "row"
+};
+
+var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-4 text-left"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label"
+}, "From Date")], -1
+/* HOISTED */
+);
+
+var _hoisted_9 = {
+  "class": "col-md-8"
+};
+var _hoisted_10 = {
+  "class": "form-group"
+};
+var _hoisted_11 = {
+  "class": "row"
+};
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-4 text-left"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label"
+}, "To Date")], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
+  "class": "col-md-8"
+};
+var _hoisted_14 = {
   "class": "modal-footer text-right"
 };
-var _hoisted_7 = ["href"];
+var _hoisted_15 = ["href"];
 
-var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("i", {
   "class": "bx bx-download"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Loan Transactions ");
+var _hoisted_17 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Download ");
 
-var _hoisted_10 = [_hoisted_8, _hoisted_9];
+var _hoisted_18 = [_hoisted_16, _hoisted_17];
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
-    href: '/download/loan/' + $props.member_id + '/transactions',
-    "class": "btn btn-outline-info w-100 mt-2",
-    target: "_blank"
-  }, _hoisted_10, 8
+  var _component_Datepicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Datepicker");
+
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+    modelValue: $data.from_date,
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $data.from_date = $event;
+    }),
+    format: "dd-MM-yyyy",
+    enableTimePicker: false,
+    autoApply: "",
+    placeholder: "Select From Date"
+  }, null, 8
   /* PROPS */
-  , _hoisted_7)])])])]);
+  , ["modelValue"])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Datepicker, {
+    modelValue: $data.to_date,
+    "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+      return $data.to_date = $event;
+    }),
+    format: "dd-MM-yyyy",
+    enableTimePicker: false,
+    autoApply: "",
+    placeholder: "Select To Date"
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", {
+    href: '/download/loan/' + $props.member_id + '/transactions?from_date=' + $data.form.from_date + '&to_date=' + $data.form.to_date,
+    "class": "btn btn-success",
+    target: "_blank"
+  }, _hoisted_18, 8
+  /* PROPS */
+  , _hoisted_15)])])])]);
 }
 
 /***/ }),

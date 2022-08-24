@@ -23,12 +23,19 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
-    public function memberLoan($memberId)
+    public function memberLoan($request, $memberId)
     {
         $transactions = LoanTransaction::with('application')
             ->where('is_paid', 1)
-            ->where('member_id', $memberId)
-            ->get();
+            ->where('member_id', $memberId);
+
+        if ($request->from_date && $request->to_date) {
+            $from_date = databaseFormattedDate($request->from_date);
+            $to_date = databaseFormattedDate($request->to_date);
+            $transactions = $transactions->whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date);
+        }
+
+        $transactions = $transactions->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -62,12 +69,19 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
-    public function memberDps($memberId)
+    public function memberDps($request, $memberId)
     {
         $transactions = DpsTransaction::with('application')
             ->where('is_paid', 1)
-            ->where('member_id', $memberId)
-            ->get();
+            ->where('member_id', $memberId);
+
+        if ($request->from_date && $request->to_date) {
+            $from_date = databaseFormattedDate($request->from_date);
+            $to_date = databaseFormattedDate($request->to_date);
+            $transactions = $transactions->whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date);
+        }
+
+        $transactions = $transactions->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -133,10 +147,15 @@ class ReportRepository implements ReportRepositoryInterface {
     }
 
 
-    public function savingsAccountTransactions($memberId)
+    public function savingsAccountTransactions($request, $memberId)
     {
-        $transactions = Savings:: where('member_id', $memberId)
-            ->get();
+        $transactions = Savings:: where('member_id', $memberId);
+        if ($request->from_date && $request->to_date) {
+            $from_date = databaseFormattedDate($request->from_date);
+            $to_date = databaseFormattedDate($request->to_date);
+            $transactions = $transactions->whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date);
+        }
+        $transactions =$transactions->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;

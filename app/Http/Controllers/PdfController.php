@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Member;
 use App\Repositories\Report\ReportRepositoryInterface;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
 
 class PdfController extends Controller
@@ -44,9 +43,9 @@ class PdfController extends Controller
         ])->stream('dps.pdf');
     }
 
-    public function memberDpsTransactions($member_id)
+    public function memberDpsTransactions(Request $request, $member_id)
     {
-        $applications = $this->report->memberDps($member_id);
+        $applications = $this->report->memberDps($request, $member_id);
         $member = Member::find($member_id);
 
         $data =[
@@ -54,14 +53,15 @@ class PdfController extends Controller
             'title'=> "DPS transactions report ($member->name)",
             'sub_title' => "Transactions report"
         ];
+
         return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('dps-transactions-'.$member->account_no.'.pdf');
     }
 
-    public function memberLoanTransactions($member_id)
+    public function memberLoanTransactions(Request $request, $member_id)
     {
-        $applications = $this->report->memberLoan($member_id);
+        $applications = $this->report->memberLoan($request, $member_id);
         $member = Member::find($member_id);
 
         $data =[
@@ -169,9 +169,9 @@ class PdfController extends Controller
     }
 
 
-    public function savingAccountTransactions($member_id)
+    public function savingAccountTransactions(Request $request, $member_id)
     {
-        $transactions = $this->report->savingsAccountTransactions($member_id);
+        $transactions = $this->report->savingsAccountTransactions($request, $member_id);
         $member = Member::find($member_id);
 
         $data =[
