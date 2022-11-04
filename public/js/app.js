@@ -26102,7 +26102,14 @@ var _hoisted_2 = {
 var _hoisted_3 = {
   "class": "content"
 };
-var _hoisted_4 = {
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "loader"
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
   style: {
     "display": "none"
   }
@@ -26114,7 +26121,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_router_view = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("router-view");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navigation), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_page_title), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentRoute), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_navigation), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_page_title), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_view)]), _hoisted_4])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.currentRoute), 1
   /* TEXT */
   )], 64
   /* STABLE_FRAGMENT */
@@ -27117,7 +27124,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        <h5>Accounts Reports</h5>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        <ul>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            <li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <a href=\"\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <i class='bx bx-chevron-right'></i>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <span>Cash Balance</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                </a>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            </li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            <li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <a href=\"\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <i class='bx bx-chevron-right'></i>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <span>All Transaction Reports</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                </a>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            </li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            <li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                <a href=\"\">"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <i class='bx bx-chevron-right'></i>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                    <span>All Transaction Reports</span>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                                </a>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                            </li>"), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("                        </ul>")])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_112, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  })])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_112, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: {
       name: 'Profile'
     }
@@ -30374,12 +30381,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   namespaced: true,
   state: {
     members: null,
+    groupMembers: null,
+    member: null,
     dps_transactions: null,
     loan_transactions: null
   },
   getters: {
     members: function members(state) {
       return state.members;
+    },
+    groupMembers: function groupMembers(state) {
+      return state.groupMembers;
+    },
+    member: function member(state) {
+      return state.member;
     },
     dps_transactions: function dps_transactions(state) {
       return state.dps_transactions;
@@ -30391,6 +30406,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   mutations: {
     SET_MEMBERS: function SET_MEMBERS(state, members) {
       state.members = members;
+    },
+    SET_GROUP_MEMBERS: function SET_GROUP_MEMBERS(state, members) {
+      state.groupMembers = members;
     },
     SET_MEMBER_DPS_TRANSACTIONS: function SET_MEMBER_DPS_TRANSACTIONS(state, dps_transactions) {
       state.dps_transactions = dps_transactions;
@@ -30404,6 +30422,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       } else {
         state.members = [member];
       }
+    },
+    SET_SINGLE_MEMBER: function SET_SINGLE_MEMBER(state, member) {
+      state.member = member;
     },
     UPDATE_MEMBER: function UPDATE_MEMBER(state, member) {
       var item = state.members.find(function (item) {
@@ -30423,25 +30444,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   actions: {
     //member actions
-    getMembers: function getMembers(_ref) {
+    getMembers: function getMembers(_ref, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var commit, res;
+        var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 commit = _ref.commit;
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/list');
+                page_no = page && page != 'undefined' ? page : 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/list?page=' + page_no);
 
-              case 3:
+              case 4:
                 res = _context.sent;
 
                 if (res.data.status) {
                   commit('SET_MEMBERS', res.data.members);
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -30449,25 +30471,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getLoanTransactions: function getLoanTransactions(_ref2, member_id) {
+    //member actions
+    getGroupMembers: function getGroupMembers(_ref2, groupId, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var dispatch, commit, res;
+        var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                dispatch = _ref2.dispatch, commit = _ref2.commit;
-                _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/transactions/loan/' + member_id);
+                commit = _ref2.commit;
+                page_no = page && page != 'undefined' ? page : 1;
+                _context2.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/group/' + groupId + '?page=' + page_no);
 
-              case 3:
+              case 4:
                 res = _context2.sent;
 
                 if (res.data.status) {
-                  commit('SET_MEMBER_LOAN_TRANSACTIONS', res.data.transactions);
+                  commit('SET_GROUP_MEMBERS', res.data.members);
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -30475,7 +30499,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getDpsTransactions: function getDpsTransactions(_ref3, member_id) {
+    getByMemberId: function getByMemberId(_ref3, member_id) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -30484,13 +30508,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref3.commit;
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/transactions/dps/' + member_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/' + member_id + '/show');
 
               case 3:
                 res = _context3.sent;
 
                 if (res.data.status) {
-                  commit('SET_MEMBER_DPS_TRANSACTIONS', res.data.transactions);
+                  commit('SET_SINGLE_MEMBER', res.data.member);
                 }
 
               case 5:
@@ -30501,19 +30525,71 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    createMember: function createMember(_ref4, formdata) {
+    getLoanTransactions: function getLoanTransactions(_ref4, member_id) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
-        var commit, res;
+        var dispatch, commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
           while (1) {
             switch (_context4.prev = _context4.next) {
               case 0:
-                commit = _ref4.commit;
+                dispatch = _ref4.dispatch, commit = _ref4.commit;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/create', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/transactions/loan/' + member_id);
 
               case 3:
                 res = _context4.sent;
+
+                if (res.data.status) {
+                  commit('SET_MEMBER_LOAN_TRANSACTIONS', res.data.transactions);
+                }
+
+              case 5:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }))();
+    },
+    getDpsTransactions: function getDpsTransactions(_ref5, member_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                commit = _ref5.commit;
+                _context5.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('member/transactions/dps/' + member_id);
+
+              case 3:
+                res = _context5.sent;
+
+                if (res.data.status) {
+                  commit('SET_MEMBER_DPS_TRANSACTIONS', res.data.transactions);
+                }
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    createMember: function createMember(_ref6, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/create', formdata);
+
+              case 3:
+                res = _context6.sent;
 
                 if (res.data.status) {
                   commit('SET_MEMBER', res.data.member);
@@ -30538,25 +30614,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
           }
-        }, _callee4);
+        }, _callee6);
       }))();
     },
-    editMember: function editMember(_ref5, formdata) {
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
+    editMember: function editMember(_ref7, formdata) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
         var commit, res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
           while (1) {
-            switch (_context5.prev = _context5.next) {
+            switch (_context7.prev = _context7.next) {
               case 0:
-                commit = _ref5.commit;
-                _context5.next = 3;
+                commit = _ref7.commit;
+                _context7.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default().post('member/update/' + formdata.get('member_id'), formdata);
 
               case 3:
-                res = _context5.sent;
+                res = _context7.sent;
 
                 if (res.data.status) {
                   commit('UPDATE_MEMBER', res.data.member);
@@ -30581,25 +30657,25 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
           }
-        }, _callee5);
+        }, _callee7);
       }))();
     },
-    deleteMember: function deleteMember(_ref6, item_id) {
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+    deleteMember: function deleteMember(_ref8, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
         var commit, res;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
           while (1) {
-            switch (_context6.prev = _context6.next) {
+            switch (_context8.prev = _context8.next) {
               case 0:
-                commit = _ref6.commit;
-                _context6.next = 3;
+                commit = _ref8.commit;
+                _context8.next = 3;
                 return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('member/delete/' + item_id);
 
               case 3:
-                res = _context6.sent;
+                res = _context8.sent;
 
                 if (res.data.status) {
                   commit('DELETE_MEMBER', item_id);
@@ -30618,10 +30694,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context6.stop();
+                return _context8.stop();
             }
           }
-        }, _callee6);
+        }, _callee8);
       }))();
     }
   }
@@ -37178,7 +37254,31 @@ var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBP
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Livvic:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap);"]);
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n    height: 100%;\n}\n\nbody {\n    font-family: \"Nunito\", sans-serif;\n    background-color: #EAEDF5;\n    font-size: 1rem;\n}\n\nimg {\n    max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n    font-family: \"Livvic\", sans-serif;\n    color: #1e293b;\n}\n\nh1 {\n    font-size: 32px;\n}\n\nh2 {\n    font-size: 24px;\n}\n\nh3 {\n    font-size: 20px;\n}\n\nh4 {\n    font-size: 18px;\n}\n\nh5 {\n    font-size: 16px;\n}\n\nh6 {\n    font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n    width: 5px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n    background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n    background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n    background: #4f46e5;\n}\n\nh1 {\n    font-size: 30px;\n    font-weight: 700;\n}\n\nh2 {\n    font-size: 24px;\n    font-weight: 700;\n}\n\nh3 {\n    font-size: 18px;\n    font-weight: 600;\n}\n\nh4 {\n    font-size: 16px;\n    font-weight: 600;\n}\n\nh5 {\n    font-size: 14px;\n    font-weight: 600;\n}\n\nh6 {\n    font-size: 12px;\n    font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n    color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n    background-color: #3730a3 !important;\n}\n.btn.btn-outline-primary, button.btn-outline-primary,\n[type=button].btn-outline-primary,\n[type=reset].btn-outline-primary,\n[type=submit].btn-outline-primary {\n    border-color: #4f46e5 !important;\n    color: #4f46e5;\n}\n.btn.btn-outline-primary:hover, button.btn-outline-primary:hover,\n[type=button].btn-outline-primary:hover,\n[type=reset].btn-outline-primary:hover,\n[type=submit].btn-outline-primary:hover {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n    background-color: #166534 !important;\n}\n.btn.btn-outline-success, button.btn-outline-success,\n[type=button].btn-outline-success,\n[type=reset].btn-outline-success,\n[type=submit].btn-outline-success {\n    border-color: #16a34a !important;\n    color: #16a34a;\n}\n.btn.btn-outline-success:hover, button.btn-outline-success:hover,\n[type=button].btn-outline-success:hover,\n[type=reset].btn-outline-success:hover,\n[type=submit].btn-outline-success:hover {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n    background-color: #dc2626 !important;\n    color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n    background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n    background-color: #ca8a04 !important;\n    color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n    background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n    position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n    position: absolute;\n    top: calc(50% - 0.6rem);\n    left: calc(50% - 0.6rem);\n    width: 1.2rem;\n    height: 1.2rem;\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n    visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\n\n.box {\n    background-color: #ffffff;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    border: 1px solid #e2e8f0;\n    box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n    padding: 10px 15px;\n    min-height: 45px;\n    border-bottom: 1px solid #f1f5f9;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.box .box-header .box-action {\n    display: flex;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n    align-items: center;\n    justify-content: flex-end;\n}\n.box .box-header .box-action .search {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form {\n    display: none;\n    align-items: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form .search-group .form-control, .box .box-header .box-action .search .search-form .search-group .form-select {\n    height: 32px;\n}\n.box .box-header .box-action .search .search-form .search-group .dp__input {\n    height: 32px;\n    font-size: 14px;\n}\n.box .box-header .box-action .search .search-form .search-group input[type=search] {\n    background-color: #f8fafc;\n}\n.box .box-header .box-action .search.open-search .search-form {\n    display: flex;\n}\n.box .box-body {\n    padding: 10px 15px 15px;\n    overflow-y: auto;\n}\n.box .box-footer {\n    border-top: 1px solid #e2e8f0;\n    padding: 10px 15px 15px;\n}\n\ntable {\n    width: 100%;\n}\n\n.table {\n    width: 100%;\n    overflow: hidden;\n}\n.table thead {\n    border: none !important;\n}\n.table thead tr {\n    background-color: #f1f5f9;\n    border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n    font-weight: 500;\n    color: #1f2937;\n    font-family: \"Livvic\", sans-serif;\n    font-size: 16px;\n}\n.table tbody {\n    border: none !important;\n    font-family: \"Nunito\", sans-serif;\n    font-weight: 500;\n}\n.table tbody tr {\n    position: relative;\n    border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n    position: absolute;\n    top: 0;\n    left: -2px;\n    width: 2px;\n    background-color: #6366f1;\n    height: 100%;\n    content: \"\";\n}\n.table tbody tr td {\n    font-size: 14px;\n    vertical-align: middle;\n    padding: 10px;\n}\n.table tbody tr td .action {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n    font-size: 16px;\n}\n.table tbody tr td .action a {\n    padding: 3px 3px;\n    line-height: 0px;\n    border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n    background-color: #4f46e5;\n    color: #ffffff;\n}\n.table tbody tr:hover {\n    background-color: #eef2ff;\n    cursor: pointer;\n}\n.table tbody tr:hover::after {\n    left: 0;\n    content: \"\";\n    transition: 300ms;\n}\n\n.form-group {\n    margin-bottom: 15px;\n}\n.form-group label {\n    font-weight: 500;\n    font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-select:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n    width: 3px;\n}\n\n.form-section {\n    padding: 10px;\n    margin-bottom: 30px;\n    background-color: #ffffff;\n    border: 1px solid #f3f4f6;\n}\n.form-section h5 {\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px solid #e5e7eb;\n    font-size: 18px;\n    font-weight: 500;\n}\n.form-section.form-section-primary {\n    background-color: #eef2ff;\n    border: 1px solid #e0e7ff;\n}\n.form-section.form-section-primary h5 {\n    border-bottom: 1px solid #c7d2fe;\n}\n.form-section.form-section-secondary {\n    background-color: #f8fafc;\n    border: 1px solid #f1f5f9;\n}\n.form-section.form-section-secondary h5 {\n    border-bottom: 1px solid #e2e8f0;\n}\n.form-section.form-section-success {\n    background-color: #f0fdf4;\n    border: 1px solid #dcfce7;\n}\n.form-section.form-section-success h5 {\n    border-bottom: 1px solid #bbf7d0;\n}\n.form-section.form-section-warning {\n    background-color: #fefce8;\n    border: 1px solid #fef9c3;\n}\n.form-section.form-section-warning h5 {\n    border-bottom: 1px solid #fef08a;\n}\n.form-section.form-section-danger {\n    background-color: #fef2f2;\n    border: 1px solid #fee2e2;\n}\n.form-section.form-section-danger h5 {\n    border-bottom: 1px solid #fecaca;\n}\n\n.widget {\n    background-color: #ffffff;\n    padding: 10px;\n    border-radius: 10px;\n    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.062745098);\n    border: 1px solid #e0e7ff;\n    min-height: 100px;\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    cursor: pointer;\n    grid-gap: 15px;\n    border-bottom: 3px solid #6366f1;\n}\n@media screen and (max-width: 768px) {\n    .widget {\n        margin-bottom: 15px;\n    }\n}\n.widget .widget-header {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    position: relative;\n}\n.widget .widget-header .title {\n    color: #4b5563;\n    padding-top: 5px;\n    font-weight: 400;\n}\n.widget .widget-header span {\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    font-size: 18px;\n    background-color: #f3f4f6;\n    line-height: normal;\n    color: #4b5563;\n    padding: 2px 5px;\n    border-radius: 30px;\n}\n.widget .widget-body {\n    width: 100%;\n    text-align: center;\n}\n.widget .widget-body h3 {\n    color: #4b5563;\n    font-size: 20px;\n    font-weight: 600;\n}\n.widget .widget-body p {\n    font-size: 12px;\n    color: #9ca3af;\n}\n.widget.widget-primary {\n    border-bottom-color: #6366f1;\n}\n.widget.widget-primary .widget-header .title {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-header span {\n    background-color: #e0e7ff;\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body h3 {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body p {\n    color: #818cf8;\n}\n.widget.widget-success {\n    border-bottom-color: #22c55e;\n}\n.widget.widget-success .widget-header .title {\n    color: #16a34a;\n}\n.widget.widget-success .widget-header span {\n    background-color: #dcfce7;\n    color: #16a34a;\n}\n.widget.widget-success .widget-body h3 {\n    color: #16a34a;\n}\n.widget.widget-success .widget-body p {\n    color: #4ade80;\n}\n.widget.widget-danger {\n    border-bottom-color: #ef4444;\n}\n.widget.widget-danger .widget-header .title {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-header span {\n    background-color: #fee2e2;\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body h3 {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body p {\n    color: #f87171;\n}\n.widget.widget-warning {\n    border-bottom-color: #eab308;\n}\n.widget.widget-warning .widget-header .title {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-header span {\n    background-color: #fef9c3;\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body h3 {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body p {\n    color: #facc15;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.pagination ul {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n}\n.pagination ul .page-item {\n    display: flex;\n    grid-gap: 5px;\n    padding: 0px;\n}\n.pagination ul .page-item .page-link {\n    border: 1px solid #4f46e5;\n    background: transparent;\n    padding: 3px 8px 1px 8px;\n    border-radius: 3px;\n}\n.pagination ul .page-item .page-link:hover {\n    background: #d1d5db;\n}\n.pagination ul .page-item .page-link:focus {\n    box-shadow: none;\n}\n.pagination ul .page-item .page-link .active {\n    background: #4f46e5;\n    color: #ffffff;\n}\n\n.wrapper {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n}\n.wrapper .sidebar {\n    background-color: #F0F9FF;\n    width: 269px;\n    height: 100vh;\n    overflow-y: auto;\n    border-right: 1px solid #e0e7ff;\n}\n.wrapper .sidebar .close {\n    position: absolute;\n    top: 0;\n    right: 0;\n    padding: 5px;\n    color: red;\n    font-size: 20px;\n    display: none;\n}\n.wrapper .main-content {\n    background-color: #EAEDF5;\n    width: calc(100% - 270px);\n    height: 100vh;\n    overflow-y: auto;\n}\n@media screen and (max-width: 768px) {\n    .wrapper {\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n    .wrapper .sidebar {\n        position: fixed;\n        width: 100%;\n        top: 50%;\n        left: 0;\n        height: 100%;\n        visibility: hidden;\n        opacity: 0;\n        z-index: 999;\n    }\n    .wrapper .sidebar .close {\n        display: block;\n    }\n    .wrapper.rs-open-sidebar .sidebar {\n        top: 0;\n        opacity: 1;\n        visibility: visible;\n        transition: 300ms;\n    }\n    .wrapper .main-content {\n        width: 100%;\n    }\n}\n\n.main-content .main-header {\n    background-color: #ffffff;\n    min-height: 50px;\n    display: flex;\n    justify-content: space-between;\n    padding: 0px 15px;\n    align-items: center;\n}\n.main-content .main-header .page-control {\n    display: flex;\n    align-items: center;\n    line-height: 0;\n}\n.main-content .main-header .page-control .app-icon {\n    cursor: pointer;\n    display: none;\n}\n.main-content .main-header .page-control .app-icon .bx {\n    margin-right: 10px;\n    font-size: 24px;\n    color: #4f46e5;\n}\n.main-content .main-header .page-control h5 {\n    font-weight: 500;\n}\n.main-content .content {\n    padding: 15px;\n}\n@media screen and (max-width: 768px) {\n    .main-content .main-header {\n        position: fixed;\n        top: 0;\n        left: 0;\n        z-index: 99;\n        width: 100%;\n    }\n    .main-content .main-header .page-control .app-icon {\n        display: block;\n    }\n    .main-content .content {\n        margin-top: 50px;\n    }\n}\n\n.full-screen .wrapper .sidebar {\n    display: none;\n}\n.full-screen .wrapper .main-content {\n    width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n    display: none;\n}\n.full-screen .wrapper .main-content .content {\n    padding: 0;\n}\n\n.sidebar {\n    padding: 15px 10px;\n    position: relative;\n    /* width */\n}\n.sidebar .logo {\n    text-align: center;\n    margin-bottom: 15px;\n}\n.sidebar .logo img {\n    width: 85px;\n    margin: 0 auto 20px auto;\n}\n.sidebar .logo h2 {\n    margin-top: 10px;\n    font-size: 18px;\n    color: #475569;\n    font-weight: 700;\n}\n.sidebar .user {\n    margin-bottom: 15px;\n    background-color: #6366f1;\n    color: #ffffff;\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    align-items: center;\n    grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n    width: 40px;\n    height: 40px;\n    border-radius: 50px;\n}\n.sidebar .user .user-info h3 {\n    font-size: 18px;\n    font-weight: 500;\n}\n.sidebar .user .user-info p {\n    font-size: 14px;\n    font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n    width: 0px;\n}\n\n.navigations {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    grid-gap: 20px 15px;\n}\n@media screen and (max-width: 768px) {\n    .navigations {\n        grid-template-columns: repeat(3, 1fr);\n    }\n}\n@media screen and (max-width: 576px) {\n    .navigations {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.navigations .navigation-item {\n    text-align: center;\n    min-height: 90px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #ffffff;\n    border-radius: 5px;\n    border: 1px solid #e0e7ff;\n    box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n    transition: 300ms;\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n    font-size: 32px;\n    margin-bottom: 5px;\n}\n\n.navigations .navigation-item a img {\n    width: 32px;\n    margin-bottom: 5px;\n}\n\n.navigations .navigation-item a span {\n    display: block;\n    font-weight: 500;\n    width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n    position: fixed;\n    top: 0;\n    left: -270px;\n    width: 270px;\n    height: 100%;\n    background-color: #F0F9FF;\n    padding: 10px;\n    visibility: hidden;\n    opacity: 0;\n    transition: 200ms;\n    cursor: default;\n    overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n    width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    color: red;\n    font-size: 16px;\n    flex-direction: row-reverse;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n    font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .close-bar:active i.bx {\n    background-color: red;\n    color: #ffffff;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n    margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n    text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n    margin-top: 15px;\n    font-weight: 500;\n    color: #4b5563;\n    font-size: 16px;\n    border-bottom: 1px solid #c7d2fe;\n    padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n    margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li {\n    margin: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n    font-size: 14px;\n    padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n    margin: 0px;\n    margin-right: 5px;\n    font-size: 20px;\n    color: #94a3b8;\n    transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n    background-color: #6366f1;\n    border-radius: 5px;\n    color: #ffffff;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n    background-color: #4f46e5;\n    cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n    color: #ffffff;\n    transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n    color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n    background-color: #6366f1;\n    border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n    left: 0;\n    visibility: visible;\n    opacity: 1;\n    z-index: 999;\n    transition: 300ms;\n}\n@media screen and (max-width: 768px) {\n    .navigations .navigation-item.open .navigation-content {\n        width: 100%;\n    }\n}\n\n.auth-wrap {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}\n.auth-wrap .auth {\n    width: 50%;\n    height: 100%;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n.auth-wrap .auth .auth-box {\n    width: 350px;\n    margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n    text-align: center;\n    margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n    margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n    width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n    margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n    height: 45px;\n    border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n    margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n    width: 100%;\n    padding: 5px 15px;\n    border-radius: 8px;\n    font-size: 18px;\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n    background-color: #4f46e5;\n    border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n    background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n    justify-content: flex-start;\n    width: 50%;\n    background-color: #060B4D;\n    height: 100%;\n}\n.auth-wrap .auth-content .content {\n    margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n    color: #e2e8f0;\n    font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n    margin-top: 15px;\n    color: #e0e7ff;\n    font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n    margin-top: 30px;\n    width: 75%;\n}\n@media screen and (max-width: 768px) {\n    .auth-wrap {\n        flex-wrap: wrap;\n    }\n    .auth-wrap .auth {\n        width: 100%;\n    }\n    .auth-wrap .auth .auth-box {\n        width: 80%;\n        margin: 0 auto;\n    }\n    .auth-wrap .auth .auth-box .auth-header h1 {\n        font-size: 1.5rem;\n    }\n    .auth-wrap .auth-content {\n        display: none;\n    }\n}\n\n.profile .user-box {\n    text-align: center;\n    background-color: #eef2ff;\n    padding: 15px;\n}\n.profile .user-box img {\n    width: 75px;\n    margin: 10px auto;\n}\n.profile .user-box .btn {\n    width: 100%;\n    margin: 5px 0px;\n}\n\n.member.member-show .member-img img {\n    margin: 0 auto;\n}\n.member.member-show .member-info h3 {\n    color: #4f46e5;\n}\n.member.member-show .member-info a {\n    color: #475569;\n}\n.member.member-show .member-info a:hover {\n    color: #1e293b;\n}\n.member.member-show .member-nav ul li {\n    margin-bottom: 5px;\n}\n.member.member-show .member-nav ul li a {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: #f1f5f9;\n    padding: 8px 10px;\n    border-radius: 5px;\n    color: #334155;\n}\n.member.member-show .member-nav ul li a i.bx {\n    font-size: 18px;\n}\n.member.member-show .member-nav ul li a:hover, .member.member-show .member-nav ul li a.router-link-active {\n    color: #ffffff;\n    background-color: #4f46e5;\n    transition: 300ms;\n}\n.member.member-show .member-account table {\n    font-size: 14px;\n}\n.member.member-show .member-account table tr {\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member.member-show .member-account table tr td {\n    padding: 5px;\n    vertical-align: top;\n    font-weight: 500;\n    color: #475569;\n}\n.member.member-show .member-account table tr td:first-child {\n    width: 45%;\n    font-weight: 400;\n    color: #64748b;\n}\n.member.member-show h5 {\n    margin-bottom: 5px;\n    font-weight: 500;\n    color: #1e293b;\n}\n\n.member-details .member-detail {\n    margin-bottom: 30px;\n}\n.member-details .member-detail h3 {\n    color: #475569;\n    font-weight: 500;\n    font-size: 16px;\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member-details .member-detail .member-infos {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 15px;\n}\n@media screen and (max-width: 768px) {\n    .member-details .member-detail .member-infos {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.member-details .member-detail .member-infos .member-info p {\n    color: #475569;\n    font-size: 0.875rem;\n    font-weight: 300;\n    margin-bottom: 3px;\n}\n.member-details .member-detail .member-infos .member-info h5 {\n    color: #1e293b;\n    font-weight: 400;\n    font-size: 1rem;\n}\n\n.member-select {\n    position: relative;\n}\n.member-select .member-input {\n    position: relative;\n}\n.member-select .member-input .form-control {\n    cursor: pointer;\n}\n.member-select .member-input .select-icon {\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    font-size: 20px;\n    color: #64748b;\n}\n.member-select .member-list {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    background: #f8fafc;\n    border: 1px solid #e2e8f0;\n    display: none;\n}\n.member-select .member-list .member-search {\n    position: relative;\n}\n.member-select .member-list .member-search .form-control {\n    border: none;\n    border-bottom: 1px solid #e2e8f0;\n    border-radius: 0px;\n}\n.member-select .member-list .member-search .list-close {\n    position: absolute;\n    top: 7px;\n    right: 10px;\n    font-size: 20px;\n    color: #ef4444;\n    line-height: 0;\n    cursor: pointer;\n}\n.member-select .member-list .member-search .list-close:active {\n    background-color: #ef4444;\n    color: #ffffff;\n}\n.member-select .member-list .members {\n    max-height: 300px;\n    overflow-y: auto;\n    padding: 5px 0px;\n}\n.member-select .member-list .members .member {\n    font-size: 14px;\n    cursor: pointer;\n    padding: 7px 5px;\n    border-bottom: 1px dashed #e2e8f0;\n}\n.member-select .member-list .members .member:hover {\n    background-color: #e0e7ff;\n    transition: 200ms;\n}\n.member-select .member-list .members::-webkit-scrollbar {\n    width: 5px;\n}\n.member-select.open .member-list {\n    display: block;\n}\n\n.search-container {\n    cursor: default;\n}\n.search-container .btn.btn-search {\n    border: 1px solid #cbd5e1;\n    background-color: #f9fafb;\n    font-weight: 600;\n    color: #4f46e5;\n}\n.search-container .btn.btn-search:focus {\n    box-shadow: none;\n}\n.search-container .btn.btn-search:active {\n    background-color: #f3f4f6;\n}\n.search-container .search-form {\n    margin-bottom: 15px;\n}\n.search-container .search-form .form-group .input-group {\n    border-bottom: 1px solid #e2e8f0;\n}\n.search-container .search-form .form-group .input-group .input-group-text {\n    background: none;\n    border: none;\n}\n.search-container .search-form .form-group .input-group .form-control {\n    height: 50px;\n    border: none;\n    font-size: 16px;\n}\n.search-container .search-result {\n    max-height: 70vh;\n    overflow-y: auto;\n    text-align: left;\n}\n.search-container .search-result .rs-count {\n    margin-bottom: 10px;\n}\n.search-container .search-result .search-items .search-item {\n    margin-bottom: 10px;\n    padding: 5px;\n}\n.search-container .search-result .search-items .search-item a {\n    display: flex;\n    width: 100%;\n}\n.search-container .search-result .search-items .search-item a .search-img img {\n    width: 50px;\n    border-radius: 5px;\n}\n.search-container .search-result .search-items .search-item a .search-content {\n    margin-left: 10px;\n}\n.search-container .search-result .search-items .search-item a .search-content h5 {\n    color: #1E293B;\n    font-size: 16px;\n    font-weight: 500;\n}\n.search-container .search-result .search-items .search-item a .search-content p {\n    color: #475569;\n    font-size: 14px;\n}\n.search-container .search-result .search-items .search-item:hover {\n    background-color: #f9fafb;\n}\n.search-container .search-result .search-items .search-item:hover a h5 {\n    color: #4f46e5;\n}\n.search-container .search-result .search-items .search-item:hover a p {\n    color: #1E293B;\n}\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "html, body {\n    height: 100%;\n}\n\nbody {\n    font-family: \"Nunito\", sans-serif;\n    background-color: #EAEDF5;\n    font-size: 1rem;\n}\n\nimg {\n    max-width: 100%;\n}\n\nh1, h2, h3, h4, h5, h6 {\n    font-family: \"Livvic\", sans-serif;\n    color: #1e293b;\n}\n\nh1 {\n    font-size: 32px;\n}\n\nh2 {\n    font-size: 24px;\n}\n\nh3 {\n    font-size: 20px;\n}\n\nh4 {\n    font-size: 18px;\n}\n\nh5 {\n    font-size: 16px;\n}\n\nh6 {\n    font-size: 14px;\n}\n\n/* width */\n::-webkit-scrollbar {\n    width: 5px;\n}\n\n/* Track */\n::-webkit-scrollbar-track {\n    background: #c7d2fe;\n}\n\n/* Handle */\n::-webkit-scrollbar-thumb {\n    background: #a5b4fc;\n}\n\n/* Handle on hover */\n::-webkit-scrollbar-thumb:hover {\n    background: #4f46e5;\n}\n\nh1 {\n    font-size: 30px;\n    font-weight: 700;\n}\n\nh2 {\n    font-size: 24px;\n    font-weight: 700;\n}\n\nh3 {\n    font-size: 18px;\n    font-weight: 600;\n}\n\nh4 {\n    font-size: 16px;\n    font-weight: 600;\n}\n\nh5 {\n    font-size: 14px;\n    font-weight: 600;\n}\n\nh6 {\n    font-size: 12px;\n    font-weight: 500;\n}\n\nbutton,\n[type=button],\n[type=reset],\n[type=submit] {\n    color: #4f46e5;\n}\n\n.btn.btn-primary, button.btn-primary,\n[type=button].btn-primary,\n[type=reset].btn-primary,\n[type=submit].btn-primary {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-primary:hover, button.btn-primary:hover,\n[type=button].btn-primary:hover,\n[type=reset].btn-primary:hover,\n[type=submit].btn-primary:hover {\n    background-color: #3730a3 !important;\n}\n.btn.btn-outline-primary, button.btn-outline-primary,\n[type=button].btn-outline-primary,\n[type=reset].btn-outline-primary,\n[type=submit].btn-outline-primary {\n    border-color: #4f46e5 !important;\n    color: #4f46e5;\n}\n.btn.btn-outline-primary:hover, button.btn-outline-primary:hover,\n[type=button].btn-outline-primary:hover,\n[type=reset].btn-outline-primary:hover,\n[type=submit].btn-outline-primary:hover {\n    background-color: #4f46e5 !important;\n    color: #ffffff;\n}\n.btn.btn-success, button.btn-success,\n[type=button].btn-success,\n[type=reset].btn-success,\n[type=submit].btn-success {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-success:hover, button.btn-success:hover,\n[type=button].btn-success:hover,\n[type=reset].btn-success:hover,\n[type=submit].btn-success:hover {\n    background-color: #166534 !important;\n}\n.btn.btn-outline-success, button.btn-outline-success,\n[type=button].btn-outline-success,\n[type=reset].btn-outline-success,\n[type=submit].btn-outline-success {\n    border-color: #16a34a !important;\n    color: #16a34a;\n}\n.btn.btn-outline-success:hover, button.btn-outline-success:hover,\n[type=button].btn-outline-success:hover,\n[type=reset].btn-outline-success:hover,\n[type=submit].btn-outline-success:hover {\n    background-color: #16a34a !important;\n    color: #ffffff;\n}\n.btn.btn-danger, button.btn-danger,\n[type=button].btn-danger,\n[type=reset].btn-danger,\n[type=submit].btn-danger {\n    background-color: #dc2626 !important;\n    color: #ffffff;\n}\n.btn.btn-danger:hover, button.btn-danger:hover,\n[type=button].btn-danger:hover,\n[type=reset].btn-danger:hover,\n[type=submit].btn-danger:hover {\n    background-color: #991b1b !important;\n}\n.btn.btn-warning, button.btn-warning,\n[type=button].btn-warning,\n[type=reset].btn-warning,\n[type=submit].btn-warning {\n    background-color: #ca8a04 !important;\n    color: #ffffff;\n}\n.btn.btn-warning:hover, button.btn-warning:hover,\n[type=button].btn-warning:hover,\n[type=reset].btn-warning:hover,\n[type=submit].btn-warning:hover {\n    background-color: #854d0e !important;\n}\n\nbutton[type=submit].btn {\n    position: relative;\n}\nbutton[type=submit].btn .spinner-border {\n    position: absolute;\n    top: calc(50% - 0.6rem);\n    left: calc(50% - 0.6rem);\n    width: 1.2rem;\n    height: 1.2rem;\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\nbutton[type=submit].btn.submitted .spinner-border {\n    visibility: visible;\n}\n\nbutton[type=submit].btn.submitted span {\n    visibility: hidden;\n}\n\n.box {\n    background-color: #ffffff;\n    border-radius: 5px;\n    margin-bottom: 30px;\n    border: 1px solid #e2e8f0;\n    box-shadow: 0px 2px 5px #e0e7ff;\n}\n.box .box-header {\n    padding: 10px 15px;\n    min-height: 45px;\n    border-bottom: 1px solid #f1f5f9;\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.box .box-header .box-action {\n    display: flex;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n    align-items: center;\n    justify-content: flex-end;\n}\n.box .box-header .box-action .search {\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form {\n    display: none;\n    align-items: center;\n    -moz-column-gap: 10px;\n    column-gap: 10px;\n}\n.box .box-header .box-action .search .search-form .search-group .form-control, .box .box-header .box-action .search .search-form .search-group .form-select {\n    height: 32px;\n}\n.box .box-header .box-action .search .search-form .search-group .dp__input {\n    height: 32px;\n    font-size: 14px;\n}\n.box .box-header .box-action .search .search-form .search-group input[type=search] {\n    background-color: #f8fafc;\n}\n.box .box-header .box-action .search.open-search .search-form {\n    display: flex;\n}\n.box .box-body {\n    padding: 10px 15px 15px;\n    overflow-y: auto;\n}\n.box .box-footer {\n    border-top: 1px solid #e2e8f0;\n    padding: 10px 15px 15px;\n}\n\ntable {\n    width: 100%;\n}\n\n.table {\n    width: 100%;\n    overflow: hidden;\n}\n.table thead {\n    border: none !important;\n}\n.table thead tr {\n    background-color: #f1f5f9;\n    border-bottom-color: #e2e8f0;\n}\n.table thead tr th {\n    font-weight: 500;\n    color: #1f2937;\n    font-family: \"Livvic\", sans-serif;\n    font-size: 16px;\n}\n.table tbody {\n    border: none !important;\n    font-family: \"Nunito\", sans-serif;\n    font-weight: 500;\n}\n.table tbody tr {\n    position: relative;\n    border-bottom-color: #e2e8f0;\n}\n.table tbody tr::after {\n    position: absolute;\n    top: 0;\n    left: -2px;\n    width: 2px;\n    background-color: #6366f1;\n    height: 100%;\n    content: \"\";\n}\n.table tbody tr td {\n    font-size: 14px;\n    vertical-align: middle;\n    padding: 10px;\n}\n.table tbody tr td .action {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n    font-size: 16px;\n}\n.table tbody tr td .action a {\n    padding: 3px 3px;\n    line-height: 0px;\n    border-radius: 3px;\n}\n.table tbody tr td .action a:hover {\n    background-color: #4f46e5;\n    color: #ffffff;\n}\n.table tbody tr:hover {\n    background-color: #eef2ff;\n    cursor: pointer;\n}\n.table tbody tr:hover::after {\n    left: 0;\n    content: \"\";\n    transition: 300ms;\n}\n\n.form-group {\n    margin-bottom: 15px;\n}\n.form-group label {\n    font-weight: 500;\n    font-family: \"Livvic\", sans-serif;\n}\n\n.form-control:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-select:focus {\n    box-shadow: none;\n    border-color: #a5b4fc;\n}\n\n.form-control::-webkit-scrollbar {\n    width: 3px;\n}\n\n.form-section {\n    padding: 10px;\n    margin-bottom: 30px;\n    background-color: #ffffff;\n    border: 1px solid #f3f4f6;\n}\n.form-section h5 {\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px solid #e5e7eb;\n    font-size: 18px;\n    font-weight: 500;\n}\n.form-section.form-section-primary {\n    background-color: #eef2ff;\n    border: 1px solid #e0e7ff;\n}\n.form-section.form-section-primary h5 {\n    border-bottom: 1px solid #c7d2fe;\n}\n.form-section.form-section-secondary {\n    background-color: #f8fafc;\n    border: 1px solid #f1f5f9;\n}\n.form-section.form-section-secondary h5 {\n    border-bottom: 1px solid #e2e8f0;\n}\n.form-section.form-section-success {\n    background-color: #f0fdf4;\n    border: 1px solid #dcfce7;\n}\n.form-section.form-section-success h5 {\n    border-bottom: 1px solid #bbf7d0;\n}\n.form-section.form-section-warning {\n    background-color: #fefce8;\n    border: 1px solid #fef9c3;\n}\n.form-section.form-section-warning h5 {\n    border-bottom: 1px solid #fef08a;\n}\n.form-section.form-section-danger {\n    background-color: #fef2f2;\n    border: 1px solid #fee2e2;\n}\n.form-section.form-section-danger h5 {\n    border-bottom: 1px solid #fecaca;\n}\n\n.widget {\n    background-color: #ffffff;\n    padding: 10px;\n    border-radius: 10px;\n    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.062745098);\n    border: 1px solid #e0e7ff;\n    min-height: 100px;\n    display: flex;\n    flex-direction: row;\n    flex-wrap: wrap;\n    cursor: pointer;\n    grid-gap: 15px;\n    border-bottom: 3px solid #6366f1;\n}\n@media screen and (max-width: 768px) {\n    .widget {\n        margin-bottom: 15px;\n    }\n}\n.widget .widget-header {\n    width: 100%;\n    display: flex;\n    justify-content: space-between;\n    position: relative;\n}\n.widget .widget-header .title {\n    color: #4b5563;\n    padding-top: 5px;\n    font-weight: 400;\n}\n.widget .widget-header span {\n    position: absolute;\n    top: 0px;\n    right: 0px;\n    font-size: 18px;\n    background-color: #f3f4f6;\n    line-height: normal;\n    color: #4b5563;\n    padding: 2px 5px;\n    border-radius: 30px;\n}\n.widget .widget-body {\n    width: 100%;\n    text-align: center;\n}\n.widget .widget-body h3 {\n    color: #4b5563;\n    font-size: 20px;\n    font-weight: 600;\n}\n.widget .widget-body p {\n    font-size: 12px;\n    color: #9ca3af;\n}\n.widget.widget-primary {\n    border-bottom-color: #6366f1;\n}\n.widget.widget-primary .widget-header .title {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-header span {\n    background-color: #e0e7ff;\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body h3 {\n    color: #4f46e5;\n}\n.widget.widget-primary .widget-body p {\n    color: #818cf8;\n}\n.widget.widget-success {\n    border-bottom-color: #22c55e;\n}\n.widget.widget-success .widget-header .title {\n    color: #16a34a;\n}\n.widget.widget-success .widget-header span {\n    background-color: #dcfce7;\n    color: #16a34a;\n}\n.widget.widget-success .widget-body h3 {\n    color: #16a34a;\n}\n.widget.widget-success .widget-body p {\n    color: #4ade80;\n}\n.widget.widget-danger {\n    border-bottom-color: #ef4444;\n}\n.widget.widget-danger .widget-header .title {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-header span {\n    background-color: #fee2e2;\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body h3 {\n    color: #dc2626;\n}\n.widget.widget-danger .widget-body p {\n    color: #f87171;\n}\n.widget.widget-warning {\n    border-bottom-color: #eab308;\n}\n.widget.widget-warning .widget-header .title {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-header span {\n    background-color: #fef9c3;\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body h3 {\n    color: #ca8a04;\n}\n.widget.widget-warning .widget-body p {\n    color: #facc15;\n}\n\n.pagination {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n}\n.pagination ul {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    grid-gap: 5px;\n}\n.pagination ul .page-item {\n    display: flex;\n    grid-gap: 5px;\n    padding: 0px;\n}\n.pagination ul .page-item .page-link {\n    border: 1px solid #4f46e5;\n    background: transparent;\n    padding: 3px 8px 1px 8px;\n    border-radius: 3px;\n}\n.pagination ul .page-item .page-link:hover {\n    background: #d1d5db;\n}\n.pagination ul .page-item .page-link:focus {\n    box-shadow: none;\n}\n.pagination ul .page-item .page-link .active {\n    background: #4f46e5;\n    color: #ffffff;\n}\n\n.wrapper {\n    display: flex;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n}\n.wrapper .sidebar {\n    background-color: #F0F9FF;\n    width: 269px;\n    height: 100vh;\n    overflow-y: auto;\n    border-right: 1px solid #e0e7ff;\n}\n.wrapper .sidebar .close {\n    position: absolute;\n    top: 0;\n    right: 0;\n    padding: 5px;\n    color: red;\n    font-size: 20px;\n    display: none;\n}\n.wrapper .main-content {\n    background-color: #EAEDF5;\n    width: calc(100% - 270px);\n    height: 100vh;\n    overflow-y: auto;\n}\n@media screen and (max-width: 768px) {\n    .wrapper {\n        flex-direction: row;\n        flex-wrap: wrap;\n    }\n    .wrapper .sidebar {\n        position: fixed;\n        width: 100%;\n        top: 50%;\n        left: 0;\n        height: 100%;\n        visibility: hidden;\n        opacity: 0;\n        z-index: 999;\n    }\n    .wrapper .sidebar .close {\n        display: block;\n    }\n    .wrapper.rs-open-sidebar .sidebar {\n        top: 0;\n        opacity: 1;\n        visibility: visible;\n        transition: 300ms;\n    }\n    .wrapper .main-content {\n        width: 100%;\n    }\n}\n\n.main-content .main-header {\n    background-color: #ffffff;\n    min-height: 50px;\n    display: flex;\n    justify-content: space-between;\n    padding: 0px 15px;\n    align-items: center;\n}\n.main-content .main-header .page-control {\n    display: flex;\n    align-items: center;\n    line-height: 0;\n}\n.main-content .main-header .page-control .app-icon {\n    cursor: pointer;\n    display: none;\n}\n.main-content .main-header .page-control .app-icon .bx {\n    margin-right: 10px;\n    font-size: 24px;\n    color: #4f46e5;\n}\n.main-content .main-header .page-control h5 {\n    font-weight: 500;\n}\n.main-content .content {\n    padding: 15px;\n}\n@media screen and (max-width: 768px) {\n    .main-content .main-header {\n        position: fixed;\n        top: 0;\n        left: 0;\n        z-index: 99;\n        width: 100%;\n    }\n    .main-content .main-header .page-control .app-icon {\n        display: block;\n    }\n    .main-content .content {\n        margin-top: 50px;\n    }\n}\n\n.full-screen .wrapper .sidebar {\n    display: none;\n}\n.full-screen .wrapper .main-content {\n    width: 100%;\n}\n.full-screen .wrapper .main-content .main-header {\n    display: none;\n}\n.full-screen .wrapper .main-content .content {\n    padding: 0;\n}\n\n.sidebar {\n    padding: 15px 10px;\n    position: relative;\n    /* width */\n}\n.sidebar .logo {\n    text-align: center;\n    margin-bottom: 15px;\n}\n.sidebar .logo img {\n    width: 85px;\n    margin: 0 auto 20px auto;\n}\n.sidebar .logo h2 {\n    margin-top: 10px;\n    font-size: 18px;\n    color: #475569;\n    font-weight: 700;\n}\n.sidebar .user {\n    margin-bottom: 15px;\n    background-color: #6366f1;\n    color: #ffffff;\n    padding: 10px;\n    border-radius: 5px;\n    display: flex;\n    align-items: center;\n    grid-gap: 10px;\n}\n.sidebar .user .user-img img {\n    width: 40px;\n    height: 40px;\n    border-radius: 50px;\n}\n.sidebar .user .user-info h3 {\n    font-size: 18px;\n    font-weight: 500;\n}\n.sidebar .user .user-info p {\n    font-size: 14px;\n    font-weight: 300;\n}\n.sidebar::-webkit-scrollbar {\n    width: 0px;\n}\n\n.navigations {\n    display: grid;\n    grid-template-columns: repeat(2, 1fr);\n    grid-gap: 20px 15px;\n}\n@media screen and (max-width: 768px) {\n    .navigations {\n        grid-template-columns: repeat(3, 1fr);\n    }\n}\n@media screen and (max-width: 576px) {\n    .navigations {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.navigations .navigation-item {\n    text-align: center;\n    min-height: 90px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    background-color: #ffffff;\n    border-radius: 5px;\n    border: 1px solid #e0e7ff;\n    box-shadow: 0px 3px 4px #c7d2fe;\n}\n.navigations .navigation-item a {\n    transition: 300ms;\n    width: 100%;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    flex-wrap: wrap;\n}\n.navigations .navigation-item a i.bx {\n    font-size: 32px;\n    margin-bottom: 5px;\n}\n\n.navigations .navigation-item a img {\n    width: 32px;\n    margin-bottom: 5px;\n}\n\n.navigations .navigation-item a span {\n    display: block;\n    font-weight: 500;\n    width: 100%;\n}\n.navigations .navigation-item .navigation-content {\n    position: fixed;\n    top: 0;\n    left: -270px;\n    width: 270px;\n    height: 100%;\n    background-color: #F0F9FF;\n    padding: 10px;\n    visibility: hidden;\n    opacity: 0;\n    transition: 200ms;\n    cursor: default;\n    overflow-y: auto;\n}\n.navigations .navigation-item .navigation-content::-webkit-scrollbar {\n    width: 2px;\n}\n.navigations .navigation-item .navigation-content .close-bar {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    color: red;\n    font-size: 16px;\n    flex-direction: row-reverse;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .close-bar i.bx {\n    font-size: 20px;\n}\n.navigations .navigation-item .navigation-content .close-bar:active i.bx {\n    background-color: red;\n    color: #ffffff;\n}\n.navigations .navigation-item .navigation-content .navigation-content-header {\n    margin-top: 15px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body {\n    text-align: left;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body h5 {\n    margin-top: 15px;\n    font-weight: 500;\n    color: #4b5563;\n    font-size: 16px;\n    border-bottom: 1px solid #c7d2fe;\n    padding: 3px 5px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul {\n    margin-top: 10px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li {\n    margin: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a {\n    display: flex;\n    align-items: center;\n    justify-content: flex-start;\n    flex-wrap: nowrap;\n    font-size: 14px;\n    padding: 5px 0px;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {\n    margin: 0px;\n    margin-right: 5px;\n    font-size: 20px;\n    color: #94a3b8;\n    transition: 300ms;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {\n    background-color: #6366f1;\n    border-radius: 5px;\n    color: #ffffff;\n    cursor: pointer;\n}\n.navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item:hover {\n    background-color: #4f46e5;\n    cursor: pointer;\n}\n.navigations .navigation-item:hover a {\n    color: #ffffff;\n    transition: 500ms;\n}\n.navigations .navigation-item:hover a i.bx {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {\n    color: inherit;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {\n    background-color: #6366f1;\n    border-radius: 5px;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {\n    color: #ffffff;\n}\n.navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {\n    color: #ffffff;\n    margin-right: 10px;\n}\n.navigations .navigation-item.open .navigation-content {\n    left: 0;\n    visibility: visible;\n    opacity: 1;\n    z-index: 999;\n    transition: 300ms;\n}\n@media screen and (max-width: 768px) {\n    .navigations .navigation-item.open .navigation-content {\n        width: 100%;\n    }\n}\n\n.auth-wrap {\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    height: 100vh;\n}\n.auth-wrap .auth {\n    width: 50%;\n    height: 100%;\n    display: flex;\n    justify-content: flex-end;\n    align-items: center;\n}\n.auth-wrap .auth .auth-box {\n    width: 350px;\n    margin: 0px 100px;\n}\n.auth-wrap .auth .auth-box .auth-header {\n    text-align: center;\n    margin-bottom: 30px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo {\n    margin-bottom: 15px;\n}\n.auth-wrap .auth .auth-box .auth-header .logo img {\n    width: 100px;\n}\n.auth-wrap .auth .auth-box .auth-header h1 {\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group label {\n    margin-bottom: 5px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group .form-control {\n    height: 45px;\n    border-radius: 8px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group {\n    margin-top: 25px;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn {\n    width: 100%;\n    padding: 5px 15px;\n    border-radius: 8px;\n    font-size: 18px;\n    font-weight: 600;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {\n    background-color: #4f46e5;\n    border-color: #4338ca;\n}\n.auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {\n    background-color: #4338ca;\n}\n.auth-wrap .auth-content {\n    justify-content: flex-start;\n    width: 50%;\n    background-color: #060B4D;\n    height: 100%;\n}\n.auth-wrap .auth-content .content {\n    margin: 0px 100px;\n}\n.auth-wrap .auth-content .content h1 {\n    color: #e2e8f0;\n    font-size: 36px;\n}\n.auth-wrap .auth-content .content h5 {\n    margin-top: 15px;\n    color: #e0e7ff;\n    font-size: 20px;\n}\n.auth-wrap .auth-content .content img {\n    margin-top: 30px;\n    width: 75%;\n}\n@media screen and (max-width: 768px) {\n    .auth-wrap {\n        flex-wrap: wrap;\n    }\n    .auth-wrap .auth {\n        width: 100%;\n    }\n    .auth-wrap .auth .auth-box {\n        width: 80%;\n        margin: 0 auto;\n    }\n    .auth-wrap .auth .auth-box .auth-header h1 {\n        font-size: 1.5rem;\n    }\n    .auth-wrap .auth-content {\n        display: none;\n    }\n}\n\n.profile .user-box {\n    text-align: center;\n    background-color: #eef2ff;\n    padding: 15px;\n}\n.profile .user-box img {\n    width: 75px;\n    margin: 10px auto;\n}\n.profile .user-box .btn {\n    width: 100%;\n    margin: 5px 0px;\n}\n\n.member.member-show .member-img img {\n    margin: 0 auto;\n}\n.member.member-show .member-info h3 {\n    color: #4f46e5;\n}\n.member.member-show .member-info a {\n    color: #475569;\n}\n.member.member-show .member-info a:hover {\n    color: #1e293b;\n}\n.member.member-show .member-nav ul li {\n    margin-bottom: 5px;\n}\n.member.member-show .member-nav ul li a {\n    display: flex;\n    justify-content: space-between;\n    align-items: center;\n    background-color: #f1f5f9;\n    padding: 8px 10px;\n    border-radius: 5px;\n    color: #334155;\n}\n.member.member-show .member-nav ul li a i.bx {\n    font-size: 18px;\n}\n.member.member-show .member-nav ul li a:hover, .member.member-show .member-nav ul li a.router-link-active {\n    color: #ffffff;\n    background-color: #4f46e5;\n    transition: 300ms;\n}\n.member.member-show .member-account table {\n    font-size: 14px;\n}\n.member.member-show .member-account table tr {\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member.member-show .member-account table tr td {\n    padding: 5px;\n    vertical-align: top;\n    font-weight: 500;\n    color: #475569;\n}\n.member.member-show .member-account table tr td:first-child {\n    width: 45%;\n    font-weight: 400;\n    color: #64748b;\n}\n.member.member-show h5 {\n    margin-bottom: 5px;\n    font-weight: 500;\n    color: #1e293b;\n}\n\n.member-details .member-detail {\n    margin-bottom: 30px;\n}\n.member-details .member-detail h3 {\n    color: #475569;\n    font-weight: 500;\n    font-size: 16px;\n    margin-bottom: 10px;\n    padding-bottom: 5px;\n    border-bottom: 1px dashed #e0e7ff;\n}\n.member-details .member-detail .member-infos {\n    display: grid;\n    grid-template-columns: repeat(3, 1fr);\n    grid-gap: 15px;\n}\n@media screen and (max-width: 768px) {\n    .member-details .member-detail .member-infos {\n        grid-template-columns: repeat(2, 1fr);\n    }\n}\n.member-details .member-detail .member-infos .member-info p {\n    color: #475569;\n    font-size: 0.875rem;\n    font-weight: 300;\n    margin-bottom: 3px;\n}\n.member-details .member-detail .member-infos .member-info h5 {\n    color: #1e293b;\n    font-weight: 400;\n    font-size: 1rem;\n}\n\n.member-select {\n    position: relative;\n}\n.member-select .member-input {\n    position: relative;\n}\n.member-select .member-input .form-control {\n    cursor: pointer;\n}\n.member-select .member-input .select-icon {\n    position: absolute;\n    top: 5px;\n    right: 10px;\n    font-size: 20px;\n    color: #64748b;\n}\n.member-select .member-list {\n    position: absolute;\n    top: 0;\n    left: 0;\n    width: 100%;\n    background: #f8fafc;\n    border: 1px solid #e2e8f0;\n    display: none;\n}\n.member-select .member-list .member-search {\n    position: relative;\n}\n.member-select .member-list .member-search .form-control {\n    border: none;\n    border-bottom: 1px solid #e2e8f0;\n    border-radius: 0px;\n}\n.member-select .member-list .member-search .list-close {\n    position: absolute;\n    top: 7px;\n    right: 10px;\n    font-size: 20px;\n    color: #ef4444;\n    line-height: 0;\n    cursor: pointer;\n}\n.member-select .member-list .member-search .list-close:active {\n    background-color: #ef4444;\n    color: #ffffff;\n}\n.member-select .member-list .members {\n    max-height: 300px;\n    overflow-y: auto;\n    padding: 5px 0px;\n}\n.member-select .member-list .members .member {\n    font-size: 14px;\n    cursor: pointer;\n    padding: 7px 5px;\n    border-bottom: 1px dashed #e2e8f0;\n}\n.member-select .member-list .members .member:hover {\n    background-color: #e0e7ff;\n    transition: 200ms;\n}\n.member-select .member-list .members::-webkit-scrollbar {\n    width: 5px;\n}\n.member-select.open .member-list {\n    display: block;\n}\n\n.search-container {\n    cursor: default;\n}\n.search-container .btn.btn-search {\n    border: 1px solid #cbd5e1;\n    background-color: #f9fafb;\n    font-weight: 600;\n    color: #4f46e5;\n}\n.search-container .btn.btn-search:focus {\n    box-shadow: none;\n}\n.search-container .btn.btn-search:active {\n    background-color: #f3f4f6;\n}\n.search-container .search-form {\n    margin-bottom: 15px;\n}\n.search-container .search-form .form-group .input-group {\n    border-bottom: 1px solid #e2e8f0;\n}\n.search-container .search-form .form-group .input-group .input-group-text {\n    background: none;\n    border: none;\n}\n.search-container .search-form .form-group .input-group .form-control {\n    height: 50px;\n    border: none;\n    font-size: 16px;\n}\n.search-container .search-result {\n    max-height: 70vh;\n    overflow-y: auto;\n    text-align: left;\n}\n.search-container .search-result .rs-count {\n    margin-bottom: 10px;\n}\n.search-container .search-result .search-items .search-item {\n    margin-bottom: 10px;\n    padding: 5px;\n}\n.search-container .search-result .search-items .search-item a {\n    display: flex;\n    width: 100%;\n}\n.search-container .search-result .search-items .search-item a .search-img img {\n    width: 50px;\n    border-radius: 5px;\n}\n.search-container .search-result .search-items .search-item a .search-content {\n    margin-left: 10px;\n}\n.search-container .search-result .search-items .search-item a .search-content h5 {\n    color: #1E293B;\n    font-size: 16px;\n    font-weight: 500;\n}\n.search-container .search-result .search-items .search-item a .search-content p {\n    color: #475569;\n    font-size: 14px;\n}\n.search-container .search-result .search-items .search-item:hover {\n    background-color: #f9fafb;\n}\n.search-container .search-result .search-items .search-item:hover a h5 {\n    color: #4f46e5;\n}\n.search-container .search-result .search-items .search-item:hover a p {\n    color: #1E293B;\n}\n\n.page-link .sr-only {\n    display: none;\n}\n\n.page-item.pagination-page-nav.active a {\n    color: #ffffff;\n    background: #6366f1;\n}\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+// Imports
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\n.loader {\n        border: 2px solid;\n        border-color: transparent #FFF;\n        width: 48px;\n        height: 48px;\n        border-radius: 50%;\n        display: inline-block;\n        box-sizing: border-box;\n        -webkit-animation: rotation 2s linear infinite;\n                animation: rotation 2s linear infinite;\n        position: absolute;\n        top: calc(50% - 24px);\n        left: calc(50% - 24px);\n        display: none;\n}\n.loader::after {\n        content: '';\n        box-sizing: border-box;\n        position: absolute;\n        left: 50%;\n        top: 50%;\n        border: 24px solid;\n        border-color: transparent rgba(255, 255, 255, 0.15);\n        border-radius: 50%;\n        transform: translate(-50%, -50%);\n}\n@-webkit-keyframes rotation {\n0% {\n            transform: rotate(0deg);\n}\n100% {\n            transform: rotate(360deg);\n}\n}\n@keyframes rotation {\n0% {\n            transform: rotate(0deg);\n}\n100% {\n            transform: rotate(360deg);\n}\n}\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -55778,6 +55878,36 @@ var update = _node_modules_laravel_mix_node_modules_style_loader_dist_runtime_in
 
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_style_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
+
+/***/ }),
+
+/***/ "./node_modules/laravel-mix/node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/laravel-mix/node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_laravel_mix_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! !../../node_modules/laravel-mix/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */ "./node_modules/laravel-mix/node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js");
+/* harmony import */ var _node_modules_laravel_mix_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_laravel_mix_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! !!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./App.vue?vue&type=style&index=0&id=f348271a&lang=css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css");
+
+            
+
+var options = {};
+
+options.insert = "head";
+options.singleton = false;
+
+var update = _node_modules_laravel_mix_node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"], options);
+
+
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_1__["default"].locals || {});
 
 /***/ }),
 
@@ -80928,13 +81058,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _App_vue_vue_type_template_id_f348271a__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./App.vue?vue&type=template&id=f348271a */ "./resources/js/App.vue?vue&type=template&id=f348271a");
 /* harmony import */ var _App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue?vue&type=script&lang=js */ "./resources/js/App.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./App.vue?vue&type=style&index=0&id=f348271a&lang=css */ "./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_f348271a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/App.vue"]])
+
+
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_App_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_App_vue_vue_type_template_id_f348271a__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/App.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80956,13 +81089,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Navigation_vue_vue_type_template_id_d456e682__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Navigation.vue?vue&type=template&id=d456e682 */ "./resources/js/components/Navigation.vue?vue&type=template&id=d456e682");
 /* harmony import */ var _Navigation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Navigation.vue?vue&type=script&lang=js */ "./resources/js/components/Navigation.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Navigation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Navigation_vue_vue_type_template_id_d456e682__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Navigation.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Navigation_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Navigation_vue_vue_type_template_id_d456e682__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Navigation.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -80984,13 +81117,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _PageTitle_vue_vue_type_template_id_9affe2a4__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PageTitle.vue?vue&type=template&id=9affe2a4 */ "./resources/js/components/PageTitle.vue?vue&type=template&id=9affe2a4");
 /* harmony import */ var _PageTitle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PageTitle.vue?vue&type=script&lang=js */ "./resources/js/components/PageTitle.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PageTitle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PageTitle_vue_vue_type_template_id_9affe2a4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PageTitle.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PageTitle_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PageTitle_vue_vue_type_template_id_9affe2a4__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/PageTitle.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -81012,13 +81145,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Search_vue_vue_type_template_id_5026ffd3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Search.vue?vue&type=template&id=5026ffd3 */ "./resources/js/components/Search.vue?vue&type=template&id=5026ffd3");
 /* harmony import */ var _Search_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Search.vue?vue&type=script&lang=js */ "./resources/js/components/Search.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Search_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Search_vue_vue_type_template_id_5026ffd3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Search.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Search_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Search_vue_vue_type_template_id_5026ffd3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/Search.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -81151,6 +81284,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Search_vue_vue_type_template_id_5026ffd3__WEBPACK_IMPORTED_MODULE_0__.render)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_Search_vue_vue_type_template_id_5026ffd3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./Search.vue?vue&type=template&id=5026ffd3 */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Search.vue?vue&type=template&id=5026ffd3");
+
+
+/***/ }),
+
+/***/ "./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css":
+/*!**************************************************************************!*\
+  !*** ./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css ***!
+  \**************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_laravel_mix_node_modules_style_loader_dist_cjs_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_use_1_node_modules_vue_loader_dist_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_use_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_App_vue_vue_type_style_index_0_id_f348271a_lang_css__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../node_modules/laravel-mix/node_modules/style-loader/dist/cjs.js!../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!../../node_modules/vue-loader/dist/stylePostLoader.js!../../node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./App.vue?vue&type=style&index=0&id=f348271a&lang=css */ "./node_modules/laravel-mix/node_modules/style-loader/dist/cjs.js!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9.use[1]!./node_modules/vue-loader/dist/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-9.use[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/App.vue?vue&type=style&index=0&id=f348271a&lang=css");
 
 
 /***/ }),

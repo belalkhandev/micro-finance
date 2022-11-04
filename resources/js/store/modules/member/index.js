@@ -5,6 +5,8 @@ export default {
 
     state: {
         members: null,
+        groupMembers: null,
+        member: null,
         dps_transactions: null,
         loan_transactions: null,
     },
@@ -12,6 +14,14 @@ export default {
     getters: {
         members(state){
             return state.members
+        },
+
+        groupMembers(state){
+            return state.groupMembers
+        },
+
+        member(state){
+            return state.member
         },
 
         dps_transactions(state){
@@ -26,6 +36,10 @@ export default {
     mutations: {
         SET_MEMBERS(state, members) {
             state.members = members
+        },
+
+        SET_GROUP_MEMBERS(state, members) {
+            state.groupMembers = members
         },
 
         SET_MEMBER_DPS_TRANSACTIONS(state, dps_transactions) {
@@ -44,6 +58,10 @@ export default {
             }
         },
 
+        SET_SINGLE_MEMBER(state, member) {
+            state.member = member;
+        },
+
         UPDATE_MEMBER(state, member) {
             const item = state.members.find(item => item.id === member.id)
             Object.assign(item, member)
@@ -59,11 +77,30 @@ export default {
 
     actions: {
         //member actions
-        async getMembers({ commit }) {
-            const res = await axios.get('member/list')
+        async getMembers({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('member/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_MEMBERS', res.data.members)
+            }
+        },
+
+        //member actions
+        async getGroupMembers({ commit }, groupId, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('member/group/'+groupId+'?page='+page_no)
+
+            if (res.data.status) {
+                commit('SET_GROUP_MEMBERS', res.data.members)
+            }
+        },
+
+        async getByMemberId({ commit }, member_id) {
+            const res = await axios.get('member/'+member_id+'/show')
+
+            if (res.data.status) {
+                commit('SET_SINGLE_MEMBER', res.data.member)
             }
         },
 

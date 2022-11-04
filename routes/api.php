@@ -105,6 +105,8 @@ Route::group([
         'prefix' => 'member'
     ], function($route) {
         $route->get('/list', [MemberController::class, 'index']);
+        $route->get('/group/{groupId}', [MemberController::class, 'membersGroup']);
+        $route->get('/{member_id}/show', [MemberController::class, 'show']);
         $route->post('/create', [MemberController::class, 'store']);
         $route->post('/update/{id}', [MemberController::class, 'update']);
         $route->delete('/delete/{id}', [MemberController::class, 'destroy']);

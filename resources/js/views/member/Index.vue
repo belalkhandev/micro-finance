@@ -19,6 +19,14 @@
             </div>
         </div>
         <div class="box-body">
+            <!-- pagination -->
+            <div class="pagination mb-2" v-if="fetchMembers">
+                <p class="pagination-data">
+                    Page {{ fetchMembers.current_page }} Showing  {{ fetchMembers.from }} to {{ fetchMembers.to }} of {{ fetchMembers.total }} Data
+                </p>
+                <Pagination :data="fetchMembers" @pagination-change-page="getResults" :limit="6"/>
+            </div>
+            <!-- end pagination -->
             <table class="table">
                 <thead>
                     <tr>
@@ -33,9 +41,9 @@
                         <th></th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr v-for="(member, i) in fetchMembers" :key="i" class="animate__animated animate__fadeIn">
-                        <td>{{ per_page*(page-1)+(i+1) }}</td>
+                <tbody v-if="fetchMembers && fetchMembers.data">
+                    <tr v-for="(member, i) in fetchMembers.data" :key="i" class="animate__animated animate__fadeIn">
+                        <td>{{ fetchMembers.from+i }}</td>
                         <td>{{ member.account_no }}</td>
                         <td>{{ member.name }}</td>
                         <td>
@@ -62,27 +70,11 @@
         </div>
         <div class="box-footer">
             <!-- pagination -->
-            <div class="pagination" v-if="members && members.length > per_page">
+            <div class="pagination" v-if="fetchMembers">
                 <p class="pagination-data">
-                    Page no {{ page }} Show {{ page === pages.length ? (members ? members.length : 0) : page*(fetchMembers ? fetchMembers.length : 0) }} of {{ members ? members.length : 0 }} Data
+                    Page {{ fetchMembers.current_page }} Showing  {{ fetchMembers.from }} to {{ fetchMembers.to }} of {{ fetchMembers.total }} Data
                 </p>
-                <ul>
-                    <li class="page-item">
-                        <button class="page-link" @click="page = 1" data-toggle="tooltip" data-placement="bottom" title="First Page"><i class="bx bx-chevrons-left"></i></button>
-                    </li>
-                    <li class="page-item">
-                        <button class="page-link" v-if="page !== 1" @click="page--" data-toggle="tooltip" data-placement="bottom" title=""><i class="bx bx-chevron-left"></i></button>
-                    </li>
-                    <li class="page-item">
-                        <button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+10)" :class="page===pageNumber ? 'active': ''" :key="pageNumber" @click="page = pageNumber"> {{ pageNumber}} </button>
-                    </li>
-                    <li class="page-item">
-                        <button type="button" @click="page++" v-if="page < pages.length" class="page-link"> <i class="bx bx-chevron-right"></i> </button>
-                    </li>
-                    <li class="page-item">
-                        <button class="page-link"  @click="page = pages.length" data-toggle="tooltip" data-placement="bottom" title="Last Page"><i class="bx bx-chevrons-right"></i></button>
-                    </li>
-                </ul>
+                <Pagination :data="fetchMembers" @pagination-change-page="getResults" :limit="6"/>
             </div>
             <!-- end pagination -->
         </div>
@@ -92,9 +84,13 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import {helpers} from "../../mixin";
+import LaravelVuePagination from 'laravel-vue-pagination';
 
 export default ({
     name: "Index",
+    components: {
+        'Pagination': LaravelVuePagination
+    },
 
     mixins: [helpers],
 
@@ -104,32 +100,7 @@ export default ({
         }),
 
         fetchMembers() {
-            if (this.members) {
-                if (this.search_key && !this.search_date) {
-                    return this.paginate(this.members.filter(
-                        member =>
-                            member.account_no === this.search_key
-                    ));
-                } else if (this.search_date && !this.search_key) {
-                    return this.paginate(this.members.filter(
-                        member =>
-                            this.datePickerFormat(member.joining_date) === this.datePickerFormat(this.search_date)
-                    ));
-                } else if (this.search_key && this.search_date) {
-                    return this.paginate(this.members.filter(
-                        member =>
-                            this.datePickerFormat(member.joining_date) === this.datePickerFormat(this.search_date) &&
-                            member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
-                            member.name.toLowerCase().includes(this.search_key.toLowerCase()) ||
-                            member.phone.toLowerCase().includes(this.search_key.toLowerCase())
-                    ));
-                } else {
-                    return this.paginate(this.members);
-                }
-            }
-
             return this.members
-
         }
     },
 
@@ -187,16 +158,15 @@ export default ({
                 this.pages.push(index);
             }
         },
+
+        getResults(page = 1) {
+            this.getMembers(page);
+        }
     },
 
     mounted() {
-        if(!this.members) {
-            this.getMembers().then(() => {
-                this.setPages();
-            });
-        }
-
-        this.setPages();
+        // Fetch initial results
+        this.getResults(1);
     }
 
 

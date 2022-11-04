@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\MemberResource;
+use App\Http\Resources\MembersResource;
+use App\Repositories\Member\MemberRepository;
 use App\Repositories\Member\MemberRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -10,10 +13,12 @@ use Illuminate\Support\Facades\Validator;
 class MemberController extends Controller
 {
     protected $member;
+    protected $memberRepo;
 
-    public function __construct(MemberRepositoryInterface $member)
+    public function __construct(MemberRepositoryInterface $member, MemberRepository $memberRepository)
     {
         $this->member = $member;
+        $this->memberRepo = $memberRepository;
     }
 
     /**
@@ -23,7 +28,7 @@ class MemberController extends Controller
      */
     public function index()
     {
-        $members = $this->member->all();
+        $members = $this->memberRepo->getByPagination(20);
 
         if ($members) {
             return response()->json([
@@ -41,13 +46,51 @@ class MemberController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function create()
+    public function membersGroup($groupId)
     {
-        //
+        $members = $this->memberRepo->getByGroupPagination($groupId, 20);
+
+        if ($members) {
+            return response()->json([
+                'status' => true,
+                'members' => $members,
+                'message' => 'Found members data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'members' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    /**
+     * Show the specific resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($memberId)
+    {
+        $member = $this->memberRepo->getByMemberId(20);
+
+        if ($member) {
+            return response()->json([
+                'status' => true,
+                'member' => new MemberResource($member),
+                'message' => 'Found members data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'member' => null,
+            'message' => 'No data found'
+        ]);
     }
 
     /**
@@ -131,30 +174,6 @@ class MemberController extends Controller
         return response()->json([
             'status' => false,
             'message' => 'Failed to store member'
-        ]);
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show($id)
-    {
-        $member = $this->member->find($id);
-
-        if ($member) {
-            return response()->json([
-                'status' => true,
-                'member' => $member,
-                'message' => 'Found member data'
-            ]);
-        }
-
-        return response()->json([
-            'status' => false,
-            'message' => 'No data found'
         ]);
     }
 

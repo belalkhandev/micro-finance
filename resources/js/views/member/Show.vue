@@ -156,6 +156,7 @@ export default({
     components: {
         MemberShowSidebar
     },
+
     data() {
         return {
             member_id: this.$route.params.member_id
@@ -166,28 +167,29 @@ export default({
 
     computed: {
         ...mapGetters ({
-            members: 'member/members'
+            singleMember: 'member/member'
         }),
 
         member() {
-            if (this.members && this.member_id) {
-                return this.members.find(member => member.id == this.member_id)
+            if (this.singleMember && this.singleMember.id == this.$route.params.member_id) {
+                return this.singleMember;
+            } else {
+                this.getMember(this.member_id).then(() => {
+                    return this.singleMember;
+                });
             }
         }
     },
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers'
+            getMember: 'member/getByMemberId'
         }),
     },
 
     mounted() {
-        if (!this.members) {
-            this.getMembers();
-        }
+        this.getMember(this.member_id);
     }
-
 
 })
 </script>

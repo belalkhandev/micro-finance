@@ -21,6 +21,39 @@ class MemberRepository implements MemberRepositoryInterface {
         return false;
     }
 
+    public function getByPagination($limit = 15)
+    {
+        $members = Member::paginate($limit);
+
+        if ($members->isNotEmpty()) {
+            return $members;
+        }
+
+        return false;
+    }
+
+    public function getByGroupPagination($groupId, $limit = 15)
+    {
+        $members = Member::where('member_group_id', $groupId)->paginate($limit);
+
+        if ($members->isNotEmpty()) {
+            return $members;
+        }
+
+        return false;
+    }
+
+    public function getByMemberId($memberId)
+    {
+        $member = Member::with('nominee', 'group')->find($memberId);
+
+        if ($member) {
+            return $member;
+        }
+
+        return false;
+    }
+
     public function store($request)
     {
         $member = new Member();

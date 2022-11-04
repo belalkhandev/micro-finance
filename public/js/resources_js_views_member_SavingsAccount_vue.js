@@ -1758,13 +1758,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MemberShowSidebar_vue_vue_type_template_id_2f27a56c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberShowSidebar.vue?vue&type=template&id=2f27a56c */ "./resources/js/components/MemberShowSidebar.vue?vue&type=template&id=2f27a56c");
 /* harmony import */ var _MemberShowSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberShowSidebar.vue?vue&type=script&lang=js */ "./resources/js/components/MemberShowSidebar.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberShowSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberShowSidebar_vue_vue_type_template_id_2f27a56c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/MemberShowSidebar.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberShowSidebar_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberShowSidebar_vue_vue_type_template_id_2f27a56c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/MemberShowSidebar.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1785,13 +1785,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MemberDpsTransaction_vue_vue_type_template_id_65a75580__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberDpsTransaction.vue?vue&type=template&id=65a75580 */ "./resources/js/components/downloads/MemberDpsTransaction.vue?vue&type=template&id=65a75580");
 /* harmony import */ var _MemberDpsTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberDpsTransaction.vue?vue&type=script&lang=js */ "./resources/js/components/downloads/MemberDpsTransaction.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberDpsTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberDpsTransaction_vue_vue_type_template_id_65a75580__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/downloads/MemberDpsTransaction.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberDpsTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberDpsTransaction_vue_vue_type_template_id_65a75580__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/downloads/MemberDpsTransaction.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1812,13 +1812,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MemberLoanTransaction_vue_vue_type_template_id_5f1fb215__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberLoanTransaction.vue?vue&type=template&id=5f1fb215 */ "./resources/js/components/downloads/MemberLoanTransaction.vue?vue&type=template&id=5f1fb215");
 /* harmony import */ var _MemberLoanTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberLoanTransaction.vue?vue&type=script&lang=js */ "./resources/js/components/downloads/MemberLoanTransaction.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberLoanTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberLoanTransaction_vue_vue_type_template_id_5f1fb215__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/downloads/MemberLoanTransaction.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberLoanTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberLoanTransaction_vue_vue_type_template_id_5f1fb215__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/downloads/MemberLoanTransaction.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1839,13 +1839,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _MemberSavingsTransaction_vue_vue_type_template_id_8b0e0124__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MemberSavingsTransaction.vue?vue&type=template&id=8b0e0124 */ "./resources/js/components/downloads/MemberSavingsTransaction.vue?vue&type=template&id=8b0e0124");
 /* harmony import */ var _MemberSavingsTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MemberSavingsTransaction.vue?vue&type=script&lang=js */ "./resources/js/components/downloads/MemberSavingsTransaction.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberSavingsTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberSavingsTransaction_vue_vue_type_template_id_8b0e0124__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/downloads/MemberSavingsTransaction.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_MemberSavingsTransaction_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_MemberSavingsTransaction_vue_vue_type_template_id_8b0e0124__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/downloads/MemberSavingsTransaction.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1866,13 +1866,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _CreateSavings_vue_vue_type_template_id_67646c6c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CreateSavings.vue?vue&type=template&id=67646c6c */ "./resources/js/components/savings/CreateSavings.vue?vue&type=template&id=67646c6c");
 /* harmony import */ var _CreateSavings_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CreateSavings.vue?vue&type=script&lang=js */ "./resources/js/components/savings/CreateSavings.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CreateSavings_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreateSavings_vue_vue_type_template_id_67646c6c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/savings/CreateSavings.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_CreateSavings_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_CreateSavings_vue_vue_type_template_id_67646c6c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/savings/CreateSavings.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1893,13 +1893,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _EditSavings_vue_vue_type_template_id_5affa744__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./EditSavings.vue?vue&type=template&id=5affa744 */ "./resources/js/components/savings/EditSavings.vue?vue&type=template&id=5affa744");
 /* harmony import */ var _EditSavings_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./EditSavings.vue?vue&type=script&lang=js */ "./resources/js/components/savings/EditSavings.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditSavings_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditSavings_vue_vue_type_template_id_5affa744__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/savings/EditSavings.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_EditSavings_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_EditSavings_vue_vue_type_template_id_5affa744__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/components/savings/EditSavings.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -1920,13 +1920,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _SavingsAccount_vue_vue_type_template_id_ebbf910c__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SavingsAccount.vue?vue&type=template&id=ebbf910c */ "./resources/js/views/member/SavingsAccount.vue?vue&type=template&id=ebbf910c");
 /* harmony import */ var _SavingsAccount_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SavingsAccount.vue?vue&type=script&lang=js */ "./resources/js/views/member/SavingsAccount.vue?vue&type=script&lang=js");
-/* harmony import */ var _home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_home_belal_Workspace_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SavingsAccount_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SavingsAccount_vue_vue_type_template_id_ebbf910c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/member/SavingsAccount.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_SavingsAccount_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_SavingsAccount_vue_vue_type_template_id_ebbf910c__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/member/SavingsAccount.vue"]])
 /* hot reload */
 if (false) {}
 

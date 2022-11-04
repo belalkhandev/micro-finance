@@ -28,10 +28,10 @@ class Authenticate extends Middleware
      * @param  string|null  $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard)
+    public function handle($request, Closure $next, ...$guards)
     {
-        if ($guard === 'sanctum') {
-            if ($this->auth->guard($guard)->guest()) {
+        if ($guards[0] === 'sanctum') {
+            if ($this->auth->guard($guards[0])->guest()) {
                 return response()->json([
                     'status' => false,
                     'message' => 'Unauthorized',

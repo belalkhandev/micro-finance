@@ -1219,3 +1219,12 @@ table {
 .search-container .search-result .search-items .search-item:hover a p {
     color: #1E293B;
 }/*# sourceMappingURL=style.css.map */
+
+.page-link .sr-only {
+    display: none;
+}
+
+.page-item.pagination-page-nav.active a {
+    color: #ffffff;
+    background: #6366f1;
+}

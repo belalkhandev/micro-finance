@@ -304,27 +304,6 @@
                                 </router-link>
                             </li>
                         </ul>
-<!--                        <h5>Accounts Reports</h5>-->
-<!--                        <ul>-->
-<!--                            <li>-->
-<!--                                <a href="">-->
-<!--                                    <i class='bx bx-chevron-right'></i>-->
-<!--                                    <span>Cash Balance</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="">-->
-<!--                                    <i class='bx bx-chevron-right'></i>-->
-<!--                                    <span>All Transaction Reports</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                            <li>-->
-<!--                                <a href="">-->
-<!--                                    <i class='bx bx-chevron-right'></i>-->
-<!--                                    <span>All Transaction Reports</span>-->
-<!--                                </a>-->
-<!--                            </li>-->
-<!--                        </ul>-->
                     </div>
                 </div>
             </div>

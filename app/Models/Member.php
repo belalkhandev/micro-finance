@@ -14,7 +14,7 @@ class Member extends Model
         'savings'
     ];
 
-    protected $appends = ['main_photo', 'savings_deposit', 'savings_withdraw'];
+    protected $appends = ['main_photo'];
 
     public function nominee()
     {
@@ -62,22 +62,6 @@ class Member extends Model
     public function loanApplications()
     {
         return $this->hasMany(LoanApplication::class, 'member_id', 'id');
-    }
-
-    public function getCreatedByAttribute($value)
-    {
-        if ($value) {
-            return User::find($value)->name;
-        }
-    }
-
-    public function getUpdatedByAttribute($value)
-    {
-        if ($value) {
-            return User::find($value)->name;
-        }
-
-        return 'Not updated';
     }
 
     public function savings()

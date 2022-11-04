@@ -246,7 +246,6 @@
 </template>
 
 <script>
-import SearchMember from "../components/Search"
 import {mapGetters, mapActions} from "vuex";
 import {helpers} from "../mixin";
 
