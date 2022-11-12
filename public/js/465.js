@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunk=self.webpackChunk||[]).push([[465],{6465:(e,r,c)=>{c.r(r),c.d(r,{default:()=>u});var n=c(821);var s={class:"error-page 404"},a=[(0,n._)("img",{src:"/images/404.png?9684253b59bc860b7ef26346eb9c62cf",alt:""},null,-1)];const t={name:"404"};const u=(0,c(3744).Z)(t,[["render",function(e,r,c,t,u,l){return(0,n.wg)(),(0,n.iD)("div",s,a)}]])}}]);
