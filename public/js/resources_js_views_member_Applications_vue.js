@@ -147,30 +147,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
-    members: 'member/members',
     dpsApplications: 'dps/applications',
-    loan: 'loan/loan'
+    loan: 'loan/loan',
+    member: 'member/member'
   })), {}, {
-    member: function member() {
-      var _this = this;
-
-      if (this.members && this.member_id) {
-        return this.members.find(function (member) {
-          return member.id == _this.member_id;
-        });
-      }
-    },
     filterDpsApplications: function filterDpsApplications() {
-      var _this2 = this;
+      var _this = this;
 
       if (this.dpsApplications) {
         var member_dps_applications = this.dpsApplications.filter(function (item) {
-          return item.member_id == _this2.member_id;
+          return item.member_id == _this.member_id;
         });
 
         if (this.search_date) {
           return this.paginate(member_dps_applications.filter(function (application) {
-            return _this2.datePickerFormat(application.created_at) === _this2.datePickerFormat(_this2.search_date);
+            return _this.datePickerFormat(application.created_at) === _this.datePickerFormat(_this.search_date);
           }));
         } else {
           return this.paginate(member_dps_applications);
@@ -180,14 +171,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return null;
     },
     filterLoanApplications: function filterLoanApplications() {
-      var _this3 = this;
+      var _this2 = this;
 
       if (this.loan && this.loan.applications) {
         var member_loan_applications = this.loan.applications;
 
         if (this.search_loan_date) {
           return this.paginate(member_loan_applications.filter(function (application) {
-            return _this3.datePickerFormat(application.created_at) === _this3.datePickerFormat(_this3.search_date);
+            return _this2.datePickerFormat(application.created_at) === _this2.datePickerFormat(_this2.search_date);
           }));
         } else {
           return this.paginate(member_loan_applications);
@@ -198,13 +189,44 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
-    getMembers: 'member/getMembers',
+    getMember: 'member/getMemberByMemberId',
     getDpsApplications: 'dps/getApplications',
     getMemberLoanApplications: 'loan/getMemberApplications',
     deleteDpsApplication: 'dps/deleteApplication',
     deleteLoanApplication: 'loan/deleteApplication'
   })), {}, {
     deleteDpsConfirm: function deleteDpsConfirm(application_id) {
+      var _this3 = this;
+
+      if (this.hasPermission('delete_application')) {
+        this.$swal({
+          title: "Really want to delete!",
+          text: "Are you sure? You won't be able to revert this!",
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#5430d6",
+          confirmButtonText: "Yes, Delete it!",
+          cancelButtonColor: '#c82333'
+        }).then(function (res) {
+          if (res.isConfirmed) {
+            _this3.deleteDpsApplication(application_id).then(function () {
+              if (!_this3.error_message) {
+                _this3.$swal({
+                  icon: 'success',
+                  title: 'Congratulation!',
+                  text: 'Dps application has been deleted successfully'
+                });
+              } else {
+                _this3.error = _this3.error_message;
+              }
+            });
+          }
+        });
+      } else {
+        this.message403();
+      }
+    },
+    deleteLoanConfirm: function deleteLoanConfirm(application_id) {
       var _this4 = this;
 
       if (this.hasPermission('delete_application')) {
@@ -218,46 +240,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           cancelButtonColor: '#c82333'
         }).then(function (res) {
           if (res.isConfirmed) {
-            _this4.deleteDpsApplication(application_id).then(function () {
+            _this4.deleteLoanApplication(application_id).then(function () {
               if (!_this4.error_message) {
                 _this4.$swal({
-                  icon: 'success',
-                  title: 'Congratulation!',
-                  text: 'Dps application has been deleted successfully'
-                });
-              } else {
-                _this4.error = _this4.error_message;
-              }
-            });
-          }
-        });
-      } else {
-        this.message403();
-      }
-    },
-    deleteLoanConfirm: function deleteLoanConfirm(application_id) {
-      var _this5 = this;
-
-      if (this.hasPermission('delete_application')) {
-        this.$swal({
-          title: "Really want to delete!",
-          text: "Are you sure? You won't be able to revert this!",
-          icon: "warning",
-          showCancelButton: true,
-          confirmButtonColor: "#5430d6",
-          confirmButtonText: "Yes, Delete it!",
-          cancelButtonColor: '#c82333'
-        }).then(function (res) {
-          if (res.isConfirmed) {
-            _this5.deleteLoanApplication(application_id).then(function () {
-              if (!_this5.error_message) {
-                _this5.$swal({
                   icon: 'success',
                   title: 'Congratulation!',
                   text: 'Loan application has been deleted successfully'
                 });
               } else {
-                _this5.error = _this5.error_message;
+                _this4.error = _this4.error_message;
               }
             });
           }
@@ -291,17 +282,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    var _this6 = this;
+    var _this5 = this;
 
-    if (!this.members) {
-      this.getMembers();
-    }
-
+    this.getMember(this.member_id);
     this.getDpsApplications();
 
     if (!this.dpsApplications) {
       this.getDpsApplications().then(function () {
-        _this6.setDpsPages();
+        _this5.setDpsPages();
       });
       this.setDpsPages();
     }
@@ -310,9 +298,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
     if (!this.loanApplications) {
       this.getMemberLoanApplications(this.member_id).then(function () {
-        _this6.setLoanPages();
+        _this5.setLoanPages();
       });
       this.setLoanPages();
+    }
+  },
+  watch: {
+    '$route.params.member_id': function $routeParamsMember_id(newId, oldId) {
+      this.member_id = newId;
+      this.getMember(this.member_id);
     }
   }
 });
@@ -1294,8 +1288,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_Datepicker = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Datepicker");
 
-  return $options.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_member_show_sidebar, {
-    member: $options.member
+  return _ctx.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_member_show_sidebar, {
+    member: _ctx.member
   }, null, 8
   /* PROPS */
   , ["member"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" dps transactions "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {

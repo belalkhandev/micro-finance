@@ -106,6 +106,7 @@ Route::group([
     ], function($route) {
         $route->get('/list', [MemberController::class, 'index']);
         $route->get('/group/{groupId}', [MemberController::class, 'membersGroup']);
+        $route->get('/type/{type}', [MemberController::class, 'membersType']);
         $route->get('/{member_id}/show', [MemberController::class, 'show']);
         $route->post('/create', [MemberController::class, 'store']);
         $route->post('/update/{id}', [MemberController::class, 'update']);

@@ -151,7 +151,6 @@ export default ({
             });
         },
 
-        // pagination set pages
         setPages() {
             let numberOfPages = Math.ceil(this.members ? this.members.length / this.per_page : 0);
             for (let index = 1; index <= numberOfPages; index++) {
@@ -165,7 +164,6 @@ export default ({
     },
 
     mounted() {
-        // Fetch initial results
         this.getResults(1);
     }
 

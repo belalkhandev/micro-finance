@@ -124,7 +124,7 @@ export default({
 
     computed: {
         ...mapGetters ({
-            members: 'member/members',
+            member: 'member/member',
             transactions: 'member/loan_transactions'
         }),
 
@@ -141,18 +141,12 @@ export default({
             }
 
             return null;
-        },
-
-        member() {
-            if (this.members && this.member_id) {
-                return this.members.find(member => member.id == this.member_id)
-            }
         }
     },
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers',
+            getMember: 'member/getMemberByMemberId',
             getTransactions: 'member/getLoanTransactions'
         }),
 
@@ -173,9 +167,7 @@ export default({
     },
 
     mounted() {
-        if (!this.members) {
-            this.getMembers();
-        }
+        this.getMember(this.member_id);
 
         if (!this.transactions) {
             this.getTransactions(this.member_id).then(() => {
@@ -185,6 +177,13 @@ export default({
             this.setPages()
         }
     },
+
+    watch: {
+        '$route.params.member_id'(newId, oldId) {
+            this.member_id = newId
+            this.getMember(this.member_id);
+        }
+    }
 
 
 })

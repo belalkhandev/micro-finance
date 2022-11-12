@@ -79,7 +79,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       });
     },
-    // pagination set pages
     setPages: function setPages() {
       var numberOfPages = Math.ceil(this.members ? this.members.length / this.per_page : 0);
 
@@ -93,7 +92,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    // Fetch initial results
     this.getResults(1);
   }
 });

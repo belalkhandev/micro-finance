@@ -4,20 +4,30 @@ export default {
     namespaced: true,
 
     state: {
+        searchData: null,
         members: null,
         groupMembers: null,
+        typeMembers: null,
         member: null,
         dps_transactions: null,
         loan_transactions: null,
     },
 
     getters: {
+        searchData(state){
+            return state.searchData
+        },
+
         members(state){
             return state.members
         },
 
         groupMembers(state){
             return state.groupMembers
+        },
+
+        typeMembers(state){
+            return state.typeMembers
         },
 
         member(state){
@@ -34,12 +44,20 @@ export default {
     },
 
     mutations: {
+        SET_SEARCH_DATA(state, members) {
+            state.searchData = members
+        },
+
         SET_MEMBERS(state, members) {
             state.members = members
         },
 
         SET_GROUP_MEMBERS(state, members) {
             state.groupMembers = members
+        },
+
+        SET_TYPE_MEMBERS(state, members) {
+            state.typeMembers = members
         },
 
         SET_MEMBER_DPS_TRANSACTIONS(state, dps_transactions) {
@@ -68,15 +86,23 @@ export default {
         },
 
         DELETE_MEMBER(state, item_id) {
-            const member  = state.members.find(item => item.id == item_id)
+            const member  = state.members.data.find(item => item.id == item_id)
             if (member) {
-                state.members.splice(state.members.indexOf(member), 1)
+                state.members.data.splice(state.members.data.indexOf(member), 1)
             }
         },
     },
 
     actions: {
-        //member actions
+        async getSearchData({ commit }) {
+            const res = await axios.get('member/search/data')
+            if (res.data.status) {
+                commit('SET_SEARCH_DATA', res.data.members)
+            } else {
+                commit('SET_SEARCH_DATA', null)
+            }
+        },
+
         async getMembers({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('member/list?page='+page_no)
@@ -86,20 +112,34 @@ export default {
             }
         },
 
-        //member actions
-        async getGroupMembers({ commit }, groupId, page) {
-            let page_no = page && page != 'undefined' ? page :  1
-            const res = await axios.get('member/group/'+groupId+'?page='+page_no)
+        async getGroupMembers({ commit }, requestParams) {
+            let page_no = requestParams.page && requestParams.page != 'undefined' ? requestParams.page :  1
+            const res = await axios.get('member/group/'+requestParams.groupId+'?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_GROUP_MEMBERS', res.data.members)
+            } else {
+                commit('SET_GROUP_MEMBERS', null)
             }
         },
 
-        async getByMemberId({ commit }, member_id) {
+        async getTypesMembers({ commit }, requestParams) {
+            let page_no = requestParams.page && requestParams.page != 'undefined' ? requestParams.page :  1
+            const res = await axios.get('member/type/'+requestParams.member_type+'?page='+page_no)
+
+            if (res.data.status) {
+                commit('SET_TYPE_MEMBERS', res.data.members)
+            } else {
+                commit('SET_TYPE_MEMBERS', null)
+            }
+        },
+
+        async getMemberByMemberId({ commit }, member_id) {
             const res = await axios.get('member/'+member_id+'/show')
 
             if (res.data.status) {
+                commit('SET_SINGLE_MEMBER', res.data.member)
+            } else {
                 commit('SET_SINGLE_MEMBER', res.data.member)
             }
         },
@@ -108,6 +148,8 @@ export default {
             const res = await axios.get('member/transactions/loan/'+member_id)
             if (res.data.status) {
                 commit('SET_MEMBER_LOAN_TRANSACTIONS', res.data.transactions)
+            } else {
+                commit('SET_MEMBER_LOAN_TRANSACTIONS', null)
             }
         },
 
@@ -116,6 +158,8 @@ export default {
 
             if (res.data.status) {
                 commit('SET_MEMBER_DPS_TRANSACTIONS', res.data.transactions)
+            } else {
+                commit('SET_MEMBER_DPS_TRANSACTIONS', null)
             }
         },
 

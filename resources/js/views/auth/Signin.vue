@@ -12,13 +12,13 @@
                     <form @submit.prevent="loginSubmit">
                         <span class="text-danger" v-if="error">{{ error }}</span>
                         <div class="form-group">
-                            <label>{{ $t('email') }}*</label>
-                            <input type="email" v-model="form.email" :placeholder="$t('enter_email')" class="form-control">
+                            <label for="email">{{ $t('email') }}*</label>
+                            <input type="email" id="email" v-model="form.email" :placeholder="$t('enter_email')" class="form-control">
                             <span class="text-danger" v-if="errors">{{ errors.email ? errors.email[0] : '' }}</span>
                         </div>
                         <div class="form-group">
-                            <label>{{ $t('password') }}*</label>
-                            <input type="password" v-model="form.password" :placeholder="$t('enter_password')" class="form-control">
+                            <label for="password">{{ $t('password') }}*</label>
+                            <input type="password" id="password" v-model="form.password" :placeholder="$t('enter_password')" class="form-control">
                             <span class="text-danger" v-if="errors">{{ errors.password ? errors.password[0] : '' }}</span>
                         </div>
                         <div class="form-group form-submit-group">

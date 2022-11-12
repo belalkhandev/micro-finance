@@ -43,6 +43,17 @@ class MemberRepository implements MemberRepositoryInterface {
         return false;
     }
 
+    public function getByTypePagination($type, $limit = 15)
+    {
+        $members = Member::where('member_type', $type)->paginate($limit);
+
+        if ($members->isNotEmpty()) {
+            return $members;
+        }
+
+        return false;
+    }
+
     public function getByMemberId($memberId)
     {
         $member = Member::with('nominee', 'group')->find($memberId);
@@ -144,8 +155,11 @@ class MemberRepository implements MemberRepositoryInterface {
         $member = Member::find($id);
 
         if ($member->photo) {
+
             $photo = str_replace(URL::to('/')."/", "", $member->photo);
-            unlink($photo);
+            if (file_exists($photo)) {
+                unlink($photo);
+            }
         }
 
         if ($member->delete()) {

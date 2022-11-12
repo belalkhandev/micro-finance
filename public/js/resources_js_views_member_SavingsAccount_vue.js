@@ -316,31 +316,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)({
-    members: 'member/members',
-    savings: 'savings/savings'
+    savings: 'savings/savings',
+    member: 'member/member'
   })), {}, {
-    member: function member() {
-      var _this = this;
-
-      if (this.members && this.member_id) {
-        return this.members.find(function (member) {
-          return member.id == _this.member_id;
-        });
-      }
-    },
     filterSavingsAccounts: function filterSavingsAccounts() {
-      var _this2 = this;
+      var _this = this;
 
       if (this.savings) {
         var member = this.savings.find(function (item) {
-          return item.member_id == _this2.member_id;
+          return item.member_id == _this.member_id;
         });
 
         if (member) {
           return this.paginate(this.savings);
         } else {
           this.getSavings(this.member_id).then(function () {
-            return _this2.paginate(_this2.savings);
+            return _this.paginate(_this.savings);
           });
         }
       }
@@ -377,12 +368,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapActions)({
-    getMembers: 'member/getMembers',
+    getMember: 'member/getMemberByMemberId',
     getSavings: 'savings/getSavings',
     deleteSavings: 'savings/deleteSaving'
   })), {}, {
     deleteConfirm: function deleteConfirm(savings_id) {
-      var _this3 = this;
+      var _this2 = this;
 
       this.$swal({
         title: "Really want to delete!",
@@ -394,15 +385,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         cancelButtonColor: '#c82333'
       }).then(function (res) {
         if (res.isConfirmed) {
-          _this3.deleteSavings(savings_id).then(function () {
-            if (!_this3.error_message) {
-              _this3.$swal({
+          _this2.deleteSavings(savings_id).then(function () {
+            if (!_this2.error_message) {
+              _this2.$swal({
                 icon: 'success',
                 title: 'Congratulation!',
                 text: 'Savings has been deleted successfully'
               });
             } else {
-              _this3.error = _this3.error_message;
+              _this2.error = _this2.error_message;
             }
           });
         }
@@ -418,17 +409,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    var _this4 = this;
+    var _this3 = this;
 
+    this.getMember(this.member_id);
     this.getSavings(this.member_id).then(function () {
-      _this4.setPages();
+      _this3.setPages();
     });
-
-    if (!this.members) {
-      this.getMembers();
-    }
-
     this.setPages();
+  },
+  watch: {
+    '$route.params.member_id': function $routeParamsMember_id(newId, oldId) {
+      this.member_id = newId;
+      this.getMember(this.member_id);
+    }
   }
 });
 
@@ -1593,8 +1586,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_MemberSavingsTransaction = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("MemberSavingsTransaction");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [$options.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_member_show_sidebar, {
-    member: $options.member
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_ctx.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_member_show_sidebar, {
+    member: _ctx.member
   }, null, 8
   /* PROPS */
   , ["member"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
@@ -1620,14 +1613,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* CLASS */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "modal",
-    href: '/download/savings/' + $options.member.id + '/transactions',
+    href: '/download/savings/' + _ctx.member.id + '/transactions',
     "class": "btn btn-info btn-sm",
     target: "_blank",
     "data-bs-target": "#downloadSavingsTransactions",
     "data-bs-toggle": "modal"
   }, _hoisted_15, 8
   /* PROPS */
-  , _hoisted_12), _hoisted_16])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [$options.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
+  , _hoisted_12), _hoisted_16])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_ctx.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_router_link, {
     to: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
@@ -1732,11 +1725,11 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "data-placement": "bottom",
     title: "Last Page"
   }, _hoisted_56)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end pagination ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" savings create modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_create_savings, {
-    member: $options.member
+    member: _ctx.member
   }, null, 8
   /* PROPS */
   , ["member"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MemberSavingsTransaction, {
-    member_id: $options.member.id
+    member_id: _ctx.member.id
   }, null, 8
   /* PROPS */
   , ["member_id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" savings edit modal ")], 64

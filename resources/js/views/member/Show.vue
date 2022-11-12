@@ -167,29 +167,24 @@ export default({
 
     computed: {
         ...mapGetters ({
-            singleMember: 'member/member'
+            member: 'member/member'
         }),
-
-        member() {
-            if (this.singleMember && this.singleMember.id == this.$route.params.member_id) {
-                return this.singleMember;
-            } else {
-                this.getMember(this.member_id).then(() => {
-                    return this.singleMember;
-                });
-            }
-        }
     },
 
     methods: {
         ...mapActions({
-            getMember: 'member/getByMemberId'
+            getMember: 'member/getMemberByMemberId'
         }),
     },
 
-    mounted() {
+    created() {
         this.getMember(this.member_id);
-    }
+    },
 
+    watch: {
+        '$route.params.member_id'(newId, oldId) {
+            this.getMember(this.member_id);
+        }
+    }
 })
 </script>

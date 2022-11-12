@@ -167,15 +167,9 @@ export default({
 
     computed: {
         ...mapGetters ({
-            members: 'member/members',
-            savings: 'savings/savings'
+            savings: 'savings/savings',
+            member: 'member/member'
         }),
-
-        member() {
-            if (this.members && this.member_id) {
-                return this.members.find(member => member.id == this.member_id)
-            }
-        },
 
         filterSavingsAccounts() {
             if (this.savings) {
@@ -220,7 +214,7 @@ export default({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers',
+            getMember: 'member/getMemberByMemberId',
             getSavings: 'savings/getSavings',
             deleteSavings: 'savings/deleteSaving',
         }),
@@ -261,17 +255,20 @@ export default({
     },
 
     mounted() {
+        this.getMember(this.member_id);
 
         this.getSavings(this.member_id).then(() => {
             this.setPages();
         });
 
-        if (!this.members) {
-            this.getMembers();
-        }
-
-
         this.setPages();
+    },
+
+    watch: {
+        '$route.params.member_id'(newId, oldId) {
+            this.member_id = newId
+            this.getMember(this.member_id);
+        }
     }
 
 

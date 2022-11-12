@@ -159,8 +159,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mixins: [_mixin__WEBPACK_IMPORTED_MODULE_3__.helpers],
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapGetters)({
-    members: 'member/members',
-    transactions: 'member/dps_transactions'
+    transactions: 'member/dps_transactions',
+    member: 'member/member'
   })), {}, {
     filterTransactions: function filterTransactions() {
       var _this = this;
@@ -176,19 +176,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       return null;
-    },
-    member: function member() {
-      var _this2 = this;
-
-      if (this.members && this.member_id) {
-        return this.members.find(function (member) {
-          return member.id == _this2.member_id;
-        });
-      }
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_5__.mapActions)({
-    getMembers: 'member/getMembers',
+    getMember: 'member/getMemberByMemberId',
     getTransactions: 'member/getDpsTransactions'
   })), {}, {
     showDpsTransactionModal: function showDpsTransactionModal(data) {
@@ -206,17 +197,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    var _this3 = this;
+    var _this2 = this;
 
-    if (!this.members) {
-      this.getMembers();
-    }
+    this.getMember(this.member_id);
 
     if (!this.transactions) {
       this.getTransactions(this.member_id).then(function () {
-        _this3.setPages();
+        _this2.setPages();
       });
       this.setPages();
+    }
+  },
+  watch: {
+    '$route.params.member_id': function $routeParamsMember_id(newId, oldId) {
+      this.member_id = newId;
+      this.getMember(this.member_id);
     }
   }
 });
@@ -1050,8 +1045,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_dps_transaction_payment = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("dps-transaction-payment");
 
-  return $options.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_member_show_sidebar, {
-    member: $options.member
+  return _ctx.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_member_show_sidebar, {
+    member: _ctx.member
   }, null, 8
   /* PROPS */
   , ["member"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [_hoisted_6, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {

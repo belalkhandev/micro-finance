@@ -290,16 +290,10 @@ export default({
 
     computed: {
         ...mapGetters ({
-            members: 'member/members',
             dpsApplications: 'dps/applications',
             loan: 'loan/loan',
+            member: 'member/member'
         }),
-
-        member() {
-            if (this.members && this.member_id) {
-                return this.members.find(member => member.id == this.member_id)
-            }
-        },
 
         filterDpsApplications() {
             if (this.dpsApplications) {
@@ -340,7 +334,7 @@ export default({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers',
+            getMember: 'member/getMemberByMemberId',
             getDpsApplications: 'dps/getApplications',
             getMemberLoanApplications: 'loan/getMemberApplications',
             deleteDpsApplication: 'dps/deleteApplication',
@@ -433,9 +427,7 @@ export default({
     },
 
     mounted() {
-        if (!this.members) {
-            this.getMembers();
-        }
+        this.getMember(this.member_id);
 
         this.getDpsApplications();
 
@@ -453,6 +445,12 @@ export default({
                 this.setLoanPages();
             });
             this.setLoanPages();
+        }
+    },
+    watch: {
+        '$route.params.member_id'(newId, oldId) {
+            this.member_id = newId
+            this.getMember(this.member_id);
         }
     }
 

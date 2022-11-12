@@ -155,18 +155,27 @@ export default ({
         },
 
         getResults(page = 1) {
-            this.getGroupMembers(this.group_id, page);
+            this.getGroupMembers({
+                groupId: this.group_id,
+                page: page
+            });
         }
     },
 
     mounted () {
-        this.getResults(this.group_id, 1);
+        this.getResults({
+            groupId: this.group_id,
+            page: 1
+        });
     },
 
     watch: {
         '$route.params.group_id'(newId, oldId) {
             this.group_id = newId;
-            this.getResults();
+            this.getResults({
+                groupId: newId,
+                page: 1
+            });
         }
     }
 

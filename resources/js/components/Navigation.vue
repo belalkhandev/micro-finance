@@ -93,11 +93,10 @@
 
             <!--  members-->
             <div class="navigation-item has-multimenu">
-                <router-link :to="{name: 'Members'}"  @click="openMultimenus">
-<!--                    <i class='bx bxs-user-account text-indigo-600' ></i>-->
+                <a href="#"  @click="openMultimenus">
                     <img src="../assets/images/nav-icons/add-user.png" alt="">
                     <span>{{ $t('members') }}</span>
-                </router-link>
+                </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>

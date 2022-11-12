@@ -70,13 +70,37 @@ class MemberController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function membersType($type)
+    {
+        $members = $this->memberRepo->getByTypePagination($type, 20);
+
+        if ($members) {
+            return response()->json([
+                'status' => true,
+                'members' => $members,
+                'message' => 'Found members data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'members' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    /**
      * Show the specific resource.
      *
      * @return \Illuminate\Http\JsonResponse
      */
     public function show($memberId)
     {
-        $member = $this->memberRepo->getByMemberId(20);
+        $member = $this->memberRepo->getByMemberId($memberId);
 
         if ($member) {
             return response()->json([
