@@ -30,7 +30,7 @@
                                                     </div>
                                                     <div class="search-content">
                                                         <h5>{{ member.name }}</h5>
-                                                        <p>Account No: <strong>{{ member.account_no }}</strong>, <strong v-if="member.member_group_id">Group: {{ member.member_group_id }}, </strong> Member type: <strong>{{ ucFirst(member.member_type) }}</strong></p>
+                                                        <p>Account No: <strong>{{ member.account_no }}</strong>, <strong v-if="member.member_group_id">Group: {{ member.group }}, </strong> Member type: <strong>{{ ucFirst(member.member_type) }}</strong></p>
                                                         <p>Address: <strong>{{ member.address }}</strong>, Phone: {{ member.phone }}</p>
                                                     </div>
                                                 </router-link>
@@ -70,7 +70,7 @@ export default ({
 
     computed: {
         ...mapGetters({
-            members: 'member/members'
+            members: 'member/searchData'
         }),
 
         fetchMembers() {
@@ -88,7 +88,7 @@ export default ({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers'
+            getMembers: 'member/getSearchData'
         }),
 
         showMemberProfile(e) {

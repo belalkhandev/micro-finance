@@ -55,7 +55,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
     validation_errors: 'validation_errors',
     error_message: 'error_message',
-    members: 'member/members',
+    members: 'member/searchData',
     application_types: 'group/application_types',
     applications: 'loan/applications',
     days: 'group/days'
@@ -85,7 +85,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         if (application) {
-          console.log(application);
           this.form.member_id = application.member_id;
           this.form.loan_amount = application.loan_amount;
           this.form.service = application.service;
@@ -104,7 +103,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
-    getMembers: 'member/getMembers',
+    getMembers: 'member/getSearchData',
     getApplications: 'loan/getApplications',
     updateApplication: 'loan/editApplication'
   })), {}, {

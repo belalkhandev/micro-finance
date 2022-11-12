@@ -216,7 +216,7 @@ export default ({
         ...mapGetters({
             validation_errors: 'validation_errors',
             error_message: 'error_message',
-            members: 'member/members',
+            members: 'member/searchData',
             application_types: 'group/application_types',
             applications: 'dps/applications',
             days: 'group/days'
@@ -228,10 +228,10 @@ export default ({
 
         filterMembers()
         {
-            if (this.members && this.members.length)
+            if (this.members.data && this.members.data.length)
             {
                 if (this.search_key.length > 1) {
-                    return this.members.filter((member) => {
+                    return this.members.data.filter((member) => {
                         return member.account_no.toLowerCase().includes(this.search_key.toLowerCase())
                             || member.name.toLowerCase().includes(this.search_key.toLowerCase())
                             || member.phone.toLowerCase().includes(this.search_key.toLowerCase())
@@ -267,7 +267,7 @@ export default ({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers',
+            getMembers: 'member/getSearchData',
             getApplications: 'dps/getApplications',
             updateApplication: 'dps/editApplication',
         }),

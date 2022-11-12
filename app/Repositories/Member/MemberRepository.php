@@ -21,6 +21,19 @@ class MemberRepository implements MemberRepositoryInterface {
         return false;
     }
 
+    public function getMembersSearchData()
+    {
+        $members = Member::selectRaw("members.id, members.name, members.account_no, members.member_type, members.phone, members.photo, member_groups.group_name")
+            ->leftJoin('member_groups', 'members.member_group_id', '=', 'member_groups.id')
+            ->get();
+
+        if ($members->isNotEmpty()) {
+            return $members;
+        }
+
+        return false;
+    }
+
     public function getByPagination($limit = 15)
     {
         $members = Member::paginate($limit);

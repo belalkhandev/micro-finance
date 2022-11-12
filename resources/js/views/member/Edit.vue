@@ -362,7 +362,7 @@ export default ({
 
     computed: {
         ...mapGetters({
-            members: 'member/members',
+            memberItem: 'member/member',
             districts: 'location/districts',
             upazillas: 'location/upazillas',
             unions: 'location/unions',
@@ -441,11 +441,10 @@ export default ({
         },
 
         member() {
-            if (this.members && this.form.member_id) {
-                const member = this.members.find(member => member.id == this.form.member_id)
-
+            if (this.memberItem) {
+                const member = this.memberItem
+                
                 if (member) {
-                    console.log(member)
                     this.form.name = member.name;
                     this.form.father_name = member.father_name;
                     this.form.mother_name = member.mother_name;
@@ -489,7 +488,7 @@ export default ({
             getVillages: 'location/getVillages',
             getGroups: 'group/getGroups',
             getPostOffices: 'location/getPostOffices',
-            getMembers: 'member/getMembers',
+            getMember: 'member/getMemberByMemberId',
             editMember: 'member/editMember'
         }),
 
@@ -535,9 +534,7 @@ export default ({
     },
 
     mounted() {
-        if (!this.members) {
-            this.getMembers();
-        }
+        this.getMember(this.form.member_id);
         this.getDistricts();
         this.getUpazillas();
         this.getUnions();

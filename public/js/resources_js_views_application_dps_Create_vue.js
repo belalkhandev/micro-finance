@@ -53,7 +53,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
     validation_errors: 'validation_errors',
     error_message: 'error_message',
-    members: 'member/members',
+    members: 'member/searchData',
     application_types: 'group/application_types',
     days: 'group/days'
   })), {}, {
@@ -75,7 +75,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
-    getMembers: 'member/getMembers',
+    getMembers: 'member/getSearchData',
     createApplication: 'dps/createApplication'
   })), {}, {
     showMemberList: function showMemberList() {

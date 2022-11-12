@@ -63,7 +63,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_1__.mapGetters)({
-    members: 'member/members',
+    memberItem: 'member/member',
     districts: 'location/districts',
     upazillas: 'location/upazillas',
     unions: 'location/unions',
@@ -157,15 +157,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return 'Nominee';
     },
     member: function member() {
-      var _this5 = this;
-
-      if (this.members && this.form.member_id) {
-        var member = this.members.find(function (member) {
-          return member.id == _this5.form.member_id;
-        });
+      if (this.memberItem) {
+        var member = this.memberItem;
 
         if (member) {
-          console.log(member);
           this.form.name = member.name;
           this.form.father_name = member.father_name;
           this.form.mother_name = member.mother_name;
@@ -207,7 +202,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getVillages: 'location/getVillages',
     getGroups: 'group/getGroups',
     getPostOffices: 'location/getPostOffices',
-    getMembers: 'member/getMembers',
+    getMember: 'member/getMemberByMemberId',
     editMember: 'member/editMember'
   })), {}, {
     handleMemberPhoto: function handleMemberPhoto() {
@@ -217,7 +212,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.nominee_photo = this.$refs.nominee_photo.files[0];
     },
     updateMember: function updateMember() {
-      var _this6 = this;
+      var _this5 = this;
 
       jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateMember').prop('disabled', true).addClass('submitted');
       var formData = new FormData();
@@ -226,19 +221,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         formData.append(fieldName, inputData[fieldName]);
       });
       this.editMember(formData).then(function () {
-        if (!_this6.validation_errors && !_this6.error_message) {
-          _this6.errors = _this6.error = null;
-          Object.assign(_this6.$data, _this6.$options.data.apply(_this6));
+        if (!_this5.validation_errors && !_this5.error_message) {
+          _this5.errors = _this5.error = null;
+          Object.assign(_this5.$data, _this5.$options.data.apply(_this5));
 
-          _this6.$swal({
+          _this5.$swal({
             icon: "success",
             title: "Success!",
             text: "Member has been updated successfully",
             timer: 3000
           });
         } else {
-          _this6.errors = _this6.validation_errors;
-          _this6.error = _this6.error_message;
+          _this5.errors = _this5.validation_errors;
+          _this5.error = _this5.error_message;
         }
 
         jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateMember').prop('disabled', false).removeClass('submitted');
@@ -246,10 +241,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   mounted: function mounted() {
-    if (!this.members) {
-      this.getMembers();
-    }
-
+    this.getMember(this.form.member_id);
     this.getDistricts();
     this.getUpazillas();
     this.getUnions();

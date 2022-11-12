@@ -105,6 +105,7 @@ Route::group([
         'prefix' => 'member'
     ], function($route) {
         $route->get('/list', [MemberController::class, 'index']);
+        $route->get('/search/data', [MemberController::class, 'searchData']);
         $route->get('/group/{groupId}', [MemberController::class, 'membersGroup']);
         $route->get('/type/{type}', [MemberController::class, 'membersType']);
         $route->get('/{member_id}/show', [MemberController::class, 'show']);

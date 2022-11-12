@@ -213,7 +213,7 @@ export default ({
         ...mapGetters({
             validation_errors: 'validation_errors',
             error_message: 'error_message',
-            members: 'member/members',
+            members: 'member/searchData',
             application_types: 'group/application_types',
             days: 'group/days'
         }),
@@ -242,7 +242,7 @@ export default ({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers',
+            getMembers: 'member/getSearchData',
             createApplication: 'dps/createApplication',
         }),
 

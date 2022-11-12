@@ -81,7 +81,7 @@ export default {
         },
 
         UPDATE_MEMBER(state, member) {
-            const item = state.members.find(item => item.id === member.id)
+            const item = state.members.data.find(item => item.id === member.id)
             Object.assign(item, member)
         },
 

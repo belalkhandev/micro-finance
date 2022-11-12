@@ -26049,7 +26049,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mixins: [_mixin__WEBPACK_IMPORTED_MODULE_1__.helpers],
   computed: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
-    members: 'member/members'
+    members: 'member/searchData'
   })), {}, {
     fetchMembers: function fetchMembers() {
       var _this = this;
@@ -26064,7 +26064,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   }),
   methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
-    getMembers: 'member/getMembers'
+    getMembers: 'member/getSearchData'
   })), {}, {
     showMemberProfile: function showMemberProfile(e) {
       e.preventDefault();
@@ -27368,7 +27368,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         /* TEXT */
         ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.account_no), 1
         /* TEXT */
-        ), _hoisted_21, member.member_group_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_22, "Group: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.member_group_id) + ", ", 1
+        ), _hoisted_21, member.member_group_id ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("strong", _hoisted_22, "Group: " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(member.group) + ", ", 1
         /* TEXT */
         )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("strong", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.ucFirst(member.member_type)), 1
         /* TEXT */
@@ -30432,7 +30432,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.member = member;
     },
     UPDATE_MEMBER: function UPDATE_MEMBER(state, member) {
-      var item = state.members.find(function (item) {
+      var item = state.members.data.find(function (item) {
         return item.id === member.id;
       });
       Object.assign(item, member);

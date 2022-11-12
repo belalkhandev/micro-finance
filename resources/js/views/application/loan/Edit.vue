@@ -216,7 +216,7 @@ export default ({
         ...mapGetters({
             validation_errors: 'validation_errors',
             error_message: 'error_message',
-            members: 'member/members',
+            members: 'member/searchData',
             application_types: 'group/application_types',
             applications: 'loan/applications',
             days: 'group/days'
@@ -247,7 +247,6 @@ export default ({
                 const application = this.applications.find(application => application.id == this.form.application_id)
 
                 if (application) {
-                    console.log(application)
                     this.form.member_id = application.member_id;
                     this.form.loan_amount = application.loan_amount;
                     this.form.service = application.service;
@@ -268,7 +267,7 @@ export default ({
 
     methods: {
         ...mapActions({
-            getMembers: 'member/getMembers',
+            getMembers: 'member/getSearchData',
             getApplications: 'loan/getApplications',
             updateApplication: 'loan/editApplication'
         }),

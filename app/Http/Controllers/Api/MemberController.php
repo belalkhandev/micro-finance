@@ -7,6 +7,7 @@ use App\Http\Resources\MemberResource;
 use App\Http\Resources\MembersResource;
 use App\Repositories\Member\MemberRepository;
 use App\Repositories\Member\MemberRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,7 +25,7 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -48,7 +49,31 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
+     */
+    public function searchData()
+    {
+        $members = $this->memberRepo->getMembersSearchData();
+
+        if ($members) {
+            return response()->json([
+                'status' => true,
+                'members' => $members,
+                'message' => 'Found members data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'members' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
      */
     public function membersGroup($groupId)
     {
@@ -72,7 +97,7 @@ class MemberController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function membersType($type)
     {
@@ -96,7 +121,7 @@ class MemberController extends Controller
     /**
      * Show the specific resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show($memberId)
     {
@@ -121,7 +146,7 @@ class MemberController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
@@ -217,7 +242,7 @@ class MemberController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -287,7 +312,7 @@ class MemberController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy($id)
     {
