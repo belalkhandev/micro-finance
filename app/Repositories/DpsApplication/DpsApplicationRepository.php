@@ -20,6 +20,19 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         return false;
     }
 
+    public function getByPaginate($limit = 20)
+    {
+        $applications = DpsApplication::with('member:id,account_no,name,photo')
+            ->latest()
+            ->paginate($limit);
+
+        if ($applications->isNotEmpty()) {
+            return $applications;
+        }
+
+        return false;
+    }
+
     public function store($request)
     {
         $dps = new DpsApplication();
