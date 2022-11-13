@@ -123,7 +123,7 @@ export default ({
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/current/loan')
+            window.open(window.location.origin+'/download/current/loan')
         },
 
         filterTransactions() {

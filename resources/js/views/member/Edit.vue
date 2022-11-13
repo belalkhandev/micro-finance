@@ -443,7 +443,8 @@ export default ({
         member() {
             if (this.memberItem) {
                 const member = this.memberItem
-                
+                this.getUnions(member.upazilla_id)
+
                 if (member) {
                     this.form.name = member.name;
                     this.form.father_name = member.father_name;
@@ -537,7 +538,6 @@ export default ({
         this.getMember(this.form.member_id);
         this.getDistricts();
         this.getUpazillas();
-        this.getUnions();
         this.getPostOffices();
         this.getVillages();
         this.getGroups();

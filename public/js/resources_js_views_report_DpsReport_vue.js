@@ -57,7 +57,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       DpsTransactionModal.show();
     },
     downloadReport: function downloadReport() {
-      window.open('http://127.0.0.1:8000/download/dps');
+      window.open(window.location.origin + '/download/dps');
     },
     deleteConfirm: function deleteConfirm(user_id) {
       var _this = this;

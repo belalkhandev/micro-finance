@@ -52,7 +52,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getDpsTransactions: 'report/getCurrentDpsTransactions'
   })), {}, {
     downloadReport: function downloadReport() {
-      window.open('http://127.0.0.1:8000/download/current/dps');
+      window.open(window.location.origin + '/download/current/dps');
     },
     showDpsTransactionModal: function showDpsTransactionModal(data) {
       this.dps_transaction_data = data;

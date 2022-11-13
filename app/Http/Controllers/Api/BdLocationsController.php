@@ -7,14 +7,16 @@ use App\Models\District;
 use App\Models\Division;
 use App\Models\Union;
 use App\Models\Upazilla;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class BdLocationsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
     public function divisions(Request $request)
     {
@@ -33,13 +35,13 @@ class BdLocationsController extends Controller
             'divisions' => null,
             'message' => 'No data found'
         ]);
-        
-    } 
+
+    }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function districts(Request $request)
     {
@@ -62,13 +64,13 @@ class BdLocationsController extends Controller
             'districts' => null,
             'message' => 'No data found'
         ]);
-        
-    } 
+
+    }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function upazillas(Request $request)
     {
@@ -91,20 +93,51 @@ class BdLocationsController extends Controller
             'upazillas' => null,
             'message' => 'No data found'
         ]);
-        
-    } 
+
+    }
 
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return JsonResponse
      */
     public function unions(Request $request)
     {
-        $unions = Union::orderBy('name', 'ASC')->get();
+        if (!$request->input('upazila_id')) {
+            return response()->json([
+                'status' => false,
+                'unions' => null,
+                'message' => 'No data found'
+            ]);
+        }
 
+        $unions = Union::where('upazilla_id', $request->input('upazila_id'))->orderBy('name', 'ASC')->get();
+
+        if ($unions->isNotEmpty()) {
+            return response()->json([
+                'status' => true,
+                'unions' => $unions,
+                'message' => $unions->count() . ' unions found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'unions' => null,
+            'message' => 'No data found'
+        ]);
+
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return JsonResponse
+     */
+    public function unionsByUpazilaId(Request $request)
+    {
         if ($request->input('upazilla_id')) {
-            $unions = $unions->where('upazilla_id', $request->input('upazilla_id'));
+            $unions = Union::where('upazilla_id', $request->input('upazilla_id'))->get();
         }
 
         if ($unions) {
@@ -120,6 +153,6 @@ class BdLocationsController extends Controller
             'unions' => null,
             'message' => 'No data found'
         ]);
-        
-    } 
+
+    }
 }

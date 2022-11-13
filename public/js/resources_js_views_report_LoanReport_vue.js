@@ -52,7 +52,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getLoanTransactions: 'report/getLoanTransactions'
   })), {}, {
     downloadReport: function downloadReport() {
-      window.open('http://127.0.0.1:8000/download/loan');
+      window.open(window.location.origin + '/download/loan');
     },
     showLoanTransactionModal: function showLoanTransactionModal(data) {
       this.loan_transaction_data = data;

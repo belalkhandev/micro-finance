@@ -143,7 +143,7 @@ export default ({
         },
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/dps')
+            window.open(window.location.origin+'/download/dps')
         },
 
         deleteConfirm(user_id) {

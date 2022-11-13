@@ -159,6 +159,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     member: function member() {
       if (this.memberItem) {
         var member = this.memberItem;
+        this.getUnions(member.upazilla_id);
 
         if (member) {
           this.form.name = member.name;
@@ -244,7 +245,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getMember(this.form.member_id);
     this.getDistricts();
     this.getUpazillas();
-    this.getUnions();
     this.getPostOffices();
     this.getVillages();
     this.getGroups();

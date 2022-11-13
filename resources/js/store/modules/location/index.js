@@ -132,8 +132,8 @@ export default {
             }
         },
 
-        async getUnions({ commit }) {
-            const res = await axios.get('/union/list')
+        async getUnions({ commit }, upazila_id) {
+            const res = await axios.get('/union/list?upazila_id='+upazila_id)
 
             if (res.data.status) {
                 commit('SET_UNIONS', res.data.unions)

@@ -41,7 +41,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     transactions: 'report/loan_current_transactions'
   })), {}, {
     downloadReport: function downloadReport() {
-      window.open('http://127.0.0.1:8000/download/current/loan');
+      window.open(window.location.origin + '/download/current/loan');
     },
     filterTransactions: function filterTransactions() {
       if (this.transactions) {

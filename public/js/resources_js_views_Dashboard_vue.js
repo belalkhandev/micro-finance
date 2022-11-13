@@ -35,13 +35,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (!this.loan_transactions) {
         this.getLoanTransaction().then(function () {
           if (_this.loan_transactions) {
-            return _this.loan_transactions.filter(function (transaction) {
+            return _this.loan_transactions.data.filter(function (transaction) {
               return transaction.is_paid == 1;
             }).slice(0, 9);
           }
         });
       } else {
-        return this.loan_transactions.filter(function (transaction) {
+        return this.loan_transactions.data.filter(function (transaction) {
           return transaction.is_paid == 1;
         }).slice(0, 9);
       }
@@ -54,13 +54,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (!this.dps_transactions) {
         this.getDpsTransactions().then(function () {
           if (_this2.dps_transactions) {
-            return _this2.dps_transactions.filter(function (transaction) {
+            return _this2.dps_transactions.data.filter(function (transaction) {
               return transaction.is_paid == 1;
             }).slice(0, 9);
           }
         });
       } else {
-        return this.dps_transactions.filter(function (transaction) {
+        return this.dps_transactions.data.filter(function (transaction) {
           return transaction.is_paid == 1;
         }).slice(0, 9);
       }
