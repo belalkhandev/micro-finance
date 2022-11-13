@@ -11,7 +11,10 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function all()
     {
-        $transactions = DpsTransaction::with('application')->orderBy('is_paid', 'ASC')->latest()->get();
+        $transactions = DpsTransaction::with('application')
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -20,9 +23,12 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
-    public function allPaid()
+    public function getByPaginate($limit)
     {
-        $transactions = DpsTransaction::with('application')->where('is_paid', 1)->orderBy('is_paid', 'ASC')->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->paginate($limit);
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -31,11 +37,38 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
-    public function allUnpaid()
+    public function allPaid($limit = 20)
     {
-        $transactions = DpsTransaction::with('application')->where('is_paid', 0)->orderBy('is_paid', 'ASC')->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 1)
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->paginate($limit);
 
-        if ($transactions->isNotEmpty()) {
+        $transactions = array_merge($transactions->toArray(), [
+            'total_paid_amount' => $this->totalPaidTransactions()
+        ]);
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function allUnpaid($limit = 20)
+    {
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 0)
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->paginate($limit);
+
+        $transactions = array_merge($transactions->toArray(), [
+            'total_unpaid_amount' => $this->totalUnpaidTransactions()
+        ]);
+
+        if ($transactions) {
             return $transactions;
         }
 
@@ -193,6 +226,16 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         }
 
         return false;
+    }
+
+    private function totalPaidTransactions()
+    {
+        return round(DpsTransaction::query()->where('is_paid', 1)->sum('amount'), 2);
+    }
+
+    private function totalUnpaidTransactions()
+    {
+        return round(DpsTransaction::query()->where('is_paid', 0)->sum('amount'), 2);
     }
 
 }

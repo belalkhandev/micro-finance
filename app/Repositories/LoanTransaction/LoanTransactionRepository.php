@@ -225,12 +225,12 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         return false;
     }
 
-    public function totalPaidTransactions()
+    private function totalPaidTransactions()
     {
         return round(LoanTransaction::query()->where('is_paid', 1)->sum('amount'), 2);
     }
 
-    public function totalUnpaidTransactions()
+    private function totalUnpaidTransactions()
     {
         return round(LoanTransaction::query()->where('is_paid', 0)->sum('amount'), 2);
     }

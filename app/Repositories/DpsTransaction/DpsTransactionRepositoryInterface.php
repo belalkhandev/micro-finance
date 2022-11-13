@@ -5,6 +5,7 @@ namespace App\Repositories\DpsTransaction;
 interface DpsTransactionRepositoryInterface
 {
     public function all();
+    public function getByPaginate($limit);
     public function allPaid();
     public function allUnpaid();
     public function generateTransaction($request);

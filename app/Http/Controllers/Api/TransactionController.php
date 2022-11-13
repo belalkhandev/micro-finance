@@ -73,7 +73,7 @@ class TransactionController extends Controller
      * */
     public function dpsTransactionList()
     {
-        $dps_trs = $this->dps->all();
+        $dps_trs = $this->dps->getByPaginate(20);
 
         if ($dps_trs) {
             return response()->json([

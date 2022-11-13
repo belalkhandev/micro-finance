@@ -66,7 +66,7 @@ export default {
 
         UPDATE_DPS_TR(state, dps_transaction) {
             if (state.dps_transactions) {
-                const item = state.dps_transactions.find(item => item.id === dps_transaction.id)
+                const item = state.dps_transactions.data.find(item => item.id === dps_transaction.id)
                 Object.assign(item, dps_transaction)
             }
 
@@ -92,7 +92,7 @@ export default {
         },
 
         DELETE_DPS_TR(state, item_id) {
-            const dps_transaction  = state.dps_transactions.find(item => item.id === item_id)
+            const dps_transaction  = state.dps_transactions.data.find(item => item.id === item_id)
             if (dps_transaction) {
                 state.dps_transactions.splice(state.dps_transactions.indexOf(dps_transaction), 1)
             }
@@ -108,24 +108,27 @@ export default {
 
     actions: {
         //expense actions
-        async getDpsTransactions({ commit }) {
-            const res = await axios.get('transaction/dps/list')
+        async getDpsTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('transaction/dps/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_DPS_TRANSACTIONS', res.data.dps_transactions)
             }
         },
 
-        async getDpsUnpaidTransactions({ commit }) {
-            const res = await axios.get('transaction/dps/unpaid/list')
+        async getDpsUnpaidTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('transaction/dps/unpaid/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.dps_transactions)
             }
         },
 
-        async getDpsPaidTransactions({ commit }) {
-            const res = await axios.get('transaction/dps/paid/list')
+        async getDpsPaidTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('transaction/dps/paid/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_DPS_PAID_TRANSACTIONS', res.data.dps_transactions)
