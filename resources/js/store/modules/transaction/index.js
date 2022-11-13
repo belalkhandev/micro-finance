@@ -78,8 +78,8 @@ export default {
         },
 
         UPDATE_LOAN_TR(state, loan_transaction) {
-            if (state.loan_transactions) {
-                const item = state.loan_transactions.find(item => item.id === loan_transaction.id)
+            if (state.loan_transactions.data) {
+                const item = state.loan_transactions.data.find(item => item.id === loan_transaction.id)
                 Object.assign(item, loan_transaction)
             }
 
@@ -94,14 +94,14 @@ export default {
         DELETE_DPS_TR(state, item_id) {
             const dps_transaction  = state.dps_transactions.find(item => item.id === item_id)
             if (dps_transaction) {
-                state.dps_transactions.splice(state.dps_transactions.indexOf(expense), 1)
+                state.dps_transactions.splice(state.dps_transactions.indexOf(dps_transaction), 1)
             }
         },
 
         DELETE_LOAN_TR(state, item_id) {
-            const loan_transaction  = state.loan_transactions.find(item => item.id === item_id)
+            const loan_transaction  = state.loan_transactions.data.find(item => item.id === item_id)
             if (loan_transaction) {
-                state.loan_transactions.splice(state.loan_transactions.indexOf(expense), 1)
+                state.loan_transactions.data.splice(state.loan_transactions.data.indexOf(loan_transaction), 1)
             }
         },
     },
@@ -132,24 +132,27 @@ export default {
             }
         },
 
-        async getLoanTransactions({ commit }) {
-            const res = await axios.get('transaction/loan/list')
+        async getLoanTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('transaction/loan/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions)
             }
         },
 
-        async getLoanUnpaidTransactions({ commit }) {
-            const res = await axios.get('transaction/loan/unpaid/list')
+        async getLoanUnpaidTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('transaction/loan/unpaid/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.loan_transactions)
             }
         },
 
-        async getLoanPaidTransactions({ commit }) {
-            const res = await axios.get('transaction/loan/paid/list')
+        async getLoanPaidTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('transaction/loan/paid/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_LOAN_PAID_TRANSACTIONS', res.data.loan_transactions)

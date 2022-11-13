@@ -5,6 +5,7 @@ namespace App\Repositories\LoanTransaction;
 interface LoanTransactionRepositoryInterface
 {
     public function all();
+    public function getByPaginate($limit);
     public function allUnpaid();
     public function allPaid();
     public function generateTransaction($request);

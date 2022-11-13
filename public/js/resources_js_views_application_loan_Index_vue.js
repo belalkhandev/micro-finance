@@ -437,7 +437,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Pagination, {
     data: $options.filterApplications,
     onPaginationChangePage: $options.getResults,
-    limit: 20
+    limit: 6
   }, null, 8
   /* PROPS */
   , ["data", "onPaginationChangePage"])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end pagination ")])])])]);

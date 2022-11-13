@@ -75,7 +75,7 @@
                         <p class="pagination-data">
                             Page {{ filterApplications.current_page }} Showing  {{ filterApplications.from }} to {{ filterApplications.to }} of {{ filterApplications.total }} Data
                         </p>
-                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="20"/>
+                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="6"/>
                     </div>
                     <!-- end pagination -->
                     <table class="table">
@@ -132,7 +132,7 @@
                         <p class="pagination-data">
                             Page {{ filterApplications.current_page }} Showing  {{ filterApplications.from }} to {{ filterApplications.to }} of {{ filterApplications.total }} Data
                         </p>
-                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="20"/>
+                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="6"/>
                     </div>
                     <!-- end pagination -->
                 </div>

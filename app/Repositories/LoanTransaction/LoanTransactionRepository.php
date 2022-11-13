@@ -12,7 +12,9 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function all()
     {
-        $transactions = LoanTransaction::with('application')->orderBy('is_paid', 'ASC')->latest()->get();
+        $transactions = LoanTransaction::with('application')->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -21,9 +23,12 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         return false;
     }
 
-    public function allPaid()
+    public function getByPaginate($limit = 20)
     {
-        $transactions = LoanTransaction::with('application')->where('is_paid', 1)->orderBy('is_paid', 'ASC')->get();
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->paginate($limit);
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -32,11 +37,36 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         return false;
     }
 
-    public function allUnpaid()
+    public function allPaid($limit = 20)
     {
-        $transactions = LoanTransaction::with('application')->where('is_paid', 0)->orderBy('is_paid', 'ASC')->get();
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 1)
+            ->latest()
+            ->paginate($limit);
 
-        if ($transactions->isNotEmpty()) {
+        $transactions = array_merge($transactions->toArray(), [
+            'total_paid_amount' => $this->totalPaidTransactions()
+        ]);
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function allUnpaid($limit = 20)
+    {
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 0)
+            ->latest()
+            ->paginate($limit);
+
+        $transactions = array_merge($transactions->toArray(), [
+            'total_unpaid_amount' => $this->totalUnpaidTransactions()
+        ]);
+
+        if ($transactions) {
             return $transactions;
         }
 
@@ -48,7 +78,8 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         $transactions = LoanTransaction::with('application')
             ->where('member_id', $member_id)
             ->where('is_paid', 1)
-            ->latest()->get();
+            ->latest()
+            ->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -192,6 +223,16 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         }
 
         return false;
+    }
+
+    public function totalPaidTransactions()
+    {
+        return round(LoanTransaction::query()->where('is_paid', 1)->sum('amount'), 2);
+    }
+
+    public function totalUnpaidTransactions()
+    {
+        return round(LoanTransaction::query()->where('is_paid', 0)->sum('amount'), 2);
     }
 
 }

@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 
 class LoanTransaction extends Model
 {
     use HasFactory;
-
-    protected $appends = ['member_name', 'member_account_no'];
 
     public function application()
     {
@@ -21,13 +20,8 @@ class LoanTransaction extends Model
         return $this->belongsTo(Member::class, 'member_id', 'id');
     }
 
-    public function getMemberNameAttribute()
+    public function scopePaid(Builder $builder)
     {
-        return $this->member->name;
-    }
-
-    public function getMemberAccountNoAttribute()
-    {
-        return $this->member->account_no;
+        return $builder->where('is_paid', 1);
     }
 }

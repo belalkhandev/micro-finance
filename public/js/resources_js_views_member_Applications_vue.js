@@ -155,7 +155,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       if (this.dpsApplications) {
-        var member_dps_applications = this.dpsApplications.filter(function (item) {
+        var member_dps_applications = this.dpsApplications.data.filter(function (item) {
           return item.member_id == _this.member_id;
         });
 

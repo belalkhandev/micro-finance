@@ -297,7 +297,7 @@ export default({
 
         filterDpsApplications() {
             if (this.dpsApplications) {
-                const member_dps_applications = this.dpsApplications.filter((item) => {
+                const member_dps_applications = this.dpsApplications.data.filter((item) => {
                     return item.member_id == this.member_id
                 });
 
