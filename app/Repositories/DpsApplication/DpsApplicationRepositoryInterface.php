@@ -5,6 +5,7 @@ namespace App\Repositories\DpsApplication;
 interface DpsApplicationRepositoryInterface
 {
     public function all();
+    public function getByPaginate($limit);
     public function store($request);
     public function update($request, $id);
     public function delete($id);

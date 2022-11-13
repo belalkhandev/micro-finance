@@ -10,7 +10,22 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function all()
     {
-        $applications = LoanApplication::latest()->get();
+        $applications = LoanApplication::with('member:id,account_no,name,photo')
+            ->latest()
+            ->get();
+
+        if ($applications->isNotEmpty()) {
+            return $applications;
+        }
+
+        return false;
+    }
+
+    public function getByPaginate($limit = 20)
+    {
+        $applications = LoanApplication::with('member:id,account_no,name,photo')
+            ->latest()
+            ->paginate($limit);
 
         if ($applications->isNotEmpty()) {
             return $applications;

@@ -9,8 +9,6 @@ class DpsApplication extends Model
 {
     use HasFactory;
 
-    protected $appends = ['member_name', 'member_account_no'];
-
     public function transactions()
     {
         return $this->hasMany(DpsTransaction::class, 'dps_application_id', 'id');
@@ -28,15 +26,5 @@ class DpsApplication extends Model
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');
-    }
-
-    public function getMemberNameAttribute()
-    {
-        return $this->member->name;
-    }
-
-    public function getMemberAccountNoAttribute()
-    {
-        return $this->member->account_no;
     }
 }

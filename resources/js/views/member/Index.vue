@@ -110,10 +110,6 @@ export default ({
             deleteMember: 'member/deleteMember'
         }),
 
-        showEditModal(data) {
-
-        },
-
         deleteConfirm(member_id) {
             if (!this.perms.find(perm => {
                 return perm.name === 'delete_member'
@@ -149,13 +145,6 @@ export default ({
                     })
                 }
             });
-        },
-
-        setPages() {
-            let numberOfPages = Math.ceil(this.members ? this.members.length / this.per_page : 0);
-            for (let index = 1; index <= numberOfPages; index++) {
-                this.pages.push(index);
-            }
         },
 
         getResults(page = 1) {

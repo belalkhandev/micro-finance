@@ -24,9 +24,9 @@ class DpsController extends Controller
      */
     public function index()
     {
-        $applications = $this->dps->all();
+        $applications = $this->dps->getByPaginate(20);
 
-        if ($applications) {
+        if ($applications->isNotEmpty()) {
             return response()->json([
                 'status' => true,
                 'applications' => $applications,

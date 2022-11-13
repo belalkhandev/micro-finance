@@ -70,6 +70,14 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    <!-- pagination -->
+                    <div class="pagination mb-2" v-if="filterApplications">
+                        <p class="pagination-data">
+                            Page {{ filterApplications.current_page }} Showing  {{ filterApplications.from }} to {{ filterApplications.to }} of {{ filterApplications.total }} Data
+                        </p>
+                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="6"/>
+                    </div>
+                    <!-- end pagination -->
                     <table class="table">
                         <thead>
                         <tr>
@@ -87,16 +95,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-if="filterApplications" v-for="(application, i) in filterApplications" :key="i">
-                            <td>{{ i+1 }}</td>
-                            <td>{{ application.member_account_no }}</td>
+                        <tr v-if="filterApplications && filterApplications.data" v-for="(application, i) in filterApplications.data" :key="i">
+                            <td>{{ filterApplications.from+i }}</td>
+                            <td>{{ application.member.account_no }}</td>
                             <td>
                                 <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
-                                    {{ application.member_name }}
+                                    {{ application.member.name }}
                                 </router-link>
                             </td>
                             <td>
-                                <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
+                                <img :src="application.member.photo ? application.member.photo : ''" alt="" class="w-8 rounded">
                             </td>
                             <td>{{ numberFormat(application.loan_amount) }}</td>
                             <td>{{ numberFormat(application.service_amount) }} ({{ application.service }}%)</td>
@@ -119,27 +127,11 @@
                 </div>
                 <div class="box-footer text-right">
                     <!-- pagination -->
-                    <div class="pagination" v-if="applications && applications.length > per_page">
+                    <div class="pagination" v-if="filterApplications">
                         <p class="pagination-data">
-                            Page no {{ page }} Show {{ page === pages.length ? (applications ? applications.length : 0) : page*(filterApplications ? filterApplications.length : 0) }} of {{ applications ? applications.length : 0 }} Data
+                            Page {{ filterApplications.current_page }} Showing  {{ filterApplications.from }} to {{ filterApplications.to }} of {{ filterApplications.total }} Data
                         </p>
-                        <ul>
-                            <li class="page-item">
-                                <button class="page-link" @click="page = 1" data-toggle="tooltip" data-placement="bottom" title="First Page"><i class="bx bx-chevrons-left"></i></button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link" v-if="page !== 1" @click="page--" data-toggle="tooltip" data-placement="bottom" title=""><i class="bx bx-chevron-left"></i></button>
-                            </li>
-                            <li class="page-item">
-                                <button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+10)" :class="page===pageNumber ? 'active': ''" :key="pageNumber" @click="page = pageNumber"> {{ pageNumber}} </button>
-                            </li>
-                            <li class="page-item">
-                                <button type="button" @click="page++" v-if="page < pages.length" class="page-link"> <i class="bx bx-chevron-right"></i> </button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link"  @click="page = pages.length" data-toggle="tooltip" data-placement="bottom" title="Last Page"><i class="bx bx-chevrons-right"></i></button>
-                            </li>
-                        </ul>
+                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="20"/>
                     </div>
                     <!-- end pagination -->
                 </div>
@@ -151,10 +143,13 @@
 <script>
 import { mapGetters, mapActions } from "vuex";
 import {helpers} from "../../../mixin";
+import LaravelVuePagination from 'laravel-vue-pagination';
 
 export default ({
     name: "Index",
-    components: {},
+    components: {
+        'Pagination': LaravelVuePagination
+    },
 
     data () {
         return {
@@ -171,20 +166,7 @@ export default ({
         }),
 
         filterApplications() {
-            if (this.applications) {
-                if (this.search_key) {
-                    return this.paginate(this.applications.filter(
-                        appplication =>
-                            appplication.member.account_no.toLowerCase().includes(this.search_key.toLowerCase()) ||
-                            appplication.member.phone.toLowerCase().includes(this.search_key.toLowerCase())
-                    ));
-                } else {
-                    return this.paginate(this.applications);
-                }
-            }
-
-
-            return null;
+            return this.applications;
         }
     },
 
@@ -223,29 +205,16 @@ export default ({
             } else {
                 this.message403()
             }
-
-
         },
 
-        // pagination set pages
-        setPages() {
-            let numberOfPages = Math.ceil(this.applications ? this.applications.length / this.per_page : 0);
-            for (let index = 1; index <= numberOfPages; index++) {
-                this.pages.push(index);
-            }
-        },
+        getResults(page = 1) {
+            this.getApplications(page);
+        }
     },
 
     mounted() {
-        if (!this.applications) {
-            this.getApplications().then(() => {
-                this.setPages();
-            });
-        }
-
-        this.setPages();
-
         this.getLoanStatistics();
+        this.getResults(1);
     }
 
 

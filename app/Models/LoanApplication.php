@@ -9,11 +9,14 @@ class LoanApplication extends Model
 {
     use HasFactory;
 
-    protected $appends = ['member_name', 'member_account_no', 'paid_amount'];
-
     public function transactions()
     {
         return $this->hasMany(LoanTransaction::class, 'loan_application_id', 'id');
+    }
+
+    public function paidTransactions()
+    {
+        return $this->hasMany(LoanTransaction::class, 'loan_application_id', 'id')->where('is_paid', 1);
     }
 
 
@@ -29,20 +32,5 @@ class LoanApplication extends Model
     public function member()
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');
-    }
-
-    public function getMemberNameAttribute()
-    {
-        return $this->member->name;
-    }
-
-    public function getMemberAccountNoAttribute()
-    {
-        return $this->member->account_no;
-    }
-
-    public function getPaidAmountAttribute()
-    {
-        return $this->transactionsTotalAmount();
     }
 }

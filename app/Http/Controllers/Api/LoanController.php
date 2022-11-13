@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
 use App\Repositories\LoanApplication\LoanApplicationRepositoryInterface;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -21,13 +22,13 @@ class LoanController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
-        $applications = $this->loan->all();
+        $applications = $this->loan->getByPaginate();
 
-        if ($applications) {
+        if ($applications->isNotEmpty()) {
             return response()->json([
                 'status' => true,
                 'applications' => $applications,
@@ -45,7 +46,7 @@ class LoanController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function memberApplications($member_id)
     {
@@ -90,7 +91,7 @@ class LoanController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(Request $request)
     {
@@ -155,7 +156,7 @@ class LoanController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -190,7 +191,7 @@ class LoanController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(Request $request, $id)
     {
@@ -256,7 +257,7 @@ class LoanController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy($id)
     {

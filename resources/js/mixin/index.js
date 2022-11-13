@@ -70,10 +70,11 @@ export const helpers = {
         },
 
         ucFirst(val) {
-            if (val) {
-                let str = val.replaceAll('_', ' ');
-                return str.charAt(0).toUpperCase() + str.slice(1);
+            if (!val) {
+                return false;
             }
+            let str = val.replaceAll('_', ' ');
+            return str.charAt(0).toUpperCase() + str.slice(1);
         },
 
         // pagination make

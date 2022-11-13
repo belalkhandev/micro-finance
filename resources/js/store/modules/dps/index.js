@@ -27,30 +27,31 @@ export default {
         },
 
         SET_APPLICATION(state, application) {
-            if (state.applications) {
-                state.applications.unshift(application)
+            if (state.applications.data) {
+                state.applications.data.unshift(application)
             }else {
-                state.applications = [application]
+                state.applications.data = [application]
             }
         },
 
         UPDATE_APPLICATION(state, application) {
-            const item = state.applications.find(item => item.id === application.id)
+            const item = state.applications.data.find(item => item.id === application.id)
             Object.assign(item, application)
         },
 
         DELETE_APPLICATION(state, item_id) {
-            const application  = state.applications.find(item => item.id == item_id)
+            const application  = state.applications.data.find(item => item.id == item_id)
             if (application) {
-                state.applications.splice(state.applications.indexOf(application), 1)
+                state.applications.splice(state.applications.data.indexOf(application), 1)
             }
         },
     },
 
     actions: {
         //application actions
-        async getApplications({ commit }) {
-            const res = await axios.get('application/dps/list')
+        async getApplications({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('application/dps/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_APPLICATIONS', res.data.applications)
