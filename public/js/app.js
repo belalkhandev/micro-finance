@@ -27565,6 +27565,10 @@ var helpers = {
       return this.is_loan_open_search = !this.is_loan_open_search;
     },
     ucFirst: function ucFirst(val) {
+      if (!val) {
+        return false;
+      }
+
       var str = val.replaceAll('_', ' ');
       return str.charAt(0).toUpperCase() + str.slice(1);
     },
@@ -29586,49 +29590,50 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.loan = loan;
     },
     SET_APPLICATION: function SET_APPLICATION(state, application) {
-      if (state.applications) {
-        state.applications.unshift(application);
+      if (state.applications.data) {
+        state.applications.data.unshift(application);
       } else {
-        state.applications = [application];
+        state.applications.data = [application];
       }
     },
     UPDATE_APPLICATION: function UPDATE_APPLICATION(state, application) {
-      var item = state.applications.find(function (item) {
+      var item = state.applications.data.find(function (item) {
         return item.id === application.id;
       });
       Object.assign(item, application);
     },
     DELETE_APPLICATION: function DELETE_APPLICATION(state, item_id) {
-      var application = state.applications.find(function (item) {
+      var application = state.applications.data.find(function (item) {
         return item.id == item_id;
       });
 
       if (application) {
-        state.applications.splice(state.applications.indexOf(application), 1);
+        state.applications.data.splice(state.applications.data.indexOf(application), 1);
       }
     }
   },
   actions: {
     //application actions
-    getApplications: function getApplications(_ref) {
+    getApplications: function getApplications(_ref, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var commit, res;
+        var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 commit = _ref.commit;
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/list');
+                page_no = page && page != 'undefined' ? page : 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/list?page=' + page_no);
 
-              case 3:
+              case 4:
                 res = _context.sent;
 
                 if (res.data.status) {
                   commit('SET_APPLICATIONS', res.data.applications);
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }

@@ -40,7 +40,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getMembers: 'member/getMembers',
     deleteMember: 'member/deleteMember'
   })), {}, {
-    showEditModal: function showEditModal(data) {},
     deleteConfirm: function deleteConfirm(member_id) {
       var _this = this;
 
@@ -78,13 +77,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           });
         }
       });
-    },
-    setPages: function setPages() {
-      var numberOfPages = Math.ceil(this.members ? this.members.length / this.per_page : 0);
-
-      for (var index = 1; index <= numberOfPages; index++) {
-        this.pages.push(index);
-      }
     },
     getResults: function getResults() {
       var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
