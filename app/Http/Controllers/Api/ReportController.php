@@ -41,9 +41,9 @@ class ReportController extends Controller
     }
 
 
-    public function allLoanReport()
+    public function allLoanReport(Request $request)
     {
-        $applications = $this->report->allLoan();
+        $applications = $this->report->allLoan($request);
 
         if ($applications) {
             return response()->json([

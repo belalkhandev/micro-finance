@@ -188,7 +188,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         savings_type: "",
         remarks: ""
       },
-      pre_balance: this.member.savings_deposit - this.member.savings_withdraw,
+      pre_balance: this.member.deposit_savings_sum_amount - this.member.withdraw_savings_sum_amount,
       new_balance: 0,
       errors: null,
       error: null
@@ -1724,15 +1724,17 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "data-toggle": "tooltip",
     "data-placement": "bottom",
     title: "Last Page"
-  }, _hoisted_56)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end pagination ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" savings create modal "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_create_savings, {
+  }, _hoisted_56)])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" end pagination ")])])])])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" savings create modal "), _ctx.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_create_savings, {
+    key: 1,
     member: _ctx.member
   }, null, 8
   /* PROPS */
-  , ["member"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MemberSavingsTransaction, {
+  , ["member"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.member ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_MemberSavingsTransaction, {
+    key: 2,
     member_id: _ctx.member.id
   }, null, 8
   /* PROPS */
-  , ["member_id"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" savings edit modal ")], 64
+  , ["member_id"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" savings edit modal ")], 64
   /* STABLE_FRAGMENT */
   );
 }

@@ -9,15 +9,25 @@ use Carbon\Carbon;
 
 class ReportRepository implements ReportRepositoryInterface {
 
-    public function allLoan($limit = 20)
+    public function allLoan($request, $limit = 20)
     {
         $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
-            ->where('is_paid', 1)
-            ->orderBy('member_id', 'ASC')
-            ->paginate($limit);
+            ->where('is_paid', 1);
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->latest()->paginate($limit);
+
 
         $transactions = array_merge($transactions->toArray(), [
-            'total_loan_amount' => $this->totalLoanTransactions()
+            'total_loan_amount' => $this->totalLoanTransactions($request)
         ]);
 
         if ($transactions) {
@@ -194,11 +204,23 @@ class ReportRepository implements ReportRepositoryInterface {
             ->sum('amount'), 2);
     }
 
-    private function totalLoanTransactions()
+    private function totalLoanTransactions($request): float
     {
-        return round(LoanTransaction::query()
-            ->where('is_paid', 1)
-            ->sum('amount'), 2);
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 1);
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->sum('amount');
+
+        return round($transactions, 2);
     }
 
 }

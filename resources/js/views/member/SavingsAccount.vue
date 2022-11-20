@@ -136,8 +136,8 @@
         </div>
     </div>
     <!-- savings create modal -->
-    <create-savings :member="member" />
-    <MemberSavingsTransaction :member_id="member.id"/>
+    <create-savings v-if="member" :member="member" />
+    <MemberSavingsTransaction v-if="member" :member_id="member.id"/>
 
     <!-- savings edit modal -->
 </template>

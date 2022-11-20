@@ -100,6 +100,16 @@ export default {
             }
         },
 
+        async filterLoanTransactions({ commit  }, formData) {
+            console.log(formData)
+            const res = await axios.get('report/loan', {
+                params: formData
+            })
+            if (res.data.status) {
+                commit('SET_LOAN_TRANSACTIONS', res.data.applications)
+            }
+        },
+
         async getCurrentDpsTransactions({ commit }) {
             const res = await axios.get('report/dps/today')
             if (res.data.status) {

@@ -69,7 +69,10 @@ class MemberRepository implements MemberRepositoryInterface {
 
     public function getByMemberId($memberId)
     {
-        $member = Member::with('nominee', 'group')->find($memberId);
+        $member = Member::with('nominee', 'group')
+            ->withSum('depositSavings', 'amount')
+            ->withSum('withdrawSavings', 'amount')
+            ->find($memberId);
 
         if ($member) {
             return $member;
