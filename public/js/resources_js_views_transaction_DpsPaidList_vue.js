@@ -180,8 +180,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (this.transaction) {
         this.form.transaction_id = this.transaction.id;
         this.form.transaction_no = this.transaction.transaction_no;
-        this.form.member = this.transaction.member_name;
-        this.form.account_no = this.transaction.member_account_no;
+        this.form.member = this.transaction.member.name;
+        this.form.account_no = this.transaction.member.account_no;
         this.form.transaction_date = this.transaction.transaction_date;
         this.form.amount = this.transaction.amount;
         this.form.balance = this.transaction.balance;
@@ -429,9 +429,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       "class": "text-primary"
     }, {
       "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(transaction.member_name) + " ", 1
+        return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(transaction.member.name) + " ", 1
         /* TEXT */
-        ), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(transaction.member_account_no), 1
+        ), _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(transaction.member.account_no), 1
         /* TEXT */
         )];
       }),

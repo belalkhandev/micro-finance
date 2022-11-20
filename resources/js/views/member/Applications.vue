@@ -302,12 +302,12 @@ export default({
                 });
 
                 if (this.search_date ) {
-                    return this.paginate(member_dps_applications.filter(
+                    return member_dps_applications.filter(
                         application =>
                             this.datePickerFormat(application.created_at) === this.datePickerFormat(this.search_date)
-                    ));
+                    );
                 } else {
-                    return this.paginate(member_dps_applications);
+                    return member_dps_applications;
                 }
             }
 
@@ -315,16 +315,16 @@ export default({
         },
 
         filterLoanApplications() {
-            if (this.loan && this.loan.applications) {
-                const member_loan_applications = this.loan.applications
+            if (this.loan && this.loan.applications.data) {
+                const member_loan_applications = this.loan.applications.data
 
                 if (this.search_loan_date ) {
-                    return this.paginate(member_loan_applications.filter(
+                    member_loan_applications.filter(
                         application =>
                             this.datePickerFormat(application.created_at) === this.datePickerFormat(this.search_date)
-                    ));
+                    );
                 } else {
-                    return this.paginate(member_loan_applications);
+                    return member_loan_applications;
                 }
             }
 

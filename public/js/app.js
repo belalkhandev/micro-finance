@@ -30869,25 +30869,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   actions: {
-    getDpsTransactions: function getDpsTransactions(_ref) {
+    getDpsTransactions: function getDpsTransactions(_ref, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
-        var commit, res;
+        var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 commit = _ref.commit;
-                _context.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('report/dps');
+                page_no = page && page != 'undefined' ? page : 1;
+                _context.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('report/dps?page=' + page_no);
 
-              case 3:
+              case 4:
                 res = _context.sent;
 
                 if (res.data.status) {
                   commit('SET_DPS_TRANSACTIONS', res.data.applications);
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -30895,25 +30896,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getLoanTransactions: function getLoanTransactions(_ref2) {
+    getLoanTransactions: function getLoanTransactions(_ref2, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var commit, res;
+        var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 commit = _ref2.commit;
-                _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('report/loan');
+                page_no = page && page != 'undefined' ? page : 1;
+                _context2.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('report/loan?page=' + page_no);
 
-              case 3:
+              case 4:
                 res = _context2.sent;
 
                 if (res.data.status) {
                   commit('SET_LOAN_TRANSACTIONS', res.data.applications);
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
@@ -31382,8 +31384,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.loan_unpaid_transactions = loan_transactions;
     },
     UPDATE_DPS_TR: function UPDATE_DPS_TR(state, dps_transaction) {
-      if (state.dps_transactions) {
-        var item = state.dps_transactions.data.find(function (item) {
+      if (state.dps_unpaid_transactions.data) {
+        var item = state.dps_unpaid_transactions.data.find(function (item) {
           return item.id === dps_transaction.id;
         });
         Object.assign(item, dps_transaction);
@@ -31398,8 +31400,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     UPDATE_LOAN_TR: function UPDATE_LOAN_TR(state, loan_transaction) {
-      if (state.loan_transactions.data) {
-        var item = state.loan_transactions.data.find(function (item) {
+      if (state.loan_unpaid_transactions.data) {
+        var item = state.loan_unpaid_transactions.data.find(function (item) {
           return item.id === loan_transaction.id;
         });
         Object.assign(item, loan_transaction);

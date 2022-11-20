@@ -62,8 +62,8 @@
                                 <router-link :to="{name: 'MemberShow', params: {
                                     member_id: transaction.member_id
                                 }}" class="text-primary">
-                                    {{ transaction.member_name }} <br>
-                                    {{ transaction.member_account_no }}
+                                    {{ transaction.member.name }} <br>
+                                    {{ transaction.member.account_no }}
                                 </router-link>
                             </td>
                             <td>{{ transaction.application.dps_type }} <br> {{ numberFormat(transaction.amount) }}</td>

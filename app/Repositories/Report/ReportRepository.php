@@ -9,14 +9,18 @@ use Carbon\Carbon;
 
 class ReportRepository implements ReportRepositoryInterface {
 
-    public function allLoan()
+    public function allLoan($limit = 20)
     {
-        $transactions = LoanTransaction::with('application')
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1)
             ->orderBy('member_id', 'ASC')
-            ->get();
+            ->paginate($limit);
 
-        if ($transactions->isNotEmpty()) {
+        $transactions = array_merge($transactions->toArray(), [
+            'total_loan_amount' => $this->totalLoanTransactions()
+        ]);
+
+        if ($transactions) {
             return $transactions;
         }
 
@@ -25,14 +29,15 @@ class ReportRepository implements ReportRepositoryInterface {
 
     public function memberLoan($request, $memberId)
     {
-        $transactions = LoanTransaction::with('application')
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1)
             ->where('member_id', $memberId);
 
         if ($request->from_date && $request->to_date) {
             $from_date = databaseFormattedDate($request->from_date);
             $to_date = databaseFormattedDate($request->to_date);
-            $transactions = $transactions->whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date);
+            $transactions = $transactions->whereDate('created_at', '>=', $from_date)
+                ->whereDate('created_at', '<=', $to_date);
         }
 
         $transactions = $transactions->get();
@@ -47,19 +52,10 @@ class ReportRepository implements ReportRepositoryInterface {
     public function allCurrentLoan()
     {
         $today = databaseFormattedDate(Carbon::today());
-        $transactions = LoanTransaction::with('application')->whereDate('transaction_date', '=',$today )->orderBy('is_paid', 'ASC')->latest()->get();
-
-        if ($transactions->isNotEmpty()) {
-            return $transactions;
-        }
-
-        return false;
-    }
-
-    public function allDps()
-    {
-        $transactions = DpsTransaction::with('application')
-            ->where('is_paid', 1)
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->whereDate('transaction_date', '=', $today )
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
             ->get();
 
         if ($transactions->isNotEmpty()) {
@@ -69,16 +65,35 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
+    public function allDps($limit = 20)
+    {
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 1)
+            ->paginate($limit);
+
+        $transactions = array_merge($transactions->toArray(), [
+            'total_dps_amount' => $this->totalDpsTransactions()
+        ]);
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
     public function memberDps($request, $memberId)
     {
-        $transactions = DpsTransaction::with('application')
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1)
             ->where('member_id', $memberId);
 
         if ($request->from_date && $request->to_date) {
             $from_date = databaseFormattedDate($request->from_date);
             $to_date = databaseFormattedDate($request->to_date);
-            $transactions = $transactions->whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date);
+            $transactions = $transactions
+                ->whereDate('created_at', '>=', $from_date)
+                ->whereDate('created_at', '<=', $to_date);
         }
 
         $transactions = $transactions->get();
@@ -93,7 +108,12 @@ class ReportRepository implements ReportRepositoryInterface {
     public function allCurrentDps()
     {
         $today = databaseFormattedDate(Carbon::today());
-        $transactions = DpsTransaction::with('application')->whereDate('transaction_date', '=',$today )->orderBy('is_paid', 'ASC')->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->whereDate('transaction_date', '=',$today )
+            ->paid()
+            ->orderBy('is_paid', 'ASC')
+            ->latest()
+            ->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -104,7 +124,7 @@ class ReportRepository implements ReportRepositoryInterface {
 
     public function allPaidDps()
     {
-        $transactions = DpsTransaction::with('application')->where('is_paid', true)->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')->where('is_paid', true)->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -115,7 +135,7 @@ class ReportRepository implements ReportRepositoryInterface {
 
     public function allDueDps()
     {
-        $transactions = DpsTransaction::with('application')->where('is_paid', false)->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')->where('is_paid', false)->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -126,7 +146,8 @@ class ReportRepository implements ReportRepositoryInterface {
 
     public function allPaidLoan()
     {
-        $transactions = DpsTransaction::with('application')->where('is_paid', true)->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', true)->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -137,7 +158,8 @@ class ReportRepository implements ReportRepositoryInterface {
 
     public function allDueLoan()
     {
-        $transactions = DpsTransaction::with('application')->where('is_paid', false)->latest()->get();
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', false)->latest()->get();
 
         if ($transactions->isNotEmpty()) {
             return $transactions;
@@ -153,7 +175,8 @@ class ReportRepository implements ReportRepositoryInterface {
         if ($request->from_date && $request->to_date) {
             $from_date = databaseFormattedDate($request->from_date);
             $to_date = databaseFormattedDate($request->to_date);
-            $transactions = $transactions->whereDate('created_at', '>=', $from_date)->whereDate('created_at', '<=', $to_date);
+            $transactions = $transactions->whereDate('created_at', '>=', $from_date)
+                ->whereDate('created_at', '<=', $to_date);
         }
         $transactions =$transactions->get();
 
@@ -162,6 +185,20 @@ class ReportRepository implements ReportRepositoryInterface {
         }
 
         return false;
+    }
+
+    private function totalDpsTransactions()
+    {
+        return round(DpsTransaction::query()
+            ->where('is_paid', 1)
+            ->sum('amount'), 2);
+    }
+
+    private function totalLoanTransactions()
+    {
+        return round(LoanTransaction::query()
+            ->where('is_paid', 1)
+            ->sum('amount'), 2);
     }
 
 }

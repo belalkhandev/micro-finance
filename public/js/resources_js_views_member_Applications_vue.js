@@ -160,11 +160,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         if (this.search_date) {
-          return this.paginate(member_dps_applications.filter(function (application) {
+          return member_dps_applications.filter(function (application) {
             return _this.datePickerFormat(application.created_at) === _this.datePickerFormat(_this.search_date);
-          }));
+          });
         } else {
-          return this.paginate(member_dps_applications);
+          return member_dps_applications;
         }
       }
 
@@ -173,15 +173,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     filterLoanApplications: function filterLoanApplications() {
       var _this2 = this;
 
-      if (this.loan && this.loan.applications) {
-        var member_loan_applications = this.loan.applications;
+      if (this.loan && this.loan.applications.data) {
+        var member_loan_applications = this.loan.applications.data;
 
         if (this.search_loan_date) {
-          return this.paginate(member_loan_applications.filter(function (application) {
+          member_loan_applications.filter(function (application) {
             return _this2.datePickerFormat(application.created_at) === _this2.datePickerFormat(_this2.search_date);
-          }));
+          });
         } else {
-          return this.paginate(member_loan_applications);
+          return member_loan_applications;
         }
       }
 

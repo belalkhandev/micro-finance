@@ -65,8 +65,8 @@ export default {
         },
 
         UPDATE_DPS_TR(state, dps_transaction) {
-            if (state.dps_transactions) {
-                const item = state.dps_transactions.data.find(item => item.id === dps_transaction.id)
+            if (state.dps_unpaid_transactions.data) {
+                const item = state.dps_unpaid_transactions.data.find(item => item.id === dps_transaction.id)
                 Object.assign(item, dps_transaction)
             }
 
@@ -78,8 +78,8 @@ export default {
         },
 
         UPDATE_LOAN_TR(state, loan_transaction) {
-            if (state.loan_transactions.data) {
-                const item = state.loan_transactions.data.find(item => item.id === loan_transaction.id)
+            if (state.loan_unpaid_transactions.data) {
+                const item = state.loan_unpaid_transactions.data.find(item => item.id === loan_transaction.id)
                 Object.assign(item, loan_transaction)
             }
 
