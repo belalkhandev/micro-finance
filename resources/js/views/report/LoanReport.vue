@@ -10,7 +10,7 @@
                 </div>
                 <div class="widget-body" v-if="filterTransactions">
                     <router-link to="#">
-                        <h3>{{ filterTransactions.total_loan_amount }}</h3>
+                        <h3>{{ numberFormat(filterTransactions.total_loan_amount) }}</h3>
                     </router-link>
                 </div>
             </div>
@@ -224,8 +224,9 @@ export default ({
             if (!this.is_filter_pagination) {
                 this.getLoanTransactions(page);
             } else {
-                this.form.page = page;
-                this.filterLoanTransactions(this.form)
+                let formData = this.form;
+                formData.page = page
+                this.filterLoanTransactions(formData)
             }
         },
 

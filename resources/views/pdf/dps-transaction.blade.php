@@ -44,8 +44,8 @@
                         <tr>
                             <td>{{ $key+1 }}</td>
                             <td>
-                                <span class="bn-font">{{ $transaction->member_name }}</span> <br>
-                                {{ 'Acc No: '. $transaction->member_account_no }}
+                                <span class="bn-font">{{ $transaction->member->name }}</span> <br>
+                                {{ 'AC No: '. $transaction->member->account_no }}
                             </td>
                             <td>
                                 {{ ucfirst($transaction->application->dps_type) }}

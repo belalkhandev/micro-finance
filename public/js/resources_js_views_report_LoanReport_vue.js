@@ -99,8 +99,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       if (!this.is_filter_pagination) {
         this.getLoanTransactions(page);
       } else {
-        this.form.page = page;
-        this.filterLoanTransactions(this.form);
+        var formData = this.form;
+        formData.page = page;
+        this.filterLoanTransactions(formData);
       }
     },
     showMemberList: function showMemberList() {
@@ -468,7 +469,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     to: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($options.filterTransactions.total_loan_amount), 1
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.numberFormat($options.filterTransactions.total_loan_amount)), 1
       /* TEXT */
       )];
     }),

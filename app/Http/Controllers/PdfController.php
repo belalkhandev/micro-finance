@@ -29,9 +29,9 @@ class PdfController extends Controller
 
     }
 
-    public function allDps()
+    public function allDps(Request $request)
     {
-        $applications = $this->report->allDps();
+        $applications = $this->report->allDpsDownload($request);
 
         $data =[
             'transactions'=> $applications,
@@ -74,9 +74,9 @@ class PdfController extends Controller
         ])->stream('loan-transactions-'.$member->account_no.'.pdf');
     }
 
-    public function allLoan()
+    public function allLoan(Request $request)
     {
-        $applications = $this->report->allLoan();
+        $applications = $this->report->allLoanDownload($request);
 
         $data =[
             'transactions'=> $applications,

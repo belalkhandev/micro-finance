@@ -21,9 +21,9 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function allDpsReport()
+    public function allDpsReport(Request $request)
     {
-        $applications = $this->report->allDps();
+        $applications = $this->report->allDps($request);
 
         if ($applications) {
             return response()->json([

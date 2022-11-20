@@ -92,6 +92,17 @@ export default {
             }
         },
 
+        async filterDpsTransactions({ commit }, formData) {
+            const res = await axios.get('report/dps', {
+                params: formData
+            })
+            if (res.data.status) {
+                commit('SET_DPS_TRANSACTIONS', res.data.applications)
+            } else {
+                commit('SET_DPS_TRANSACTIONS', null)
+            }
+        },
+
         async getLoanTransactions({ commit  }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('report/loan?page='+page_no)
@@ -101,12 +112,13 @@ export default {
         },
 
         async filterLoanTransactions({ commit  }, formData) {
-            console.log(formData)
             const res = await axios.get('report/loan', {
                 params: formData
             })
             if (res.data.status) {
                 commit('SET_LOAN_TRANSACTIONS', res.data.applications)
+            } else {
+                commit('SET_LOAN_TRANSACTIONS', null)
             }
         },
 
