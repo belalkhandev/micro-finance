@@ -170,9 +170,9 @@ class TransactionController extends Controller
     /*
      * All load transaction list
      * */
-    public function loanTransactionList()
+    public function loanTransactionList(Request $request)
     {
-        $loan_trs = $this->loan->getByPaginate(15);
+        $loan_trs = $this->loan->getByPaginate($request, 15);
 
         if ($loan_trs) {
             return response()->json([

@@ -165,6 +165,18 @@ export default {
             }
         },
 
+        async filterLoanTransactions({ commit }, formData) {
+            const res = await axios.get('transaction/loan/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions)
+            } else {
+                commit('SET_LOAN_TRANSACTIONS', null)
+            }
+        },
+
         async getLoanUnpaidTransactions({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('transaction/loan/unpaid/list?page='+page_no)
