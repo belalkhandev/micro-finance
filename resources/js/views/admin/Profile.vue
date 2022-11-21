@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="box">
                 <div class="box-header bg-indigo-400">
                     <div class="box-title">
@@ -76,23 +76,65 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-5" v-if="authUser && authUser.role_name === 'superadmin'">
+            <div class="box">
+                <div class="box-header bg-zinc-400">
+                    <div class="box-title">
+                        <h5 class="text-white">Password & Security: Set New Password</h5>
+                    </div>
+                </div>
+                <form @submit.prevent="changePassword">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>New Password</label>
+                            <input type="password" v-model="form.password" placeholder="New password" class="form-control">
+                            <span class="text-danger text-sm" v-if="errors">{{ errors.password ? errors.password[0] : '' }}</span>
+                        </div>
+                        <div class="form-group">
+                            <label>Confirm Password</label>
+                            <input type="password" v-model="form.password_confirmation" placeholder="Confirm password" class="form-control">
+                            <span class="text-danger text-sm" v-if="errors">{{ errors.password_confirmation ? errors.password_confirmation[0] : '' }}</span>
+                        </div>
+                    </div>
+                    <div class="box-footer text-right">
+                        <button type="submit" class="btn btn-sm btn-primary" id="updatePassword">
+                            <span>Reset Password</span>
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions} from 'vuex'
+import $ from "jquery";
 
 export default({
     name: 'AdminProfile',
     data() {
         return {
-            user_id: this.$route.params.admin_id
+            user_id: this.$route.params.admin_id,
+            form: {
+                user_id: this.$route.params.admin_id,
+                password:"",
+                password_confirmation:"",
+            },
+            errors: null,
+            error: null,
         }
     },
 
     computed: {
         ...mapGetters ({
-            users: 'user/users'
+            users: 'user/users',
+            authUser: 'auth/user',
+            validation_errors: 'validation_errors',
+            error_message: 'error_message',
         }),
 
         user() {
@@ -104,8 +146,38 @@ export default({
 
     methods: {
         ...mapActions({
-            getUsers: 'user/getUsers'
-        })
+            getUsers: 'user/getUsers',
+            resetPassword: 'auth/resetPassword'
+        }),
+
+        changePassword() {
+            $('#updatePassword').prop('disabled', true).addClass('submitted')
+            let formData = new FormData();
+            let inputData = this.form
+
+            Object.keys(inputData).forEach(fieldName => {
+                formData.append(fieldName, inputData[fieldName]);
+            });
+
+            this.resetPassword(formData).then(() => {
+                if (!this.validation_errors && !this.error_message) {
+                    this.errors = this.error = null;
+                    Object.assign(this.$data, this.$options.data.apply(this))
+
+                    this.$swal({
+                        icon: "success",
+                        title: "Updated!",
+                        text: "Password has been updated successfully",
+                        timer: 3000
+                    })
+                } else {
+                    this.errors = this.validation_errors
+                    this.error = this.error_message
+                }
+
+                $('#updatePassword').prop('disabled', false).removeClass('submitted')
+            })
+        }
     },
 
     mounted() {
