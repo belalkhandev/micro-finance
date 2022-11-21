@@ -65,8 +65,13 @@ export default {
         },
 
         UPDATE_DPS_TR(state, dps_transaction) {
-            if (state.dps_unpaid_transactions.data) {
+            if (state.dps_unpaid_transactions && state.dps_unpaid_transactions.data) {
                 const item = state.dps_unpaid_transactions.data.find(item => item.id === dps_transaction.id)
+                Object.assign(item, dps_transaction)
+            }
+
+            if (state.dps_transactions && state.dps_transactions.data) {
+                const item = state.dps_transactions.data.find(item => item.id === dps_transaction.id)
                 Object.assign(item, dps_transaction)
             }
 
@@ -78,8 +83,13 @@ export default {
         },
 
         UPDATE_LOAN_TR(state, loan_transaction) {
-            if (state.loan_unpaid_transactions.data) {
+            if (state.loan_unpaid_transactions && state.loan_unpaid_transactions.data) {
                 const item = state.loan_unpaid_transactions.data.find(item => item.id === loan_transaction.id)
+                Object.assign(item, loan_transaction)
+            }
+
+            if (state.loan_transactions && state.loan_transactions.data) {
+                const item = state.loan_transactions.data.find(item => item.id === loan_transaction.id)
                 Object.assign(item, loan_transaction)
             }
 
@@ -107,13 +117,24 @@ export default {
     },
 
     actions: {
-        //expense actions
         async getDpsTransactions({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('transaction/dps/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_DPS_TRANSACTIONS', res.data.dps_transactions)
+            }
+        },
+
+        async filterDpsTransactions({ commit }, formData) {
+            const res = await axios.get('transaction/dps/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_DPS_TRANSACTIONS', res.data.dps_transactions)
+            } else {
+                commit('SET_DPS_TRANSACTIONS', null)
             }
         },
 

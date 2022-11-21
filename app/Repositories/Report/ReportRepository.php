@@ -27,7 +27,9 @@ class ReportRepository implements ReportRepositoryInterface {
 
 
         $transactions = array_merge($transactions->toArray(), [
-            'total_loan_amount' => $this->totalLoanTransactions($request)
+            'total_loan_amount' => $this->totalLoanTransactions($request),
+            'total_paid_loan_amount' => $this->totalLoanTransactions($request, 'paid'),
+            'total_unpaid_loan_amount' => $this->totalLoanTransactions($request, 'unpaid')
         ]);
 
         if ($transactions) {
@@ -93,7 +95,9 @@ class ReportRepository implements ReportRepositoryInterface {
 
 
         $transactions = array_merge($transactions->toArray(), [
-            'total_dps_amount' => $this->totalDpsTransactions($request)
+            'total_dps_amount' => $this->totalDpsTransactions($request),
+            'total_paid_dps_amount' => $this->totalDpsTransactions($request, 'paid'),
+            'total_unpaid_dps_amount' => $this->totalDpsTransactions($request, 'unpaid')
         ]);
 
         if ($transactions) {
@@ -208,9 +212,15 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
-    private function totalDpsTransactions($request): float
+    private function totalDpsTransactions($request, $paidStatus = 'all'): float
     {
-        $transactions = DpsTransaction::query()->where('is_paid', 1);
+        $transactions = DpsTransaction::query();
+
+        if ($paidStatus === 'paid') {
+            $transactions = $transactions->where('is_paid', 1);
+        } else if ($paidStatus === 'unpaid') {
+            $transactions = $transactions->where('is_paid', 0);
+        }
 
         if ($request->from_date && $request->to_date) {
             $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
@@ -226,9 +236,15 @@ class ReportRepository implements ReportRepositoryInterface {
         return round($transactions, 2);
     }
 
-    private function totalLoanTransactions($request): float
+    private function totalLoanTransactions($request, $paidStatus = 'all'): float
     {
-        $transactions = LoanTransaction::query()->where('is_paid', 1);
+        $transactions = LoanTransaction::query();
+
+        if ($paidStatus === 'paid') {
+            $transactions = $transactions->where('is_paid', 1);
+        } else if ($paidStatus === 'unpaid') {
+            $transactions = $transactions->where('is_paid', 0);
+        }
 
         if ($request->from_date && $request->to_date) {
             $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))

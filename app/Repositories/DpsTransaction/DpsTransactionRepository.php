@@ -23,14 +23,29 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
-    public function getByPaginate($limit)
+    public function getByPaginate($request, $limit)
     {
-        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
-            ->orderBy('is_paid', 'ASC')
-            ->latest()
-            ->paginate($limit);
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type');
 
-        if ($transactions->isNotEmpty()) {
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->latest()->paginate($limit);
+
+        $transactions = array_merge($transactions->toArray(), [
+            'total_dps_amount' => $this->totalDpsTransactions($request),
+            'total_paid_dps_amount' => $this->totalDpsTransactions($request, 'paid'),
+            'total_unpaid_dps_amount' => $this->totalDpsTransactions($request, 'unpaid')
+        ]);
+
+
+        if ($transactions) {
             return $transactions;
         }
 
@@ -236,6 +251,30 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
     private function totalUnpaidTransactions()
     {
         return round(DpsTransaction::query()->where('is_paid', 0)->sum('amount'), 2);
+    }
+
+    private function totalDpsTransactions($request, $paidStatus = 'all'): float
+    {
+        $transactions = DpsTransaction::query();
+
+        if ($paidStatus === 'paid') {
+            $transactions = $transactions->where('is_paid', 1);
+        } else if ($paidStatus === 'unpaid') {
+            $transactions = $transactions->where('is_paid', 0);
+        }
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->sum('amount');
+
+        return round($transactions, 2);
     }
 
 }

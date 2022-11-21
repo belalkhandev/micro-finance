@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use App\Models\DpsApplication;
 use App\Repositories\DpsTransaction\DpsTransactionRepositoryInterface;
 use App\Repositories\LoanTransaction\LoanTransactionRepositoryInterface;
 use App\Repositories\Savings\SavingsRepositoryInterface;
@@ -71,9 +70,9 @@ class TransactionController extends Controller
     /*
      * all dps transaction list
      * */
-    public function dpsTransactionList()
+    public function dpsTransactionList(Request $request): \Illuminate\Http\JsonResponse
     {
-        $dps_trs = $this->dps->getByPaginate(20);
+        $dps_trs = $this->dps->getByPaginate($request, 20);
 
         if ($dps_trs) {
             return response()->json([

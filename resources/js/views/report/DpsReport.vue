@@ -1,9 +1,9 @@
 <template>
     <div class="row">
-        <div class="col-md-3">
-            <div class="widget widget-success mb-4">
+        <div class="col-md-4">
+            <div class="widget widget-primary mb-4">
                 <div class="widget-header">
-                    <h5 class="title">Total</h5>
+                    <h5 class="title">Total DPS Amount</h5>
                     <span>
                         <i class='bx bx-dollar-circle'></i>
                     </span>
@@ -15,56 +15,86 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div class="widget widget-primary">
+        <div class="col-md-4">
+            <div class="widget widget-success mb-4">
                 <div class="widget-header">
-                    <h5 class="title">Report Filter</h5>
+                    <h5 class="title">Total Paid Amount</h5>
                     <span>
-                        <i class='bx bx-filter-alt'></i>
+                        <i class='bx bx-dollar-circle'></i>
                     </span>
                 </div>
-                <div class="widget-body">
-                    <form @submit.prevent="filterSubmit">
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="member-select" :class="{open: isOpen}">
-                                    <div class="member-input" @click.prevent="showMemberList">
-                                        <input type="text" v-model="member_input_text" class="form-control" placeholder="Choose Member" readonly>
-                                        <span class="select-icon">
-                                                <i class="bx bx-chevron-down"></i>
-                                            </span>
-                                    </div>
-                                    <div class="member-list">
-                                        <div class="member-search">
-                                            <input type="text" v-model="search_key" placeholder="Search by account no, name, phone" class="form-control">
-                                            <span class="list-close" @click="closeMemberList">
-                                                    <i class="bx bx-x"></i>
-                                                </span>
-                                        </div>
-                                        <div class="members">
-                                            <div class="member text-left" v-for="(member, i) in filterMembers" :key="member.id" @click.prevent="chooseMember(member)">
-                                                <p>{{ member.account_no }} - {{ member.name }} - {{ member.phone }}</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <Datepicker v-model="from_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
-                            </div>
-                            <div class="col-md-3">
-                                <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
-                            </div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-sm btn-success">Filter</button>
-                                <button v-if="is_filter_pagination" type="button" @click.prevent="clearFilterForm" class="btn btn-sm btn-danger ml-2">Clear</button>
-                            </div>
-                        </div>
-                    </form>
+                <div class="widget-body" v-if="filterTransactions">
+                    <router-link to="#">
+                        <h3>{{ numberFormat(filterTransactions.total_paid_dps_amount) }}</h3>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-warning mb-4">
+                <div class="widget-header">
+                    <h5 class="title">Total Unpaid Amount</h5>
+                    <span>
+                        <i class='bx bx-dollar-circle'></i>
+                    </span>
+                </div>
+                <div class="widget-body" v-if="filterTransactions">
+                    <router-link to="#">
+                        <h3>{{ numberFormat(filterTransactions.total_unpaid_dps_amount) }}</h3>
+                    </router-link>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="widget widget-secondary mb-4" v-if="openFilter">
+        <div class="widget-header">
+            <h5 class="title">Report Filter</h5>
+            <span>
+                <i class='bx bx-filter-alt'></i>
+            </span>
+        </div>
+        <div class="widget-body">
+            <form @submit.prevent="filterSubmit">
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="member-select" :class="{open: isOpen}">
+                            <div class="member-input" @click.prevent="showMemberList">
+                                <input type="text" v-model="member_input_text" class="form-control" placeholder="Choose Member" readonly>
+                                <span class="select-icon">
+                                                <i class="bx bx-chevron-down"></i>
+                                            </span>
+                            </div>
+                            <div class="member-list">
+                                <div class="member-search">
+                                    <input type="text" v-model="search_key" placeholder="Search by account no, name, phone" class="form-control">
+                                    <span class="list-close" @click="closeMemberList">
+                                                    <i class="bx bx-x"></i>
+                                                </span>
+                                </div>
+                                <div class="members">
+                                    <div class="member text-left" v-for="(member, i) in filterMembers" :key="member.id" @click.prevent="chooseMember(member)">
+                                        <p>{{ member.account_no }} - {{ member.name }} - {{ member.phone }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <Datepicker v-model="from_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
+                    </div>
+                    <div class="col-md-3">
+                        <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-sm btn-success">Filter</button>
+                        <button v-if="is_filter_pagination" type="button" @click.prevent="clearFilterForm" class="btn btn-sm btn-danger ml-2">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-md-12">
             <div class="box">
@@ -73,6 +103,7 @@
                         <h4>DPS Transaction Report</h4>
                     </div>
                     <div class="box-action">
+                        <button type="button" class="btn btn-sm btn-secondary" @click="openFilter = !openFilter">Filter</button>
                         <button class="btn btn-sm btn-primary" @click="downloadReport()">Download</button>
                     </div>
                 </div>
@@ -165,7 +196,8 @@ export default ({
             to_date: '',
             member_input_text: "",
             search_key: "",
-            isOpen: false
+            isOpen: false,
+            openFilter: false
         }
     },
 
@@ -285,5 +317,9 @@ export default ({
 <style lang="css">
 .member-select .member-list {
     z-index: 999;
+}
+
+.widget .widget-body p {
+    color: #000;
 }
 </style>

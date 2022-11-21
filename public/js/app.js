@@ -31444,11 +31444,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       state.loan_unpaid_transactions = loan_transactions;
     },
     UPDATE_DPS_TR: function UPDATE_DPS_TR(state, dps_transaction) {
-      if (state.dps_unpaid_transactions.data) {
+      if (state.dps_unpaid_transactions && state.dps_unpaid_transactions.data) {
         var item = state.dps_unpaid_transactions.data.find(function (item) {
           return item.id === dps_transaction.id;
         });
         Object.assign(item, dps_transaction);
+      }
+
+      if (state.dps_transactions && state.dps_transactions.data) {
+        var _item = state.dps_transactions.data.find(function (item) {
+          return item.id === dps_transaction.id;
+        });
+
+        Object.assign(_item, dps_transaction);
       }
 
       if (_index__WEBPACK_IMPORTED_MODULE_2__["default"].getters["member/dps_transactions"]) {
@@ -31460,11 +31468,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
     },
     UPDATE_LOAN_TR: function UPDATE_LOAN_TR(state, loan_transaction) {
-      if (state.loan_unpaid_transactions.data) {
+      if (state.loan_unpaid_transactions && state.loan_unpaid_transactions.data) {
         var item = state.loan_unpaid_transactions.data.find(function (item) {
           return item.id === loan_transaction.id;
         });
         Object.assign(item, loan_transaction);
+      }
+
+      if (state.loan_transactions && state.loan_transactions.data) {
+        var _item2 = state.loan_transactions.data.find(function (item) {
+          return item.id === loan_transaction.id;
+        });
+
+        Object.assign(_item2, loan_transaction);
       }
 
       if (_index__WEBPACK_IMPORTED_MODULE_2__["default"].getters["member/loan_transactions"]) {
@@ -31495,7 +31511,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     }
   },
   actions: {
-    //expense actions
     getDpsTransactions: function getDpsTransactions(_ref, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
         var commit, page_no, res;
@@ -31523,26 +31538,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    getDpsUnpaidTransactions: function getDpsUnpaidTransactions(_ref2, page) {
+    filterDpsTransactions: function filterDpsTransactions(_ref2, formData) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-        var commit, page_no, res;
+        var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 commit = _ref2.commit;
-                page_no = page && page != 'undefined' ? page : 1;
-                _context2.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/dps/unpaid/list?page=' + page_no);
+                _context2.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/dps/list', {
+                  params: formData
+                });
 
-              case 4:
+              case 3:
                 res = _context2.sent;
 
                 if (res.data.status) {
-                  commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.dps_transactions);
+                  commit('SET_DPS_TRANSACTIONS', res.data.dps_transactions);
+                } else {
+                  commit('SET_DPS_TRANSACTIONS', null);
                 }
 
-              case 6:
+              case 5:
               case "end":
                 return _context2.stop();
             }
@@ -31550,7 +31568,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    getDpsPaidTransactions: function getDpsPaidTransactions(_ref3, page) {
+    getDpsUnpaidTransactions: function getDpsUnpaidTransactions(_ref3, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -31560,13 +31578,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 commit = _ref3.commit;
                 page_no = page && page != 'undefined' ? page : 1;
                 _context3.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/dps/paid/list?page=' + page_no);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/dps/unpaid/list?page=' + page_no);
 
               case 4:
                 res = _context3.sent;
 
                 if (res.data.status) {
-                  commit('SET_DPS_PAID_TRANSACTIONS', res.data.dps_transactions);
+                  commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.dps_transactions);
                 }
 
               case 6:
@@ -31577,7 +31595,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    getLoanTransactions: function getLoanTransactions(_ref4, page) {
+    getDpsPaidTransactions: function getDpsPaidTransactions(_ref4, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -31587,13 +31605,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 commit = _ref4.commit;
                 page_no = page && page != 'undefined' ? page : 1;
                 _context4.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/list?page=' + page_no);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/dps/paid/list?page=' + page_no);
 
               case 4:
                 res = _context4.sent;
 
                 if (res.data.status) {
-                  commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions);
+                  commit('SET_DPS_PAID_TRANSACTIONS', res.data.dps_transactions);
                 }
 
               case 6:
@@ -31604,7 +31622,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    getLoanUnpaidTransactions: function getLoanUnpaidTransactions(_ref5, page) {
+    getLoanTransactions: function getLoanTransactions(_ref5, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -31614,13 +31632,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 commit = _ref5.commit;
                 page_no = page && page != 'undefined' ? page : 1;
                 _context5.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/unpaid/list?page=' + page_no);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/list?page=' + page_no);
 
               case 4:
                 res = _context5.sent;
 
                 if (res.data.status) {
-                  commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.loan_transactions);
+                  commit('SET_LOAN_TRANSACTIONS', res.data.loan_transactions);
                 }
 
               case 6:
@@ -31631,7 +31649,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
-    getLoanPaidTransactions: function getLoanPaidTransactions(_ref6, page) {
+    getLoanUnpaidTransactions: function getLoanUnpaidTransactions(_ref6, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
         var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
@@ -31641,13 +31659,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 commit = _ref6.commit;
                 page_no = page && page != 'undefined' ? page : 1;
                 _context6.next = 4;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/paid/list?page=' + page_no);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/unpaid/list?page=' + page_no);
 
               case 4:
                 res = _context6.sent;
 
                 if (res.data.status) {
-                  commit('SET_LOAN_PAID_TRANSACTIONS', res.data.loan_transactions);
+                  commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.loan_transactions);
                 }
 
               case 6:
@@ -31658,41 +31676,26 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee6);
       }))();
     },
-    generateTransaction: function generateTransaction(_ref7, formdata) {
+    getLoanPaidTransactions: function getLoanPaidTransactions(_ref7, page) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
-        var commit, res;
+        var commit, page_no, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
                 commit = _ref7.commit;
-                _context7.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/generate', formdata);
+                page_no = page && page != 'undefined' ? page : 1;
+                _context7.next = 4;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('transaction/loan/paid/list?page=' + page_no);
 
-              case 3:
+              case 4:
                 res = _context7.sent;
 
                 if (res.data.status) {
-                  commit('SET_VALIDATION_ERRORS', null, {
-                    root: true
-                  });
-                  commit('SET_ERROR_MESSAGE', null, {
-                    root: true
-                  });
-                } else {
-                  if (!res.data.status) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
-                      root: true
-                    });
-                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
-                      root: true
-                    });
-                  } else {
-                    console.log('Something went wrong');
-                  }
+                  commit('SET_LOAN_PAID_TRANSACTIONS', res.data.loan_transactions);
                 }
 
-              case 5:
+              case 6:
               case "end":
                 return _context7.stop();
             }
@@ -31700,7 +31703,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee7);
       }))();
     },
-    collectDpsTransaction: function collectDpsTransaction(_ref8, formdata) {
+    generateTransaction: function generateTransaction(_ref8, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee8() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee8$(_context8) {
@@ -31709,13 +31712,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref8.commit;
                 _context8.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/dps/collection', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/generate', formdata);
 
               case 3:
                 res = _context8.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_DPS_TR', res.data.transaction);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -31743,7 +31745,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee8);
       }))();
     },
-    collectLoanTransaction: function collectLoanTransaction(_ref9, formdata) {
+    collectDpsTransaction: function collectDpsTransaction(_ref9, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee9() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee9$(_context9) {
@@ -31752,13 +31754,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref9.commit;
                 _context9.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/loan/collection', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/dps/collection', formdata);
 
               case 3:
                 res = _context9.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_LOAN_TR', res.data.transaction);
+                  commit('UPDATE_DPS_TR', res.data.transaction);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -31786,7 +31788,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee9);
       }))();
     },
-    editExpenseCategory: function editExpenseCategory(_ref10, formdata) {
+    collectLoanTransaction: function collectLoanTransaction(_ref10, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee10() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee10$(_context10) {
@@ -31795,13 +31797,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref10.commit;
                 _context10.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('expense/categories/update/' + formdata.category_id, formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('transaction/loan/collection', formdata);
 
               case 3:
                 res = _context10.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_CATEGORY', res.data.expense);
+                  commit('UPDATE_LOAN_TR', res.data.transaction);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -31829,7 +31831,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee10);
       }))();
     },
-    deleteExpenseCategory: function deleteExpenseCategory(_ref11, item_id) {
+    editExpenseCategory: function editExpenseCategory(_ref11, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee11() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee11$(_context11) {
@@ -31838,10 +31840,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref11.commit;
                 _context11.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('expense/categories/delete/' + item_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('expense/categories/update/' + formdata.category_id, formdata);
 
               case 3:
                 res = _context11.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_CATEGORY', res.data.expense);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context11.stop();
+            }
+          }
+        }, _callee11);
+      }))();
+    },
+    deleteExpenseCategory: function deleteExpenseCategory(_ref12, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee12() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                commit = _ref12.commit;
+                _context12.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('expense/categories/delete/' + item_id);
+
+              case 3:
+                res = _context12.sent;
 
                 if (res.data.status) {
                   commit('DELETE_CATEGORY', item_id);
@@ -31860,10 +31905,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
           }
-        }, _callee11);
+        }, _callee12);
       }))();
     }
   }
