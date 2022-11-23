@@ -3,7 +3,7 @@
         <div class="col-md-3">
             <div class="widget widget-primary animate__animated animate__pulse mb-4">
                 <div class="widget-header">
-                    <h5 class="title">Total</h5>
+                    <h5 class="title">Total Unpaid</h5>
                     <span>
                         <i class='bx bx-dollar-circle'></i>
                     </span>
@@ -26,7 +26,7 @@
                 <div class="widget-body">
                     <form @submit.prevent="filterSubmit">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div class="member-select" :class="{open: isOpen}">
                                     <div class="member-input" @click.prevent="showMemberList">
                                         <input type="text" v-model="member_input_text" class="form-control" placeholder="Choose Member" readonly>
@@ -55,7 +55,7 @@
                             <div class="col-md-3">
                                 <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
                             </div>
-                            <div class="col-md-1">
+                            <div class="col-md-2">
                                 <button type="submit" class="btn btn-sm btn-success">Filter</button>
                                 <button v-if="is_filter_pagination" type="button" @click.prevent="clearFilterForm" class="btn btn-sm btn-danger ml-2">Clear</button>
                             </div>

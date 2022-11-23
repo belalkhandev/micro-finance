@@ -191,9 +191,9 @@ class TransactionController extends Controller
     /*
      * All load transaction list
      * */
-    public function loanTransactionUnpaidList()
+    public function loanTransactionUnpaidList(Request $request)
     {
-        $loan_trs = $this->loan->allUnpaid();
+        $loan_trs = $this->loan->allUnpaid($request);
 
         if ($loan_trs) {
             return response()->json([
@@ -210,9 +210,9 @@ class TransactionController extends Controller
     /*
      * All load transaction list
      * */
-    public function loanTransactionPaidList()
+    public function loanTransactionPaidList(Request $request)
     {
-        $loan_trs = $this->loan->allPaid();
+        $loan_trs = $this->loan->allPaid($request);
 
         if ($loan_trs) {
             return response()->json([

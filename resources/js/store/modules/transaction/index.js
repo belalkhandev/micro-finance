@@ -168,6 +168,18 @@ export default {
             }
         },
 
+        async filterDpsPaidTransactions({ commit }, formData) {
+            const res = await axios.get('transaction/dps/paid/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_DPS_PAID_TRANSACTIONS', res.data.dps_transactions)
+            } else {
+                commit('SET_DPS_PAID_TRANSACTIONS', null)
+            }
+        },
+
         async getLoanTransactions({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('transaction/loan/list?page='+page_no)
@@ -198,12 +210,37 @@ export default {
             }
         },
 
+        async filterLoanUnpaidTransactions({ commit }, formData) {
+            const res = await axios.get('transaction/loan/unpaid/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                console.log(res.data.loan_transactions)
+                commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.loan_transactions)
+            } else {
+                commit('SET_LOAN_UNPAID_TRANSACTIONS', null)
+            }
+        },
+
         async getLoanPaidTransactions({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('transaction/loan/paid/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_LOAN_PAID_TRANSACTIONS', res.data.loan_transactions)
+            }
+        },
+
+        async filterLoanPaidTransactions({ commit }, formData) {
+            const res = await axios.get('transaction/loan/paid/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_LOAN_PAID_TRANSACTIONS', res.data.loan_transactions)
+            } else {
+                commit('SET_LOAN_PAID_TRANSACTIONS', null)
             }
         },
 

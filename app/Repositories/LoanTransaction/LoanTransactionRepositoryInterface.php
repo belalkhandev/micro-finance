@@ -6,8 +6,8 @@ interface LoanTransactionRepositoryInterface
 {
     public function all();
     public function getByPaginate($request, $limit);
-    public function allUnpaid();
-    public function allPaid();
+    public function allUnpaid($request);
+    public function allPaid($request);
     public function generateTransaction($request);
     public function store($application, $date);
     public function payment($request);
