@@ -93,7 +93,6 @@ class ReportRepository implements ReportRepositoryInterface {
 
         $transactions = $transactions->latest()->paginate($limit);
 
-
         $transactions = array_merge($transactions->toArray(), [
             'total_dps_amount' => $this->totalDpsTransactions($request),
             'total_paid_dps_amount' => $this->totalDpsTransactions($request, 'paid'),

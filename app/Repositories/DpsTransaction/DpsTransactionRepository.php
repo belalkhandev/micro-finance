@@ -52,13 +52,20 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
-    public function allPaid($limit = 20)
+    public function allPaid($request, $limit = 20)
     {
-        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
-            ->where('is_paid', 1)
-            ->orderBy('is_paid', 'ASC')
-            ->latest()
-            ->paginate($limit);
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')->where('is_paid', 1);
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->latest()->paginate($limit);
 
         $transactions = array_merge($transactions->toArray(), [
             'total_paid_amount' => $this->totalPaidTransactions()
@@ -71,13 +78,20 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         return false;
     }
 
-    public function allUnpaid($limit = 20)
+    public function allUnpaid($request, $limit = 20)
     {
-        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
-            ->where('is_paid', 0)
-            ->orderBy('is_paid', 'ASC')
-            ->latest()
-            ->paginate($limit);
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')->where('is_paid', 0);
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->latest()->paginate($limit);
 
         $transactions = array_merge($transactions->toArray(), [
             'total_unpaid_amount' => $this->totalUnpaidTransactions()

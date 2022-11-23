@@ -147,6 +147,18 @@ export default {
             }
         },
 
+        async filterDpsUnpaidTransactions({ commit }, formData) {
+            const res = await axios.get('transaction/dps/unpaid/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.dps_transactions)
+            } else {
+                commit('SET_DPS_UNPAID_TRANSACTIONS', null)
+            }
+        },
+
         async getDpsPaidTransactions({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('transaction/dps/paid/list?page='+page_no)

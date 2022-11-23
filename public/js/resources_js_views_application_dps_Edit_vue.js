@@ -79,7 +79,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       if (this.applications && this.form.application_id) {
-        var application = this.applications.find(function (application) {
+        var application = this.applications.data.find(function (application) {
           return application.id == _this2.form.application_id;
         });
 
@@ -87,9 +87,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           this.form.member_id = application.member_id;
           this.form.dps_amount = application.dps_amount;
           this.form.total_dps = application.total_amount;
-          this.form.year = application.year, this.form.receiving = application.receiving;
+          this.form.year = application.year;
+          this.form.receiving = application.receiving;
           this.form.profit = application.profit;
-          this.form.dps_type = application.dps_type, this.form.w_day = application.w_day ? application.w_day : "";
+          this.form.dps_type = application.dps_type;
+          this.form.w_day = application.w_day ? application.w_day : "";
           this.monthly_date = application.m_date;
           this.form.prev_deposit = application.prev_deposit;
           this.form.remarks = application.remarks;

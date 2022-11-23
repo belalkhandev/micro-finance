@@ -49,7 +49,7 @@
 
     <div class="widget widget-secondary mb-4" v-if="openFilter">
         <div class="widget-header">
-            <h5 class="title">Report Filter</h5>
+            <h5 class="title">Filtering</h5>
             <span>
                 <i class='bx bx-filter-alt'></i>
             </span>

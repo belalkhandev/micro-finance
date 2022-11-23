@@ -6,8 +6,8 @@ interface DpsTransactionRepositoryInterface
 {
     public function all();
     public function getByPaginate($request, $limit);
-    public function allPaid();
-    public function allUnpaid();
+    public function allPaid($request);
+    public function allUnpaid($request);
     public function generateTransaction($request);
     public function store($application, $date);
     public function payment($request);

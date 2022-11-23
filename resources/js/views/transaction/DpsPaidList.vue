@@ -5,8 +5,8 @@
                 <div class="widget-header">
                     <h5 class="title">Total</h5>
                     <span>
-                                        <i class='bx bx-dollar-circle'></i>
-                                    </span>
+                        <i class='bx bx-dollar-circle'></i>
+                    </span>
                 </div>
                 <div class="widget-body" v-if="filterTransactions">
                     <router-link to="#">

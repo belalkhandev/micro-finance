@@ -90,9 +90,9 @@ class TransactionController extends Controller
     /*
      * all dps transaction list
      * */
-    public function dpsTransactionPaidList()
+    public function dpsTransactionPaidList(Request $request)
     {
-        $dps_trs = $this->dps->allPaid();
+        $dps_trs = $this->dps->allPaid($request);
 
         if ($dps_trs) {
             return response()->json([
@@ -110,9 +110,9 @@ class TransactionController extends Controller
     /*
      * all dps transaction list
      * */
-    public function dpsTransactionUnpaidList()
+    public function dpsTransactionUnpaidList(Request $request)
     {
-        $dps_trs = $this->dps->allUnpaid();
+        $dps_trs = $this->dps->allUnpaid($request);
 
         if ($dps_trs) {
             return response()->json([

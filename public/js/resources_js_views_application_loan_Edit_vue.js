@@ -80,7 +80,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       if (this.applications && this.form.application_id) {
-        var application = this.applications.find(function (application) {
+        var application = this.applications.data.find(function (application) {
           return application.id == _this2.form.application_id;
         });
 
