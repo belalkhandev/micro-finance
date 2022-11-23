@@ -68,6 +68,19 @@ export default {
         },
 
         //application actions
+        async filterApplications({ commit }, formData) {
+            const res = await axios.get('application/loan/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_APPLICATIONS', res.data.applications)
+            } else {
+                commit('SET_APPLICATIONS', null)
+            }
+        },
+
+        //application actions
         async getMemberApplications({ commit }, member_id) {
             const res = await axios.get('application/loan/member/list/'+member_id)
 

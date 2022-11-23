@@ -28635,8 +28635,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    //application actions
-    getDpsStatistics: function getDpsStatistics(_ref2) {
+    //application filter action
+    filterApplications: function filterApplications(_ref2, formData) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -28645,13 +28645,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/dps/statistics');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/dps/list', {
+                  params: formData
+                });
 
               case 3:
                 res = _context2.sent;
 
                 if (res.data.status) {
-                  commit('SET_STATISTICS', res.data.total);
+                  commit('SET_APPLICATIONS', res.data.applications);
+                } else {
+                  commit('SET_APPLICATIONS', null);
                 }
 
               case 5:
@@ -28662,7 +28666,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    createApplication: function createApplication(_ref3, formdata) {
+    //application actions
+    getDpsStatistics: function getDpsStatistics(_ref3) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -28671,30 +28676,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref3.commit;
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('application/dps/create', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/dps/statistics');
 
               case 3:
                 res = _context3.sent;
 
                 if (res.data.status) {
-                  commit('SET_APPLICATION', res.data.application);
-                  commit('SET_VALIDATION_ERRORS', null, {
-                    root: true
-                  });
-                  commit('SET_ERROR_MESSAGE', null, {
-                    root: true
-                  });
-                } else {
-                  if (!res.data.status) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
-                      root: true
-                    });
-                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
-                      root: true
-                    });
-                  } else {
-                    console.log('Something went wrong');
-                  }
+                  commit('SET_STATISTICS', res.data.total);
                 }
 
               case 5:
@@ -28705,7 +28693,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    editApplication: function editApplication(_ref4, formdata) {
+    createApplication: function createApplication(_ref4, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -28714,13 +28702,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref4.commit;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('application/dps/update/' + formdata.application_id, formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('application/dps/create', formdata);
 
               case 3:
                 res = _context4.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_APPLICATION', res.data.application);
+                  commit('SET_APPLICATION', res.data.application);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -28748,7 +28736,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    deleteApplication: function deleteApplication(_ref5, item_id) {
+    editApplication: function editApplication(_ref5, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -28757,10 +28745,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref5.commit;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('application/dps/delete/' + item_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('application/dps/update/' + formdata.application_id, formdata);
 
               case 3:
                 res = _context5.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_APPLICATION', res.data.application);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }))();
+    },
+    deleteApplication: function deleteApplication(_ref6, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                commit = _ref6.commit;
+                _context6.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('application/dps/delete/' + item_id);
+
+              case 3:
+                res = _context6.sent;
 
                 if (res.data.status) {
                   commit('DELETE_APPLICATION', item_id);
@@ -28779,10 +28810,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
           }
-        }, _callee5);
+        }, _callee6);
       }))();
     }
   }
@@ -29646,7 +29677,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     //application actions
-    getMemberApplications: function getMemberApplications(_ref2, member_id) {
+    filterApplications: function filterApplications(_ref2, formData) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
@@ -29655,13 +29686,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref2.commit;
                 _context2.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/member/list/' + member_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/list', {
+                  params: formData
+                });
 
               case 3:
                 res = _context2.sent;
 
                 if (res.data.status) {
-                  commit('SET_LOAN', res.data.loan);
+                  commit('SET_APPLICATIONS', res.data.applications);
+                } else {
+                  commit('SET_APPLICATIONS', null);
                 }
 
               case 5:
@@ -29673,7 +29708,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     //application actions
-    getLoanStatistics: function getLoanStatistics(_ref3) {
+    getMemberApplications: function getMemberApplications(_ref3, member_id) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee3() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee3$(_context3) {
@@ -29682,13 +29717,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref3.commit;
                 _context3.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/statistics');
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/member/list/' + member_id);
 
               case 3:
                 res = _context3.sent;
 
                 if (res.data.status) {
-                  commit('SET_STATISTICS', res.data.total);
+                  commit('SET_LOAN', res.data.loan);
                 }
 
               case 5:
@@ -29699,7 +29734,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    createApplication: function createApplication(_ref4, formdata) {
+    //application actions
+    getLoanStatistics: function getLoanStatistics(_ref4) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee4() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee4$(_context4) {
@@ -29708,30 +29744,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref4.commit;
                 _context4.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('application/loan/create', formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().get('application/loan/statistics');
 
               case 3:
                 res = _context4.sent;
 
                 if (res.data.status) {
-                  commit('SET_APPLICATION', res.data.application);
-                  commit('SET_VALIDATION_ERRORS', null, {
-                    root: true
-                  });
-                  commit('SET_ERROR_MESSAGE', null, {
-                    root: true
-                  });
-                } else {
-                  if (!res.data.status) {
-                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
-                      root: true
-                    });
-                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
-                      root: true
-                    });
-                  } else {
-                    console.log('Something went wrong');
-                  }
+                  commit('SET_STATISTICS', res.data.total);
                 }
 
               case 5:
@@ -29742,7 +29761,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee4);
       }))();
     },
-    editApplication: function editApplication(_ref5, formdata) {
+    createApplication: function createApplication(_ref5, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee5() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee5$(_context5) {
@@ -29751,13 +29770,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref5.commit;
                 _context5.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('application/loan/update/' + formdata.application_id, formdata);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().post('application/loan/create', formdata);
 
               case 3:
                 res = _context5.sent;
 
                 if (res.data.status) {
-                  commit('UPDATE_APPLICATION', res.data.application);
+                  commit('SET_APPLICATION', res.data.application);
                   commit('SET_VALIDATION_ERRORS', null, {
                     root: true
                   });
@@ -29785,7 +29804,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee5);
       }))();
     },
-    deleteApplication: function deleteApplication(_ref6, item_id) {
+    editApplication: function editApplication(_ref6, formdata) {
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee6() {
         var commit, res;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee6$(_context6) {
@@ -29794,10 +29813,53 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 commit = _ref6.commit;
                 _context6.next = 3;
-                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('application/loan/delete/' + item_id);
+                return axios__WEBPACK_IMPORTED_MODULE_1___default().put('application/loan/update/' + formdata.application_id, formdata);
 
               case 3:
                 res = _context6.sent;
+
+                if (res.data.status) {
+                  commit('UPDATE_APPLICATION', res.data.application);
+                  commit('SET_VALIDATION_ERRORS', null, {
+                    root: true
+                  });
+                  commit('SET_ERROR_MESSAGE', null, {
+                    root: true
+                  });
+                } else {
+                  if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, {
+                      root: true
+                    });
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, {
+                      root: true
+                    });
+                  } else {
+                    console.log('Something went wrong');
+                  }
+                }
+
+              case 5:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }))();
+    },
+    deleteApplication: function deleteApplication(_ref7, item_id) {
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee7() {
+        var commit, res;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                commit = _ref7.commit;
+                _context7.next = 3;
+                return axios__WEBPACK_IMPORTED_MODULE_1___default()["delete"]('application/loan/delete/' + item_id);
+
+              case 3:
+                res = _context7.sent;
 
                 if (res.data.status) {
                   commit('DELETE_APPLICATION', item_id);
@@ -29816,10 +29878,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 5:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
           }
-        }, _callee6);
+        }, _callee7);
       }))();
     }
   }

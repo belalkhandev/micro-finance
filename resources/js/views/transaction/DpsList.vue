@@ -324,10 +324,8 @@ export default ({
 
     mounted() {
         this.getResults(1);
-        if (!this.members) {
-            this.getMembers();
-        }
     },
+
     watch: {
         from_date: function () {
             this.form.from_date = this.datePickerFormat(this.from_date);

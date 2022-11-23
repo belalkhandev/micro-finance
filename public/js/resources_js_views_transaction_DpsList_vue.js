@@ -157,10 +157,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   mounted: function mounted() {
     this.getResults(1);
-
-    if (!this.members) {
-      this.getMembers();
-    }
   },
   watch: {
     from_date: function from_date() {

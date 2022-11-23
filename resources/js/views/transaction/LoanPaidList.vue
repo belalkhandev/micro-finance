@@ -73,19 +73,6 @@
                         <h4>Paid Transaction List</h4>
                     </div>
                     <div class="box-action">
-                        <div class="search" :class="is_open_search ? 'open-search' : ''">
-                            <div class="search-form">
-                                <div class="search-group">
-                                    <input type="search" v-model="search_key" placeholder="Search keyword" class="form-control">
-                                </div>
-                                <div class="search-group">
-                                    <Datepicker v-model="search_date" format="yyyy-MM-dd" :enableTimePicker="false" autoApply placeholder="Search date"/>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
-                                <i class="bx bx-search-alt"></i>
-                            </button>
-                        </div>
                         <router-link :to="{ name:'GenerateTransaction' }" class="btn btn-sm btn-primary">Generate Transaction</router-link>
                     </div>
                 </div>

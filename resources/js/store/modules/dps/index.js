@@ -58,6 +58,19 @@ export default {
             }
         },
 
+        //application filter action
+        async filterApplications({ commit }, formData) {
+            const res = await axios.get('application/dps/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_APPLICATIONS', res.data.applications)
+            } else {
+                commit('SET_APPLICATIONS', null)
+            }
+        },
+
         //application actions
         async getDpsStatistics({ commit }) {
             const res = await axios.get('application/dps/statistics')

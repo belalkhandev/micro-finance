@@ -22,11 +22,11 @@ class DpsController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $applications = $this->dps->getByPaginate(20);
+        $applications = $this->dps->getByPaginate($request, 20);
 
-        if ($applications->isNotEmpty()) {
+        if ($applications) {
             return response()->json([
                 'status' => true,
                 'applications' => $applications,
