@@ -257,6 +257,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             title: "Updated!",
             text: "Loan Transaction has been success",
             timer: 3000
+          }).then(function () {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateLoanTransaction').prop('disabled', true);
           });
         } else {
           _this.errors = _this.validation_errors;
@@ -269,12 +271,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   watch: {
     transaction: function transaction() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateLoanTransaction').prop('disabled', false);
+
       if (this.transaction) {
         this.form.transaction_id = this.transaction.id;
         this.form.transaction_no = this.transaction.transaction_no;
         this.form.member = this.transaction.member.name;
         this.form.account_no = this.transaction.member.account_no;
-        this.form.transaction_date = this.transaction.transaction_date;
+        this.form.transaction_date = this.datePickerFormat(new Date());
         this.form.amount = Math.round(this.transaction.amount);
         this.form.balance = this.transaction.balance;
         this.transaction_date = this.datePickerFormat(new Date());
@@ -6560,7 +6564,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _LoanList_vue_vue_type_template_id_7f4a03de__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoanList.vue?vue&type=template&id=7f4a03de */ "./resources/js/views/transaction/LoanList.vue?vue&type=template&id=7f4a03de");
 /* harmony import */ var _LoanList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoanList.vue?vue&type=script&lang=js */ "./resources/js/views/transaction/LoanList.vue?vue&type=script&lang=js");
 /* harmony import */ var _LoanList_vue_vue_type_style_index_0_id_7f4a03de_lang_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./LoanList.vue?vue&type=style&index=0&id=7f4a03de&lang=css */ "./resources/js/views/transaction/LoanList.vue?vue&type=style&index=0&id=7f4a03de&lang=css");
-/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
@@ -6568,7 +6572,7 @@ __webpack_require__.r(__webpack_exports__);
 ;
 
 
-const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_LoanList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LoanList_vue_vue_type_template_id_7f4a03de__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/transaction/LoanList.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_3__["default"])(_LoanList_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LoanList_vue_vue_type_template_id_7f4a03de__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/transaction/LoanList.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -6590,13 +6594,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _LoanTransactionPayment_vue_vue_type_template_id_281f0988__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./LoanTransactionPayment.vue?vue&type=template&id=281f0988 */ "./resources/js/views/transaction/LoanTransactionPayment.vue?vue&type=template&id=281f0988");
 /* harmony import */ var _LoanTransactionPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./LoanTransactionPayment.vue?vue&type=script&lang=js */ "./resources/js/views/transaction/LoanTransactionPayment.vue?vue&type=script&lang=js");
-/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LoanTransactionPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LoanTransactionPayment_vue_vue_type_template_id_281f0988__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/transaction/LoanTransactionPayment.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_LoanTransactionPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_LoanTransactionPayment_vue_vue_type_template_id_281f0988__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/transaction/LoanTransactionPayment.vue"]])
 /* hot reload */
 if (false) {}
 

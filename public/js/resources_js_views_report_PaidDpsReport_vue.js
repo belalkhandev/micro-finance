@@ -121,15 +121,18 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
-/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../mixin */ "./resources/js/mixin/index.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm-bundler.js");
+/* harmony import */ var bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! bootstrap/dist/js/bootstrap */ "./node_modules/bootstrap/dist/js/bootstrap.js");
+/* harmony import */ var bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(bootstrap_dist_js_bootstrap__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ "./node_modules/jquery/dist/jquery.js");
+/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _mixin__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../mixin */ "./resources/js/mixin/index.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { _defineProperty(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 
 
@@ -155,18 +158,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       transaction_date: this.datePickerFormat(new Date())
     };
   },
-  mixins: [_mixin__WEBPACK_IMPORTED_MODULE_1__.helpers],
-  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapGetters)({
+  mixins: [_mixin__WEBPACK_IMPORTED_MODULE_2__.helpers],
+  computed: _objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapGetters)({
     validation_errors: 'validation_errors',
     error_message: 'error_message'
   })),
-  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_2__.mapActions)({
+  methods: _objectSpread(_objectSpread({}, (0,vuex__WEBPACK_IMPORTED_MODULE_3__.mapActions)({
     createDpsCollection: "transaction/collectDpsTransaction"
   })), {}, {
     updateDpsTransaction: function updateDpsTransaction() {
       var _this = this;
 
-      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateDpsTransaction').prop('disabled', true).addClass('submitted');
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#updateDpsTransaction').prop('disabled', true).addClass('submitted');
       var formData = this.form;
       this.createDpsCollection(formData).then(function () {
         if (!_this.validation_errors && !_this.error_message) {
@@ -177,24 +180,28 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             title: "Updated!",
             text: "Dps transaction collection has been success",
             timer: 3000
+          }).then(function () {
+            jquery__WEBPACK_IMPORTED_MODULE_1___default()('#updateDpsTransaction').prop('disabled', true);
           });
         } else {
           _this.errors = _this.validation_errors;
           _this.error = _this.error_message;
         }
 
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateDpsTransaction').prop('disabled', false).removeClass('submitted');
+        jquery__WEBPACK_IMPORTED_MODULE_1___default()('#updateDpsTransaction').prop('disabled', false).removeClass('submitted');
       });
     }
   }),
   watch: {
     transaction: function transaction() {
+      jquery__WEBPACK_IMPORTED_MODULE_1___default()('#updateDpsTransaction').prop('disabled', false);
+
       if (this.transaction) {
         this.form.transaction_id = this.transaction.id;
         this.form.transaction_no = this.transaction.transaction_no;
         this.form.member = this.transaction.member.name;
         this.form.account_no = this.transaction.member.account_no;
-        this.form.transaction_date = this.transaction.transaction_date;
+        this.form.transaction_date = this.datePickerFormat(new Date());
         this.form.amount = this.transaction.amount;
         this.form.balance = this.transaction.balance;
         this.transaction_date = this.datePickerFormat(new Date());
@@ -693,7 +700,7 @@ var _hoisted_41 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   "class": "spinner-border",
   role: "status"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "visuaNlly-hidden"
+  "class": "visually-hidden"
 }, "Loading...")], -1
 /* HOISTED */
 );
@@ -5847,13 +5854,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _PaidDpsReport_vue_vue_type_template_id_1744e1d3__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PaidDpsReport.vue?vue&type=template&id=1744e1d3 */ "./resources/js/views/report/PaidDpsReport.vue?vue&type=template&id=1744e1d3");
 /* harmony import */ var _PaidDpsReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PaidDpsReport.vue?vue&type=script&lang=js */ "./resources/js/views/report/PaidDpsReport.vue?vue&type=script&lang=js");
-/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PaidDpsReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PaidDpsReport_vue_vue_type_template_id_1744e1d3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/report/PaidDpsReport.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_PaidDpsReport_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_PaidDpsReport_vue_vue_type_template_id_1744e1d3__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/report/PaidDpsReport.vue"]])
 /* hot reload */
 if (false) {}
 
@@ -5875,13 +5882,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _DpsTransactionPayment_vue_vue_type_template_id_241b1a8f__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./DpsTransactionPayment.vue?vue&type=template&id=241b1a8f */ "./resources/js/views/transaction/DpsTransactionPayment.vue?vue&type=template&id=241b1a8f");
 /* harmony import */ var _DpsTransactionPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./DpsTransactionPayment.vue?vue&type=script&lang=js */ "./resources/js/views/transaction/DpsTransactionPayment.vue?vue&type=script&lang=js");
-/* harmony import */ var _var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var _var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,_var_www_mf_local_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DpsTransactionPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DpsTransactionPayment_vue_vue_type_template_id_241b1a8f__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/transaction/DpsTransactionPayment.vue"]])
+const __exports__ = /*#__PURE__*/(0,_var_www_html_micro_finance_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_DpsTransactionPayment_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_DpsTransactionPayment_vue_vue_type_template_id_241b1a8f__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/views/transaction/DpsTransactionPayment.vue"]])
 /* hot reload */
 if (false) {}
 

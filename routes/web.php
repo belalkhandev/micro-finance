@@ -19,6 +19,9 @@ Route::group([
     'prefix' => 'download',
     'middleware' => ['api']
 ], function ($route) {
+    $route->get('/members/all', [PdfController::class, 'allMemberList']);
+    $route->get('/members/groups/{groupId}', [PdfController::class, 'membersGroup']);
+    $route->get('/members/types/{type}', [PdfController::class, 'membersType']);
     $route->get('/member/profile/{member_id}', [PdfController::class, 'memberProfile']);
     $route->get('/dps/transactions', [PdfController::class, 'allDps']);
     $route->get('/dps/{member_id}/transactions', [PdfController::class, 'memberDpsTransactions']);

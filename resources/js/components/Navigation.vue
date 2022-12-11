@@ -137,6 +137,22 @@
 
                         <h5>Member Types</h5>
                         <ul v-if="fetchMemberTypes">
+                            <li>
+                                <router-link :to="{name: 'MemberType', params: {
+                                    member_type: 'deposit'
+                                }}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS All</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'MemberType', params: {
+                                    member_type: 'loan'
+                                }}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan All</span>
+                                </router-link>
+                            </li>
                             <li v-for="(member_type, i) in fetchMemberTypes" :key="i">
                                 <router-link :to="{name: 'MemberType', params: {
                                     member_type: member_type.code

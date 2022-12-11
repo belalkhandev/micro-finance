@@ -38,7 +38,12 @@ class MemberRepository implements MemberRepositoryInterface {
     {
         $members = Member::paginate($limit);
 
-        if ($members->isNotEmpty()) {
+        $members = array_merge($members->toArray(), [
+            'total_members_dps' => $this->totalMembers('deposit'),
+            'total_members_loan' => $this->totalMembers('loan')
+        ]);
+
+        if ($members) {
             return $members;
         }
 
@@ -58,7 +63,7 @@ class MemberRepository implements MemberRepositoryInterface {
 
     public function getByTypePagination($type, $limit = 15)
     {
-        $members = Member::where('member_type', $type)->paginate($limit);
+        $members = Member::where('member_type', 'LIKE', $type.'%')->paginate($limit);
 
         if ($members->isNotEmpty()) {
             return $members;
@@ -295,5 +300,15 @@ class MemberRepository implements MemberRepositoryInterface {
         }
 
         return false;
+    }
+
+    public function totalMembers($type = 'all')
+    {
+        if ($type != 'all') {
+            return Member::where('member_type', 'LIKE', $type.'%')->count();
+        }
+
+        return Member::count();
+
     }
 }
