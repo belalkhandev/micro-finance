@@ -23,6 +23,6 @@ mix.js('resources/js/app.js', 'public/js')
                 ENABLE_FEATURE_FLAG: JSON.stringify(true)
             })
         ]
-    });
+    }).sourceMaps(false);
 
 

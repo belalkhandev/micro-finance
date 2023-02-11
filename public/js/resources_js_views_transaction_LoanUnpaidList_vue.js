@@ -83,6 +83,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             title: "Updated!",
             text: "Loan Transaction has been success",
             timer: 3000
+          }).then(function () {
+            jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateLoanTransaction').prop('disabled', true);
           });
         } else {
           _this.errors = _this.validation_errors;
@@ -95,12 +97,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   watch: {
     transaction: function transaction() {
+      jquery__WEBPACK_IMPORTED_MODULE_0___default()('#updateLoanTransaction').prop('disabled', false);
+
       if (this.transaction) {
         this.form.transaction_id = this.transaction.id;
         this.form.transaction_no = this.transaction.transaction_no;
         this.form.member = this.transaction.member.name;
         this.form.account_no = this.transaction.member.account_no;
-        this.form.transaction_date = this.transaction.transaction_date;
+        this.form.transaction_date = this.datePickerFormat(new Date());
         this.form.amount = Math.round(this.transaction.amount);
         this.form.balance = this.transaction.balance;
         this.transaction_date = this.datePickerFormat(new Date());
@@ -273,10 +277,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   }),
   mounted: function mounted() {
     this.getResults(1);
-
-    if (!this.members) {
-      this.getMembers();
-    }
   },
   watch: {
     from_date: function from_date() {

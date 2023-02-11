@@ -293,9 +293,6 @@ export default ({
 
     mounted() {
         this.getResults(1);
-        if (!this.members) {
-            this.getMembers();
-        }
     },
     watch: {
         from_date: function () {
