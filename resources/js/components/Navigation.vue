@@ -342,9 +342,11 @@ export default ({
             if (this.groups) {
                 return this.groups;
             } else {
-                this.getGroups().then(() => {
-                    return this.groups;
-                })
+                if (this.authenticated) {
+                    this.getGroups().then(() => {
+                        return this.groups;
+                    })
+                }
             }
         },
 
@@ -382,7 +384,7 @@ export default ({
         }
     },
     mounted() {
-        if (!this.groups) {
+        if (!this.groups && this.authenticated) {
             this.getGroups();
         }
     }
