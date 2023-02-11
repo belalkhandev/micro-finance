@@ -1,31 +1,66 @@
 <template>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="widget widget-primary mb-4">
+                <div class="widget-header">
+                    <h5 class="title">Total Member</h5>
+                    <span>
+                        <i class='bx bx-group'></i>
+                    </span>
+                </div>
+                <div class="widget-body" v-if="fetchMembers">
+                    <router-link to="#">
+                        <h3>{{ fetchMembers.total }}</h3>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-success mb-4">
+                <div class="widget-header">
+                    <h5 class="title">Total Members (DPS)</h5>
+                    <span>
+                        <i class='bx bx-group'></i>
+                    </span>
+                </div>
+                <div class="widget-body" v-if="fetchMembers">
+                    <router-link :to="{name: 'MemberType', params: {
+                                    member_type: 'deposit'
+                                }}">
+                        <h3>{{ fetchMembers.total_members_dps }}</h3>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-warning mb-4">
+                <div class="widget-header">
+                    <h5 class="title">Total Members (Loan)</h5>
+                    <span>
+                        <i class='bx bx-group'></i>
+                    </span>
+                </div>
+                <div class="widget-body" v-if="fetchMembers">
+                    <router-link :to="{name: 'MemberType', params: {
+                                    member_type: 'loan'
+                                }}">
+                        <h3>{{ fetchMembers.total_members_loan }}</h3>
+                    </router-link>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="box">
         <div class="box-header">
             <div class="box-title">
                 <h4>Member list</h4>
             </div>
             <div class="box-action">
-                <div class="search" :class="is_open_search ? 'open-search' : ''">
-                    <div class="search-form">
-                        <div class="search-group">
-                            <input type="search" v-model="search_key" placeholder="Account number, phone" class="form-control">
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-secondary btn-sm focus:shadow-none" @click="openSearch()">
-                        <i class="bx bx-search-alt"></i>
-                    </button>
-                </div>
+                <button class="btn btn-sm btn-secondary" @click="downloadMember()">Download</button>
                 <router-link :to="{name: 'CreateMember'}" class="btn btn-sm btn-primary">New member</router-link>
             </div>
         </div>
         <div class="box-body">
-            <!-- pagination -->
-            <div class="pagination mb-2" v-if="fetchMembers">
-                <p class="pagination-data">
-                    Page {{ fetchMembers.current_page }} Showing  {{ fetchMembers.from }} to {{ fetchMembers.to }} of {{ fetchMembers.total }} Data
-                </p>
-                <Pagination :data="fetchMembers" @pagination-change-page="getResults" :limit="6"/>
-            </div>
             <!-- end pagination -->
             <table class="table">
                 <thead>
@@ -149,7 +184,11 @@ export default ({
 
         getResults(page = 1) {
             this.getMembers(page);
-        }
+        },
+
+        downloadMember() {
+            window.open(window.location.origin+'/download/members/all')
+        },
     },
 
     mounted() {

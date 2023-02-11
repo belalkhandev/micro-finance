@@ -20,8 +20,8 @@ class DpsTransaction extends Model
         return $this->belongsTo(Member::class, 'member_id', 'id');
     }
 
-    public function scopePaid(Builder $builder)
+    public function scopePaid($query)
     {
-        return $builder->where('is_paid', 1);
+        return $query->where('is_paid', 1);
     }
 }
