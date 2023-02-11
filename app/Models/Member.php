@@ -69,21 +69,14 @@ class Member extends Model
         return $this->hasMany(Savings::class, 'member_id', 'id');
     }
 
-    public function getSavingsDepositAttribute()
+    public function depositSavings()
     {
-        if ($this->savings) {
-            return $this->savings->where('savings_type', 'deposit')->sum('amount');
-        }
-
-        return 0;
+        return $this->hasMany(Savings::class, 'member_id', 'id')->where('savings_type', 'deposit');
     }
 
-    public function getSavingsWithdrawAttribute()
+    public function withdrawSavings()
     {
-        if ($this->savings) {
-            return $this->savings->where('savings_type', 'withdraw')->sum('amount');
-        }
-
-        return 0;
+        return $this->hasMany(Savings::class, 'member_id', 'id')->where('savings_type', 'withdraw');
     }
+
 }

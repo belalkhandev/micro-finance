@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const webpack = require('webpack');
 
 /*
  |--------------------------------------------------------------------------
@@ -15,4 +16,13 @@ mix.js('resources/js/app.js', 'public/js')
     .vue()
     .postCss('resources/css/app.css', 'public/css', [
         require("tailwindcss"),
-    ]);
+    ])
+    .webpackConfig({
+        plugins: [
+            new webpack.DefinePlugin({
+                ENABLE_FEATURE_FLAG: JSON.stringify(true)
+            })
+        ]
+    }).sourceMaps(false);
+
+

@@ -84,17 +84,41 @@ export default {
 
     actions: {
 
-        async getDpsTransactions({ commit }) {
-            const res = await axios.get('report/dps')
+        async getDpsTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('report/dps?page='+page_no)
             if (res.data.status) {
                 commit('SET_DPS_TRANSACTIONS', res.data.applications)
             }
         },
 
-        async getLoanTransactions({ commit }) {
-            const res = await axios.get('report/loan')
+        async filterDpsTransactions({ commit }, formData) {
+            const res = await axios.get('report/dps', {
+                params: formData
+            })
+            if (res.data.status) {
+                commit('SET_DPS_TRANSACTIONS', res.data.applications)
+            } else {
+                commit('SET_DPS_TRANSACTIONS', null)
+            }
+        },
+
+        async getLoanTransactions({ commit  }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('report/loan?page='+page_no)
             if (res.data.status) {
                 commit('SET_LOAN_TRANSACTIONS', res.data.applications)
+            }
+        },
+
+        async filterLoanTransactions({ commit  }, formData) {
+            const res = await axios.get('report/loan', {
+                params: formData
+            })
+            if (res.data.status) {
+                commit('SET_LOAN_TRANSACTIONS', res.data.applications)
+            } else {
+                commit('SET_LOAN_TRANSACTIONS', null)
             }
         },
 

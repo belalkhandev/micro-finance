@@ -23,7 +23,6 @@
                             <th>Due Date</th>
                             <th>Issue Date</th>
                             <th>Status</th>
-                            <th>Action</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -34,8 +33,8 @@
                                 <router-link :to="{name: 'MemberShow', params: {
                                     member_id: transaction.member_id
                                 }}" class="text-primary">
-                                    {{ transaction.member_name }} <br>
-                                    {{ transaction.member_account_no }}
+                                    {{ transaction.member.name }} <br>
+                                    {{ transaction.member.account_no }}
                                 </router-link>
                             </td>
                             <td>{{ transaction.application.dps_type }} <br>{{ numberFormat(transaction.amount) }}</td>
@@ -46,16 +45,6 @@
                             <td>
                                 <span v-if="transaction.is_paid" class="text-success">Paid</span>
                                 <span v-else class="text-danger">Unpaid</span>
-                            </td>
-                            <td>
-                                <span v-if="!transaction.is_paid">
-                                    <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showLoanTransactionModal(transaction)">
-                                        Collect now
-                                    </a>
-                                </span>
-                                <span v-else class="text-danger">
-                                    <span class="btn btn-success btn-sm py-1">Collected</span>
-                                </span>
                             </td>
                         </tr>
                         <tr v-else>
@@ -123,7 +112,7 @@ export default ({
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/current/loan')
+            window.open(window.location.origin+'/download/current/loan')
         },
 
         filterTransactions() {

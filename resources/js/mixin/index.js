@@ -83,7 +83,9 @@ export const helpers = {
             let perPage = this.per_page;
             let from = (page * perPage) - perPage;
             let to = (page * perPage);
-            return data.slice(from, to);
+            if (data) {
+                return data.slice(from, to);
+            }
         },
 
         hasPermission(permission) {

@@ -78,7 +78,7 @@ export default {
                 remarks: ""
             },
 
-            pre_balance: this.member.savings_deposit - this.member.savings_withdraw,
+            pre_balance: this.member.deposit_savings_sum_amount - this.member.withdraw_savings_sum_amount,
             new_balance: 0,
 
             errors: null,

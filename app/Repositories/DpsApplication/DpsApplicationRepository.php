@@ -20,13 +20,22 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         return false;
     }
 
-    public function getByPaginate($limit = 20)
+    public function getByPaginate($request, $limit = 20)
     {
-        $applications = DpsApplication::with('member:id,account_no,name,photo')
-            ->latest()
-            ->paginate($limit);
+        $applications = DpsApplication::with('member:id,account_no,name,photo');
 
-        if ($applications->isNotEmpty()) {
+        if ($request->from_date && $request->to_date) {
+            $applications = $applications->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $applications = $applications->where('member_id', $request->member_id);
+        }
+
+        $applications = $applications->latest()->paginate($limit);
+
+        if ($applications) {
             return $applications;
         }
 

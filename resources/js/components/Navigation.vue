@@ -137,6 +137,22 @@
 
                         <h5>Member Types</h5>
                         <ul v-if="fetchMemberTypes">
+                            <li>
+                                <router-link :to="{name: 'MemberType', params: {
+                                    member_type: 'deposit'
+                                }}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS All</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'MemberType', params: {
+                                    member_type: 'loan'
+                                }}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan All</span>
+                                </router-link>
+                            </li>
                             <li v-for="(member_type, i) in fetchMemberTypes" :key="i">
                                 <router-link :to="{name: 'MemberType', params: {
                                     member_type: member_type.code
@@ -342,9 +358,11 @@ export default ({
             if (this.groups) {
                 return this.groups;
             } else {
-                this.getGroups().then(() => {
-                    return this.groups;
-                })
+                if (this.authenticated) {
+                    this.getGroups().then(() => {
+                        return this.groups;
+                    })
+                }
             }
         },
 
@@ -382,7 +400,7 @@ export default ({
         }
     },
     mounted() {
-        if (!this.groups) {
+        if (!this.groups && this.authenticated) {
             this.getGroups();
         }
     }
