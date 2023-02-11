@@ -76,8 +76,7 @@ export default ({
         }),
 
         fetchMembers() {
-
-            if (this.search_key.length > 1) {
+            if (this.search_key.length > 1 && this.members && this.members.length) {
                 return this.members.filter((member) => {
                     return member.account_no.toLowerCase() === this.search_key.toLowerCase()
                 });
