@@ -136,7 +136,7 @@ export default ({
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/due/dps')
+            window.open(window.location.origin+'/download/due/dps')
         },
 
         showDpsTransactionModal(data)

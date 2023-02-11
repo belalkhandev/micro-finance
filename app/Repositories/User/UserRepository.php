@@ -52,8 +52,8 @@ class UserRepository implements UserRepositoryInterface {
         if ($user->save()) {
             if ($user->roles()->first()->id != $request->input('role_id')) {
                 $user->detachRole(Role::find($request->input('role_id'))->first());
-                $user->attachRole(Role::find($request->input('role_id'))->first());
             }
+            $user->attachRole(Role::find($request->input('role_id'))->first());
 
             return $user;
         }

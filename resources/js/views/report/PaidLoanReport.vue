@@ -8,7 +8,7 @@
                     </div>
                     <div class="box-action">
                         <button class="btn btn-sm btn-primary" @click="downloadReport()">Download</button>
-                    </div> 
+                    </div>
                 </div>
                 <div class="box-body">
                     <table class="table">
@@ -137,7 +137,7 @@ export default ({
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/paid/loan')
+            window.open(window.location.origin+'/download/paid/loan')
         },
 
         showLoanTransactionModal(data)

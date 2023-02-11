@@ -117,7 +117,6 @@ class UsersController extends Controller
             } else {
                 $this->user->createProfile($request, $id);
             }
-            $profile = $user->profile;
 
             return response()->json([
                 'status' => true,

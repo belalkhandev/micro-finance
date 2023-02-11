@@ -4,11 +4,11 @@ namespace App\Repositories\Report;
 
 interface ReportRepositoryInterface
 {
-    public function allLoan();
+    public function allLoan($request);
 
     public function memberLoan($request, $memberId);
 
-    public function allDps();
+    public function allDps($request);
 
     public function memberDps($request, $memberId);
 

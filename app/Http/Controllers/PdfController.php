@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Member;
+use App\Models\MemberGroup;
 use App\Repositories\Report\ReportRepositoryInterface;
 use Illuminate\Http\Request;
 use niklasravnsborg\LaravelPdf\Facades\Pdf;
@@ -29,9 +30,9 @@ class PdfController extends Controller
 
     }
 
-    public function allDps()
+    public function allDps(Request $request)
     {
-        $applications = $this->report->allDps();
+        $applications = $this->report->allDpsDownload($request);
 
         $data =[
             'transactions'=> $applications,
@@ -74,9 +75,9 @@ class PdfController extends Controller
         ])->stream('loan-transactions-'.$member->account_no.'.pdf');
     }
 
-    public function allLoan()
+    public function allLoan(Request $request)
     {
-        $applications = $this->report->allLoan();
+        $applications = $this->report->allLoanDownload($request);
 
         $data =[
             'transactions'=> $applications,
@@ -183,6 +184,48 @@ class PdfController extends Controller
         return Pdf::loadview('pdf.savings-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('savings-transactions-'.$member->account_no.'.pdf');
+    }
+
+    public function allMemberList()
+    {
+        $members = Member::with('group:id,group_name')->orderBy('account_no')->get();
+
+        $data = [
+            'members' => $members,
+            'title' => 'All Members List ('.$members->count().')'
+        ];
+
+        return Pdf::loadview('pdf.members.all', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream(databaseFormattedDate(now()).'-all-members-list.pdf');
+    }
+
+    public function membersGroup($groupId)
+    {
+        $members = Member::where('member_group_id', $groupId)->orderBy('account_no')->get();
+        $group = MemberGroup::findOrFail($groupId);
+        $data = [
+            'members' => $members,
+            'title' => $group->group_name.' ('.$members->count().')'
+        ];
+
+        return Pdf::loadview('pdf.members.group', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream(databaseFormattedDate(now()).'-'.$group->group_name.'-members-list.pdf');
+    }
+
+    public function membersType($type)
+    {
+        $members = Member::where('member_type', 'LIKE', $type.'%')->orderBy('account_no')->get();
+
+        $data = [
+            'members' => $members,
+            'title' => ucfirst($type).' member list ('.$members->count().')'
+        ];
+
+        return Pdf::loadview('pdf.members.type', compact('data'), [], [
+            'format' => 'A4-L'
+        ])->stream(databaseFormattedDate(now()).'-'.$type.'-members-list.pdf');
     }
 
 }

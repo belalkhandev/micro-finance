@@ -1,4 +1,4 @@
-<style>
+    <style>
     body {
         font-size: 14px;
         font-family: 'Roboto', sans-serif ;
@@ -97,7 +97,7 @@
     }
 
     .table tr td, .table tr th {
-        border: 1px solid #f3f3f3;
+        border: 1px solid #949494;
         padding: 5px;
     }
 

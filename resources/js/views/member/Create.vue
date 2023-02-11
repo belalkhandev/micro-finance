@@ -91,7 +91,7 @@
                         <div class="col-md-4">
                             <div class="form-group">
                                 <label>Upazilla</label>
-                                <select class="form-select" v-model="form.upazilla_id">
+                                <select class="form-select" v-model="form.upazilla_id" @change="changeUpazillaId">
                                     <option value="">Select</option>
                                     <option v-for="(upazilla, i) in fetchUpazillas" :value="upazilla.id" :key="i">
                                         <span v-if="lang == 'en'">{{ upazilla.name }}</span>
@@ -398,12 +398,6 @@ export default ({
         },
 
         fetchUnions(){
-            if (this.form.upazilla_id && this.unions) {
-                return this.unions.filter(union => union.upazilla_id === this.form.upazilla_id)
-            } else if (this.form.district_id && this.unions) {
-                return this.unions.filter(union => union.upazilla.district_id === this.form.district_id)
-            }
-
             return this.unions
         },
 
@@ -495,14 +489,21 @@ export default ({
 
                 $('#storeMember').prop('disabled', false).removeClass('submitted')
             })
-
+        },
+        changeUpazillaId() {
+            if (this.form.upazilla_id) {
+                this.getUnions(this.form.upazilla_id).then(() => {
+                    return this.unions
+                });
+            } else {
+                return this.unions = null
+            }
         }
     },
 
     mounted() {
         this.getDistricts();
         this.getUpazillas();
-        this.getUnions();
         this.getPostOffices();
         this.getVillages();
         this.getGroups();

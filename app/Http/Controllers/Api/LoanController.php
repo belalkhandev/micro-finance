@@ -24,11 +24,11 @@ class LoanController extends Controller
      *
      * @return JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $applications = $this->loan->getByPaginate();
+        $applications = $this->loan->getByPaginate($request);
 
-        if ($applications->isNotEmpty()) {
+        if ($applications) {
             return response()->json([
                 'status' => true,
                 'applications' => $applications,

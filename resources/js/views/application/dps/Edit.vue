@@ -244,16 +244,16 @@ export default ({
 
         application () {
             if (this.applications && this.form.application_id) {
-                const application = this.applications.find(application => application.id == this.form.application_id)
+                const application = this.applications.data.find(application => application.id == this.form.application_id)
 
                 if (application) {
                     this.form.member_id = application.member_id;
                     this.form.dps_amount = application.dps_amount;
                     this.form.total_dps = application.total_amount;
-                    this.form.year = application.year,
+                    this.form.year = application.year;
                     this.form.receiving = application.receiving;
                     this.form.profit = application.profit;
-                    this.form.dps_type = application.dps_type,
+                    this.form.dps_type = application.dps_type;
                     this.form.w_day = application.w_day ? application.w_day : "";
                     this.monthly_date = application.m_date;
                     this.form.prev_deposit = application.prev_deposit;

@@ -88,7 +88,7 @@
                             <button type="submit" class="ml-2 btn btn-primary btn-sm" id="updateDpsTransaction">
                                 <span>{{ $t('collect') }}</span>
                                 <div class="spinner-border" role="status">
-                                    <span class="visuaNlly-hidden">Loading...</span>
+                                    <span class="visually-hidden">Loading...</span>
                                 </div>
                             </button>
                         </div>
@@ -101,6 +101,7 @@
 
 <script>
 import {mapGetters, mapActions} from "vuex";
+import bootstrap from 'bootstrap/dist/js/bootstrap'
 import $ from 'jquery'
 import {helpers} from "../../mixin";
 
@@ -153,6 +154,8 @@ export default ({
                         title: "Updated!",
                         text: "Dps transaction collection has been success",
                         timer: 3000
+                    }).then(() => {
+                        $('#updateDpsTransaction').prop('disabled', true);
                     })
                 } else {
                     this.errors = this.validation_errors
@@ -167,12 +170,13 @@ export default ({
 
     watch: {
         transaction() {
+            $('#updateDpsTransaction').prop('disabled', false);
             if (this.transaction) {
                 this.form.transaction_id = this.transaction.id
                 this.form.transaction_no = this.transaction.transaction_no
-                this.form.member = this.transaction.member_name
-                this.form.account_no = this.transaction.member_account_no
-                this.form.transaction_date = this.transaction.transaction_date
+                this.form.member = this.transaction.member.name
+                this.form.account_no = this.transaction.member.account_no
+                this.form.transaction_date = this.datePickerFormat(new Date())
                 this.form.amount = this.transaction.amount
                 this.form.balance = this.transaction.balance
                 this.transaction_date = this.datePickerFormat(new Date())

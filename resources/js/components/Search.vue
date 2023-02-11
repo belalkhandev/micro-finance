@@ -70,7 +70,9 @@ export default ({
 
     computed: {
         ...mapGetters({
-            members: 'member/searchData'
+            members: 'member/searchData',
+            authenticated: 'auth/authenticated',
+            user: 'auth/user',
         }),
 
         fetchMembers() {
@@ -100,7 +102,9 @@ export default ({
     },
 
     mounted() {
-        this.getMembers();
+        if (this.authenticated) {
+            this.getMembers();
+        }
     }
 })
 </script>

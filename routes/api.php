@@ -54,6 +54,7 @@ Route::group([
     Route::get('/district/list', [BdLocationsController::class, 'districts']);
     Route::get('/upazilla/list', [BdLocationsController::class, 'upazillas']);
     Route::get('/union/list', [BdLocationsController::class, 'unions']);
+    Route::get('/union/list/{upazillaId}', [BdLocationsController::class, 'unionsByUpazilaId']);
 
     //village api
     Route::group([

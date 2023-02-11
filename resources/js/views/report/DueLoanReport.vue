@@ -137,7 +137,7 @@ export default ({
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/due/loan')
+            window.open(window.location.origin+'/download/due/loan')
         },
 
         showLoanTransactionModal(data)

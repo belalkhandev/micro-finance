@@ -34,8 +34,8 @@
                                 <router-link :to="{name: 'MemberShow', params: {
                                     member_id: transaction.member_id
                                 }}" class="text-primary">
-                                    {{ transaction.member_name }} <br>
-                                    {{ transaction.member_account_no }}
+                                    {{ transaction.member.name }} <br>
+                                    {{ transaction.member.account_no }}
                                 </router-link>
                             </td>
                             <td>{{ transaction.application.dps_type }} <br> {{ numberFormat(transaction.amount) }}</td>
@@ -136,7 +136,7 @@ export default ({
         }),
 
         downloadReport() {
-            window.open('http://127.0.0.1:8000/download/current/dps')
+            window.open(window.location.origin+'/download/current/dps')
         },
 
         showDpsTransactionModal(data)

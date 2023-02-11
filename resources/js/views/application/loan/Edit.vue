@@ -244,7 +244,7 @@ export default ({
 
         application () {
             if (this.applications && this.form.application_id) {
-                const application = this.applications.find(application => application.id == this.form.application_id)
+                const application = this.applications.data.find(application => application.id == this.form.application_id)
 
                 if (application) {
                     this.form.member_id = application.member_id;
