@@ -1229,3 +1229,17 @@ table {
     color: #ffffff;
     background: #6366f1;
 }
+
+table td .application-member {
+    display: flex;
+    column-gap: 7px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+table td  .application-member img {
+    width: 24px;
+    background: #dbdbdb;
+    border: none;
+    height: 30px;
+}

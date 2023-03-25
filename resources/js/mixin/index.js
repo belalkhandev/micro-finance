@@ -46,7 +46,7 @@ export const helpers = {
 
         userFormattedDate (date) {
             if (date) {
-                return moment(date).format("LL");
+                return moment(date).format("D MMM, YY");
             }
             return '-';
         },
