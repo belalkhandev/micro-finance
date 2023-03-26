@@ -108,47 +108,51 @@
                     </div>
                 </div>
                 <div class="box-body">
+                    <!-- pagination -->
+                    <div class="pagination mb-2" v-if="filterApplications">
+                        <p class="pagination-data">
+                            Page {{ filterApplications.current_page }} Showing  {{ filterApplications.from }} to {{ filterApplications.to }} of {{ filterApplications.total }} Data
+                        </p>
+                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="6"/>
+                    </div>
+                    <!-- end pagination -->
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
+                            <th>Acc. No</th>
                             <th>Member</th>
+                            <th>Photo</th>
                             <th>Deposit</th>
-                            <th>Deposit Amt.</th>
-                            <th>Receivable</th>
-                            <th>Profit Amt.</th>
-                            <th>Created</th>
-                            <th>Operations</th>
+                            <th>Year</th>
+                            <th>Total Deposit</th>
+                            <th>Total Getting</th>
+                            <th>Profit</th>
+                            <th>Created at</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
                             <tr v-if="filterApplications && filterApplications.data" v-for="(application, i) in filterApplications.data" :key="application.id">
                                 <td>{{ filterApplications.from+i }}</td>
+                                <td>{{ application.member.account_no }}</td>
                                 <td>
-                                    <div class="application-member">
-                                        <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
-                                        <div>
-                                            <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
-                                                {{ application.member.name }}
-                                            </router-link>
-
-                                            <p>Acc. no: {{ application.member.account_no }}</p>
-                                        </div>
-                                    </div>
+                                    <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
+                                        {{ application.member.name }}
+                                    </router-link>
                                 </td>
                                 <td>
-                                    <p>{{ ucFirst(application.dps_type) }}: {{ numberFormat(application.dps_amount, 2) }}</p>
-                                    <p>Years: {{ application.year }}</p>
+                                    <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
                                 </td>
+                                <td>{{ numberFormat(application.dps_amount, 2) }} <br> ({{ ucFirst(application.dps_type) }})</td>
+                                <td>{{ application.year }}</td>
                                 <td>{{ numberFormat(application.total_amount, 2) }}</td>
                                 <td>{{ numberFormat(application.receiving, 2) }}</td>
                                 <td>{{ numberFormat(application.profit, 2) }}</td>
-                                <td>
-                                    <p v-if="application.created_user">{{ application.created_user.name }}</p>
-                                    {{ userFormattedDate(application.created_at) }}</td>
+                                <td>{{ userFormattedDate(application.created_at) }}</td>
                                 <td>
                                     <div class="action">
-                                        <router-link :to="{ name: 'showDPSApplication', params:{application_id: application.id}}" class="btn btn-outline-primary btn-sm"><i class="bx bx-show-alt"></i></router-link>
+                                        <a href="#" class="btn btn-sm btn-outline-info btn-text" @click.prevent="withdrawApplication">Withdraw</a>
                                         <router-link :to="{ name: 'EditDPSApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>
                                         <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="deleteConfirm(application.id)"><i class="bx bx-trash"></i></a>
                                     </div>
@@ -188,6 +192,8 @@ export default ({
     components: {
         'Pagination': LaravelVuePagination
     },
+
+    mixins: [helpers],
 
     data() {
         return {
@@ -270,6 +276,14 @@ export default ({
             } else {
                 this.message403()
             }
+        },
+
+        withdrawApplication() {
+            this.$swal({
+                icon: 'warning',
+                title: 'Coming Soon!',
+                text: 'Withdrawal feature is unavailable right now'
+            })
         },
 
         getResults(page = 1) {

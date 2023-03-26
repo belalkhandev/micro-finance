@@ -1,85 +1,78 @@
 <template>
-    <div class="row" v-if="application && !isLoading">
+    <div class="row">
         <div class="col-md-8">
             <div class="box">
-                <div class="box-header">
+                <div class="box-header bg-indigo-400">
                     <div class="box-title">
-                        <h5>Application details</h5>
+                        <h5 class="text-white">Profile</h5>
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="dps-application-member mb-4" v-if="application.member">
-                        <img v-if="application.member.photo" :src="application.member.photo" alt="Member photo" class="w-24">
-                        <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
-                            {{ application.member.name }}
-                        </router-link>
-                        <h5>Account: {{ application.member.account_no }}</h5>
-                    </div>
-                    <div class="application-info">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <th>Deposit Duration</th>
-                                    <td>dfadsfasdf</td>
-                                </tr>
-                                <tr>
-                                    <th>{{ ucFirst(application.dps_type) }} Deposit Amount</th>
-                                    <td class="text-right">{{ numberFormat(application.dps_amount, 2) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Account Depositable Amount</th>
-                                    <td class="text-right">{{ numberFormat(application.total_amount) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Receivable Amount</th>
-                                    <td class="text-right">{{ numberFormat(application.receiving) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Total Profitable Amount</th>
-                                    <td class="text-right">{{ numberFormat(application.profit) }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Current Deposit Balance</th>
-                                    <td class="text-right">{{ numberFormat(application.balance) }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="box" v-if="application.created_user">
-                <div class="box-header">
-                    <h5>Application Manage by</h5>
-                </div>
-                <div class="box-body">
-                    <p>Created By: <strong>{{ application.created_user.name }}</strong></p>
-                    <p>Created at: {{ userFormattedDate(application.created_at) }}</p>
-                </div>
-            </div>
+                    <div class="profile" v-if="user">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="user-box">
+                                    <img v-if="user.profile && user.profile.photo" :src="user.profile.photo" alt="User photo">
+                                    <img v-else src="../../../assets/images/user.png" alt="">
+                                    <div class="mb-3 mt-3">
+                                        <h3>{{ user.name }}</h3>
+                                        <h5 class="text-indigo-600">{{user.role_name }}</h5>
+                                    </div>
+                                    <button type="button" class="btn btn-sm btn-warning">Edit Profile</button>
+                                    <button type="button" class="btn btn-sm btn-danger">Deactive Account</button>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <div class="user-info">
+                                    <table class="table table-borderless">
+                                        <tbody>
 
-            <div class="box">
-                <div class="box-header">
-                    <h5>Operations</h5>
-                </div>
-                <div class="box-body">
-                    <ul>
-                        <li>
-                            <router-link :to="{
-                                name: 'EditDPSApplication',
-                                params: {
-                                    application_id: application_id
-                                }
-                            }" class="btn btn-outline-primary mb-2 w-100">Edit DPS</router-link>
-                        </li>
-                        <li>
-                            <a href="" class="btn btn-outline-warning mb-2 w-100">Close DPS</a>
-                        </li>
-                        <li>
-                            <a href="" class="btn btn-outline-danger mb-2 w-100">Delete DPS</a>
-                        </li>
-                    </ul>
+                                        <tr>
+                                            <th>Name</th>
+                                            <td class="py-2">:</td>
+                                            <td>{{ user.name }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Email</th>
+                                            <td class="py-2">:</td>
+                                            <td>{{ user.email }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Phone</th>
+                                            <td class="py-2">:</td>
+                                            <td>{{ user.phone }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Gender</th>
+                                            <td class="py-2">:</td>
+                                            <td>{{ user.profile ? user.profile.gender : '-' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Address</th>
+                                            <td class="py-2">:</td>
+                                            <td>{{ user.profile ? user.profile.address : '-' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Birthdate</th>
+                                            <td class="py-2">:</td>
+                                            <td>{{ user.profile ? user.profile.birthdate : '-' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Account Status</th>
+                                            <td class="py-2">:</td>
+                                            <td>
+                                                <strong v-if="user.is_active" class="text-green-600">
+                                                    Active
+                                                </strong>
+                                                <strong v-else="user.is_active" class="text-red-600">Deactivate</strong>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -87,36 +80,40 @@
 </template>
 
 <script>
-import {mapActions, mapGetters} from 'vuex'
-import {application} from "express";
+import { mapGetters, mapActions} from 'vuex'
 
 export default({
-    name: 'ShowDpsApplication',
+    name: 'AdminProfile',
     data() {
         return {
-            application_id: this.$route.params.application_id,
-            isLoading: false
+            user_id: this.$route.params.admin_id
         }
     },
 
     computed: {
         ...mapGetters ({
-            application: 'dps/application',
+            users: 'user/users'
         }),
+
+        user() {
+            if (this.users && this.user_id) {
+                return this.users.find(user => user.id == this.user_id)
+            }
+        }
     },
 
     methods: {
         ...mapActions({
-            getApplicationById: 'dps/getApplicationById'
+            getUsers: 'user/getUsers'
         })
     },
 
     mounted() {
-        this.isLoading = true
-        this.getApplicationById(this.application_id).then(() => {
-            this.isLoading = false;
-        })
+        if (!this.users) {
+            this.getUsers();
+        }
     }
+
 
 })
 </script>
