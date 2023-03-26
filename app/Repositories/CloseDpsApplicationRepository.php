@@ -21,9 +21,9 @@ class CloseDpsApplicationRepository extends Repository
         return $this->create([
             'dps_application_id' => $request->application_id,
             'deposit_balance' => $request->deposit_balance,
-            'incentive' => $request->incentive,
+            'incentive' => $request->incentive ?? 0,
             'incentive_type' => $request->incentive_type,
-            'incentive_amount' => $request->incentive_amount,
+            'incentive_amount' => $request->incentive_amount ?? 0,
             'total_payable' => $request->payable_amount,
             'payment' => $request->payment,
             'payment_method' => $request->payment_method,

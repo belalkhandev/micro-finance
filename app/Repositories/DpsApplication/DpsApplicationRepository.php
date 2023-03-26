@@ -122,7 +122,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function find($id)
     {
-        return DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name', 'transactions', 'closeApplication')->find($id);
+        return DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name', 'transactions', 'closeApplication', 'closeApplication.user')->find($id);
     }
 
     public function dpsTransactions($dps_id)

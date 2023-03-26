@@ -30,4 +30,9 @@ class CloseDpsApplication extends Model
     {
         return $this->belongsTo(DpsApplication::class, 'dps_application_id', 'id');
     }
+
+    public function user():BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
 }

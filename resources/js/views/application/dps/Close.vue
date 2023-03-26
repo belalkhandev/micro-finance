@@ -292,7 +292,8 @@ export default({
                         title: "DPS Closed!",
                         text: "Dps Application has been closed successfully",
                         timer: 3000
-                    })
+                    });
+                    this.$router.push({ name: 'showDPSApplication', params: {application_id: this.application_id}})
                 } else {
                     this.errors = this.validation_errors
                     this.error = this.error_message

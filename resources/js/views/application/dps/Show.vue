@@ -86,7 +86,7 @@
                                 <td>Payment method</td>
                                 <td class="text-right">{{ ucFirst(application.close_application.payment_method) }}</td>
                             </tr>
-                            <tr>
+                            <tr v-if="application.close_application.payment_channel">
                                 <td>Payment channel</td>
                                 <td class="text-right">{{ application.close_application.payment_channel }}</td>
                             </tr>
@@ -101,6 +101,11 @@
                             <tr v-if="application.close_application.note">
                                 <td>Note</td>
                                 <td class="text-right">{{ application.close_application.note }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Closed by</td>
+                                <td class="text-right">{{ application.close_application.user.name }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -119,7 +124,7 @@
                 </div>
             </div>
 
-            <div class="box">
+            <div class="box" v-if="application.status != 'closed'">
                 <div class="box-header">
                     <h5>Operations</h5>
                 </div>
@@ -128,7 +133,7 @@
                         <li>
                             <router-link :to="{ name: 'EditDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-primary mb-2 w-100">Edit DPS</router-link>
                         </li>
-                        <li v-if="application.status != 'closed'">
+                        <li>
                             <router-link :to="{ name: 'CloseDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-warning mb-2 w-100">Close DPS</router-link>
                         </li>
                         <li>
