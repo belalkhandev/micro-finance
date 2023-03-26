@@ -250,6 +250,15 @@ const routes = [
         }
     },
     {
+        path: '/application/loans/close/:application_id',
+        name: 'CloseLoanApplication',
+        component: () => import('../views/application/loan/Close.vue'),
+        meta: {
+            title: 'Loan application close',
+            permission: 'edit_application'
+        }
+    },
+    {
         path: '/transaction',
         name: 'TransactionHome',
         component: () => import('../views/transaction/Index'),
