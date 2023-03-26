@@ -133,7 +133,6 @@ Route::group([
     ], function($route) {
         $route->get('/statistics', [DpsController::class, 'dpsApplicationCalculation']);
         $route->get('/list', [DpsController::class, 'index']);
-        $route->get('/list/{id}', [DpsController::class, 'show']);
         $route->post('/create', [DpsController::class, 'store']);
         $route->put('/update/{id}', [DpsController::class, 'update']);
         $route->delete('/delete/{id}', [DpsController::class, 'destroy']);

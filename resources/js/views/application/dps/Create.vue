@@ -178,9 +178,12 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import $ from 'jquery';
+import {helpers} from "../../../mixin";
 
 export default ({
     name: "Create",
+
+    mixins: [helpers],
 
     data() {
         return {
