@@ -139,6 +139,23 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Status</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select v-model="form.status" class="form-control select-wrapper">
+                                        <option value="">Select</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                        <option value="closed">Closed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group mt-4 bg-yellow-50 p-2">
                             <div class="row">
                                 <div class="col-md-4 text-left">
@@ -200,6 +217,7 @@ export default ({
                 m_date: "",
                 prev_deposit: "",
                 remarks: "",
+                status: "",
                 application_id: this.$route.params.application_id
             },
             monthly_date: "",
@@ -217,7 +235,7 @@ export default ({
             error_message: 'error_message',
             members: 'member/searchData',
             application_types: 'group/application_types',
-            applications: 'dps/applications',
+            application: 'dps/application',
             days: 'group/days'
         }),
 
@@ -239,35 +257,12 @@ export default ({
             }
 
             return this.members;
-        },
-
-        application () {
-            if (this.applications && this.form.application_id) {
-                const application = this.applications.data.find(application => application.id == this.form.application_id)
-
-                if (application) {
-                    this.form.member_id = application.member_id;
-                    this.form.dps_amount = application.dps_amount;
-                    this.form.total_dps = application.total_amount;
-                    this.form.year = application.year;
-                    this.form.receiving = application.receiving;
-                    this.form.profit = application.profit;
-                    this.form.dps_type = application.dps_type;
-                    this.form.w_day = application.w_day ? application.w_day : "";
-                    this.monthly_date = application.m_date;
-                    this.form.prev_deposit = application.prev_deposit;
-                    this.form.remarks = application.remarks;
-                    this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone+ ' ('+ this.ucFirst(application.member.member_type) +')' ;
-                }
-            }
         }
-
     },
-
     methods: {
         ...mapActions({
             getMembers: 'member/getSearchData',
-            getApplications: 'dps/getApplications',
+            getApplicationById: 'dps/getApplicationById',
             updateApplication: 'dps/editApplication',
         }),
 
@@ -282,7 +277,7 @@ export default ({
 
         chooseMember(member) {
             this.form.member_id = member.id;
-            this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone+ ' ('+ this.ucFirst(member.member_type) +')' ;
+            this.member_input_text = member.account_no + '-' + member.name + '-' + member.phone + ' ('+ this.ucFirst(member.member_type) +')' ;
 
             if (member.member_type === 'deposit_weekly' || member.member_type === 'loan') {
                 this.form.w_day = member.day;
@@ -360,9 +355,26 @@ export default ({
             this.getMembers();
         }
 
-        if (!this.applications) {
-            this.getApplications();
-        }
+        this.getApplicationById(this.form.application_id).then(() => {
+            if (!this.application) {
+                this.$router.push({ name: 'PageNotFound'})
+            }
+            const application = this.application;
+            this.form.member_id = application.member_id;
+            this.form.dps_amount = application.dps_amount;
+            this.form.total_dps = application.total_amount;
+            this.form.year = application.year;
+            this.form.receiving = application.receiving;
+            this.form.profit = application.profit;
+            this.form.dps_type = application.dps_type;
+            this.form.w_day = application.w_day ? application.w_day : "";
+            this.monthly_date = application.m_date;
+            this.form.prev_deposit = application.prev_deposit;
+            this.form.remarks = application.remarks;
+            this.form.status = application.status;
+            this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone+ ' ('+ this.ucFirst(application.member.member_type) +')' ;
+
+        })
     },
 
     watch: {
