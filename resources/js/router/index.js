@@ -182,7 +182,7 @@ const routes = [
         name: 'showDPSApplication',
         component: () => import('../views/application/dps/Show.vue'),
         meta: {
-            title: 'Application details',
+            title: 'DPS Application details',
             permission: 'view_application'
         }
     },

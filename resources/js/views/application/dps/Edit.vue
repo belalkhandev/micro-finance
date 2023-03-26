@@ -180,12 +180,9 @@
 <script>
 import {mapActions, mapGetters} from "vuex";
 import $ from 'jquery';
-import {helpers} from "../../../mixin";
 
 export default ({
     name: "Edit",
-
-    mixins: [helpers],
 
     data() {
         return {
@@ -221,10 +218,6 @@ export default ({
             applications: 'dps/applications',
             days: 'group/days'
         }),
-
-        filterRoles(){
-            return this.roles
-        },
 
         filterMembers()
         {

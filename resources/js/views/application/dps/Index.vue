@@ -114,12 +114,11 @@
                             <th>#</th>
                             <th>Member</th>
                             <th>Deposit</th>
-                            <th>Year</th>
                             <th>Deposit Amt.</th>
                             <th>Receivable</th>
                             <th>Profit Amt.</th>
                             <th>Created</th>
-                            <th></th>
+                            <th>Operations</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -137,8 +136,10 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ numberFormat(application.dps_amount, 2) }} <br> ({{ ucFirst(application.dps_type) }})</td>
-                                <td>{{ application.year }}</td>
+                                <td>
+                                    <p>{{ ucFirst(application.dps_type) }}: {{ numberFormat(application.dps_amount, 2) }}</p>
+                                    <p>Years: {{ application.year }}</p>
+                                </td>
                                 <td>{{ numberFormat(application.total_amount, 2) }}</td>
                                 <td>{{ numberFormat(application.receiving, 2) }}</td>
                                 <td>{{ numberFormat(application.profit, 2) }}</td>
@@ -187,8 +188,6 @@ export default ({
     components: {
         'Pagination': LaravelVuePagination
     },
-
-    mixins: [helpers],
 
     data() {
         return {

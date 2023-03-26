@@ -197,7 +197,7 @@
                             <li>
                                 <router-link :to="{name: 'CreateDPS'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>New DPS Application</span>
+                                    <span>Closed Application</span>
                                 </router-link>
                             </li>
                         </ul>
