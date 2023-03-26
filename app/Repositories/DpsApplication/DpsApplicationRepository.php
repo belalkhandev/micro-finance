@@ -122,13 +122,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function find($id)
     {
-        $dps = DpsApplication::with('transactions')->find($id);
-
-        if ($dps) {
-            return $dps;
-        }
-
-        return false;
+        return DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name', 'transactions')->find($id);
     }
 
     public function dpsTransactions($dps_id)
