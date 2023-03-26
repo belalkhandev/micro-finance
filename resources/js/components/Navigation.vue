@@ -194,6 +194,12 @@
                                     <span>New DPS Application</span>
                                 </router-link>
                             </li>
+                            <li>
+                                <router-link :to="{name: 'CreateDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Closed DPS Application</span>
+                                </router-link>
+                            </li>
                         </ul>
 
                         <h5>Loan Applications</h5>
@@ -208,6 +214,12 @@
                                 <router-link :to="{name: 'CreateLoan'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>New Loan Application</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Closed Loan Application</span>
                                 </router-link>
                             </li>
                         </ul>

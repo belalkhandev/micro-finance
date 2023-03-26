@@ -22,7 +22,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function getByPaginate($request, $limit = 20)
     {
-        $applications = DpsApplication::with('member:id,account_no,name,photo');
+        $applications = DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name');
 
         if ($request->from_date && $request->to_date) {
             $applications = $applications->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
@@ -33,13 +33,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
             $applications = $applications->where('member_id', $request->member_id);
         }
 
-        $applications = $applications->latest()->paginate($limit);
-
-        if ($applications) {
-            return $applications;
-        }
-
-        return false;
+        return $applications->latest()->paginate($limit);
     }
 
     public function store($request)
@@ -122,13 +116,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function find($id)
     {
-        $dps = DpsApplication::with('transactions')->find($id);
-
-        if ($dps) {
-            return $dps;
-        }
-
-        return false;
+        return DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name', 'transactions')->find($id);
     }
 
     public function dpsTransactions($dps_id)
