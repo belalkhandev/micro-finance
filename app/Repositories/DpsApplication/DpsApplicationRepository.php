@@ -122,7 +122,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function find($id)
     {
-        return DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name', 'transactions')->find($id);
+        return DpsApplication::with('member:id,account_no,name,photo', 'createdUser:id,name', 'transactions', 'closeApplication')->find($id);
     }
 
     public function dpsTransactions($dps_id)
@@ -156,6 +156,13 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         }
 
         return false;
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $application = DpsApplication::findOrFail($id);
+        $application->status = $status;
+        return $application->save();
     }
 
 }

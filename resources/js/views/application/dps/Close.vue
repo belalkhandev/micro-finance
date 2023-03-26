@@ -11,7 +11,7 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <form>
+                    <form @submit.prevent="closeDpsSubmit">
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5 text-left">
@@ -140,7 +140,12 @@
                             </div>
                         </div>
                         <div class="text-right">
-                            <button type="submit" class="btn btn-primary">Close DPS</button>
+                            <button type="submit" class="btn btn-primary" id="closeApplication">
+                                <span>Close DPS</span>
+                                <div class="spinner-border" role="status">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -207,6 +212,7 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import $ from "jquery";
 
 export default({
     name: 'ShowDpsApplication',
@@ -254,6 +260,7 @@ export default({
     methods: {
         ...mapActions({
             getApplicationById: 'dps/getApplicationById',
+            closeDpsApplication: 'dps/closeApplication'
         }),
 
         handleIncentiveType(type) {
@@ -269,6 +276,31 @@ export default({
             }
 
             this.form.payable_amount = parseFloat(this.form.deposit_balance) + parseFloat(this.form.incentive_amount);
+        },
+
+        closeDpsSubmit() {
+            $('#closeApplication').prop('disabled', true).addClass('submitted')
+
+            let formData = this.form;
+
+            this.closeDpsApplication(formData).then(() => {
+                if (!this.validation_errors && !this.error_message) {
+                    this.errors = this.error = null;
+
+                    this.$swal({
+                        icon: "success",
+                        title: "DPS Closed!",
+                        text: "Dps Application has been closed successfully",
+                        timer: 3000
+                    })
+                } else {
+                    this.errors = this.validation_errors
+                    this.error = this.error_message
+                }
+
+                $('#closeApplication').prop('disabled', false).removeClass('submitted')
+            })
+
         }
 
     },

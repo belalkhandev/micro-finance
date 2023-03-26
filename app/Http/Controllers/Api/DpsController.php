@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\DpsApplication;
+use App\Repositories\CloseDpsApplicationRepository;
 use App\Repositories\DpsApplication\DpsApplicationRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -11,10 +12,15 @@ use Illuminate\Support\Facades\Validator;
 class DpsController extends Controller
 {
     protected $dps;
+    protected CloseDpsApplicationRepository $closeDpsApplicationRepository;
 
-    public function __construct(DpsApplicationRepositoryInterface $dps)
+    public function __construct(
+        DpsApplicationRepositoryInterface $dps,
+        CloseDpsApplicationRepository $closeDpsApplicationRepository
+    )
     {
         $this->dps = $dps;
+        $this->closeDpsApplicationRepository = $closeDpsApplicationRepository;
     }
 
     /**
@@ -66,16 +72,6 @@ class DpsController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -115,7 +111,6 @@ class DpsController extends Controller
             ]);
         }
 
-        //validation monthly date
         if ($request->input('dps_type') === 'monthly' && $request->input('m_date') === 'Invalid date') {
             return response()->json([
                 'status' => false,
@@ -181,7 +176,6 @@ class DpsController extends Controller
             ]);
         }
 
-        //validation monthly date
         if ($request->input('dps_type') === 'monthly' && $request->input('m_date') === 'Invalid date') {
             return response()->json([
                 'status' => false,
@@ -242,6 +236,35 @@ class DpsController extends Controller
                 'collections' => $collections,
                 'dues' => $dues,
             ]
+        ]);
+    }
+    public function closeDpsApplication(Request $request, $id)
+    {
+        $rules = [
+            'deposit_balance' => 'required',
+            'payment' => 'required',
+            'transaction_no' => 'required_if:payment_method,mobile_banking',
+            'cheque_no' => 'required_if:payment_method,bank',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ]);
+        }
+
+        $close = $this->closeDpsApplicationRepository->storeByRequest($request);
+
+        if ($close) {
+            $this->dps->updateStatus($id, 'closed');
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Dps application has been closed successfully'
         ]);
     }
 

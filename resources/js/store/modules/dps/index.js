@@ -128,6 +128,22 @@ export default {
             }
         },
 
+        async closeApplication({ commit }, formdata) {
+            const res = await axios.post('application/dps/close/'+formdata.application_id, formdata)
+
+            if (res.data.status) {
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
         async deleteApplication({ commit }, item_id) {
             const res = await axios.delete('application/dps/delete/'+item_id)
             if (res.data.status) {

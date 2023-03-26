@@ -136,6 +136,7 @@ Route::group([
         $route->get('/list/{id}', [DpsController::class, 'show']);
         $route->post('/create', [DpsController::class, 'store']);
         $route->put('/update/{id}', [DpsController::class, 'update']);
+        $route->post('/close/{id}', [DpsController::class, 'closeDpsApplication']);
         $route->delete('/delete/{id}', [DpsController::class, 'destroy']);
     });
 

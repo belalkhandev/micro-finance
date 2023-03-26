@@ -55,6 +55,58 @@
                     </div>
                 </div>
             </div>
+
+            <div class="box" v-if="application.close_application">
+                <div class="box-header">
+                    <div class="box-title">
+                        <h5>Application Closing Information</h5>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="application-info">
+                        <table class="table table-borderless table-striped">
+                            <tbody>
+                            <tr>
+                                <td>Deposit balance</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.deposit_balance) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Incentive amount</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.incentive_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payable amount</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.total_payable, 2) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payment</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.payment) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payment method</td>
+                                <td class="text-right">{{ ucFirst(application.close_application.payment_method) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payment channel</td>
+                                <td class="text-right">{{ application.close_application.payment_channel }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.transaction_no">
+                                <td>Transaction no</td>
+                                <td class="text-right">{{ application.close_application.transaction_no }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.cheque_no">
+                                <td>Cheque no</td>
+                                <td class="text-right">{{ application.close_application.cheque_no }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.note">
+                                <td>Note</td>
+                                <td class="text-right">{{ application.close_application.note }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-4">
             <div class="box" v-if="application.created_user">
@@ -76,7 +128,7 @@
                         <li>
                             <router-link :to="{ name: 'EditDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-primary mb-2 w-100">Edit DPS</router-link>
                         </li>
-                        <li>
+                        <li v-if="application.status != 'closed'">
                             <router-link :to="{ name: 'CloseDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-warning mb-2 w-100">Close DPS</router-link>
                         </li>
                         <li>
