@@ -16,8 +16,12 @@
                         <h5>Account: {{ application.member.account_no }}</h5>
                     </div>
                     <div class="application-info">
-                        <table class="table table-borderless">
+                        <table class="table table-borderless table-striped">
                             <tbody>
+                            <tr>
+                                <th>DPS Status</th>
+                                <td  class="text-right" v-html="getStatusFormat(application.status)"></td>
+                            </tr>
                             <tr>
                                 <th>Deposit Duration</th>
                                 <td class="text-right">{{ application.year }} years</td>
@@ -39,12 +43,12 @@
                                 <td class="text-right">{{ numberFormat(application.profit) }}</td>
                             </tr>
                             <tr>
-                                <th>Current Deposit Balance</th>
-                                <td class="text-right">{{ numberFormat(application.balance) }}</td>
-                            </tr>
-                            <tr>
                                 <th>Total transactions</th>
                                 <td class="text-right">{{ application.transactions.length }}</td>
+                            </tr>
+                            <tr>
+                                <th>DPS Balance</th>
+                                <td class="text-right">{{ numberFormat(application.balance) }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -70,15 +74,10 @@
                 <div class="box-body">
                     <ul>
                         <li>
-                            <router-link :to="{
-                                name: 'EditDPSApplication',
-                                params: {
-                                    application_id: application_id
-                                }
-                            }" class="btn btn-outline-primary mb-2 w-100">Edit DPS</router-link>
+                            <router-link :to="{ name: 'EditDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-primary mb-2 w-100">Edit DPS</router-link>
                         </li>
                         <li>
-                            <a href="" class="btn btn-outline-warning mb-2 w-100">Close DPS</a>
+                            <router-link :to="{ name: 'CloseDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-warning mb-2 w-100">Close DPS</router-link>
                         </li>
                         <li>
                             <a href="" class="btn btn-outline-danger mb-2 w-100" @click.prevent="deleteConfirm(application.id)">Delete DPS</a>
@@ -150,7 +149,6 @@ export default({
     mounted() {
         this.isLoading = true
         this.getApplicationById(this.application_id).then(() => {
-            console.log(this.application)
             this.isLoading = false;
             if (!this.application) {
                 this.$router.push({ name: 'PageNotFound'})

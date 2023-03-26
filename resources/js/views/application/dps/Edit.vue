@@ -13,7 +13,6 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
-                            {{ application }}
                             <div class="row">
                                 <div class="col-md-4 text-left">
                                     <label class="col-form-label">Member</label>

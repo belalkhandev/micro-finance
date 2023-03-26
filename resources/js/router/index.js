@@ -205,6 +205,15 @@ const routes = [
         }
     },
     {
+        path: '/application/dps/close/:application_id',
+        name: 'CloseDPSApplication',
+        component: () => import('../views/application/dps/Close.vue'),
+        meta: {
+            title: 'DPS Application Close',
+            permission: 'edit_application'
+        }
+    },
+    {
         path: '/application/loans',
         name: 'ApplicationLoan',
         component: () => import('../views/application/loan/Index.vue'),

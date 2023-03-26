@@ -116,7 +116,7 @@
                             <th>Deposit</th>
                             <th>Deposit Amt.</th>
                             <th>Receivable</th>
-                            <th>Profit Amt.</th>
+                            <th>Status</th>
                             <th>Created</th>
                             <th>Operations</th>
                         </tr>
@@ -142,7 +142,7 @@
                             </td>
                             <td>{{ numberFormat(application.total_amount, 2) }}</td>
                             <td>{{ numberFormat(application.receiving, 2) }}</td>
-                            <td>{{ numberFormat(application.profit, 2) }}</td>
+                            <td v-html="getStatusFormat(application.status)"></td>
                             <td>
                                 <p v-if="application.created_user">{{ application.created_user.name }}</p>
                                 {{ userFormattedDate(application.created_at) }}</td>
