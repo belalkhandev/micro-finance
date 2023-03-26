@@ -42,30 +42,6 @@ class DpsController extends Controller
     }
 
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function show($id)
-    {
-        $application = $this->dps->find($id);
-
-        if ($application) {
-            return response()->json([
-                'status' => true,
-                'application' => $application,
-                'message' => 'Dps application found'
-            ]);
-        }
-
-        return response()->json([
-            'status' => false,
-            'application' => null,
-            'message' => 'No data found'
-        ]);
-    }
-
-    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -139,6 +115,41 @@ class DpsController extends Controller
             'status' => false,
             'message' => 'Failed to store Dps Application'
         ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function show($id)
+    {
+        $dps = $this->dps->find($id);
+
+        if ($dps) {
+            return response()->json([
+                'status' => true,
+                'member' => $dps,
+                'message' => 'Found DPS application data'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => 'No data found'
+        ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
     }
 
     /**

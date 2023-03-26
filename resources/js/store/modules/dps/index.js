@@ -4,17 +4,12 @@ export default {
     namespaced: true,
     state: {
         applications: null,
-        application: null,
         statistics: null,
     },
 
     getters: {
         applications(state) {
             return state.applications
-        },
-
-        application(state) {
-            return state.application
         },
 
         statistics(state) {
@@ -25,10 +20,6 @@ export default {
     mutations: {
         SET_APPLICATIONS(state, applications) {
             state.applications = applications
-        },
-
-        GET_APPLICATION(state, application) {
-            state.application = application
         },
 
         SET_STATISTICS(state, total) {
@@ -57,6 +48,7 @@ export default {
     },
 
     actions: {
+        //application actions
         async getApplications({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('application/dps/list?page='+page_no)
@@ -66,14 +58,7 @@ export default {
             }
         },
 
-        async getApplicationById({ commit }, application_id) {
-            const res = await axios.get('application/dps/list/'+application_id)
-
-            if (res.data.status) {
-                commit('GET_APPLICATION', res.data.application)
-            }
-        },
-
+        //application filter action
         async filterApplications({ commit }, formData) {
             const res = await axios.get('application/dps/list', {
                 params: formData
@@ -86,6 +71,7 @@ export default {
             }
         },
 
+        //application actions
         async getDpsStatistics({ commit }) {
             const res = await axios.get('application/dps/statistics')
 

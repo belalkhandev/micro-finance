@@ -60,8 +60,6 @@ class MemberGroupController extends Controller
     {
         $rules = [
             'group_name' => 'required',
-            'group_no' => 'numeric',
-            'day' => 'required'
         ];
 
         $validation = Validator::make($request->all(), $rules);

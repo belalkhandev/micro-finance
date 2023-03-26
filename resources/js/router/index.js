@@ -178,15 +178,6 @@ const routes = [
         }
     },
     {
-        path: '/application/dps/show/:application_id',
-        name: 'showDPSApplication',
-        component: () => import('../views/application/dps/Show.vue'),
-        meta: {
-            title: 'DPS Application details',
-            permission: 'view_application'
-        }
-    },
-    {
         path: '/application/dps/create',
         name: 'CreateDPS',
         component: () => import('../views/application/dps/Create.vue'),
