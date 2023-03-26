@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DpsApplication extends Model
 {
@@ -37,5 +38,10 @@ class DpsApplication extends Model
     public function updatedUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    public function closeApplication(): HasOne
+    {
+        return $this->hasOne(CloseDpsApplication::class, 'dps_application_id', 'id');
     }
 }
