@@ -157,6 +157,7 @@ Route::group([
     ], function($route) {
         $route->get('/statistics', [LoanController::class, 'loanApplicationCalculation']);
         $route->get('/list', [LoanController::class, 'index']);
+        $route->get('/list/{id}', [LoanController::class, 'show']);
         $route->get('/member/list/{member_id}', [LoanController::class, 'memberApplications']);
         $route->post('/create', [LoanController::class, 'store']);
         $route->put('/update/{id}', [LoanController::class, 'update']);

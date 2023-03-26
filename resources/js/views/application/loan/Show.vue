@@ -1,78 +1,155 @@
 <template>
-    <div class="row">
+    <div class="row" v-if="application && !isLoading">
         <div class="col-md-8">
             <div class="box">
-                <div class="box-header bg-indigo-400">
+                <div class="box-header">
                     <div class="box-title">
-                        <h5 class="text-white">Profile</h5>
+                        <h5>Application details</h5>
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="profile" v-if="user">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="user-box">
-                                    <img v-if="user.profile && user.profile.photo" :src="user.profile.photo" alt="User photo">
-                                    <img v-else src="../../../assets/images/user.png" alt="">
-                                    <div class="mb-3 mt-3">
-                                        <h3>{{ user.name }}</h3>
-                                        <h5 class="text-indigo-600">{{user.role_name }}</h5>
-                                    </div>
-                                    <button type="button" class="btn btn-sm btn-warning">Edit Profile</button>
-                                    <button type="button" class="btn btn-sm btn-danger">Deactive Account</button>
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <div class="user-info">
-                                    <table class="table table-borderless">
-                                        <tbody>
-
-                                        <tr>
-                                            <th>Name</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Email</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.email }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Phone</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.phone }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Gender</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.profile ? user.profile.gender : '-' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Address</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.profile ? user.profile.address : '-' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Birthdate</th>
-                                            <td class="py-2">:</td>
-                                            <td>{{ user.profile ? user.profile.birthdate : '-' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Account Status</th>
-                                            <td class="py-2">:</td>
-                                            <td>
-                                                <strong v-if="user.is_active" class="text-green-600">
-                                                    Active
-                                                </strong>
-                                                <strong v-else="user.is_active" class="text-red-600">Deactivate</strong>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="dps-application-member mb-4" v-if="application.member">
+                        <img v-if="application.member.photo" :src="application.member.photo" alt="Member photo" class="w-24">
+                        <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
+                            {{ application.member.name }}
+                        </router-link>
+                        <h5>Account: {{ application.member.account_no }}</h5>
                     </div>
+                    <div class="application-info">
+                        <table class="table table-borderless table-striped">
+                            <tbody>
+                            <tr>
+                                <th>Loan Status</th>
+                                <td  class="text-right" v-html="getStatusFormat(application.status)"></td>
+                            </tr>
+                            <tr>
+                                <th>Loan</th>
+                                <td class="text-right">{{ numberFormat(application.loan_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Loan Service</th>
+                                <td class="text-right">{{ application.service }}%</td>
+                            </tr>
+                            <tr>
+                                <th>Service in amount</th>
+                                <td class="text-right">{{ numberFormat(application.service_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Loan + Service</th>
+                                <td class="text-right">{{ numberFormat(application.total_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Installment</th>
+                                <td class="text-right">{{ application.installment }}</td>
+                            </tr>
+                            <tr>
+                                <th>{{ ucFirst(application.dps_type) }} installment amount</th>
+                                <td class="text-right">{{ numberFormat(application.installment_amount) }}</td>
+                            </tr>
+                            <tr v-if="application.prev_deposit">
+                                <th>Previous  repayment</th>
+                                <td class="text-right">{{ numberFormat(application.prev_deposit) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Total transactions</th>
+                                <td class="text-right">{{ application.paid_transactions.length }}</td>
+                            </tr>
+                            <tr>
+                                <th>Total repayment</th>
+                                <td class="text-right">{{ numberFormat(application.balance) }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box" v-if="application.close_application">
+                <div class="box-header">
+                    <div class="box-title">
+                        <h5>Application Closing Information</h5>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div class="application-info">
+                        <table class="table table-borderless table-striped">
+                            <tbody>
+                            <tr>
+                                <td>Deposit balance</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.deposit_balance) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Incentive amount</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.incentive_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payable amount</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.total_payable, 2) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payment</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.payment) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Payment method</td>
+                                <td class="text-right">{{ ucFirst(application.close_application.payment_method) }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.payment_channel">
+                                <td>Payment channel</td>
+                                <td class="text-right">{{ application.close_application.payment_channel }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.transaction_no">
+                                <td>Transaction no</td>
+                                <td class="text-right">{{ application.close_application.transaction_no }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.cheque_no">
+                                <td>Cheque no</td>
+                                <td class="text-right">{{ application.close_application.cheque_no }}</td>
+                            </tr>
+                            <tr v-if="application.close_application.note">
+                                <td>Note</td>
+                                <td class="text-right">{{ application.close_application.note }}</td>
+                            </tr>
+
+                            <tr>
+                                <td>Closed by</td>
+                                <td class="text-right">{{ application.close_application.user.name }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="box" v-if="application.created_user">
+                <div class="box-header">
+                    <h5>Application Manage by</h5>
+                </div>
+                <div class="box-body">
+                    <div>
+                        <p>Created By: <strong>{{ application.created_user.name }}</strong></p>
+                        <p>Created at: {{ userFormattedDate(application.created_at) }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box" v-if="application.status != 'closed'">
+                <div class="box-header">
+                    <h5>Operations</h5>
+                </div>
+                <div class="box-body">
+                    <ul>
+                        <li>
+                            <router-link :to="{ name: 'EditLoanApplication', params: { application_id: application_id } }" class="btn btn-outline-primary mb-2 w-100">Edit Loan</router-link>
+                        </li>
+                        <li>
+                            <router-link :to="{ name: 'CloseDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-warning mb-2 w-100">Close Loan</router-link>
+                        </li>
+                        <li>
+                            <a href="" class="btn btn-outline-danger mb-2 w-100" @click.prevent="deleteConfirm(application.id)">Delete Loan</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -80,40 +157,72 @@
 </template>
 
 <script>
-import { mapGetters, mapActions} from 'vuex'
+import {mapActions, mapGetters} from 'vuex'
 
 export default({
-    name: 'AdminProfile',
+    name: 'ShowLoanApplication',
     data() {
         return {
-            user_id: this.$route.params.admin_id
+            application_id: this.$route.params.application_id,
+            isLoading: false
         }
     },
 
     computed: {
         ...mapGetters ({
-            users: 'user/users'
+            application: 'loan/application',
         }),
-
-        user() {
-            if (this.users && this.user_id) {
-                return this.users.find(user => user.id == this.user_id)
-            }
-        }
     },
 
     methods: {
         ...mapActions({
-            getUsers: 'user/getUsers'
-        })
+            getApplicationById: 'loan/getApplicationById',
+            deleteApplication: 'loan/deleteApplication',
+        }),
+
+        deleteConfirm(application_id) {
+            if (this.hasPermission('delete_application')) {
+                this.$swal({
+                    title:"Really want to delete!",
+                    text: "Are you sure? You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#5430d6",
+                    confirmButtonText: "Yes, Delete it!",
+                    cancelButtonColor: '#c82333',
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        this.deleteApplication(application_id).then(() => {
+                            if (!this.error_message) {
+                                this.$swal({
+                                    icon: 'success',
+                                    title: 'Congratulation!',
+                                    text: 'User has been deleted successfully'
+                                })
+
+                                this.$router.push({ name: 'ApplicationDPS' })
+                            }else {
+                                this.error = this.error_message
+                            }
+                        })
+                    }
+                });
+            } else {
+                this.message403()
+            }
+        },
     },
 
     mounted() {
-        if (!this.users) {
-            this.getUsers();
-        }
+        this.isLoading = true
+        this.getApplicationById(this.application_id).then(() => {
+            console.log(this.application)
+            this.isLoading = false;
+            if (!this.application) {
+                //this.$router.push({ name: 'PageNotFound'})
+            }
+        })
     }
-
 
 })
 </script>

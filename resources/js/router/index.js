@@ -223,6 +223,15 @@ const routes = [
         }
     },
     {
+        path: '/application/loans/show/:application_id',
+        name: 'ShowLoanApplication',
+        component: () => import('../views/application/loan/Show.vue'),
+        meta: {
+            title: 'Details loan application',
+            permission: 'view_application'
+        }
+    },
+    {
         path: '/application/loans/create',
         name: 'CreateLoan',
         component: () => import('../views/application/loan/Create.vue'),

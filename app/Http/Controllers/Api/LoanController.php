@@ -160,18 +160,19 @@ class LoanController extends Controller
      */
     public function show($id)
     {
-        $loan = $this->loan->find($id);
+        $application = $this->loan->find($id);
 
-        if ($loan) {
+        if ($application) {
             return response()->json([
                 'status' => true,
-                'member' => $loan,
-                'message' => 'Found Loan application data'
+                'application' => $application,
+                'message' => 'Dps application found'
             ]);
         }
 
         return response()->json([
             'status' => false,
+            'application' => null,
             'message' => 'No data found'
         ]);
     }

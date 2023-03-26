@@ -13,7 +13,6 @@
                 <div class="row">
                     <div class="col-md-8 offset-md-2">
                         <div class="form-group">
-                            {{ application }}
                             <div class="row">
                                 <div class="col-md-4 text-left">
                                     <label class="col-form-label">Member</label>
@@ -140,6 +139,21 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4 text-left">
+                                    <label class="col-form-label">Status</label>
+                                </div>
+                                <div class="col-md-8">
+                                    <select v-model="form.status" class="form-control select-wrapper">
+                                        <option value="">Select</option>
+                                        <option value="active">Active</option>
+                                        <option value="inactive">Inactive</option>
+                                        <option value="closed">Closed</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                         <div class="form-group mt-4 bg-yellow-50 p-2">
                             <div class="row">
                                 <div class="col-md-4 text-left">
@@ -201,6 +215,7 @@ export default ({
                 m_date: "",
                 prev_deposit: "",
                 remarks: "",
+                status: "",
                 application_id: this.$route.params.application_id
             },
             monthly_date: "",
@@ -218,7 +233,7 @@ export default ({
             error_message: 'error_message',
             members: 'member/searchData',
             application_types: 'group/application_types',
-            applications: 'loan/applications',
+            application: 'loan/application',
             days: 'group/days'
         }),
 
@@ -241,34 +256,12 @@ export default ({
 
             return this.members;
         },
-
-        application () {
-            if (this.applications && this.form.application_id) {
-                const application = this.applications.data.find(application => application.id == this.form.application_id)
-
-                if (application) {
-                    this.form.member_id = application.member_id;
-                    this.form.loan_amount = application.loan_amount;
-                    this.form.service = application.service;
-                    this.form.service_amount = application.service_amount;
-                    this.form.total_loan = application.total_amount;
-                    this.form.total_installment = application.installment;
-                    this.form.installment_amount = application.installment_amount;
-                    this.form.dps_type = application.dps_type;
-                    this.form.w_day = application.w_day ? application.w_day : "";
-                    this.monthly_date = application.m_date;
-                    this.form.prev_deposit = application.prev_deposit;
-                    this.form.remarks = application.remarks;
-                    this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone+ ' ('+ this.ucFirst(application.member.member_type) +')' ;
-                }
-            }
-        }
     },
 
     methods: {
         ...mapActions({
             getMembers: 'member/getSearchData',
-            getApplications: 'loan/getApplications',
+            getApplicationById: 'loan/getApplicationById',
             updateApplication: 'loan/editApplication'
         }),
 
@@ -341,6 +334,9 @@ export default ({
                         text: "Loan Application has been updated successfully",
                         timer: 3000
                     })
+
+                    this.$router.push({ name: 'ShowLoanApplication', params: {application_id: this.form.application_id}})
+
                 } else {
                     this.errors = this.validation_errors
                     this.error = this.error_message
@@ -357,10 +353,28 @@ export default ({
             this.getMembers();
         }
 
+        this.getApplicationById(this.form.application_id).then(() => {
+            if (!this.application) {
+                this.$router.push({ name: 'PageNotFound'})
+            }
 
-        if (!this.applications) {
-            this.getApplications();
-        }
+            const application = this.application;
+
+            this.form.member_id = application.member_id;
+            this.form.loan_amount = application.loan_amount;
+            this.form.service = application.service;
+            this.form.service_amount = application.service_amount;
+            this.form.total_loan = application.total_amount;
+            this.form.total_installment = application.installment;
+            this.form.installment_amount = application.installment_amount;
+            this.form.dps_type = application.dps_type;
+            this.form.w_day = application.w_day ? application.w_day : "";
+            this.monthly_date = application.m_date;
+            this.form.prev_deposit = application.prev_deposit;
+            this.form.remarks = application.remarks;
+            this.form.status = application.status;
+            this.member_input_text = application.member.account_no + '-' + application.member.name + '-' + application.member.phone + ' ('+ this.ucFirst(application.member.member_type) +')' ;
+        })
     },
 
     watch: {
