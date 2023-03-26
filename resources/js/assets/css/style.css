@@ -1246,3 +1246,12 @@ table td  .application-member img {
     border: none;
     height: 30px;
 }
+
+.dps-application-member {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.dps-application-member img {
+    margin: 10px auto;
+}

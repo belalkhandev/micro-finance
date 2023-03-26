@@ -1,5 +1,5 @@
 <template>
-    <div class="row" v-if="application">
+    <div class="row" v-if="application && !isLoading">
         <div class="col-md-8">
             <div class="box">
                 <div class="box-header">
@@ -8,14 +8,24 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <div class="member mb-4" v-if="application.member">
+                    <div class="dps-application-member mb-4" v-if="application.member">
                         <img v-if="application.member.photo" :src="application.member.photo" alt="Member photo" class="w-24">
-                        <h5>{{ application.member.name }}</h5>
+                        <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
+                            {{ application.member.name }}
+                        </router-link>
                         <h5>Account: {{ application.member.account_no }}</h5>
                     </div>
                     <div class="application-info">
                         <table class="table table-borderless">
                             <tbody>
+                                <tr>
+                                    <th>Deposit Duration</th>
+                                    <td>dfadsfasdf</td>
+                                </tr>
+                                <tr>
+                                    <th>{{ ucFirst(application.dps_type) }} Deposit Amount</th>
+                                    <td class="text-right">{{ numberFormat(application.dps_amount, 2) }}</td>
+                                </tr>
                                 <tr>
                                     <th>Account Depositable Amount</th>
                                     <td class="text-right">{{ numberFormat(application.total_amount) }}</td>
@@ -30,7 +40,7 @@
                                 </tr>
                                 <tr>
                                     <th>Current Deposit Balance</th>
-                                    <td class="text-right">{{ numberFormat(application.profit) }}</td>
+                                    <td class="text-right">{{ numberFormat(application.balance) }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -78,43 +88,34 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
+import {application} from "express";
 
 export default({
     name: 'ShowDpsApplication',
     data() {
         return {
-            application_id: this.$route.params.application_id
+            application_id: this.$route.params.application_id,
+            isLoading: false
         }
     },
 
     computed: {
         ...mapGetters ({
-            applications: 'dps/applications',
-            applicationItem: 'dps/application'
+            application: 'dps/application',
         }),
-
-        application() {
-            if (this.applications && this.application_id) {
-                return this.applications.data.find(application => application.id == this.application_id)
-            } else {
-                return this.getApplicationById(this.application_id).then(() => {
-                    return this.applicationItem
-                });
-            }
-        }
     },
 
     methods: {
         ...mapActions({
-            getApplications: 'dps/getApplications',
             getApplicationById: 'dps/getApplicationById'
         })
     },
 
     mounted() {
-        if (!this.applications) {
-            this.getApplications();
-        }
+        this.isLoading = true
+        this.getApplicationById(this.application_id).then(() => {
+            this.isLoading = false;
+        })
     }
 
 })
