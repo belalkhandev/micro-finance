@@ -85,6 +85,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
         $dps->dps_type = $request->input('dps_type');
+        $dps->status = $request->input('status');
 
         if ($request->input('prev_deposit')) {
             $dps->prev_deposit = $request->input('prev_deposit');

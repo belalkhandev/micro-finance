@@ -338,7 +338,10 @@ export default ({
                         title: "Updated!",
                         text: "Dps Application has been updated successfully",
                         timer: 3000
-                    })
+                    });
+
+
+                    this.$router.push({ name: 'showDPSApplication', params: {application_id: this.form.application_id}})
                 } else {
                     this.errors = this.validation_errors
                     this.error = this.error_message

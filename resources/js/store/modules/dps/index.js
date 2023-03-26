@@ -44,8 +44,12 @@ export default {
         },
 
         UPDATE_APPLICATION(state, application) {
-            const item = state.applications.data.find(item => item.id === application.id)
-            Object.assign(item, application)
+            if (state.applications && state.applications.data) {
+                const item = state.applications.data.find(item => item.id === application.id)
+                if (item) {
+                    Object.assign(item, application)
+                }
+            }
         },
 
         DELETE_APPLICATION(state, item_id) {
