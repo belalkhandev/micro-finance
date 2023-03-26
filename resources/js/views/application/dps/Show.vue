@@ -88,7 +88,6 @@
 
 <script>
 import {mapActions, mapGetters} from 'vuex'
-import {application} from "express";
 
 export default({
     name: 'ShowDpsApplication',
