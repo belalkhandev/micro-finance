@@ -20,7 +20,7 @@
                             <tbody>
                             <tr>
                                 <th>Deposit Duration</th>
-                                <td>dfadsfasdf</td>
+                                <td class="text-right">{{ application.year }} years</td>
                             </tr>
                             <tr>
                                 <th>{{ ucFirst(application.dps_type) }} Deposit Amount</th>
@@ -41,6 +41,10 @@
                             <tr>
                                 <th>Current Deposit Balance</th>
                                 <td class="text-right">{{ numberFormat(application.balance) }}</td>
+                            </tr>
+                            <tr>
+                                <th>Total transactions</th>
+                                <td class="text-right">{{ application.transactions.length }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -77,7 +81,7 @@
                             <a href="" class="btn btn-outline-warning mb-2 w-100">Close DPS</a>
                         </li>
                         <li>
-                            <a href="" class="btn btn-outline-danger mb-2 w-100">Delete DPS</a>
+                            <a href="" class="btn btn-outline-danger mb-2 w-100" @click.prevent="deleteConfirm(application.id)">Delete DPS</a>
                         </li>
                     </ul>
                 </div>
@@ -106,14 +110,51 @@ export default({
 
     methods: {
         ...mapActions({
-            getApplicationById: 'dps/getApplicationById'
-        })
+            getApplicationById: 'dps/getApplicationById',
+            deleteApplication: 'dps/deleteApplication',
+        }),
+
+        deleteConfirm(application_id) {
+            if (this.hasPermission('delete_application')) {
+                this.$swal({
+                    title:"Really want to delete!",
+                    text: "Are you sure? You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#5430d6",
+                    confirmButtonText: "Yes, Delete it!",
+                    cancelButtonColor: '#c82333',
+                }).then((res) => {
+                    if (res.isConfirmed) {
+                        this.deleteApplication(application_id).then(() => {
+                            if (!this.error_message) {
+                                this.$swal({
+                                    icon: 'success',
+                                    title: 'Congratulation!',
+                                    text: 'User has been deleted successfully'
+                                })
+
+                                this.$router.push({ name: 'ApplicationDPS' })
+                            }else {
+                                this.error = this.error_message
+                            }
+                        })
+                    }
+                });
+            } else {
+                this.message403()
+            }
+        },
     },
 
     mounted() {
         this.isLoading = true
         this.getApplicationById(this.application_id).then(() => {
+            console.log(this.application)
             this.isLoading = false;
+            if (!this.application) {
+                this.$router.push({ name: 'PageNotFound'})
+            }
         })
     }
 

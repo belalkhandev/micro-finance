@@ -50,8 +50,8 @@ export default {
 
         DELETE_APPLICATION(state, item_id) {
             const application  = state.applications.data.find(item => item.id == item_id)
-            if (application) {
-                state.applications.splice(state.applications.data.indexOf(application), 1)
+            if (application && state.applications.data) {
+                state.applications.data.splice(state.applications.data.indexOf(application), 1)
             }
         },
     },

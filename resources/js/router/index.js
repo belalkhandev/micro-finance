@@ -408,6 +408,14 @@ const routes = [
         meta: {
             title: '404 | Page not found'
         }
+    },
+    {
+        path: '/not-found',
+        name: 'PageNotFound',
+        component: () => import('../views/errors/404.vue'),
+        meta: {
+            title: '404 | Page not found'
+        }
     }
 ]
 
