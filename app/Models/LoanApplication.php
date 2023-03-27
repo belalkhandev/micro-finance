@@ -44,4 +44,9 @@ class LoanApplication extends Model
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');
     }
+
+    public function closeApplication()
+    {
+        return $this->hasOne(CloseLoanApplication::class, 'loan_application_id', 'id');
+    }
 }

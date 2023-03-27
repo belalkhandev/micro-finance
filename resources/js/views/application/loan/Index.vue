@@ -115,7 +115,8 @@
                             <th>Member</th>
                             <th>Loan</th>
                             <th>Service/Installment</th>
-                            <th>Total paid</th>
+                            <th>Balance</th>
+                            <th>Status</th>
                             <th>Operations</th>
                         </tr>
                         </thead>
@@ -143,6 +144,7 @@
                                 <p>{{ ucFirst(application.dps_type) }}: {{ numberFormat(application.installment_amount) }}</p>
                             </td>
                             <td>{{ numberFormat(application.balance) }}</td>
+                            <td v-html="getStatusFormat(application.status)"></td>
                             <td>
                                 <div class="action">
                                     <router-link :to="{ name: 'ShowLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-success btn-sm"><i class="bx bx-show-alt"></i></router-link>

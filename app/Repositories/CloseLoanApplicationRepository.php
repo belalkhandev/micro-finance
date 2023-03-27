@@ -21,10 +21,11 @@ class CloseLoanApplicationRepository extends Repository
     {
         return $this->create([
             'loan_application_id' => $request->application_id,
-            'payable_loan_amount' => $request->deposit_balance,
-            'service_amount' => $request->incentive ?? 0,
-            'early_payment_discount' => $request->incentive_type,
-            'beginning_balance' => $request->incentive_amount ?? 0,
+            'payable_loan_amount' => $request->payable_loan_amount,
+            'service_amount' => $request->service_amount ?? 0,
+            'early_payment_discount' => $request->early_payment_discount,
+            'beginning_balance' => $request->beginning_balance ?? 0,
+            'payable_amount' => $request->payable_amount,
             'payment' => $request->payment,
             'payment_method' => $request->payment_method,
             'payment_channel' => $request->payment_channel ?? null,

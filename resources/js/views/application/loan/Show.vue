@@ -75,16 +75,24 @@
                         <table class="table table-borderless table-striped">
                             <tbody>
                             <tr>
-                                <td>Deposit balance</td>
-                                <td class="text-right">{{ numberFormat(application.close_application.deposit_balance) }}</td>
+                                <td>Payable loan amount</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.payable_loan_amount) }}</td>
                             </tr>
                             <tr>
-                                <td>Incentive amount</td>
-                                <td class="text-right">{{ numberFormat(application.close_application.incentive_amount) }}</td>
+                                <td>Service</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.service_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Early payment discount</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.early_payment_discount, 2) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Beginning Balance</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.beginning_balance) }}</td>
                             </tr>
                             <tr>
                                 <td>Payable amount</td>
-                                <td class="text-right">{{ numberFormat(application.close_application.total_payable, 2) }}</td>
+                                <td class="text-right">{{ numberFormat(application.close_application.payable_amount) }}</td>
                             </tr>
                             <tr>
                                 <td>Payment</td>

@@ -127,7 +127,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function find($id)
     {
-        $loan = LoanApplication::with('member:id,account_no,name,photo,phone,member_type', 'createdUser:id,name', 'paidTransactions')->find($id);
+        $loan = LoanApplication::with('member:id,account_no,name,photo,phone,member_type', 'createdUser:id,name', 'paidTransactions', 'closeApplication', 'closeApplication.user')->find($id);
 
         if ($loan) {
             return $loan;
