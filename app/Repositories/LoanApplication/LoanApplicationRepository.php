@@ -189,5 +189,12 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         // TODO: Implement transactionDelete() method.
     }
 
+    public function updateStatus($id, $status)
+    {
+        $application = LoanApplication::findOrFail($id);
+        $application->status = $status;
+        return $application->save();
+    }
+
 
 }

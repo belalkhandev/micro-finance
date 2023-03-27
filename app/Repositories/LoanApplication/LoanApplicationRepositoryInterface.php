@@ -10,6 +10,7 @@ interface LoanApplicationRepositoryInterface
     public function update($request, $id);
     public function delete($id);
     public function find($id);
+    public function updateStatus($id, $status);
 
     public function memberLoans($member_id);
     public function memberLoanTransactions($member_id);

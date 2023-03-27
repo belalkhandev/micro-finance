@@ -161,6 +161,7 @@ Route::group([
         $route->get('/member/list/{member_id}', [LoanController::class, 'memberApplications']);
         $route->post('/create', [LoanController::class, 'store']);
         $route->put('/update/{id}', [LoanController::class, 'update']);
+        $route->post('/close/{id}', [LoanController::class, 'closeLoanApplication']);
         $route->delete('/delete/{id}', [LoanController::class, 'destroy']);
     });
 

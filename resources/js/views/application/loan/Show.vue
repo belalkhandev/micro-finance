@@ -144,7 +144,7 @@
                             <router-link :to="{ name: 'EditLoanApplication', params: { application_id: application_id } }" class="btn btn-outline-primary mb-2 w-100">Edit Loan</router-link>
                         </li>
                         <li>
-                            <router-link :to="{ name: 'CloseDPSApplication', params: { application_id: application_id } }" class="btn btn-outline-warning mb-2 w-100">Close Loan</router-link>
+                            <router-link :to="{ name: 'CloseLoanApplication', params: { application_id: application_id } }" class="btn btn-outline-warning mb-2 w-100">Close Loan</router-link>
                         </li>
                         <li>
                             <a href="" class="btn btn-outline-danger mb-2 w-100" @click.prevent="deleteConfirm(application.id)">Delete Loan</a>
@@ -197,10 +197,10 @@ export default({
                                 this.$swal({
                                     icon: 'success',
                                     title: 'Congratulation!',
-                                    text: 'User has been deleted successfully'
+                                    text: 'Deleted successfully'
                                 })
 
-                                this.$router.push({ name: 'ApplicationDPS' })
+                                this.$router.push({ name: 'ApplicationLoan' })
                             }else {
                                 this.error = this.error_message
                             }

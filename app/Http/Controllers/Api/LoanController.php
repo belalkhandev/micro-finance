@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
+use App\Repositories\CloseLoanApplicationRepository;
 use App\Repositories\LoanApplication\LoanApplicationRepositoryInterface;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -13,10 +14,15 @@ use Illuminate\Support\Facades\Validator;
 class LoanController extends Controller
 {
     protected $loan;
+    protected CloseLoanApplicationRepository $closeLoanApplicationRepository;
 
-    public function __construct(LoanApplicationRepositoryInterface  $loan)
+    public function __construct(
+        LoanApplicationRepositoryInterface  $loan,
+        CloseLoanApplicationRepository $closeLoanApplicationRepository
+    )
     {
         $this->loan = $loan;
+        $this->closeLoanApplicationRepository = $closeLoanApplicationRepository;
     }
 
     /**
@@ -290,6 +296,35 @@ class LoanController extends Controller
                 'collections' => $collections,
                 'dues' => $dues,
             ]
+        ]);
+    }
+
+    public function closeLoanApplication(Request $request, $id)
+    {
+        $rules = [
+            'payment' => 'required',
+            'transaction_no' => 'required_if:payment_method,mobile_banking',
+            'cheque_no' => 'required_if:payment_method,bank',
+        ];
+
+        $validation = Validator::make($request->all(), $rules);
+
+        if ($validation->fails()) {
+            return response()->json([
+                'status' => false,
+                'errors' => $validation->errors()
+            ]);
+        }
+
+        $close = $this->closeLoanApplicationRepository->storeByRequest($request);
+
+        if ($close) {
+            $this->loan->updateStatus($id, 'closed');
+        }
+
+        return response()->json([
+            'status' => true,
+            'message' => 'Loan application has been closed successfully'
         ]);
     }
 }

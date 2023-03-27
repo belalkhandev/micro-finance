@@ -4,59 +4,77 @@
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h5>DPS Close Form</h5>
+                        <h5>Loan Application Close</h5>
                     </div>
                     <div class="box-action">
-                        <router-link :to="{ name: 'showDPSApplication', params:{application_id: application.id}}" class="btn btn-outline-primary btn-sm">Back</router-link>
+                        <router-link :to="{ name: 'ShowLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-primary btn-sm">Back</router-link>
                     </div>
                 </div>
                 <div class="box-body">
-                    <form @submit.prevent="closeDpsSubmit">
+                    <form @submit.prevent="closeLoanSubmit">
+
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5 text-left">
-                                    <label class="col-form-label">Current Deposit Balance</label>
+                                    <label class="col-form-label">Loan amount</label>
                                 </div>
                                 <div class="col-md-7">
-                                    <input type="number" v-model="form.deposit_balance" placeholder="Enter deposit amount" class="form-control" readonly>
-                                    <span class="text-danger text-sm" v-if="errors">{{ errors.deposit_balance ? errors.deposit_balance[0] : '' }}</span>
+                                    <input type="number" v-model="form.loan_amount" placeholder="0.00" class="form-control" readonly>
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.loan_amount ? errors.loan_amount[0] : '' }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5 text-left">
+                                    <label class="col-form-label">Service amount in {{ application.service }}%</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" v-model="form.service_amount" placeholder="0.00" class="form-control" readonly>
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.service_amount ? errors.service_amount[0] : '' }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5 text-left">
+                                    <label class="col-form-label">Payable loan amount</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" v-model="form.payable_loan_amount" placeholder="0.00" class="form-control" readonly>
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.payable_loan_amount ? errors.payable_loan_amount[0] : '' }}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-5 text-left">
+                                    <label class="col-form-label">Early payment discount</label>
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" v-model="form.early_payment_discount" placeholder="0.00" class="form-control" @keyup="handleEarlyPayment">
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.early_payment_discount ? errors.early_payment_discount[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5 text-left">
-                                    <label class="col-form-label">Incentive</label>
+                                    <label class="col-form-label">Beginning Balance</label>
                                 </div>
                                 <div class="col-md-7">
-                                   <div class="d-flex gap-2">
-                                       <div class="w-100">
-                                           <input type="number" v-model="form.incentive" @keyup="handleIncentive" placeholder="0.00" class="form-control">
-                                           <span class="text-danger text-sm" v-if="errors">{{ errors.incentive ? errors.incentive[0] : '' }}</span>
-                                       </div>
-                                       <div class="incentive-type d-flex align-items-center gap-2">
-                                           <span class="btn btn-sm btn-outline-secondary" :class="form.incentive_type === 'flat' ? 'btn-primary' : ''" @click="handleIncentiveType('flat')">৳</span>
-                                           <span class="btn btn-sm btn-outline-secondary" :class="form.incentive_type === 'percentage' ? 'btn-primary' : ''" @click="handleIncentiveType('percentage')">%</span>
-                                       </div>
-                                   </div>
+                                    <input type="number" v-model="form.beginning_balance" placeholder="0.00" class="form-control" readonly>
+                                    <span class="text-danger text-sm" v-if="errors">{{ errors.beginning_balance ? errors.beginning_balance[0] : '' }}</span>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5 text-left">
-                                    <label class="col-form-label">Incentive Amount</label>
-                                </div>
-                                <div class="col-md-7">
-                                    <input type="number" v-model="form.incentive_amount" placeholder="0.00" class="form-control" readonly>
-                                    <span class="text-danger text-sm" v-if="errors">{{ errors.incentive_amount ? errors.incentive_amount[0] : '' }}</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-5 text-left">
-                                    <label class="col-form-label">Amount Payable</label>
+                                    <label class="col-form-label">Payable amount</label>
                                 </div>
                                 <div class="col-md-7">
                                     <input type="number" v-model="form.payable_amount" placeholder="0.00" class="form-control" readonly>
@@ -67,7 +85,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-5 text-left">
-                                    <label class="col-form-label">Amount Paid</label>
+                                    <label class="col-form-label">Payment</label>
                                 </div>
                                 <div class="col-md-7">
                                     <input type="number" v-model="form.payment" placeholder="0.00" class="form-control">
@@ -141,7 +159,7 @@
                         </div>
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary" id="closeApplication">
-                                <span>Close DPS</span>
+                                <span>Submit</span>
                                 <div class="spinner-border" role="status">
                                     <span class="visually-hidden">Loading...</span>
                                 </div>
@@ -170,35 +188,43 @@
                         <table class="table table-borderless table-striped">
                             <tbody>
                             <tr>
-                                <td>DPS Status</td>
+                                <td>Loan Status</td>
                                 <td  class="text-right" v-html="getStatusFormat(application.status)"></td>
                             </tr>
                             <tr>
-                                <td>Deposit Duration</td>
-                                <td class="text-right">{{ application.year }} years</td>
+                                <td>Loan</td>
+                                <td class="text-right">{{ numberFormat(application.loan_amount) }}</td>
                             </tr>
                             <tr>
-                                <td>{{ ucFirst(application.dps_type) }} Deposit</td>
-                                <td class="text-right">{{ numberFormat(application.dps_amount, 2) }}</td>
+                                <td>Loan Service</td>
+                                <td class="text-right">{{ application.service }}%</td>
                             </tr>
                             <tr>
-                                <td>Depositable Amount</td>
+                                <td>Service in amount</td>
+                                <td class="text-right">{{ numberFormat(application.service_amount) }}</td>
+                            </tr>
+                            <tr>
+                                <td>Loan + Service</td>
                                 <td class="text-right">{{ numberFormat(application.total_amount) }}</td>
                             </tr>
                             <tr>
-                                <td>Receivable Amount</td>
-                                <td class="text-right">{{ numberFormat(application.receiving) }}</td>
+                                <td>Installment</td>
+                                <td class="text-right">{{ application.installment }}</td>
                             </tr>
                             <tr>
-                                <td>Profitable Amount</td>
-                                <td class="text-right">{{ numberFormat(application.profit) }}</td>
+                                <td>{{ ucFirst(application.dps_type) }} installment amount</td>
+                                <td class="text-right">{{ numberFormat(application.installment_amount) }}</td>
+                            </tr>
+                            <tr v-if="application.prev_deposit">
+                                <td>Previous  repayment</td>
+                                <td class="text-right">{{ numberFormat(application.prev_deposit) }}</td>
                             </tr>
                             <tr>
                                 <td>Total transactions</td>
-                                <td class="text-right">{{ application.transactions.length }}</td>
+                                <td class="text-right">{{ application.paid_transactions.length }}</td>
                             </tr>
                             <tr>
-                                <td>DPS Balance</td>
+                                <td>Total repayment</td>
                                 <td class="text-right">{{ numberFormat(application.balance) }}</td>
                             </tr>
                             </tbody>
@@ -224,10 +250,12 @@ export default({
             error: null,
             form: {
                 application_id: this.$route.params.application_id,
-                deposit_balance: 0,
-                incentive: null,
-                incentive_type: "flat",
-                incentive_amount: null,
+                loan_amount: 0,
+                service: 0,
+                service_amount: 0,
+                payable_loan_amount: 0,
+                early_payment_discount: null,
+                beginning_balance: 0,
                 payable_amount: null,
                 payment: null,
                 payment_method: 'cash',
@@ -241,7 +269,7 @@ export default({
 
     computed: {
         ...mapGetters ({
-            getApplication: 'dps/application',
+            getApplication: 'loan/application',
             validation_errors: 'validation_errors',
             error_message: 'error_message',
         }),
@@ -249,8 +277,12 @@ export default({
         application() {
             const application = this.getApplication;
             if (application && this.form.application_id) {
-                this.form.deposit_balance = application.balance;
-                this.form.payable_amount = application.balance;
+                this.form.loan_amount = application.loan_amount;
+                this.form.payable_loan_amount = application.total_amount;
+                this.form.service = application.service;
+                this.form.service_amount = application.service_amount;
+                this.form.beginning_balance = application.balance;
+                this.form.payable_amount = application.total_amount - application.balance - this.form.early_payment_discount;
             }
 
             return application;
@@ -259,26 +291,11 @@ export default({
 
     methods: {
         ...mapActions({
-            getApplicationById: 'dps/getApplicationById',
-            closeDpsApplication: 'dps/closeApplication'
+            getApplicationById: 'loan/getApplicationById',
+            closeDpsApplication: 'loan/closeApplication'
         }),
 
-        handleIncentiveType(type) {
-            this.form.incentive_type = type;
-            this.handleIncentive();
-        },
-
-        handleIncentive() {
-            if (this.form.incentive_type === 'flat') {
-                this.form.incentive_amount = this.form.incentive || 0;
-            } else if (this.form.incentive_type === 'percentage') {
-                this.form.incentive_amount = parseFloat(this.form.deposit_balance * (this.form.incentive / 100));
-            }
-
-            this.form.payable_amount = parseFloat(this.form.deposit_balance) + parseFloat(this.form.incentive_amount);
-        },
-
-        closeDpsSubmit() {
+        closeLoanSubmit() {
             $('#closeApplication').prop('disabled', true).addClass('submitted')
 
             let formData = this.form;
@@ -289,11 +306,11 @@ export default({
 
                     this.$swal({
                         icon: "success",
-                        title: "DPS Closed!",
-                        text: "Dps Application has been closed successfully",
+                        title: "Loan application closed!",
+                        text: "Loan application has been closed successfully",
                         timer: 3000
                     });
-                    this.$router.push({ name: 'showDPSApplication', params: {application_id: this.application_id}})
+                    this.$router.push({ name: 'ShowLoanApplication', params: {application_id: this.application_id}})
                 } else {
                     this.errors = this.validation_errors
                     this.error = this.error_message
@@ -310,9 +327,6 @@ export default({
         this.isLoading = true
         this.getApplicationById(this.application_id).then(() => {
             this.isLoading = false;
-            if (!this.getApplication) {
-                this.$router.push({ name: 'PageNotFound'})
-            }
         })
     }
 

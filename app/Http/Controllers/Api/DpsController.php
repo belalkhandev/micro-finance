@@ -238,6 +238,7 @@ class DpsController extends Controller
             ]
         ]);
     }
+
     public function closeDpsApplication(Request $request, $id)
     {
         $rules = [

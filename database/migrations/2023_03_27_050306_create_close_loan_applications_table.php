@@ -18,8 +18,9 @@ return new class extends Migration
             $table->foreignId('loan_application_id')->constrained('loan_applications')->cascadeOnDelete();
             $table->double('payable_loan_amount',10,2)->default(0);
             $table->double('service_amount',10,2)->default(0);
-            $table->double('prepayment_discount',10,2)->default(0);
-            $table->double('repayment_amount',10,2)->default(0);
+            $table->double('early_payment_discount',10,2)->default(0);
+            $table->double('beginning_balance',10,2)->default(0);
+            $table->double('payable_amount',10,2)->default(0);
             $table->double('payment',10, 2)->default(0);
             $table->enum('payment_method', config('enums.payment_methods'))->default('cash');
             $table->string('payment_channel')->nullable();
