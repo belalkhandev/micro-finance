@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class DpsApplication extends Model
 {
@@ -23,8 +25,23 @@ class DpsApplication extends Model
         return 0;
     }
 
-    public function member()
+    public function member(): BelongsTo
     {
         return $this->belongsTo(Member::class, 'member_id', 'id');
+    }
+
+    public function createdUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
+
+    public function updatedUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'updated_by', 'id');
+    }
+
+    public function closeApplication(): HasOne
+    {
+        return $this->hasOne(CloseDpsApplication::class, 'dps_application_id', 'id');
     }
 }

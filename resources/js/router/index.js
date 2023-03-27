@@ -178,6 +178,15 @@ const routes = [
         }
     },
     {
+        path: '/application/dps/show/:application_id',
+        name: 'showDPSApplication',
+        component: () => import('../views/application/dps/Show.vue'),
+        meta: {
+            title: 'DPS Application details',
+            permission: 'view_application'
+        }
+    },
+    {
         path: '/application/dps/create',
         name: 'CreateDPS',
         component: () => import('../views/application/dps/Create.vue'),
@@ -196,11 +205,29 @@ const routes = [
         }
     },
     {
+        path: '/application/dps/close/:application_id',
+        name: 'CloseDPSApplication',
+        component: () => import('../views/application/dps/Close.vue'),
+        meta: {
+            title: 'DPS Application Close',
+            permission: 'edit_application'
+        }
+    },
+    {
         path: '/application/loans',
         name: 'ApplicationLoan',
         component: () => import('../views/application/loan/Index.vue'),
         meta: {
             title: 'Loan application list',
+            permission: 'view_application'
+        }
+    },
+    {
+        path: '/application/loans/show/:application_id',
+        name: 'ShowLoanApplication',
+        component: () => import('../views/application/loan/Show.vue'),
+        meta: {
+            title: 'Details loan application',
             permission: 'view_application'
         }
     },
@@ -219,6 +246,15 @@ const routes = [
         component: () => import('../views/application/loan/Edit.vue'),
         meta: {
             title: 'Loan application Update',
+            permission: 'edit_application'
+        }
+    },
+    {
+        path: '/application/loans/close/:application_id',
+        name: 'CloseLoanApplication',
+        component: () => import('../views/application/loan/Close.vue'),
+        meta: {
+            title: 'Loan application close',
             permission: 'edit_application'
         }
     },
@@ -395,6 +431,14 @@ const routes = [
     {
         path: '/:catchAll(.*)',
         name: 'NotFound',
+        component: () => import('../views/errors/404.vue'),
+        meta: {
+            title: '404 | Page not found'
+        }
+    },
+    {
+        path: '/not-found',
+        name: 'PageNotFound',
         component: () => import('../views/errors/404.vue'),
         meta: {
             title: '404 | Page not found'

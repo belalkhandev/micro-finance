@@ -127,7 +127,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
     public function find($id)
     {
-        $loan = LoanApplication::with('transactions')->find($id);
+        $loan = LoanApplication::with('member:id,account_no,name,photo,phone,member_type', 'createdUser:id,name', 'paidTransactions', 'closeApplication', 'closeApplication.user')->find($id);
 
         if ($loan) {
             return $loan;
@@ -187,6 +187,13 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     public function transactionDelete($trans_id)
     {
         // TODO: Implement transactionDelete() method.
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $application = LoanApplication::findOrFail($id);
+        $application->status = $status;
+        return $application->save();
     }
 
 

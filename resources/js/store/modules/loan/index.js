@@ -4,6 +4,7 @@ export default {
     namespaced: true,
     state: {
         applications: null,
+        application: null,
         statistics: null,
         loan: null
     },
@@ -11,6 +12,10 @@ export default {
     getters: {
         applications(state) {
             return state.applications
+        },
+
+        application(state) {
+            return state.application
         },
 
         statistics(state) {
@@ -25,6 +30,10 @@ export default {
     mutations: {
         SET_APPLICATIONS(state, applications) {
             state.applications = applications
+        },
+
+        GET_APPLICATION(state, application) {
+            state.application = application
         },
 
         SET_STATISTICS(state, total) {
@@ -44,8 +53,12 @@ export default {
         },
 
         UPDATE_APPLICATION(state, application) {
-            const item = state.applications.data.find(item => item.id === application.id)
-            Object.assign(item, application)
+            if (state.applications && state.applications.data) {
+                const item = state.applications.data.find(item => item.id === application.id)
+                if (item) {
+                    Object.assign(item, application)
+                }
+            }
         },
 
         DELETE_APPLICATION(state, item_id) {
@@ -57,7 +70,6 @@ export default {
     },
 
     actions: {
-        //application actions
         async getApplications({ commit }, page) {
             let page_no = page && page != 'undefined' ? page :  1
             const res = await axios.get('application/loan/list?page='+page_no)
@@ -67,7 +79,14 @@ export default {
             }
         },
 
-        //application actions
+        async getApplicationById({ commit }, application_id) {
+            const res = await axios.get('application/loan/list/'+application_id)
+
+            if (res.data.status) {
+                commit('GET_APPLICATION', res.data.application)
+            }
+        },
+
         async filterApplications({ commit }, formData) {
             const res = await axios.get('application/loan/list', {
                 params: formData
@@ -80,7 +99,6 @@ export default {
             }
         },
 
-        //application actions
         async getMemberApplications({ commit }, member_id) {
             const res = await axios.get('application/loan/member/list/'+member_id)
 
@@ -90,7 +108,6 @@ export default {
         },
 
 
-        //application actions
         async getLoanStatistics({ commit }) {
             const res = await axios.get('application/loan/statistics')
 
@@ -121,6 +138,22 @@ export default {
 
             if (res.data.status) {
                 commit('UPDATE_APPLICATION', res.data.application)
+                commit('SET_VALIDATION_ERRORS', null,  { root:true })
+                commit('SET_ERROR_MESSAGE', null,  { root:true })
+            } else {
+                if (!res.data.status) {
+                    commit('SET_VALIDATION_ERRORS', res.data.errors ? res.data.errors : null, { root:true })
+                    commit('SET_ERROR_MESSAGE', res.data.message ? res.data.message : null, { root:true })
+                }else {
+                    console.log('Something went wrong');
+                }
+            }
+        },
+
+        async closeApplication({ commit }, formdata) {
+            const res = await axios.post('application/loan/close/'+formdata.application_id, formdata)
+
+            if (res.data.status) {
                 commit('SET_VALIDATION_ERRORS', null,  { root:true })
                 commit('SET_ERROR_MESSAGE', null,  { root:true })
             } else {

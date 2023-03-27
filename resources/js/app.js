@@ -1,11 +1,12 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import axios from 'axios'
-import i18n from './i18n'
-import VueSweetalert2 from "vue-sweetalert2"
-import Datepicker from 'vue3-date-time-picker'
+import { createApp } from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import axios from 'axios';
+import i18n from './i18n';
+import VueSweetalert2 from "vue-sweetalert2";
+import Datepicker from 'vue3-date-time-picker';
+import {helpers} from "./mixin";
 
 //check authentication
 require('./store/subscriber')
@@ -31,6 +32,7 @@ store.dispatch('auth/attempt', localStorage.getItem('token')).then(() => {
     app.use(store);
     app.use(VueSweetalert2);
     app.use(i18n);
+    app.mixin(helpers)
     app.component('Datepicker', Datepicker);
     app.mount('#app');
 })

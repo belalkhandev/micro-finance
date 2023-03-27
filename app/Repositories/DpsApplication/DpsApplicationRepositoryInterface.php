@@ -10,6 +10,7 @@ interface DpsApplicationRepositoryInterface
     public function update($request, $id);
     public function delete($id);
     public function find($id);
+    public function updateStatus($id, $status);
 
     public function memberDps($member_id);
     public function memberDpsTransactions($member_id);

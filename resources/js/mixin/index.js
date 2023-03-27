@@ -46,7 +46,7 @@ export const helpers = {
 
         userFormattedDate (date) {
             if (date) {
-                return moment(date).format("LL");
+                return moment(date).format("D MMM, YY");
             }
             return '-';
         },
@@ -105,6 +105,26 @@ export const helpers = {
                 title: 'Access Denied',
                 text: 'Sorry! you have no permission for the action'
             })
+        },
+
+        getStatusFormat(status) {
+            let badgeClass = '';
+            switch (status) {
+                case 'active':
+                    badgeClass = 'bg-success';
+                    break;
+                case 'inactive':
+                    badgeClass = 'bg-warning';
+                    break;
+                case 'closed':
+                    badgeClass = 'bg-danger';
+                    break;
+                default:
+                    badgeClass = 'bg-secondary';
+                    break;
+            }
+
+            return `<span class="badge ${badgeClass}">${this.ucFirst(status)}</span>`;
         }
     },
 }

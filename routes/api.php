@@ -133,8 +133,10 @@ Route::group([
     ], function($route) {
         $route->get('/statistics', [DpsController::class, 'dpsApplicationCalculation']);
         $route->get('/list', [DpsController::class, 'index']);
+        $route->get('/list/{id}', [DpsController::class, 'show']);
         $route->post('/create', [DpsController::class, 'store']);
         $route->put('/update/{id}', [DpsController::class, 'update']);
+        $route->post('/close/{id}', [DpsController::class, 'closeDpsApplication']);
         $route->delete('/delete/{id}', [DpsController::class, 'destroy']);
     });
 
@@ -155,9 +157,11 @@ Route::group([
     ], function($route) {
         $route->get('/statistics', [LoanController::class, 'loanApplicationCalculation']);
         $route->get('/list', [LoanController::class, 'index']);
+        $route->get('/list/{id}', [LoanController::class, 'show']);
         $route->get('/member/list/{member_id}', [LoanController::class, 'memberApplications']);
         $route->post('/create', [LoanController::class, 'store']);
         $route->put('/update/{id}', [LoanController::class, 'update']);
+        $route->post('/close/{id}', [LoanController::class, 'closeLoanApplication']);
         $route->delete('/delete/{id}', [LoanController::class, 'destroy']);
     });
 

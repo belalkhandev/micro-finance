@@ -85,6 +85,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         $dps->receiving = $request->input('receiving');
         $dps->profit = $request->input('profit');
         $dps->dps_type = $request->input('dps_type');
+        $dps->status = $request->input('status');
 
         if ($request->input('prev_deposit')) {
             $dps->prev_deposit = $request->input('prev_deposit');
@@ -122,13 +123,7 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
     public function find($id)
     {
-        $dps = DpsApplication::with('transactions')->find($id);
-
-        if ($dps) {
-            return $dps;
-        }
-
-        return false;
+        return DpsApplication::with('member:id,account_no,name,photo,phone,member_type', 'createdUser:id,name', 'transactions', 'closeApplication', 'closeApplication.user')->find($id);
     }
 
     public function dpsTransactions($dps_id)
@@ -162,6 +157,13 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
         }
 
         return false;
+    }
+
+    public function updateStatus($id, $status)
+    {
+        $application = DpsApplication::findOrFail($id);
+        $application->status = $status;
+        return $application->save();
     }
 
 }

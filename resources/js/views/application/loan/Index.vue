@@ -108,50 +108,46 @@
                     </div>
                 </div>
                 <div class="box-body">
-                    <!-- pagination -->
-                    <div class="pagination mb-2" v-if="filterApplications">
-                        <p class="pagination-data">
-                            Page {{ filterApplications.current_page }} Showing  {{ filterApplications.from }} to {{ filterApplications.to }} of {{ filterApplications.total }} Data
-                        </p>
-                        <Pagination :data="filterApplications" @pagination-change-page="getResults" :limit="6"/>
-                    </div>
-                    <!-- end pagination -->
                     <table class="table">
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Acc. No</th>
                             <th>Member</th>
-                            <th>Photo</th>
-                            <th><abbr title="Loan Amount">L.Amount</abbr></th>
-                            <th>Service</th>
-                            <th><abbr title="Total Amount">T.Amount</abbr></th>
-                            <th><abbr title="Installment Amount">I.Amount</abbr></th>
-                            <th><abbr title="Total Installment">T.Inst</abbr></th>
-                            <th>Paid</th>
-                            <td></td>
+                            <th>Loan</th>
+                            <th>Service/Installment</th>
+                            <th>Balance</th>
+                            <th>Status</th>
+                            <th>Operations</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-if="filterApplications && filterApplications.data" v-for="(application, i) in filterApplications.data" :key="i">
                             <td>{{ filterApplications.from+i }}</td>
-                            <td>{{ application.member.account_no }}</td>
                             <td>
-                                <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
-                                    {{ application.member.name }}
-                                </router-link>
+                                <div class="application-member">
+                                    <img :src="application.member ? application.member.photo : ''" alt="" class="w-8 rounded">
+                                    <div>
+                                        <router-link :to="{name: 'MemberShow', params: { member_id: application.member_id }}" class="text-primary">
+                                            {{ application.member.name }}
+                                        </router-link>
+
+                                        <p>Acc. no: {{ application.member.account_no }}</p>
+                                    </div>
+                                </div>
                             </td>
                             <td>
-                                <img :src="application.member.photo ? application.member.photo : ''" alt="" class="w-8 rounded">
+                                <p>Total: {{ numberFormat(application.loan_amount) }}</p>
+                                <p>With Service: {{ numberFormat(application.total_amount) }}</p>
                             </td>
-                            <td>{{ numberFormat(application.loan_amount) }}</td>
-                            <td>{{ numberFormat(application.service_amount) }} ({{ application.service }}%)</td>
-                            <td>{{ numberFormat(application.total_amount) }}</td>
-                            <td>{{ numberFormat(application.installment_amount) }}<br>({{ ucFirst(application.dps_type) }})</td>
-                            <td>{{ Math.round(application.balance/application.installment_amount) }} of {{ application.installment }}</td>
+                            <td>
+                                <p>Service: {{ numberFormat(application.service_amount) }} ({{ application.service }}%)</p>
+                                <p>{{ ucFirst(application.dps_type) }}: {{ numberFormat(application.installment_amount) }}</p>
+                            </td>
                             <td>{{ numberFormat(application.balance) }}</td>
+                            <td v-html="getStatusFormat(application.status)"></td>
                             <td>
                                 <div class="action">
+                                    <router-link :to="{ name: 'ShowLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-success btn-sm"><i class="bx bx-show-alt"></i></router-link>
                                     <router-link :to="{ name: 'EditLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>
                                     <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="deleteConfirm(application.id)"><i class="bx bx-trash"></i></a>
                                 </div>

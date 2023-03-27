@@ -181,7 +181,7 @@ return [
 
         //intervention image
         Intervention\Image\ImageServiceProvider::class,
-        niklasravnsborg\LaravelPdf\PdfServiceProvider::class
+        Mccarlosen\LaravelMpdf\LaravelMpdfServiceProvider::class
     ],
 
     /*
@@ -237,7 +237,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'PDF' => niklasravnsborg\LaravelPdf\Facades\Pdf::class
+        'PDF' => Mccarlosen\LaravelMpdf\Facades\LaravelMpdf::class
     ],
 
 ];
