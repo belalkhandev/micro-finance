@@ -46,7 +46,7 @@
                                             <label class="col-form-label">Amount</label>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" v-model="form.amount" class="form-control">
+                                            <input type="text" v-model="form.amount" class="form-control" readonly>
                                         </div>
                                     </div>
                                 </div>
@@ -193,6 +193,7 @@ export default ({
             }
 
             let formData = this.form;
+            let context = this;
 
             this.createLoanCollection(formData).then(() => {
                 if (!this.validation_errors && !this.error_message) {
@@ -204,6 +205,9 @@ export default ({
                         timer: 3000
                     }).then(() => {
                         $('#updateLoanTransaction').prop('disabled', true);
+                        context.form.savings_amount = "";
+                        context.form.savings_type = "";
+                        context.form.savings_date = "";
                     })
                 } else {
                     this.errors = this.validation_errors

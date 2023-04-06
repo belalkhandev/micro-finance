@@ -4,11 +4,14 @@ namespace App\Repositories\LoanTransaction;
 
 use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
+use App\Repositories\LoanApplication\LoanApplicationRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\returnArgument;
 
 class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
+
+    protected LoanApplicationRepositoryInterface $applicationRepository;
 
     public function all()
     {
@@ -191,20 +194,18 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function payment($request)
     {
-
         $transaction = $this->find($request->input('transaction_id'));
+        $loanApplication = LoanApplication::find($transaction->loan_application_id);
 
-        $last_balance = LoanTransaction::where('loan_application_id', $transaction->loan_application_id)
-            ->where('is_paid', 1)
-            ->where('id', '!=', $transaction->id)
-            ->get()
-            ->sum('amount');
+        $beginning_balance = $loanApplication->balance;
 
         if ($request->input('payment_status') === 'paid') {
-            $transaction->balance = $last_balance+$transaction->amount;
+            $transaction->beginning_balance = $beginning_balance;
+            $transaction->ending_balance = $beginning_balance - $transaction->amount;
             $transaction->is_paid = 1;
         } else {
-            $transaction->balance = 0;
+            $transaction->beginning_balance = 0;
+            $transaction->ending_balance = 0;
             $transaction->is_paid = 0;
         }
 
@@ -212,10 +213,8 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($transaction->save()) {
-            //update dps_application balance
-            $loan_application = LoanApplication::find($transaction->loan_application_id);
-            $loan_application->balance = $loan_application->transactionsTotalAmount()+$loan_application->prev_deposit;
-            $loan_application->save();
+            $loanApplication->balance = $transaction->ending_balance;
+            $loanApplication->save();
 
             return $transaction;
         }

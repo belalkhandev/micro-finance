@@ -64,7 +64,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
         if ($request->input('prev_deposit')) {
             $loan->prev_deposit = $request->input('prev_deposit');
-            $loan->balance = $request->input('prev_deposit');
+            $loan->balance = $request->input('total_loan') - $request->input('prev_deposit');
             $loan->remarks = $request->input('remarks');
         }
 
@@ -101,7 +101,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
         if ($request->input('prev_deposit')) {
             $loan->prev_deposit = $request->input('prev_deposit');
-            $loan->balance = $loan->transactionsTotalAmount() + $request->input('prev_deposit');
+            $loan->balance = $loan->total_amount - $request->input('prev_deposit');
             $loan->remarks = $request->input('remarks');
         }
 
