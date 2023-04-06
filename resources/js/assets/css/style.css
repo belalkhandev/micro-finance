@@ -208,7 +208,7 @@ button[type=submit].btn.submitted span {
     border-radius: 5px;
     margin-bottom: 30px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0px 2px 5px #e0e7ff;
+    box-shadow: 0 2px 5px #e0e7ff;
 }
 .box .box-header {
     padding: 10px 15px;
@@ -317,7 +317,7 @@ table {
 }
 .table tbody tr td .action a {
     padding: 3px 3px;
-    line-height: 0px;
+    line-height: 0;
     border-radius: 3px;
 }
 .table tbody tr td .action a:hover {
@@ -409,7 +409,7 @@ table {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.062745098);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.062745098);
     border: 1px solid #e0e7ff;
     min-height: 100px;
     display: flex;
@@ -437,8 +437,8 @@ table {
 }
 .widget .widget-header span {
     position: absolute;
-    top: 0px;
-    right: 0px;
+    top: 0;
+    right: 0;
     font-size: 18px;
     background-color: #f3f4f6;
     line-height: normal;
@@ -538,7 +538,7 @@ table {
 .pagination ul .page-item {
     display: flex;
     grid-gap: 5px;
-    padding: 0px;
+    padding: 0;
 }
 .pagination ul .page-item .page-link {
     border: 1px solid #4f46e5;
@@ -618,7 +618,7 @@ table {
     min-height: 50px;
     display: flex;
     justify-content: space-between;
-    padding: 0px 15px;
+    padding: 0 15px;
     align-items: center;
 }
 .main-content .main-header .page-control {
@@ -713,13 +713,13 @@ table {
     font-weight: 300;
 }
 .sidebar::-webkit-scrollbar {
-    width: 0px;
+    width: 0;
 }
 
 .navigations {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 20px 15px;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 10px;
 }
 @media screen and (max-width: 768px) {
     .navigations {
@@ -733,22 +733,22 @@ table {
 }
 .navigations .navigation-item {
     text-align: center;
-    min-height: 90px;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: #ffffff;
     border-radius: 5px;
-    border: 1px solid #e0e7ff;
-    box-shadow: 0px 3px 4px #c7d2fe;
+    box-shadow: 0 7px 5px -10px #c7d2fe;
 }
 .navigations .navigation-item a {
     transition: 300ms;
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-wrap: wrap;
+    column-gap: 10px;
+    padding: 10px;
 }
 .navigations .navigation-item a i.bx {
     font-size: 32px;
@@ -756,14 +756,11 @@ table {
 }
 
 .navigations .navigation-item a img {
-    width: 32px;
-    margin-bottom: 5px;
+    width: 24px;
 }
 
 .navigations .navigation-item a span {
-    display: block;
-    font-weight: 500;
-    width: 100%;
+    font-weight: 400;
 }
 .navigations .navigation-item .navigation-content {
     position: fixed;
@@ -816,7 +813,7 @@ table {
     margin-top: 10px;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body ul li {
-    margin: 5px 0px;
+    margin: 5px 0;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body ul li a {
     display: flex;
@@ -824,10 +821,10 @@ table {
     justify-content: flex-start;
     flex-wrap: nowrap;
     font-size: 14px;
-    padding: 5px 0px;
+    padding: 5px 0;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body ul li a i.bx {
-    margin: 0px;
+    margin: 0;
     margin-right: 5px;
     font-size: 20px;
     color: #94a3b8;
@@ -902,7 +899,7 @@ table {
 }
 .auth-wrap .auth .auth-box {
     width: 350px;
-    margin: 0px 100px;
+    margin: 0 100px;
 }
 .auth-wrap .auth .auth-box .auth-header {
     text-align: center;
@@ -948,7 +945,7 @@ table {
     height: 100%;
 }
 .auth-wrap .auth-content .content {
-    margin: 0px 100px;
+    margin: 0 100px;
 }
 .auth-wrap .auth-content .content h1 {
     color: #e2e8f0;
@@ -993,7 +990,7 @@ table {
 }
 .profile .user-box .btn {
     width: 100%;
-    margin: 5px 0px;
+    margin: 5px 0;
 }
 
 .member.member-show .member-img img {
@@ -1115,7 +1112,7 @@ table {
 .member-select .member-list .member-search .form-control {
     border: none;
     border-bottom: 1px solid #e2e8f0;
-    border-radius: 0px;
+    border-radius: 0;
 }
 .member-select .member-list .member-search .list-close {
     position: absolute;
@@ -1133,7 +1130,7 @@ table {
 .member-select .member-list .members {
     max-height: 300px;
     overflow-y: auto;
-    padding: 5px 0px;
+    padding: 5px 0;
 }
 .member-select .member-list .members .member {
     font-size: 14px;

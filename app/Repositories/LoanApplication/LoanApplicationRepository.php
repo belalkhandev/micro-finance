@@ -151,7 +151,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $dps = LoanApplication::with('transactions')->where('member_id', $member_id)->get();
 
-        if ($dps) {
+        if ($dps->isNotEmpty()) {
             return $dps;
         }
 
@@ -162,7 +162,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $transactions = LoanInstallment::where('member_id', $member_id)->get();
 
-        if ($transactions) {
+        if ($transactions->isNotEmpty()) {
             return $transactions;
         }
 
