@@ -4,7 +4,7 @@
             <i class="bx bx-x"></i>
         </div>
         <!-- brand-logo -->
-        <div class="logo animate__animated animate__fadeInDown">
+        <div class="logo">
             <img src="../assets/images/logo.png" alt="" >
         </div>
         <div class="user" v-if="authenticated && user">
@@ -21,21 +21,18 @@
         <div class="navigations">
             <div class="navigation-item">
                 <router-link :to="{name: 'Dashboard'}" class="menu-link" @click="openMultimenus">
-<!--                    <i class="bx bxs-tachometer text-blue-600" ></i>-->
-                    <img src="../assets/images/nav-icons/dashboard.png" alt="">
+                    <icon-dashboard/>
                     <span>{{ $t('dashboard') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="javascript:void(0)" class="menu-link" @click="openMultimenus">
-<!--                    <i class="bx bxs-user-rectangle text-violet-600" ></i>-->
-                    <img src="../assets/images/nav-icons/transaction.png" alt="">
+                    <icon-transaction/>
                     <span>{{ $t('transaction') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>{{ $t('transaction') }}</h3>
@@ -91,16 +88,62 @@
                 </div>
             </div>
 
-            <!--  members-->
+            <div class="navigation-item has-multimenu">
+                <a href="#" class="menu-link" @click="openMultimenus">
+                    <icon-application/>
+                    <span>{{ $t('applications') }}</span>
+                </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Applications</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5><abbr title="Deposit Pension Scheme">DPS</abbr> Applications</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All DPS Applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New DPS Application</span>
+                                </router-link>
+                            </li>
+                        </ul>
+
+                        <h5>Loan Applications</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Loan Applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New Loan Application</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="navigation-item has-multimenu">
                 <a href="#"  @click="openMultimenus">
-                    <img src="../assets/images/nav-icons/add-user.png" alt="">
+                    <icon-member/>
                     <span>{{ $t('members') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>Manage Members</h3>
@@ -165,79 +208,27 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation-item has-multimenu">
-                <a href="#" class="menu-link" @click="openMultimenus">
-<!--                    <i class='bx bxs-file-doc text-green-600' ></i>-->
-                    <img src="../assets/images/nav-icons/cv.png" alt="">
-                    <span>{{ $t('applications') }}</span>
-                </a>
-                <div class="navigation-content">
-                    <div class="close-bar" @click="closeMultimenus">
-                        <i class='bx bx-x'></i>
-                        <span>Close</span>
-                    </div>
-                    <div class="navigation-content-header">
-                        <h3>Applications</h3>
-                    </div>
-                    <div class="navigation-content-body">
-                        <h5><abbr title="Deposit Pension Scheme">DPS</abbr> Applications</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'ApplicationDPS'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All DPS Applications</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'CreateDPS'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>New DPS Application</span>
-                                </router-link>
-                            </li>
-                        </ul>
 
-                        <h5>Loan Applications</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'ApplicationLoan'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All Loan Applications</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'CreateLoan'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>New Loan Application</span>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'ExpenseList'}">
-<!--                    <i class='bx bxs-user-badge text-red-600'></i>-->
-                    <img src="../assets/images/nav-icons/expense.png" alt="">
+                    <icon-expense/>
                     <span>{{ $t('expense') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Admin'}">
-<!--                    <i class='bx bxs-user-badge text-red-600'></i>-->
-                    <img src="../assets/images/nav-icons/unauthorized-person.png" alt="">
+                    <icon-admins/>
                     <span>{{ $t('admins') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" @click="openMultimenus">
-<!--                    <i class='bx bxs-cog text-blue-600'></i>-->
-                    <img src="../assets/images/nav-icons/admin.png" alt="">
+                    <icon-settings/>
                     <span>{{  $t('settings') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>{{  $t('settings') }}</h3>
@@ -254,7 +245,7 @@
                             <li>
                                 <router-link :to="{name: 'Postoffice'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Postoffice</span>
+                                    <span>Post Offices</span>
                                 </router-link>
                             </li>
                             <li>
@@ -275,14 +266,12 @@
             </div>
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
-<!--                    <i class='bx bxs-report text-orange-600' ></i>-->
-                    <img src="../assets/images/nav-icons/report.png" alt="">
+                    <icon-report/>
                     <span>{{ $t('reports') }}</span>
                 </a>
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>Reports</h3>
@@ -324,15 +313,13 @@
             </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'Profile'}">
-<!--                    <i class="bx bxs-user-rectangle text-violet-600" ></i>-->
-                    <img src="../assets/images/nav-icons/man.png" alt="">
+                    <icon-profile/>
                     <span>{{ $t('profile') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item">
                 <a href="#" @click.prevent="logout">
-<!--                    <i class='bx bxs-log-out text-cyan-500' ></i>-->
-                    <img src="../assets/images/nav-icons/check-out.png" alt="">
+                    <icon-logout/>
                     <span>{{ $t('logout') }}</span>
                 </a>
             </div>
@@ -343,9 +330,30 @@
 <script>
 import { mapGetters, mapActions} from 'vuex'
 import $ from 'jquery'
-
+import IconDashboard from "./icons/IconDashboard.vue";
+import IconApplication from "./icons/IconApplication.vue";
+import IconTransaction from "./icons/IconTransaction.vue";
+import IconProfile from "./icons/IconProfile.vue";
+import IconReport from "./icons/IconReport.vue";
+import IconAdmins from "./icons/IconUser.vue";
+import IconExpense from "./icons/IconExpense.vue";
+import IconLogout from "./icons/IconLogout.vue";
+import IconSettings from "./icons/IconSettings.vue";
+import IconMember from "./icons/IconMember.vue";
 export default ({
     name: 'Navigation',
+    components: {
+        IconDashboard,
+        IconApplication,
+        IconTransaction,
+        IconProfile,
+        IconReport,
+        IconAdmins,
+        IconExpense,
+        IconLogout,
+        IconSettings,
+        IconMember
+    },
     computed: {
         ...mapGetters ({
             authenticated: 'auth/authenticated',

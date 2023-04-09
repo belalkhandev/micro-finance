@@ -66,9 +66,7 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Acc. no</th>
-                        <th>Name</th>
-                        <th>Photo</th>
+                        <th>Member</th>
                         <th>Father/Spouse Name</th>
                         <th>Mother Name</th>
                         <th>Member Type</th>
@@ -79,11 +77,14 @@
                 <tbody v-if="fetchMembers && fetchMembers.data">
                     <tr v-for="(member, i) in fetchMembers.data" :key="i" class="animate__animated animate__fadeIn">
                         <td>{{ fetchMembers.from+i }}</td>
-                        <td>{{ member.account_no }}</td>
-                        <td>{{ member.name }}</td>
                         <td>
-                            <img v-if="member.photo" :src="member.photo" alt="" class="w-8 rounded">
-                            <img v-else src="https://via.placeholder.com/35" alt="" class="w-8 rounded">
+                            <div class="application-member">
+                                <img :src="member.photo ? member.photo : ''" alt="" class="w-8 rounded">
+                                <div>
+                                    {{ member.name }}
+                                    <p>Acc. no: {{ member.account_no }}</p>
+                                </div>
+                            </div>
                         </td>
                         <td>{{ member.father_name }}</td>
                         <td>{{ member.mother_name }}</td>

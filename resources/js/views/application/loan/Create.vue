@@ -296,7 +296,7 @@ export default ({
             let service_amount = loan_amount*(service/100)
             this.form.service_amount = service_amount;
             this.form.total_loan = Math.round(parseFloat(loan_amount)+ service_amount);
-            this.form.installment_amount = Math.round(this.form.total_loan/total_installment);
+            this.form.installment_amount = Math.ceil(this.form.total_loan/total_installment);
         },
 
         storeDpsApplication() {

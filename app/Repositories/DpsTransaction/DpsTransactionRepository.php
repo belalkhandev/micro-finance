@@ -4,6 +4,7 @@ namespace App\Repositories\DpsTransaction;
 
 use App\Models\DpsApplication;
 use App\Models\DpsTransaction;
+use App\Models\PostOffice;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -134,17 +135,27 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 $date = databaseFormattedDate($tr_date);
                 if ($request->input('application_type') == 'weekly') {
                     $day_name = Carbon::parse($date)->dayName;
-                    $applications = DpsApplication::where('w_day', $day_name)->where('is_active', 1)->get();
+                    $applications = DpsApplication::where('w_day', $day_name)
+                        ->active()
+                        ->get();
 
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = DpsApplication::whereDay('m_date', $app_start_date)->where('m_date', '<=', $date)->where('is_active', 1)->get();
+                    $applications = DpsApplication::whereDay('m_date', $app_start_date)
+                        ->where('m_date', '<=', $date)
+                        ->active()
+                        ->get();
                 }
 
                 foreach ($applications as $application) {
-                    $transactions_amount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
-                    if ($transactions_amount < $application->total_amount) {
-                        $this->store($application, $date);
+                    $totalTransactionAmount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
+                    $applicationBalance = $totalTransactionAmount + $application->prev_deposit;
+                    $transactionDpsAmountDiff = $application->total_amount - $applicationBalance;
+
+                    if ($totalTransactionAmount < $application->total_amount && $transactionDpsAmountDiff >= $application->dps_amount) {
+                        $this->store($application, $date, $application->dps_amount);
+                    } else if ($transactionDpsAmountDiff < $application->dps_amount && $transactionDpsAmountDiff > 0) {
+                        $this->store($application, $date, $transactionDpsAmountDiff);
                     }
                 }
 
@@ -160,7 +171,7 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     }
 
-    public function store($application, $date)
+    public function store($application, $date, $amount)
     {
         try{
             $tr = DpsTransaction::where('dps_application_id', $application->id)->whereDate('transaction_date', $date)->first();
@@ -171,12 +182,14 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
             $tr->dps_application_id = $application->id;
             $tr->member_id = $application->member_id;
             $tr->transaction_date = $date;
+
             if ($application->dps_type === 'weekly') {
                 $tr->due_date = Carbon::parse($date)->addDay(3);
             } else {
                 $tr->due_date = Carbon::parse($date)->addDay(10);
             }
-            $tr->amount = $application->dps_amount;
+
+            $tr->amount = $amount;
             $tr->created_by = Auth::guard('sanctum')->user()->id;
 
             if ($tr->save()) {
@@ -193,29 +206,24 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function payment($request)
     {
-        $transaction = $this->find($request->input('transaction_id'));
-
-        $last_balance = DpsTransaction::where('dps_application_id', $transaction->dps_application_id)
-            ->where('is_paid', 1)
-            ->where('id', '!=', $transaction->id)
-            ->get()
-            ->sum('amount');
-
-        if ($request->input('payment_status') === 'paid') {
-            $transaction->balance = $last_balance+$transaction->amount;
-            $transaction->is_paid = 1;
-        } else {
-            $transaction->balance = 0;
-            $transaction->is_paid = 0;
+        if ($request->input('payment_status') != 'paid') {
+            return false;
         }
 
-        $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
+        $transaction = $this->find($request->input('transaction_id'));
+
+        $dpsApplication = DpsApplication::find($transaction->dps_application_id);
+        $beginningBalance = $dpsApplication->balance;
+
+        $transaction->beginning_balance = $beginningBalance;
+        $transaction->ending_balance = $beginningBalance + $transaction->amount;
+        $transaction->is_paid = 1;
+        $transaction->paid_at = databaseFormattedDate($request->input('transaction_date'));
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
+
         if ($transaction->save()) {
-            //update dps_application balance
-            $dps_application = DpsApplication::find($transaction->dps_application_id);
-            $dps_application->balance = $dps_application->transactionsTotalAmount()+$dps_application->prev_deposit;
-            $dps_application->save();
+            $dpsApplication->balance = $transaction->ending_balance;
+            $dpsApplication->save();
 
             return $transaction;
         }

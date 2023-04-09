@@ -17,6 +17,11 @@ class PostOfficeRepository implements PostOfficeRepositoryInterface {
         return false;
     }
 
+    public function getByUpazilaId($upazilaId)
+    {
+        return PostOffice::where('upazilla_id', $upazilaId)->get();
+    }
+
     public function store($request)
     {
         $po = new PostOffice();

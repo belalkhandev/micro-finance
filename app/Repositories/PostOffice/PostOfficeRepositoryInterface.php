@@ -15,4 +15,6 @@ interface PostOfficeRepositoryInterface
     public function find($id);
 
     public function duplicate($filters);
+
+    public function getByUpazilaId($upazilaId);
 }

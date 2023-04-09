@@ -151,14 +151,14 @@ class MemberRepository implements MemberRepositoryInterface {
         $member->day = $request->input('day');
         $member->is_active = $request->input('is_active');
 
-        if ($request->hasFile('photo')) {
-            //delete previous profile photo
-            if ($member->photo) {
+
+        if ($request->hasFile('member_photo')) {
+            if ($member->photo && file_exists($member->photo)) {
                 $photo = str_replace(URL::to('/')."/", "", $member->photo);
                 unlink($photo);
             }
 
-            $path = FileUpload::uploadWithResize($request, 'photo', 'members', 200, 200);
+            $path = FileUpload::uploadWithResize($request, 'member_photo', 'members', 200, 200);
             $member->photo = $path;
         }
 

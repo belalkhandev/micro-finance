@@ -4,11 +4,14 @@ namespace App\Repositories\LoanTransaction;
 
 use App\Models\LoanApplication;
 use App\Models\LoanTransaction;
+use App\Repositories\LoanApplication\LoanApplicationRepositoryInterface;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use function PHPUnit\Framework\returnArgument;
 
 class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
+
+    protected LoanApplicationRepositoryInterface $applicationRepository;
 
     public function all()
     {
@@ -135,18 +138,27 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
                 $date = databaseFormattedDate($tr_date);
                 if ($request->input('application_type') == 'weekly') {
                     $day_name = Carbon::parse($date)->dayName;
-                    $applications = LoanApplication::where('w_day', $day_name)->where('is_active', 1)->get();
+                    $applications = LoanApplication::where('w_day', $day_name)
+                        ->active()
+                        ->get();
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = LoanApplication::whereDay('m_date', $app_start_date)->where('is_active', 1)->get();
+                    $applications = LoanApplication::whereDay('m_date', $app_start_date)
+                        ->active()
+                        ->get();
                 }
 
                 foreach ($applications as $application) {
                     $transactions_amount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
-                    if ($transactions_amount < $application->total_amount) {
-                        $this->store($application, $date);
-                    }
 
+                    $applicationBalance = $transactions_amount + $application->prev_deposit;
+                    $transactionInstallmentAmountDiff = $application->total_amount - $applicationBalance;
+
+                    if ($applicationBalance < $application->total_amount && $transactionInstallmentAmountDiff >= $application->installment_amount) {
+                        $this->store($application, $date, $application->installment_amount);
+                    } else if ($transactionInstallmentAmountDiff < $application->installment_amount && $transactionInstallmentAmountDiff > 0) {
+                        $this->store($application, $date, $transactionInstallmentAmountDiff);
+                    }
                 }
 
                 $tr_date = Carbon::parse($date)->addDay();
@@ -159,7 +171,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     }
 
-    public function store($application, $date)
+    public function store($application, $date, $amount)
     {
 
         $tr = LoanTransaction::where('loan_application_id', $application->id)->whereDate('transaction_date', $date)->first();
@@ -177,7 +189,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         } else {
             $tr->due_date = Carbon::parse($date)->addDay(10);
         }
-        $tr->amount = $application->installment_amount;
+        $tr->amount = $amount;
 
         $tr->created_by = Auth::guard('sanctum')->user()->id;
 
@@ -191,31 +203,24 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function payment($request)
     {
+        if ($request->input('payment_status') != 'paid') {
+            return false;
+        }
 
         $transaction = $this->find($request->input('transaction_id'));
 
-        $last_balance = LoanTransaction::where('loan_application_id', $transaction->loan_application_id)
-            ->where('is_paid', 1)
-            ->where('id', '!=', $transaction->id)
-            ->get()
-            ->sum('amount');
+        $loanApplication = LoanApplication::find($transaction->loan_application_id);
+        $beginningBalance = $loanApplication->balance;
 
-        if ($request->input('payment_status') === 'paid') {
-            $transaction->balance = $last_balance+$transaction->amount;
-            $transaction->is_paid = 1;
-        } else {
-            $transaction->balance = 0;
-            $transaction->is_paid = 0;
-        }
-
-        $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
+        $transaction->beginning_balance = $beginningBalance;
+        $transaction->ending_balance = $beginningBalance - $transaction->amount;
+        $transaction->is_paid = 1;
+        $transaction->paid_at = databaseFormattedDate($request->input('transaction_date'));
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($transaction->save()) {
-            //update dps_application balance
-            $loan_application = LoanApplication::find($transaction->loan_application_id);
-            $loan_application->balance = $loan_application->transactionsTotalAmount()+$loan_application->prev_deposit;
-            $loan_application->save();
+            $loanApplication->balance = $transaction->ending_balance;
+            $loanApplication->save();
 
             return $transaction;
         }

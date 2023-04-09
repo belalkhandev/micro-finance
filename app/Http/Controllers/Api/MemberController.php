@@ -161,12 +161,6 @@ class MemberController extends Controller
             'account_no' => 'required',
             'member_type' => 'required',
             'day' => 'required',
-//            'nominee_name' => 'required',
-//            'nominee_father_name' => 'required',
-//            'nominee_gender' => 'required',
-//            'nominee_phone' => 'required',
-//            'member_photo' => 'nullable|mimes:jpg,png,jpeg',
-//            'nominee_photo' => 'nullable|mimes:jpg,png,jpeg',
         ];
 
         $messages = [
@@ -195,7 +189,6 @@ class MemberController extends Controller
             ]);
         }
 
-        //check duplication account number on different group
         if ($this->member->duplicateCheck($request)) {
             return response()->json([
                 'status' => false,
@@ -208,11 +201,13 @@ class MemberController extends Controller
         $member = $this->member->store($request);
 
         if ($member) {
-            //store nominee
+
             if ($request->input('nominee_name')) {
                 $this->member->storeNominee($request, $member->id);
             }
+
             $member = $this->member->find($member->id);
+
             return response()->json([
                 'status' => true,
                 'member' => $member,

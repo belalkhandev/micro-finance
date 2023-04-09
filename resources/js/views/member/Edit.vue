@@ -222,14 +222,14 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Name  <span class="text-danger">*</span></label>
+                                <label>Name </label>
                                 <input type="text" v-model="form.nominee_name" placeholder="Enter name" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.nominee_name ? errors.nominee_name[0] : '' }}</span>
                             </div>
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Father/Spouse name  <span class="text-danger">*</span></label>
+                                <label>Father/Spouse name </label>
                                 <input type="text" v-model="form.nominee_father_name" placeholder="Enter father/spouse name" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.nominee_father_name ? errors.nominee_father_name[0] : '' }}</span>
                             </div>
@@ -245,7 +245,7 @@
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Gender  <span class="text-danger">*</span></label>
+                                <label>Gender </label>
                                 <select v-model="form.nominee_gender" class="form-select">
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
@@ -256,7 +256,7 @@
                         </div>
                         <div class="col-md-4">
                             <div class="form-group">
-                                <label>Phone <span class="text-danger">*</span></label>
+                                <label>Phone</label>
                                 <input type="text" v-model="form.nominee_phone" placeholder="Enter phone" class="form-control">
                                 <span class="text-danger text-sm" v-if="errors">{{ errors.nominee_phone ? errors.nominee_phone[0] : '' }}</span>
                             </div>
@@ -538,7 +538,7 @@ export default ({
         this.getMember(this.form.member_id);
         this.getDistricts();
         this.getUpazillas();
-        this.getPostOffices();
+        this.getPostOffices('');
         this.getVillages();
         this.getGroups();
     },

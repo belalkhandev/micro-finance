@@ -53,7 +53,6 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         $loan->total_amount = $request->input('total_loan');
         $loan->installment = $request->input('total_installment');
         $loan->installment_amount = $request->input('installment_amount');
-        $loan->balance = 0;
         $loan->dps_type = $request->input('dps_type');
 
         if ($request->input('dps_type') === 'weekly') {
@@ -62,11 +61,9 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
             $loan->m_date = databaseFormattedDate($request->input('m_date'));
         }
 
-        if ($request->input('prev_deposit')) {
-            $loan->prev_deposit = $request->input('prev_deposit');
-            $loan->balance = $request->input('prev_deposit');
-            $loan->remarks = $request->input('remarks');
-        }
+        $loan->prev_deposit = $request->input('prev_deposit') ?? 0;
+        $loan->balance = $request->input('total_loan') - $request->input('prev_deposit') ?? 0;
+        $loan->remarks = $request->input('remarks') ?? null;
 
         $loan->created_by = Auth::guard('sanctum')->user()->id;
 
@@ -101,7 +98,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
         if ($request->input('prev_deposit')) {
             $loan->prev_deposit = $request->input('prev_deposit');
-            $loan->balance = $loan->transactionsTotalAmount() + $request->input('prev_deposit');
+            $loan->balance = $loan->total_amount - $request->input('prev_deposit');
             $loan->remarks = $request->input('remarks');
         }
 
@@ -151,7 +148,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $dps = LoanApplication::with('transactions')->where('member_id', $member_id)->get();
 
-        if ($dps) {
+        if ($dps->isNotEmpty()) {
             return $dps;
         }
 
@@ -162,7 +159,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $transactions = LoanInstallment::where('member_id', $member_id)->get();
 
-        if ($transactions) {
+        if ($transactions->isNotEmpty()) {
             return $transactions;
         }
 
