@@ -9,20 +9,24 @@ use Illuminate\Support\Facades\Validator;
 
 class PostOfficeController extends Controller
 {
-    protected $po;
+    protected $postOffice;
 
     public function __construct(PostOfficeRepositoryInterface $po)
     {
-        $this->po = $po;
+        $this->postOffice = $po;
     }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $post_offices = $this->po->all();
+        if ($request->input('upazila_id')) {
+            $post_offices = $this->postOffice->getByUpazilaId($request->input('upazila_id'));
+        } else {
+            $post_offices = $this->postOffice->all();
+        }
 
         if ($post_offices) {
             return response()->json([
@@ -75,7 +79,7 @@ class PostOfficeController extends Controller
         }
 
         //check duplicate
-        if ($this->po->duplicate([
+        if ($this->postOffice->duplicate([
             'upazilla_id' => $request->input('upazilla_id'),
             'union_id' => $request->input('union_id'),
             'name' => $request->input('name'),
@@ -86,7 +90,7 @@ class PostOfficeController extends Controller
             ]);
         }
 
-        $po = $this->po->store($request);
+        $po = $this->postOffice->store($request);
 
         if ($po) {
             return response()->json([
@@ -110,7 +114,7 @@ class PostOfficeController extends Controller
      */
     public function show($id)
     {
-        $po = $this->po->find($id);
+        $po = $this->postOffice->find($id);
 
         if ($po) {
             return response()->json([
@@ -162,7 +166,7 @@ class PostOfficeController extends Controller
             ], 422);
         }
 
-        $po = $this->po->update($request, $id);
+        $po = $this->postOffice->update($request, $id);
 
         if ($po) {
             return response()->json([
@@ -187,7 +191,7 @@ class PostOfficeController extends Controller
      */
     public function destroy($id)
     {
-        if ($this->po->delete($id)) {
+        if ($this->postOffice->delete($id)) {
             return response()->json([
                 'status' => true,
                 'message' => 'Post office has been deleted successfully'

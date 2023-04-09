@@ -140,8 +140,8 @@ export default {
             }
         },
 
-        async getPostOffices({ commit }) {
-            const res = await axios.get('/post-office/list')
+        async getPostOffices({ commit }, upazila_id) {
+            const res = await axios.get('/post-office/list?upazila_id='+upazila_id)
 
             if (res.data.status) {
                 commit('SET_POST_OFFICES', res.data.post_offices)
