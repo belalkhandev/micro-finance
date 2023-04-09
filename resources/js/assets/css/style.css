@@ -112,7 +112,7 @@ button,
 [type=button].btn-primary:hover,
 [type=reset].btn-primary:hover,
 [type=submit].btn-primary:hover {
-    background-color: #3730a3 !important;
+    background-color: #2a70e3 !important;
 }
 .btn.btn-outline-primary, button.btn-outline-primary,
 [type=button].btn-outline-primary,
@@ -359,8 +359,6 @@ table {
 .form-section {
     padding: 10px;
     margin-bottom: 30px;
-    background-color: #ffffff;
-    border: 1px solid #f3f4f6;
 }
 .form-section h5 {
     margin-bottom: 10px;
@@ -368,41 +366,6 @@ table {
     border-bottom: 1px solid #e5e7eb;
     font-size: 18px;
     font-weight: 500;
-}
-.form-section.form-section-primary {
-    background-color: #eef2ff;
-    border: 1px solid #e0e7ff;
-}
-.form-section.form-section-primary h5 {
-    border-bottom: 1px solid #c7d2fe;
-}
-.form-section.form-section-secondary {
-    background-color: #f8fafc;
-    border: 1px solid #f1f5f9;
-}
-.form-section.form-section-secondary h5 {
-    border-bottom: 1px solid #e2e8f0;
-}
-.form-section.form-section-success {
-    background-color: #f0fdf4;
-    border: 1px solid #dcfce7;
-}
-.form-section.form-section-success h5 {
-    border-bottom: 1px solid #bbf7d0;
-}
-.form-section.form-section-warning {
-    background-color: #fefce8;
-    border: 1px solid #fef9c3;
-}
-.form-section.form-section-warning h5 {
-    border-bottom: 1px solid #fef08a;
-}
-.form-section.form-section-danger {
-    background-color: #fef2f2;
-    border: 1px solid #fee2e2;
-}
-.form-section.form-section-danger h5 {
-    border-bottom: 1px solid #fecaca;
 }
 
 .widget {

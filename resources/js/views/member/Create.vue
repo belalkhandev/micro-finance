@@ -10,7 +10,7 @@
         </div>
         <form @submit.prevent="storeMember">
             <div class="box-body">
-                <div class="form-section form-section-primary">
+                <div class="form-section">
                     <h5>Personal Information</h5>
                     <div class="row">
                         <div class="col-md-4">
@@ -72,7 +72,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-section form-section-danger">
+                <div class="form-section">
                     <h5>Address Information</h5>
                     <div class="row">
                         <div class="col-md-4">
@@ -152,7 +152,7 @@
                     </div>
                 </div>
 
-                <div class="form-section form-section-success">
+                <div class="form-section">
                     <h5>Account Information</h5>
                     <div class="row">
                         <div class="col-md-4">
@@ -218,7 +218,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-section form-section-warning">
+                <div class="form-section">
                     <h5>{{ memberType }} Information</h5>
                     <div class="row">
                         <div class="col-md-4">
