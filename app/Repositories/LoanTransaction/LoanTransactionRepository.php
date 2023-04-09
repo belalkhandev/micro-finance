@@ -194,21 +194,18 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     public function payment($request)
     {
-        $transaction = $this->find($request->input('transaction_id'));
-        $loanApplication = LoanApplication::find($transaction->loan_application_id);
-
-        $beginning_balance = $loanApplication->balance;
-
-        if ($request->input('payment_status') === 'paid') {
-            $transaction->beginning_balance = $beginning_balance;
-            $transaction->ending_balance = $beginning_balance - $transaction->amount;
-            $transaction->is_paid = 1;
-        } else {
-            $transaction->beginning_balance = 0;
-            $transaction->ending_balance = 0;
-            $transaction->is_paid = 0;
+        if ($request->input('payment_status') != 'paid') {
+            return false;
         }
 
+        $transaction = $this->find($request->input('transaction_id'));
+
+        $loanApplication = LoanApplication::find($transaction->loan_application_id);
+        $beginningBalance = $loanApplication->balance;
+
+        $transaction->beginning_balance = $beginningBalance;
+        $transaction->ending_balance = $beginningBalance - $transaction->amount;
+        $transaction->is_paid = 1;
         $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
 

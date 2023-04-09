@@ -193,29 +193,24 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     public function payment($request)
     {
-        $transaction = $this->find($request->input('transaction_id'));
-
-        $last_balance = DpsTransaction::where('dps_application_id', $transaction->dps_application_id)
-            ->where('is_paid', 1)
-            ->where('id', '!=', $transaction->id)
-            ->get()
-            ->sum('amount');
-
-        if ($request->input('payment_status') === 'paid') {
-            $transaction->balance = $last_balance+$transaction->amount;
-            $transaction->is_paid = 1;
-        } else {
-            $transaction->balance = 0;
-            $transaction->is_paid = 0;
+        if ($request->input('payment_status') != 'paid') {
+            return false;
         }
 
+        $transaction = $this->find($request->input('transaction_id'));
+
+        $dpsApplication = DpsApplication::find($transaction->dps_application_id);
+        $beginningBalance = $dpsApplication->balance;
+
+        $transaction->beginning_balance = $beginningBalance;
+        $transaction->ending_balance = $beginningBalance + $transaction->amount;
+        $transaction->is_paid = 1;
         $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
+
         if ($transaction->save()) {
-            //update dps_application balance
-            $dps_application = DpsApplication::find($transaction->dps_application_id);
-            $dps_application->balance = $dps_application->transactionsTotalAmount()+$dps_application->prev_deposit;
-            $dps_application->save();
+            $dpsApplication->balance = $transaction->ending_balance;
+            $dpsApplication->save();
 
             return $transaction;
         }
