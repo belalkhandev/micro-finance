@@ -2,7 +2,7 @@
     <div>
         <div class="row" v-if="dashboard">
             <div class="col-md-3">
-                <div class="widget widget-success animate__animated animate__pulse">
+                <div class="widget widget-success">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('members') }}</h5>
                         <span>
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-warning animate__animated animate__pulse">
+                <div class="widget widget-warning">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('admins') }}</h5>
                         <span>
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-primary animate__animated animate__pulse">
+                <div class="widget widget-primary">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('dps_transactions') }}</h5>
                         <span>
@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-warning animate__animated animate__pulse">
+                <div class="widget widget-warning">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('loan_transactions') }}</h5>
                         <span>
@@ -61,7 +61,7 @@
 
         <div class="row mt-4" v-if="dashboard">
             <div class="col-md-3">
-                <div class="widget widget-primary animate__animated animate__pulse">
+                <div class="widget widget-primary">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('total_collection') }}</h5>
                         <span>
@@ -74,7 +74,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-danger animate__animated animate__pulse">
+                <div class="widget widget-danger">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('total_dues') }}</h5>
                         <span>
@@ -87,7 +87,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-warning animate__animated animate__pulse">
+                <div class="widget widget-warning">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('expenses') }}</h5>
                         <span>
@@ -102,7 +102,7 @@
                 </div>
             </div>
             <div class="col-md-3">
-                <div class="widget widget-success animate__animated animate__pulse">
+                <div class="widget widget-success">
                     <div class="widget-header">
                         <h5 class="title">{{ $t('fund_amount') }}</h5>
                         <span>

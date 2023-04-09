@@ -776,23 +776,35 @@ table {
     width: 2px;
 }
 .navigations .navigation-item .navigation-content .close-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: red;
+    color: #dc3545;
     font-size: 1rem;
-    flex-direction: row-reverse;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    background: #dc354529;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
 }
-.navigations .navigation-item .navigation-content .close-bar i.bx {
-    font-size: 20px;
-}
-.navigations .navigation-item .navigation-content .close-bar:active i.bx {
-    background-color: red;
+
+.navigations .navigation-item .navigation-content .close-bar:active {
+    background-color: #dc3545;
     color: #ffffff;
+    transition: 500ms;
 }
+
+.navigations .navigation-item .navigation-content .navigation-content-body hr {
+    margin: 12px 0;
+}
+
 .navigations .navigation-item .navigation-content .navigation-content-header {
-    margin-top: 15px;
+    margin-bottom: 30px;
+    text-align: left;
+    padding: 5px 0;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body {
     text-align: left;
@@ -827,13 +839,13 @@ table {
     transition: 300ms;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active {
-    background-color: #3b82f6;
+    background-color: #3B82F626;
     border-radius: 5px;
-    color: #ffffff;
+    color: #3b82f6;
     cursor: pointer;
 }
 .navigations .navigation-item .navigation-content .navigation-content-body ul li a.router-link-active i.bx {
-    color: #ffffff;
+    color: #3b82f6;
     margin-right: 10px;
 }
 .navigations .navigation-item:hover {
@@ -846,26 +858,26 @@ table {
     transition: 300ms;
 }
 .navigations .navigation-item:hover a i.bx {
-    color: #ffffff;
+    color: #3b82f6;
 }
 .navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a {
     color: inherit;
 }
 .navigations .navigation-item:hover .navigation-content .navigation-content-body ul li a.router-link-active {
-    color: #ffffff;
+    color: #3b82f6;
 }
 .navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover {
-    background-color: #3b82f6;
+    background-color: #3B82F626;
     border-radius: 5px;
 }
 .navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a {
-    color: #ffffff;
+    color: #3b82f6;
 }
 .navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a.router-link-active {
-    color: #ffffff;
+    color: #3b82f6;
 }
 .navigations .navigation-item:hover .navigation-content .navigation-content-body ul li:hover a i.bx {
-    color: #ffffff;
+    color: #3b82f6;
     margin-right: 10px;
 }
 .navigations .navigation-item.open .navigation-content {
@@ -930,10 +942,10 @@ table {
 }
 .auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn.btn-primary {
     background-color: #3b82f6;
-    border-color: #4338ca;
+    border-color: #2368d8;
 }
 .auth-wrap .auth .auth-box .auth-body .form-group.form-submit-group .btn:hover.btn-primary {
-    background-color: #4338ca;
+    background-color: #2368d8;
 }
 .auth-wrap .auth-content {
     justify-content: flex-start;

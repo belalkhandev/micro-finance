@@ -538,8 +538,8 @@ export default ({
     }
 
     .dp__theme_light {
-        --dp-primary-color: #6366f1;
-        --dp-icon-color: #6366f1;
+        --dp-primary-color: #3b82f6;
+        --dp-icon-color: #3b82f6;
     }
 </style>
 

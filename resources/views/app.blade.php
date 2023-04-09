@@ -13,7 +13,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: #6366f1;
+            background-color: #3b82f6;
             height: 100%;
             display: flex;
             justify-content: center;

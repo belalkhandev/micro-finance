@@ -33,7 +33,6 @@
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>{{ $t('transaction') }}</h3>
@@ -98,7 +97,6 @@
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>Manage Members</h3>
@@ -171,7 +169,6 @@
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>Applications</h3>
@@ -231,7 +228,6 @@
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>{{  $t('settings') }}</h3>
@@ -275,7 +271,6 @@
                 <div class="navigation-content">
                     <div class="close-bar" @click="closeMultimenus">
                         <i class='bx bx-x'></i>
-                        <span>Close</span>
                     </div>
                     <div class="navigation-content-header">
                         <h3>Reports</h3>

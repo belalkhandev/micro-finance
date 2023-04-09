@@ -6,7 +6,7 @@
 
 <script>
 import SvgIcon from '@jamescoyle/vue-icon'
-import { mdiAccountGroupOutline } from '@mdi/js';
+import { mdiAccountLockOutline } from '@mdi/js';
 export default {
     name: "IconAdmins",
     components: {
@@ -14,7 +14,7 @@ export default {
     },
     data() {
         return {
-            path: mdiAccountGroupOutline,
+            path: mdiAccountLockOutline,
         }
     }
 }
