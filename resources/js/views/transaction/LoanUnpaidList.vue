@@ -82,13 +82,10 @@
                         <tr>
                             <th>Tr. no</th>
                             <th>Member/Acc. no</th>
-                            <th>Loan Type/Amount</th>
-                            <th>Balance.</th>
-                            <th>Tr. Day</th>
+                            <th>Type/Amount</th>
                             <th>Due Date</th>
                             <th>Issue Date</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th>Operation</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -103,22 +100,13 @@
                                 </router-link>
                             </td>
                             <td>{{ ucFirst(transaction.application.dps_type) }} <br>{{ numberFormat(transaction.amount) }}</td>
-                            <td>{{ numberFormat(transaction.balance) }}</td>
-                            <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
                             <td>{{ userFormattedDate(transaction.due_date) }}</td>
                             <td>{{ userFormattedDate(transaction.created_at) }}</td>
-                            <td>
-                                <span v-if="transaction.is_paid" class="text-success">Paid</span>
-                                <span v-else class="text-danger">Unpaid</span>
-                            </td>
                             <td>
                                 <span v-if="!transaction.is_paid">
                                     <a href="#" class="btn btn-primary btn-sm py-1" @click.prevent="showLoanTransactionModal(transaction)">
                                         Collect now
                                     </a>
-                                </span>
-                                <span v-else class="text-danger">
-                                    <span class="btn btn-success btn-sm py-1">Collected</span>
                                 </span>
                             </td>
                         </tr>

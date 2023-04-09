@@ -88,7 +88,54 @@
                 </div>
             </div>
 
-            <!--  members-->
+            <div class="navigation-item has-multimenu">
+                <a href="#" class="menu-link" @click="openMultimenus">
+                    <icon-application/>
+                    <span>{{ $t('applications') }}</span>
+                </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Applications</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5><abbr title="Deposit Pension Scheme">DPS</abbr> Applications</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All DPS Applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateDPS'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New DPS Application</span>
+                                </router-link>
+                            </li>
+                        </ul>
+
+                        <h5>Loan Applications</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'ApplicationLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All Loan Applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'CreateLoan'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>New Loan Application</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
             <div class="navigation-item has-multimenu">
                 <a href="#"  @click="openMultimenus">
                     <icon-member/>
@@ -161,53 +208,7 @@
                     </div>
                 </div>
             </div>
-            <div class="navigation-item has-multimenu">
-                <a href="#" class="menu-link" @click="openMultimenus">
-                    <icon-application/>
-                    <span>{{ $t('applications') }}</span>
-                </a>
-                <div class="navigation-content">
-                    <div class="close-bar" @click="closeMultimenus">
-                        <i class='bx bx-x'></i>
-                    </div>
-                    <div class="navigation-content-header">
-                        <h3>Applications</h3>
-                    </div>
-                    <div class="navigation-content-body">
-                        <h5><abbr title="Deposit Pension Scheme">DPS</abbr> Applications</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'ApplicationDPS'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All DPS Applications</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'CreateDPS'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>New DPS Application</span>
-                                </router-link>
-                            </li>
-                        </ul>
 
-                        <h5>Loan Applications</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'ApplicationLoan'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All Loan Applications</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'CreateLoan'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>New Loan Application</span>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
             <div class="navigation-item">
                 <router-link :to="{name: 'ExpenseList'}">
                     <icon-expense/>

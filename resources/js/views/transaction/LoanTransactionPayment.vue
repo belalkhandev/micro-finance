@@ -132,6 +132,7 @@
 
 <script>
 import {mapGetters, mapActions} from "vuex";
+import bootstrap from 'bootstrap/dist/js/bootstrap'
 import $ from 'jquery'
 import {helpers} from "../../mixin";
 

@@ -146,10 +146,17 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
                 foreach ($applications as $application) {
                     $transactions_amount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
-                    if ($transactions_amount < $application->total_amount) {
-                        $this->store($application, $date);
-                    }
+                    $applicationBalance = $transactions_amount + $application->dps_amount;
 
+                    $applicationInstallmentAmount = $application->installment_amount;
+                    $transactionInstallmentAmountDiff = $application->total_amount - $applicationBalance;
+
+
+                    if ($applicationBalance < $application->total_amount && $transactionInstallmentAmountDiff >= $applicationInstallmentAmount) {
+                        $this->store($application, $date, $application->installment_amount);
+                    } else if ($transactionInstallmentAmountDiff < $applicationInstallmentAmount && $transactionInstallmentAmountDiff > 0) {
+                        $this->store($application, $date, $transactionInstallmentAmountDiff);
+                    }
                 }
 
                 $tr_date = Carbon::parse($date)->addDay();
@@ -162,7 +169,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
     }
 
-    public function store($application, $date)
+    public function store($application, $date, $amount)
     {
 
         $tr = LoanTransaction::where('loan_application_id', $application->id)->whereDate('transaction_date', $date)->first();
@@ -180,7 +187,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         } else {
             $tr->due_date = Carbon::parse($date)->addDay(10);
         }
-        $tr->amount = $application->installment_amount;
+        $tr->amount = $amount;
 
         $tr->created_by = Auth::guard('sanctum')->user()->id;
 
@@ -206,7 +213,7 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
         $transaction->beginning_balance = $beginningBalance;
         $transaction->ending_balance = $beginningBalance - $transaction->amount;
         $transaction->is_paid = 1;
-        $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
+        $transaction->paid_at = databaseFormattedDate($request->input('transaction_date'));
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($transaction->save()) {

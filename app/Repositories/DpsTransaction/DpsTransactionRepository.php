@@ -134,11 +134,16 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 $date = databaseFormattedDate($tr_date);
                 if ($request->input('application_type') == 'weekly') {
                     $day_name = Carbon::parse($date)->dayName;
-                    $applications = DpsApplication::where('w_day', $day_name)->where('is_active', 1)->get();
+                    $applications = DpsApplication::where('w_day', $day_name)
+                        ->where('is_active', 1)
+                        ->get();
 
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = DpsApplication::whereDay('m_date', $app_start_date)->where('m_date', '<=', $date)->where('is_active', 1)->get();
+                    $applications = DpsApplication::whereDay('m_date', $app_start_date)
+                        ->where('m_date', '<=', $date)
+                        ->where('is_active', 1)
+                        ->get();
                 }
 
                 foreach ($applications as $application) {
@@ -205,7 +210,7 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
         $transaction->beginning_balance = $beginningBalance;
         $transaction->ending_balance = $beginningBalance + $transaction->amount;
         $transaction->is_paid = 1;
-        $transaction->transaction_date = databaseFormattedDate($request->input('transaction_date'));
+        $transaction->paid_at = databaseFormattedDate($request->input('transaction_date'));
         $transaction->updated_by = Auth::guard('sanctum')->user()->id;
 
         if ($transaction->save()) {

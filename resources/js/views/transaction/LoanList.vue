@@ -113,11 +113,12 @@
                         <tr>
                             <th>Tr. no</th>
                             <th>Member/Acc. no</th>
-                            <th>Loan Type/Amount</th>
-                            <th>Balance.</th>
-                            <th>Tr. Day</th>
-                            <th>Due Date</th>
-                            <th>Issue Date</th>
+                            <th>Type/Amount</th>
+                            <th>Opening balance</th>
+                            <th>Ending balance</th>
+                            <th>Transaction date</th>
+                            <th>Paid at</th>
+                            <th>Issued at</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -134,9 +135,13 @@
                                 </router-link>
                             </td>
                             <td>{{ ucFirst(transaction.application.dps_type) }} <br>{{ numberFormat(transaction.amount) }}</td>
-                            <td>{{ numberFormat(transaction.balance) }}</td>
-                            <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
-                            <td>{{ userFormattedDate(transaction.due_date) }}</td>
+                            <td>{{ numberFormat(transaction.beginning_balance) }}</td>
+                            <td>{{ numberFormat(transaction.ending_balance) }}</td>
+                            <td>{{ userFormattedDate(transaction.transaction_date) }}</td>
+                            <td>
+                                <span  v-if="transaction.is_paid" :title="dayNameFormat(transaction.paid_at)">{{ userFormattedDate(transaction.paid_at) }}</span>
+                                <span v-else>-</span>
+                            </td>
                             <td>{{ userFormattedDate(transaction.created_at) }}</td>
                             <td>
                                 <span v-if="transaction.is_paid" class="text-success">Paid</span>
@@ -172,7 +177,7 @@
             </div>
         </div>
         <div class="col-md-4"></div>
-        <loan-transaction-payment :transaction="loan_transaction_data"></loan-transaction-payment>
+        <loan-transaction-payment :transaction="loan_transaction_data" @hide-modal="hideLoanTransactionModal"></loan-transaction-payment>
     </div>
 </template>
 
@@ -247,8 +252,8 @@ export default ({
         showLoanTransactionModal(data)
         {
             this.loan_transaction_data = data
-            const LoanTransactionModal = new bootstrap.Modal(document.getElementById('loanTransactionPayment'));
-            LoanTransactionModal.show();
+            const loanPaymentCollectionModal = new bootstrap.Modal(document.getElementById('loanTransactionPayment'));
+            loanPaymentCollectionModal.show();
         },
 
         deleteConfirm(user_id) {

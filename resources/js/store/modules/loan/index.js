@@ -45,7 +45,7 @@ export default {
         },
 
         SET_APPLICATION(state, application) {
-            if (state.applications.data) {
+            if (state.applications && state.applications.data) {
                 state.applications.data.unshift(application)
             }else {
                 state.applications.data = [application]
