@@ -6,8 +6,9 @@ html, body {
 
 body {
     font-family: 'Work Sans', sans-serif;
-    background-color: #EAEDF5;
+    background-color: #f5f8fa;
     font-size: 1rem;
+    color: #425483;
 }
 
 img {
@@ -16,7 +17,7 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Work Sans', sans-serif;
-    color: #1e293b;
+    color: #172B4D;
 }
 
 h1 {
@@ -207,7 +208,7 @@ button[type=submit].btn.submitted span {
     background-color: #ffffff;
     border-radius: 5px;
     margin-bottom: 30px;
-    box-shadow: 0 0 15px 0 #4c577d05;
+    box-shadow: 0 5px 10px -10px #4c577d2e;
 }
 .box .box-header {
     padding: 10px 15px;
@@ -408,7 +409,7 @@ table {
     background-color: #ffffff;
     padding: 10px;
     border-radius: 10px;
-    box-shadow: 0 0 15px 0 #4c577d05;
+    box-shadow: 0 5px 10px -10px #4c577dab;
     min-height: 100px;
     display: flex;
     flex-direction: row;
@@ -743,7 +744,6 @@ table {
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-    column-gap: 10px;
     padding: 10px;
 }
 .navigations .navigation-item a i.bx {
@@ -761,8 +761,8 @@ table {
 .navigations .navigation-item .navigation-content {
     position: fixed;
     top: 0;
-    left: -270px;
-    width: 270px;
+    left: -268px;
+    width: 268px;
     height: 100%;
     background-color: #FFFFFF;
     padding: 10px;
@@ -1000,7 +1000,7 @@ table {
     color: #475569;
 }
 .member.member-show .member-info a:hover {
-    color: #1e293b;
+    color: #172B4D;
 }
 .member.member-show .member-nav ul li {
     margin-bottom: 5px;
@@ -1042,7 +1042,7 @@ table {
 .member.member-show h5 {
     margin-bottom: 5px;
     font-weight: 500;
-    color: #1e293b;
+    color: #172B4D;
 }
 
 .member-details .member-detail {
@@ -1073,7 +1073,7 @@ table {
     margin-bottom: 3px;
 }
 .member-details .member-detail .member-infos .member-info h5 {
-    color: #1e293b;
+    color: #172B4D;
     font-weight: 400;
     font-size: 1rem;
 }
