@@ -136,14 +136,14 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 if ($request->input('application_type') == 'weekly') {
                     $day_name = Carbon::parse($date)->dayName;
                     $applications = DpsApplication::where('w_day', $day_name)
-                        ->where('is_active', 1)
+                        ->active()
                         ->get();
 
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
                     $applications = DpsApplication::whereDay('m_date', $app_start_date)
                         ->where('m_date', '<=', $date)
-                        ->where('is_active', 1)
+                        ->active()
                         ->get();
                 }
 

@@ -138,10 +138,14 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
                 $date = databaseFormattedDate($tr_date);
                 if ($request->input('application_type') == 'weekly') {
                     $day_name = Carbon::parse($date)->dayName;
-                    $applications = LoanApplication::where('w_day', $day_name)->where('is_active', 1)->get();
+                    $applications = LoanApplication::where('w_day', $day_name)
+                        ->active()
+                        ->get();
                 } else {
                     $app_start_date = Carbon::parse($date)->format('d');
-                    $applications = LoanApplication::whereDay('m_date', $app_start_date)->where('is_active', 1)->get();
+                    $applications = LoanApplication::whereDay('m_date', $app_start_date)
+                        ->active()
+                        ->get();
                 }
 
                 foreach ($applications as $application) {
