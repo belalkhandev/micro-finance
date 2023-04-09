@@ -9,7 +9,7 @@ interface DpsTransactionRepositoryInterface
     public function allPaid($request);
     public function allUnpaid($request);
     public function generateTransaction($request);
-    public function store($application, $date);
+    public function store($application, $date, $amount);
     public function payment($request);
     public function delete($id);
     public function find($id);

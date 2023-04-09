@@ -4,6 +4,7 @@ namespace App\Repositories\DpsTransaction;
 
 use App\Models\DpsApplication;
 use App\Models\DpsTransaction;
+use App\Models\PostOffice;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
@@ -147,9 +148,14 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
                 }
 
                 foreach ($applications as $application) {
-                    $transactions_amount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
-                    if ($transactions_amount < $application->total_amount) {
-                        $this->store($application, $date);
+                    $totalTransactionAmount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
+                    $applicationBalance = $totalTransactionAmount + $application->prev_deposit;
+                    $transactionDpsAmountDiff = $application->total_amount - $applicationBalance;
+
+                    if ($totalTransactionAmount < $application->total_amount && $transactionDpsAmountDiff >= $application->dps_amount) {
+                        $this->store($application, $date, $application->dps_amount);
+                    } else if ($transactionDpsAmountDiff < $application->dps_amount && $transactionDpsAmountDiff > 0) {
+                        $this->store($application, $date, $transactionDpsAmountDiff);
                     }
                 }
 
@@ -165,7 +171,7 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
 
     }
 
-    public function store($application, $date)
+    public function store($application, $date, $amount)
     {
         try{
             $tr = DpsTransaction::where('dps_application_id', $application->id)->whereDate('transaction_date', $date)->first();
@@ -176,12 +182,14 @@ class DpsTransactionRepository implements DpsTransactionRepositoryInterface {
             $tr->dps_application_id = $application->id;
             $tr->member_id = $application->member_id;
             $tr->transaction_date = $date;
+
             if ($application->dps_type === 'weekly') {
                 $tr->due_date = Carbon::parse($date)->addDay(3);
             } else {
                 $tr->due_date = Carbon::parse($date)->addDay(10);
             }
-            $tr->amount = $application->dps_amount;
+
+            $tr->amount = $amount;
             $tr->created_by = Auth::guard('sanctum')->user()->id;
 
             if ($tr->save()) {

@@ -146,15 +146,13 @@ class LoanTransactionRepository implements LoanTransactionRepositoryInterface {
 
                 foreach ($applications as $application) {
                     $transactions_amount = $this->applicationTransactions($application->id) ? $this->applicationTransactions($application->id)->sum('amount') : 0;
-                    $applicationBalance = $transactions_amount + $application->dps_amount;
 
-                    $applicationInstallmentAmount = $application->installment_amount;
+                    $applicationBalance = $transactions_amount + $application->prev_deposit;
                     $transactionInstallmentAmountDiff = $application->total_amount - $applicationBalance;
 
-
-                    if ($applicationBalance < $application->total_amount && $transactionInstallmentAmountDiff >= $applicationInstallmentAmount) {
+                    if ($applicationBalance < $application->total_amount && $transactionInstallmentAmountDiff >= $application->installment_amount) {
                         $this->store($application, $date, $application->installment_amount);
-                    } else if ($transactionInstallmentAmountDiff < $applicationInstallmentAmount && $transactionInstallmentAmountDiff > 0) {
+                    } else if ($transactionInstallmentAmountDiff < $application->installment_amount && $transactionInstallmentAmountDiff > 0) {
                         $this->store($application, $date, $transactionInstallmentAmountDiff);
                     }
                 }
