@@ -80,7 +80,9 @@ class PdfController extends Controller
         $applications = $this->report->allLoanDownload($request);
 
         $data =[
-            'transactions'=> $applications,
+            'transactions'=> $applications['transactions'],
+            'total_beginning_balance'=> $applications['total_beginning_balance'],
+            'total_ending_balance'=> $applications['total_ending_balance'],
             'title'=> "Loan transaction report (all member)",
             'sub_title' => "Transactions report"
         ];

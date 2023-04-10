@@ -112,19 +112,18 @@
                         <thead>
                         <tr>
                             <th>#</th>
-                            <th>Tr. no</th>
                             <th>Member/Acc. no</th>
                             <th>Loan Type/Amount</th>
-                            <th>Balance.</th>
-                            <th>Tr. Day</th>
-                            <th>Due Date</th>
-                            <th>Issue Date</th>
+                            <th>Beginning Balance.</th>
+                            <th>Ending Balance.</th>
+                            <th>Transaction date</th>
+                            <th>Paid at</th>
+                            <th>Issued at</th>
                             <th>Status</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr v-if="filterTransactions && filterTransactions.data" v-for="(transaction, i) in filterTransactions.data" :key="transaction.id">
-                            <td>{{ per_page*(page-1)+(i+1) }}</td>
                             <td>{{ transaction.transaction_no }}</td>
                             <td>
                                 <router-link :to="{name: 'MemberShow', params: {
@@ -135,9 +134,10 @@
                                 </router-link>
                             </td>
                             <td>{{ transaction.application.dps_type }} <br>{{ numberFormat(transaction.amount) }}</td>
-                            <td>{{ numberFormat(transaction.balance) }}</td>
+                            <td>{{ numberFormat(transaction.beginning_balance) }}</td>
+                            <td>{{ numberFormat(transaction.ending_balance) }}</td>
                             <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
-                            <td>{{ userFormattedDate(transaction.due_date) }}</td>
+                            <td>{{ userFormattedDate(transaction.paid_at) }}</td>
                             <td>{{ userFormattedDate(transaction.created_at) }}</td>
                             <td>
                                 <span v-if="transaction.is_paid" class="text-success">Paid</span>

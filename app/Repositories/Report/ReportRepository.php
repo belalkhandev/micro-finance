@@ -298,14 +298,20 @@ class ReportRepository implements ReportRepositoryInterface {
             $transactions = $transactions->where('member_id', $request->member_id);
         }
 
-        $transactions = $transactions->latest()->get();
+        $transactions = $transactions->orderBy('loan_application_id')->orderBy('transaction_no')->get();
 
+        $totalBeginningBalance = $transactions->sum('beginning_balance');
+        $totalEndingBalance = $transactions->sum('ending_balance');
 
-        if ($transactions) {
-            return $transactions;
+        if ($transactions->isEmpty()) {
+            return false;
         }
 
-        return false;
+        return [
+            'transactions' => $transactions,
+            'total_beginning_balance' => $totalBeginningBalance,
+            'total_ending_balance' => $totalEndingBalance
+        ];
     }
 
 }

@@ -277,34 +277,59 @@
                         <h3>Reports</h3>
                     </div>
                     <div class="navigation-content-body">
-
-                        <h5>DPS Report</h5>
                         <ul>
                             <li>
                                 <router-link :to="{name: 'TodayDpsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Today's Transaction Reports</span>
+                                    <span>DPS applications report</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'TodayDpsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan applications report</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'TodayDpsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS transactions reports</span>
                                 </router-link>
                             </li>
                             <li>
                                 <router-link :to="{name: 'DpsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>All Transaction Reports</span>
+                                    <span>All DPS transaction reports</span>
                                 </router-link>
                             </li>
-                        </ul>
-                        <h5>Loan Reports</h5>
-                        <ul>
                             <li>
                                 <router-link :to="{name: 'TodayLoanReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Today's Transaction Reports</span>
+                                    <span>Daily loan transaction reports</span>
                                 </router-link>
                             </li>
                             <li>
                                 <router-link :to="{name: 'LoanReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>All Transaction Reports</span>
+                                    <span>All loan transaction reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'TodayLoanReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Savings reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'TodayLoanReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Daily expense reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'LoanReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>All expense reports</span>
                                 </router-link>
                             </li>
                         </ul>
