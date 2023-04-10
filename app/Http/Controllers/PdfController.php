@@ -5,7 +5,7 @@ use App\Models\Member;
 use App\Models\MemberGroup;
 use App\Repositories\Report\ReportRepositoryInterface;
 use Illuminate\Http\Request;
-use niklasravnsborg\LaravelPdf\Facades\Pdf;
+use PDF;
 
 class PdfController extends Controller
 {
@@ -24,7 +24,7 @@ class PdfController extends Controller
             'member' => $member
         ];
 
-        return Pdf::loadview('pdf.member-profile', $data, [], [
+        return PDF::loadview('pdf.member-profile', $data, [], [
             'format' => 'A4-P'
         ])->stream('member-'.$member->account_no.'.pdf');
 
@@ -39,7 +39,7 @@ class PdfController extends Controller
             'title'=> "DPS transaction report (all member)",
             'sub_title' => "Transactions report"
         ];
-        return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
+        return PDF::loadview('pdf.dps-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('dps.pdf');
     }
@@ -55,7 +55,7 @@ class PdfController extends Controller
             'sub_title' => "Transactions report"
         ];
 
-        return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
+        return PDF::loadview('pdf.dps-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('dps-transactions-'.$member->account_no.'.pdf');
     }
@@ -70,7 +70,7 @@ class PdfController extends Controller
             'title'=> "Loan transactions report ($member->name)",
             'sub_title' => "Transactions report"
         ];
-        return Pdf::loadview('pdf.dps-transaction', compact('data'), [], [
+        return PDF::loadview('pdf.dps-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('loan-transactions-'.$member->account_no.'.pdf');
     }
@@ -85,7 +85,7 @@ class PdfController extends Controller
             'sub_title' => "Transactions report"
         ];
 
-        return Pdf::loadview('pdf.loan-transaction', compact('data'), [], [
+        return PDF::loadview('pdf.loan-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('allLoan.pdf');
     }
@@ -99,7 +99,7 @@ class PdfController extends Controller
             'sub_title'=>"Transactions Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+        return PDF::loadview('pdf.transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('allCurrentDps.pdf');
     }
@@ -112,7 +112,7 @@ class PdfController extends Controller
             'title'=>"Paid Dps Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+        return PDF::loadview('pdf.transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('allPaidDps.pdf');
     }
@@ -125,7 +125,7 @@ class PdfController extends Controller
             'title'=>"Due Dps Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'), [], [
+        return PDF::loadview('pdf.transaction', compact('data'), [], [
             'format' => 'A4-l'
         ])->stream('allDueDps.pdf');
     }
@@ -138,7 +138,7 @@ class PdfController extends Controller
             'title'=>"Current Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'),[], [
+        return PDF::loadview('pdf.transaction', compact('data'),[], [
             'format' => 'A4-l'
         ])->stream('allCurrentLoan.pdf');
     }
@@ -151,7 +151,7 @@ class PdfController extends Controller
             'title'=>"Paid Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'),[], [
+        return PDF::loadview('pdf.transaction', compact('data'),[], [
             'format' => 'A4-l'
         ])->stream('allPaidLoan.pdf');
     }
@@ -164,7 +164,7 @@ class PdfController extends Controller
             'title'=>"Due Loan Report"
         ];
 
-        return Pdf::loadview('pdf.transaction', compact('data'),[], [
+        return PDF::loadview('pdf.transaction', compact('data'),[], [
             'format' => 'A4-l'
         ])->stream('allDueLoan.pdf');
     }
@@ -181,7 +181,7 @@ class PdfController extends Controller
             'title'=> "Savings Accounts Transactions ($member->name)",
             'sub_title' => "Transactions report"
         ];
-        return Pdf::loadview('pdf.savings-transaction', compact('data'), [], [
+        return PDF::loadview('pdf.savings-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('savings-transactions-'.$member->account_no.'.pdf');
     }
@@ -195,7 +195,7 @@ class PdfController extends Controller
             'title' => 'All Members List ('.$members->count().')'
         ];
 
-        return Pdf::loadview('pdf.members.all', compact('data'), [], [
+        return PDF::loadview('pdf.members.all', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream(databaseFormattedDate(now()).'-all-members-list.pdf');
     }
@@ -209,7 +209,7 @@ class PdfController extends Controller
             'title' => $group->group_name.' ('.$members->count().')'
         ];
 
-        return Pdf::loadview('pdf.members.group', compact('data'), [], [
+        return PDF::loadview('pdf.members.group', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream(databaseFormattedDate(now()).'-'.$group->group_name.'-members-list.pdf');
     }
@@ -223,7 +223,7 @@ class PdfController extends Controller
             'title' => ucfirst($type).' member list ('.$members->count().')'
         ];
 
-        return Pdf::loadview('pdf.members.type', compact('data'), [], [
+        return PDF::loadview('pdf.members.type', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream(databaseFormattedDate(now()).'-'.$type.'-members-list.pdf');
     }
