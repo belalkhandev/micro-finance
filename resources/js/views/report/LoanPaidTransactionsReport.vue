@@ -25,7 +25,7 @@
                 </div>
                 <div class="widget-body" v-if="filterTransactions">
                     <router-link to="#">
-                        <h3>{{ numberFormat(filterTransactions.total_loan_amount) }}</h3>
+                        <h3>{{ numberFormat(filterTransactions.total_paid_loan_amount) }}</h3>
                     </router-link>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="widget-body" v-if="filterTransactions">
                     <router-link to="#">
-                        <h3>{{ numberFormat(filterTransactions.total_loan_amount) }}</h3>
+                        <h3>{{ numberFormat(filterTransactions.total_unpaid_loan_amount) }}</h3>
                     </router-link>
                 </div>
             </div>
