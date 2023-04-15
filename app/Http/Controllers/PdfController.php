@@ -39,6 +39,7 @@ class PdfController extends Controller
             'title'=> "DPS transaction report (all member)",
             'sub_title' => "Transactions report"
         ];
+
         return PDF::loadview('pdf.dps-transaction', compact('data'), [], [
             'format' => 'A4-L'
         ])->stream('dps.pdf');

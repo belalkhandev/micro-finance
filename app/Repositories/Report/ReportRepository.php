@@ -9,6 +9,11 @@ use Carbon\Carbon;
 
 class ReportRepository implements ReportRepositoryInterface {
 
+    public function dpsApplicationReport($request)
+    {
+
+    }
+
     public function allLoan($request, $limit = 20)
     {
         $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
@@ -258,8 +263,6 @@ class ReportRepository implements ReportRepositoryInterface {
 
         return round($transactions, 2);
     }
-
-
 
     public function allDpsDownload($request)
     {

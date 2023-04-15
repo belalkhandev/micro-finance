@@ -284,7 +284,7 @@ class LoanController extends Controller
 
     public function loanApplicationCalculation()
     {
-        $accounts = $this->loan->all();
+        $accounts = $this->loan->loanAllApplication();
         $total_amounts = $accounts->sum('total_amount');
         $collections = $accounts->sum('balance');
         $dues = $total_amounts - $collections;

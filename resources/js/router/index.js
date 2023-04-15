@@ -15,7 +15,6 @@ const routes = [
             }
             next();
         }
-
     },
     {
         path: '/',
@@ -354,6 +353,24 @@ const routes = [
         component: () => import('../views/report/LoanReport'),
         meta: {
             title: 'Loan Report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/loan/applications',
+        name: 'loanApplicationReports',
+        component: () => import('../views/report/LoanApplication.vue'),
+        meta: {
+            title: 'Loan application report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/dps/applications',
+        name: 'dpsApplicationReports',
+        component: () => import('../views/report/DpsApplication.vue'),
+        meta: {
+            title: 'Dps application report',
             permission: 'view_report'
         }
     },

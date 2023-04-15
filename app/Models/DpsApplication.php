@@ -45,9 +45,7 @@ class DpsApplication extends Model
         return $this->hasOne(CloseDpsApplication::class, 'dps_application_id', 'id');
     }
 
-
-
-    public function scopeActive(Builder$query)
+    public function scopeActive($query)
     {
         return $query->where('status', 'active');
     }

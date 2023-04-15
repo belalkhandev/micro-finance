@@ -248,7 +248,6 @@ export default ({
             } else {
                 window.open(window.location.origin+'/download/dps/transactions')
             }
-
         },
 
         getResults(page = 1) {

@@ -221,49 +221,7 @@
                     <span>{{ $t('admins') }}</span>
                 </router-link>
             </div>
-            <div class="navigation-item has-multimenu">
-                <a href="#" @click="openMultimenus">
-                    <icon-settings/>
-                    <span>{{  $t('settings') }}</span>
-                </a>
-                <div class="navigation-content">
-                    <div class="close-bar" @click="closeMultimenus">
-                        <i class='bx bx-x'></i>
-                    </div>
-                    <div class="navigation-content-header">
-                        <h3>{{  $t('settings') }}</h3>
-                    </div>
-                    <div class="navigation-content-body">
-                        <h5>Basic Setup</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'Village'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Villages</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'Postoffice'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Post Offices</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'MemberGroup'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Member groups</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'ExpenseCategory'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Expense Categories</span>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+
             <div class="navigation-item has-multimenu">
                 <a href="#" class="menu-link" @click="openMultimenus">
                     <icon-report/>
@@ -279,13 +237,13 @@
                     <div class="navigation-content-body">
                         <ul>
                             <li>
-                                <router-link :to="{name: 'TodayDpsReport'}">
+                                <router-link :to="{name: 'dpsApplicationReports'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>DPS applications report</span>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'TodayDpsReport'}">
+                                <router-link :to="{name: 'loanApplicationReports'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Loan applications report</span>
                                 </router-link>
@@ -341,6 +299,49 @@
                     <icon-profile/>
                     <span>{{ $t('profile') }}</span>
                 </router-link>
+            </div>
+            <div class="navigation-item has-multimenu">
+                <a href="#" @click="openMultimenus">
+                    <icon-settings/>
+                    <span>{{  $t('settings') }}</span>
+                </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>{{  $t('settings') }}</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <h5>Basic Setup</h5>
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'Village'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Villages</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'Postoffice'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Post Offices</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'MemberGroup'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Member groups</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'ExpenseCategory'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Expense Categories</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
             <div class="navigation-item">
                 <a href="#" @click.prevent="logout">

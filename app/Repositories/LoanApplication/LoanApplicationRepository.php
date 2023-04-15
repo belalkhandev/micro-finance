@@ -4,6 +4,7 @@ namespace App\Repositories\LoanApplication;
 
 use App\Models\LoanApplication;
 use App\Models\LoanInstallment;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
@@ -19,6 +20,27 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
         }
 
         return false;
+    }
+
+    public function allApplications($request)
+    {
+        $applications = LoanApplication::with('member:id,account_no,name,photo');
+
+        if ($request->has('member_id')) {
+            $applications->where('member_id', $request->member_id);
+        }
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $applications->whereDate('created_at', '>=', $fromDate)->whereDate('created_at', '<=', $toDate);
+        }
+
+        if ($request->filled(['status'])) {
+            $applications->where('status', $request->status);
+        }
+
+        return $applications->get();
     }
 
     public function getByPaginate($request, $limit = 20)

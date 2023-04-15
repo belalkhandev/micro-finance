@@ -526,7 +526,7 @@ table {
 }
 .wrapper .sidebar {
     background-color: #FFFFFF;
-    width: 269px;
+    width: 249px;
     height: 100vh;
     overflow-y: auto;
     border-right: 1px solid #f5f8fa;
@@ -542,7 +542,7 @@ table {
 }
 .wrapper .main-content {
     background-color: #f5f8fa;
-    width: calc(100% - 270px);
+    width: calc(100% - 250px);
     height: 100vh;
     overflow-y: auto;
 }
@@ -724,8 +724,8 @@ table {
 .navigations .navigation-item .navigation-content {
     position: fixed;
     top: 0;
-    left: -268px;
-    width: 268px;
+    left: -248px;
+    width: 248px;
     height: 100%;
     background-color: #FFFFFF;
     padding: 10px;
