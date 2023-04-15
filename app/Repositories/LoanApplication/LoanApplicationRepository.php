@@ -47,9 +47,11 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $applications = LoanApplication::with('member:id,account_no,name,photo');
 
-        if ($request->from_date && $request->to_date) {
-            $applications = $applications->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $applications->whereDate('created_at', '>=', $fromDate)->whereDate('created_at', '<=', $toDate);
         }
 
         if ($request->member_id) {

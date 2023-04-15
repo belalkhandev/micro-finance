@@ -239,25 +239,25 @@
                             <li>
                                 <router-link :to="{name: 'dpsApplicationReports'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>DPS applications report</span>
+                                    <span>DPS applications</span>
                                 </router-link>
                             </li>
                             <li>
                                 <router-link :to="{name: 'loanApplicationReports'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Loan applications report</span>
+                                    <span>Loan applications</span>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'DpsReport'}">
+                                <router-link :to="{name: 'dpsPaidTransactionReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>DPS transaction reports</span>
+                                    <span>DPS paid transaction</span>
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'LoanReport'}">
+                                <router-link :to="{name: 'loanPaidTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Loan transaction reports</span>
+                                    <span>Loan paid transaction</span>
                                 </router-link>
                             </li>
                             <li>
@@ -273,7 +273,7 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'LoanReport'}">
+                                <router-link :to="{name: 'loanPaidTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>All expense reports</span>
                                 </router-link>

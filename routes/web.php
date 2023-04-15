@@ -26,10 +26,10 @@ Route::group([
     $route->get('/members/types/{type}', [PdfController::class, 'membersType']);
     $route->get('/member/profile/{member_id}', [PdfController::class, 'memberProfile']);
     $route->get('/dps/applications', [DpsReportController::class, 'allDpsApplication']);
-    $route->get('/dps/transactions', [PdfController::class, 'allDps']);
+    $route->get('/dps/transactions', [DpsReportController::class, 'allDpsTransactions']);
     $route->get('/dps/{member_id}/transactions', [PdfController::class, 'memberDpsTransactions']);
     $route->get('/loan/applications', [LoanReportController::class, 'allLoanApplication']);
-    $route->get('/loan/transactions', [PdfController::class, 'allLoan']);
+    $route->get('/loan/transactions', [LoanReportController::class, 'allLoanTransactions']);
     $route->get('/loan/{member_id}/transactions', [PdfController::class, 'memberLoanTransactions']);
     $route->get('/current/dps', [PdfController::class, 'allCurrentDps']);
     $route->get('/paid/dps', [PdfController::class, 'allPaidDps']);

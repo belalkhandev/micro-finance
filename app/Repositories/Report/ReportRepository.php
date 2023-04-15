@@ -9,19 +9,14 @@ use Carbon\Carbon;
 
 class ReportRepository implements ReportRepositoryInterface {
 
-    public function dpsApplicationReport($request)
-    {
-
-    }
-
     public function allLoan($request, $limit = 20)
     {
         $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1);
 
         if ($request->from_date && $request->to_date) {
-            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+            $transactions = $transactions->whereDate('paid_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('paid_at', '<=', databaseFormattedDate($request->to_date));
         }
 
         if ($request->member_id) {
@@ -269,9 +264,10 @@ class ReportRepository implements ReportRepositoryInterface {
         $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1);
 
-        if ($request->from_date && $request->to_date) {
-            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $transactions = $transactions->whereDate('paid_at', '>=', $fromDate)->whereDate('paid_at', '<=',$toDate);
         }
 
         if ($request->member_id) {
@@ -287,14 +283,15 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
-    public function allLoanDownload($request)
+    public function allLoanTransactionsReport($request)
     {
         $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1);
 
-        if ($request->from_date && $request->to_date) {
-            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $transactions = $transactions->whereDate('paid_at', '>=', $fromDate)->whereDate('paid_at', '<=',$toDate);
         }
 
         if ($request->member_id) {
@@ -303,17 +300,12 @@ class ReportRepository implements ReportRepositoryInterface {
 
         $transactions = $transactions->orderBy('loan_application_id')->orderBy('transaction_no')->get();
 
-        $totalBeginningBalance = $transactions->sum('beginning_balance');
-        $totalEndingBalance = $transactions->sum('ending_balance');
-
         if ($transactions->isEmpty()) {
             return false;
         }
 
         return [
             'transactions' => $transactions,
-            'total_beginning_balance' => $totalBeginningBalance,
-            'total_ending_balance' => $totalEndingBalance
         ];
     }
 

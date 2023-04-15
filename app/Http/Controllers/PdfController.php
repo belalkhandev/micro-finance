@@ -30,21 +30,6 @@ class PdfController extends Controller
 
     }
 
-    public function allDps(Request $request)
-    {
-        $applications = $this->report->allDpsDownload($request);
-
-        $data =[
-            'transactions'=> $applications,
-            'title'=> "DPS transaction report (all member)",
-            'sub_title' => "Transactions report"
-        ];
-
-        return PDF::loadview('pdf.dps-transaction', compact('data'), [], [
-            'format' => 'A4-L'
-        ])->stream('dps.pdf');
-    }
-
     public function memberDpsTransactions(Request $request, $member_id)
     {
         $applications = $this->report->memberDps($request, $member_id);
@@ -78,7 +63,7 @@ class PdfController extends Controller
 
     public function allLoan(Request $request)
     {
-        $applications = $this->report->allLoanDownload($request);
+        $applications = $this->report->allLoanTransactionsReport($request);
 
         $data =[
             'transactions'=> $applications['transactions'],

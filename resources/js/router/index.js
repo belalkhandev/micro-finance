@@ -348,11 +348,20 @@ const routes = [
         }
     },
     {
-        path: '/report/loan',
-        name: 'LoanReport',
-        component: () => import('../views/report/LoanReport'),
+        path: '/report/loan/transactions/paid',
+        name: 'loanPaidTransactionsReport',
+        component: () => import('../views/report/LoanPaidTransactionsReport.vue'),
         meta: {
-            title: 'Loan Report',
+            title: 'Loan Paid Transaction Report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/loan/transactions/unpaid',
+        name: 'loanUnpaidTransactionsReport',
+        component: () => import('../views/report/LoanUnpaidTransactionsReport.vue'),
+        meta: {
+            title: 'Loan Unpaid Transaction Report',
             permission: 'view_report'
         }
     },
@@ -376,10 +385,10 @@ const routes = [
     },
     {
         path: '/report/dps',
-        name: 'DpsReport',
-        component: () => import('../views/report/DpsReport'),
+        name: 'dpsPaidTransactionReport',
+        component: () => import('../views/report/DpsPaidTransactionsReport.vue'),
         meta: {
-            title: 'Dps Report',
+            title: 'Dps Paid Transactions Report',
             permission: 'view_report'
         }
     },
