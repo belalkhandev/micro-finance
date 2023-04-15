@@ -9,7 +9,7 @@
         <div class="widget-body">
             <form @submit.prevent="filterSubmit">
                 <div class="row">
-                    <div class="col-md-4">
+                    <div class="col-md-3">
                         <div class="member-select" :class="{open: isOpen}">
                             <div class="member-input" @click.prevent="showMemberList">
                                 <input type="text" v-model="member_input_text" class="form-control" placeholder="Choose Member" readonly>
@@ -39,6 +39,14 @@
                         <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
                     </div>
                     <div class="col-md-2">
+                        <select v-model="form.status" class="form-control">
+                            <option value="">Status</option>
+                            <option value="active">Active</option>
+                            <option value="closed">Closed</option>
+                            <option value="inactive">Inactive</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
                         <button type="submit" class="btn btn-sm btn-success">Filter</button>
                         <button v-if="is_filter_pagination" type="button" @click.prevent="clearFilterForm" class="btn btn-sm btn-danger ml-2">Clear</button>
                     </div>
@@ -144,7 +152,8 @@ export default ({
             form: {
                 from_date: '',
                 to_date: '',
-                member_id: ''
+                member_id: '',
+                status: ''
             },
             from_date: '',
             to_date: '',
@@ -257,14 +266,32 @@ export default ({
             this.form.member_id = '';
             this.form.from_date = '';
             this.form.to_date = '';
+            this.form.status = '';
             this.member_input_text = '';
             this.from_date='';
             this.to_date='';
         },
 
         downloadApplicationReport() {
-            const hasFilters = this.form.member_id || (this.form.from_date || this.form.to_date);
-            const filterQuery = hasFilters ? `?member_id=${this.form.member_id}&from_date=${this.form.from_date}&to_date=${this.form.to_date}` : '';
+            let filterQuery = '';
+
+            if (this.form.member_id && this.form.member_id !== this.lastMemberId) {
+                filterQuery += `?member_id=${this.form.member_id}`;
+                this.lastMemberId = this.form.member_id;
+            }
+
+            if (this.form.from_date) {
+                filterQuery += `${filterQuery ? '&' : '?'}from_date=${this.form.from_date}`;
+            }
+
+            if (this.form.to_date) {
+                filterQuery += `${filterQuery ? '&' : '?'}to_date=${this.form.to_date}`;
+            }
+
+            if (this.form.status) {
+                filterQuery += `${filterQuery ? '&' : '?'}status=${this.form.status}`;
+            }
+
             window.open(`${window.location.origin}/download/dps/applications${filterQuery}`);
         },
     },

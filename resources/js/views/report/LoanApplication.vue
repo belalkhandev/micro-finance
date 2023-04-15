@@ -272,7 +272,6 @@ export default ({
         },
 
         downloadApplicationReport() {
-            const hasFilters = (this.form.from_date || this.form.to_date || this.form.status);
             let filterQuery = '';
 
             if (this.form.member_id && this.form.member_id !== this.lastMemberId) {

@@ -24,6 +24,10 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
                 ->whereDate('created_at', '<=', $toDate);
         }
 
+        if($request->status) {
+            $applications = $applications->where('status', $request->status);
+        }
+
         return $applications->get();
     }
 
