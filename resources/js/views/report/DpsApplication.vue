@@ -78,7 +78,6 @@
                             <th>Receivable</th>
                             <th>Status</th>
                             <th>Created</th>
-                            <th>Operations</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -106,11 +105,6 @@
                             <td>
                                 <p v-if="application.created_user">{{ application.created_user.name }}</p>
                                 {{ userFormattedDate(application.created_at) }}</td>
-                            <td>
-                                <div class="action">
-                                    <router-link :to="{ name: 'showDPSApplication', params:{application_id: application.id}}" class="btn btn-outline-primary btn-sm"><i class="bx bx-show-alt"></i></router-link>
-                                </div>
-                            </td>
                         </tr>
                         <tr v-else>
                             <td colspan="9">No application found</td>

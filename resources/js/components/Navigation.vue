@@ -249,27 +249,15 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'TodayDpsReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>DPS transactions reports</span>
-                                </router-link>
-                            </li>
-                            <li>
                                 <router-link :to="{name: 'DpsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>All DPS transaction reports</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'TodayLoanReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Daily loan transaction reports</span>
+                                    <span>DPS transaction reports</span>
                                 </router-link>
                             </li>
                             <li>
                                 <router-link :to="{name: 'LoanReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>All loan transaction reports</span>
+                                    <span>Loan transaction reports</span>
                                 </router-link>
                             </li>
                             <li>

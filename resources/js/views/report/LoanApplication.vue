@@ -77,7 +77,7 @@
                             <th>Service/Installment</th>
                             <th>Balance</th>
                             <th>Status</th>
-                            <th>Operations</th>
+                            <th>Created</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -106,12 +106,8 @@
                             <td>{{ numberFormat(application.balance) }}</td>
                             <td v-html="getStatusFormat(application.status)"></td>
                             <td>
-                                <div class="action">
-                                    <router-link :to="{ name: 'ShowLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-success btn-sm"><i class="bx bx-show-alt"></i></router-link>
-                                    <router-link :to="{ name: 'EditLoanApplication', params:{application_id: application.id}}" class="btn btn-outline-warning btn-sm"><i class="bx bx-edit"></i></router-link>
-                                    <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="deleteConfirm(application.id)"><i class="bx bx-trash"></i></a>
-                                </div>
-                            </td>
+                                <p v-if="application.created_user">{{ application.created_user.name }}</p>
+                                {{ userFormattedDate(application.created_at) }}</td>
                         </tr>
                         <tr v-else>
                             <td colspan="9">No application found</td>
