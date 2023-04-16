@@ -84,6 +84,25 @@ class ReportController extends Controller
         ]);
     }
 
+    public function allLoanUnpaidReport(Request $request)
+    {
+        $applications = $this->report->allLoanUnpaid($request);
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'transactions' => $applications,
+                'message' => 'Loan applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'transactions' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
     public function allCurrentDpsReport()
     {
         $applications = $this->report->allCurrentDps();

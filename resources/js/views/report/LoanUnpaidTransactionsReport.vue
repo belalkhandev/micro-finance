@@ -25,7 +25,7 @@
                 </div>
                 <div class="widget-body" v-if="filterTransactions">
                     <router-link to="#">
-                        <h3>{{ numberFormat(filterTransactions.total_loan_amount) }}</h3>
+                        <h3>{{ numberFormat(filterTransactions.total_paid_loan_amount) }}</h3>
                     </router-link>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                 </div>
                 <div class="widget-body" v-if="filterTransactions">
                     <router-link to="#">
-                        <h3>{{ numberFormat(filterTransactions.total_loan_amount) }}</h3>
+                        <h3>{{ numberFormat(filterTransactions.total_unpaid_loan_amount) }}</h3>
                     </router-link>
                 </div>
             </div>
@@ -114,10 +114,7 @@
                             <th>#</th>
                             <th>Member/Acc. no</th>
                             <th>Loan Type/Amount</th>
-                            <th>Beginning Balance.</th>
-                            <th>Ending Balance.</th>
                             <th>Transaction date</th>
-                            <th>Paid at</th>
                             <th>Issued at</th>
                             <th>Status</th>
                         </tr>
@@ -134,10 +131,7 @@
                                 </router-link>
                             </td>
                             <td>{{ transaction.application.dps_type }} <br>{{ numberFormat(transaction.amount) }}</td>
-                            <td>{{ numberFormat(transaction.beginning_balance) }}</td>
-                            <td>{{ numberFormat(transaction.ending_balance) }}</td>
                             <td>{{ dayNameFormat(transaction.transaction_date) }}, <br> {{ userFormattedDate(transaction.transaction_date) }}</td>
-                            <td>{{ userFormattedDate(transaction.paid_at) }}</td>
                             <td>{{ userFormattedDate(transaction.created_at) }}</td>
                             <td>
                                 <span v-if="transaction.is_paid" class="text-success">Paid</span>
@@ -163,30 +157,24 @@
             </div>
         </div>
         <div class="col-md-4"></div>
-        <loan-transaction-payment :transaction="loan_transaction_data"></loan-transaction-payment>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import LoanTransactionPayment from '../transaction/LoanTransactionPayment'
 import bootstrap from 'bootstrap/dist/js/bootstrap'
-import {helpers} from "../../mixin";
 import LaravelVuePagination from "laravel-vue-pagination";
 import $ from "jquery";
 
 export default ({
     name: "LoanReport",
     components: {
-        LoanTransactionPayment,
         'Pagination': LaravelVuePagination
     },
 
-    mixins: [helpers],
-
     data () {
         return {
-            loan_transaction_data: null,
+            loan_unpaid_transaction_data: null,
             is_filter_pagination: false,
             form: {
                 from_date: '',
@@ -205,7 +193,7 @@ export default ({
 
     computed: {
         ...mapGetters({
-            transactions: 'report/loan_transactions',
+            transactions: 'report/loan_unpaid_transactions',
             members: 'member/searchData',
         }),
 
@@ -232,8 +220,8 @@ export default ({
 
     methods: {
         ...mapActions({
-            getLoanTransactions: 'report/getLoanTransactions',
-            filterLoanTransactions: 'report/filterLoanTransactions'
+            getLoanTransactions: 'report/getLoanUnpaidTransactions',
+            filterLoanTransactions: 'report/filterLoanUnpaidTransactions'
         }),
 
         downloadLoanTransactionReport() {
@@ -256,12 +244,12 @@ export default ({
                 filterQuery += `${filterQuery ? '&' : '?'}status=${this.form.status}`;
             }
 
-            window.open(`${window.location.origin}/download/loan/transactions${filterQuery}`);
+            window.open(`${window.location.origin}/download/loan/transactions/unapid${filterQuery}`);
         },
 
         showLoanTransactionModal(data)
         {
-            this.loan_transaction_data = data
+            this.loan_unpaid_transaction_data = data
             const LoanTransactionModal = new bootstrap.Modal(document.getElementById('loanTransactionPayment'));
             LoanTransactionModal.show();
         },

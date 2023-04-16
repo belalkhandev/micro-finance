@@ -5,6 +5,9 @@ namespace App\Repositories\Report;
 interface ReportRepositoryInterface
 {
     public function allLoan($request);
+
+    public function allLoanUnpaid($request);
+
     public function downlaodDpsTransactionByApplicationId($applicationId);
 
     public function downlaodLoanTransactionByApplicationId($applicationId);

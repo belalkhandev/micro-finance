@@ -267,7 +267,7 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'loanPaidTransactionsReport'}">
+                                <router-link :to="{name: 'loanUnpaidTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Loan unpaid transaction</span>
                                 </router-link>

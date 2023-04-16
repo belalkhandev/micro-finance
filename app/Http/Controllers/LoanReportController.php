@@ -59,6 +59,21 @@ class LoanReportController extends Controller
         ])->stream('loan-transactions-report.pdf');
     }
 
+    public function allLoanUnpaidTransactions(Request $request)
+    {
+        $transactions = $this->reportRepository->allLoanUnpaidTransactionsReport($request);
+
+        $data =[
+            'transactions'=> $transactions['transactions'] ?? null,
+        ];
+
+        $filterData = $this->getFormattedFilterData($request);
+
+        return PDF::loadview('pdf.loan-unpaid-transaction', compact('data', 'filterData'), [], [
+            'format' => 'A4-L'
+        ])->stream('loan-unpaid-transactions-report.pdf');
+    }
+
     public function loanApplicationDownloadTransactions($applicationId)
     {
         $transactions = $this->reportRepository->downlaodLoanTransactionByApplicationId($applicationId);

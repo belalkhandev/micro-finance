@@ -7,6 +7,7 @@ export default {
         dps_transactions: null,
         dps_unpaid_transactions: null,
         loan_transactions: null,
+        loan_unpaid_transactions: null,
         current_dps_transactions: null,
         paid_dps_transactions: null,
         due_dps_transactions: null,
@@ -26,6 +27,10 @@ export default {
 
         loan_transactions(state){
             return state.loan_transactions
+        },
+
+        loan_unpaid_transactions(state){
+            return state.loan_unpaid_transactions
         },
 
         dps_current_transactions(state){
@@ -64,6 +69,10 @@ export default {
 
         SET_LOAN_TRANSACTIONS(state, transactions) {
             state.loan_transactions = transactions
+        },
+
+        SET_LOAN_UNPAID_TRANSACTIONS(state, transactions) {
+            state.loan_unpaid_transactions = transactions
         },
 
         SET_CURRENT_DPS_TRANSACTIONS(state, transactions) {
@@ -148,6 +157,25 @@ export default {
                 commit('SET_LOAN_TRANSACTIONS', res.data.applications)
             } else {
                 commit('SET_LOAN_TRANSACTIONS', null)
+            }
+        },
+
+        async getLoanUnpaidTransactions({ commit  }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('report/loan/unpaid?page='+page_no)
+            if (res.data.status) {
+                commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.transactions)
+            }
+        },
+
+        async filterLoanUnpaidTransactions({ commit  }, formData) {
+            const res = await axios.get('report/loan/unpaid', {
+                params: formData
+            })
+            if (res.data.status) {
+                commit('SET_LOAN_UNPAID_TRANSACTIONS', res.data.transactions)
+            } else {
+                commit('SET_LOAN_UNPAID_TRANSACTIONS', null)
             }
         },
 

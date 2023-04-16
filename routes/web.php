@@ -33,6 +33,7 @@ Route::group([
     $route->get('/dps/{member_id}/transactions', [PdfController::class, 'memberDpsTransactions']);
     $route->get('/loan/applications', [LoanReportController::class, 'allLoanApplication']);
     $route->get('/loan/transactions', [LoanReportController::class, 'allLoanTransactions']);
+    $route->get('/loan/transactions/unpaid', [LoanReportController::class, 'allLoanUnpaidTransactions']);
     $route->get('/loan/application/transactions/{applicationId}', [LoanReportController::class, 'loanApplicationDownloadTransactions']);
     $route->get('/loan/{member_id}/transactions', [PdfController::class, 'memberLoanTransactions']);
     $route->get('/current/dps', [PdfController::class, 'allCurrentDps']);
