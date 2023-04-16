@@ -19,33 +19,49 @@ export default {
         },
 
         SET_EXPENSE(state, expense) {
-            if (state.expenses) {
-                state.expenses.unshift(expense)
+            if (state.expenses && state.expenses.data) {
+                state.expenses.data.unshift(expense)
             }else {
-                state.expenses = [expense]
+                state.expenses.data = [expense]
             }
         },
 
         UPDATE_EXPENSE(state, expense) {
-            const item = state.expenses.find(item => item.id === expense.id)
-            Object.assign(item, expense)
+            if(state.expenses && state.expenses.data) {
+                const item = state.expenses.data.find(item => item.id === expense.id)
+                Object.assign(item, expense)
+            }
         },
 
         DELETE_EXPENSE(state, item_id) {
-            const expense  = state.expenses.find(item => item.id == item_id)
-            if (expense) {
-                state.expenses.splice(state.expenses.indexOf(expense), 1)
+            if(state.expenses && state.expenses.data) {
+                const expense  = state.expenses.data.find(item => item.id == item_id)
+                if (expense) {
+                    state.expenses.data.splice(state.expenses.data.indexOf(expense), 1)
+                }
             }
         },
     },
 
     actions: {
-        //expense actions
-        async getExpenses({ commit }) {
-            const res = await axios.get('expense/list')
+        async getExpenses({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('expense/list?page='+page_no)
 
             if (res.data.status) {
                 commit('SET_EXPENSES', res.data.expenses)
+            }
+        },
+
+        async filterExpenses({ commit }, formData) {
+            const res = await axios.get('expense/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_EXPENSES', res.data.expenses)
+            } else {
+                commit('SET_EXPENSES', null)
             }
         },
 

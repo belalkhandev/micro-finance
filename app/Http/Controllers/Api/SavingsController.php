@@ -16,6 +16,23 @@ class SavingsController extends Controller
         $this->savings = $savings;
     }
 
+    public function index(Request $request)
+    {
+        $savings = $this->savings->getByPaginate($request, 20);
+
+        if ($savings->isNotEmpty()) {
+            return response()->json([
+                'status' => true,
+                'savings' => $savings
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'message' => "No savings found"
+        ]);
+    }
+
     public function memberSavings($member_id)
     {
         $savings = $this->savings->memberSavings($member_id);

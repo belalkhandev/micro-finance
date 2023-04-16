@@ -5,17 +5,26 @@ export default {
 
     state: {
         savings: null,
+        savings_transactions: null
     },
 
     getters: {
         savings(state){
             return state.savings
         },
+
+        savings_transactions(state) {
+            return state.savings_transactions
+        }
     },
 
     mutations: {
         SET_SAVINGS(state, savings) {
             state.savings = savings
+        },
+
+        SET_SAVINGS_TRANSACTIONS(state, savings) {
+            state.savings_transactions = savings
         },
 
         SET_SAVING(state, saving) {
@@ -40,7 +49,27 @@ export default {
     },
 
     actions: {
-        //saving actions
+        async getSavingsTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('member/savings/list?page='+page_no)
+
+            if (res.data.status) {
+                commit('SET_SAVINGS_TRANSACTIONS', res.data.savings)
+            }
+        },
+
+        async filterSavingsTransactions({ commit }, formData) {
+            const res = await axios.get('member/savings/list', {
+                params: formData
+            })
+
+            if (res.data.status) {
+                commit('SET_SAVINGS_TRANSACTIONS', res.data.savings)
+            } else {
+                commit('SET_SAVINGS_TRANSACTIONS', null)
+            }
+        },
+
         async getSavings({ commit }, member_id) {
             const res = await axios.get('member/savings/list/'+member_id)
 

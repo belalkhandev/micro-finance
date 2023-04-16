@@ -42,5 +42,6 @@
     "due_date": "Due Date",
     "issue_date": "Issue Date",
     "status": "Status",
-    "action": "Action"
+    "action": "Action",
+    "users": "Users"
 }

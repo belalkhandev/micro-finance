@@ -224,7 +224,7 @@ class DpsController extends Controller
 
     public function dpsApplicationCalculation()
     {
-        $accounts = $this->dps->all();
+        $accounts = $this->dps->allApplications();
         $total_amounts = $accounts ? $accounts->sum('total_amount') : 0;
         $collections = $accounts ? $accounts->sum('balance') : 0;
         $dues = $total_amounts - $collections;

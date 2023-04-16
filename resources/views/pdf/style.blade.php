@@ -33,9 +33,8 @@
 
     header, .invoice-to {
         overflow: hidden;
-        border-bottom: 1px solid #f3f3f3;
         padding-bottom: 10px;
-        margin-bottom: 10px;
+        margin-bottom: 30px;
     }
 
     .header-common {
@@ -125,6 +124,19 @@
 
     main {
         margin: 30px 0px;
+    }
+    .member-list {
+        list-style: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .member-list li {
+        display: inline-block;
+        float: left;
+        width: 33%;
+        margin-bottom: 10px;
     }
 
 </style>

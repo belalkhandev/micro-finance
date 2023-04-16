@@ -6,9 +6,16 @@ interface ReportRepositoryInterface
 {
     public function allLoan($request);
 
+    public function allLoanUnpaid($request);
+
+    public function downlaodDpsTransactionByApplicationId($applicationId);
+
+    public function downlaodLoanTransactionByApplicationId($applicationId);
+
     public function memberLoan($request, $memberId);
 
     public function allDps($request);
+    public function allDpsUnpaid($request);
 
     public function memberDps($request, $memberId);
 

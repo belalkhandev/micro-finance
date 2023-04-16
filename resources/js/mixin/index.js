@@ -119,6 +119,12 @@ export const helpers = {
                 case 'closed':
                     badgeClass = 'bg-danger';
                     break;
+                case 'deposit':
+                    badgeClass = 'bg-info';
+                    break;
+                case 'withdraw':
+                    badgeClass = 'bg-warning';
+                    break;
                 default:
                     badgeClass = 'bg-secondary';
                     break;

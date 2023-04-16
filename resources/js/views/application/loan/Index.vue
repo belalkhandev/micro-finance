@@ -84,7 +84,7 @@
                         <Datepicker v-model="from_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
                     </div>
                     <div class="col-md-3">
-                        <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
+                        <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select To Date"/>
                     </div>
                     <div class="col-md-2">
                         <button type="submit" class="btn btn-sm btn-success">Filter</button>
@@ -320,11 +320,13 @@ export default ({
 
     watch: {
         from_date: function () {
-            this.form.from_date = this.datePickerFormat(this.from_date);
+            let fromDate = this.datePickerFormat(this.from_date);
+            this.form.from_date = fromDate != 'Invalid date' ? fromDate : '';
         },
 
         to_date: function () {
-            this.form.to_date = this.datePickerFormat(this.to_date);
+            let toDate = this.datePickerFormat(this.to_date);
+            this.form.to_date = toDate != 'Invalid date' ? toDate : '';
         }
     }
 

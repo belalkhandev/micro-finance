@@ -36,7 +36,8 @@
                     <th>Tr. Date</th>
                     <th>Deposit Amount</th>
                     <th>WithDraw Amount</th>
-                    <th>Balance</th>
+                    <th>Beginning Balance</th>
+                    <th>Ending Balance</th>
                 </tr>
                 @if($data['transactions'])
                     @php $balance = 0; @endphp
@@ -46,7 +47,6 @@
                             <td>{{ userFormattedDate($transaction->savings_date) }}</td>
                             <td class="text-right">
                                 @if($transaction->savings_type === 'deposit')
-                                    @php $balance  += $transaction->amount  @endphp
                                     {{ number_format(round($transaction->amount), 2) }}
                                 @else
                                     {{ number_format(0, 2) }}
@@ -54,20 +54,21 @@
                             </td>
                             <td class="text-right">
                                 @if($transaction->savings_type === 'withdraw')
-                                    @php $balance  -= $transaction->amount  @endphp
                                     {{ number_format(round($transaction->amount), 2) }}
                                 @else
                                     {{ number_format(0, 2) }}
                                 @endif
                             </td>
-                            <td class="text-right">{{ number_format(round($balance), 2) }}</td>
+                            <td class="text-right">{{ number_format($transaction->beginning_balance, 2) }}</td>
+                            <td class="text-right">{{ number_format($transaction->ending_balance, 2) }}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <th colspan="2" class="text-left">Total</th>
                         <th class="text-right">{{ number_format($data['transactions']->where('savings_type', 'deposit')->sum('amount'), 2) }}</th>
                         <th class="text-right">{{ number_format($data['transactions']->where('savings_type', 'withdraw')->sum('amount'), 2) }}</th>
-                        <th class="text-right">{{ number_format(round($balance), 2) }}</th>
+                        <th></th>
+                        <th></th>
                     </tr>
                 @endif
             </table>

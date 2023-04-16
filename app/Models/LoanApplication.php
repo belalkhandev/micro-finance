@@ -49,4 +49,19 @@ class LoanApplication extends Model
     {
         return $this->hasOne(CloseLoanApplication::class, 'loan_application_id', 'id');
     }
+
+    public function scopeActive($query)
+    {
+        return $query->where('status', 'active');
+    }
+
+    public function scopeClosed($query)
+    {
+        return $query->where('status', 'closed');
+    }
+
+    public function scopeInactive($query)
+    {
+        return $query->where('status', 'inactive');
+    }
 }

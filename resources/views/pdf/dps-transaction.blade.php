@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>PDF</title>
+    <title>DPS transaction report</title>
     @include('pdf.style')
 </head>
 <body>
@@ -20,12 +20,23 @@
             </div>
             <div class="header-content">
                 <h2>Poor Development Savings & Credit Donation Co-Operative Society Ltd.</h2>
-                <h3 class="bn-font" style="margin-top: 15px">{{ $data['title'] }}</h3>
+                <h3 class="bn-font" style="margin-top: 15px">DPS paid transactions report</h3>
             </div>
         </div>
     </header>
 
-    <h2 class="text-center title-line bn-font">{{ $data['sub_title'] }}</h2>
+    <ul class="member-list">
+        @if($filterData['member'])
+            <li><strong>Member:</strong> {{ $filterData['member']->name }},<strong> Account:</strong> {{ $filterData['member']->account_no  }}</li>
+        @endif
+        @if($filterData['from_date'])
+            <li class="text-right"><strong>From Date:</strong> {{ \Carbon\Carbon::parse($filterData['from_date'])->format('d M, Y') }}</li>
+        @endif
+        @if($filterData['to_date'])
+            <li class="text-right"><strong>To Date:</strong> {{ \Carbon\Carbon::parse($filterData['to_date'])->format('d M, Y') }}</li>
+        @endif
+    </ul>
+
     <div class="invoice-body">
         <div>
             <table class="table">
@@ -34,10 +45,12 @@
                     <th>Member/Acc. no</th>
                     <th>Type</th>
                     <th style="width: 100px">Tr. no</th>
-                    <th>Acc. Type/Amount</th>
-                    <th>Balance.</th>
+                    <th>Amount</th>
+                    <th>Beginning BAL.</th>
+                    <th>Ending BAL.</th>
                     <th>Issue Date</th>
                     <th>Tr. Day</th>
+                    <th>Paid. at</th>
                 </tr>
                 @if($data['transactions'])
                     @foreach($data['transactions'] as $key =>$transaction)
@@ -52,14 +65,17 @@
                             </td>
                             <td>{{ $transaction->transaction_no }}</td>
                             <td>{{ number_format(round($transaction->amount), 2) }}</td>
-                            <td>{{ number_format(round($transaction->balance), 2) }}</td>
+                            <td>{{ number_format(round($transaction->beginning_balance), 2) }}</td>
+                            <td>{{ number_format(round($transaction->ending_balance), 2) }}</td>
                             <td>{{ userFormattedDate($transaction->created_at) }}</td>
                             <td>{{ userFormattedDate($transaction->transaction_date) }}</td>
+                            <td>{{ userFormattedDate($transaction->paid_at) }}</td>
                         </tr>
                     @endforeach
                     <tr>
                         <th colspan="4" class="text-left">Total</th>
-                        <th colspan="4" class="text-left">{{ number_format(round($data['transactions']->sum('amount')), 2) }}</th>
+                        <th class="text-left">{{ number_format(round($data['transactions']->sum('amount')), 2) }}</th>
+                        <th colspan="5"></th>
                     </tr>
                 @endif
             </table>

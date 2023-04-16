@@ -15,7 +15,6 @@ const routes = [
             }
             next();
         }
-
     },
     {
         path: '/',
@@ -349,20 +348,56 @@ const routes = [
         }
     },
     {
-        path: '/report/loan',
-        name: 'LoanReport',
-        component: () => import('../views/report/LoanReport'),
+        path: '/report/loan/transactions/paid',
+        name: 'loanPaidTransactionsReport',
+        component: () => import('../views/report/LoanPaidTransactionsReport.vue'),
         meta: {
-            title: 'Loan Report',
+            title: 'Loan Paid Transaction Report',
             permission: 'view_report'
         }
     },
     {
-        path: '/report/dps',
-        name: 'DpsReport',
-        component: () => import('../views/report/DpsReport'),
+        path: '/report/loan/transactions/unpaid',
+        name: 'loanUnpaidTransactionsReport',
+        component: () => import('../views/report/LoanUnpaidTransactionsReport.vue'),
         meta: {
-            title: 'Dps Report',
+            title: 'Loan Unpaid Transaction Report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/loan/applications',
+        name: 'loanApplicationReports',
+        component: () => import('../views/report/LoanApplication.vue'),
+        meta: {
+            title: 'Loan application report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/dps/applications',
+        name: 'dpsApplicationReports',
+        component: () => import('../views/report/DpsApplication.vue'),
+        meta: {
+            title: 'Dps application report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/dps/paid',
+        name: 'dpsPaidTransactionReport',
+        component: () => import('../views/report/DpsPaidTransactionsReport.vue'),
+        meta: {
+            title: 'Dps Paid Transactions Report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/dps/unpaid',
+        name: 'dpsUnpaidTransactionReport',
+        component: () => import('../views/report/DpsUnpaidTransactionsReport.vue'),
+        meta: {
+            title: 'Dps Unpaid Transactions Report',
             permission: 'view_report'
         }
     },
@@ -421,11 +456,29 @@ const routes = [
         }
     },
     {
+        path: '/report/savings',
+        name: 'savingsTransactionsReport',
+        component: () => import('../views/report/SavingsTransactionsReport.vue'),
+        meta: {
+            title: 'Savings transactions report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/expenses',
+        name: 'expensesReport',
+        component: () => import('../views/report/ExpenseReport.vue'),
+        meta: {
+            title: 'Expenses report',
+            permission: 'view_report'
+        }
+    },
+    {
         path: '/access-denied',
         name: 'AccessDenied',
         component: () => import('../views/errors/403.vue'),
         meta: {
-            title: '403 | Access denied'
+            title: '403 | Access denied',
         }
     },
     {
