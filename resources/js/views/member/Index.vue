@@ -94,8 +94,6 @@
                         <td>
                             <div class="action">
                                 <router-link :to="{ name:'MemberShow', params: { member_id: member.id }}" class="btn btn-outline-success btn-sm"><i class="bx bx-show"></i></router-link>
-                                <router-link :to="{ name:'MemberDpsTransaction', params: { member_id: member.id }}"  class="btn btn-outline-primary btn-sm mr-1"><i class='bx bx-transfer-alt'></i></router-link>
-                                <router-link :to="{ name:'MemberLoanTransaction', params: { member_id: member.id }}"  class="btn btn-outline-warning btn-sm mr-1"><i class='bx bx-transfer-alt'></i></router-link>
                                 <router-link :to="{ name: 'EditMember', params:{member_id: member.id}}" class="btn btn-outline-danger btn-sm"><i class="bx bx-edit"></i></router-link>
                                 <a href="#" class="btn btn-outline-warning btn-sm" @click.prevent="deleteConfirm(member.id)"><i class="bx bx-trash"></i></a>
                             </div>

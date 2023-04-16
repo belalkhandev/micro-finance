@@ -26,7 +26,7 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
     {
         $applications = LoanApplication::with('member:id,account_no,name,photo');
 
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $applications->where('member_id', $request->member_id);
         }
 

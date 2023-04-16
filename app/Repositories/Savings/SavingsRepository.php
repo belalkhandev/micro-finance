@@ -12,7 +12,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
     {
         $savings = Savings::with('member');
 
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $savings->where('member_id', $request->member_id);
         }
 
@@ -32,7 +32,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
     {
         $savings = Savings::with('member');
 
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $savings->where('member_id', $request->member_id);
         }
 
@@ -43,8 +43,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
                 ->whereDate('created_at', '<=', $toDate);
         }
 
-
-        if($request->status) {
+        if ($request->status) {
             $savings->where('savings_type', $request->status);
         }
 

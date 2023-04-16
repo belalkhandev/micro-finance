@@ -65,6 +65,8 @@ export default {
 
             if (res.data.status) {
                 commit('SET_SAVINGS_TRANSACTIONS', res.data.savings)
+            } else {
+                commit('SET_SAVINGS_TRANSACTIONS', null)
             }
         },
 

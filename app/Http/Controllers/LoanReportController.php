@@ -29,7 +29,7 @@ class LoanReportController extends Controller
     {
         $applications = $this->loanApplicationRepository->allApplications($request);
 
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $member = $this->memberRepository->find($request->input('member_id'));
         }
 
@@ -61,7 +61,7 @@ class LoanReportController extends Controller
 
     public function getFormattedFilterData($request)
     {
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $member = $this->memberRepository->find($request->input('member_id'));
         }
 

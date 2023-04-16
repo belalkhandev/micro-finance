@@ -53,7 +53,6 @@
             </form>
         </div>
     </div>
-    {{ form }}
     <div class="row">
         <div class="col-md-12">
             <div class="box">
@@ -228,8 +227,8 @@ export default ({
         },
 
         clearFilterForm() {
-            this.getResults(1);
             this.is_filter_pagination = false;
+            this.getResults(1);
             this.form.member_id = '';
             this.form.from_date = '';
             this.form.to_date = '';

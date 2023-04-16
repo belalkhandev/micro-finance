@@ -29,7 +29,7 @@ class DpsReportController extends Controller
     {
         $applications = $this->dpsApplicationRepository->allApplications($request);
 
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $member = $this->memberRepository->find($request->input('member_id'));
         }
 
@@ -65,7 +65,7 @@ class DpsReportController extends Controller
 
     public function getFormattedFilterData($request)
     {
-        if ($request->has('member_id')) {
+        if ($request->member_id) {
             $member = $this->memberRepository->find($request->input('member_id'));
         }
 
