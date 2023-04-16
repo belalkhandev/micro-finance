@@ -255,9 +255,21 @@
                                 </router-link>
                             </li>
                             <li>
+                                <router-link :to="{name: 'dpsPaidTransactionReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS unpaid transaction</span>
+                                </router-link>
+                            </li>
+                            <li>
                                 <router-link :to="{name: 'loanPaidTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Loan paid transaction</span>
+                                    <span>Loan paid transaction reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'loanPaidTransactionsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan unpaid transaction reports</span>
                                 </router-link>
                             </li>
                             <li>
@@ -267,15 +279,9 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'TodayLoanReport'}">
+                                <router-link :to="{name: 'expensesReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Daily expense reports</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'loanPaidTransactionsReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All expense reports</span>
+                                    <span>Expense reports</span>
                                 </router-link>
                             </li>
                         </ul>

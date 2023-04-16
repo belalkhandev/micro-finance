@@ -456,6 +456,15 @@ const routes = [
         }
     },
     {
+        path: '/report/expenses',
+        name: 'expensesReport',
+        component: () => import('../views/report/ExpenseReport.vue'),
+        meta: {
+            title: 'Expenses report',
+            permission: 'view_report'
+        }
+    },
+    {
         path: '/access-denied',
         name: 'AccessDenied',
         component: () => import('../views/errors/403.vue'),

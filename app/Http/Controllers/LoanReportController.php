@@ -59,6 +59,22 @@ class LoanReportController extends Controller
         ])->stream('loan-transactions-report.pdf');
     }
 
+    public function loanApplicationDownloadTransactions($applicationId)
+    {
+        $transactions = $this->reportRepository->downlaodLoanTransactionByApplicationId($applicationId);
+
+        $data =[
+            'transactions'=> $transactions ?? null,
+        ];
+
+        $application = $this->loanApplicationRepository->find($applicationId);
+
+        return PDF::loadview('pdf.loan-application-transaction', compact('data', 'application'), [], [
+            'format' => 'A4-L'
+        ])
+            ->stream('loan-application-transactions-report.pdf');
+    }
+
     public function getFormattedFilterData($request)
     {
         if ($request->member_id) {
