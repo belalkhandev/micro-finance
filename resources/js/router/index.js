@@ -384,11 +384,20 @@ const routes = [
         }
     },
     {
-        path: '/report/dps',
+        path: '/report/dps/paid',
         name: 'dpsPaidTransactionReport',
         component: () => import('../views/report/DpsPaidTransactionsReport.vue'),
         meta: {
             title: 'Dps Paid Transactions Report',
+            permission: 'view_report'
+        }
+    },
+    {
+        path: '/report/dps/unpaid',
+        name: 'dpsUnpaidTransactionReport',
+        component: () => import('../views/report/DpsUnpaidTransactionsReport.vue'),
+        meta: {
+            title: 'Dps Unpaid Transactions Report',
             permission: 'view_report'
         }
     },

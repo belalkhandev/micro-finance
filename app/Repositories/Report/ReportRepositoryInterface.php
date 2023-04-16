@@ -12,6 +12,7 @@ interface ReportRepositoryInterface
     public function memberLoan($request, $memberId);
 
     public function allDps($request);
+    public function allDpsUnpaid($request);
 
     public function memberDps($request, $memberId);
 

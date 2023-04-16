@@ -218,7 +218,7 @@
             <div class="navigation-item">
                 <router-link :to="{name: 'Admin'}">
                     <icon-admins/>
-                    <span>{{ $t('admins') }}</span>
+                    <span>{{ $t('users') }}</span>
                 </router-link>
             </div>
 
@@ -255,7 +255,7 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'dpsPaidTransactionReport'}">
+                                <router-link :to="{name: 'dpsUnpaidTransactionReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>DPS unpaid transaction</span>
                                 </router-link>
@@ -263,13 +263,13 @@
                             <li>
                                 <router-link :to="{name: 'loanPaidTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Loan paid transaction reports</span>
+                                    <span>Loan paid transaction</span>
                                 </router-link>
                             </li>
                             <li>
                                 <router-link :to="{name: 'loanPaidTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
-                                    <span>Loan unpaid transaction reports</span>
+                                    <span>Loan unpaid transaction</span>
                                 </router-link>
                             </li>
                             <li>

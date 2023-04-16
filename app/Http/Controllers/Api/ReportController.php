@@ -40,6 +40,30 @@ class ReportController extends Controller
         ]);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function allDpsUnpaidReport(Request $request)
+    {
+        $applications = $this->report->allDpsUnpaid($request);
+
+        if ($applications) {
+            return response()->json([
+                'status' => true,
+                'transactions' => $applications,
+                'message' => 'Dps unpaid applications found'
+            ]);
+        }
+
+        return response()->json([
+            'status' => false,
+            'transactions' => null,
+            'message' => 'No data found'
+        ]);
+    }
+
 
     public function allLoanReport(Request $request)
     {

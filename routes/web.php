@@ -28,6 +28,7 @@ Route::group([
     $route->get('/member/profile/{member_id}', [PdfController::class, 'memberProfile']);
     $route->get('/dps/applications', [DpsReportController::class, 'allDpsApplication']);
     $route->get('/dps/transactions', [DpsReportController::class, 'allDpsTransactions']);
+    $route->get('/dps/transactions/unpaid', [DpsReportController::class, 'allDpsUnpaidTransactions']);
     $route->get('/dps/application/transactions/{applicationId}', [DpsReportController::class, 'dpsApplicationDownloadTransactions']);
     $route->get('/dps/{member_id}/transactions', [PdfController::class, 'memberDpsTransactions']);
     $route->get('/loan/applications', [LoanReportController::class, 'allLoanApplication']);

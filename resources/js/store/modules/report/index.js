@@ -5,6 +5,7 @@ export default {
 
     state: {
         dps_transactions: null,
+        dps_unpaid_transactions: null,
         loan_transactions: null,
         current_dps_transactions: null,
         paid_dps_transactions: null,
@@ -17,6 +18,10 @@ export default {
     getters: {
         dps_transactions(state){
             return state.dps_transactions
+        },
+
+        dps_unpaid_transactions(state){
+            return state.dps_unpaid_transactions
         },
 
         loan_transactions(state){
@@ -51,6 +56,10 @@ export default {
     mutations: {
         SET_DPS_TRANSACTIONS(state, transactions) {
             state.dps_transactions = transactions
+        },
+
+        SET_DPS_UNPAID_TRANSACTIONS(state, transactions) {
+            state.dps_unpaid_transactions = transactions
         },
 
         SET_LOAN_TRANSACTIONS(state, transactions) {
@@ -92,6 +101,15 @@ export default {
             }
         },
 
+        async getDpsUnpaidTransactions({ commit }, page) {
+            let page_no = page && page != 'undefined' ? page :  1
+            const res = await axios.get('report/dps/unpaid?page='+page_no)
+
+            if (res.data.status) {
+                commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.transactions)
+            }
+        },
+
         async filterDpsTransactions({ commit }, formData) {
             const res = await axios.get('report/dps', {
                 params: formData
@@ -100,6 +118,17 @@ export default {
                 commit('SET_DPS_TRANSACTIONS', res.data.applications)
             } else {
                 commit('SET_DPS_TRANSACTIONS', null)
+            }
+        },
+
+        async filterDpsUnpaidTransactions({ commit }, formData) {
+            const res = await axios.get('report/dps/unpaid', {
+                params: formData
+            })
+            if (res.data.status) {
+                commit('SET_DPS_UNPAID_TRANSACTIONS', res.data.transactions)
+            } else {
+                commit('SET_DPS_UNPAID_TRANSACTIONS', null)
             }
         },
 

@@ -166,11 +166,13 @@ export default ({
 
     watch: {
         from_date: function () {
-            this.form.from_date = this.datePickerFormat(this.from_date);
+            let fromDate = this.datePickerFormat(this.from_date);
+            this.form.from_date = fromDate != 'Invalid date' ? fromDate : '';
         },
 
         to_date: function () {
-            this.form.to_date = this.datePickerFormat(this.to_date);
+            let toDate = this.datePickerFormat(this.to_date);
+            this.form.to_date = toDate != 'Invalid date' ? toDate : '';
         }
     }
 

@@ -185,6 +185,7 @@ Route::group([
         'prefix' => 'report'
     ], function($route) {
         $route->get('/dps', [ReportController::class, 'allDpsReport']);
+        $route->get('/dps/unpaid', [ReportController::class, 'allDpsUnpaidReport']);
         $route->get('/loan', [ReportController::class, 'allLoanReport']);
         $route->get('/dps/today', [ReportController::class, 'allCurrentDpsReport']);
         $route->get('/loan/today', [ReportController::class, 'allCurrentLoanReport']);

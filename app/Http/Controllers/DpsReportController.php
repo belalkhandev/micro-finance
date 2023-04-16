@@ -59,6 +59,21 @@ class DpsReportController extends Controller
         ])->stream('dps-paid-transactions-report.pdf');
     }
 
+    public function allDpsUnpaidTransactions(Request $request)
+    {
+        $transactions = $this->reportRepository->allDpsUnpaidDownload($request);
+
+        $data =[
+            'transactions'=> $transactions ?? null,
+        ];
+
+        $filterData = $this->getFormattedFilterData($request);
+
+        return PDF::loadview('pdf.dps-unpaid-transaction', compact('data', 'filterData'), [], [
+            'format' => 'A4-L'
+        ])->stream('dps-unpaid-transactions-report.pdf');
+    }
+
     public function dpsApplicationDownloadTransactions($applicationId)
     {
         $transactions = $this->reportRepository->downlaodDpsTransactionByApplicationId($applicationId);
