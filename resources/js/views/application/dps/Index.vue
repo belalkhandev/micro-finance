@@ -1,5 +1,5 @@
 <template>
-    <div class="row mb-4" v-if="dps_total">
+    <div class="row mb-4" v-if="filterApplications">
         <div class="col-md-4">
             <div class="widget widget-primary animate__animated animate__fadeIn">
                 <div class="widget-header">
@@ -9,39 +9,33 @@
                                 </span>
                 </div>
                 <div class="widget-body">
-                    <router-link to="/members">
-                        <h3>{{ numberFormat(dps_total.total_amounts, 2) }}</h3>
-                    </router-link>
+                    <h3>{{ numberFormat(filterApplications.total_dps_amount, 2) }}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="widget widget-success animate__animated animate__fadeIn">
                 <div class="widget-header">
-                    <h5 class="title">Total Collection</h5>
+                    <h5 class="title">Total Given to Members</h5>
                     <span>
                                     <i class="bx bx-group"></i>
                                 </span>
                 </div>
                 <div class="widget-body">
-                    <router-link to="/members">
-                        <h3>{{ numberFormat(dps_total.collections, 2) }}</h3>
-                    </router-link>
+                    <h3>{{ numberFormat(filterApplications.total_receivable_amount, 2) }}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="widget widget-danger animate__animated animate__fadeIn">
                 <div class="widget-header">
-                    <h5 class="title">Due Amount</h5>
+                    <h5 class="title">Members profitable amount</h5>
                     <span>
                                     <i class="bx bx-group"></i>
                                 </span>
                 </div>
                 <div class="widget-body">
-                    <router-link to="/members">
-                        <h3>{{ numberFormat(dps_total.dues, 2) }}</h3>
-                    </router-link>
+                   <h3>{{ numberFormat(filterApplications.total_profitable_amount, 2) }}</h3>
                 </div>
             </div>
         </div>
@@ -208,7 +202,6 @@ export default ({
     computed: {
         ...mapGetters({
             applications: 'dps/applications',
-            dps_total: 'dps/statistics',
             members: 'member/searchData',
         }),
 
@@ -236,7 +229,6 @@ export default ({
     methods: {
         ...mapActions({
             getApplications: 'dps/getApplications',
-            getTotalDps: 'dps/getDpsStatistics',
             deleteApplication: 'dps/deleteApplication',
             filterDpsApplications: 'dps/filterApplications'
         }),
@@ -315,7 +307,6 @@ export default ({
 
     mounted() {
         this.getResults(1);
-        this.getTotalDps();
     },
 
     watch: {

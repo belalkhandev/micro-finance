@@ -45,7 +45,19 @@ class SavingsRepository implements SavingsRepositoryInterface {
             $savings->where('savings_type', $request->status);
         }
 
-        return $savings->latest()->paginate($limit);
+        $savings = $savings->latest()->paginate($limit);
+
+        $tempSavings = $savings;
+
+        $totalDepositAmount = $tempSavings->where('savings_type', 'deposit')->sum('amount');
+        $totalWithdrawAmount = $tempSavings->where('savings_type', 'withdraw')->sum('amount');
+
+        return array_merge($savings->toArray(), [
+            'total_deposit_amount' => $totalDepositAmount,
+            'total_withdraw_amount' => $totalWithdrawAmount,
+            'total_balance' => $totalDepositAmount - $totalWithdrawAmount
+        ]);
+
     }
 
     public function memberSavings($member_id)

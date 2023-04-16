@@ -1,47 +1,41 @@
 <template>
-    <div class="row mb-4" v-if="loan_total">
+    <div class="row mb-4" v-if="filterApplications">
         <div class="col-md-4">
             <div class="widget widget-primary animate__animated animate__fadeIn">
                 <div class="widget-header">
-                    <h5 class="title">Total Loan</h5>
+                    <h5 class="title">Total Loan amount</h5>
                     <span>
                         <i class="bx bx-group"></i>
                     </span>
                 </div>
                 <div class="widget-body">
-                    <router-link to="/members">
-                        <h3>{{ numberFormat(loan_total.total_amounts, 2) }}</h3>
-                    </router-link>
+                        <h3>{{ numberFormat(filterApplications.total_loan_amount, 2) }}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="widget widget-success animate__animated animate__fadeIn">
                 <div class="widget-header">
-                    <h5 class="title">Total Collection</h5>
+                    <h5 class="title">Total charges</h5>
                     <span>
                                     <i class="bx bx-group"></i>
                                 </span>
                 </div>
                 <div class="widget-body">
-                    <router-link to="/members">
-                        <h3>{{ numberFormat(loan_total.collections, 2) }}</h3>
-                    </router-link>
+                        <h3>{{ numberFormat(filterApplications.total_service_amount, 2) }}</h3>
                 </div>
             </div>
         </div>
         <div class="col-md-4">
             <div class="widget widget-danger animate__animated animate__fadeIn">
                 <div class="widget-header">
-                    <h5 class="title">Due Amount</h5>
+                    <h5 class="title">Total loan with charge</h5>
                     <span>
                                     <i class="bx bx-group"></i>
                                 </span>
                 </div>
                 <div class="widget-body">
-                    <router-link to="/members">
-                        <h3>{{ numberFormat(loan_total.dues, 2) }}</h3>
-                    </router-link>
+                        <h3>{{ numberFormat(filterApplications.total_amount_with_charge, 2) }}</h3>
                 </div>
             </div>
         </div>
@@ -208,7 +202,6 @@ export default ({
     computed: {
         ...mapGetters({
             applications: 'loan/applications',
-            loan_total: 'loan/statistics',
             members: 'member/searchData'
         }),
 
@@ -236,7 +229,6 @@ export default ({
     methods: {
         ...mapActions({
             getApplications: 'loan/getApplications',
-            getLoanStatistics: 'loan/getLoanStatistics',
             deleteApplication: 'loan/deleteApplication',
             filterDpsApplications: 'loan/filterApplications'
         }),
@@ -314,7 +306,6 @@ export default ({
     },
 
     mounted() {
-        this.getLoanStatistics();
         this.getResults(1);
     },
 

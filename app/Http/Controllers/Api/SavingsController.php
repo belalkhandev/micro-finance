@@ -20,7 +20,7 @@ class SavingsController extends Controller
     {
         $savings = $this->savings->getByPaginate($request, 20);
 
-        if ($savings->isNotEmpty()) {
+        if ($savings) {
             return response()->json([
                 'status' => true,
                 'savings' => $savings

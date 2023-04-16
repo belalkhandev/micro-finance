@@ -1,4 +1,45 @@
 <template>
+    <div class="row mb-4" v-if="filterSavings">
+        <div class="col-md-4">
+            <div class="widget widget-primary animate__animated animate__fadeIn">
+                <div class="widget-header">
+                    <h5 class="title">Total deposit amount</h5>
+                    <span>
+                                    <i class="bx bx-group"></i>
+                                </span>
+                </div>
+                <div class="widget-body">
+                    <h3>{{ numberFormat(filterSavings.total_deposit_amount, 2) }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-success animate__animated animate__fadeIn">
+                <div class="widget-header">
+                    <h5 class="title">Total withdraw amount</h5>
+                    <span>
+                                    <i class="bx bx-group"></i>
+                                </span>
+                </div>
+                <div class="widget-body">
+                    <h3>{{ numberFormat(filterSavings.total_withdraw_amount, 2) }}</h3>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="widget widget-danger animate__animated animate__fadeIn">
+                <div class="widget-header">
+                    <h5 class="title">Balance</h5>
+                    <span>
+                                    <i class="bx bx-group"></i>
+                                </span>
+                </div>
+                <div class="widget-body">
+                    <h3>{{ numberFormat(filterSavings.total_balance, 2) }}</h3>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="widget widget-secondary mb-4" v-if="openFilter">
         <div class="widget-header">
             <h5 class="title">Filtering</h5>

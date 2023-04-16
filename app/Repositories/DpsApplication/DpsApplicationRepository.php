@@ -47,6 +47,14 @@ class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
         $applications = $applications->latest()->paginate($limit);
 
+        $tempApplications = $applications;
+
+        $applications = array_merge($applications->toArray(), [
+            'total_dps_amount' => $tempApplications->sum('total_amount'),
+            'total_receivable_amount' => $tempApplications->sum('receiving'),
+            'total_profitable_amount' => $tempApplications->sum('profit'),
+        ]);
+
         if ($applications) {
             return $applications;
         }

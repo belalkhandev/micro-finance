@@ -60,6 +60,14 @@ class LoanApplicationRepository implements LoanApplicationRepositoryInterface {
 
         $applications = $applications->latest()->paginate($limit);
 
+        $tempApplications = $applications;
+
+        $applications = array_merge($applications->toArray(), [
+            'total_loan_amount' => $tempApplications->sum('loan_amount'),
+            'total_service_amount' => $tempApplications->sum('service_amount'),
+            'total_amount_with_charge' => $tempApplications->sum('total_amount'),
+        ]);
+
         if ($applications) {
             return $applications;
         }
