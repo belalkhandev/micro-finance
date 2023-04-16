@@ -1,12 +1,43 @@
 <template>
+    <div class="widget widget-secondary mb-4" v-if="openFilter">
+        <div class="widget-header">
+            <h5 class="title">Filtering</h5>
+            <span>
+                <i class='bx bx-filter-alt'></i>
+            </span>
+        </div>
+        <div class="widget-body">
+            <form @submit.prevent="filterSubmit">
+                <div class="row">
+                    <div class="col-md-3" v-if="fetchCategories">
+                        <select v-model="form.category_id" class="form-control">
+                            <option value="">Select expense category</option>
+                            <option v-for="(category, i) in fetchCategories" :value="category.id">{{ category.name }}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <Datepicker v-model="from_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select From Date"/>
+                    </div>
+                    <div class="col-md-3">
+                        <Datepicker v-model="to_date" format="dd-MM-yyyy" :enableTimePicker="false" autoApply placeholder="Select To Date"/>
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-sm btn-success">Filter</button>
+                        <button v-if="is_filter_pagination" type="button" @click.prevent="clearFilterForm" class="btn btn-sm btn-danger ml-2">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="row">
         <div class="col-md-12">
             <div class="box">
                 <div class="box-header">
                     <div class="box-title">
-                        <h4>Expense list</h4>
+                        <h4>Expenses reports</h4>
                     </div>
                     <div class="box-action">
+                        <button type="button" class="btn btn-sm btn-secondary" @click="openFilter = !openFilter">Filter</button>
                         <router-link :to="{name:'ExpenseCategory'}" class="btn btn-sm btn-warning">Expense Categories</router-link>
                         <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#createExpenseModal">Add new</button>
                     </div>
@@ -16,18 +47,17 @@
                         <thead>
                         <tr>
                             <th>Sl</th>
-                            <th class="text-left">E. Date</th>
-                            <th class="text-left">Head</th>
+                            <th class="text-left">Expense Date</th>
+                            <th class="text-left">Title</th>
                             <th class="text-left">Category</th>
                             <th class="text-left">Type</th>
                             <th class="text-left">Amount</th>
-                            <th class="text-left"></th>
-                            <th></th>
+                            <th>Operation</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr v-for="(expense, i) in fetchExpenses" :key="expense.id">
-                            <td>{{ per_page*(page-1)+(i+1) }}</td>
+                        <tr v-if="filterExpenses && filterExpenses.data" v-for="(expense, i) in filterExpenses.data" :key="i">
+                            <td>{{ filterExpenses.from+i }}</td>
                             <td>{{ userFormattedDate(expense.expense_date) }}</td>
                             <td>{{ expense.title }}</td>
                             <td>{{ expense.category_name }}</td>
@@ -45,83 +75,84 @@
                 </div>
                 <div class="box-footer text-right">
                     <!-- pagination -->
-                    <div class="pagination" v-if="expenses && expenses.length > per_page">
+                    <div class="pagination" v-if="filterExpenses">
                         <p class="pagination-data">
-                            Page no {{ page }} Show {{ page === pages.length ? (expenses ? expenses.length : 0) : page*(fetchExpenses ? fetchExpenses.length : 0) }} of {{ expenses ? expenses.length : 0 }} Data
+                            Page {{ filterExpenses.current_page }} Showing  {{ filterExpenses.from }} to {{ filterExpenses.to }} of {{ filterExpenses.total }} Data
                         </p>
-                        <ul>
-                            <li class="page-item">
-                                <button class="page-link" @click="page = 1" data-toggle="tooltip" data-placement="bottom" title="First Page"><i class="bx bx-chevrons-left"></i></button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link" v-if="page !== 1" @click="page--" data-toggle="tooltip" data-placement="bottom" title=""><i class="bx bx-chevron-left"></i></button>
-                            </li>
-                            <li class="page-item">
-                                <button type="button" class="page-link" v-for="pageNumber in pages.slice(page-1, page+10)" :class="page===pageNumber ? 'active': ''" :key="pageNumber" @click="page = pageNumber"> {{ pageNumber}} </button>
-                            </li>
-                            <li class="page-item">
-                                <button type="button" @click="page++" v-if="page < pages.length" class="page-link"> <i class="bx bx-chevron-right"></i> </button>
-                            </li>
-                            <li class="page-item">
-                                <button class="page-link"  @click="page = pages.length" data-toggle="tooltip" data-placement="bottom" title="Last Page"><i class="bx bx-chevrons-right"></i></button>
-                            </li>
-                        </ul>
+                        <Pagination :data="filterExpenses" @pagination-change-page="getResults" :limit="6"/>
                     </div>
                     <!-- end pagination -->
                 </div>
             </div>
         </div>
+        <div class="col-md-4"></div>
     </div>
-
-    <!--  expense update modal  -->
     <create></create>
-    <!--  expense update modal  -->
     <edit :expense="edit_expense_data"></edit>
 </template>
 
 <script>
 import { mapGetters, mapActions } from "vuex";
+import LaravelVuePagination from 'laravel-vue-pagination';
+import $ from "jquery";
 import Create from "./Create";
 import Edit from "./Edit";
 import bootstrap from 'bootstrap/dist/js/bootstrap'
-import {helpers} from "../../mixin";
 
 export default ({
-    name: "Index",
+    name: "SavingsTransactionsReport",
+
     components: {
-        Create, Edit
+        Create,
+        Edit,
+        'Pagination': LaravelVuePagination
     },
 
-    mixins: [helpers],
-
-    data () {
+    data() {
         return {
-            edit_expense_data: null,
+            is_filter_pagination: false,
+            form: {
+                from_date: '',
+                to_date: '',
+                category_id: '',
+                status: ''
+            },
+            from_date: '',
+            to_date: '',
+            member_input_text: "",
+            search_key: "",
+            isOpen: false,
+            openFilter: false
         }
     },
 
     computed: {
         ...mapGetters({
             expenses: 'expense/expenses',
+            categories: 'expenseCategory/expense_categories',
         }),
 
-        fetchExpenses() {
-            if (this.expenses) {
-                return this.paginate(this.expenses);
-            }
-            return this.expenses
+        filterExpenses() {
+            return this.expenses;
+        },
+
+
+        fetchCategories() {
+            return this.categories;
         }
     },
 
     methods: {
         ...mapActions({
             getExpenses: 'expense/getExpenses',
+            getExpenseCategories: 'expenseCategory/getExpenseCategories',
+            getFilteredExpenses: 'expense/filterExpenses',
             deleteExpense: 'expense/deleteExpense',
         }),
 
         showEditModal(data) {
             this.edit_expense_data = data
-            var editModal = new bootstrap.Modal(document.getElementById('editExpenseModal'));
+            const editModal = new bootstrap.Modal(document.getElementById('editExpenseModal'));
             editModal.show();
         },
 
@@ -151,26 +182,63 @@ export default ({
             });
         },
 
-        // pagination set pages
-        setPages() {
-            let numberOfPages = Math.ceil(this.expenses ? this.expenses.length / this.per_page : 0);
-            for (let index = 1; index <= numberOfPages; index++) {
-                this.pages.push(index);
+        getResults(page = 1) {
+            if (!this.is_filter_pagination) {
+                this.getExpenses(page);
+            } else {
+                let formData = this.form;
+                formData.page = page
+                this.getFilteredExpenses(formData)
             }
         },
 
+        filterSubmit() {
+            this.is_filter_pagination = true;
+            this.getFilteredExpenses(this.form)
+        },
+
+        clearFilterForm() {
+            this.is_filter_pagination = false;
+            this.getResults(1);
+            this.form.category_id = '';
+            this.form.from_date = '';
+            this.form.to_date = '';
+            this.form.status = '';
+            this.member_input_text = '';
+            this.from_date='';
+            this.to_date='';
+        },
     },
 
     mounted() {
-        if (!this.expenses) {
-            this.getExpenses().then(() => {
-                this.setPages();
-            })
-        }
+        this.getResults(1);
+        this.getExpenseCategories();
+    },
 
-        this.setPages();
+    watch: {
+        from_date: function () {
+            let fromDate = this.datePickerFormat(this.from_date);
+            this.form.from_date = fromDate != 'Invalid date' ? fromDate : '';
+        },
+
+        to_date: function () {
+            let toDate = this.datePickerFormat(this.to_date);
+            this.form.to_date = toDate != 'Invalid date' ? toDate : '';
+        }
     }
 
 
 })
 </script>
+<style>
+.btn.btn-sm.btn-outline-info.btn-text {
+    line-height: 1;
+}
+.member-select .member-list {
+    z-index: 999;
+}
+
+.widget .widget-body p {
+    color: #000;
+}
+</style>

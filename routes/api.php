@@ -84,7 +84,7 @@ Route::group([
         $route->post('/create', [ExpenseController::class, 'store']);
         $route->put('/update/{id}', [ExpenseController::class, 'update']);
         $route->delete('/delete/{id}', [ExpenseController::class, 'destroy']);
-        //expense categories route
+
         $route->get('/category/list', [ExpenseCategoryController::class, 'index']);
         $route->post('/category/create', [ExpenseCategoryController::class, 'store']);
         $route->put('/category/update/{id}', [ExpenseCategoryController::class, 'update']);
@@ -194,5 +194,6 @@ Route::group([
         $route->get('/dps/due', [ReportController::class, 'allDueDpsReport']);
         $route->get('/loan/paid', [ReportController::class, 'allPaidLoanReport']);
         $route->get('/loan/due', [ReportController::class, 'allDueLoanReport']);
+        $route->get('/expense', [ReportController::class, 'allDueLoanReport']);
     });
 });

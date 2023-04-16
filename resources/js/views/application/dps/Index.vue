@@ -178,7 +178,6 @@
 
 <script>
 import { mapGetters, mapActions } from "vuex";
-import {helpers} from "../../../mixin";
 import LaravelVuePagination from 'laravel-vue-pagination';
 import $ from "jquery";
 

@@ -36,8 +36,6 @@ class SavignsReportController extends Controller
         ])->stream(time().'-savings-transactions-report.pdf');
     }
 
-
-
     public function getFormattedFilterData($request)
     {
         if ($request->member_id) {

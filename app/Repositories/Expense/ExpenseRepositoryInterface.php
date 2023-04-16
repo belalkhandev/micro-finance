@@ -4,7 +4,9 @@ namespace App\Repositories\Expense;
 
 interface ExpenseRepositoryInterface
 {
-    public function all();
+    public function allExpenses($request);
+
+    public function getByPaginate($request, $limit);
 
     public function store($request);
 

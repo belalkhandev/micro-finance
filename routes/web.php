@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DpsReportController;
+use App\Http\Controllers\ExpenseReportController;
 use App\Http\Controllers\LoanReportController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SavignsReportController;
@@ -43,6 +44,7 @@ Route::group([
     $route->get('/paid/loan', [PdfController::class, 'allPaidLoan']);
     $route->get('/due/loan', [PdfController::class, 'allDueLoan']);
     $route->get('/savings/transactions', [SavignsReportController::class, 'allSavingsTransactions']);
+    $route->get('/expenses', [ExpenseReportController::class, 'allExpenses']);
     $route->get('/savings/{member_id}/transactions', [PdfController::class, 'savingAccountTransactions']);
 });
 
