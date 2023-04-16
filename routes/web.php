@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\DpsReportController;
+use App\Http\Controllers\ExpenseReportController;
+use App\Http\Controllers\LoanReportController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\SavignsReportController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,9 +27,15 @@ Route::group([
     $route->get('/members/groups/{groupId}', [PdfController::class, 'membersGroup']);
     $route->get('/members/types/{type}', [PdfController::class, 'membersType']);
     $route->get('/member/profile/{member_id}', [PdfController::class, 'memberProfile']);
-    $route->get('/dps/transactions', [PdfController::class, 'allDps']);
+    $route->get('/dps/applications', [DpsReportController::class, 'allDpsApplication']);
+    $route->get('/dps/transactions', [DpsReportController::class, 'allDpsTransactions']);
+    $route->get('/dps/transactions/unpaid', [DpsReportController::class, 'allDpsUnpaidTransactions']);
+    $route->get('/dps/application/transactions/{applicationId}', [DpsReportController::class, 'dpsApplicationDownloadTransactions']);
     $route->get('/dps/{member_id}/transactions', [PdfController::class, 'memberDpsTransactions']);
-    $route->get('/loan/transactions', [PdfController::class, 'allLoan']);
+    $route->get('/loan/applications', [LoanReportController::class, 'allLoanApplication']);
+    $route->get('/loan/transactions', [LoanReportController::class, 'allLoanTransactions']);
+    $route->get('/loan/transactions/unpaid', [LoanReportController::class, 'allLoanUnpaidTransactions']);
+    $route->get('/loan/application/transactions/{applicationId}', [LoanReportController::class, 'loanApplicationDownloadTransactions']);
     $route->get('/loan/{member_id}/transactions', [PdfController::class, 'memberLoanTransactions']);
     $route->get('/current/dps', [PdfController::class, 'allCurrentDps']);
     $route->get('/paid/dps', [PdfController::class, 'allPaidDps']);
@@ -33,6 +43,8 @@ Route::group([
     $route->get('/current/loan', [PdfController::class, 'allCurrentLoan']);
     $route->get('/paid/loan', [PdfController::class, 'allPaidLoan']);
     $route->get('/due/loan', [PdfController::class, 'allDueLoan']);
+    $route->get('/savings/transactions', [SavignsReportController::class, 'allSavingsTransactions']);
+    $route->get('/expenses', [ExpenseReportController::class, 'allExpenses']);
     $route->get('/savings/{member_id}/transactions', [PdfController::class, 'savingAccountTransactions']);
 });
 

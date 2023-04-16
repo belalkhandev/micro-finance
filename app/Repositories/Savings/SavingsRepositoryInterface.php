@@ -4,7 +4,9 @@ namespace App\Repositories\Savings;
 
 interface SavingsRepositoryInterface
 {
-    public function all();
+    public function allSavingsTransactions($request);
+
+    public function getByPaginate($request, $limit);
 
     public function memberSavings($member_id);
 

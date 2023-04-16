@@ -289,7 +289,7 @@ table {
     border: none !important;
     font-family: 'Work Sans', sans-serif;
     font-weight: 400;
-    font-size: 0.9375rem;
+    font-size: 0.875rem;
 }
 .table tbody tr {
     position: relative;
@@ -680,8 +680,8 @@ table {
 
 .navigations {
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    grid-gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
 }
 @media screen and (max-width: 768px) {
     .navigations {
@@ -695,32 +695,41 @@ table {
 }
 .navigations .navigation-item {
     text-align: center;
+    min-height: 85px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border: 1px solid #e0e7ff;
     border-radius: 5px;
 }
 .navigations .navigation-item a {
     transition: 300ms;
     width: 100%;
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     flex-wrap: wrap;
-    padding: 10px;
+    padding: 5px 0;
 }
-.navigations .navigation-item a i.bx {
-    font-size: 32px;
-    margin-bottom: 5px;
-}
-
-.navigations .navigation-item a img {
-    width: 24px;
+.navigations .navigation-item a span.nav-icon {
+    margin-bottom: 10px;
 }
 
 .navigations .navigation-item a span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     font-weight: 400;
+    width: 100%;
 }
+
+.navigations .navigation-item .navigation-content-body ul li a span {
+    justify-content: flex-start;
+}
+
+.navigations .navigation-item a span svg {
+    width: 32px;
+    height: 32px;
+}
+
 .navigations .navigation-item .navigation-content {
     position: fixed;
     top: 0;

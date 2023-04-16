@@ -15,8 +15,38 @@ class ReportRepository implements ReportRepositoryInterface {
             ->where('is_paid', 1);
 
         if ($request->from_date && $request->to_date) {
-            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+            $transactions = $transactions->whereDate('paid_at', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('paid_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->latest()->paginate($limit);
+
+
+        $transactions = array_merge($transactions->toArray(), [
+            'total_loan_amount' => $this->totalLoanTransactions($request),
+            'total_paid_loan_amount' => $this->totalLoanTransactions($request, 'paid'),
+            'total_unpaid_loan_amount' => $this->totalLoanTransactions($request, 'unpaid')
+        ]);
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function allLoanUnpaid($request, $limit = 20)
+    {
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 0);
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('transaction_date', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('transaction_date', '<=', databaseFormattedDate($request->to_date));
         }
 
         if ($request->member_id) {
@@ -85,6 +115,35 @@ class ReportRepository implements ReportRepositoryInterface {
         if ($request->from_date && $request->to_date) {
             $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
                 ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->latest()->paginate($limit);
+
+        $transactions = array_merge($transactions->toArray(), [
+            'total_dps_amount' => $this->totalDpsTransactions($request),
+            'total_paid_dps_amount' => $this->totalDpsTransactions($request, 'paid'),
+            'total_unpaid_dps_amount' => $this->totalDpsTransactions($request, 'unpaid')
+        ]);
+
+        if ($transactions) {
+            return $transactions;
+        }
+
+        return false;
+    }
+
+    public function allDpsUnpaid($request, $limit = 20)
+    {
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 0);
+
+        if ($request->from_date && $request->to_date) {
+            $transactions = $transactions->whereDate('transaction_date', '>=', databaseFormattedDate($request->from_date))
+                ->whereDate('transaction_date', '<=', databaseFormattedDate($request->to_date));
         }
 
         if ($request->member_id) {
@@ -259,16 +318,15 @@ class ReportRepository implements ReportRepositoryInterface {
         return round($transactions, 2);
     }
 
-
-
     public function allDpsDownload($request)
     {
         $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
             ->where('is_paid', 1);
 
-        if ($request->from_date && $request->to_date) {
-            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $transactions = $transactions->whereDate('paid_at', '>=', $fromDate)->whereDate('paid_at', '<=',$toDate);
         }
 
         if ($request->member_id) {
@@ -284,28 +342,99 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
-    public function allLoanDownload($request)
-    {
-        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
-            ->where('is_paid', 1);
 
-        if ($request->from_date && $request->to_date) {
-            $transactions = $transactions->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
-                ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
+    public function allDpsUnpaidDownload($request)
+    {
+        $transactions = DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 0);
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $transactions = $transactions->whereDate('transaction_date', '>=', $fromDate)->whereDate('transaction_date', '<=',$toDate);
         }
 
         if ($request->member_id) {
             $transactions = $transactions->where('member_id', $request->member_id);
         }
 
-        $transactions = $transactions->latest()->get();
-
+        $transactions = $transactions->orderBy('dps_application_id')->orderBy('transaction_no')->get();
 
         if ($transactions) {
             return $transactions;
         }
 
         return false;
+    }
+
+    public function downlaodDpsTransactionByApplicationId($applicationId)
+    {
+        return DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('dps_application_id', $applicationId)
+            ->where('is_paid', 1)
+            ->latest()
+            ->get();
+    }
+
+    public function downlaodLoanTransactionByApplicationId($applicationId)
+    {
+        return LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('loan_application_id', $applicationId)
+            ->where('is_paid', 1)
+            ->latest()
+            ->get();
+    }
+
+    public function allLoanTransactionsReport($request)
+    {
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 1);
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $transactions = $transactions->whereDate('paid_at', '>=', $fromDate)->whereDate('paid_at', '<=',$toDate);
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->orderBy('loan_application_id')->orderBy('transaction_no')->get();
+
+        if ($transactions->isEmpty()) {
+            return false;
+        }
+
+        return [
+            'transactions' => $transactions,
+        ];
+    }
+
+    public function allLoanUnpaidTransactionsReport($request)
+    {
+        $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('is_paid', 0);
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $transactions = $transactions->whereDate('paid_at', '>=', $fromDate)->whereDate('paid_at', '<=',$toDate);
+        }
+
+        if ($request->member_id) {
+            $transactions = $transactions->where('member_id', $request->member_id);
+        }
+
+        $transactions = $transactions->orderBy('loan_application_id')->orderBy('transaction_no')->get();
+
+        if ($transactions->isEmpty()) {
+            return false;
+        }
+
+        return [
+            'transactions' => $transactions,
+        ];
     }
 
 }

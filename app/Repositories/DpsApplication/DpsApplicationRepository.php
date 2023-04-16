@@ -9,28 +9,40 @@ use Illuminate\Support\Facades\Auth;
 
 class DpsApplicationRepository implements DpsApplicationRepositoryInterface {
 
-    public function all()
+    public function allApplications($request)
     {
-        $applications = DpsApplication::latest()->get();
+        $applications = DpsApplication::with('member:id,account_no,name,photo');
 
-        if ($applications->isNotEmpty()) {
-            return $applications;
+        if ($request->member_id) {
+            $applications->where('member_id', $request->member_id);
         }
 
-        return false;
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $applications->whereDate('created_at', '>=', $fromDate)
+                ->whereDate('created_at', '<=', $toDate);
+        }
+
+        if($request->status) {
+            $applications = $applications->where('status', $request->status);
+        }
+
+        return $applications->get();
     }
+
 
     public function getByPaginate($request, $limit = 20)
     {
         $applications = DpsApplication::with('member:id,account_no,name,photo');
 
+        if ($request->member_id) {
+            $applications = $applications->where('member_id', $request->member_id);
+        }
+
         if ($request->from_date && $request->to_date) {
             $applications = $applications->whereDate('created_at', '>=', databaseFormattedDate($request->from_date))
                 ->whereDate('created_at', '<=', databaseFormattedDate($request->to_date));
-        }
-
-        if ($request->member_id) {
-            $applications = $applications->where('member_id', $request->member_id);
         }
 
         $applications = $applications->latest()->paginate($limit);

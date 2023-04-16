@@ -23,11 +23,11 @@ class ExpenseController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index(Request $request)
     {
-        $expenses = $this->expense->all();
+        $expenses = $this->expense->getByPaginate($request,20);
 
-        if ($expenses) {
+        if ($expenses->isNotEmpty()) {
             return response()->json([
                 'status' => true,
                 'expenses' => $expenses,

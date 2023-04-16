@@ -218,7 +218,80 @@
             <div class="navigation-item">
                 <router-link :to="{name: 'Admin'}">
                     <icon-admins/>
-                    <span>{{ $t('admins') }}</span>
+                    <span>{{ $t('users') }}</span>
+                </router-link>
+            </div>
+
+            <div class="navigation-item has-multimenu">
+                <a href="#" class="menu-link" @click="openMultimenus">
+                    <icon-report/>
+                    <span>{{ $t('reports') }}</span>
+                </a>
+                <div class="navigation-content">
+                    <div class="close-bar" @click="closeMultimenus">
+                        <i class='bx bx-x'></i>
+                    </div>
+                    <div class="navigation-content-header">
+                        <h3>Reports</h3>
+                    </div>
+                    <div class="navigation-content-body">
+                        <ul>
+                            <li>
+                                <router-link :to="{name: 'dpsApplicationReports'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'loanApplicationReports'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan applications</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'dpsPaidTransactionReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS paid transaction</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'dpsUnpaidTransactionReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>DPS unpaid transaction</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'loanPaidTransactionsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan paid transaction</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'loanUnpaidTransactionsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Loan unpaid transaction</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'savingsTransactionsReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Savings reports</span>
+                                </router-link>
+                            </li>
+                            <li>
+                                <router-link :to="{name: 'expensesReport'}">
+                                    <i class='bx bx-chevron-right'></i>
+                                    <span>Expense reports</span>
+                                </router-link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="navigation-item">
+                <router-link :to="{name: 'Profile'}">
+                    <icon-profile/>
+                    <span>{{ $t('profile') }}</span>
                 </router-link>
             </div>
             <div class="navigation-item has-multimenu">
@@ -263,59 +336,6 @@
                         </ul>
                     </div>
                 </div>
-            </div>
-            <div class="navigation-item has-multimenu">
-                <a href="#" class="menu-link" @click="openMultimenus">
-                    <icon-report/>
-                    <span>{{ $t('reports') }}</span>
-                </a>
-                <div class="navigation-content">
-                    <div class="close-bar" @click="closeMultimenus">
-                        <i class='bx bx-x'></i>
-                    </div>
-                    <div class="navigation-content-header">
-                        <h3>Reports</h3>
-                    </div>
-                    <div class="navigation-content-body">
-
-                        <h5>DPS Report</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'TodayDpsReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Today's Transaction Reports</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'DpsReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All Transaction Reports</span>
-                                </router-link>
-                            </li>
-                        </ul>
-                        <h5>Loan Reports</h5>
-                        <ul>
-                            <li>
-                                <router-link :to="{name: 'TodayLoanReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>Today's Transaction Reports</span>
-                                </router-link>
-                            </li>
-                            <li>
-                                <router-link :to="{name: 'LoanReport'}">
-                                    <i class='bx bx-chevron-right'></i>
-                                    <span>All Transaction Reports</span>
-                                </router-link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="navigation-item">
-                <router-link :to="{name: 'Profile'}">
-                    <icon-profile/>
-                    <span>{{ $t('profile') }}</span>
-                </router-link>
             </div>
             <div class="navigation-item">
                 <a href="#" @click.prevent="logout">

@@ -8,15 +8,38 @@ use Illuminate\Support\Facades\Auth;
 
 class ExpenseRepository implements ExpenseRepositoryInterface {
 
-    public function all()
+    public function allExpenses($request)
     {
-        $expenses = Expense::latest()->get();
+        $expenses = Expense::with('category');
 
-        if ($expenses->isNotEmpty()) {
-            return $expenses;
+        if ($request->category_id) {
+            $expenses->where('expense_category_id', $request->category_id);
         }
 
-        return false;
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $expenses->whereDate('expense_date', '>=', $fromDate)->whereDate('expense_date', '<=', $toDate);
+        }
+
+        return $expenses->get();
+    }
+
+    public function getByPaginate($request, $limit)
+    {
+        $expenses =  Expense::with('category');
+
+        if ($request->category_id) {
+            $expenses->where('expense_category_id', $request->category_id);
+        }
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $expenses->whereDate('expense_date', '>=', $fromDate)->whereDate('expense_date', '<=', $toDate);
+        }
+
+        return $expenses->latest()->paginate($limit);
     }
 
     public function store($request)
