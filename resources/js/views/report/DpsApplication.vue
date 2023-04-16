@@ -78,6 +78,7 @@
                             <th>Receivable</th>
                             <th>Status</th>
                             <th>Created</th>
+                            <th>Download</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -105,6 +106,9 @@
                             <td>
                                 <p v-if="application.created_user">{{ application.created_user.name }}</p>
                                 {{ userFormattedDate(application.created_at) }}</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary" @click="downloadApplicationTransactionReport(application.id)"><i class="bx bx-download"></i> transactions</button>
+                            </td>
                         </tr>
                         <tr v-else>
                             <td colspan="9">No application found</td>
@@ -285,6 +289,10 @@ export default ({
             }
 
             window.open(`${window.location.origin}/download/dps/applications${filterQuery}`);
+        },
+
+        downloadApplicationTransactionReport(application_id) {
+            window.open(`${window.location.origin}/download/dps/application/transactions/${application_id}`);
         },
     },
 

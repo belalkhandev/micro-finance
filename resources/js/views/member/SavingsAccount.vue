@@ -85,6 +85,8 @@
                             <th>Date</th>
                             <th>Amount</th>
                             <th>Savings Type</th>
+                            <th>Beginning BAL.</th>
+                            <th>Ending BAL.</th>
                             <td></td>
                         </tr>
                         </thead>
@@ -94,6 +96,8 @@
                                 <td>{{ userFormattedDate(savings.savings_date) }}</td>
                                 <td>{{ numberFormat(savings.amount) }}</td>
                                 <td>{{ ucFirst(savings.savings_type) }}</td>
+                                <td>{{ numberFormat(savings.beginning_balance) }}</td>
+                                <td>{{ numberFormat(savings.ending_balance) }}</td>
                                 <td>
                                     <div class="action">
                                         <a href="#" class="btn btn-outline-danger btn-sm" @click.prevent="deleteConfirm(savings.id)"><i class="bx bx-trash"></i></a>

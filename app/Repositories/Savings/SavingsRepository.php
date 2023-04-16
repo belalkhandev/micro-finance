@@ -23,9 +23,7 @@ class SavingsRepository implements SavingsRepositoryInterface {
                 ->whereDate('created_at', '<=', $toDate);
         }
 
-        $savings = $savings->get();
-
-        return $savings;
+        return $savings->get();
     }
 
     public function getByPaginate($request, $limit = 15)

@@ -283,6 +283,24 @@ class ReportRepository implements ReportRepositoryInterface {
         return false;
     }
 
+    public function downlaodDpsTransactionByApplicationId($applicationId)
+    {
+        return DpsTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('dps_application_id', $applicationId)
+            ->where('is_paid', 1)
+            ->latest()
+            ->get();
+    }
+
+    public function downlaodLoanTransactionByApplicationId($applicationId)
+    {
+        return LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
+            ->where('loan_application_id', $applicationId)
+            ->where('is_paid', 1)
+            ->latest()
+            ->get();
+    }
+
     public function allLoanTransactionsReport($request)
     {
         $transactions = LoanTransaction::with('member:id,account_no,name,photo', 'application:id,dps_type')
