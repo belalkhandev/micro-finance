@@ -8,15 +8,47 @@ use Carbon\Carbon;
 
 class SavingsRepository implements SavingsRepositoryInterface {
 
-    public function all()
+    public function allSavingsTransactions($request)
     {
-        $savings = Savings::latest()->get();
+        $savings = Savings::with('member');
 
-        if ($savings->isNotEmpty()) {
-            return $savings;
+        if ($request->has('member_id')) {
+            $savings->where('member_id', $request->member_id);
         }
 
-        return false;
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $savings->whereDate('created_at', '>=', $fromDate)
+                ->whereDate('created_at', '<=', $toDate);
+        }
+
+        $savings = $savings->get();
+
+        return $savings;
+    }
+
+    public function getByPaginate($request, $limit = 15)
+    {
+        $savings = Savings::with('member');
+
+        if ($request->has('member_id')) {
+            $savings->where('member_id', $request->member_id);
+        }
+
+        if ($request->filled(['from_date', 'to_date'])) {
+            $fromDate = Carbon::parse($request->from_date)->startOfDay();
+            $toDate = Carbon::parse($request->to_date)->endOfDay();
+            $savings->whereDate('created_at', '>=', $fromDate)
+                ->whereDate('created_at', '<=', $toDate);
+        }
+
+
+        if($request->status) {
+            $savings->where('savings_type', $request->status);
+        }
+
+        return $savings->latest()->paginate($limit);
     }
 
     public function memberSavings($member_id)
@@ -28,6 +60,11 @@ class SavingsRepository implements SavingsRepositoryInterface {
         }
 
         return false;
+    }
+
+    public function getMemberSavings($memberId)
+    {
+        return Savings::where('member_id', $memberId)->get();
     }
 
     public function store($request)
@@ -42,6 +79,20 @@ class SavingsRepository implements SavingsRepositoryInterface {
         if ($request->input('loan_transaction_id')) {
             $savings->loan_transaction_id = $request->input('loan_transaction_id');
         }
+
+        $memberSavings = $this->getMemberSavings($request->member_id);
+        $totalDeposit = $memberSavings->where('savings_type', 'deposit')->sum('amount');
+        $totalWithdraw = $memberSavings->where('savings_type', 'withdraw')->sum('amount');
+        $beginningBalance = $totalDeposit - $totalWithdraw;
+
+        if ($request->input('savings_type') == 'deposit') {
+            $endingBalance = $beginningBalance + $request->input('amount');
+        } else {
+            $endingBalance = $beginningBalance - $request->input('amount');
+        }
+
+        $savings->beginning_balance = $beginningBalance;
+        $savings->ending_balance = $endingBalance;
 
         if ($savings->save()) {
             return $savings;
@@ -61,6 +112,20 @@ class SavingsRepository implements SavingsRepositoryInterface {
         $savings->savings_date = $request->input('savings_date') ? databaseFormattedDate($request->input('savings_date')) : databaseFormattedDate(Carbon::now());
         $savings->loan_transaction_id = $transaction->id;
         $savings->remarks = $request->input('remarks') ?: null;
+
+        $memberSavings = $this->getMemberSavings($request->member_id);
+        $totalDeposit = $memberSavings->where('savings_type', 'deposit')->sum('amount');
+        $totalWithdraw = $memberSavings->where('savings_type', 'withdraw')->sum('amount');
+        $beginningBalance = $totalDeposit - $totalWithdraw;
+
+        if ($request->input('savings_type') == 'deposit') {
+            $endingBalance = $beginningBalance + $request->input('amount');
+        } else {
+            $endingBalance = $beginningBalance - $request->input('amount');
+        }
+
+        $savings->beginning_balance = $beginningBalance;
+        $savings->ending_balance = $endingBalance;
 
         if ($savings->save()) {
             return $savings;

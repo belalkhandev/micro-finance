@@ -1,5 +1,5 @@
 <template>
-    <span class="mr-2 text-indigo-600">
+    <span class="nav-icon text-indigo-600">
         <svg-icon type="mdi" :path="path"></svg-icon>
     </span>
 </template>

@@ -261,7 +261,7 @@
                                 </router-link>
                             </li>
                             <li>
-                                <router-link :to="{name: 'TodayLoanReport'}">
+                                <router-link :to="{name: 'savingsTransactionsReport'}">
                                     <i class='bx bx-chevron-right'></i>
                                     <span>Savings reports</span>
                                 </router-link>

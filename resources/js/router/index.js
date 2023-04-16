@@ -447,11 +447,20 @@ const routes = [
         }
     },
     {
+        path: '/report/savings',
+        name: 'savingsTransactionsReport',
+        component: () => import('../views/report/SavingsTransactionsReport.vue'),
+        meta: {
+            title: 'Savings transactions report',
+            permission: 'view_report'
+        }
+    },
+    {
         path: '/access-denied',
         name: 'AccessDenied',
         component: () => import('../views/errors/403.vue'),
         meta: {
-            title: '403 | Access denied'
+            title: '403 | Access denied',
         }
     },
     {

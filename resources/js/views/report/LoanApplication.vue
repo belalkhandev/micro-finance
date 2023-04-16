@@ -162,7 +162,6 @@ export default ({
     computed: {
         ...mapGetters({
             applications: 'loan/applications',
-            loan_total: 'loan/statistics',
             members: 'member/searchData'
         }),
 
@@ -190,7 +189,6 @@ export default ({
     methods: {
         ...mapActions({
             getApplications: 'loan/getApplications',
-            getLoanStatistics: 'loan/getLoanStatistics',
             deleteApplication: 'loan/deleteApplication',
             filterDpsApplications: 'loan/filterApplications'
         }),
@@ -293,7 +291,6 @@ export default ({
     },
 
     mounted() {
-        this.getLoanStatistics();
         this.getResults(1);
     },
 

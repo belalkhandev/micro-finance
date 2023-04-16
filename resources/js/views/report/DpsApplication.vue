@@ -161,7 +161,6 @@ export default ({
     computed: {
         ...mapGetters({
             applications: 'dps/applications',
-            dps_total: 'dps/statistics',
             members: 'member/searchData',
         }),
 
@@ -189,7 +188,6 @@ export default ({
     methods: {
         ...mapActions({
             getApplications: 'dps/getApplications',
-            getTotalDps: 'dps/getDpsStatistics',
             deleteApplication: 'dps/deleteApplication',
             filterDpsApplications: 'dps/filterApplications'
         }),
@@ -292,7 +290,6 @@ export default ({
 
     mounted() {
         this.getResults(1);
-        this.getTotalDps();
     },
 
     watch: {
